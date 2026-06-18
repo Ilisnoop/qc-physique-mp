@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M2 — Solide en rotation autour d'un axe fixe · QC Oraux MP*</title>
+<meta name="description" content="Solide en rotation autour d'un axe fixe : théorème scalaire du moment cinétique, énergie cinétique de rotation, équivalence des deux approches.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html" aria-current="page"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Mécanique</span>
+    <h1>Solide en rotation autour d'un axe fixe</h1>
+    <p class="q-sources"><span class="src">POLY p.1</span><span class="src">POLY p.2</span><span class="src">PL-109</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Étude dynamique et énergétique d'un solide en rotation autour d'un axe fixe dans un référentiel galiléen : théorème scalaire du moment cinétique, énergie cinétique, équivalence avec le théorème de l'énergie cinétique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · Section 2.7 « Mouvement d'un solide »</div>
+      <p><em>Notions et contenus :</em> moment cinétique d'un solide en rotation (moment d'inertie) ; théorème scalaire du moment cinétique ; énergie cinétique de rotation ; pendule pesant.</p>
+      <p><em>Capacités exigibles (MPSI) :</em></p>
+      <ul>
+        <li>Exploiter la relation \(J\dot{\Omega} = \sum \mathcal{M}_{axe}(\vec{F})\).</li>
+        <li>Relier qualitativement le moment d'inertie à la répartition des masses.</li>
+        <li>Utiliser \(E_c = \frac{1}{2}J\omega^2\).</li>
+        <li>Établir l'équivalence entre le théorème scalaire du moment cinétique et celui de l'énergie cinétique.</li>
+      </ul>
+      <p>Niveau <strong>MPSI/MP</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Un solide \(\mathcal{S}\) tourne autour d'un axe \(\Delta\) fixe dans le référentiel galiléen \(\mathcal{R}\).</p>
+    <ul>
+      <li>\(\omega = \dot{\theta}\) : vitesse angulaire algébrique.</li>
+      <li>\(J_\Delta = \int r_\perp^2\,\mathrm{d} m\) : moment d'inertie par rapport à \(\Delta\) (\(r_\perp\) = distance de l'élément de masse à \(\Delta\)). Fourni ou calculé selon les géométries standard (cylindre, disque, etc.).</li>
+      <li>\(\mathcal{M}_\Delta(\vec{F})\) : moment algébrique de la force \(\vec{F}\) par rapport à \(\Delta\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Théorème scalaire du moment cinétique (TSMC)</span>
+      <p>Le moment cinétique scalaire du solide par rapport à \(\Delta\) est \(L_\Delta = J_\Delta\,\omega\). Le théorème du moment cinétique en un point fixe de \(\mathcal{R}\) (galiléen) donne, en projetant sur \(\Delta\) :</p>
+      <p>\[ \frac{\mathrm{d} L_\Delta}{\mathrm{d} t} = \sum_i \mathcal{M}_\Delta(\vec{F}_i), \]</p>
+      <p>soit, \(J_\Delta\) étant constant :</p>
+      <p>\[ J_\Delta\,\ddot{\theta} = \sum_i \mathcal{M}_\Delta(\vec{F}_i). \]</p>
+      <p>C'est l'équation du mouvement. Les forces appliquées à l'axe (\(\vec{R}\) de la liaison pivot) ont un moment nul par rapport à \(\Delta\) et ne contribuent pas.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Approche énergétique</span>
+      <p>L'énergie cinétique de rotation est :</p>
+      <p>\[ E_c = \frac{1}{2}J_\Delta\,\omega^2. \]</p>
+      <p>La puissance d'une force \(\vec{F}\) s'appliquant en un point \(P\) du solide est \(\mathcal{P}(\vec{F}) = \vec{F}\cdot\vec{v}_P = \mathcal{M}_\Delta(\vec{F})\,\omega\). Le théorème de l'énergie cinétique donne :</p>
+      <p>\[ \frac{\mathrm{d} E_c}{\mathrm{d} t} = \sum_i \mathcal{P}(\vec{F}_i) = \omega\sum_i \mathcal{M}_\Delta(\vec{F}_i). \]</p>
+      <p>On retrouve bien \(J_\Delta\,\omega\,\dot{\omega} = \omega\sum_i \mathcal{M}_\Delta(\vec{F}_i)\), ce qui est exactement le TSMC multiplié par \(\omega\) : les deux approches sont <em>équivalentes</em> (à \(\omega \neq 0\)).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Exemple : rotor soumis à un couple résistant</span>
+      <p>Rotor de moment d'inertie \(J\), couple moteur \(\mathcal{C}_m\), couple résistant visqueux \(\mathcal{C}_r = -f\omega\) (\(f > 0\)) :</p>
+      <p>\[ J\dot{\omega} = \mathcal{C}_m - f\omega. \]</p>
+      <p>En régime permanent \(\dot{\omega}=0\) : \(\omega_{\infty} = \mathcal{C}_m/f\). La constante de temps est \(\tau = J/f\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — disque en rotation : \(L_\Delta\) et \(E_c\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-rotor" aria-label="Disque homogène en rotation autour de son axe : moment cinétique et énergie cinétique en fonction de la vitesse angulaire"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-w">Vitesse angulaire \(\omega\) (rad/s) <span class="val" id="v-w">6,0</span></label>
+          <input type="range" id="sl-w" min="0" max="14" step="0.1" value="6">
+          <label for="sl-c" style="margin-top:.6rem">Couple moteur \(\mathcal{C}_m\) (N·m) <span class="val" id="v-c">0,0</span></label>
+          <input type="range" id="sl-c" min="0" max="6" step="0.1" value="0">
+          <span class="hint" id="hint-rotor">Couple moteur nul : rotation à \(\omega\) constant imposé par le curseur.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la rotation</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(J_\Delta=\tfrac12 MR^2\) = <b id="v-j">—</b> kg·m²</span>
+            <span class="ro">\(L_\Delta=J_\Delta\omega\) = <b id="v-l">—</b> kg·m²/s</span>
+            <span class="ro">\(E_c=\tfrac12 J_\Delta\omega^2\) = <b id="v-ec">—</b> J</span>
+            <span class="ro" id="ro-winf">\(\omega_\infty=\mathcal{C}_m/f\) = <b id="v-winf">—</b> rad/s</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Disque homogène (\(M=2{,}0\ \mathrm{kg}\), \(R=0{,}20\ \mathrm{m}\), \(f=0{,}5\ \mathrm{N\cdot m\cdot s}\)) tournant autour de son axe \(\Delta\). Le vecteur moment cinétique \(\vec{L}_\Delta=J_\Delta\vec{\omega}\) (vert) est porté par l'axe ; sa longueur et l'énergie cinétique \(E_c\) varient avec \(\omega\). Avec un couple moteur \(\mathcal{C}_m>0\) face au couple résistant \(-f\omega\), la vitesse tend vers \(\omega_\infty=\mathcal{C}_m/f\) (TSMC : \(J\dot\omega=\mathcal{C}_m-f\omega\)).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Disque \(\mathcal{S}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(\vec{L}_\Delta\) (axe)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Élément \(\mathrm{d}m\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Le moment d'inertie <em>doit être fourni ou calculé explicitement</em> ; ne jamais l'utiliser sans le définir.</li>
+        <li>Les moments des forces de la liaison pivot (réaction de l'axe) sont <em>nuls</em> par rapport à \(\Delta\) : le justifier systématiquement.</li>
+        <li>Unité de \(J\) : \(\mathrm{kg\cdot m^2}\). Vérifier l'homogénéité de \([J\dot\omega] = \mathrm{kg\cdot m^2\cdot s^{-2}} = \mathrm{N\cdot m}\).</li>
+        <li>Ne pas confondre \(\mathcal{M}_\Delta(\vec{F})\) (moment d'une force par rapport à un axe, scalaire algébrique) et \(\vec{\mathcal{M}}_O(\vec{F})\) (moment par rapport à un point, vecteur).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MPSI</strong> (section 2.7) et <strong>MP</strong>.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M1 · Référentiel terrestre non galiléen</span></a>
+    <a class="next" href="m3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M3 · Frottement solide (Coulomb)</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-rotor');
+  const slW = document.getElementById('sl-w'), slC = document.getElementById('sl-c');
+  const vW = document.getElementById('v-w'), vC = document.getElementById('v-c');
+  const vJ = document.getElementById('v-j'), vL = document.getElementById('v-l'), vEc = document.getElementById('v-ec'), vWinf = document.getElementById('v-winf');
+  const hint = document.getElementById('hint-rotor'), btn = document.getElementById('btn-anim'), roWinf = document.getElementById('ro-winf');
+  const M = 2.0, R = 0.20, f = 0.5;
+  const J = 0.5 * M * R * R; // moment d'inertie disque
+  let animating = false, ang = 0, omega = 6, lastT = 0;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const cx = w * 0.40, cy = h * 0.52;
+    const Rpx = Math.min(w, h) * 0.26;
+    const om = parseFloat(slW.value);
+    const Cm = parseFloat(slC.value);
+
+    // axe Delta (vertical)
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.4; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(cx, cy - Rpx - 60); ctx.lineTo(cx, cy + Rpx + 30); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.muted; ctx.font = '13px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('Δ', cx + 6, cy + Rpx + 26);
+
+    // disque
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.16;
+    ctx.beginPath(); ctx.arc(cx, cy, Rpx, 0, 2 * Math.PI); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.arc(cx, cy, Rpx, 0, 2 * Math.PI); ctx.stroke();
+    // repère tournant (rayon) + élément dm
+    const a = animating ? ang : 0.6;
+    const ex = cx + Rpx * Math.cos(a), ey = cy + Rpx * Math.sin(a);
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(ex, ey); ctx.stroke();
+    // élément de masse dm à r_perp
+    const rp = 0.62 * Rpx;
+    const dx = cx + rp * Math.cos(a + 0.35), dy = cy + rp * Math.sin(a + 0.35);
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(dx, dy, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(dx, dy); ctx.stroke();
+    ctx.fillStyle = c.rouge; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('dm, r⊥', dx + 6, dy - 4);
+    // centre
+    ctx.fillStyle = c.text; ctx.beginPath(); ctx.arc(cx, cy, 2.4, 0, 2 * Math.PI); ctx.fill();
+
+    // flèche moment cinétique L le long de l'axe (vers le haut), longueur ∝ omega
+    const Lpx = 30 + (om / 14) * (Rpx + 40);
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(cx, cy - Rpx - 6); ctx.lineTo(cx, cy - Rpx - 6 - Lpx); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx, cy - Rpx - 6 - Lpx); ctx.lineTo(cx - 5, cy - Rpx + 2 - Lpx); ctx.lineTo(cx + 5, cy - Rpx + 2 - Lpx); ctx.closePath();
+    ctx.fillStyle = c.vert; ctx.fill();
+    ctx.fillStyle = c.vert; ctx.font = '13px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('L_Δ', cx + 8, cy - Rpx - 6 - Lpx + 6);
+
+    // arc omega au-dessus du disque
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.arc(cx, cy, Rpx + 14, -0.6, 0.9); ctx.stroke();
+    const tipA = 0.9, tx = cx + (Rpx + 14) * Math.cos(tipA), ty = cy + (Rpx + 14) * Math.sin(tipA);
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(tx - 7, ty - 1); ctx.lineTo(tx - 1, ty + 7); ctx.closePath();
+    ctx.fillStyle = c.orange; ctx.fill();
+    ctx.fillStyle = c.orange; ctx.fillText('ω', cx + Rpx + 18, cy - 4);
+
+    // énergie : barre verticale à droite
+    const bx = w - 46, by0 = cy + Rpx, bH = 2 * Rpx;
+    const EcMax = 0.5 * J * 14 * 14;
+    const Ec = 0.5 * J * om * om;
+    ctx.fillStyle = c.surface; ctx.fillRect(bx - 14, by0 - bH, 28, bH);
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1; ctx.strokeRect(bx - 14, by0 - bH, 28, bH);
+    ctx.fillStyle = c.rouge; const eh = bH * Math.min(1, Ec / EcMax);
+    ctx.fillRect(bx - 14, by0 - eh, 28, eh);
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('E_c', bx, by0 + 16);
+
+    // lectures
+    const L = J * om, Ecv = 0.5 * J * om * om;
+    vW.textContent = fr(om, 1);
+    vC.textContent = fr(Cm, 1);
+    vJ.textContent = fr(J, 3);
+    vL.textContent = fr(L, 3);
+    vEc.textContent = fr(Ecv, 2);
+    if (Cm > 0) {
+      vWinf.textContent = fr(Cm / f, 1);
+      roWinf.style.display = '';
+      hint.textContent = 'Régime asservi : ω tend vers ω∞ = 𝒞ₘ/f (TSMC J ω̇ = 𝒞ₘ − fω).';
+    } else {
+      vWinf.textContent = '—';
+      roWinf.style.display = 'none';
+      hint.textContent = 'Couple moteur nul : rotation à ω constant imposé par le curseur.';
+    }
+  }
+
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      // si couple moteur : intègre J ω̇ = Cm − f ω ; sinon ω imposé par curseur
+      const Cm = parseFloat(slC.value);
+      if (Cm > 0) {
+        omega += (Cm - f * omega) / J * dt;
+        if (omega > 14) omega = 14;
+        slW.value = omega.toFixed(1);
+      } else {
+        omega = parseFloat(slW.value);
+      }
+      ang += omega * dt;
+      draw();
+    }
+  });
+
+  slW.addEventListener('input', function () { omega = parseFloat(slW.value); draw(); });
+  slC.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer la rotation';
+    btn.classList.toggle('active', animating);
+    if (animating) omega = parseFloat(slW.value);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

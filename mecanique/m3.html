@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M3 — Lois du frottement solide (Coulomb) · QC Oraux MP*</title>
+<meta name="description" content="Lois de Coulomb du frottement solide : adhérence, seuil, glissement ; application au plan incliné ; bilan énergétique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m4.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html" aria-current="page"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Mécanique</span>
+    <h1>Lois du frottement solide (Coulomb)</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-115</span><span class="src">PL-116</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer et utiliser les lois de Coulomb pour le frottement solide dans le cas d'un solide en translation ; distinguer les trois situations (équilibre, mise en mouvement, glissement) ; effectuer un bilan énergétique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Section 1.2 « Lois du frottement solide »</div>
+      <p><em>Notions et contenus :</em> contact entre deux solides ; lois de Coulomb du frottement de glissement (cas de la translation) ; aspect énergétique.</p>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Utiliser les lois de Coulomb dans les trois situations : équilibre, mise en mouvement, freinage.</li>
+        <li>Formuler une hypothèse (glissement ou non) et la valider.</li>
+        <li>Effectuer un bilan énergétique.</li>
+      </ul>
+      <p>Niveau <strong>MP</strong> (traitement quantitatif explicite). Mentionné implicitement en MPSI.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère un solide \(S_1\) (masse \(m\)) reposant sur un support \(S_2\). L'action de contact de \(S_2\) sur \(S_1\) se décompose en :</p>
+    <ul>
+      <li>\(\vec{N}\) : réaction normale (perpendiculaire au plan de contact), \(N > 0\) (appui).</li>
+      <li>\(\vec{T}\) : force tangentielle (dans le plan de contact).</li>
+    </ul>
+    <p>On note \(\mu_s\) le coefficient de frottement statique et \(\mu_d\) le coefficient dynamique (\(\mu_d \leq \mu_s\)).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Lois de Coulomb — énoncé</span>
+      <p><strong>Absence de glissement (adhérence) :</strong> la condition d'adhérence est \(T \leq \mu_s\,N\), et la force tangentielle \(\vec{T}\) prend la valeur nécessaire à l'équilibre.</p>
+      <p><strong>Seuil de mise en mouvement :</strong> glissement imminent si \(T = \mu_s\,N\).</p>
+      <p><strong>Glissement :</strong> la force de frottement est opposée à la vitesse de glissement \(\vec{v}_{12}\) (vitesse de \(S_1\) par rapport à \(S_2\)) :</p>
+      <p>\[ \vec{T} = -\mu_d\,N\,\frac{\vec{v}_{12}}{\|\vec{v}_{12}\|}, \qquad T = \mu_d\,N. \]</p>
+      <p>La loi de Coulomb ignore la surface de contact et la vitesse de glissement (dans les limites de validité du modèle).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Application : solide sur plan incliné</span>
+      <p>Plan incliné d'angle \(\alpha\). Bilan des forces : \(\vec{P} = m\vec{g}\) (vers le bas), \(\vec{N}\) (normale au plan), \(\vec{T}\) (tangentielle). Projection sur le plan (sens positif vers le bas) et sur la normale :</p>
+      <p>\[ \text{Normale :} \quad N = mg\cos\alpha, \qquad \text{Plan :} \quad ma = mg\sin\alpha - T. \]</p>
+      <p><em>Hypothèse adhérence</em> (\(a=0\)) : \(T = mg\sin\alpha\). On vérifie \(T \leq \mu_s N\) : \(\tan\alpha \leq \mu_s\). Si \(\tan\alpha > \mu_s\), glissement : \(T = \mu_d\,N = \mu_d\,mg\cos\alpha\), donc</p>
+      <p>\[ a = g(\sin\alpha - \mu_d\cos\alpha). \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Bilan énergétique</span>
+      <p>La puissance dissipée par frottement (chaleur dégagée) est :</p>
+      <p>\[ \mathcal{P}_{\text{frot}} = \vec{T}\cdot\vec{v}_{12} = -\mu_d\,N\,\|\vec{v}_{12}\| \leq 0. \]</p>
+      <p>L'énergie mécanique <em>n'est pas conservée</em> : \(\Delta E_{\text{mec}} = W_{\text{frot}} < 0\). L'énergie dissipée apparaît comme énergie thermique à l'interface.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — solide sur plan incliné</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-incline" aria-label="Solide sur plan incliné : transition adhérence / glissement selon l'angle et les coefficients de frottement"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-a">Angle du plan \(\alpha\) <span class="val" id="v-a">20°</span></label>
+          <input type="range" id="sl-a" min="0" max="55" step="0.5" value="20">
+          <label for="sl-mus" style="margin-top:.6rem">Frottement statique \(\mu_s\) <span class="val" id="v-mus">0,60</span></label>
+          <input type="range" id="sl-mus" min="0.05" max="1.2" step="0.01" value="0.6">
+          <span class="hint" id="hint-inc">Hypothèse à valider : adhérence si tan α ≤ μₛ.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Lâcher le bloc</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\tan\alpha\) = <b id="v-tan">—</b></span>
+            <span class="ro" id="ro-state">État : <b id="v-state">—</b></span>
+            <span class="ro">\(N=mg\cos\alpha\) = <b id="v-n">—</b> N</span>
+            <span class="ro" id="ro-acc">\(a\) = <b id="v-acc">—</b> m/s²</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Bloc (\(m=1{,}0\ \mathrm{kg}\), \(\mu_d=0{,}8\,\mu_s\)) sur un plan d'angle \(\alpha\). Forces : poids \(\vec{P}\) (bleu, vertical), réaction normale \(\vec{N}\) (vert) et force tangentielle \(\vec{T}\) (rouge, le long de la pente). Condition d'adhérence : \(\tan\alpha \leq \mu_s\). Au-delà, le bloc glisse avec \(a = g(\sin\alpha - \mu_d\cos\alpha)\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Poids \(\vec{P}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Normale \(\vec{N}\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Frottement \(\vec{T}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Toujours <em>formuler l'hypothèse</em> (adhérence ou glissement) puis <em>la valider</em>.</li>
+        <li>\(\vec{T}\) est une <em>inconnue</em> en adhérence ; seulement en glissement sa norme est fixée à \(\mu_d N\).</li>
+        <li>Le frottement statique peut être dans <em>n'importe quelle direction</em> du plan de contact.</li>
+        <li>Ordre de grandeur : \(\mu_s \approx 0{,}3\)–\(0{,}8\) (bois/bois, métal/métal).</li>
+        <li>En glissement, la dissipation est <em>toujours positive</em> : jamais de travail moteur du frottement cinétique.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MP</strong> (section 1.2). Les aspects microscopiques du frottement (jonctions adhésives) sont hors programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M2 · Solide en rotation autour d'un axe fixe</span></a>
+    <a class="next" href="m4.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M4 · Pendule simple et pendule pesant</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-incline');
+  const slA = document.getElementById('sl-a'), slMus = document.getElementById('sl-mus');
+  const vA = document.getElementById('v-a'), vMus = document.getElementById('v-mus');
+  const vTan = document.getElementById('v-tan'), vState = document.getElementById('v-state'), vN = document.getElementById('v-n'), vAcc = document.getElementById('v-acc');
+  const hint = document.getElementById('hint-inc'), btn = document.getElementById('btn-anim');
+  const m = 1.0, g = 9.81;
+  let animating = false, pos = 0, vel = 0, lastT = 0; // pos = distance le long de la pente (0..1)
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function state() {
+    const alpha = parseFloat(slA.value) * Math.PI / 180;
+    const mus = parseFloat(slMus.value), mud = 0.8 * mus;
+    const N = m * g * Math.cos(alpha);
+    const slides = Math.tan(alpha) > mus;
+    const acc = slides ? g * (Math.sin(alpha) - mud * Math.cos(alpha)) : 0;
+    return { alpha, mus, mud, N, slides, acc: Math.max(0, acc) };
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const S = state();
+    const ax = 40, ay = h - 44;              // sommet bas-gauche (angle alpha)
+    const L = w - 90;                        // longueur horizontale de la base
+    const tx = Math.cos(S.alpha), ty = -Math.sin(S.alpha); // direction montante de la pente (y vers le haut écran = -)
+    const topX = ax + L * Math.cos(S.alpha), topY = ay - L * Math.sin(S.alpha);
+
+    // triangle plan incliné
+    ctx.fillStyle = c.surface;
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax + L, ay); ctx.lineTo(topX, topY); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.8; ctx.stroke();
+    // hachures sous la base
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1;
+    for (let x = ax; x < ax + L; x += 16) { ctx.beginPath(); ctx.moveTo(x, ay); ctx.lineTo(x - 8, ay + 10); ctx.stroke(); }
+    // angle alpha
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(ax, ay, 40, -S.alpha, 0); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('α', ax + 46, ay - 8);
+
+    // position du bloc le long de la pente (depuis le haut, descend)
+    const startD = L * 0.78; // distance depuis le bas au départ
+    const d = startD - pos * startD;
+    const bx = ax + d * Math.cos(S.alpha), by = ay - d * Math.sin(S.alpha);
+    // bloc (carré orienté), centre légèrement au-dessus de la pente
+    const nx = -Math.sin(S.alpha), ny = -Math.cos(S.alpha); // normale sortante (écran)
+    const cxb = bx + nx * 18, cyb = by + ny * 18;
+    const hs = 18;
+    function pt(u, v) { return [cxb + u * tx * hs + v * nx * hs, cyb - u * Math.sin(S.alpha) * hs * 0 + 0]; }
+    // dessiner carré via 4 coins
+    const cTx = Math.cos(S.alpha), cTy = -Math.sin(S.alpha);
+    const c1 = [cxb - cTx * hs - nx * hs, cyb - cTy * hs - ny * hs];
+    const c2 = [cxb + cTx * hs - nx * hs, cyb + cTy * hs - ny * hs];
+    const c3 = [cxb + cTx * hs + nx * hs, cyb + cTy * hs + ny * hs];
+    const c4 = [cxb - cTx * hs + nx * hs, cyb - cTy * hs + ny * hs];
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.18;
+    ctx.beginPath(); ctx.moveTo(c1[0], c1[1]); ctx.lineTo(c2[0], c2[1]); ctx.lineTo(c3[0], c3[1]); ctx.lineTo(c4[0], c4[1]); ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2; ctx.stroke();
+
+    // vecteurs depuis le centre cxb,cyb
+    function arrow(dx, dy, col, lab, lx, ly) {
+      ctx.strokeStyle = col; ctx.lineWidth = 2.4;
+      ctx.beginPath(); ctx.moveTo(cxb, cyb); ctx.lineTo(cxb + dx, cyb + dy); ctx.stroke();
+      const ang = Math.atan2(dy, dx);
+      ctx.beginPath(); ctx.moveTo(cxb + dx, cyb + dy);
+      ctx.lineTo(cxb + dx - 8 * Math.cos(ang - 0.4), cyb + dy - 8 * Math.sin(ang - 0.4));
+      ctx.lineTo(cxb + dx - 8 * Math.cos(ang + 0.4), cyb + dy - 8 * Math.sin(ang + 0.4));
+      ctx.closePath(); ctx.fillStyle = col; ctx.fill();
+      ctx.fillStyle = col; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+      ctx.fillText(lab, cxb + dx + lx, cyb + dy + ly);
+    }
+    arrow(0, 52, c.bleu, 'P', 8, 12);            // poids vers le bas
+    arrow(nx * 46, ny * 46, c.vert, 'N', -8, -6); // normale
+    // frottement le long de la pente, vers le haut (s'oppose à descente)
+    arrow(cTx * 42, cTy * 42, c.rouge, 'T', 10, -4);
+
+    // lectures
+    vA.textContent = fr(parseFloat(slA.value), 1) + '°';
+    vMus.textContent = fr(S.mus, 2);
+    vTan.textContent = fr(Math.tan(S.alpha), 2);
+    vN.textContent = fr(S.N, 2);
+    if (S.slides) {
+      vState.textContent = 'glissement';
+      vState.style.color = 'var(--rouge)';
+      vAcc.textContent = fr(S.acc, 2);
+      hint.textContent = 'tan α > μₛ : le bloc glisse, T = μ_d N, a = g(sin α − μ_d cos α).';
+    } else {
+      vState.textContent = 'adhérence';
+      vState.style.color = 'var(--vert)';
+      vAcc.textContent = '0,00';
+      hint.textContent = 'tan α ≤ μₛ : adhérence, T = mg sin α (inconnue ≤ μₛ N).';
+    }
+  }
+
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      const S = state();
+      if (S.slides) {
+        vel += S.acc * dt * 0.25; // ralenti visuel
+        pos += vel * dt;
+        if (pos >= 1) { pos = 1; animating = false; btn.textContent = 'Replacer le bloc'; btn.classList.remove('active'); }
+      } else {
+        animating = false; btn.textContent = 'Lâcher le bloc'; btn.classList.remove('active');
+      }
+      draw();
+    }
+  });
+
+  slA.addEventListener('input', function () { pos = 0; vel = 0; draw(); });
+  slMus.addEventListener('input', function () { pos = 0; vel = 0; draw(); });
+  btn.addEventListener('click', function () {
+    if (animating) { animating = false; btn.textContent = 'Lâcher le bloc'; btn.classList.remove('active'); return; }
+    pos = 0; vel = 0; animating = true; btn.textContent = 'Stop'; btn.classList.add('active');
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

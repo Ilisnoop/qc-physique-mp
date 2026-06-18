@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND7 — Rayonnement du dipôle oscillant · QC Oraux MP*</title>
+<meta name="description" content="Modèle du dipôle oscillant : trois zones, champ rayonné, bilan énergétique et indicatrice de rayonnement en sin² θ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond6.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond8.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html" aria-current="page"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 7 · Ondes électromagnétiques</span>
+    <h1>Rayonnement du dipôle électrique oscillant</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Justifier l'intérêt du modèle dipôle oscillant. Donner les approximations des trois zones. Analyser la structure du champ rayonné et le bilan énergétique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5</div>
+      <p>« Justifier l'intérêt du modèle du dipôle oscillant et citer des exemples. Formuler et commenter les approximations reliant les trois échelles de longueur pertinentes. Analyser la structure du champ électromagnétique rayonné, les expressions des champs étant fournies. Effectuer un bilan énergétique. Représenter l'indicatrice de rayonnement. » Niveau MP. Les expressions des champs sont <em>admises</em>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Un dipôle électrique oscillant est constitué d'une charge \(+q(t) = q_0\cos(\omega t)\) en \(z=d/2\) et \(-q(t)\) en \(z=-d/2\), de moment dipolaire \(p(t) = p_0\cos(\omega t)\) selon \(\hat{z}\). On note \(\lambda = 2\pi c/\omega\) la longueur d'onde.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Les trois zones</span>
+      <p>On distingue trois régions autour du dipôle de taille \(d \ll \lambda\) :</p>
+      <ul>
+        <li>Zone proche (<em>near field</em>) : \(r \ll \lambda/(2\pi)\) — champ quasi-statique, stockage d'énergie.</li>
+        <li>Zone de transition : \(r \sim \lambda/(2\pi)\).</li>
+        <li>Zone de rayonnement (<em>far field</em>) : \(r \gg \lambda/(2\pi)\) et \(r \gg d\) — onde plane locale, rayonnement.</li>
+      </ul>
+      <p>Les <b>trois longueurs pertinentes</b> vérifient \(d \ll \lambda/(2\pi) \ll r\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Champ dans la zone de rayonnement (expressions fournies)</span>
+      <p>\[ \vec{E}_{\mathrm{rad}} = -\frac{\mu_0}{4\pi}\frac{\ddot{p}(t-r/c)}{r}\sin\theta\,\hat{\theta} \]</p>
+      <p>\[ \vec{B}_{\mathrm{rad}} = \frac{1}{c}\hat{r}\times\vec{E}_{\mathrm{rad}} \]</p>
+      <p>où \(\ddot{p}\) est la dérivée seconde du moment dipolaire évaluée au <em>temps retardé</em> \(t - r/c\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Analyse</span>
+      <ul>
+        <li>Les champs décroissent comme \(1/r\) : énergie en \(1/r^2\), flux non nul à l'infini \(\Rightarrow\) rayonnement effectif.</li>
+        <li>\(\vec{E}_{\mathrm{rad}} \perp \vec{r}\) et \(\vec{B}_{\mathrm{rad}} \perp \vec{r}\) : onde transverse.</li>
+        <li>Le champ est proportionnel à \(\ddot{p}\) : seule une charge <em>accélérée</em> rayonne.</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Puissance rayonnée</span>
+      <p>Le vecteur de Poynting moyen est \(\langle\Pi\rangle \propto \sin^2\theta/r^2\). L'indicatrice de rayonnement est un tore de révolution : puissance nulle en \(\theta=0\) (le long de l'axe du dipôle) et maximale en \(\theta = \pi/2\) (plan équatorial).</p>
+      <p>La puissance totale rayonnée (intégrale sur toute la sphère) est :</p>
+      <p>\[ P = \frac{\mu_0\omega^4 p_0^2}{12\pi c} \]</p>
+      <p>(Puissance de Larmor, admise, signalée en encadré culture ci-dessous.)</p>
+    </div>
+    <div class="box culture">
+      <div class="box-title">⚠ Hors-programme · culture</div>
+      <p><b>Puissance de Larmor.</b> La puissance rayonnée par une charge \(q\) d'accélération \(a\) est \(P = \mu_0 q^2 a^2/(6\pi c)\). Cette formule, non exigible au programme MP, est à mentionner uniquement pour la culture générale. Son emploi doit être annoncé comme hors-programme.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — indicatrice de rayonnement \(\propto \sin^2\theta\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-dip" aria-label="Indicatrice de rayonnement du dipôle : nulle sur l'axe, maximale dans le plan équatorial"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-th">Angle d'observation \(\theta\) <span class="val" id="v-th">90°</span></label>
+          <input type="range" id="sl-th" min="0" max="180" step="1" value="90">
+          <span class="hint" id="hint-th">RAPPEL validé : dans le plan équatorial (\(\theta=\pi/2\)) la puissance est maximale ; \(\langle\Pi\rangle \propto \sin^2\theta\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Balayer \(\theta\)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\sin^2\theta\) = <b id="v-s2">1,00</b></span>
+            <span class="ro">Puissance relative \(P(\theta)/P_{\max}\) = <b id="v-prel">1,00</b></span>
+            <span class="ro">Direction : <b id="v-dir">plan équatorial (max)</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Section de l'indicatrice de rayonnement d'un dipôle oscillant (\(\propto\sin^2\theta\), bleu) dans un plan contenant l'axe \(\hat{z}\) du dipôle (gris). Le rayon vert marque la direction d'observation \(\theta\) ; sa longueur est proportionnelle à \(\sin^2\theta\). Rayonnement nul sur l'axe (\(\theta=0,\pi\)), maximal dans le plan équatorial (\(\theta=\pi/2\)).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>indicatrice \(\sin^2\theta\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>direction \(\theta\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Les expressions des champs rayonnés sont <em>admises</em> : ne pas les redémontrer, mais les commenter et exploiter.</li>
+        <li>Retard \(r/c\) : l'information se propage à \(c\) — champ évalué au temps retardé.</li>
+        <li>Exemples : antenne dipôle (\(\lambda/2\)), rayonnement de diffusion Rayleigh (ciel bleu), émission spontanée d'un atome.</li>
+        <li>La diffusion Rayleigh : \(P_{\text{diffusée}} \propto \omega^4 \propto 1/\lambda^4\) — le bleu (courte \(\lambda\)) diffuse plus que le rouge.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section 4.5. Les expressions des champs sont admises. La puissance de Larmor est isolée en encadré culture.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond6.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND6 · GPS et ionosphère</span></a>
+    <a class="next" href="ond8.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND8 · Cavité résonante 1D</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-dip');
+  const slTh = document.getElementById('sl-th');
+  const vTh = document.getElementById('v-th'), vS2 = document.getElementById('v-s2'), vPrel = document.getElementById('v-prel'), vDir = document.getElementById('v-dir');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, dir = 1;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const thDeg = parseFloat(slTh.value);
+    const th = thDeg * Math.PI / 180;
+    const cx = w * 0.5, cy = h * 0.5;
+    const R = Math.min(w, h) * 0.36;       // rayon max de l'indicatrice
+
+    // axe du dipôle (vertical)
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.6; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(cx, cy - R - 22); ctx.lineTo(cx, cy + R + 22); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('ẑ (axe du dipôle)', cx, cy - R - 28);
+    // dipôle au centre
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(cx, cy - 6, 3, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(cx, cy + 6, 3, 0, 2 * Math.PI); ctx.fill();
+
+    // indicatrice r(θ) = sin²θ, axe vertical = axe du dipôle.
+    // composante le long de l'axe (vertical écran) = r cosθ ; composante horizontale = r sinθ
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.fillStyle = c.bleu;
+    ctx.globalAlpha = 0.10; ctx.beginPath();
+    let started = false;
+    for (let a = 0; a <= 2 * Math.PI + 0.01; a += 0.02) {
+      const r = Math.sin(a) * Math.sin(a);
+      const X = cx + R * r * Math.sin(a);
+      const Y = cy - R * r * Math.cos(a);
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+    }
+    ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.beginPath(); started = false;
+    for (let a = 0; a <= 2 * Math.PI + 0.01; a += 0.02) {
+      const r = Math.sin(a) * Math.sin(a);
+      const X = cx + R * r * Math.sin(a);
+      const Y = cy - R * r * Math.cos(a);
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+    }
+    ctx.closePath(); ctx.stroke();
+
+    // direction d'observation θ (rayon vert), longueur ∝ sin²θ
+    const s2 = Math.sin(th) * Math.sin(th);
+    const dx = Math.sin(th), dy = -Math.cos(th);
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 2.4; ctx.fillStyle = c.vert;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * s2 * dx, cy + R * s2 * dy); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx + R * s2 * dx, cy + R * s2 * dy, 4, 0, 2 * Math.PI); ctx.fill();
+    // arc θ (depuis l'axe)
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(cx, cy, 26, -Math.PI / 2, -Math.PI / 2 + th, false); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.textAlign = 'left'; ctx.fillText('θ', cx + 14, cy - 26);
+
+    vTh.textContent = Math.round(thDeg) + '°';
+    vS2.textContent = fr(s2, 2);
+    vPrel.textContent = fr(s2, 2);
+    if (thDeg < 12 || thDeg > 168) vDir.textContent = 'proche de l\u2019axe (≈ 0)';
+    else if (thDeg > 78 && thDeg < 102) vDir.textContent = 'plan équatorial (max)';
+    else vDir.textContent = 'direction intermédiaire';
+  }
+
+  QC.loop(function () {
+    if (animating) {
+      let v = parseFloat(slTh.value) + dir * 1.2;
+      if (v >= 180) { v = 180; dir = -1; } if (v <= 0) { v = 0; dir = 1; }
+      slTh.value = v; draw();
+    }
+  });
+  slTh.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Balayer θ';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

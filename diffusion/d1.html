@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D1 — Équation de la diffusion thermique · QC Oraux MP*</title>
+<meta name="description" content="Établissement de l'équation de la diffusion thermique en géométrie cartésienne 1D, loi de Fourier, temps caractéristiques τ~L²/a, et analogie électrique avec la résistance thermique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Diffusion thermique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="d2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="d1.html" aria-current="page"><span class="qn">D1</span>Équation de la diffusion thermique</a>
+        <a href="d2.html"><span class="qn">D2</span>Conduction sphérique &amp; analogie EM</a>
+        <a href="d3.html"><span class="qn">D3</span>Résistance thermique d'un cylindre</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Diffusion thermique</span>
+    <h1>Équation de la diffusion thermique : établissement, homogénéité, temps caractéristiques, analogie électrique</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-115</span><span class="src">PL-216</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir l'équation de la diffusion thermique dans un solide, en géométrie cartésienne à une dimension. Vérifier l'homogénéité. Dégager les échelles de temps et d'espace caractéristiques. Décrire l'analogie électrique en régime stationnaire.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Niveau MP uniquement (5.2. Transferts thermiques)</div>
+      <p>Loi de Fourier ; établir l'équation de la diffusion thermique sans terme source au sein d'un solide dans le cas d'une situation à une variable d'espace en géométrie cartésienne, cylindrique ou sphérique ; utiliser la généralisation en géométrie quelconque ; analyser l'équation en ordre de grandeur pour relier les échelles caractéristiques spatiale et temporelle ; définir la résistance thermique par analogie avec l'électrocinétique. Capacité exigible : établir et utiliser la loi de Fourier ; citer les ordres de grandeur de \(\lambda\) (air, eau, verre, acier).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère un solide homogène, isotrope, de masse volumique \(\rho\), capacité thermique massique \(c\) et conductivité thermique \(\lambda > 0\). On note \(T(x,t)\) la température en un point d'abscisse \(x\) et à l'instant \(t\), dans une géométrie unidimensionnelle (plaques parallèles).</p>
+    <p><strong>Loi de Fourier</strong> : le vecteur densité de flux thermique (flux par unité de surface) est :</p>
+    <p>\[ \vec{j}_{\text{th}} = -\lambda\,\vec{\nabla} T. \]</p>
+    <p>En 1D cartésien : \(j_x = -\lambda\,\partial T/\partial x\). Le signe négatif traduit le fait que la chaleur se propage dans le sens des températures décroissantes.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+
+    <div class="demo-step">
+      <span class="step-label">1 · Bilan d'énergie interne sur un élément de volume</span>
+      <p>Considérons une tranche de solide d'épaisseur \(\mathrm{d}x\), de section \(S\), comprise entre \(x\) et \(x + \mathrm{d}x\). En régime quelconque, le premier principe appliqué à cet élément de volume \(S\,\mathrm{d}x\) donne (pas de travail mécanique, pas de terme source ici) :</p>
+      <p>\[ \rho S\,\mathrm{d}x\,c\,\frac{\partial T}{\partial t} = \Phi(x,t) - \Phi(x+\mathrm{d}x,t), \]</p>
+      <p>où \(\Phi = j_x S = -\lambda S\,\partial T/\partial x\) est le flux thermique entrant par la face gauche. En développant au premier ordre en \(\mathrm{d}x\) :</p>
+      <p>\[ \rho c\,\frac{\partial T}{\partial t} = -\frac{\partial j_x}{\partial x} = \lambda\,\frac{\partial^2 T}{\partial x^2}. \]</p>
+      <p>On définit la <em>diffusivité thermique</em> \(a = \lambda/(\rho c)\) (en \(\mathrm{m^2\,s^{-1}}\)), et l'on obtient l'<strong>équation de la diffusion thermique</strong> :</p>
+      <p>\[ \boxed{\frac{\partial T}{\partial t} = a\,\frac{\partial^2 T}{\partial x^2}}. \]</p>
+      <p>La forme générale en 3D est \(\partial T/\partial t = a\,\Delta T\) (Laplacien de \(T\)).</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">2 · Vérification de l'homogénéité</span>
+      <ul>
+        <li>Membre gauche : \([T/t] = \mathrm{K\,s^{-1}}\).</li>
+        <li>Membre droit : \([a \cdot T/x^2] = \mathrm{m^2\,s^{-1}} \cdot \mathrm{K\,m^{-2}} = \mathrm{K\,s^{-1}}\). \(\checkmark\)</li>
+      </ul>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Échelles caractéristiques</span>
+      <p>En comparant les deux membres, l'équation de diffusion relie une échelle de longueur \(L\) et une échelle de temps \(\tau\) par :</p>
+      <p>\[ \frac{T}{\tau} \sim a\,\frac{T}{L^2} \quad \Rightarrow \quad \boxed{\tau \sim \frac{L^2}{a}}. \]</p>
+      <p>Interprétation : pour que la chaleur diffuse sur une longueur \(L\), il faut un temps de l'ordre de \(L^2/a\). Ordres de grandeur de \(a\) (en \(\mathrm{m^2\,s^{-1}}\)) : air \(a \approx 2\times 10^{-5}\), eau \(a \approx 1{,}4\times 10^{-7}\), verre \(a \approx 5\times 10^{-7}\), acier \(a \approx 1\times 10^{-5}\). Exemple : pour \(L = 1\,\text{cm}\) dans l'eau, \(\tau \sim (10^{-2})^2 / (1{,}4\times 10^{-7}) \approx 700\,\text{s}\).</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">4 · Analogie électrique en régime stationnaire</span>
+      <p>En régime stationnaire (\(\partial T/\partial t = 0\)), l'équation de diffusion devient \(\mathrm{d}^2 T/\mathrm{d}x^2 = 0\), ce qui implique que le profil de température est linéaire. Le flux thermique est alors constant :</p>
+      <p>\[ \Phi = -\lambda S\,\frac{\mathrm{d}T}{\mathrm{d}x} = \lambda S\,\frac{T_1 - T_2}{L}, \]</p>
+      <p>où \(T_1\) et \(T_2\) sont les températures aux faces de la paroi d'épaisseur \(L\). On définit la <strong>résistance thermique</strong> :</p>
+      <p>\[ R_{\text{th}} = \frac{T_1 - T_2}{\Phi} = \frac{L}{\lambda S}. \]</p>
+      <p>L'analogie avec la loi d'Ohm \(U = RI\) est complète : \(\Delta T \leftrightarrow U\), \(\Phi \leftrightarrow I\), \(R_{\text{th}} \leftrightarrow R\). Ainsi, des parois en série (conductivités \(\lambda_1, \lambda_2\), épaisseurs \(L_1, L_2\)) ont une résistance thermique totale \(R_{\text{th}} = R_1 + R_2 = L_1/(\lambda_1 S) + L_2/(\lambda_2 S)\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — étalement du profil \(T(x,t)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-diff" aria-label="Profil de température T(x,t) initialement localisé qui s'élargit et s'aplatit au cours du temps par diffusion thermique"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-a">Diffusivité \(a\) (\(\times 10^{-5}\,\mathrm{m^2\,s^{-1}}\)) <span class="val" id="v-a">1,0</span></label>
+          <input type="range" id="sl-a" min="0.1" max="2" step="0.1" value="1">
+          <span class="hint" id="hint-d">Plus \(a\) est grand, plus la chaleur diffuse vite : le profil s'aplatit rapidement.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la diffusion</button>
+            <button class="btn" id="btn-reset" type="button">Réinitialiser</button>
+          </div>
+        </div>
+        <div class="control">
+          <label for="sl-L">Longueur du domaine \(L\) (cm) <span class="val" id="v-L">10</span></label>
+          <input type="range" id="sl-L" min="2" max="20" step="1" value="10">
+          <div class="readout" style="margin-top:.6rem">
+            <span class="ro">Temps écoulé : <b id="v-t">0,0</b> s</span>
+            <span class="ro">Temps caractéristique \(\tau \sim L^2/a\) : <b id="v-tau">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Solution fondamentale de l'équation de diffusion : une perturbation initialement localisée s'étale en gaussienne dont la largeur croît comme \(\sqrt{a\,t}\) et dont le maximum décroît comme \(1/\sqrt{t}\). L'aire sous la courbe (énergie) est conservée. Le temps caractéristique pour diffuser sur tout le domaine est \(\tau \sim L^2/a\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Profil \(T(x,t)\)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Profil initial</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>C'est un item <strong>MP uniquement</strong> ; bien le préciser.</li>
+        <li>Le signe dans la loi de Fourier (\(\vec{j} = -\lambda\vec{\nabla} T\)) est crucial : la chaleur va du chaud vers le froid.</li>
+        <li>La diffusivité \(a = \lambda/(\rho c)\) est l'analogue de la diffusivité massique ou du coefficient de diffusion électrique.</li>
+        <li>La relation \(\tau \sim L^2/a\) est à retenir et à utiliser pour estimer des ordres de grandeur rapidement à l'oral.</li>
+        <li>En régime stationnaire, le flux est constant dans la paroi (pas d'accumulation d'énergie) ; le profil \(T(x)\) est linéaire pour une géométrie cartésienne.</li>
+        <li>L'analogie électrique s'étend à la convection : \(R_{\text{conv}} = 1/(hS)\) où \(h\) est le coefficient d'échange.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Entièrement au programme MP (5.2.). La loi de Fourier, l'équation de diffusion, les temps caractéristiques, la résistance thermique et l'analogie électrique sont des capacités exigibles explicites. Aucune notion hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="index.html"><span class="pn-dir">← Sommaire</span><span class="pn-title">Diffusion thermique</span></a>
+    <a class="next" href="d2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">D2 · Conduction sphérique &amp; analogie EM</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Diffusion thermique.<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-diff');
+  const slA = document.getElementById('sl-a'), slL = document.getElementById('sl-L');
+  const vA = document.getElementById('v-a'), vL = document.getElementById('v-L');
+  const vT = document.getElementById('v-t'), vTau = document.getElementById('v-tau');
+  const hint = document.getElementById('hint-d');
+  const btnAnim = document.getElementById('btn-anim'), btnReset = document.getElementById('btn-reset');
+  let animating = false, simT = 0;
+  const t0 = 0.4; // temps initial (évite la singularité)
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const aSlider = parseFloat(slA.value); // unités réduites pour l'animation
+    const aSim = aSlider; // facteur de diffusion dans le modèle réduit
+
+    const plot = QC.makePlot(ctx, w, h, { xmin: -5, xmax: 5, ymin: 0, ymax: 1.05, pad: { l: 40, r: 16, t: 16, b: 34 } });
+    plot.grid(c, { xticks: 5, yticks: 4 });
+    plot.axes(c, { xlabel: 'x', ylabel: 'T' });
+
+    // gaussienne T(x,t) = (1/sqrt(t)) exp(-x^2/(4 a t)), normalisée au max=1 à t0
+    function profile(tt) {
+      return function (x) {
+        const sigma2 = 4 * aSim * tt;
+        const amp = Math.sqrt(t0 / tt); // conserve l'aire, max ~ 1/sqrt(t)
+        return amp * Math.exp(-x * x / sigma2);
+      };
+    }
+    // profil initial (bleu, pointillé)
+    plot.curve(profile(t0), c.bleu, { lw: 1.6, dash: [5, 4], N: 200 });
+    // profil courant (rouge)
+    const tCur = t0 + simT;
+    plot.fill(profile(tCur), c.rouge, { alpha: 0.10, N: 200 });
+    plot.curve(profile(tCur), c.rouge, { lw: 2.6, N: 200 });
+
+    // lectures
+    const aPhys = aSlider; // ×1e-5 m²/s
+    const Lcm = parseInt(slL.value, 10);
+    vA.textContent = fr(aPhys, 1);
+    vL.textContent = Lcm;
+    // tau ~ L^2 / a  avec L en cm -> m, a en 1e-5
+    const Lm = Lcm / 100;
+    const aSI = aPhys * 1e-5;
+    const tau = Lm * Lm / aSI;
+    vTau.textContent = (tau >= 100 ? Math.round(tau) : fr(tau, 1)) + ' s';
+    vT.textContent = fr(simT, 1);
+    hint.textContent = aSlider >= 1.5
+      ? 'Diffusivité élevée (type acier/air) : le profil s\'aplatit très vite.'
+      : 'Plus a est grand, plus la chaleur diffuse vite : le profil s\'aplatit rapidement.';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      simT += dt * 1.2;
+      if (simT > 9) { simT = 9; animating = false; btnAnim.textContent = 'Animer la diffusion'; btnAnim.classList.remove('active'); }
+      draw();
+    }
+  });
+
+  slA.addEventListener('input', draw);
+  slL.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    if (simT >= 9) simT = 0;
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la diffusion';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  btnReset.addEventListener('click', function () {
+    animating = false; simT = 0;
+    btnAnim.textContent = 'Animer la diffusion'; btnAnim.classList.remove('active');
+    draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

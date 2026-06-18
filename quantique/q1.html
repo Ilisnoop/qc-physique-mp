@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q1 — Fonction d'onde et équation de Schrödinger · QC Oraux MP*</title>
+<meta name="description" content="Fonction d'onde, interprétation probabiliste et équation de Schrödinger : démonstration et animation interactive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn disabled" aria-disabled="true" title="Première question">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="q2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html" aria-current="page"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Mécanique quantique</span>
+    <h1>Fonction d'onde, interprétation probabiliste, équation de Schrödinger</h1>
+    <p class="q-sources"><span class="src">POLY p.4</span><span class="src">PL-204</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir la fonction d'onde \(\psi(x,t)\) d'une particule à une dimension, en donner l'interprétation probabiliste, écrire l'équation de Schrödinger dépendante du temps, et relier l'énergie à l'évolution temporelle de l'état stationnaire.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 6 « Physique quantique », §6.1</div>
+      <ul>
+        <li>Fonction d'onde \(\psi\) d'une particule sans spin et densité de probabilité de présence. Capacité exigible : interpréter en termes de probabilité l'amplitude d'une onde associée à une particule.</li>
+        <li>Équation de Schrödinger à une dimension dans un potentiel \(V(x)\) ; utiliser le caractère linéaire (principe de superposition).</li>
+        <li>États stationnaires : séparation des variables temps/espace ; relier l'énergie à l'évolution temporelle et faire le lien avec Planck-Einstein ; identifier le terme d'énergie cinétique.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Particule de masse \(m\) à 1D selon \(x\), dans un potentiel \(V(x,t)\). Fonction d'onde \(\psi(x,t)\in\mathbb{C}\) dont le module carré est une densité de probabilité de présence : \(\mathrm{d}P = |\psi(x,t)|^2\,\mathrm{d}x\) est la probabilité de trouver la particule entre \(x\) et \(x+\mathrm{d}x\).</p>
+    <p>Normalisation : \[ \int_{-\infty}^{+\infty}|\psi(x,t)|^2\,\mathrm{d}x = 1. \] Notation : \(\hbar = h/(2\pi)\approx 1{,}05\times10^{-34}\,\mathrm{J\cdot s}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Équation de Schrödinger dépendante du temps</span>
+      <p>\[ i\hbar\,\frac{\partial \psi}{\partial t}(x,t) = -\frac{\hbar^2}{2m}\,\frac{\partial^2 \psi}{\partial x^2}(x,t) + V(x,t)\,\psi(x,t). \]</p>
+      <p>Le terme \(-\frac{\hbar^2}{2m}\partial^2_x\psi\) correspond à l'énergie cinétique (\(E_c=p^2/2m\) avec \(p\to-i\hbar\partial_x\)) ; le terme \(V\psi\) à l'énergie potentielle.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">États stationnaires — séparation des variables</span>
+      <p>Pour \(V\) indépendant du temps, on cherche \(\psi(x,t)=\varphi(x)f(t)\). En substituant puis divisant par \(\psi=\varphi f\) :</p>
+      <p>\[ \underbrace{i\hbar\,\frac{f'(t)}{f(t)}}_{\text{ne dépend que de }t} = \underbrace{\frac{1}{\varphi(x)}\left[-\frac{\hbar^2}{2m}\varphi''(x)+V(x)\varphi(x)\right]}_{\text{ne dépend que de }x} = E. \]</p>
+      <p>Les deux membres dépendant de variables indépendantes et étant égaux, ils valent une même constante de séparation \(E\) (homogène à une énergie).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Partie temporelle</span>
+      <p>\(i\hbar f'=Ef\) s'intègre en \(f(t)=f(0)e^{-iEt/\hbar}\). Pulsation \(\omega=E/\hbar\) : c'est la relation de Planck-Einstein \(E=\hbar\omega\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Équation de Schrödinger indépendante du temps</span>
+      <p>\[ -\frac{\hbar^2}{2m}\,\varphi''(x) + V(x)\,\varphi(x) = E\,\varphi(x). \]</p>
+      <p>La densité \(|\psi|^2=|\varphi(x)|^2\) est indépendante du temps.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-phaseur" aria-label="Partie réelle et imaginaire de psi au point fixe, oscillant dans le temps"></canvas>
+        <canvas id="cv-densite" aria-label="Densité de probabilité stationnaire, indépendante du temps"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-E">Énergie \(E\) <span class="val" id="v-E">1,00 eV</span></label>
+          <input type="range" id="sl-E" min="0.2" max="4" step="0.05" value="1">
+          <span class="hint">Fixe la pulsation \(\omega = E/\hbar\) : plus \(E\) est grande, plus \(\psi\) oscille vite.</span>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\omega\) = <b id="v-omega">—</b> rad/s</span>
+          </div>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-pause" type="button">Pause</button>
+          </div>
+          <span class="hint">Le phaseur (vecteur tournant) figure \(e^{-i\omega t}\).</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        <strong>Haut :</strong> \(\psi\) oscille via \(e^{-i\omega t}\) au point fixe \(x_0\). <strong>Bas :</strong> la densité \(|\psi|^2=|\varphi(x)|^2\) est indépendante du temps — c'est le sens de « stationnaire ».
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\mathrm{Re}\,\psi=\cos\omega t\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\mathrm{Im}\,\psi=-\sin\omega t\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(|\psi|^2\) stationnaire</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Distinguer « état stationnaire » quantique (densité de probabilité constante) d'une onde stationnaire classique (nœuds et ventres fixes).</li>
+        <li>La normalisation porte sur \(\psi\) entier : \(\int|\psi|^2\,\mathrm{d}x=1\).</li>
+        <li>Rappeler \(E=\hbar\omega\).</li>
+        <li>Unité de \(\psi\) en 1D : \([\psi]=\mathrm{m}^{-1/2}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout au programme MP (§6.1), aucune partie hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a class="disabled"><span class="pn-dir">Précédent</span><span class="pn-title">—</span></a>
+    <a class="next" href="q2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Q2 · Dualité onde-corpuscule</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const HBAR = 1.0545718e-34, EV = 1.602176634e-19;
+  const cvP = document.getElementById('cv-phaseur');
+  const cvD = document.getElementById('cv-densite');
+  const slE = document.getElementById('sl-E');
+  const vE = document.getElementById('v-E'), vOm = document.getElementById('v-omega');
+  const btnPause = document.getElementById('btn-pause');
+
+  let E_eV = parseFloat(slE.value);
+  let paused = false;
+  // pulsation d'affichage à l'écran (lente, lisible), proportionnelle à E
+  function omegaScreen() { return 1.2 * E_eV; }
+  function omegaPhys() { return (E_eV * EV) / HBAR; }
+
+  function fmt(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function updLabels() {
+    vE.textContent = fmt(E_eV, 2) + ' eV';
+    vOm.textContent = omegaPhys().toExponential(2).replace('.', ',').replace('e+', '·10^');
+  }
+
+  let pD; // plot densité
+  function drawDensite() {
+    const c = QC.colors();
+    const s = QC.setup(cvD, 150);
+    QC.clear(s.ctx, s.w, s.h);
+    pD = QC.makePlot(s.ctx, s.w, s.h, { xmin: -4, xmax: 4, ymin: 0, ymax: 1.05, pad: { l: 40, r: 16, t: 16, b: 28 } });
+    pD.grid(c, { yticks: 2 });
+    pD.axes(c, { xlabel: 'x', ylabel: '|ψ|²' });
+    const g = x => Math.exp(-x * x / 1.2);
+    pD.fill(g, c.vert, { alpha: 0.16 });
+    pD.curve(g, c.vert, { lw: 2.6 });
+    s.ctx.fillStyle = c.muted; s.ctx.font = '12px IBM Plex Mono, monospace'; s.ctx.textAlign = 'center';
+    s.ctx.fillText('stationnaire (ne bouge pas)', s.w / 2, 18);
+  }
+
+  function drawPhaseur(t) {
+    const c = QC.colors();
+    const s = QC.setup(cvP, 200);
+    QC.clear(s.ctx, s.w, s.h);
+    const ctx = s.ctx;
+    const w = s.w, h = s.h;
+    // zone graphe à gauche, phaseur cercle à droite
+    const phaseR = Math.min(70, h * 0.4);
+    const cx = w - phaseR - 22, cy = h / 2;
+    const plotW = cx - phaseR - 30;
+    // graphe Re/Im vs temps (fenêtre glissante)
+    const pad = { l: 40, r: 16, t: 14, b: 26 };
+    const pl = QC.makePlot(ctx, plotW + pad.l + pad.r, h, { xmin: 0, xmax: 4 * Math.PI, ymin: -1.15, ymax: 1.15, pad });
+    pl.grid(c, { yticks: 2 });
+    pl.axes(c, { xlabel: 'ω·t', ylabel: 'ψ(x₀,t)' });
+    const om = omegaScreen();
+    const phase = t * om;
+    // tracer cos(θ - phase) pour faire défiler
+    pl.curve(th => Math.cos(th - phase), c.bleu, { lw: 2.4 });
+    pl.curve(th => -Math.sin(th - phase), c.rouge, { lw: 2, dash: [6, 4] });
+    // point courant à θ=0
+    const x0 = pl.px(0), reY = pl.py(Math.cos(-phase)), imY = pl.py(-Math.sin(-phase));
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(x0, reY, 4, 0, 7); ctx.fill();
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(x0, imY, 4, 0, 7); ctx.fill();
+
+    // phaseur (cercle complexe)
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(cx, cy, phaseR, 0, 7); ctx.stroke();
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx - phaseR - 6, cy); ctx.lineTo(cx + phaseR + 6, cy);
+    ctx.moveTo(cx, cy - phaseR - 6); ctx.lineTo(cx, cy + phaseR + 6); ctx.stroke();
+    const ang = -phase; // e^{-iωt}
+    const vx = cx + phaseR * Math.cos(ang), vy = cy - phaseR * Math.sin(ang);
+    // projections
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(vx, vy); ctx.lineTo(vx, cy); ctx.stroke();
+    ctx.strokeStyle = c.rouge; ctx.beginPath(); ctx.moveTo(vx, vy); ctx.lineTo(cx, vy); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.strokeStyle = c.text; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(vx, vy); ctx.stroke();
+    ctx.fillStyle = c.text; ctx.beginPath(); ctx.arc(vx, vy, 4, 0, 7); ctx.fill();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('e^{-iωt}', cx, cy + phaseR + 18);
+  }
+
+  let anim, lastT = 0, accum = 0;
+  function start() {
+    anim = QC.loop(function (t) {
+      if (!paused) accum += (t - lastT);
+      lastT = t;
+      drawPhaseur(accum);
+    });
+  }
+  drawDensite();
+  updLabels();
+  start();
+
+  slE.addEventListener('input', function () { E_eV = parseFloat(slE.value); updLabels(); });
+  btnPause.addEventListener('click', function () {
+    paused = !paused;
+    btnPause.textContent = paused ? 'Reprendre' : 'Pause';
+  });
+  window.addEventListener('themechange', function () { drawDensite(); });
+  window.addEventListener('resize', function () { drawDensite(); });
+})();
+</script>
+</body>
+</html>

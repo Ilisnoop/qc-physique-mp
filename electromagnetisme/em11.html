@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM11 — Courants de Foucault · QC Oraux MP*</title>
+<meta name="description" content="Origine, effets (Joule, freinage) et applications des courants de Foucault dans les conducteurs massifs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em10.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em12.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html" aria-current="page"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 11 · Électromagnétisme</span>
+    <h1>Courants de Foucault</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Expliquer l'origine des courants de Foucault, leurs effets (chauffage, freinage), et les moyens de les limiter ou de les exploiter.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Induction (courants de Foucault)</div>
+      <p>Prolongement de MPSI (induction) : les courants de Foucault sont une conséquence directe de la loi de Faraday dans les milieux conducteurs massifs. Exigible : description qualitative, effets et applications. Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Un conducteur massif (non filiforme) placé dans un champ magnétique variable voit naître en son sein des courants induits volumiques, dits courants de Foucault (<em>Eddy currents</em> en anglais). Ces courants, d'après la loi de Lenz, s'opposent à la variation du flux.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Origine</span>
+      <p>D'après Maxwell-Faraday (\(\vec{\mathrm{rot}}\,\vec{E} = -\partial_t\vec{B}\)), un \(\vec{B}\) variable crée un champ électrique tourbillonnaire dans tout le milieu, même en l'absence de circuit matérialisé. Dans un conducteur de conductivité \(\gamma\), ce champ donne naissance à une densité de courant \(\vec{j} = \gamma\vec{E}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Effets</span>
+      <p><em>Effet Joule</em> : les courants dissipent une puissance volumique \(p_J = \vec{j}\cdot\vec{E} = j^2/\gamma\). Ils chauffent le milieu conducteur.</p>
+      <p><em>Freinage électromagnétique</em> : d'après Lenz, les courants s'opposent à la variation de flux, ce qui crée une force de freinage sur tout objet conducteur en mouvement dans un champ magnétique.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Exploitation</span>
+      <p>Chauffage par induction (induction culinaire, traitement thermique) ; freinage des TGV (freins à courants de Foucault) ; contrôle non destructif (détection de défauts).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Réduction des pertes</span>
+      <p>Dans les transformateurs et moteurs, on lamine le noyau en fines tôles isolées les unes des autres, perpendiculairement aux courants induits. L'intensité des courants (et donc la puissance dissipée) est réduite d'un facteur \(n^2\) pour \(n\) lames.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — freinage par courants de Foucault</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-foucault" aria-label="Plaque conductrice freinée par courants de Foucault dans un champ B ; intensité du champ réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-B">Intensité du champ \(B\) <span class="val" id="v-B">1,0</span></label>
+          <input type="range" id="sl-B" min="0" max="2" step="0.05" value="1">
+          <span class="hint">La force de freinage \(\propto B^2 v\) (Lenz) ralentit la plaque. \(B=0\) : pas de freinage.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Lâcher la plaque</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">vitesse \(v\) ∝ <b id="v-v">1,00</b></span>
+            <span class="ro">force de freinage ∝ <b id="v-fb">0,00</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Plaque conductrice mobile (gris) traversant une région de champ \(\vec{B}\) variable/localisé : des courants de Foucault (boucles bleues) naissent et, par Lenz, freinent le mouvement. La force de freinage croît avec \(B^2\) et avec \(v\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Courants de Foucault \(\vec{j}\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Champ \(\vec{B}\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Force de freinage</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Les courants de Foucault sont induits selon la loi de Lenz : ils créent un champ qui s'oppose à la variation de \(\vec{B}\).</li>
+        <li>Le laminage réduit la section disponible aux courants, donc leur amplitude.</li>
+        <li>À haute fréquence, l'effet de peau confine les courants en surface et modifie le comportement.</li>
+        <li>Applications à l'oral : plaque à induction, freins magnétiques, détection de défauts.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP. Tout le développement s'appuie sur la loi de Faraday et la loi de Lenz, au programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em10.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM10 · Circuits couplés / transformateur</span></a>
+    <a class="next" href="em12.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM12 · Haut-parleur électrodynamique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-foucault');
+  const slB = document.getElementById('sl-B');
+  const vB = document.getElementById('v-B'), vV = document.getElementById('v-v'), vFb = document.getElementById('v-fb');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, x = 0.05, v = 1.0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const B = parseFloat(slB.value);
+    const zoneX0 = w*0.40, zoneX1 = w*0.72, zoneY0 = h*0.16, zoneY1 = h*0.84;
+    // zone de champ B (orange, points sortants)
+    ctx.fillStyle = c.orange; ctx.globalAlpha = 0.10*Math.min(1,B+0.05);
+    ctx.fillRect(zoneX0, zoneY0, zoneX1-zoneX0, zoneY1-zoneY0); ctx.globalAlpha=1;
+    ctx.strokeStyle = c.orange; ctx.lineWidth=1.4; ctx.setLineDash([4,4]);
+    ctx.strokeRect(zoneX0, zoneY0, zoneX1-zoneX0, zoneY1-zoneY0); ctx.setLineDash([]);
+    ctx.fillStyle=c.orange; ctx.font='12px IBM Plex Mono, monospace'; ctx.textAlign='center';
+    ctx.fillText('zone de champ B', (zoneX0+zoneX1)/2, zoneY0-6);
+    // plaque conductrice (largeur fixe), position x
+    const pw = w*0.18, ph = (zoneY1-zoneY0)*0.78;
+    const px = w*0.05 + x*(w*0.78 - pw);
+    const py = (zoneY0+zoneY1)/2 - ph/2;
+    ctx.fillStyle = c.muted; ctx.globalAlpha=0.30; ctx.fillRect(px, py, pw, ph); ctx.globalAlpha=1;
+    ctx.strokeStyle = c.muted; ctx.lineWidth=2; ctx.strokeRect(px, py, pw, ph);
+    // courants de Foucault dans la partie de la plaque dans le champ
+    const inField = (px+pw > zoneX0) && (px < zoneX1) && B>0.02;
+    if (inField) {
+      ctx.strokeStyle = c.bleu; ctx.lineWidth = 2;
+      for (let i=0;i<2;i++){ const cxl = px+pw*0.5, cyl = py+ph*(0.30+0.40*i);
+        ctx.beginPath(); ctx.arc(cxl, cyl, Math.min(pw,ph)*0.18, 0, 2*Math.PI); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cxl+Math.min(pw,ph)*0.18, cyl-2); ctx.lineTo(cxl+Math.min(pw,ph)*0.18, cyl+2); ctx.stroke();
+      }
+    }
+    // vitesse
+    ctx.strokeStyle = c.text; ctx.lineWidth=2; const vy=py-12;
+    const vlen = 8 + v*40;
+    ctx.beginPath(); ctx.moveTo(px+pw/2, vy); ctx.lineTo(px+pw/2+vlen, vy);
+    ctx.moveTo(px+pw/2+vlen,vy); ctx.lineTo(px+pw/2+vlen-6,vy-4); ctx.moveTo(px+pw/2+vlen,vy); ctx.lineTo(px+pw/2+vlen-6,vy+4); ctx.stroke();
+    ctx.fillStyle=c.text; ctx.textAlign='left'; ctx.fillText('v', px+pw/2+vlen+6, vy+4);
+    // force de freinage (rouge, opposée à v) si dans le champ
+    const Fb = inField ? B*B*v : 0;
+    if (Fb>0.01) {
+      ctx.strokeStyle=c.rouge; ctx.lineWidth=2.6; const fy=py+ph+14; const fl=10+Fb*40;
+      ctx.beginPath(); ctx.moveTo(px+pw/2, fy); ctx.lineTo(px+pw/2-fl, fy);
+      ctx.moveTo(px+pw/2-fl,fy); ctx.lineTo(px+pw/2-fl+6,fy-4); ctx.moveTo(px+pw/2-fl,fy); ctx.lineTo(px+pw/2-fl+6,fy+4); ctx.stroke();
+      ctx.fillStyle=c.rouge; ctx.textAlign='right'; ctx.fillText('freinage', px+pw/2-fl-6, fy+4);
+    }
+    vB.textContent = fr(B,2); vV.textContent = fr(v,2); vFb.textContent = fr(Fb,2);
+  }
+  let lastT=0;
+  QC.loop(function (t) {
+    const dt=t-lastT; lastT=t;
+    if (animating) {
+      const B=parseFloat(slB.value);
+      // freinage seulement dans la zone de champ
+      x += v*dt*0.18;
+      const inZone = (x>0.30 && x<0.78);
+      if (inZone) v -= B*B*v*dt*1.6;
+      if (v<0.02) v=0.02;
+      if (x>0.95){ x=0.05; v=1.0; }
+      draw();
+    }
+  });
+  slB.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating=!animating; btnAnim.textContent=animating?'Figer':'Lâcher la plaque';
+    btnAnim.classList.toggle('active',animating);
+    if (animating){ x=0.05; v=1.0; } else draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

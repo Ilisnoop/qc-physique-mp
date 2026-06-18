@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M11 — Statique des fluides · QC Oraux MP*</title>
+<meta name="description" content="Statique des fluides : relation fondamentale dP/dz = -ρg, loi barométrique de l'atmosphère isotherme, poussée d'Archimède.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m10.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Sommaire</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html" aria-current="page"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 11 · Mécanique</span>
+    <h1>Statique des fluides</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir la loi de la statique des fluides dans le champ de pesanteur ; l'appliquer au gaz parfait isotherme (loi barométrique) ; énoncer et démontrer la poussée d'Archimède.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · Thème 3 (thermodynamique), lié aux sections 2.2/3.1/3.2</div>
+      <p><em>Notions et contenus :</em> pression, équation d'état du gaz parfait ; équilibre d'un système soumis aux seules forces de pression.</p>
+      <p><em>Capacités exigibles (MPSI) :</em></p>
+      <ul>
+        <li>Calculer une pression à partir d'une condition d'équilibre mécanique.</li>
+        <li>Utiliser l'équation d'état du gaz parfait.</li>
+        <li>Établir la loi barométrique pour une atmosphère isotherme.</li>
+      </ul>
+      <p>La poussée d'Archimède est au programme MPSI (conséquence directe de la statique des fluides). Niveau <strong>MPSI</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li>\(P(z)\) : pression à l'altitude \(z\).</li>
+      <li>\(\rho(z)\) : masse volumique du fluide.</li>
+      <li>\(g\) : intensité du champ de pesanteur (supposé uniforme).</li>
+      <li>\(R\) : constante des gaz parfaits ; \(M_{\text{mol}}\) : masse molaire.</li>
+      <li>\(\mathcal{V}\) : volume d'un solide immergé, de masse \(m_s\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Relation fondamentale de la statique des fluides</span>
+      <p>On isole une tranche de fluide d'épaisseur \(\mathrm{d}z\), de section \(S\). L'équilibre vertical donne :</p>
+      <p>\[ P(z)\,S - P(z+\mathrm{d}z)\,S - \rho(z)\,g\,S\,\mathrm{d}z = 0, \]</p>
+      <p>soit :</p>
+      <p>\[ \frac{\mathrm{d}P}{\mathrm{d}z} = -\rho(z)\,g. \]</p>
+      <p>Pour un liquide incompressible (\(\rho = \text{cste}\)) : \(P(z) = P_0 - \rho g z\) (la pression augmente avec la profondeur).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Gaz parfait isotherme (loi barométrique)</span>
+      <p>Pour un gaz parfait : \(P = \rho R T / M_{\text{mol}}\), donc \(\rho = PM_{\text{mol}}/(RT)\). En isotherme (\(T = \text{cste}\)) :</p>
+      <p>\[ \frac{\mathrm{d}P}{\mathrm{d}z} = -\frac{M_{\text{mol}}\,g}{RT}\,P, \]</p>
+      <p>équation différentielle linéaire du premier ordre dont la solution est :</p>
+      <p>\[ P(z) = P_0\,\exp\!\left(-\frac{z}{H}\right), \qquad H = \frac{RT}{M_{\text{mol}}\,g}. \]</p>
+      <p>\(H\) est l'échelle de hauteur. Pour l'air (\(M_{\text{mol}} = 29\ \mathrm{g\,mol^{-1}}\)) à \(T = 288\ \mathrm{K}\) : \(H \approx 8{,}5\ \mathrm{km}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Poussée d'Archimède</span>
+      <p>La résultante des forces de pression exercées par le fluide sur un solide immergé de volume \(\mathcal{V}\) est \(\vec{\Pi}_A = -\oint_{\mathcal{S}} P\,\vec{n}\,\mathrm{d}S\), où \(\vec{n}\) est la normale extérieure. On applique le même raisonnement au volume \(\mathcal{V}\) rempli de fluide (en équilibre) :</p>
+      <p>\[ -\oint_{\mathcal{S}} P\,\vec{n}\,\mathrm{d}S + m_{\text{fluide}}\,\vec{g} = \vec{0}, \]</p>
+      <p>donc \(\vec{\Pi}_A = -m_{\text{fluide}}\,\vec{g}\). <em>Poussée d'Archimède :</em></p>
+      <p>\[ \vec{\Pi}_A = -\rho_{\text{fluide}}\,\mathcal{V}\,\vec{g}, \]</p>
+      <p>dirigée <em>vers le haut</em> (opposée à \(\vec{g}\)), de norme égale au poids du fluide déplacé. Le solide flotte si \(\vec{\Pi}_A + m_s\vec{g} = \vec{0}\), soit \(\rho_s = \rho_{\text{fluide}}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — profil de pression \(P(z)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-pz" aria-label="Profil de pression en fonction de l'altitude : liquide incompressible linéaire ou atmosphère isotherme exponentielle, échelle de hauteur réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-mode">Modèle <span class="val" id="v-mode">atmosphère isotherme</span></label>
+          <input type="range" id="sl-mode" min="0" max="1" step="1" value="1">
+          <label for="sl-h" style="margin-top:.6rem">Échelle de hauteur \(H\) (km) <span class="val" id="v-h">8,5</span></label>
+          <input type="range" id="sl-h" min="3" max="16" step="0.5" value="8.5">
+          <span class="hint" id="hint-pz">Atmosphère isotherme : P décroît exponentiellement avec z.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer (sonde montante)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Loi = <b id="v-law">P = P₀·exp(−z/H)</b></span>
+            <span class="ro">\(P/P_0\) à \(z=H\) = <b id="v-pH">—</b></span>
+            <span class="ro">\(P/P_0\) à \(z=10\) km = <b id="v-p10">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Profil de pression réduit \(P/P_0\) en fonction de l'altitude \(z\). En <em>atmosphère isotherme</em> (gaz parfait), \(P(z) = P_0\exp(-z/H)\) décroît exponentiellement avec l'échelle de hauteur \(H = RT/(M_{\text{mol}}g)\approx 8{,}5\ \mathrm{km}\) pour l'air. En <em>liquide incompressible</em>, \(P\) varie linéairement (\(P = P_0 - \rho g z\)). Le marqueur orange suit une sonde montante et lit la pression locale.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Profil \(P(z)\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Sonde (altitude \(z\))</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Repère \(z = H\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La poussée d'Archimède est <em>indépendante de la forme du solide</em> et de sa densité ; elle ne dépend que du volume \(\mathcal{V}\) et de la densité du fluide.</li>
+        <li>Raisonnement clé : remplacer mentalement le solide par du fluide (système en équilibre) pour calculer \(\vec{\Pi}_A\).</li>
+        <li>Échelle de hauteur \(H = RT/(M_{\text{mol}}g) \approx 8{,}5\ \mathrm{km}\) pour l'air.</li>
+        <li>La loi barométrique suppose une atmosphère <em>isotherme</em> : en réalité la température varie (gradient adiabatique \(\approx -6{,}5\ \mathrm{K\,km^{-1}}\)).</li>
+        <li>La pression atmosphérique à la surface : \(P_0 \approx 1{,}013\times10^{5}\ \mathrm{Pa}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MPSI</strong>. La démonstration vectorielle par intégrale de surface (théorème de la divergence) est une culture utile mais non exigible au programme formel.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et sommaire">
+    <a href="m10.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M10 · Particule chargée dans E ou B</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Mécanique · Sommaire du thème</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-pz');
+  const slMode = document.getElementById('sl-mode'), vMode = document.getElementById('v-mode');
+  const slH = document.getElementById('sl-h'), vH = document.getElementById('v-h');
+  const vLaw = document.getElementById('v-law'), vPH = document.getElementById('v-pH'), vP10 = document.getElementById('v-p10');
+  const hint = document.getElementById('hint-pz'), btn = document.getElementById('btn-anim');
+  let animating = false, zprobe = 0;
+  const ZMAX = 30; // km
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 360);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const iso = parseFloat(slMode.value) === 1;
+    const H = parseFloat(slH.value);
+
+    // P/P0 en fonction de z (km), z en abscisse, P/P0 en ordonnée
+    const Pof = z => iso ? Math.exp(-z / H) : Math.max(0, 1 - z / (3.2 * H)); // liquide : pente fixée pour visibilité
+
+    const P = QC.makePlot(ctx, w, h, { xmin: 0, xmax: ZMAX, ymin: 0, ymax: 1.05, pad: { l: 46, r: 16, t: 16, b: 30 } });
+    P.grid(c, { xticks: 6, yticks: 5 });
+    P.axes(c, { xlabel: 'z (km)', ylabel: 'P / P₀' });
+
+    // aire sous la courbe (légère)
+    P.fill(Pof, c.bleu, { alpha: 0.10 });
+    // courbe
+    P.curve(Pof, c.bleu, { lw: 2.6 });
+
+    // repère z = H (vert)
+    if (iso) {
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 1.4; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(P.px(H), P.py(0)); ctx.lineTo(P.px(H), P.py(1.05)); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = c.vert; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+      ctx.fillText('z = H', P.px(H), P.py(1.05) + 12);
+    }
+
+    // sonde
+    const yp = Pof(zprobe);
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(P.px(zprobe), P.py(yp), 6, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1; ctx.setLineDash([2, 4]);
+    ctx.beginPath(); ctx.moveTo(P.px(zprobe), P.py(0)); ctx.lineTo(P.px(zprobe), P.py(yp)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.orange; ctx.textAlign = 'left'; ctx.font = '10px IBM Plex Mono, monospace';
+    ctx.fillText('z=' + fr(zprobe, 1) + ' km, P/P₀=' + fr(yp, 2), P.px(zprobe) + 8, P.py(yp) - 6);
+
+    // lectures
+    vMode.textContent = iso ? 'atmosphère isotherme' : 'liquide incompressible';
+    vH.textContent = fr(H, 1);
+    vLaw.textContent = iso ? 'P = P₀·exp(−z/H)' : 'P = P₀ − ρgz';
+    vPH.textContent = iso ? fr(Math.exp(-1), 3) + ' (≈ 1/e)' : '—';
+    vP10.textContent = fr(Pof(10), 3);
+    if (!iso) { slH.disabled = true; hint.textContent = 'Liquide incompressible : P décroît linéairement avec l\'altitude (croît avec la profondeur).'; }
+    else { slH.disabled = false; hint.textContent = 'Atmosphère isotherme : P décroît exponentiellement, divisée par e tous les H ≈ 8,5 km.'; }
+  }
+
+  QC.loop(function (ts) {
+    if (animating) {
+      zprobe += 0.18;
+      if (zprobe > ZMAX) zprobe = 0;
+      draw();
+    }
+  });
+
+  slMode.addEventListener('input', draw);
+  slH.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer (sonde montante)';
+    btn.classList.toggle('active', animating);
+    if (animating) zprobe = 0;
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

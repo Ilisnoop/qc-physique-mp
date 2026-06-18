@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND6 — GPS et ionosphère · QC Oraux MP*</title>
+<meta name="description" content="Pourquoi les ondes GPS traversent l'ionosphère alors que les ondes HF y sont réfléchies ; corrections de propagation GPS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond7.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html" aria-current="page"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 6 · Ondes électromagnétiques</span>
+    <h1>Communications GPS et ionosphère</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Expliquer pourquoi les ondes GPS traversent l'ionosphère alors que les ondes HF y sont réfléchies. Analyser les corrections de propagation dans le GPS.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5</div>
+      <p>Application du modèle plasma à l'ionosphère. « Relier la fréquence de coupure aux caractéristiques du plasma et citer son ordre de grandeur dans le cas de l'ionosphère. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>L'ionosphère est une couche de l'atmosphère (altitude 60–\(1000\ \mathrm{km}\)) partiellement ionisée par le rayonnement UV solaire. Sa densité électronique varie : \(n_e \approx 10^{9}\) à \(10^{12}\ \mathrm{m^{-3}}\) selon l'heure et l'activité solaire, ce qui donne \(f_p = \omega_p/(2\pi) \approx 1\) à \(10\ \mathrm{MHz}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Modèle plasma appliqué à l'ionosphère</span>
+      <p>D'après OND4, la relation de dispersion est \(\omega^2 = \omega_p^2 + k^2c^2\). Deux régimes :</p>
+      <ul>
+        <li>\(f &lt; f_p\) (ondes HF, \(f \approx 3\) à \(30\ \mathrm{MHz}\)) : \(k^2 &lt; 0\), onde évanescente, <em>réflexion totale</em>. Les émetteurs radio HF utilisent ce rebond pour les communications à longue distance.</li>
+        <li>\(f \gg f_p\) (ondes GPS, \(f \approx 1{,}5\ \mathrm{GHz}\)) : \(k^2 &gt; 0\), onde propagative, <em>le signal traverse l'ionosphère</em>.</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Vitesse de groupe dans l'ionosphère</span>
+      <p>\[ v_g = c\sqrt{1-\frac{\omega_p^2}{\omega^2}} \]</p>
+      <p>Pour \(f = 1{,}5\ \mathrm{GHz}\) et \(f_p = 10\ \mathrm{MHz}\) : \(v_g \approx c\left(1 - \frac{f_p^2}{2f^2}\right) \approx c\,(1 - 2{,}2\times10^{-5})\). Ce retard de groupe génère une erreur de distance :</p>
+      <p>\[ \Delta d \approx \frac{c - v_g}{c}\cdot d \approx \frac{f_p^2}{2f^2}\,d \]</p>
+      <p>Pour \(d = 20000\ \mathrm{km}\) (altitude GPS), \(\Delta d \approx 44\ \mathrm{cm}\) : non négligeable pour la précision GPS (\(1\ \mathrm{m}\)). Les récepteurs GPS bi-fréquences (L1 à \(1{,}575\ \mathrm{GHz}\), L2 à \(1{,}228\ \mathrm{GHz}\)) permettent de corriger cette dispersion.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — réflexion HF vs traversée GPS</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-iono" aria-label="Ionosphère : réflexion d'une onde de fréquence réglable selon f vs f_p"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-f">Fréquence du signal \(f\) <span class="val" id="v-f">10 MHz</span></label>
+          <input type="range" id="sl-f" min="0.3" max="3.5" step="0.01" value="1">
+          <span class="hint" id="hint-f">Échelle logarithmique : de \(\approx 2\ \mathrm{MHz}\) à \(\approx 3\ \mathrm{GHz}\). Seuil ionosphérique \(f_p = 10\ \mathrm{MHz}\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le rayon</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(f/f_p\) = <b id="v-ratio">—</b></span>
+            <span class="ro">Comportement : <b id="v-comp">—</b></span>
+            <span class="ro" id="ro-vg">\(v_g = c\sqrt{1-(f_p/f)^2}\) = <b id="v-vg">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Ionosphère (bande orange, \(f_p = 10\ \mathrm{MHz}\)). Si \(f &lt; f_p\) : le rayon (rouge) monte du sol et est <em>réfléchi</em> vers le sol (radio HF longue distance). Si \(f \gg f_p\) : le rayon (vert) <em>traverse</em> jusqu'au satellite GPS. La vitesse de groupe \(v_g\) et l'erreur de distance associée sont affichées en direct.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>ionosphère (\(f_p\))</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>HF réfléchie (\(f&lt;f_p\))</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>GPS traverse (\(f\gg f_p\))</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Les ondes GPS (L1 : \(1{,}575\ \mathrm{GHz}\), L2 : \(1{,}228\ \mathrm{GHz}\)) sont bien au-dessus de \(f_p \approx 10\ \mathrm{MHz}\) : elles traversent l'ionosphère avec une légère atténuation dispersive.</li>
+        <li>La correction ionosphérique représente jusqu'à \(50\ \mathrm{m}\) d'erreur si non corrigée.</li>
+        <li>Activité solaire et orages magnétiques perturbent \(n_e\) et donc la précision GPS.</li>
+        <li>Application mémorable : la radio amateur HF utilise la réflexion ionosphérique pour communiquer à l'autre bout du globe.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section 4.5.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND5 · Milieu ohmique &amp; effet de peau</span></a>
+    <a class="next" href="ond7.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND7 · Rayonnement du dipôle oscillant</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-iono');
+  const slF = document.getElementById('sl-f');
+  const vF = document.getElementById('v-f'), vRatio = document.getElementById('v-ratio');
+  const vComp = document.getElementById('v-comp'), vVg = document.getElementById('v-vg'), roVg = document.getElementById('ro-vg');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, prog = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  // slider 0.3..3.5 → f (MHz) en log : f = 10^(slider) ; slider=1 → 10 MHz = fp
+  function fOf(sl) { return Math.pow(10, sl); }       // MHz
+  const fp = 10;                                      // MHz
+
+  function fmtF(fMHz) {
+    if (fMHz >= 1000) return fr(fMHz / 1000, 2) + ' GHz';
+    return fr(fMHz, fMHz < 10 ? 1 : 0) + ' MHz';
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const fMHz = fOf(parseFloat(slF.value));
+    const reflect = fMHz < fp;
+
+    const groundY = h - 26, ionoY1 = h * 0.34, ionoY2 = h * 0.46;
+    // sol
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.10; ctx.fillRect(0, groundY, w, h - groundY); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(w, groundY); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left'; ctx.fillText('Sol (Terre)', 10, groundY + 16);
+    // ionosphère
+    ctx.fillStyle = c.orange; ctx.globalAlpha = 0.12; ctx.fillRect(0, ionoY1, w, ionoY2 - ionoY1); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.6; ctx.setLineDash([7, 4]);
+    ctx.beginPath(); ctx.moveTo(0, ionoY1); ctx.lineTo(w, ionoY1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, ionoY2); ctx.lineTo(w, ionoY2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.orange; ctx.fillText('ionosphère  (f_p \u2248 10 MHz)', 10, ionoY1 - 8);
+    // satellite GPS
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(w * 0.78, 28, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.muted; ctx.textAlign = 'right'; ctx.fillText('GPS (1,5 GHz)', w - 10, 22);
+
+    // rayon
+    const x0 = w * 0.18;
+    if (reflect) {
+      // monte, réfléchi au niveau ionoY1, redescend
+      const xtop = w * 0.42, xend = w * 0.66;
+      ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.6; ctx.fillStyle = c.rouge;
+      ctx.beginPath(); ctx.moveTo(x0, groundY); ctx.lineTo(xtop, ionoY1); ctx.lineTo(xend, groundY); ctx.stroke();
+      // flèche progression
+      const seg = prog % 1;
+      let ax, ay, dx, dy;
+      if (seg < 0.5) { const u = seg / 0.5; ax = x0 + (xtop - x0) * u; ay = groundY + (ionoY1 - groundY) * u; dx = xtop - x0; dy = ionoY1 - groundY; }
+      else { const u = (seg - 0.5) / 0.5; ax = xtop + (xend - xtop) * u; ay = ionoY1 + (groundY - ionoY1) * u; dx = xend - xtop; dy = groundY - ionoY1; }
+      const L = Math.hypot(dx, dy); dx /= L; dy /= L;
+      ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax - 8 * dx + 4 * dy, ay - 8 * dy - 4 * dx); ctx.lineTo(ax - 8 * dx - 4 * dy, ay - 8 * dy + 4 * dx); ctx.closePath(); ctx.fill();
+      ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center'; ctx.fillText('HF réfléchie (f < f_p)', xtop, ionoY1 - 22);
+    } else {
+      // GPS descend du satellite, traverse, jusqu'au sol
+      const xs = w * 0.78, ys = 28, xg = w * 0.42;
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 2.6; ctx.fillStyle = c.vert;
+      ctx.beginPath(); ctx.moveTo(xs, ys); ctx.lineTo(xg, groundY); ctx.stroke();
+      const u = prog % 1; const ax = xs + (xg - xs) * u, ay = ys + (groundY - ys) * u;
+      let dx = xg - xs, dy = groundY - ys; const L = Math.hypot(dx, dy); dx /= L; dy /= L;
+      ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax - 9 * dx + 4 * dy, ay - 9 * dy - 4 * dx); ctx.lineTo(ax - 9 * dx - 4 * dy, ay - 9 * dy + 4 * dx); ctx.closePath(); ctx.fill();
+      ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left'; ctx.fillText('f \u226b f_p : traverse', w * 0.5, h * 0.62);
+    }
+
+    vF.textContent = fmtF(fMHz);
+    vRatio.textContent = fr(fMHz / fp, fMHz / fp < 10 ? 2 : 0);
+    if (reflect) {
+      vComp.textContent = 'réflexion totale (HF)';
+      roVg.style.display = 'none';
+    } else {
+      vComp.textContent = 'traverse (propagative)';
+      const vg = Math.sqrt(Math.max(1 - (fp / fMHz) * (fp / fMHz), 0));
+      vVg.textContent = fr(vg, 6) + ' c';
+      roVg.style.display = '';
+    }
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) { const dt = t - lastT; lastT = t; if (animating) { prog += dt * 0.6; draw(); } });
+  slF.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le rayon';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

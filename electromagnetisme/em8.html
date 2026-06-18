@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM8 — Induction : circuit mobile, B stationnaire · QC Oraux MP*</title>
+<meta name="description" content="F.e.m. de mouvement (Lorentz) pour un circuit mobile, rails de Faraday e = Blv, conversion électromécanique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em7.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em9.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html" aria-current="page"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 8 · Électromagnétisme</span>
+    <h1>Induction : circuit mobile dans un champ \(B\) stationnaire</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir la f.e.m. induite dans un circuit se déplaçant dans un champ magnétique stationnaire. Relier à la conversion électromécanique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP/MPSI · Induction de Lorentz</div>
+      <p>Loi de Faraday pour un circuit mobile. La f.e.m. est de nature magnétomotrice (force de Lorentz sur les porteurs). Conversion électromécanique via la puissance de Laplace. Niveau MPSI/MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Circuit \(\mathcal{C}\) se déplaçant avec une vitesse \(\vec{v}\) dans un champ \(\vec{B}(\vec{r})\) stationnaire (\(\partial_t\vec{B}=0\)). La f.e.m. est due à la force de Lorentz magnétique \(\vec{F}=q\vec{v}\times\vec{B}\) agissant sur les porteurs de charges dans les conducteurs en mouvement.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">F.e.m. de mouvement</span>
+      <p>Sur un élément \(\mathrm{d}\vec{\ell}\) du circuit se déplaçant à \(\vec{v}\), la contribution élémentaire est \(\mathrm{d}e = (\vec{v}\times\vec{B})\cdot\mathrm{d}\vec{\ell}\). En intégrant sur tout le contour, on retrouve la loi de Faraday sous sa forme générale :</p>
+      <p>\[ e = -\frac{\mathrm{d}\Phi}{\mathrm{d}t} \]</p>
+      <p>même pour un circuit mobile (dans un champ stationnaire ou variable). Pour la barre sur rails : \(e = B\ell v\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Conversion électromécanique</span>
+      <p>La puissance mécanique reçue par le circuit (forces de Laplace) est \(P_{\text{méca}} = \vec{F}_{\mathrm{Laplace}}\cdot\vec{v} = e\,i + \text{dissipation}\). Le bilan de puissance s'écrit :</p>
+      <p>\[ e\,i = -\frac{\mathrm{d}\Phi}{\mathrm{d}t}\cdot i \]</p>
+      <p>La puissance électrique fournie par la f.e.m. est convertie en puissance mécanique (moteur) ou inversement (générateur).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — rails de Faraday \(e = B\ell v\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-rails" aria-label="Barre mobile sur rails dans un champ B entrant ; f.e.m. e = B l v calculée en direct"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-v">Vitesse \(v\) <span class="val" id="v-v">1,5 m·s⁻¹</span></label>
+          <input type="range" id="sl-v" min="0" max="4" step="0.1" value="1.5">
+          <label for="sl-B" style="margin-top:.5rem">Champ \(B\) <span class="val" id="v-B">0,5 T</span></label>
+          <input type="range" id="sl-B" min="0.1" max="1.5" step="0.1" value="0.5">
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la barre</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\ell\) = <b>0,2 m</b></span>
+            <span class="ro">\(e=B\ell v\) = <b id="v-e">0,15</b> V</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Rails de Faraday : la barre (bleue), de longueur \(\ell\), se déplaçant à \(\vec{v}\) dans le champ \(\vec{B}\) entrant (croix grises) génère \(e = B\ell v\) (f.e.m. de mouvement). La force de Lorentz sépare les charges dans la barre.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Barre mobile</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Vitesse \(\vec{v}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Dans un circuit mobile, la f.e.m. est due à la force de Lorentz (nature magnétomotrice), pas à Maxwell-Faraday directement.</li>
+        <li>La loi de Faraday \(e = -\mathrm{d}\Phi/\mathrm{d}t\) est universelle : circuit fixe, mobile ou déformable.</li>
+        <li>Bilan de puissance : puissance électrique \(=ei=\) puissance mécanique des forces de Laplace (si \(L=\) cste).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MPSI/MP.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em7.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM7 · Induction : circuit fixe</span></a>
+    <a class="next" href="em9.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM9 · Actions de Laplace</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-rails');
+  const slV = document.getElementById('sl-v'), slB = document.getElementById('sl-B');
+  const vV = document.getElementById('v-v'), vB = document.getElementById('v-B'), vE = document.getElementById('v-e');
+  const btnAnim = document.getElementById('btn-anim');
+  const ELL = 0.2;
+  let animating = false, barX = 0.35;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const v = parseFloat(slV.value), B = parseFloat(slB.value);
+    const topY = h*0.22, botY = h*0.78, x0 = w*0.10, x1 = w*0.92;
+    // champ B entrant : croix
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.2;
+    for (let xx=x0+30; xx<x1-10; xx+=40) for (let yy=topY+18; yy<botY-8; yy+=34) {
+      ctx.beginPath(); ctx.moveTo(xx-4,yy-4); ctx.lineTo(xx+4,yy+4); ctx.moveTo(xx+4,yy-4); ctx.lineTo(xx-4,yy+4); ctx.stroke();
+    }
+    ctx.fillStyle = c.muted; ctx.font='12px IBM Plex Mono, monospace'; ctx.textAlign='left';
+    ctx.fillText('B entrant (⊗)', x0, topY-8);
+    // rails
+    ctx.strokeStyle = c.text; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(x0,topY); ctx.lineTo(x1,topY);
+    ctx.moveTo(x0,botY); ctx.lineTo(x1,botY); ctx.moveTo(x0,topY); ctx.lineTo(x0,botY); ctx.stroke();
+    // barre
+    const bx = x0 + barX*(x1-x0);
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.moveTo(bx,topY); ctx.lineTo(bx,botY); ctx.stroke();
+    // vitesse
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.4;
+    const vlen = 18 + v*22;
+    ctx.beginPath(); ctx.moveTo(bx,(topY+botY)/2); ctx.lineTo(bx+vlen,(topY+botY)/2);
+    ctx.moveTo(bx+vlen,(topY+botY)/2); ctx.lineTo(bx+vlen-7,(topY+botY)/2-4);
+    ctx.moveTo(bx+vlen,(topY+botY)/2); ctx.lineTo(bx+vlen-7,(topY+botY)/2+4); ctx.stroke();
+    ctx.fillStyle=c.rouge; ctx.fillText('v', bx+vlen+6, (topY+botY)/2+4);
+    // ell
+    ctx.strokeStyle=c.muted; ctx.lineWidth=1; ctx.beginPath();
+    ctx.moveTo(bx-12,topY); ctx.lineTo(bx-12,botY); ctx.stroke();
+    ctx.fillStyle=c.muted; ctx.textAlign='right'; ctx.fillText('ℓ', bx-16,(topY+botY)/2+4);
+    // fem
+    const e = B*ELL*v;
+    ctx.fillStyle=c.bleu; ctx.textAlign='left'; ctx.font='13px IBM Plex Mono, monospace';
+    ctx.fillText('e = Bℓv = '+fr(e,2)+' V', x0, botY+22);
+    vV.textContent = fr(v,1)+' m·s⁻¹'; vB.textContent = fr(B,1)+' T'; vE.textContent = fr(e,2);
+  }
+  let lastT=0;
+  QC.loop(function (t) {
+    const dt=t-lastT; lastT=t;
+    if (animating) { barX += parseFloat(slV.value)*dt*0.10; if (barX>0.92) barX=0.12; draw(); }
+  });
+  slV.addEventListener('input', draw); slB.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating=!animating; btnAnim.textContent=animating?'Figer':'Animer la barre';
+    btnAnim.classList.toggle('active',animating); if(!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

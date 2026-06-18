@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND1 — Propagation dans le vide & OPPM · QC Oraux MP*</title>
+<meta name="description" content="Équation de propagation des champs dans le vide à partir des équations de Maxwell ; structure et propriétés d'une OPPM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="index.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html" aria-current="page"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Ondes électromagnétiques</span>
+    <h1>Équation de propagation dans le vide et OPPM</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir l'équation de propagation des champs dans le vide à partir des équations de Maxwell. Décrire la structure et les propriétés d'une onde plane progressive monochromatique (OPPM).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5 « Propagation et rayonnement »</div>
+      <p>« Établir les équations de propagation à partir des équations de Maxwell. Décrire la structure d'une onde plane et d'une onde plane progressive dans l'espace vide de charge et de courant. Déterminer la relation de dispersion. Reconnaître une onde polarisée rectilignement ou circulairement. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On se place dans le vide, loin de toute source (\(\rho=0\), \(\vec{j}=\vec{0}\)). On note \(c = 1/\sqrt{\varepsilon_0\mu_0} = 3{,}00\times10^{8}\ \mathrm{m\cdot s^{-1}}\) la vitesse de la lumière dans le vide.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Établissement de l'équation de propagation</span>
+      <p>En prenant le rotationnel de Maxwell-Faraday :</p>
+      <p>\[ \vec{\mathrm{rot}}(\vec{\mathrm{rot}}\,\vec{E}) = -\frac{\partial}{\partial t}(\vec{\mathrm{rot}}\,\vec{B}) \]</p>
+      <p>D'après la formule d'analyse vectorielle \(\vec{\mathrm{rot}}(\vec{\mathrm{rot}}\,\vec{A}) = \vec{\mathrm{grad}}(\mathrm{div}\,\vec{A}) - \Delta\vec{A}\) et Maxwell-Gauss (\(\mathrm{div}\,\vec{E}=0\) dans le vide) :</p>
+      <p>\[ -\Delta\vec{E} = -\frac{\partial}{\partial t}\!\left(\mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}\right) = -\mu_0\varepsilon_0\frac{\partial^2\vec{E}}{\partial t^2} \]</p>
+      <p>D'où l'équation de d'Alembert :</p>
+      <p>\[ \Delta\vec{E} - \frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} = \vec{0} \]</p>
+      <p>De même pour \(\vec{B}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Structure d'une OPPM</span>
+      <p>On cherche des solutions de la forme \(\vec{E}(\vec{r},t) = \vec{E}_0\,e^{i(\vec{k}\cdot\vec{r}-\omega t)}\) (notation complexe, partie réelle physique). En substituant dans l'équation de d'Alembert :</p>
+      <p>\[ -k^2\vec{E}_0 + \frac{\omega^2}{c^2}\vec{E}_0 = \vec{0} \]</p>
+      <p><b>Relation de dispersion dans le vide :</b></p>
+      <p>\[ k^2 = \frac{\omega^2}{c^2}, \quad\text{soit}\quad \omega = ck \quad (k&gt;0) \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Propriétés de l'OPPM</span>
+      <p>En appliquant \(\mathrm{div}\,\vec{E}=0\) et \(\mathrm{div}\,\vec{B}=0\) :</p>
+      <p>\[ \vec{k}\cdot\vec{E}_0 = 0, \quad \vec{k}\cdot\vec{B}_0 = 0 \quad \text{(onde transverse)} \]</p>
+      <p>Maxwell-Faraday donne le lien entre \(\vec{E}\) et \(\vec{B}\) :</p>
+      <p>\[ \vec{B}_0 = \frac{1}{\omega}\vec{k}\times\vec{E}_0 = \frac{1}{c}\hat{k}\times\vec{E}_0 \]</p>
+      <p>Donc \(|\vec{B}_0| = |\vec{E}_0|/c\) et \((\vec{E}_0, \vec{B}_0, \vec{k})\) forme un trièdre direct.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Polarisation</span>
+      <p>Si \(\vec{E}_0\) est réel et fixe : polarisation rectiligne. Si \(\vec{E}_0 = E_0(\hat{x} + i\hat{y})\) : polarisation circulaire gauche.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — OPPM se propageant selon \(\hat{z}\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-oppm" aria-label="Onde plane progressive monochromatique : champs E et B transverses et en phase se propageant selon z"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-f">Fréquence \(f\) <span class="val" id="v-f">2,0 (u.a.)</span></label>
+          <input type="range" id="sl-f" min="0.5" max="4" step="0.1" value="2">
+          <span class="hint" id="hint-f">La fréquence règle le nombre d'oscillations ; \(\omega = ck\) (pas de dispersion dans le vide).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la propagation</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\lambda\) = <b id="v-lambda">—</b></span>
+            <span class="ro">\(|\vec{B}|/|\vec{E}|\) = <b id="v-ratio">1/c</b></span>
+            <span class="ro">Trièdre <b id="v-trio">(E, B, k) direct</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        OPPM se propageant selon \(\hat{z}\) : \(\vec{E}\parallel\hat{x}\) (bleu) et \(\vec{B}\parallel\hat{y}\) (rouge) sont transverses et en phase, avec \(|\vec{B}|=|\vec{E}|/c\). L'amplitude de \(\vec{B}\) est représentée à échelle réduite pour la lisibilité. Le trièdre \((\vec{E},\vec{B},\hat{k})\) est direct.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\vec{E}\parallel\hat{x}\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\vec{B}\parallel\hat{y}\) (éch. réduite)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La relation de dispersion \(\omega = ck\) est <em>linéaire</em> dans le vide : pas de dispersion, toutes les fréquences se propagent à \(c\).</li>
+        <li>L'OPPM est un modèle idéal (infiniment étendue) ; toute onde réelle est un paquet d'ondes.</li>
+        <li>Vérifier systématiquement le trièdre direct \((\vec{E},\vec{B},\hat{k})\) pour orienter \(\vec{B}\) à partir de \(\vec{E}\).</li>
+        <li>Spectre EM : ondes radio (km) \(\to\) micro-ondes (cm) \(\to\) IR \(\to\) visible (400–700 nm) \(\to\) UV \(\to\) rayons X.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Entièrement au programme MP, section 4.5.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="index.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Sommaire du thème</span></a>
+    <a class="next" href="ond2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND2 · Vecteur de Poynting</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-oppm');
+  const slF = document.getElementById('sl-f');
+  const vF = document.getElementById('v-f'), vLambda = document.getElementById('v-lambda');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const f = parseFloat(slF.value);
+    const k = f * Math.PI / 1.2;           // vecteur d'onde (u.a.)
+    const pad = { l: 16, r: 16, t: 20, b: 28 };
+    const midY = h * 0.5;
+    const ampE = h * 0.30, ampB = h * 0.18;
+
+    // axe z
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad.l, midY); ctx.lineTo(w - pad.r, midY); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    ctx.fillText('z (propagation)', w - pad.r, midY - 8);
+
+    const X0 = pad.l, X1 = w - pad.r, span = X1 - X0;
+    // E (bleu)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false;
+    for (let px = X0; px <= X1; px += 1) {
+      const z = (px - X0) / span * 6;
+      const Y = midY - ampE * Math.cos(k * z - phase);
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+    // B (rouge, échelle réduite, en phase)
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.2; ctx.setLineDash([6, 4]); ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) {
+      const z = (px - X0) / span * 6;
+      const Y = midY + ampB * Math.cos(k * z - phase);
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // vecteur k
+    ctx.strokeStyle = c.text; ctx.fillStyle = c.text; ctx.lineWidth = 2;
+    const ay = h - pad.b + 4, ax0 = w * 0.62, ax1 = w * 0.62 + 60;
+    ctx.beginPath(); ctx.moveTo(ax0, ay); ctx.lineTo(ax1, ay); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ax1, ay); ctx.lineTo(ax1 - 7, ay - 4); ctx.lineTo(ax1 - 7, ay + 4); ctx.closePath(); ctx.fill();
+    ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('k = k ẑ', ax1 + 6, ay + 4);
+    // labels
+    ctx.fillStyle = c.bleu; ctx.fillText('E ∥ x̂', X0, pad.t + 6);
+    ctx.fillStyle = c.rouge; ctx.fillText('B ∥ ŷ', X0, h - pad.b + 4);
+
+    vF.textContent = fr(f, 1) + ' (u.a.)';
+    vLambda.textContent = fr(2 * Math.PI / k, 2) + ' (u.a.)';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) { const dt = t - lastT; lastT = t; if (animating) { phase += dt * 4; draw(); } });
+  slF.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la propagation';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

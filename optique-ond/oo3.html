@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OO3 — Michelson : lame &amp; coin d'air · QC Oraux MP*</title>
+<meta name="description" content="Interféromètre de Michelson : division d'amplitude, lame d'air (anneaux d'égale inclinaison), coin d'air (franges d'égale épaisseur), lumière blanche.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique ondulatoire</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="oo2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="oo4.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="oo1.html"><span class="qn">OO1</span>Modèle scalaire de la lumière</a>
+        <a href="oo2.html"><span class="qn">OO2</span>Trous d'Young</a>
+        <a href="oo3.html" aria-current="page"><span class="qn">OO3</span>Michelson : lame &amp; coin d'air</a>
+        <a href="oo4.html"><span class="qn">OO4</span>Contraste (visibilité)</a>
+        <a href="oo5.html"><span class="qn">OO5</span>Réseaux / N ondes / Rayleigh</a>
+        <a href="oo6.html"><span class="qn">OO6</span>Longueur de cohérence temporelle</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Optique ondulatoire</span>
+    <h1>Interféromètre de Michelson : lame d'air et coin d'air</h1>
+    <p class="q-sources"><span class="src">POLY p.3 (×2)</span><span class="src">PL-112</span><span class="src">PL-120</span><span class="src">PL-125</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Décrire le principe du Michelson (division d'amplitude). Établir la différence de marche en lame d'air et en coin d'air. Décrire les réglages, les figures d'interférences, la localisation des franges et l'observation en lumière blanche.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 3 §3.4 — Interféromètre de Michelson</div>
+      <p>Capacités exigibles :</p>
+      <ul>
+        <li>Citer les conditions d'éclairage et d'observation en lame d'air et en coin d'air.</li>
+        <li>Établir et utiliser l'expression de la différence de marche en lame d'air.</li>
+        <li>Utiliser l'expression admise de la différence de marche en coin d'air.</li>
+        <li>Interpréter qualitativement les observations en lumière blanche.</li>
+        <li>Régler un interféromètre de Michelson pour observation en lame d'air (expérimental).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Le Michelson est un interféromètre à <b>division d'amplitude</b> : la séparatrice \(S\) divise le faisceau incident en deux. Les miroirs \(M_1\) et \(M_2\) renvoient les faisceaux qui se recombinent. On modélise le Michelson comme une <b>lame équivalente</b> d'air entre les images virtuelles \(M_1\) et \(M_2'\) (image de \(M_2\) dans la séparatrice). On suppose la séparatrice infiniment mince.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Lame d'air (\(M_1\parallel M_2'\))</span>
+      <p>La lame équivalente a une épaisseur \(e\) (distance entre \(M_1\) et \(M_2'\)). Pour un rayon incident d'angle \(\theta\) (par rapport à la normale à la lame) :</p>
+      <p>\[ \delta = 2e\cos\theta. \]</p>
+      <p>(Cette formule se démontre en calculant la différence de chemin optique entre les deux trajets réfléchis par \(M_1\) et \(M_2'\).) Comme \(\delta\) ne dépend que de \(\theta\) (et non de la position transversale du rayon), les <b>franges d'égale inclinaison</b> sont des cercles centrés sur l'axe optique. Elles sont localisées à l'infini : on observe avec une lentille convergente (ou avec l'œil au repos) dans son plan focal.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Condition de frange brillante</span>
+      <p>\[ 2e\cos\theta = p\lambda, \quad p \in \mathbb{Z}. \]</p>
+      <p>Au centre (\(\theta=0\)) : \(p_0 = 2e/\lambda\) (ordre maximal au centre).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Coin d'air (\(M_1\) faiblement incliné par rapport à \(M_2'\))</span>
+      <p>La lame équivalente présente un angle \(\alpha\) faible. Pour un rayon presque normal, à l'endroit où l'épaisseur est \(e(x)\) :</p>
+      <p>\[ \delta \approx 2e(x)\cos\theta \approx 2e(x) \quad (\theta\ll 1). \]</p>
+      <p>Les franges sont localisées sur la lame (épaisseur faible, observation en lumière réfléchie directe) et sont des droites parallèles à l'arête du coin : <b>franges d'égale épaisseur</b>. L'interfrange vaut \(i = \lambda/(2\alpha)\) (avec \(\alpha\) en radians).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Réglages</span>
+      <ol>
+        <li>Réglage en lame d'air : rendre \(M_1\parallel M_2'\) en observant les anneaux (augmenter \(e\) pour resserrer les anneaux, les faire apparaître au centre en approchant le contact optique à \(e=0\)).</li>
+        <li>Contact optique (\(e=0\)) : toute la figure est d'éclairement uniforme maximum.</li>
+        <li>Pour le coin d'air : régler un léger angle entre \(M_1\) et \(M_2'\).</li>
+      </ol>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Lumière blanche</span>
+      <p>En lumière blanche (spectre continu), chaque longueur d'onde \(\lambda\) donne son propre système de franges. La superposition donne des franges colorées visibles uniquement au voisinage du contact optique (\(e\approx 0\)), où l'ordre est faible. La frange centrale (\(\delta=0\)) est <em>achromatique</em> (blanche ou noire selon le signe de la réflexion).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — anneaux d'égale inclinaison (lame d'air)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-mich" aria-label="Anneaux d'égale inclinaison du Michelson en lame d'air : rayon des anneaux fonction de l'épaisseur e"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-e">Épaisseur de la lame \(e\) <span class="val" id="v-e">5,0 µm</span></label>
+          <input type="range" id="sl-e" min="0" max="20" step="0.05" value="5">
+          <span class="hint" id="hint-e">\(\lambda = 0{,}55\ \mu\mathrm{m}\) fixée. Anneaux brillants : \(2e\cos\theta=p\lambda\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le défilement</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Ordre au centre \(p_0=2e/\lambda\) = <b id="v-p0">18,2</b></span>
+            <span class="ro" id="ro-contact">—</span>
+          </div>
+          <span class="hint">Quand \(e\) diminue vers le contact optique, les anneaux « rentrent » au centre et s'élargissent ; à \(e=0\) la teinte est uniforme.</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Anneaux d'égale inclinaison observés dans le plan focal (vue de face). Le rayon angulaire d'un anneau brillant vérifie \(2e\cos\theta = p\lambda\), soit \(\theta_p \approx \sqrt{2(p_0-p)/p_0}\) : les anneaux sont resserrés au bord et plus écartés au centre.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Franges brillantes (anneaux)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>En lame d'air, l'ordre maximal est au centre : les anneaux se « rentrent dedans » quand \(e\) diminue.</li>
+        <li>Bien distinguer lame d'air (franges à l'infini, observées avec une lentille) et coin d'air (franges localisées sur la lame, observées directement).</li>
+        <li>En lumière blanche, la frange d'ordre zéro est identifiable par sa couleur achromatique : point de référence expérimental précieux.</li>
+        <li>La formule \(\delta=2e\cos\theta\) est à établir (pas seulement à citer).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MP. L'étude du coin d'air est exclusivement expérimentale : la différence de marche \(\delta\approx 2e\) est admise. Le calcul de \(\delta=2e\cos\theta\) en lame d'air est exigible.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="oo2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OO2 · Trous d'Young</span></a>
+    <a class="next" href="oo4.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OO4 · Contraste (visibilité)</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 8 : Optique ondulatoire (§3).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-mich');
+  const slE = document.getElementById('sl-e');
+  const vE = document.getElementById('v-e'), vP0 = document.getElementById('v-p0');
+  const roContact = document.getElementById('ro-contact');
+  const btnAnim = document.getElementById('btn-anim');
+  const LAMBDA = 0.55;   // µm
+  let animating = false, drift = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const e = parseFloat(slE.value);            // µm
+    const p0 = 2 * e / LAMBDA;                   // ordre au centre
+
+    const cx = w * 0.5, cy = h * 0.5;
+    const Rmax = Math.min(w, h) * 0.46;
+    // theta_max correspondant au bord : on choisit theta_max ~ 0.16 rad pour montrer plusieurs anneaux
+    const thetaMax = 0.18;
+    // pour un anneau brillant : 2e cos(theta) = p lambda -> cos = p lambda/(2e) = p/p0
+    // theta_p^2/2 ~ 1 - p/p0  (petits angles) -> theta_p ~ sqrt(2 (p0-p)/p0)
+    // pixel radius pour un theta : r = Rmax * theta/thetaMax
+
+    if (e < 0.02) {
+      // contact optique : teinte uniforme (centre brillant)
+      ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.85;
+      ctx.beginPath(); ctx.arc(cx, cy, Rmax, 0, 2 * Math.PI); ctx.fill();
+      ctx.globalAlpha = 1;
+    } else {
+      // remplissage radial continu : I(theta) = 1+cos(2pi*2e cos(theta)/lambda)
+      // on trace par disques concentriques (du bord vers le centre)
+      const steps = Math.ceil(Rmax);
+      for (let r = steps; r >= 0; r--) {
+        const theta = (r / Rmax) * thetaMax;
+        const delta = 2 * e * Math.cos(theta);                 // µm
+        const I = 0.5 * (1 + Math.cos(2 * Math.PI * delta / LAMBDA + drift));
+        ctx.fillStyle = c.bleu; ctx.globalAlpha = Math.max(0, Math.min(1, I));
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+    // cercle de cadre
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.arc(cx, cy, Rmax, 0, 2 * Math.PI); ctx.stroke();
+    // croix d'axe
+    ctx.strokeStyle = c.muted; ctx.globalAlpha = 0.4; ctx.lineWidth = 1; ctx.setLineDash([2, 4]);
+    ctx.beginPath(); ctx.moveTo(cx - Rmax, cy); ctx.lineTo(cx + Rmax, cy); ctx.moveTo(cx, cy - Rmax); ctx.lineTo(cx, cy + Rmax); ctx.stroke();
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('Anneaux d\u2019\u00e9gale inclinaison', 8, 16);
+
+    vE.textContent = fr(e, 1) + ' \u00b5m';
+    vP0.textContent = fr(p0, 1);
+    if (e < 0.02) { roContact.textContent = 'Contact optique : teinte uniforme'; roContact.style.display = ''; }
+    else { roContact.textContent = 'p\u2080 anneaux jusqu\u2019au centre'; roContact.style.display = ''; }
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { drift += dt * 1.6; draw(); }
+  });
+  slE.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le défilement';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T6 — Changement d'état du corps pur · QC Oraux MP*</title>
+<meta name="description" content="Diagramme de phases (P,T) d'un corps pur, point triple, point critique, fluide supercritique, égalité des potentiels chimiques et relation de Clausius-Clapeyron.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Thermodynamique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="t5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="t1.html"><span class="qn">T1</span>Machines dithermes &amp; Carnot</a>
+        <a href="t2.html"><span class="qn">T2</span>Second principe &amp; entropie du GP</a>
+        <a href="t3.html"><span class="qn">T3</span>Premier principe industriel · Joule-Kelvin</a>
+        <a href="t4.html"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
+        <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
+        <a href="t6.html" aria-current="page"><span class="qn">T6</span>Changement d'état du corps pur</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 6 · Thermodynamique</span>
+    <h1>Changement d'état du corps pur, fluide supercritique, égalité des potentiels chimiques</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-413</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Analyser le diagramme de phases \((P, T)\) d'un corps pur. Définir le point triple, le point critique, le fluide supercritique. Rappeler la règle des phases de Gibbs. Énoncer et exploiter la condition d'équilibre entre phases : égalité des potentiels chimiques.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI 3.1 &amp; MP 5.1 / 8.2</div>
+      <p>Corps pur diphasé en équilibre ; diagramme de phases \((P,T)\), diagramme de Clapeyron \((P,v)\), titre en vapeur ; analyser un diagramme de phase expérimental \((P,T)\). <strong>MP</strong> : potentiel chimique ; condition d'équilibre entre phases à \(T\) et \(P\) fixées : égalité des potentiels chimiques \(\mu_\ell = \mu_g\) ; enthalpie libre. Fluide supercritique (hypercritique).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Corps pur</strong> : système à un seul constituant.</li>
+      <li><strong>Phase</strong> : région homogène (solide, liquide, gaz).</li>
+      <li><strong>Point triple</strong> : point \((P_t, T_t)\) où les trois phases coexistent.</li>
+      <li><strong>Point critique</strong> : \((P_c, T_c)\) au-delà duquel la distinction liquide/gaz disparaît.</li>
+      <li><strong>Potentiel chimique</strong> : \(\mu = G_m = H_m - TS_m\) (enthalpie libre molaire à \(T\) et \(P\) fixées).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+
+    <div class="demo-step">
+      <span class="step-label">1 · Diagramme de phases \((P, T)\)</span>
+      <p>Le diagramme de phases d'un corps pur présente trois domaines monophasés (solide, liquide, gaz) séparés par trois courbes de coexistence : courbe de fusion (solide-liquide), courbe de vaporisation (liquide-gaz, s'arrêtant au point critique), courbe de sublimation (solide-gaz). Le <strong>point triple</strong> est l'intersection des trois courbes ; le <strong>point critique</strong> \((P_c, T_c)\) termine la courbe de vaporisation.</p>
+      <p>Pour l'eau : \(T_t = 273{,}16\,\text{K}\), \(P_t = 611{,}7\,\text{Pa}\) ; \(T_c = 647{,}1\,\text{K}\), \(P_c = 221{,}2\,\text{bar}\).</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">2 · Condition d'équilibre : égalité des potentiels chimiques</span>
+      <p>À \(T\) et \(P\) fixées, l'équilibre entre deux phases \(\alpha\) et \(\beta\) est régi par la minimisation de l'enthalpie libre totale \(G = n_\alpha \mu_\alpha + n_\beta \mu_\beta\). À \(T, P, n = n_\alpha + n_\beta\) constants :</p>
+      <p>\[ \mathrm{d}G = \mu_\alpha\,\mathrm{d}n_\alpha + \mu_\beta\,\mathrm{d}n_\beta = (\mu_\alpha - \mu_\beta)\,\mathrm{d}n_\alpha = 0. \]</p>
+      <p>Comme \(\mathrm{d}n_\alpha\) est quelconque, la condition d'équilibre est :</p>
+      <p>\[ \boxed{\mu_\alpha(T,P) = \mu_\beta(T,P)}. \]</p>
+      <p>Pour la vaporisation : \(\mu_\ell(T, P) = \mu_g(T, P)\), relation qui définit implicitement la courbe de vaporisation \(P_{\text{sat}}(T)\).</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Relation de Clausius-Clapeyron</span>
+      <p>Sur la courbe de coexistence, la variation de \(\mu\) des deux phases est égale. Avec \(\mathrm{d}\mu = -s_m\,\mathrm{d}T + v_m\,\mathrm{d}P\) :</p>
+      <p>\[ -s_{m,\ell}\,\mathrm{d}T + v_{m,\ell}\,\mathrm{d}P = -s_{m,g}\,\mathrm{d}T + v_{m,g}\,\mathrm{d}P, \]</p>
+      <p>\[ \frac{\mathrm{d}P}{\mathrm{d}T} = \frac{s_{m,g} - s_{m,\ell}}{v_{m,g} - v_{m,\ell}} = \frac{\Delta_{\text{vap}} H_m}{T\,\Delta v_m}, \]</p>
+      <p>en utilisant \(\Delta s_m = \Delta_{\text{vap}} H_m / T\). C'est la <strong>relation de Clausius-Clapeyron</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — diagramme de phases \((P,T)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-phase" aria-label="Diagramme de phases (P,T) d'un corps pur : courbes de sublimation, fusion, vaporisation, point triple, point critique et domaine supercritique"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-tc">Température critique \(T_c\) (u.a.) <span class="val" id="v-tc">7,0</span></label>
+          <input type="range" id="sl-tc" min="5.5" max="9" step="0.1" value="7">
+          <span class="hint" id="hint-ph">La courbe de vaporisation s'arrête au point critique C ; au-delà : fluide supercritique.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le point (T,P)</button>
+          </div>
+        </div>
+        <div class="control">
+          <label for="sl-pte">Pente de fusion (anomalie de l'eau si &lt; 0) <span class="val" id="v-pte">+11</span></label>
+          <input type="range" id="sl-pte" min="-11" max="11" step="1" value="11">
+          <div class="readout" style="margin-top:.6rem">
+            <span class="ro">Position du point mobile : <b id="v-phase">gaz</b></span>
+            <span class="ro" id="ro-frigo">Pente de fusion : <b id="v-pte2">positive</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Diagramme de phases schématique \((P,T)\) : sublimation (bleu, origine → triple), fusion (vert, pente réglable — négative = anomalie de l'eau), vaporisation (rouge, triple → critique C). Au-delà de C s'étend le domaine du fluide supercritique. Le point mobile parcourt une isobare et change de phase en traversant les courbes de coexistence.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Sublimation</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Fusion</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Vaporisation</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Point mobile</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La condition \(\mu_\alpha = \mu_\beta\) est la condition générale d'équilibre entre phases ; elle est au cœur de toute la thermodynamique des changements d'état.</li>
+        <li>Pour l'eau, la courbe de fusion a une pente <em>négative</em> (anomalie : \(v_{m,\ell} &lt; v_{m,s}\)) ; pour la plupart des corps purs, elle est positive.</li>
+        <li>Au point triple, les trois potentiels chimiques sont égaux : \(\mu_s = \mu_\ell = \mu_g\).</li>
+        <li>Le fluide supercritique est utilisé en extraction (\(\mathrm{CO_2}\) sc) car ses propriétés de transport sont intermédiaires entre liquide et gaz.</li>
+        <li>Clausius-Clapeyron (MP) : \(\mathrm{d}P/\mathrm{d}T = \Delta_{\text{vap}} H_m / (T \Delta v_m)\) ; avec \(\Delta v_m \approx RT/P\) (GP), forme logarithmique \(\mathrm{d}\ln P_{\text{sat}}/\mathrm{d}T = \Delta_{\text{vap}} H_m/(RT^2)\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">⚠</span> Règle des phases de Gibbs</h2>
+    <div class="box culture">
+      <div class="box-title">⚠ Hors-programme · culture</div>
+      <p>Pour un système à \(C\) constituants et \(\Phi\) phases en équilibre, la variance est \(v = C - \Phi + 2\). Pour un corps pur (\(C = 1\)) : un domaine monophasé (\(\Phi = 1\)) est divariant (\(v = 2\)) ; une courbe de coexistence (\(\Phi = 2\)) est monovariante (\(v = 1\)) ; le point triple (\(\Phi = 3\)) est invariant (\(v = 0\)). <em>Cette règle n'est pas explicitement au programme MP, mais sa connaissance est attendue pour commenter les diagrammes.</em></p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Le diagramme de phases et le fluide supercritique sont au programme MPSI (3.1) et MP. L'égalité des potentiels chimiques est au programme MP (8.2). La relation de Clausius-Clapeyron est au programme MP. La règle des phases de Gibbs (encadré orange) n'est pas explicitement au programme MP.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="t5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">T5 · Gaz parfaits &amp; gaz réels</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Thermodynamique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Thermodynamique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-phase');
+  const slTc = document.getElementById('sl-tc'), slPte = document.getElementById('sl-pte');
+  const vTc = document.getElementById('v-tc'), vPte = document.getElementById('v-pte'), vPte2 = document.getElementById('v-pte2');
+  const vPhase = document.getElementById('v-phase'), hint = document.getElementById('hint-ph');
+  const btnAnim = document.getElementById('btn-anim');
+  // point triple fixé en (3,2) ; point critique mobile en (Tc, 6)
+  const Tt = 3, Pt = 2, Pcrit = 6;
+  let animating = false, prog = 0;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 340);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const Tc = parseFloat(slTc.value), pente = parseFloat(slPte.value);
+
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: 10, ymin: 0, ymax: 8.5, pad: { l: 40, r: 18, t: 18, b: 34 } });
+    plot.axes(c, { xlabel: 'T', ylabel: 'P' });
+
+    // domaine supercritique (rectangle teinté T>Tc, P>Pcrit)
+    ctx.fillStyle = c.orange; ctx.globalAlpha = 0.08;
+    ctx.fillRect(plot.px(Tc), plot.py(8.5), plot.px(10) - plot.px(Tc), plot.py(Pcrit) - plot.py(8.5));
+    ctx.globalAlpha = 1;
+
+    // sublimation : origine -> triple (bleu)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(plot.px(0.4), plot.py(0.667 * 0.4)); ctx.lineTo(plot.px(Tt), plot.py(Pt)); ctx.stroke();
+    // fusion : triple -> haut, pente réglable (vert)
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    const fusTopP = 8.2;
+    const dT = (fusTopP - Pt) / pente; // pente = dP/dT
+    ctx.moveTo(plot.px(Tt), plot.py(Pt)); ctx.lineTo(plot.px(Tt + dT), plot.py(fusTopP)); ctx.stroke();
+    // vaporisation : triple -> critique (rouge)
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    for (let i = 0; i <= 60; i++) {
+      const x = Tt + (Tc - Tt) * i / 60;
+      const P = Pt + (Pcrit - Pt) * Math.pow((x - Tt) / (Tc - Tt), 1.5);
+      i === 0 ? ctx.moveTo(plot.px(x), plot.py(P)) : ctx.lineTo(plot.px(x), plot.py(P));
+    }
+    ctx.stroke();
+
+    // points triple & critique
+    ctx.fillStyle = c.text;
+    ctx.beginPath(); ctx.arc(plot.px(Tt), plot.py(Pt), 3.6, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.arc(plot.px(Tc), plot.py(Pcrit), 3.6, 0, 7); ctx.fill();
+    ctx.font = '11px IBM Plex Mono, monospace'; ctx.fillStyle = c.muted;
+    ctx.textAlign = 'center'; ctx.fillText('triple', plot.px(Tt), plot.py(Pt) + 16);
+    ctx.textAlign = 'left'; ctx.fillText('critique C', plot.px(Tc) + 6, plot.py(Pcrit) - 6);
+
+    // labels des domaines
+    ctx.fillStyle = c.muted; ctx.font = '12px Inter, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Solide', plot.px(1.4), plot.py(6));
+    ctx.fillText('Liquide', plot.px(4.2), plot.py(7.4));
+    ctx.fillText('Gaz', plot.px(6), plot.py(1.2));
+    ctx.fillStyle = c.orange; ctx.fillText('Supercritique', plot.px(8.6), plot.py(7.6));
+
+    // point mobile sur une isobare P=4 (parcourt T)
+    const Piso = 4;
+    const Tmob = 0.6 + prog * 9;
+    const MX = plot.px(Tmob), MY = plot.py(Piso);
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(MX, MY, 5, 0, 7); ctx.fill();
+    // ligne isobare pointillée
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1; ctx.globalAlpha = 0.4; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(plot.px(0), MY); ctx.lineTo(plot.px(10), MY); ctx.stroke();
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+    // déterminer la phase du point mobile (P=4 < Pcrit) : solide/liquide/gaz selon les courbes à P=4
+    // T_fusion à P=4 : sur droite fusion ; T_vap à P=4 sur courbe vaporisation
+    const Tfus = Tt + (4 - Pt) / pente;
+    // inverse vaporisation: P=Pt+(Pcrit-Pt)*((x-Tt)/(Tc-Tt))^1.5 -> x
+    const Tvap = Tt + (Tc - Tt) * Math.pow((4 - Pt) / (Pcrit - Pt), 1 / 1.5);
+    let phase;
+    if (pente > 0) {
+      if (Tmob < Tfus) phase = 'solide';
+      else if (Tmob < Tvap) phase = 'liquide';
+      else phase = 'gaz';
+    } else {
+      // pente négative : solide à T plus grand côté gauche; on simplifie
+      if (Tmob < Math.min(Tfus, Tvap)) phase = 'solide';
+      else if (Tmob < Tvap) phase = 'liquide';
+      else phase = 'gaz';
+    }
+    if (Tmob > Tc && Piso > 0) { /* P=4 < Pcrit donc pas supercritique */ }
+
+    // lectures
+    vTc.textContent = fr(Tc, 1);
+    vPte.textContent = (pente >= 0 ? '+' : '') + Math.round(pente);
+    vPte2.textContent = pente < 0 ? 'négative (anomalie de l\'eau)' : 'positive (cas usuel)';
+    vPhase.textContent = phase + ' (isobare P=4)';
+    hint.textContent = pente < 0
+      ? 'Pente de fusion négative : anomalie de l\'eau (la glace fond sous pression).'
+      : 'Courbe de vaporisation triple → critique C ; au-delà : fluide supercritique.';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { prog = (prog + dt * 0.18) % 1; draw(); }
+  });
+
+  slTc.addEventListener('input', draw);
+  slPte.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le point (T,P)';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

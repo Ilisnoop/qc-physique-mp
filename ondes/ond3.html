@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND3 — Réflexion sur conducteur parfait · QC Oraux MP*</title>
+<meta name="description" content="Onde réfléchie sur un conducteur parfait en incidence normale, onde stationnaire, application aux cavités 1D.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond4.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html" aria-current="page"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Ondes électromagnétiques</span>
+    <h1>Réflexion d'une OPPM sur un conducteur parfait (incidence normale) et cavités</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir l'expression de l'onde réfléchie sur un conducteur parfait en incidence normale, en exploitant les relations de passage. Montrer la formation d'une onde stationnaire. Appliquer aux cavités résonantes 1D.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5</div>
+      <p>« Établir l'expression de l'onde réfléchie en exploitant les relations de passage fournies. Reconnaître et caractériser une onde stationnaire. Applications aux cavités à une dimension. Établir la condition de quantification des solutions. » Relations de passage admises. Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Un conducteur parfait occupe \(z\geq 0\). Une OPPM incidente se propage selon \(+\hat{z}\) pour \(z&lt;0\) :</p>
+    <p>\[ \vec{E}_i = E_0\cos(\omega t - kz)\,\hat{x}, \qquad \vec{B}_i = \frac{E_0}{c}\cos(\omega t-kz)\,\hat{y} \]</p>
+    <p>L'onde réfléchie est \(\vec{E}_r = E_r\cos(\omega t + kz + \phi)\,\hat{x}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Relations de passage (admises)</span>
+      <p>À l'interface \(z=0\) entre le vide et le conducteur parfait :</p>
+      <ul>
+        <li>La composante tangentielle de \(\vec{E}\) est continue : \(E_{t,\mathrm{vide}} = E_{t,\mathrm{cond}} = 0\) (car \(\vec{E}=\vec{0}\) dans le conducteur parfait).</li>
+        <li>La composante tangentielle de \(\vec{B}\) est discontinue : \(\Delta H_t = \vec{K}\times\hat{n}\) (courant surfacique).</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Condition de continuité sur \(E_x\) en \(z=0\)</span>
+      <p>On impose \(E_x = 0\) :</p>
+      <p>\[ E_0\cos(\omega t) + E_r\cos(\omega t + \phi) = 0 \quad \forall\, t \]</p>
+      <p>Cela impose \(E_r = -E_0\) et \(\phi = 0\). L'onde réfléchie est donc :</p>
+      <p>\[ \vec{E}_r = -E_0\cos(\omega t + kz)\,\hat{x} \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Onde stationnaire</span>
+      <p>On superpose onde incidente et onde réfléchie :</p>
+      <p>\[ \vec{E}_{\mathrm{tot}} = \vec{E}_i + \vec{E}_r = E_0\left[\cos(\omega t - kz) - \cos(\omega t + kz)\right]\hat{x} \]</p>
+      <p>En développant par addition/soustraction des arcs :</p>
+      <p>\[ \vec{E}_{\mathrm{tot}} = 2E_0\sin(kz)\sin(\omega t)\,\hat{x} \]</p>
+      <p>C'est une onde stationnaire : la dépendance spatiale (en \(\sin(kz)\)) et temporelle (en \(\sin(\omega t)\)) sont séparées. Les nœuds sont fixes. De même :</p>
+      <p>\[ \vec{B}_{\mathrm{tot}} = \frac{2E_0}{c}\cos(kz)\cos(\omega t)\,\hat{y} \]</p>
+      <p>Les nœuds de \(\vec{E}\) coïncident avec les ventres de \(\vec{B}\) et vice versa.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — onde stationnaire devant le conducteur</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-stat" aria-label="Onde stationnaire en z négatif : noeud fixe de E au conducteur, ventres de B"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-k">Nombre d'onde \(k\) <span class="val" id="v-k">3,0 (u.a.)</span></label>
+          <input type="range" id="sl-k" min="1" max="6" step="0.1" value="3">
+          <span class="hint" id="hint-k">Les nœuds de \(\vec{E}\) sont en \(z=0,\ -\lambda/2,\ -\lambda,\ \ldots\) ; \(\lambda = 2\pi/k\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer (vibration en \(\sin\omega t\))</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\lambda = 2\pi/k\) = <b id="v-lambda">—</b></span>
+            <span class="ro">Coef. réflexion \(r\) = <b id="v-r">−1</b></span>
+            <span class="ro">Nœuds de \(\vec{E}\) dans la fenêtre = <b id="v-nodes">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        En \(z&lt;0\) : champ électrique stationnaire \(E_{\mathrm{tot}} = 2E_0\sin(kz)\sin(\omega t)\) (bleu) — nœud fixe en \(z=0\) (paroi conductrice, barre noire à droite). Le champ magnétique \(B_{\mathrm{tot}} \propto \cos(kz)\cos(\omega t)\) (rouge) présente un ventre au conducteur. « Animer » fait osciller en \(\sin\omega t\) sans déplacer les nœuds.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(E_{\mathrm{tot}}\) (\(\sin kz\))</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(B_{\mathrm{tot}}\) (\(\cos kz\))</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Le coefficient de réflexion en amplitude est \(r=-1\) (déphasage de \(\pi\)) : une onde EM se réfléchit avec inversion de phase sur un conducteur parfait.</li>
+        <li>Dans le conducteur parfait (\(\sigma\to\infty\)) : \(\vec{E}=\vec{0}\), \(\vec{B}=\vec{0}\) — tout est réfléchi, rien n'est transmis.</li>
+        <li>Les relations de passage sont les conditions aux limites physiques : les mémoriser (<em>rappeler</em> à l'oral).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section 4.5. Relations de passage admises, conformément aux instructions.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND2 · Vecteur de Poynting</span></a>
+    <a class="next" href="ond4.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND4 · OPPM dans un plasma</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-stat');
+  const slK = document.getElementById('sl-k');
+  const vK = document.getElementById('v-k'), vLambda = document.getElementById('v-lambda'), vNodes = document.getElementById('v-nodes');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, t0 = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const k = parseFloat(slK.value);
+    const st = animating ? Math.sin(t0 * 3) : 1;   // sin(ωt)
+    const ct = animating ? Math.cos(t0 * 3) : 1;   // cos(ωt)
+    const pad = { l: 16, r: 30, t: 20, b: 28 };
+    const midY = h * 0.5, amp = h * 0.34;
+    const X0 = pad.l, X1 = w - pad.r, span = X1 - X0;
+    // domaine z ∈ [-Z, 0], le conducteur en z=0 à droite
+    const Z = 3.0;
+    // ligne de référence
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(X0, midY); ctx.lineTo(X1, midY); ctx.stroke();
+
+    // E_tot = 2E0 sin(kz) sin(ωt) ; z = -Z*(1 - (px-X0)/span)
+    function zof(px) { return -Z * (1 - (px - X0) / span); }
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false;
+    for (let px = X0; px <= X1; px += 1) {
+      const z = zof(px);
+      const Y = midY - amp * Math.sin(k * z) * st;
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+    // B_tot ∝ cos(kz) cos(ωt), échelle réduite
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2; ctx.setLineDash([6, 4]); ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) {
+      const z = zof(px);
+      const Y = midY - amp * 0.6 * Math.cos(k * z) * ct;
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // enveloppe sin(kz)
+    ctx.strokeStyle = c.bleu; ctx.globalAlpha = 0.35; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) { const z = zof(px); const Y = midY - amp * Math.sin(k * z); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke();
+    ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) { const z = zof(px); const Y = midY + amp * Math.sin(k * z); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+    // conducteur (barre noire à droite + hachures)
+    ctx.fillStyle = c.text; ctx.globalAlpha = 0.12; ctx.fillRect(X1, pad.t, pad.r, h - pad.b - pad.t); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.text; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(X1, pad.t); ctx.lineTo(X1, h - pad.b); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.save(); ctx.translate(X1 + 16, midY); ctx.rotate(-Math.PI / 2); ctx.fillText('conducteur (z=0)', 0, 0); ctx.restore();
+    ctx.textAlign = 'left'; ctx.fillStyle = c.bleu; ctx.fillText('E', X0, pad.t + 6);
+    ctx.fillStyle = c.rouge; ctx.fillText('B', X0, h - pad.b + 4);
+
+    // compter les noeuds de E : sin(kz)=0 → kz = -nπ
+    const lambda = 2 * Math.PI / k;
+    const nNodes = Math.floor(k * Z / Math.PI) + 1;
+    vK.textContent = fr(k, 1) + ' (u.a.)';
+    vLambda.textContent = fr(lambda, 2) + ' (u.a.)';
+    vNodes.textContent = nNodes;
+  }
+
+  QC.loop(function (t) { if (animating) { t0 = t; draw(); } });
+  slK.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer (vibration en sin ωt)';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

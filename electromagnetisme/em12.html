@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM12 — Haut-parleur électrodynamique · QC Oraux MP*</title>
+<meta name="description" content="Équations électromécaniques couplées du haut-parleur, couplage Bl, conversion réversible et résonance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em11.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html" aria-current="page"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 12 · Électromagnétisme</span>
+    <h1>Haut-parleur électrodynamique : conversion électrique-mécanique</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Décrire le principe du haut-parleur électrodynamique. Établir les équations électromécaniques couplées et analyser la conversion de puissance.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Conversion électromécanique</div>
+      <p>Application de la loi de Laplace et de la loi de Faraday (circuit mobile dans \(\vec{B}\)). Conversion électromécanique. Exigible : modélisation, couplage, bilan de puissance. Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Le haut-parleur comporte une bobine mobile (résistance \(R\), inductance \(L\), \(n\) spires de longueur active totale \(\ell\) dans un entrefer d'induction radiale \(B\)) fixée à une membrane de masse \(m\) et de raideur \(k\), amortisseur de coefficient \(f\). La bobine se déplace selon \(\hat{x}\). On note \(u(t)\) la tension d'alimentation, \(i(t)\) le courant, \(x(t)\) le déplacement.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Équation électrique</span>
+      <p>La bobine est parcourue par \(i\) et se déplace. La f.e.m. de mouvement (Faraday) est \(e_{\mathrm{mov}} = -B\ell\,\dot{x}\). La loi des mailles donne :</p>
+      <p>\[ u = Ri + L\frac{\mathrm{d}i}{\mathrm{d}t} + B\ell\,\dot{x} \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Équation mécanique</span>
+      <p>La force de Laplace sur la bobine est \(F_{\mathrm{L}} = B\ell\,i\) (force motrice). Le second principe de Newton appliqué à la membrane + bobine donne :</p>
+      <p>\[ m\ddot{x} = B\ell\,i - f\dot{x} - kx \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Couplage et conversion</span>
+      <p>Le paramètre de couplage \(\alpha = B\ell\) apparaît dans les deux équations. La puissance mécanique fournie par Laplace est \(P_{\text{méca}} = F_{\mathrm{L}}\,\dot{x} = B\ell\,i\,\dot{x}\). La puissance électrique absorbée par la f.e.m. de mouvement est \(P_{\text{él}} = e_{\mathrm{mov}}\cdot(-i) = B\ell\,i\,\dot{x}\). La conversion est donc réversible : \(P_{\text{méca}} = P_{\text{él}}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Bilan de puissance</span>
+      <p>\[ P_{\mathrm{source}} = Ri^2 + \underbrace{B\ell\,i\,\dot{x}}_{\text{converti}} + L\,i\,\dot{i} \]</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — réponse en fréquence et résonance</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-hp" aria-label="Membrane oscillante du haut-parleur ; amplitude maximale à la résonance mécanique omega0 = sqrt(k/m)"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-f">Fréquence d'excitation \(\omega\) <span class="val" id="v-f">1,0 ω₀</span></label>
+          <input type="range" id="sl-f" min="0.2" max="2.5" step="0.02" value="1">
+          <span class="hint">L'efficacité de conversion est maximale à la résonance mécanique \(\omega_0 = \sqrt{k/m}\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la membrane</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\omega/\omega_0\) = <b id="v-r">1,00</b></span>
+            <span class="ro">amplitude membrane ∝ <b id="v-amp">1,00</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Bobine dans le champ radial \(\vec{B}\) : la force de Laplace \(F=B\ell i\) entraîne la membrane (cône gris). La courbe de réponse (bleu) montre l'amplitude vs \(\omega\), maximale à \(\omega_0=\sqrt{k/m}\). Conversion réversible : haut-parleur ↔ microphone.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Réponse en fréquence</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Force motrice \(F=B\ell i\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Le couplage \(\alpha = B\ell\) intervient symétriquement dans l'équation électrique (f.e.m. contre-réactive) et mécanique (force motrice) : signature d'une conversion réversible.</li>
+        <li>En régime sinusoïdal, la résonance mécanique (\(\omega_0 = \sqrt{k/m}\)) correspond à une efficacité maximale de conversion.</li>
+        <li>Réversibilité : le haut-parleur peut aussi fonctionner en microphone (conversion mécanique \(\to\) électrique).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP. Application directe de la loi de Laplace et de l'induction de Faraday.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em11.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM11 · Courants de Foucault</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Sommaire · Électromagnétisme</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-hp');
+  const slF = document.getElementById('sl-f');
+  const vF = document.getElementById('v-f'), vR = document.getElementById('v-r'), vAmp = document.getElementById('v-amp');
+  const btnAnim = document.getElementById('btn-anim');
+  const Q = 4.0; // facteur de qualité
+  let animating = false, tt = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function ampl(r) { // amplitude résonance: 1/sqrt((1-r^2)^2 + (r/Q)^2)
+    return 1/Math.sqrt(Math.pow(1-r*r,2) + Math.pow(r/Q,2));
+  }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const r = parseFloat(slF.value);
+    const A = ampl(r), Amax = ampl(1);
+    // --- partie gauche : aimant + bobine + membrane oscillante ---
+    const baseX = w*0.10, midY = h*0.40;
+    // aimant
+    ctx.fillStyle = c.muted; ctx.globalAlpha=0.25; ctx.fillRect(baseX, midY-34, 26, 68); ctx.globalAlpha=1;
+    ctx.strokeStyle=c.muted; ctx.lineWidth=1.5; ctx.strokeRect(baseX, midY-34, 26, 68);
+    ctx.fillStyle=c.muted; ctx.font='11px IBM Plex Mono, monospace'; ctx.textAlign='center';
+    ctx.fillText('aimant', baseX+13, midY-40);
+    // déplacement membrane
+    const disp = (A/Amax) * 26 * Math.sin(tt);
+    const coilX = baseX+26 + 14 + disp;
+    // bobine
+    ctx.strokeStyle=c.bleu; ctx.lineWidth=2; ctx.strokeRect(coilX, midY-16, 22, 32);
+    // force motrice
+    ctx.strokeStyle=c.orange; ctx.lineWidth=2.4;
+    ctx.beginPath(); ctx.moveTo(coilX+22, midY); ctx.lineTo(coilX+50, midY);
+    ctx.moveTo(coilX+50,midY); ctx.lineTo(coilX+44,midY-4); ctx.moveTo(coilX+50,midY); ctx.lineTo(coilX+44,midY+4); ctx.stroke();
+    ctx.fillStyle=c.orange; ctx.textAlign='left'; ctx.fillText('F=Bℓi', coilX+54, midY-6);
+    // membrane (cône)
+    ctx.strokeStyle=c.text; ctx.lineWidth=1.8;
+    ctx.beginPath(); ctx.moveTo(coilX+22, midY-16); ctx.lineTo(coilX+70, midY-44);
+    ctx.moveTo(coilX+22, midY+16); ctx.lineTo(coilX+70, midY+44); ctx.stroke();
+    ctx.fillStyle=c.muted; ctx.textAlign='left'; ctx.fillText('membrane', coilX+74, midY+44);
+    // --- partie bas : courbe de réponse ---
+    const plot = QC.makePlot(ctx, w, h*0.52, {xmin:0.2, xmax:2.5, ymin:0, ymax:ampl(1)*1.1, pad:{l:34,r:14,t:h*0.50,b:26}});
+    // décalage manuel : on retrace dans la moitié basse
+    const pad={l:34,r:14,t:h*0.56,b:24};
+    const xmin=0.2,xmax=2.5,ymin=0,ymax=ampl(1)*1.12;
+    const PX=x=>pad.l+(x-xmin)/(xmax-xmin)*(w-pad.l-pad.r);
+    const PY=y=>h-pad.b-(y-ymin)/(ymax-ymin)*(h-pad.t-pad.b);
+    // axes
+    ctx.strokeStyle=c.axis; ctx.lineWidth=1.4;
+    ctx.beginPath(); ctx.moveTo(pad.l,h-pad.b); ctx.lineTo(w-pad.r,h-pad.b);
+    ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,h-pad.b); ctx.stroke();
+    ctx.fillStyle=c.muted; ctx.font='11px IBM Plex Mono, monospace'; ctx.textAlign='right';
+    ctx.fillText('ω/ω₀', w-pad.r, h-pad.b-4);
+    ctx.textAlign='center'; ctx.fillText('amplitude', pad.l+40, pad.t-2);
+    // courbe
+    ctx.strokeStyle=c.bleu; ctx.lineWidth=2.6; ctx.beginPath();
+    let st=false;
+    for (let xx=xmin; xx<=xmax; xx+=0.01){ const yy=ampl(xx); const X=PX(xx),Y=PY(Math.min(yy,ymax));
+      st?ctx.lineTo(X,Y):(ctx.moveTo(X,Y),st=true); }
+    ctx.stroke();
+    // marqueur ω0
+    ctx.strokeStyle=c.muted; ctx.setLineDash([3,3]); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(PX(1),pad.t); ctx.lineTo(PX(1),h-pad.b); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle=c.muted; ctx.textAlign='center'; ctx.fillText('ω₀', PX(1), h-pad.b+14);
+    // point courant
+    ctx.fillStyle=c.rouge; ctx.beginPath(); ctx.arc(PX(r), PY(Math.min(A,ymax)), 4.5, 0, 2*Math.PI); ctx.fill();
+    vF.textContent = fr(r,2)+' ω₀'; vR.textContent = fr(r,2); vAmp.textContent = fr(A/Amax,2);
+  }
+  let lastT=0;
+  QC.loop(function (t) { const dt=t-lastT; lastT=t; if (animating) { tt += dt*4*parseFloat(slF.value); draw(); } });
+  slF.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating=!animating; btnAnim.textContent=animating?'Figer':'Animer la membrane';
+    btnAnim.classList.toggle('active',animating); if(!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

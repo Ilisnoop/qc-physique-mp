@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q6 — Modèle de Bohr (culture) · QC Oraux MP*</title>
+<meta name="description" content="Modèle de Bohr de l'atome d'hydrogène (hors-programme, culture) : niveaux, rayons, formule de Rydberg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="q5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn disabled" aria-disabled="true" title="Dernière question"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html" aria-current="page"><span class="qn">Q6</span>Modèle de Bohr</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 6 · Mécanique quantique</span>
+    <h1>Modèle de Bohr de l'atome d'hydrogène</h1>
+    <p class="q-sources"><span class="src">POLY p.4</span><span class="src">PL-220</span></p>
+  </header>
+
+  <div class="box warn">
+    <div class="box-title">⚠ Hors-programme strict MP</div>
+    <p>Le modèle de Bohr <strong>n'est pas une capacité exigible</strong> en MP. Il est présenté ici <strong>uniquement pour la culture</strong> attendue en oral. Ne jamais le présenter comme relevant des capacités exigibles : l'ensemble du contenu ci-dessous figure dans un encadré culture.</p>
+  </div>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Présenter le modèle de Bohr : hypothèses, niveaux d'énergie et rayons d'orbite, formule de Rydberg, apports et limites historiques.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box culture">
+      <div class="box-title">✦ Culture · hors-programme</div>
+      <p>Le modèle de Bohr n'est pas une capacité exigible MP. Il est universellement attendu comme <strong>culture</strong> en oral, apport historique fondamental à la quantification de l'énergie. Tout le contenu de cette question est donc présenté dans cet encadré culture, avec l'avertissement ci-dessus.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D · E</span> Cadre et développement</h2>
+    <div class="box culture">
+      <div class="box-title">✦ Modèle de Bohr (1913) — culture</div>
+
+      <p style="font-style:italic;font-family:var(--font-display);font-weight:600;margin-top:.5rem">Hypothèses (1913)</p>
+      <ul>
+        <li>L'électron décrit des orbites circulaires autour du proton, sous l'action de la force coulombienne.</li>
+        <li>Seules les orbites vérifiant la quantification du moment cinétique \(L=n\hbar\) (\(n=1,2,3,\dots\)) sont stables.</li>
+        <li>Émission/absorption d'un photon uniquement lors d'une transition : \(h\nu=E_n-E_{n'}\) (Planck-Einstein).</li>
+      </ul>
+
+      <p style="font-style:italic;font-family:var(--font-display);font-weight:600">Niveaux d'énergie</p>
+      <p>Équilibre centripète/coulombien : \(\frac{m_ev^2}{r_n}=\frac{e^2}{4\pi\varepsilon_0 r_n^2}\Rightarrow m_ev^2r_n=\frac{e^2}{4\pi\varepsilon_0}\). Quantification \(m_evr_n=n\hbar\Rightarrow v=n\hbar/(m_er_n)\). En substituant :</p>
+      <p>\[ r_n=\frac{4\pi\varepsilon_0\hbar^2}{m_e e^2}n^2=n^2 a_0, \] \(a_0=4\pi\varepsilon_0\hbar^2/(m_ee^2)\approx 0{,}053\,\mathrm{nm}\) rayon de Bohr.</p>
+      <p>Énergie : \(E_c=\tfrac12 m_ev^2=\tfrac12 e^2/(4\pi\varepsilon_0 r_n)\), \(E_p=-e^2/(4\pi\varepsilon_0 r_n)=-2E_c\) (viriel), donc</p>
+      <p>\[ E_n=E_c+E_p=-E_c=-\frac{m_e e^4}{2(4\pi\varepsilon_0)^2\hbar^2}\frac{1}{n^2}=-\frac{E_I}{n^2}, \] \(E_I=13{,}6\,\mathrm{eV}\) énergie d'ionisation.</p>
+
+      <p style="font-style:italic;font-family:var(--font-display);font-weight:600">Formule de Rydberg</p>
+      <p>Transition \(n\to n'\) (\(n&gt;n'\)) : \[ \frac{1}{\lambda}=R_\infty\left(\frac{1}{n'^2}-\frac{1}{n^2}\right), \] avec \[ R_\infty=\frac{m_ee^4}{8\varepsilon_0^2h^3c}\approx 1{,}097\times10^7\,\mathrm{m^{-1}}. \] Séries : Lyman (\(n'=1\)), Balmer (\(n'=2\)), Paschen (\(n'=3\)).</p>
+
+      <p style="font-style:italic;font-family:var(--font-display);font-weight:600">Apports</p>
+      <p>Premier modèle quantitatif du spectre de l'hydrogène ; quantification de l'énergie et du moment cinétique ; préfigure la mécanique ondulatoire (condition de Bohr ↔ onde de de Broglie stationnaire sur l'orbite : \(2\pi r_n=n\lambda_{dB}\)).</p>
+
+      <p style="font-style:italic;font-family:var(--font-display);font-weight:600">Limites</p>
+      <p>Inapplicable aux atomes multi-électroniques ; pas de probabilités de transition (intensités) ; orbites classiques incompatibles avec Heisenberg ; remplacé par Schrödinger (1926).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Figure interactive</h2>
+    <div class="box culture" style="padding:0;overflow:hidden">
+      <figure class="figure" style="border:none;box-shadow:none;background:transparent">
+        <div class="fig-canvas-wrap" style="background:var(--color-bg)">
+          <canvas id="cv-bohr" aria-label="Diagramme des niveaux de Bohr et transitions"></canvas>
+        </div>
+        <div class="controls">
+          <div class="control">
+            <label for="sl-nhi">Niveau haut \(n\) <span class="val" id="v-nhi">3</span></label>
+            <input type="range" id="sl-nhi" min="2" max="6" step="1" value="3">
+          </div>
+          <div class="control">
+            <label for="sl-nlo">Niveau bas \(n'\) <span class="val" id="v-nlo">2</span></label>
+            <input type="range" id="sl-nlo" min="1" max="5" step="1" value="2">
+            <span class="hint">On impose \(n&gt;n'\) (émission).</span>
+          </div>
+          <div class="control">
+            <div class="readout">
+              <span class="ro">\(1/\lambda\) = <b id="v-invlam">—</b></span>
+              <span class="ro">\(\lambda\) = <b id="v-lambda">—</b></span>
+            </div>
+            <div class="readout" style="margin-top:.5rem">
+              <span class="ro">Série : <b id="v-serie">—</b></span>
+              <span class="ro">Domaine : <b id="v-domaine">—</b></span>
+            </div>
+            <div id="color-swatch" style="margin-top:.5rem;height:14px;border-radius:7px;border:1px solid var(--color-border)"></div>
+          </div>
+        </div>
+        <figcaption class="fig-legend">
+          Diagramme des niveaux \(E_n=-E_I/n^2\) (échelle verticale dilatée pour la lisibilité ; l'écart réel décroît en \(1/n^2\) et converge vers 0 = ionisation à \(n\to\infty\)). Deux transitions de référence sont repérées :
+          <strong>Lyman \(\alpha\)</strong> = \(2\to1\) (UV, flèche verte) et <strong>Balmer \(H_\alpha\)</strong> = \(3\to2\) (visible rouge, flèche rouge). Choisissez deux niveaux pour calculer \(\lambda\) via Rydberg.
+          <div class="legend-swatches">
+            <span class="swatch"><i style="background:var(--curve-vert)"></i>Lyman α (2→1, UV)</span>
+            <span class="swatch"><i style="background:var(--curve-rouge)"></i>Balmer Hα (3→2, visible)</span>
+            <span class="swatch"><i style="background:var(--curve-bleu)"></i>Transition sélectionnée</span>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> À ne pas oublier à l'oral (culture)</h2>
+    <div class="box culture">
+      <div class="box-title">✦ Points clés — à présenter comme culture</div>
+      <ul>
+        <li>Connaître \(a_0\approx 0{,}053\,\mathrm{nm}\) et \(E_I\approx 13{,}6\,\mathrm{eV}\).</li>
+        <li>Retrouver \(r_n=n^2a_0\) et \(E_n=-E_I/n^2\).</li>
+        <li>Relier Bohr à la condition de de Broglie sur l'orbite : \(2\pi r_n=n\lambda_{dB}\).</li>
+        <li><strong>Ne jamais</strong> le présenter comme une capacité exigible.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Conformité au programme</h2>
+    <div class="box warn">
+      <div class="box-title">⚠ Conformité</div>
+      <p>Hors programme strict MP, présenté pour culture en oral. Ne jamais présenter comme capacité exigible.</p>
+    </div>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="q5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Q5 · Puits infini 1D</span></a>
+    <a class="next disabled"><span class="pn-dir">Suivant →</span><span class="pn-title">—</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-bohr');
+  const slHi = document.getElementById('sl-nhi'), slLo = document.getElementById('sl-nlo');
+  const vHi = document.getElementById('v-nhi'), vLo = document.getElementById('v-nlo');
+  const vInv = document.getElementById('v-invlam'), vLam = document.getElementById('v-lambda');
+  const vSerie = document.getElementById('v-serie'), vDom = document.getElementById('v-domaine');
+  const swatch = document.getElementById('color-swatch');
+
+  const R = 1.097373e7;       // m^-1
+  const EI = 13.6;            // eV
+
+  function serieName(nlo) {
+    return nlo === 1 ? 'Lyman' : nlo === 2 ? 'Balmer' : nlo === 3 ? 'Paschen' : nlo === 4 ? 'Brackett' : 'Pfund';
+  }
+  // couleur visible approchée à partir de λ (nm)
+  function visibleColor(lamNm) {
+    if (lamNm < 380) return { dom: 'ultraviolet', css: '#7a4fd0' };
+    if (lamNm > 780) return { dom: 'infrarouge', css: '#7a2a2a' };
+    let r = 0, g = 0, b = 0;
+    if (lamNm < 440) { r = -(lamNm - 440) / 60; b = 1; }
+    else if (lamNm < 490) { g = (lamNm - 440) / 50; b = 1; }
+    else if (lamNm < 510) { g = 1; b = -(lamNm - 510) / 20; }
+    else if (lamNm < 580) { r = (lamNm - 510) / 70; g = 1; }
+    else if (lamNm < 645) { r = 1; g = -(lamNm - 645) / 65; }
+    else { r = 1; }
+    const f = c => Math.round(255 * Math.min(1, Math.max(0, c)));
+    return { dom: 'visible', css: `rgb(${f(r)},${f(g)},${f(b)})` };
+  }
+
+  function compute() {
+    let nhi = parseInt(slHi.value), nlo = parseInt(slLo.value);
+    if (nlo >= nhi) { nlo = nhi - 1; slLo.value = nlo; }
+    vHi.textContent = nhi; vLo.textContent = nlo;
+    const inv = R * (1 / (nlo * nlo) - 1 / (nhi * nhi)); // m^-1
+    const lam = 1 / inv;          // m
+    const lamNm = lam * 1e9;
+    vInv.textContent = (inv).toExponential(3).replace('.', ',').replace('e+', '·10^') + ' m⁻¹';
+    vLam.textContent = lamNm.toLocaleString('fr-FR', { maximumFractionDigits: 1 }) + ' nm';
+    vSerie.textContent = serieName(nlo);
+    const col = visibleColor(lamNm);
+    vDom.textContent = col.dom;
+    swatch.style.background = col.css;
+    return { nhi, nlo };
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const { nhi, nlo } = compute();
+    const s = QC.setup(cv, 360);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const pad = { l: 70, r: 30, t: 26, b: 26 };
+    const x0 = pad.l, x1 = w - pad.r, yTop = pad.t, yBot = h - pad.b;
+    // niveaux E_n = -EI/n² ; on dilate pour lisibilité : map e∈[-13.6,0] mais étiré.
+    // utiliser une fonction qui écarte les bas niveaux
+    function levelY(nn) {
+      const E = -EI / (nn * nn);     // -13.6 .. 0
+      const frac = (E + EI) / EI;    // 0 (n=1) .. 1 (n=∞)
+      // dilatation : on map n=1..6 avec leurs E réels mais sur l'espace dispo
+      return yBot - frac * (yBot - yTop);
+    }
+    // axe énergie
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.save(); ctx.translate(18, (yTop + yBot) / 2); ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center'; ctx.fillText('Énergie  Eₙ = −E_I / n²', 0, 0); ctx.restore();
+
+    // niveau ionisation n=∞ (E=0)
+    ctx.strokeStyle = c.muted; ctx.setLineDash([5, 4]); ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(x0, yTop); ctx.lineTo(x1, yTop); ctx.stroke(); ctx.setLineDash([]);
+    ctx.textAlign = 'left'; ctx.fillStyle = c.muted; ctx.fillText('n→∞  (E=0, ionisation)', x0 + 4, yTop - 8);
+
+    // niveaux 1..6
+    const Ys = {};
+    for (let n = 1; n <= 6; n++) {
+      const Y = levelY(n); Ys[n] = Y;
+      ctx.strokeStyle = c.bleu; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x0, Y); ctx.lineTo(x1, Y); ctx.stroke();
+      ctx.fillStyle = c.text; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+      ctx.fillText('n=' + n, x0 - 8, Y + 4);
+      ctx.textAlign = 'left'; ctx.fillStyle = c.muted;
+      ctx.fillText((-EI / (n * n)).toFixed(2) + ' eV', x1 + 4 > w - 2 ? x1 - 60 : x0 + 4, Y - 5);
+    }
+
+    function arrow(nFrom, nTo, color, label, xfrac, lw) {
+      const xa = x0 + xfrac * (x1 - x0);
+      const yA = Ys[nFrom], yB = Ys[nTo];
+      ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = lw || 2;
+      ctx.beginPath(); ctx.moveTo(xa, yA); ctx.lineTo(xa, yB); ctx.stroke();
+      // pointe vers le bas (émission)
+      ctx.beginPath(); ctx.moveTo(xa, yB); ctx.lineTo(xa - 4, yB - 8); ctx.lineTo(xa + 4, yB - 8); ctx.closePath(); ctx.fill();
+      ctx.font = '600 11px Inter, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(label, xa, (yA + yB) / 2);
+    }
+    // transitions de référence
+    arrow(2, 1, c.vert, 'Lyman α', 0.30, 2);
+    arrow(3, 2, c.rouge, 'Balmer Hα', 0.55, 2);
+    // transition sélectionnée (mise en avant)
+    if (!((nhi === 2 && nlo === 1) || (nhi === 3 && nlo === 2))) {
+      arrow(nhi, nlo, c.bleu, nhi + '→' + nlo, 0.80, 3);
+    } else {
+      // surligner la transition de référence concernée
+      arrow(nhi, nlo, c.bleu, '(sélection)', 0.80, 3);
+    }
+  }
+
+  slHi.addEventListener('input', draw);
+  slLo.addEventListener('input', draw);
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

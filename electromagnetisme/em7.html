@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM7 — Induction : circuit fixe, B variable · QC Oraux MP*</title>
+<meta name="description" content="Loi de Faraday pour un circuit fixe, inductance propre L, énergie magnétique et inductance mutuelle M.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em6.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em8.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html" aria-current="page"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 7 · Électromagnétisme</span>
+    <h1>Induction : circuit fixe dans un champ \(B\) variable</h1>
+    <p class="q-sources"><span class="src">POLY p.1</span><span class="src">PL-104</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir la f.e.m. induite dans un circuit fixe soumis à un champ magnétique variable. Définir l'inductance propre \(L\), l'énergie magnétique \(W_L\), et l'inductance mutuelle \(M\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Induction (Faraday-Neumann)</div>
+      <p>Prolongement de MPSI : loi de Faraday, inductance propre et mutuelle. En MP, replacé dans le cadre de Maxwell-Faraday. Capacité exigible : « Associer l'équation de Maxwell-Faraday à la loi de Faraday. » Niveau MPSI/MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Circuit \(\mathcal{C}_1\) fixe, de contour \(C\). On note \(\Phi = \iint_S \vec{B}\cdot\mathrm{d}\vec{S}\) le flux du champ magnétique à travers une surface \(S\) appuyée sur \(C\), orientée selon la règle de la main droite par rapport au sens positif du courant.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Loi de Faraday</span>
+      <p>En intégrant Maxwell-Faraday \(\vec{\mathrm{rot}}\,\vec{E} = -\partial_t\vec{B}\) sur la surface \(S\) et en appliquant Stokes :</p>
+      <p>\[ e = \oint_C \vec{E}\cdot\mathrm{d}\vec{\ell} = -\frac{\mathrm{d}\Phi}{\mathrm{d}t} \]</p>
+      <p>La f.e.m. induite \(e\) est opposée à la variation du flux (loi de Lenz).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Inductance propre</span>
+      <p>Si le flux est créé par le propre courant \(i\) du circuit, par linéarité des équations de Maxwell en magnétostatique : \(\Phi = L\,i\), où \(L>0\) est l'inductance propre (en \(\mathrm{H}\)). La f.e.m. d'auto-induction est \(e = -L\,\mathrm{d}i/\mathrm{d}t\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Énergie magnétique stockée</span>
+      <p>Le travail fourni par la source pour établir le courant \(i\) est \(\displaystyle W_L = \frac{1}{2}L\,i^2\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Inductance mutuelle</span>
+      <p>Pour deux circuits \(\mathcal{C}_1\) et \(\mathcal{C}_2\), le flux de \(\vec{B}_2\) (créé par \(i_2\)) à travers \(\mathcal{C}_1\) est \(\Phi_{21} = M\,i_2\). Par le théorème de Neumann, \(M_{12} = M_{21} = M\) (symétrie). La f.e.m. induite dans \(\mathcal{C}_1\) par \(\mathcal{C}_2\) est \(e_1 = -M\,\mathrm{d}i_2/\mathrm{d}t\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — f.e.m. induite \(e = -\mathrm{d}\Phi/\mathrm{d}t\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-fem" aria-label="Champ B(t) sinusoïdal réglable et f.e.m. induite e = -dPhi/dt en quadrature"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-w">Pulsation \(\omega\) de \(B(t)\) <span class="val" id="v-w">1,5 rad·s⁻¹</span></label>
+          <input type="range" id="sl-w" min="0.4" max="4" step="0.1" value="1.5">
+          <label for="sl-b" style="margin-top:.5rem">Amplitude \(B_0\) <span class="val" id="v-b">1,0</span></label>
+          <input type="range" id="sl-b" min="0.3" max="2" step="0.1" value="1">
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le temps</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\Phi(t)=B_0\mathcal{A}\sin\omega t\)</span>
+            <span class="ro">\(e=-\omega B_0\mathcal{A}\cos\omega t\)</span>
+            <span class="ro">\(|e|_{\max}\) ∝ <b id="v-emax">1,50</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Tracé de \(\Phi(t)\) (bleu, \(\propto B(t)\)) et de la f.e.m. induite \(e(t)=-\mathrm{d}\Phi/\mathrm{d}t\) (rouge), en quadrature. Augmenter \(\omega\) ou \(B_0\) accroît \(|e|\). La f.e.m. s'oppose à la variation de flux (loi de Lenz).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Flux \(\Phi(t)\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>F.e.m. \(e(t)=-\mathrm{d}\Phi/\mathrm{d}t\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Loi de Lenz : le sens de la f.e.m. induite est toujours tel que le courant induit s'oppose à la cause qui lui a donné naissance.</li>
+        <li>\(W_L = \frac{1}{2}Li^2\) : analogue à \(\frac{1}{2}mv^2\) — \(L\) joue le rôle d'une inertie.</li>
+        <li>La mutuelle vérifie \(|M| \leq \sqrt{L_1 L_2}\) ; le coefficient de couplage \(k = M/\sqrt{L_1 L_2} \in [-1,1]\).</li>
+        <li>Pour un circuit fixe, la loi de Faraday découle directement de Maxwell-Faraday (pas de force de Lorentz).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MPSI/MP.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em6.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM6 · Dipôle magnétostatique</span></a>
+    <a class="next" href="em8.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM8 · Induction : circuit mobile</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-fem');
+  const slW = document.getElementById('sl-w'), slB = document.getElementById('sl-b');
+  const vW = document.getElementById('v-w'), vB = document.getElementById('v-b'), vEmax = document.getElementById('v-emax');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, tt = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const om = parseFloat(slW.value), B0 = parseFloat(slB.value);
+    const plot = QC.makePlot(ctx, w, h, {xmin:0, xmax:6, ymin:-Math.max(B0,om*B0)*1.15-0.2, ymax:Math.max(B0,om*B0)*1.15+0.2, pad:{l:34,r:14,t:16,b:26}});
+    plot.grid(c, {xticks:6, yticks:4});
+    plot.axes(c, {xlabel:'t', ylabel:''});
+    // Phi(t) ∝ B0 sin(om t) (en référentiel défilant tt)
+    plot.curve(x => B0*Math.sin(om*x - tt), c.bleu, {lw:2.6});
+    // e(t) = -dPhi/dt = -om B0 cos(om t)
+    plot.curve(x => -om*B0*Math.cos(om*x - tt), c.rouge, {lw:2.4, dash:[6,4]});
+    vW.textContent = fr(om,1)+' rad·s⁻¹'; vB.textContent = fr(B0,1);
+    vEmax.textContent = fr(om*B0,2);
+  }
+  let lastT=0;
+  QC.loop(function (t) { const dt=t-lastT; lastT=t; if (animating) { tt += dt*1.4; draw(); } });
+  slW.addEventListener('input', draw); slB.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating=!animating; btnAnim.textContent=animating?'Figer':'Animer le temps';
+    btnAnim.classList.toggle('active',animating); if(!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

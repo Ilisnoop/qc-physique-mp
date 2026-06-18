@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM2 — Conservation de la charge · QC Oraux MP*</title>
+<meta name="description" content="Équation locale de conservation de la charge et compatibilité avec les équations de Maxwell.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html" aria-current="page"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Électromagnétisme</span>
+    <h1>Conservation de la charge : forme locale, compatibilité avec Maxwell</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir l'équation locale de conservation de la charge. Montrer ensuite que les équations de Maxwell sont automatiquement compatibles avec cette équation.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.3 Équations de Maxwell</div>
+      <p>« Établir l'équation locale de la conservation de la charge en coordonnées cartésiennes dans le cas à une dimension. Vérifier la cohérence des équations de Maxwell avec l'équation locale de la conservation de la charge. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère un volume \(V\) fixe délimité par une surface \(S\). La charge contenue est \(Q = \iiint_V \rho\,\mathrm{d}V\). Le courant sortant vaut \(I_{\mathrm{sortant}} = \iint_S \vec{j}\cdot\mathrm{d}\vec{S}\). La conservation de la charge impose \(\mathrm{d}Q/\mathrm{d}t = -I_{\mathrm{sortant}}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Établissement de l'équation locale</span>
+      <p>La conservation de la charge s'écrit \(\dfrac{\mathrm{d}Q}{\mathrm{d}t} = -\iint_S \vec{j}\cdot\mathrm{d}\vec{S}\). Le membre de gauche vaut \(\iiint_V \partial\rho/\partial t\,\mathrm{d}V\) (volume fixe). Le membre de droite, par Ostrogradski, vaut \(-\iiint_V \mathrm{div}\,\vec{j}\,\mathrm{d}V\). Comme cela vaut pour tout volume \(V\) :</p>
+      <p>\[ \frac{\partial \rho}{\partial t} + \mathrm{div}\,\vec{j} = 0 \]</p>
+      <p>En coordonnées cartésiennes, à une dimension selon \(x\) : \(\partial\rho/\partial t + \partial j_x/\partial x = 0\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Compatibilité avec Maxwell</span>
+      <p>On applique l'opérateur divergence à Maxwell-Ampère :</p>
+      <p>\[ \mathrm{div}(\vec{\mathrm{rot}}\,\vec{B}) = \mu_0\,\mathrm{div}\,\vec{j} + \mu_0\varepsilon_0 \frac{\partial}{\partial t}(\mathrm{div}\,\vec{E}) \]</p>
+      <p>Or \(\mathrm{div}(\vec{\mathrm{rot}}\,\vec{B}) = 0\) identiquement. On substitue Maxwell-Gauss \(\mathrm{div}\,\vec{E} = \rho/\varepsilon_0\) :</p>
+      <p>\[ 0 = \mu_0\,\mathrm{div}\,\vec{j} + \mu_0\varepsilon_0\frac{\partial}{\partial t}\!\left(\frac{\rho}{\varepsilon_0}\right) = \mu_0\!\left(\mathrm{div}\,\vec{j} + \frac{\partial\rho}{\partial t}\right) \]</p>
+      <p>On retrouve exactement l'équation de conservation de la charge. Le courant de déplacement \(\varepsilon_0 \partial_t\vec{E}\) est donc <em>indispensable</em> à cette compatibilité.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — bilan de charge dans un volume</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-charge" aria-label="Volume fixe V : la charge Q décroît à mesure que le courant j sort par la surface S"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-j">Flux sortant \(I_{\mathrm{sortant}}\) <span class="val" id="v-j">1,2 A</span></label>
+          <input type="range" id="sl-j" min="-2" max="2" step="0.1" value="1.2">
+          <span class="hint" id="hint-j">\(I_{\mathrm{sortant}}>0\) : la charge \(Q\) diminue (\(\mathrm{d}Q/\mathrm{d}t<0\)).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le vidage</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(Q\) (u.a.) = <b id="v-Q">100</b></span>
+            <span class="ro">\(\mathrm{d}Q/\mathrm{d}t\) = <b id="v-dQ">−1,2</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Volume fixe \(V\) (boîte bleue) contenant la charge \(Q\). Les flèches rouges représentent \(\vec{j}\) traversant \(S\). On vérifie en direct \(\mathrm{d}Q/\mathrm{d}t = -I_{\mathrm{sortant}}\) : un courant sortant positif vide la boîte.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Volume \(V\), charge \(Q\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Densité de courant \(\vec{j}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>L'équation \(\partial_t\rho + \mathrm{div}\,\vec{j}=0\) est une loi de conservation locale : analogue à la conservation de la masse en mécanique des fluides.</li>
+        <li>Sans le courant de déplacement, Maxwell-Ampère (\(\vec{\mathrm{rot}}\,\vec{B} = \mu_0\vec{j}\)) est incompatible avec la conservation de la charge (sa divergence donnerait \(\mathrm{div}\,\vec{j}=0\), vrai seulement en statique).</li>
+        <li>En régime stationnaire : \(\partial_t\rho = 0\), d'où \(\mathrm{div}\,\vec{j}=0\) — les lignes de courant se referment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Entièrement au programme MP, section §4.3.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM1 · Équations de Maxwell</span></a>
+    <a class="next" href="em3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM3 · Magnétostatique : fil infini</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-charge');
+  const slJ = document.getElementById('sl-j');
+  const vJ = document.getElementById('v-j'), vQ = document.getElementById('v-Q'), vdQ = document.getElementById('v-dQ');
+  const hintJ = document.getElementById('hint-j'), btnAnim = document.getElementById('btn-anim');
+  let animating = false, Q = 100;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const J = parseFloat(slJ.value);
+    // boîte volume V centrée
+    const bx = w*0.30, by = h*0.28, bw = w*0.36, bh = h*0.42;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4;
+    ctx.strokeRect(bx, by, bw, bh);
+    // remplissage proportionnel à Q
+    const fillH = bh * Math.max(0, Math.min(1, Q/100));
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.16;
+    ctx.fillRect(bx, by + bh - fillH, bw, fillH); ctx.globalAlpha = 1;
+    ctx.fillStyle = c.text; ctx.font = '13px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('V , charge Q', bx + bw/2, by + bh/2);
+    // flèches j sortant (à droite si J>0, entrant si J<0)
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.2;
+    const n = 3, dir = Math.sign(J) || 1, mag = Math.min(60, 18 + Math.abs(J)*22);
+    for (let i = 0; i < n; i++) {
+      const yy = by + bh*(i+1)/(n+1);
+      const x0 = (J>=0) ? bx+bw : bx;
+      const x1 = x0 + dir*mag;
+      ctx.beginPath(); ctx.moveTo(x0, yy); ctx.lineTo(x1, yy);
+      ctx.moveTo(x1, yy); ctx.lineTo(x1 - dir*7, yy-4);
+      ctx.moveTo(x1, yy); ctx.lineTo(x1 - dir*7, yy+4); ctx.stroke();
+    }
+    ctx.fillStyle = c.rouge; ctx.textAlign = (J>=0)?'left':'right';
+    ctx.fillText('j', (J>=0)? bx+bw+mag+10 : bx-mag-10, by+bh/2);
+    // équation
+    ctx.fillStyle = c.muted; ctx.textAlign = 'center';
+    ctx.fillText('dQ/dt = − ∯ j·dS', w/2, h - 12);
+    vJ.textContent = fr(J,1) + ' A';
+    vQ.textContent = fr(Q,0);
+    vdQ.textContent = fr(-J,1);
+    hintJ.textContent = (J>=0) ? 'I_sortant > 0 : la charge Q diminue (dQ/dt < 0).' : 'I_sortant < 0 : courant entrant, la charge Q augmente.';
+  }
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { Q -= parseFloat(slJ.value) * dt * 12; if (Q<0) Q=0; if (Q>100) Q=100; draw(); }
+  });
+  slJ.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le vidage';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw(); else { Q = 100; }
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

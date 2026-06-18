@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T5 — Gaz parfaits & gaz réels · QC Oraux MP*</title>
+<meta name="description" content="Gaz parfait, gaz réel, modèle de van der Waals, diagrammes d'Amagat et de Clapeyron, isothermes d'Andrews et point critique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Thermodynamique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="t4.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="t6.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="t1.html"><span class="qn">T1</span>Machines dithermes &amp; Carnot</a>
+        <a href="t2.html"><span class="qn">T2</span>Second principe &amp; entropie du GP</a>
+        <a href="t3.html"><span class="qn">T3</span>Premier principe industriel · Joule-Kelvin</a>
+        <a href="t4.html"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
+        <a href="t5.html" aria-current="page"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
+        <a href="t6.html"><span class="qn">T6</span>Changement d'état du corps pur</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 5 · Thermodynamique</span>
+    <h1>Gaz parfaits et gaz réels</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir un gaz parfait et un gaz réel. Présenter le modèle de van der Waals. Comparer le comportement des gaz réels au modèle du gaz parfait sur les diagrammes d'Amagat et de Clapeyron. Définir les isothermes d'Andrews et le point critique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 3.1 Système thermodynamique à l'équilibre</div>
+      <p>Équation d'état des gaz parfaits ; du gaz réel au gaz parfait : comparer le comportement d'un gaz réel au modèle du gaz parfait sur des réseaux d'isothermes en coordonnées de Clapeyron ou d'Amagat. Corps pur diphasé en équilibre, diagramme de Clapeyron \((P,v)\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Gaz parfait</strong> : molécules ponctuelles sans interaction, équation d'état \(PV = nRT\).</li>
+      <li><strong>Gaz réel</strong> : présence d'interactions moléculaires (attraction de van der Waals, répulsion à courte distance) et de volume propre des molécules.</li>
+      <li><strong>Facteur de compressibilité</strong> : \(Z = PV_m/(RT)\), égal à 1 pour un GP.</li>
+      <li><strong>Modèle de van der Waals</strong> : \(\left(P + a/V_m^2\right)(V_m - b) = RT\), où \(a &gt; 0\) tient compte des interactions attractives et \(b &gt; 0\) du covolume moléculaire.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+
+    <div class="demo-step">
+      <span class="step-label">1 · Diagramme d'Amagat (\(Z\) en fonction de \(P\))</span>
+      <p>Pour un gaz parfait, \(Z = 1\) quelle que soit la pression. Pour un gaz réel :</p>
+      <ul>
+        <li>À basse pression : \(Z \approx 1\) (comportement idéal).</li>
+        <li>À pression modérée : \(Z &lt; 1\) pour la plupart des gaz (les attractions dominent).</li>
+        <li>À haute pression : \(Z &gt; 1\) (le covolume \(b\) domine : répulsions effectives).</li>
+        <li>Il existe une température particulière, la <em>température de Boyle</em> \(T_B\), à laquelle \(Z\) reste voisin de 1 sur un large domaine de pression.</li>
+      </ul>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">2 · Isothermes de van der Waals (diagramme de Clapeyron)</span>
+      <p>L'équation de van der Waals donne \(P = RT/(V_m - b) - a/V_m^2\).</p>
+      <ul>
+        <li>Pour \(T &gt; T_c\) (<em>isotherme supercritique</em>) : \(P\) est une fonction décroissante monotone de \(V_m\) : le fluide est en phase supercritique, ni liquide ni gaz.</li>
+        <li>Pour \(T = T_c\) : l'isotherme critique présente un point d'inflexion à tangente horizontale (point critique). Les conditions sont :
+          <p>\[ \left(\frac{\partial P}{\partial V_m}\right)_T = 0 \quad \text{et} \quad \left(\frac{\partial^2 P}{\partial V_m^2}\right)_T = 0, \]</p>
+          d'où \(T_c = 8a/(27Rb)\), \(P_c = a/(27b^2)\), \(V_{c,m} = 3b\).</li>
+        <li>Pour \(T &lt; T_c\) (<em>isotherme sous-critique</em>) : la courbe présente un maximum et un minimum locaux (boucle de van der Waals), physiquement inacceptable. On la remplace par le palier de changement d'état (construction de Maxwell : aire au-dessus du palier = aire en dessous).</li>
+      </ul>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Fluide hypercritique</span>
+      <p>Au-delà du point critique (\(T &gt; T_c\) et \(P &gt; P_c\)), le fluide est dit <em>supercritique</em> (ou hypercritique) : il n'existe plus de distinction entre phase liquide et phase gazeuse, et la densité peut varier de façon continue de celle d'un liquide à celle d'un gaz.</p>
+      <p>Applications : extraction au \(\mathrm{CO_2}\) supercritique (\(T_c = 304\,\text{K}\), \(P_c = 73{,}8\,\text{bar}\)) en industrie alimentaire et pharmaceutique.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — isothermes de van der Waals</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-vdw" aria-label="Isothermes de van der Waals dans le diagramme de Clapeyron P-Vm, température réduite réglable, point critique réduit (1,5 ; 0,444)"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-tr">Température réduite \(T/T_c\) <span class="val" id="v-tr">0,90</span></label>
+          <input type="range" id="sl-tr" min="0.80" max="1.30" step="0.005" value="0.90">
+          <span class="hint" id="hint-tr">T &lt; T_c : boucle de van der Waals (non physique, palier de Maxwell).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Balayer T</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout" style="margin-top:.2rem">
+            <span class="ro">Point critique réduit : \((V_{c}, P_{c})\) = <b>(1,5 ; 0,444)</b></span>
+            <span class="ro">\(T_c = 8a/27Rb\) (a=3, b=0,5, R=1) ⇒ \(T_c\) = <b>1,778</b></span>
+            <span class="ro">Régime : <b id="v-reg">sous-critique</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Réseau d'isothermes de van der Waals \(P = RT/(V_m - b) - a/V_m^2\) (paramètres réduits \(a=3\), \(b=0{,}5\), \(R=1\)). Le point critique exact est en \((V_c, P_c) = (1{,}5\,;\,0{,}444)\). L'isotherme courante (couleur variant avec le régime) est tracée sur le réseau gris des isothermes voisines ; pour \(T &lt; T_c\) apparaît la boucle non physique.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(T &lt; T_c\) (sous-critique)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(T = T_c\) (critique)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(T &gt; T_c\) (supercritique)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La boucle de van der Waals est <em>non physique</em> ; sa correction par la construction de Maxwell est au programme.</li>
+        <li>Le fluide supercritique ne peut être ni condensé par isotherme, ni vaporisé ; la frontière liquide-vapeur n'existe plus.</li>
+        <li>Ordres de grandeur du point critique de l'eau : \(T_c = 647\,\text{K}\), \(P_c = 221\,\text{bar}\).</li>
+        <li>Le diagramme d'Amagat (\(Z\) vs \(P\)) quantifie l'écart au GP ; \(Z &gt; 1\) à haute pression.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Entièrement au programme MPSI (3.1). La notion de fluide supercritique et le modèle de van der Waals sont explicitement au programme. Aucune notion hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="t4.html"><span class="pn-dir">← Précédent</span><span class="pn-title">T4 · Lois de Joule · Joule Gay-Lussac</span></a>
+    <a class="next" href="t6.html"><span class="pn-dir">Suivant →</span><span class="pn-title">T6 · Changement d'état du corps pur</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Thermodynamique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-vdw');
+  const slTr = document.getElementById('sl-tr');
+  const vTr = document.getElementById('v-tr'), vReg = document.getElementById('v-reg');
+  const hint = document.getElementById('hint-tr'), btnAnim = document.getElementById('btn-anim');
+  // paramètres réduits : a=3, b=0.5, R=1 -> Tc=1.778, Vc=1.5, Pc=0.444
+  const a = 3, b = 0.5, Rg = 1, Tc = 8 * a / (27 * Rg * b), Vc = 3 * b, Pc = a / (27 * b * b);
+  let animating = false, trAnim = 0.9, dir = 1;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function Pvdw(Vm, T) { return Rg * T / (Vm - b) - a / (Vm * Vm); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 340);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const tr = parseFloat(slTr.value), T = tr * Tc;
+
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0.6, xmax: 5.0, ymin: 0, ymax: 1.2, pad: { l: 46, r: 18, t: 18, b: 36 } });
+    plot.grid(c, { xticks: 6, yticks: 5 });
+    plot.axes(c, { xlabel: 'Vₘ', ylabel: 'P' });
+
+    // réseau gris d'isothermes voisines
+    const trs = [0.85, 0.95, 1.0, 1.1, 1.25];
+    trs.forEach(function (t0) {
+      plot.curve(function (V) { const p = Pvdw(V, t0 * Tc); return (p > 0 && V > b) ? p : NaN; }, c.grid, { lw: 1, N: 300 });
+    });
+
+    // isotherme courante
+    let col = c.rouge, reg = 'sous-critique (T < T_c)';
+    if (Math.abs(tr - 1) < 0.01) { col = c.vert; reg = 'critique (T = T_c)'; }
+    else if (tr > 1) { col = c.bleu; reg = 'supercritique (T > T_c)'; }
+    plot.curve(function (V) { const p = Pvdw(V, T); return (p > 0 && V > b) ? p : NaN; }, col, { lw: 3, N: 500 });
+
+    // point critique
+    const CX = plot.px(Vc), CY = plot.py(Pc);
+    ctx.fillStyle = c.text; ctx.beginPath(); ctx.arc(CX, CY, 4, 0, 7); ctx.fill();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('C (1,5 ; 0,444)', CX + 7, CY - 6);
+
+    // pour T<Tc, marquer extrema de la boucle (dP/dV=0) numériquement
+    if (tr < 0.999) {
+      let prev = Pvdw(0.62, T), prevV = 0.62;
+      const marks = [];
+      for (let V = 0.63; V < 5; V += 0.01) {
+        const p = Pvdw(V, T);
+        const dprev = p - prev;
+        if (V > 0.65 && marks.length < 2) {
+          const slopeNow = (Pvdw(V + 0.005, T) - Pvdw(V - 0.005, T));
+          const slopePrev = (Pvdw(prevV + 0.005, T) - Pvdw(prevV - 0.005, T));
+          if (slopeNow * slopePrev < 0) marks.push(V);
+        }
+        prev = p; prevV = V;
+      }
+      ctx.fillStyle = c.orange;
+      marks.forEach(function (V) {
+        const p = Pvdw(V, T);
+        if (p > 0) { ctx.beginPath(); ctx.arc(plot.px(V), plot.py(p), 3.2, 0, 7); ctx.fill(); }
+      });
+    }
+
+    // lectures
+    vTr.textContent = fr(tr, 2);
+    vReg.textContent = reg;
+    hint.textContent = tr < 0.999 ? 'T < T_c : boucle de van der Waals (extrema oranges), corrigée par le palier de Maxwell.'
+      : tr > 1.001 ? 'T > T_c : isotherme monotone décroissante, fluide supercritique.'
+      : 'T = T_c : point d\'inflexion à tangente horizontale au point critique C.';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      trAnim += dir * dt * 0.12;
+      if (trAnim > 1.30) { trAnim = 1.30; dir = -1; }
+      if (trAnim < 0.80) { trAnim = 0.80; dir = 1; }
+      slTr.value = trAnim.toFixed(3); draw();
+    }
+  });
+
+  slTr.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating; trAnim = parseFloat(slTr.value);
+    btnAnim.textContent = animating ? 'Figer' : 'Balayer T';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

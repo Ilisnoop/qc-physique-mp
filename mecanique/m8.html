@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M8 — Champ newtonien · Kepler · QC Oraux MP*</title>
+<meta name="description" content="Champ newtonien : lois de Kepler, mouvement circulaire, vitesses cosmiques, satellite géostationnaire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m7.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m9.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html" aria-current="page"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 8 · Mécanique</span>
+    <h1>Champ newtonien : lois de Kepler, vitesses cosmiques, satellite géostationnaire</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer les trois lois de Kepler, les établir pour le mouvement circulaire, définir les vitesses cosmiques de première et deuxième espèce, et déterminer l'orbite et l'altitude du satellite géostationnaire.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · Section 2.6 « Cas particulier du champ newtonien »</div>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Énoncer les lois de Kepler pour les planètes ; les transposer aux satellites terrestres.</li>
+        <li>Établir que le mouvement circulaire est uniforme et en déterminer la période.</li>
+        <li>Établir la 3ᵉ loi de Kepler pour les trajectoires circulaires.</li>
+        <li>Déterminer l'altitude d'un satellite géostationnaire ; justifier sa localisation équatoriale.</li>
+      </ul>
+      <p>Niveau <strong>MPSI</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Champ newtonien : \(\vec{F} = -\dfrac{GmM}{r^2}\,\hat{r}\), \(E_p = -\dfrac{GmM}{r}\). \(G = 6{,}67\times10^{-11}\ \mathrm{m^3\,kg^{-1}\,s^{-2}}\), \(M_T = 5{,}97\times10^{24}\ \mathrm{kg}\), \(R_T = 6{,}37\times10^{6}\ \mathrm{m}\), \(g = GM_T/R_T^2 \approx 9{,}81\ \mathrm{m\,s^{-2}}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Lois de Kepler (énoncé)</span>
+      <ul>
+        <li>Les planètes décrivent des <em>ellipses</em> dont le Soleil occupe un foyer.</li>
+        <li>Le rayon vecteur Soleil-planète balaie des <em>aires égales</em> en des temps égaux (conservation du moment cinétique).</li>
+        <li>Le carré de la période est proportionnel au cube du demi-grand axe : \(T^2/a^3 = \text{cste}\) (pour toutes les planètes du même système).</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Mouvement circulaire</span>
+      <p>Pour une orbite de rayon \(r\) :</p>
+      <p>\[ \frac{mv^2}{r} = \frac{GmM}{r^2} \implies v_c = \sqrt{\frac{GM}{r}}. \]</p>
+      <p>La période est \(T = 2\pi r/v_c\), d'où :</p>
+      <p>\[ T^2 = \frac{4\pi^2}{GM}\,r^3 \quad \text{(3ᵉ loi de Kepler pour le cercle).} \]</p>
+      <p>L'énergie mécanique sur orbite circulaire :</p>
+      <p>\[ E_m = \frac{1}{2}mv_c^2 - \frac{GmM}{r} = -\frac{GmM}{2r} &lt; 0 \quad \text{(état lié).} \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Première vitesse cosmique</span>
+      <p>Vitesse minimale pour mettre un satellite en orbite basse (\(r \approx R_T\)) :</p>
+      <p>\[ v_1 = \sqrt{\frac{GM_T}{R_T}} = \sqrt{g\,R_T} \approx 7{,}9\ \mathrm{km\,s^{-1}}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4. Deuxième vitesse cosmique (vitesse de libération)</span>
+      <p>Condition \(E_m = 0\) (évasion à l'infini) :</p>
+      <p>\[ \frac{1}{2}mv_2^2 = \frac{GmM_T}{R_T}, \quad v_2 = \sqrt{2}\,v_1 = \sqrt{2gR_T} \approx 11{,}2\ \mathrm{km\,s^{-1}}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5. Satellite géostationnaire</span>
+      <p>Période \(T_{\text{géo}} = 24\ \mathrm{h}\) (période de rotation de la Terre). D'après Kepler 3 :</p>
+      <p>\[ r_{\text{géo}}^3 = \frac{GM_T\,T_{\text{géo}}^2}{4\pi^2}, \]</p>
+      <p>soit \(r_{\text{géo}} \approx 42\,200\ \mathrm{km}\), altitude \(h_{\text{géo}} = r_{\text{géo}} - R_T \approx 35\,800\ \mathrm{km}\). Le satellite doit être sur l'orbite <em>équatoriale</em> pour que sa vitesse angulaire coïncide avec la rotation terrestre dans un plan perpendiculaire à \(\vec\Omega\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — orbites circulaires et 3ᵉ loi de Kepler</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-orb" aria-label="Orbites circulaires de rayon réglable autour de la Terre, satellite en mouvement avec période issue de la 3e loi de Kepler"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-r">Rayon d'orbite \(r/R_T\) <span class="val" id="v-r">6,6</span></label>
+          <input type="range" id="sl-r" min="1.05" max="9" step="0.05" value="6.6">
+          <span class="hint" id="hint-orb">À r ≈ 6,6 RT : orbite géostationnaire (période 24 h).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer (satellite en orbite)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Vitesse \(v_c = \sqrt{GM/r}\) = <b id="v-vc">—</b> km/s</span>
+            <span class="ro">Période \(T = 2\pi\sqrt{r^3/GM}\) = <b id="v-t">—</b></span>
+            <span class="ro">Énergie \(E_m = -GmM/2r\) (signe) = <b id="v-sign">&lt; 0 (lié)</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Terre (bleu) et orbite circulaire de rayon \(r\) réglable (en unités de rayon terrestre \(R_T\)). Le satellite (rouge) parcourt l'orbite avec la vitesse \(v_c = \sqrt{GM/r}\) et la période \(T = 2\pi\sqrt{r^3/GM}\) : plus l'orbite est grande, plus le satellite est lent (3ᵉ loi de Kepler). À \(r \approx 6{,}6\,R_T\) la période vaut 24 h : c'est l'orbite géostationnaire (trait vert). L'orbite basse (\(r \approx R_T\)) correspond à la première vitesse cosmique \(v_1 \approx 7{,}9\ \mathrm{km\,s^{-1}}\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Terre &amp; orbite</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Satellite</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Orbite géostationnaire</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>\(v_1 = \sqrt{gR_T}\) et \(v_2 = \sqrt{2gR_T}\) : retenir ces expressions compactes.</li>
+        <li>L'énergie mécanique sur orbite circulaire est \(E_m = -GmM/(2r)\) : la moitié de l'énergie potentielle (théorème du viriel).</li>
+        <li>Pour le géostationnaire : orbite équatoriale obligatoire (sinon la projection sur le plan équatorial ne tourne pas à \(\Omega\)).</li>
+        <li>Ordres de grandeur : \(v_1 \approx 7{,}9\ \mathrm{km\,s^{-1}}\), \(v_2 \approx 11{,}2\ \mathrm{km\,s^{-1}}\), \(h_{\text{géo}} \approx 36\,000\ \mathrm{km}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MPSI</strong> (section 2.6). La démonstration du caractère elliptique des orbites (résolution de l'équation de Binet) n'est pas exigible.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m7.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M7 · Forces centrales · Ep effective</span></a>
+    <a class="next" href="m9.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M9 · Énergie · trajectoire elliptique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-orb');
+  const slR = document.getElementById('sl-r'), vR = document.getElementById('v-r');
+  const vVc = document.getElementById('v-vc'), vT = document.getElementById('v-t');
+  const hint = document.getElementById('hint-orb'), btn = document.getElementById('btn-anim');
+  let animating = false, theta = -Math.PI / 2;
+  // constantes réalistes
+  const RT = 6.37e6, g = 9.81, GM = g * RT * RT; // m^3/s^2
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function fmtT(Ts) {
+    if (Ts < 5400) return fr(Ts / 60, 1) + ' min';
+    return fr(Ts / 3600, 1) + ' h';
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 360);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const ratio = parseFloat(slR.value);
+    const r = ratio * RT;
+    const vc = Math.sqrt(GM / r);
+    const T = 2 * Math.PI * Math.sqrt(r * r * r / GM);
+
+    const cx = w * 0.5, cy = h * 0.5;
+    const Rpx = Math.min(w, h) * 0.42; // rayon max d'orbite affiché = 9 RT
+    const scale = Rpx / 9;             // px par RT
+    const RTpx = scale * 1;            // rayon Terre affiché
+    const orbPx = scale * ratio;
+
+    // orbite géostationnaire de référence (vert, r ~6.6 RT)
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.4; ctx.setLineDash([4, 5]);
+    ctx.beginPath(); ctx.arc(cx, cy, scale * 6.61, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.vert; ctx.font = '10px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('géo (24 h)', cx, cy - scale * 6.61 - 6);
+
+    // orbite courante
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(cx, cy, orbPx, 0, 2 * Math.PI); ctx.stroke();
+
+    // Terre
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.25; ctx.beginPath(); ctx.arc(cx, cy, RTpx, 0, 2 * Math.PI); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.arc(cx, cy, RTpx, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = c.text; ctx.font = '10px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('Terre', cx, cy + 3);
+
+    // satellite
+    const sx = cx + orbPx * Math.cos(theta), sy = cy + orbPx * Math.sin(theta);
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(sx, sy, 6, 0, 2 * Math.PI); ctx.fill();
+    // vecteur vitesse (tangent)
+    const tx = -Math.sin(theta), ty = Math.cos(theta);
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx + tx * 26, sy + ty * 26); ctx.stroke();
+    ctx.fillStyle = c.rouge; ctx.textAlign = 'left';
+    ctx.fillText('v', sx + tx * 30, sy + ty * 30);
+
+    // lectures
+    vR.textContent = fr(ratio, 2);
+    vVc.textContent = fr(vc / 1000, 2);
+    vT.textContent = fmtT(T);
+    if (Math.abs(ratio - 6.61) < 0.15) hint.textContent = 'Orbite géostationnaire : période ≈ 24 h, satellite fixe au-dessus de l\'équateur.';
+    else if (ratio < 1.3) hint.textContent = 'Orbite basse : vitesse proche de v₁ ≈ 7,9 km/s, période ≈ 90 min.';
+    else hint.textContent = 'Plus l\'orbite est grande, plus le satellite est lent (T² ∝ r³).';
+  }
+
+  QC.loop(function (ts) {
+    if (animating) {
+      const ratio = parseFloat(slR.value);
+      // vitesse angulaire ∝ 1/r^1.5 (3e loi), normalisée pour visibilité
+      const omega = 1.6 / Math.pow(ratio, 1.5);
+      theta += omega * 0.05;
+      draw();
+    }
+  });
+
+  slR.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer (satellite en orbite)';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OG2 — Stigmatisme et aplanétisme · QC Oraux MP*</title>
+<meta name="description" content="Stigmatisme rigoureux et approché, aplanétisme, exemples (miroir plan, ellipsoïde), conditions de Gauss et aberrations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique géométrique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="og1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="og3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="og1.html"><span class="qn">OG1</span>Lois de Descartes / conditions de Gauss</a>
+        <a href="og2.html" aria-current="page"><span class="qn">OG2</span>Stigmatisme et aplanétisme</a>
+        <a href="og3.html"><span class="qn">OG3</span>Lentilles minces</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Optique géométrique</span>
+    <h1>Stigmatisme, aplanétisme, conditions de Gauss, système rigoureusement stigmatique</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir le stigmatisme et l'aplanétisme d'un système optique. Donner des exemples de systèmes rigoureusement stigmatiques. Préciser les conditions de Gauss et leurs conséquences pour le stigmatisme approché.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 1.1 Formation des images</div>
+      <p>Capacités exigibles : définir le stigmatisme (rigoureux et approché) et l'aplanétisme ; énoncer les conditions de l'approximation de Gauss et leurs conséquences ; relier le stigmatisme approché aux caractéristiques d'un détecteur ; citer un exemple de système rigoureusement stigmatique (miroir plan, ellipsoïde, etc.).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Stigmatisme rigoureux</strong> : un système optique est rigoureusement stigmatique pour le couple de points \((A, A')\) si <em>tous</em> les rayons issus de \(A\) convergent exactement en \(A'\) après traversée du système.</li>
+      <li><strong>Stigmatisme approché</strong> : les rayons convergent en une tache de faible extension autour de \(A'\), acceptable pour le détecteur utilisé (œil, capteur CCD…).</li>
+      <li><strong>Aplanétisme</strong> : le système est aplanétique si, pour tout point objet \(A\) proche de l'axe, il est stigmatique et le grandissement transversal \(\gamma\) est indépendant de la position transversale de \(A\) (pas de distorsion).</li>
+      <li><strong>Conjugaison</strong> : la relation entre la position de l'objet et celle de l'image est la <em>relation de conjugaison</em>. Pour une lentille mince dans l'approximation de Gauss : \(\dfrac{1}{\overline{OA'}} - \dfrac{1}{\overline{OA}} = \dfrac{1}{f'}\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Exemple rigoureux : le miroir plan</span>
+      <p>Pour un miroir plan, le point image \(A'\) d'un objet \(A\) est le symétrique de \(A\) par rapport au plan du miroir. Tous les rayons issus de \(A\) se réfléchissent et semblent provenir de \(A'\) : le stigmatisme est rigoureux pour tout couple \((A,A')\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Autre exemple : l'ellipsoïde de révolution</span>
+      <p>Un miroir ellipsoïde est rigoureusement stigmatique pour ses deux foyers \(F_1\) et \(F_2\) : tout rayon issu de \(F_1\) converge en \(F_2\) après réflexion.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Pourquoi le stigmatisme rigoureux est rare</span>
+      <p>Pour une surface sphérique réfringente, en développant la condition de trajet optique égal, on obtient une condition sur le rayon de courbure qui n'est satisfaite exactement que pour les points objet/image à l'infini, ou dans des géométries particulières. La sphère introduit des <em>aberrations</em> (sphérique, de coma, astigmatisme) dès qu'on s'écarte de la paraxialité.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Conditions de Gauss et stigmatisme approché</span>
+      <p>Dans l'approximation de Gauss (rayons paraxiaux et peu hauts) : \(\ \sin\hat{u} \approx \tan\hat{u} \approx \hat{u}.\) Toutes les surfaces sphériques deviennent <em>approchées stigmatiques</em>. Les relations de conjugaison deviennent linéaires. Le stigmatisme approché est suffisant pour l'œil (résolution angulaire \(\approx 3'\)) ou les capteurs photographiques modernes.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Aplanétisme dans l'approximation de Gauss</span>
+      <p>Dans l'approximation de Gauss, les lentilles minces et les miroirs sphériques sont aplanétiques : le grandissement transversal \(\gamma = \overline{OA'}/\overline{OA}\) est indépendant de la hauteur de l'objet dans le plan focal. Cela garantit une image non distordue des objets plans perpendiculaires à l'axe.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — stigmatisme approché et aberration sphérique</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-stig" aria-label="Faisceau de rayons issus d'un point objet : tache image qui se rétrécit dans l'approximation de Gauss"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-h">Ouverture (hauteur max des rayons) \(h_{\max}\) <span class="val" id="v-h">0,60</span></label>
+          <input type="range" id="sl-h" min="0.05" max="1" step="0.01" value="0.6">
+          <span class="hint" id="hint-stig">Réduisez l'ouverture pour vous rapprocher des conditions de Gauss.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le diaphragme</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Nombre de rayons tracés = <b id="v-nr">9</b></span>
+            <span class="ro">Étendue de la tache image = <b id="v-blur">—</b></span>
+            <span class="ro" id="ro-reg">Régime : <b id="v-reg">stigmatisme approché</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Faisceau de rayons issus d'un point objet \(A\) sur l'axe, traversant une lentille épaisse (modèle simplifié avec aberration sphérique). Les rayons proches de l'axe (paraxiaux) convergent en \(A'\) ; les rayons marginaux coupent l'axe plus près de la lentille. En réduisant l'ouverture \(h_{\max}\) (conditions de Gauss), la tache image se resserre vers un point : on tend vers le stigmatisme approché.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>rayons paraxiaux</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>rayons marginaux</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>plan image de Gauss \(A'\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Le miroir plan est l'exemple canonique de stigmatisme rigoureux : savoir le démontrer rapidement.</li>
+        <li>Savoir distinguer objet réel (devant le système) et objet virtuel (derrière).</li>
+        <li>Le stigmatisme approché est suffisant en pratique ; préciser ce que signifie « approché » en termes de taille de tache.</li>
+        <li>Aplanétisme \(\neq\) stigmatisme : un système peut être stigmatique sans être aplanétique.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MPSI. La notion d'aberrations (sphérique, coma) est mentionnée comme motivation physique mais les calculs d'aberrations ne sont pas au programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="og1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OG1 · Lois de Descartes / conditions de Gauss</span></a>
+    <a class="next" href="og3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OG3 · Lentilles minces</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 7 : Optique géométrique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-stig');
+  const slH = document.getElementById('sl-h');
+  const vH = document.getElementById('v-h'), vNr = document.getElementById('v-nr'), vBlur = document.getElementById('v-blur');
+  const vReg = document.getElementById('v-reg'), hint = document.getElementById('hint-stig');
+  const btn = document.getElementById('btn-anim');
+
+  let animating = false, dir = 1;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const hmax = parseFloat(slH.value);
+    const oy = h / 2;
+    const objX = w * 0.06;            // point objet A
+    const lensX = w * 0.42;           // plan de la lentille
+    const Hl = h * 0.40;              // demi-hauteur de la lentille
+    const fImg = w * 0.46;            // distance paraxiale lentille->A' (px)
+    const aberr = 0.55;               // coefficient d'aberration sphérique
+
+    // axe optique
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(0, oy); ctx.lineTo(w, oy); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    ctx.fillText('axe', w - 6, oy - 6);
+
+    // lentille (ellipse fine)
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.ellipse(lensX, oy, 9, Hl, 0, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.06;
+    ctx.beginPath(); ctx.ellipse(lensX, oy, 9, Hl, 0, 0, 2 * Math.PI); ctx.fill(); ctx.globalAlpha = 1;
+
+    // point objet
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(objX, oy, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.muted; ctx.textAlign = 'center'; ctx.fillText('A', objX, oy + 18);
+
+    // plan image de Gauss (paraxial)
+    const AxG = lensX + fImg;
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.4; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(AxG, oy - Hl); ctx.lineTo(AxG, oy + Hl); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.vert; ctx.fillText("A'", AxG, oy - Hl - 4);
+
+    // rayons
+    const N = 9;
+    let minCross = Infinity, maxCross = -Infinity;
+    for (let k = -(N - 1) / 2; k <= (N - 1) / 2; k++) {
+      const frh = k / ((N - 1) / 2);           // -1..1
+      const hh = frh * hmax * Hl;              // hauteur du rayon au niveau lentille
+      const yL = oy - hh;
+      const marg = Math.abs(frh);
+      // distance de croisement de l'axe : aberration rapproche les rayons marginaux
+      const cross = lensX + fImg * (1 - aberr * marg * marg * hmax * hmax);
+      minCross = Math.min(minCross, cross); maxCross = Math.max(maxCross, cross);
+      const col = marg > 0.6 ? c.rouge : c.bleu;
+      ctx.strokeStyle = col; ctx.lineWidth = marg > 0.6 ? 1.6 : 1.8; ctx.globalAlpha = 0.9;
+      // objet -> lentille
+      ctx.beginPath(); ctx.moveTo(objX, oy); ctx.lineTo(lensX, yL); ctx.stroke();
+      // lentille -> croisement sur l'axe, prolongé
+      const endX = Math.min(w, cross + (cross - lensX) * 0.15);
+      const slope = (oy - yL) / (cross - lensX);
+      const endY = yL + slope * (endX - lensX);
+      ctx.beginPath(); ctx.moveTo(lensX, yL); ctx.lineTo(endX, endY); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+
+    // tache image (segment d'étalement sur l'axe)
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(minCross, oy); ctx.lineTo(maxCross, oy); ctx.stroke();
+
+    // lectures
+    const blurPx = maxCross - minCross;
+    const blurRel = blurPx / fImg;
+    vH.textContent = fr(hmax, 2);
+    vNr.textContent = N + '';
+    vBlur.textContent = fr(blurRel * 100, 1) + ' % de OA\u2032';
+    if (hmax < 0.3) { vReg.textContent = 'conditions de Gauss (quasi-stigmatique)'; hint.textContent = 'Faible ouverture : la tache est minuscule, stigmatisme approché vérifié.'; }
+    else if (hmax < 0.65) { vReg.textContent = 'stigmatisme approché'; hint.textContent = 'Ouverture modérée : légère aberration sphérique.'; }
+    else { vReg.textContent = 'aberration sphérique marquée'; hint.textContent = 'Grande ouverture : rayons marginaux mal focalisés, hors conditions de Gauss.'; }
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      let v = parseFloat(slH.value) + dir * dt * 0.35;
+      if (v >= 1) { v = 1; dir = -1; }
+      if (v <= 0.05) { v = 0.05; dir = 1; }
+      slH.value = v; draw();
+    }
+  });
+
+  slH.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer le diaphragme' : 'Animer le diaphragme';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

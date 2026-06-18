@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL4 — Filtre passe-bande · QC Oraux MP*</title>
+<meta name="description" content="Fonction de transfert passe-bande H = 1/(1+jQ(x−1/x)) : identification du montage RLC, diagramme de Bode, réponse à un signal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électronique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="el3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="el1.html"><span class="qn">EL1</span>RLC série en régime libre</a>
+        <a href="el2.html"><span class="qn">EL2</span>RLC en régime forcé / résonances</a>
+        <a href="el3.html"><span class="qn">EL3</span>Filtrage ordre 1 et 2 / créneau</a>
+        <a href="el4.html" aria-current="page"><span class="qn">EL4</span>Filtre passe-bande</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Électronique</span>
+    <h1>Fonction de transfert passe-bande \(\underline{H} = 1/(1+jQ(x-1/x))\)</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Analyser la fonction de transfert passe-bande \(\underline{H}(j\omega) = 1/\bigl(1+jQ(x-1/x)\bigr)\) avec \(x=\omega/\omega_0\) : tracer le diagramme de Bode, identifier un montage électrique réalisant cette fonction, calculer la réponse à \(e(t)=E_0\cos^2(\omega_0 t/2)\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 1.5 Filtrage linéaire</div>
+      <p>Capacités exigibles : tracer le diagramme de Bode en gain d'un filtre d'ordre 2 ; choisir un modèle de filtre en fonction d'un cahier des charges ; utiliser la fonction de transfert pour étudier la réponse à un signal périodique fourni.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li>\(x = \omega/\omega_0\) : pulsation réduite ; \(\omega_0 = 1/\sqrt{LC}\).</li>
+      <li>\(Q = \omega_0 L / R = 1/(R\omega_0 C)\) : facteur de qualité.</li>
+      <li>La fonction \(\underline{H}\) est la tension relative aux bornes de \(R\) dans un circuit RLC série : \(\underline{H} = \underline{U}_R/\underline{E}\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Identification du filtre</span>
+      <p>Dans un circuit RLC série (entrée \(e(t)\), sortie \(s(t) = u_R(t)\)) :</p>
+      <p>\[ \underline{H} = \frac{R}{R+jL\omega+1/(jC\omega)} = \frac{1}{1 + \dfrac{jL\omega}{R} + \dfrac{1}{jRC\omega}} = \frac{1}{1 + jQ\!\left(\dfrac{\omega}{\omega_0} - \dfrac{\omega_0}{\omega}\right)}. \]</p>
+      <p>Avec \(x=\omega/\omega_0\), on retrouve exactement \(\underline{H}=1/(1+jQ(x-1/x))\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Gain et comportements asymptotiques</span>
+      <p>\[ G(x) = \frac{1}{\sqrt{1+Q^2(x-1/x)^2}}. \]</p>
+      <ul>
+        <li>\(x\to 0\) : \(Q(x-1/x)\approx -Q/x\to -\infty\), donc \(G\to 0\) (le condensateur bloque les basses fréquences, pente \(+20\,\)dB/déc).</li>
+        <li>\(x=1\) : \(G=1\) (pas d'atténuation à \(\omega_0\)).</li>
+        <li>\(x\to +\infty\) : \(Q(x-1/x)\approx Qx\to+\infty\), donc \(G\to 0\) (la bobine bloque les hautes fréquences, pente \(-20\,\)dB/déc).</li>
+      </ul>
+      <p>La bande passante à \(-3\,\mathrm{dB}\) est \(\Delta\omega = \omega_0/Q\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Réponse à \(e(t)=E_0\cos^2(\omega_0 t/2)\)</span>
+      <p>On développe l'entrée :</p>
+      <p>\[ e(t) = E_0\cos^2\!\left(\frac{\omega_0}{2}t\right) = \frac{E_0}{2}\!\left(1 + \cos(\omega_0 t)\right) = \frac{E_0}{2} + \frac{E_0}{2}\cos(\omega_0 t). \]</p>
+      <p>On identifie deux composantes : une composante continue (\(\omega=0\)) et une composante à \(\omega_0\) (\(x=1\)).</p>
+      <ul>
+        <li>Composante continue : \(\underline{H}(0) = 0\) (condensateur bloquant pour \(\omega=0\)), donc la sortie de la composante continue est nulle.</li>
+        <li>Composante à \(\omega_0\) (\(x=1\)) : \(\underline{H}(j\omega_0) = 1/1 = 1\), donc cette composante passe sans atténuation ni déphasage.</li>
+      </ul>
+      <p>La réponse en régime permanent est donc \(\ s(t) = \dfrac{E_0}{2}\cos(\omega_0 t).\) Le filtre passe-bande sélectionne la composante à \(\omega_0\) et rejette la composante continue.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — gain passe-bande \(|\underline{H}|\) et bande passante</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-pb" aria-label="Gain du filtre passe-bande en fonction de x=ω/ω0, facteur de qualité réglable, bande passante live"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-Q">Facteur de qualité \(Q\) <span class="val" id="v-q">5,00</span></label>
+          <input type="range" id="sl-Q" min="0.3" max="15" step="0.05" value="5">
+          <span class="hint">La largeur de bande \(\Delta x = 1/Q\) se resserre quand \(Q\) augmente.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-echelle" type="button">Échelle : linéaire</button>
+            <button class="btn primary" id="btn-anim" type="button">Balayer en fréquence</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(G\) au point courant = <b id="v-g">—</b></span>
+            <span class="ro">\(x\) courant = <b id="v-x">—</b></span>
+            <span class="ro">Bande passante \(\Delta x = 1/Q\) = <b id="v-bw">0,200</b></span>
+            <span class="ro">\(x_\pm\) (à \(-3\,\mathrm{dB}\)) = <b id="v-xpm">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Gain \(G(x) = 1/\sqrt{1+Q^2(x-1/x)^2}\) en fonction de \(x=\omega/\omega_0\). Le gain vaut \(1\) à \(x=1\) (\(\omega=\omega_0\)). La bande passante à \(-3\,\mathrm{dB}\), de largeur \(\Delta x = 1/Q\), est délimitée par \(x_\pm = \sqrt{1+1/(4Q^2)}\pm 1/(2Q)\) (zone teintée). Basculez l'échelle en dB pour voir les pentes asymptotiques \(\pm 20\) dB/décade.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(G(x)\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>seuil \(-3\,\mathrm{dB}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>bande passante</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Savoir identifier immédiatement \(\omega_0\) et \(Q\) sur le diagramme de Bode (\(G=1\) en \(\omega_0\), bande passante \(\Delta\omega = \omega_0/Q\)).</li>
+        <li>Pour la réponse au signal, toujours décomposer en harmoniques <em>avant</em> d'appliquer \(\underline{H}\).</li>
+        <li>Le facteur \(1/2\) dans la réponse vient de la décomposition de \(\cos^2\), pas de l'atténuation du filtre.</li>
+        <li>Préciser que la réponse calculée est le <em>régime permanent</em> (le transitoire s'est amorti).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MPSI. La décomposition de \(\cos^2\) est une identité trigonométrique classique, pas un résultat hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="el3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EL3 · Filtrage ordre 1 et 2 / créneau</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Électronique · 4 questions</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 6 : Électronique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-pb');
+  const slQ = document.getElementById('sl-Q');
+  const vQ = document.getElementById('v-q'), vG = document.getElementById('v-g'), vX = document.getElementById('v-x');
+  const vBw = document.getElementById('v-bw'), vXpm = document.getElementById('v-xpm');
+  const btnEch = document.getElementById('btn-echelle'), btn = document.getElementById('btn-anim');
+
+  let dB = false, animating = false, xc = 1;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function gain(x, Q) { return 1 / Math.sqrt(1 + Q * Q * Math.pow(x - 1 / x, 2)); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const Q = parseFloat(slQ.value);
+    const root = Math.sqrt(1 + 1 / (4 * Q * Q));
+    const xp = root + 1 / (2 * Q), xm = root - 1 / (2 * Q);
+
+    if (!dB) {
+      const xmin = 0.2, xmax = 3;
+      const P = QC.makePlot(ctx, w, h, { xmin, xmax, ymin: 0, ymax: 1.1, pad: { l: 42, r: 16, t: 16, b: 30 } });
+      P.grid(c, { xticks: 7, yticks: 5 });
+      ctx.fillStyle = c.vert; ctx.globalAlpha = 0.10;
+      ctx.fillRect(P.px(Math.max(xm, xmin)), P.pad.t, P.px(Math.min(xp, xmax)) - P.px(Math.max(xm, xmin)), h - P.pad.b - P.pad.t);
+      ctx.globalAlpha = 1;
+      P.axes(c, { xlabel: 'x=ω/ω₀', ylabel: 'G' });
+      P.curve(() => 1 / Math.SQRT2, c.rouge, { lw: 1.4, dash: [5, 4] });
+      P.curve(x => gain(x, Q), c.bleu, { lw: 2.6, N: 500 });
+      if (animating || xc !== 1) {
+        const yv = gain(xc, Q);
+        ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(P.px(xc), P.py(yv), 4.5, 0, 2 * Math.PI); ctx.fill();
+        ctx.strokeStyle = c.orange; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+        ctx.beginPath(); ctx.moveTo(P.px(xc), P.py(0)); ctx.lineTo(P.px(xc), P.py(yv)); ctx.stroke(); ctx.setLineDash([]);
+      }
+    } else {
+      // échelle dB, abscisse log
+      const Lmin = -1.3, Lmax = 1.3, Gmin = -40, Gmax = 5;
+      const px = u => 44 + (u - Lmin) / (Lmax - Lmin) * (w - 44 - 16);
+      const py = g => 16 + (Gmax - g) / (Gmax - Gmin) * (h - 16 - 30);
+      ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+      for (let u = -1; u <= 1; u++) { ctx.moveTo(px(u), 16); ctx.lineTo(px(u), h - 30); }
+      for (let g = Gmin; g <= Gmax; g += 10) { ctx.moveTo(44, py(g)); ctx.lineTo(w - 16, py(g)); }
+      ctx.stroke();
+      ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+      ({ '-1': '0,1', '0': '1', '1': '10' });
+      ctx.fillText('0,1', px(-1), h - 14); ctx.fillText('1', px(0), h - 14); ctx.fillText('10', px(1), h - 14);
+      ctx.textAlign = 'right';
+      for (let g = Gmin; g <= Gmax; g += 10) ctx.fillText(g + '', 40, py(g) + 4);
+      ctx.textAlign = 'left'; ctx.fillText('G_dB', 46, 26); ctx.fillText('x=ω/ω₀', w - 60, h - 14);
+      // bande passante
+      const uxm = Math.log10(xm), uxp = Math.log10(xp);
+      ctx.fillStyle = c.vert; ctx.globalAlpha = 0.10;
+      ctx.fillRect(px(Math.max(uxm, Lmin)), 16, px(Math.min(uxp, Lmax)) - px(Math.max(uxm, Lmin)), h - 16 - 30);
+      ctx.globalAlpha = 1;
+      // seuil -3 dB
+      ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.4; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(px(Lmin), py(-3)); ctx.lineTo(px(Lmax), py(-3)); ctx.stroke(); ctx.setLineDash([]);
+      // courbe
+      ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath(); let st = false;
+      for (let i = 0; i <= 400; i++) {
+        const u = Lmin + (Lmax - Lmin) * i / 400, x = Math.pow(10, u);
+        const g = Math.max(Gmin, 20 * Math.log10(gain(x, Q)));
+        const X = px(u), Y = py(g); st ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), st = true);
+      }
+      ctx.stroke();
+      if (animating || xc !== 1) {
+        const g = 20 * Math.log10(gain(xc, Q));
+        ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(px(Math.log10(xc)), py(Math.max(Gmin, g)), 4.5, 0, 2 * Math.PI); ctx.fill();
+      }
+    }
+
+    vQ.textContent = fr(Q, 2);
+    vBw.textContent = fr(1 / Q, 3);
+    vXpm.textContent = fr(xm, 3) + ' … ' + fr(xp, 3);
+    if (animating || xc !== 1) {
+      const yv = gain(xc, Q);
+      vG.textContent = dB ? fr(20 * Math.log10(yv), 1) + ' dB' : fr(yv, 3);
+      vX.textContent = fr(xc, 3);
+    } else { vG.textContent = '—'; vX.textContent = '—'; }
+  }
+
+  let last = 0, dir = 1;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      xc += dir * dt * 0.5;
+      if (xc > 3) { xc = 3; dir = -1; }
+      if (xc < 0.2) { xc = 0.2; dir = 1; }
+      draw();
+    }
+  });
+
+  slQ.addEventListener('input', draw);
+  btnEch.addEventListener('click', function () {
+    dB = !dB; btnEch.textContent = 'Échelle : ' + (dB ? 'dB (log)' : 'linéaire'); draw();
+  });
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Arrêter le balayage' : 'Balayer en fréquence';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

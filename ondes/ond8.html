@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND8 — Cavité résonante 1D · QC Oraux MP*</title>
+<meta name="description" content="Modes propres d'une cavité résonante électromagnétique 1D entre deux conducteurs parfaits ; quantification des fréquences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond7.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html" aria-current="page"><span class="qn">OND8</span>Cavité résonante 1D</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 8 · Ondes électromagnétiques</span>
+    <h1>Cavité résonante électromagnétique à 1D</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir les modes propres d'une cavité résonante électromagnétique 1D entre deux conducteurs parfaits. Quantifier les fréquences de résonance.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5</div>
+      <p>« Applications aux cavités à une dimension. Mode d'onde stationnaire. Établir la condition de quantification des solutions. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Deux plans conducteurs parfaits en \(z=0\) et \(z=L\). Entre eux, le vide. On cherche les modes stationnaires \(\vec{E}(z,t) = E(z)\sin(\omega t)\,\hat{x}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Conditions aux limites</span>
+      <p>Sur un conducteur parfait, la composante tangentielle du champ électrique est nulle (relation de passage) :</p>
+      <p>\[ E_x(0,t) = 0 \quad \text{et} \quad E_x(L,t) = 0 \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Solution générale</span>
+      <p>L'onde stationnaire satisfait l'équation de d'Alembert. La solution générale est :</p>
+      <p>\[ E(z) = A\sin(kz) + B\cos(kz) \]</p>
+      <p>La condition \(E(0)=0\) impose \(B=0\). La condition \(E(L)=0\) impose :</p>
+      <p>\[ \sin(kL) = 0 \quad \Rightarrow \quad kL = n\pi, \quad n\in\mathbb{N}^* \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Quantification</span>
+      <p>Les vecteurs d'onde autorisés sont :</p>
+      <p>\[ k_n = \frac{n\pi}{L}, \quad n = 1, 2, 3, \ldots \]</p>
+      <p>La relation de dispersion dans le vide \(\omega = ck\) donne les <b>fréquences propres</b> :</p>
+      <p>\[ f_n = \frac{nc}{2L}, \quad n = 1, 2, 3, \ldots \]</p>
+      <p>Les champs s'écrivent :</p>
+      <p>\[ E_x(z,t) = E_n\sin\!\left(\frac{n\pi z}{L}\right)\cos(\omega_n t) \]</p>
+      <p>\[ B_y(z,t) = \frac{E_n}{c}\cos\!\left(\frac{n\pi z}{L}\right)\sin(\omega_n t) \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Interprétation physique &amp; ordres de grandeur</span>
+      <p>La cavité sélectionne des modes discrets : \(L\) doit contenir un nombre entier de demi-longueurs d'onde (\(L = n\lambda_n/2\)). Analogie avec une corde vibrante.</p>
+      <p>Pour \(L = 1\ \mathrm{m}\) : \(f_1 = c/(2L) = 150\ \mathrm{MHz}\) (micro-ondes). Pour \(L = 10\ \mathrm{cm}\) : \(f_1 = 1{,}5\ \mathrm{GHz}\) (four à micro-ondes : \(2{,}45\ \mathrm{GHz}\)).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — modes stationnaires \(\sin(n\pi z/L)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-cav" aria-label="Modes propres d'une cavité 1D, numéro de mode n réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-n">Numéro de mode \(n\) <span class="val" id="v-n">1</span></label>
+          <input type="range" id="sl-n" min="1" max="6" step="1" value="1">
+          <span class="hint" id="hint-n">\(k_n = n\pi/L\), \(f_n = nc/(2L) = n\,f_1\) : la cavité contient \(n\) demi-longueurs d'onde.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la vibration</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(k_n = n\pi/L\) = <b id="v-k">—</b></span>
+            <span class="ro">\(f_n / f_1\) = <b id="v-fn">1</b></span>
+            <span class="ro">Nœuds de \(\vec{E}\) (parois comprises) = <b id="v-nodes">2</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Mode \(n\) de la cavité : \(E(z) = E_n\sin(n\pi z/L)\cos(\omega_n t)\) (bleu, nœuds aux deux parois conductrices) et \(B(z) \propto \cos(n\pi z/L)\sin(\omega_n t)\) (rouge, ventres aux parois). Les parois conductrices (\(z=0\) et \(z=L\)) sont les barres noires. « Animer » fait vibrer le mode en \(\cos(\omega_n t)\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(E(z)\) (\(\sin\))</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(B(z)\) (\(\cos\))</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La quantification vient des conditions aux limites (nœuds de \(\vec{E}\) aux deux parois) : c'est un phénomène universel en physique des ondes (corde vibrante, tuyau sonore, puits quantique).</li>
+        <li>Les cavités résonantes sont utilisées dans les lasers, les accélérateurs de particules, les fours à micro-ondes.</li>
+        <li>Les fréquences propres sont harmoniques (\(f_n = nf_1\)) : la cavité peut exciter n'importe quel multiple du fondamental.</li>
+        <li>Attention : en 3D (cavité rectangulaire), les modes \(\mathrm{TE}_{mnp}\) sont hors programme MP.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section 4.5. Les modes 3D (TE/TM) sont isolés en encadré culture comme hors-programme.</p>
+    <div class="box culture">
+      <div class="box-title">⚠ Hors-programme · culture</div>
+      <p><b>Modes TE et TM en 3D.</b> Une cavité 3D rectangulaire admet des modes \(\mathrm{TE}_{mnp}\) et \(\mathrm{TM}_{mnp}\) dont la fréquence propre est \(f_{mnp} = \frac{c}{2}\sqrt{(m/a)^2+(n/b)^2+(p/d)^2}\). Ces modes sont hors programme MP.</p>
+    </div>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond7.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND7 · Rayonnement du dipôle oscillant</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Sommaire du thème</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-cav');
+  const slN = document.getElementById('sl-n');
+  const vN = document.getElementById('v-n'), vK = document.getElementById('v-k'), vFn = document.getElementById('v-fn'), vNodes = document.getElementById('v-nodes');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, t0 = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const n = parseInt(slN.value, 10);
+    const ct = animating ? Math.cos(t0 * 2.5) : 1;
+    const st = animating ? Math.sin(t0 * 2.5) : 0.0;
+    const pad = { l: 30, r: 30, t: 20, b: 28 };
+    const midY = h * 0.5, amp = h * 0.34;
+    const X0 = pad.l, X1 = w - pad.r, span = X1 - X0;       // z=0 .. z=L
+    const uof = px => (px - X0) / span;                      // z/L ∈ [0,1]
+
+    // ligne de référence
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X0, midY); ctx.lineTo(X1, midY); ctx.stroke();
+
+    // E(z) = sin(nπ z/L) cos(ωt)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false;
+    for (let px = X0; px <= X1; px += 1) { const u = uof(px); const Y = midY - amp * Math.sin(n * Math.PI * u) * ct; started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke();
+    // B(z) ∝ cos(nπ z/L) sin(ωt), échelle réduite
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2; ctx.setLineDash([6, 4]); ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) { const u = uof(px); const Y = midY - amp * 0.6 * Math.cos(n * Math.PI * u) * st; started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke(); ctx.setLineDash([]);
+    // enveloppe ± sin
+    ctx.strokeStyle = c.bleu; ctx.globalAlpha = 0.32; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) { const u = uof(px); const Y = midY - amp * Math.sin(n * Math.PI * u); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke();
+    ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) { const u = uof(px); const Y = midY + amp * Math.sin(n * Math.PI * u); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+    // parois conductrices
+    ctx.strokeStyle = c.text; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(X0, pad.t); ctx.lineTo(X0, h - pad.b); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(X1, pad.t); ctx.lineTo(X1, h - pad.b); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('z = 0', X0, h - 8); ctx.fillText('z = L', X1, h - 8);
+    ctx.textAlign = 'left'; ctx.fillStyle = c.bleu; ctx.fillText('E', X0 + 6, pad.t + 8);
+    ctx.fillStyle = c.rouge; ctx.fillText('B', X0 + 6, h - pad.b - 2);
+
+    vN.textContent = n;
+    vK.textContent = n + 'π/L';
+    vFn.textContent = n;
+    vNodes.textContent = (n + 1);
+  }
+
+  QC.loop(function (t) { if (animating) { t0 = t; draw(); } });
+  slN.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la vibration';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

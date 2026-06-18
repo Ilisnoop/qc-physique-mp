@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T4 — Lois de Joule · Joule Gay-Lussac · QC Oraux MP*</title>
+<meta name="description" content="Lois de Joule pour un gaz parfait, ΔU, ΔH, ΔS des transformations usuelles, détente de Joule Gay-Lussac et variation d'entropie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.tj-table-wrap { overflow-x: auto; margin: var(--space-3) 0; }
+.tj-table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.tj-table th, .tj-table td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--curve-grid); }
+.tj-table thead th { color: var(--color-text-muted); font-weight: 600; border-bottom: 2px solid var(--curve-axis); }
+.tj-table tbody tr:last-child td { border-bottom: none; }
+.tj-table tbody td:first-child, .tj-table thead th:first-child { font-weight: 600; }
+</style>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Thermodynamique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="t3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="t5.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="t1.html"><span class="qn">T1</span>Machines dithermes &amp; Carnot</a>
+        <a href="t2.html"><span class="qn">T2</span>Second principe &amp; entropie du GP</a>
+        <a href="t3.html"><span class="qn">T3</span>Premier principe industriel · Joule-Kelvin</a>
+        <a href="t4.html" aria-current="page"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
+        <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
+        <a href="t6.html"><span class="qn">T6</span>Changement d'état du corps pur</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Thermodynamique</span>
+    <h1>Premier principe et lois de Joule pour les GP ; détente de Joule Gay-Lussac et \(\Delta S\)</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer les lois de Joule pour un gaz parfait. Calculer \(\Delta U\), \(\Delta H\) et \(\Delta S\) pour les transformations usuelles d'un gaz parfait. Analyser la détente de Joule Gay-Lussac : calculer les échanges d'énergie et la variation d'entropie.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 3.3 Premier principe &amp; 3.4 Entropie</div>
+      <p>Enthalpie d'un gaz parfait, capacité thermique à pression constante ; lois de Joule ; applications du premier principe (isochore, isobare, isotherme, adiabatique réversible). Entropie d'un gaz parfait \(\Delta S = nC_{V,m}\ln(T_2/T_1) + nR\ln(V_2/V_1)\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Système : \(n\) moles d'un gaz parfait, équation d'état \(PV = nRT\). Les <em>lois de Joule</em> sont :</p>
+    <ul>
+      <li><strong>Première loi de Joule</strong> : \(U = U(T)\) seulement (énergie interne indépendante du volume à \(T\) fixée). On pose \(\mathrm{d}U = nC_{V,m}\mathrm{d}T\).</li>
+      <li><strong>Deuxième loi de Joule</strong> : \(H = H(T)\) seulement. On pose \(\mathrm{d}H = nC_{P,m}\mathrm{d}T\), avec \(C_{P,m} = C_{V,m} + R\) (relation de Mayer).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+
+    <div class="demo-step">
+      <span class="step-label">1 · Démonstration des lois de Joule</span>
+      <p>La première loi se démontre à partir de la première relation de Clapeyron \(\left(\dfrac{\partial U}{\partial V}\right)_T = T\left(\dfrac{\partial P}{\partial T}\right)_V - P\). En injectant \(P = nRT/V\) et donc \((\partial P/\partial T)_V = nR/V\) :</p>
+      <p>\[ \left(\frac{\partial U}{\partial V}\right)_T = T \cdot \frac{nR}{V} - \frac{nRT}{V} = 0. \]</p>
+      <p>L'énergie interne ne dépend donc pas du volume : \(U = U(T)\). Avec \(H = U + PV = U(T) + nRT\), on a aussi \(H = H(T)\) (deuxième loi de Joule).</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">2 · Bilan des transformations usuelles</span>
+      <div class="tj-table-wrap">
+      <table class="tj-table">
+        <thead><tr><th>Transformation</th><th>\(\Delta U\)</th><th>\(\Delta H\)</th><th>\(W\)</th><th>\(Q\)</th></tr></thead>
+        <tbody>
+          <tr><td>Isochore</td><td>\(nC_{V,m}\Delta T\)</td><td>\(nC_{P,m}\Delta T\)</td><td>\(0\)</td><td>\(\Delta U\)</td></tr>
+          <tr><td>Isobare</td><td>\(nC_{V,m}\Delta T\)</td><td>\(nC_{P,m}\Delta T\)</td><td>\(-P\Delta V = -nR\Delta T\)</td><td>\(\Delta H\)</td></tr>
+          <tr><td>Isotherme</td><td>\(0\)</td><td>\(0\)</td><td>\(-nRT\ln(V_2/V_1)\)</td><td>\(-W\)</td></tr>
+          <tr><td>Adiab. rév.</td><td>\(nC_{V,m}\Delta T\)</td><td>\(nC_{P,m}\Delta T\)</td><td>\(\Delta U\)</td><td>\(0\)</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Détente de Joule Gay-Lussac</span>
+      <p>Le gaz parfait s'étend librement (contre le vide) dans un calorimètre adiabatique de volume total fixé \(V_{\text{total}} = V_1 + V_2\).</p>
+      <ul>
+        <li><em>Travail</em> : détente contre le vide, donc \(W = 0\).</li>
+        <li><em>Chaleur</em> : enceinte adiabatique, donc \(Q = 0\).</li>
+        <li>Premier principe : \(\Delta U = W + Q = 0\).</li>
+        <li>Comme \(U = U(T)\), \(\Delta U = 0 \Rightarrow\) <strong>\(\Delta T = 0\) : la température ne varie pas</strong>.</li>
+        <li>Pressions : \(P_1\) initiale, \(P_f = nRT/V_{\text{total}}\) finale.</li>
+      </ul>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">4 · Calcul de \(\Delta S\)</span>
+      <p>La transformation est irréversible. On imagine un chemin réversible reliant les mêmes états (même \(T\), volume \(V_1 \to V_{\text{total}}\)) et on utilise la formule de T2 :</p>
+      <p>\[ \Delta S = nC_{V,m}\ln\underbrace{\frac{T}{T}}_{=1} + nR\ln\frac{V_{\text{total}}}{V_1} = nR\ln\frac{V_{\text{total}}}{V_1} &gt; 0. \]</p>
+      <p>La variation d'entropie est positive, ce qui confirme l'irréversibilité. Comme \(Q = 0\) (pas d'échange d'entropie), on a \(\Delta S = S_c &gt; 0\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — détente de Joule Gay-Lussac</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-jgl" aria-label="Enceinte adiabatique à deux compartiments : ouverture de la paroi, détente libre, température inchangée et création d'entropie positive"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-vt">Volume total \(V_{\text{total}}/V_1\) <span class="val" id="v-vt">2,0</span></label>
+          <input type="range" id="sl-vt" min="1" max="6" step="0.05" value="2">
+          <span class="hint" id="hint-jgl">Plus le gaz se dilue, plus la création d'entropie est grande.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Ouvrir la paroi</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout" style="margin-top:.2rem">
+            <span class="ro">\(\Delta U = 0\) ⇒ \(\Delta T = 0\) : <b id="v-t">T inchangée</b></span>
+            <span class="ro">\(P_f/P_1 = V_1/V_{\text{total}}\) = <b id="v-pf">0,50</b></span>
+            <span class="ro">\(\Delta S = nR\ln(V_{\text{total}}/V_1)\) = <b id="v-ds">5,76</b> J·K⁻¹ (n=1)</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Enceinte adiabatique et rigide (\(Q=0\), \(W=0\)) à deux compartiments. À l'ouverture de la paroi, le gaz parfait (bleu) se répartit dans tout le volume. La température reste constante (\(\Delta U = 0\) et \(U = U(T)\)), mais l'entropie créée \(\Delta S = nR\ln(V_{\text{total}}/V_1) &gt; 0\) traduit l'irréversibilité.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Gaz parfait</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Paroi amovible</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Entropie créée \(S_c&gt;0\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Les lois de Joule (\(U = U(T)\), \(H = H(T)\)) ne sont exactes que pour un <em>gaz parfait</em> ; pour un gaz réel, \(\partial U/\partial V|_T \neq 0\).</li>
+        <li>Dans la détente de Joule Gay-Lussac : \(W = 0\) (contre le vide) et \(Q = 0\) (adiabatique) \(\Rightarrow \Delta U = 0 \Rightarrow \Delta T = 0\).</li>
+        <li>Le calcul de \(\Delta S\) se fait en inventant un chemin réversible entre les mêmes états (isotherme réversible ici) : méthode standard.</li>
+        <li>Pour un gaz réel, la détente de Joule Gay-Lussac donne \(\Delta T \neq 0\) en général (voir T5).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Entièrement au programme MPSI (3.3 et 3.4). Aucune notion hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="t3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">T3 · Premier principe industriel · Joule-Kelvin</span></a>
+    <a class="next" href="t5.html"><span class="pn-dir">Suivant →</span><span class="pn-title">T5 · Gaz parfaits &amp; gaz réels</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Thermodynamique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-jgl');
+  const slVt = document.getElementById('sl-vt');
+  const vVt = document.getElementById('v-vt'), vT = document.getElementById('v-t'), vPf = document.getElementById('v-pf'), vDs = document.getElementById('v-ds');
+  const hint = document.getElementById('hint-jgl'), btnAnim = document.getElementById('btn-anim');
+  const R = 8.314;
+  let animating = false, open = 0; // 0 fermé .. 1 ouvert
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const vt = parseFloat(slVt.value);
+
+    // enceinte
+    const x0 = 30, x1 = w - 30, y0 = 40, y1 = h - 70;
+    const wbox = x1 - x0, hbox = y1 - y0;
+    // fraction de la paroi : V1 occupe une fraction 1/vt de la largeur
+    const fracV1 = 1 / vt;
+    const wallX = x0 + fracV1 * wbox;
+
+    // contour adiabatique (double trait)
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 2.4;
+    ctx.strokeRect(x0, y0, wbox, hbox);
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.strokeRect(x0 - 4, y0 - 4, wbox + 8, hbox + 8);
+
+    // gaz : à open=0, occupe [x0, wallX] ; à open=1, occupe tout [x0,x1]
+    const gasRight = wallX + open * (x1 - wallX);
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.16 - open * 0.06;
+    ctx.fillRect(x0, y0, gasRight - x0, hbox); ctx.globalAlpha = 1;
+
+    // molécules (densité diminue quand open augmente)
+    const Nmol = 60;
+    ctx.fillStyle = c.bleu;
+    for (let i = 0; i < Nmol; i++) {
+      // distribution pseudo-aléatoire déterministe
+      const rx = ((i * 73 % 100) / 100), ry = ((i * 137 % 100) / 100);
+      const mx = x0 + 6 + rx * (gasRight - x0 - 12);
+      const my = y0 + 6 + ry * (hbox - 12);
+      ctx.beginPath(); ctx.arc(mx, my, 2.2, 0, 7); ctx.fill();
+    }
+
+    // paroi amovible
+    if (open < 1) {
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 3; ctx.globalAlpha = 1 - open;
+      ctx.beginPath(); ctx.moveTo(wallX, y0); ctx.lineTo(wallX, y1); ctx.stroke();
+      ctx.globalAlpha = 1;
+    } else {
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 2; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(wallX, y0); ctx.lineTo(wallX, y0 + 10);
+      ctx.moveTo(wallX, y1 - 10); ctx.lineTo(wallX, y1); ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    // labels
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('GP : V₁', x0 + (wallX - x0) / 2, y0 - 12);
+    if (open < 0.5) ctx.fillText('Vide : V₂', wallX + (x1 - wallX) / 2, y0 - 12);
+    ctx.fillStyle = c.muted; ctx.textAlign = 'center'; ctx.font = '11px Inter, sans-serif';
+    ctx.fillText('enceinte adiabatique & rigide  (Q = 0,  W = 0)', (x0 + x1) / 2, y1 + 22);
+
+    // barre d'entropie créée
+    const ds = R * Math.log(vt);
+    const by = h - 30, bx = x0, bw = (w - 2 * x0);
+    ctx.fillStyle = c.muted; ctx.font = '12px Inter, sans-serif'; ctx.textAlign = 'left';
+    ctx.fillStyle = c.vert; ctx.fillRect(bx, by, bw * Math.min(1, ds / (R * Math.log(6))), 5);
+    ctx.fillStyle = c.muted; ctx.fillText('S_c créée ∝ ln(V_total/V₁)', bx, by - 6);
+
+    // lectures
+    vVt.textContent = fr(vt, 2);
+    vT.textContent = 'T inchangée';
+    vPf.textContent = fr(1 / vt, 2);
+    vDs.textContent = fr(ds, 2);
+    hint.textContent = 'ΔS = nR·ln(' + fr(vt, 2) + ') = ' + fr(ds, 2) + ' J·K⁻¹ > 0 : irréversibilité de la détente libre.';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      open += dt * 0.7;
+      if (open >= 1) { open = 1; animating = false; btnAnim.textContent = 'Refermer'; btnAnim.classList.remove('active'); }
+      draw();
+    }
+  });
+
+  slVt.addEventListener('input', function () { open = 0; btnAnim.textContent = 'Ouvrir la paroi'; draw(); });
+  btnAnim.addEventListener('click', function () {
+    if (open >= 1) { open = 0; animating = false; btnAnim.textContent = 'Ouvrir la paroi'; btnAnim.classList.remove('active'); draw(); return; }
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Ouvrir la paroi';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

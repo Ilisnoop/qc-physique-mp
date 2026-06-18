@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M9 — Énergie · trajectoire elliptique · QC Oraux MP*</title>
+<meta name="description" content="Énergie mécanique d'une trajectoire elliptique dans un champ newtonien : démonstration par les apsides, résultat Em = -GmM/2a indépendant de l'excentricité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m8.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m10.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html" aria-current="page"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 9 · Mécanique</span>
+    <h1>Énergie mécanique d'une trajectoire elliptique</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-111</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Exprimer l'énergie mécanique d'une trajectoire elliptique dans un champ newtonien en fonction du seul demi-grand axe \(a\), en utilisant les constantes du mouvement.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · Section 2.6 « Énergie du mouvement elliptique »</div>
+      <p><em>Capacité exigible :</em></p>
+      <ul>
+        <li>Exprimer l'énergie mécanique pour le mouvement elliptique en fonction du demi-grand axe.</li>
+      </ul>
+      <p>Niveau <strong>MPSI</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Ellipse de demi-grand axe \(a\) et demi-petit axe \(b\). Foyer en \(O\). Distances aux points apside :</p>
+    <p>\[ r_{\min} = a(1-e), \qquad r_{\max} = a(1+e), \]</p>
+    <p>où \(e\) est l'excentricité. En ces points, \(\dot r = 0\) et \(E_m = \dfrac{L^2}{2mr_{\text{apside}}^2} - \dfrac{GmM}{r_{\text{apside}}}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Calcul par les constantes du mouvement</span>
+      <p>Aux deux apsides, \(\dot r = 0\), donc \(E_m = L^2/(2mr_k^2) - GmM/r_k\) pour \(k = \min, \max\). Ce système de deux équations à deux inconnues \((L^2, E_m)\) s'écrit :</p>
+      <p>\[ E_m = \frac{L^2}{2mr_1^2} - \frac{GmM}{r_1}, \qquad E_m = \frac{L^2}{2mr_2^2} - \frac{GmM}{r_2}, \]</p>
+      <p>avec \(r_1 = r_{\min}\), \(r_2 = r_{\max}\). En soustrayant et en factorisant \((1/r_1-1/r_2) \neq 0\) :</p>
+      <p>\[ \frac{L^2}{m} = \frac{2GmM\,r_1r_2}{r_1+r_2} = GmM\cdot p, \]</p>
+      <p>où \(p = 2r_1r_2/(r_1+r_2) = b^2/a\) est le paramètre de l'ellipse.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Substitution avec les apsides</span>
+      <p>Avec \(r_1 = a(1-e)\), \(r_2 = a(1+e)\), d'où \(r_1 + r_2 = 2a\) et \(r_1 r_2 = a^2(1-e^2)\). Le paramètre vaut \(p = a(1-e^2)\), et donc :</p>
+      <p>\[ L^2 = Gm^2M\,p = Gm^2M\,a\,(1-e^2). \]</p>
+      <p>En substituant dans \(E_m = L^2/(2mr_1^2) - GmM/r_1\) (apside \(r_1 = a(1-e)\)) :</p>
+      <p>\[ E_m = \frac{GmM(1+e)}{2a(1-e)} - \frac{GmM}{a(1-e)} = \frac{GmM}{a(1-e)}\cdot\frac{e-1}{2}, \]</p>
+      <p>soit finalement :</p>
+      <p>\[ \boxed{E_m = -\frac{GmM}{2a}.} \]</p>
+      <p><em>Ce résultat remarquable</em> montre que l'énergie ne dépend que du demi-grand axe \(a\), pas de l'excentricité \(e\) ni du moment cinétique.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Conséquences</span>
+      <ul>
+        <li>Pour \(e=0\) (cercle de rayon \(a=r\)) : \(E_m = -GmM/(2r)\) — en accord avec M8.</li>
+        <li>Troisième loi de Kepler : la période \(T = 2\pi a^{3/2}/\sqrt{GM}\) se déduit de \(E_m\) et \(L\) par la formule de l'aire \(S = \pi ab = \frac{L}{2m}\cdot T\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — ellipse képlérienne à \(a\) fixé</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-ell" aria-label="Ellipse képlérienne de demi-grand axe fixe, excentricité réglable, énergie mécanique invariante égale à -GmM sur 2a"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-e">Excentricité \(e\) <span class="val" id="v-e">0,60</span></label>
+          <input type="range" id="sl-e" min="0" max="0.92" step="0.01" value="0.6">
+          <span class="hint" id="hint-ell">À a fixé, l'énergie Em = −GmM/2a reste la même quelle que soit e.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer (loi des aires)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(r_{\min} = a(1-e)\) = <b id="v-rmin">—</b> a</span>
+            <span class="ro">\(r_{\max} = a(1+e)\) = <b id="v-rmax">—</b> a</span>
+            <span class="ro">\(E_m = -GmM/2a\) = <b id="v-em">−1,00</b> (cste)</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Ellipse képlérienne de demi-grand axe \(a\) constant (les sommets sur le grand axe ne bougent pas) et excentricité \(e\) réglable. Le foyer \(O\) (rouge) porte l'astre attracteur ; \(r_{\min}=a(1-e)\) (périastre) et \(r_{\max}=a(1+e)\) (apoastre). Pendant l'animation, le secteur balayé (orange) illustre la loi des aires : le mobile va vite au périastre, lentement à l'apoastre. L'énergie mécanique \(E_m = -GmM/2a\) reste invariante, indépendante de \(e\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Ellipse (\(a\) fixe)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Foyer \(O\) &amp; mobile</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Aire balayée</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>\(E_m = -GmM/(2a)\) : résultat à connaître absolument ; vérifier la cohérence des unités.</li>
+        <li>Ce résultat est admis au sens qu'il découle de la résolution de Binet (non exigible), mais sa démonstration par les apsides (ci-dessus) est attendue.</li>
+        <li>La 3ᵉ loi de Kepler \(T^2 \propto a^3\) s'en déduit directement.</li>
+        <li>Toujours préciser que \(E_m &lt; 0\) : état lié.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MPSI</strong> (section 2.6). La démonstration complète de l'équation de l'orbite (équation de Binet) est hors programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m8.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M8 · Champ newtonien · Kepler</span></a>
+    <a class="next" href="m10.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M10 · Particule chargée dans E ou B</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-ell');
+  const slE = document.getElementById('sl-e'), vE = document.getElementById('v-e');
+  const vRmin = document.getElementById('v-rmin'), vRmax = document.getElementById('v-rmax');
+  const hint = document.getElementById('hint-ell'), btn = document.getElementById('btn-anim');
+  let animating = false, M = 0; // anomalie moyenne
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // résolution de l'équation de Kepler M = E - e sin E (Newton)
+  function solveKepler(M, e) {
+    let E = M;
+    for (let i = 0; i < 8; i++) { E = E - (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E)); }
+    return E;
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 360);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const e = parseFloat(slE.value);
+
+    // a fixe (en px). Centre de l'ellipse décalé pour garder grand axe fixe.
+    const a = Math.min(w * 0.34, h * 0.40);
+    const b = a * Math.sqrt(1 - e * e);
+    const cf = a * e; // distance centre->foyer
+    // grand axe fixe : sommets à gauche/droite. On centre l'ellipse au milieu du canvas.
+    const ex = w * 0.5, ey = h * 0.5; // centre de l'ellipse
+    const fx = ex + cf, fy = ey;       // foyer (astre) sur le grand axe
+
+    // ellipse
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.ellipse(ex, ey, a, b, 0, 0, 2 * Math.PI); ctx.stroke();
+    // grand axe
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(ex - a, ey); ctx.lineTo(ex + a, ey); ctx.stroke(); ctx.setLineDash([]);
+    // sommets
+    ctx.fillStyle = c.text; ctx.beginPath(); ctx.arc(ex - a, ey, 2.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(ex + a, ey, 2.5, 0, 2 * Math.PI); ctx.fill();
+
+    // position du mobile (anomalie excentrique E)
+    const Ecc = solveKepler(M, e);
+    const px = ex + a * Math.cos(Ecc), py = ey - b * Math.sin(Ecc);
+
+    // secteur balayé (du foyer au mobile, petit arc)
+    ctx.fillStyle = c.orange; ctx.globalAlpha = 0.22;
+    ctx.beginPath(); ctx.moveTo(fx, fy);
+    for (let k = -6; k <= 0; k++) {
+      const Ek = solveKepler(M + k * 0.12, e);
+      ctx.lineTo(ex + a * Math.cos(Ek), ey - b * Math.sin(Ek));
+    }
+    ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+
+    // rayon foyer->mobile
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(fx, fy); ctx.lineTo(px, py); ctx.stroke();
+
+    // foyer (astre)
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(fx, fy, 6, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.text; ctx.font = '10px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('O', fx + 8, fy + 12);
+    // mobile
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(px, py, 5, 0, 2 * Math.PI); ctx.fill();
+
+    // labels rmin/rmax
+    ctx.fillStyle = c.rouge; ctx.font = '10px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('rmin', (fx + ex + a) / 2, ey - 8);
+    ctx.fillText('rmax', (fx + ex - a) / 2, ey + 16);
+
+    // lectures
+    vE.textContent = fr(e, 2);
+    vRmin.textContent = fr(1 - e, 2);
+    vRmax.textContent = fr(1 + e, 2);
+    if (e < 0.05) hint.textContent = 'e ≈ 0 : orbite quasi circulaire ; le foyer est au centre.';
+    else if (e > 0.8) hint.textContent = 'e élevée : ellipse très allongée, mais Em = −GmM/2a inchangée.';
+    else hint.textContent = 'À a fixé, l\'énergie Em = −GmM/2a reste la même quelle que soit e.';
+  }
+
+  QC.loop(function (ts) {
+    if (animating) {
+      const e = parseFloat(slE.value);
+      // anomalie moyenne avance à vitesse constante (loi des aires)
+      M += 0.03;
+      if (M > 2 * Math.PI) M -= 2 * Math.PI;
+      draw();
+    }
+  });
+
+  slE.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer (loi des aires)';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

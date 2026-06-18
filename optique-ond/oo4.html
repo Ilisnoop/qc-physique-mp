@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OO4 — Contraste (visibilité) · QC Oraux MP*</title>
+<meta name="description" content="Contraste (facteur de visibilité) : intensités différentes, source de spectre rectangulaire, sinc, longueur de cohérence et premier brouillage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique ondulatoire</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="oo3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="oo5.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="oo1.html"><span class="qn">OO1</span>Modèle scalaire de la lumière</a>
+        <a href="oo2.html"><span class="qn">OO2</span>Trous d'Young</a>
+        <a href="oo3.html"><span class="qn">OO3</span>Michelson : lame &amp; coin d'air</a>
+        <a href="oo4.html" aria-current="page"><span class="qn">OO4</span>Contraste (visibilité)</a>
+        <a href="oo5.html"><span class="qn">OO5</span>Réseaux / N ondes / Rayleigh</a>
+        <a href="oo6.html"><span class="qn">OO6</span>Longueur de cohérence temporelle</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Optique ondulatoire</span>
+    <h1>Contraste : intensités différentes et source à spectre rectangulaire</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir le contraste (visibilité). Calculer le contraste pour le Michelson en lame d'air lorsque les intensités des deux bras sont différentes. Étudier l'effet d'une source de spectre rectangulaire (cohérence temporelle et longueur de cohérence).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 3 §3.2 et §3.4</div>
+      <p>Capacités exigibles :</p>
+      <ul>
+        <li>Associer un bon contraste à des ondes d'intensités voisines.</li>
+        <li>Utiliser un critère de brouillage des franges portant sur l'ordre d'interférence (élargissement spectral de la source).</li>
+        <li>Relier le temps de cohérence à la largeur spectrale \(\Delta\nu\cdot\Delta t_c\sim 1\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><b>Contraste</b> (ou visibilité) : \(\mathcal{V} = \dfrac{I_{\max} - I_{\min}}{I_{\max} + I_{\min}} \in [0,1]\).</li>
+      <li>\(I_1\), \(I_2\) : intensités des deux ondes interférantes.</li>
+      <li>Source de spectre rectangulaire de largeur \(\Delta\nu\) centrée sur \(\nu_0\) : représentation simple pour une source non monochromatique.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Contraste avec intensités différentes</span>
+      <p>La formule de Fresnel donne :</p>
+      <p>\[ I(\delta) = I_1 + I_2 + 2\sqrt{I_1 I_2}\cos\!\left(\frac{2\pi\delta}{\lambda}\right). \]</p>
+      <p>On identifie \(I_{\max} = I_1 + I_2 + 2\sqrt{I_1 I_2}\) et \(I_{\min} = I_1 + I_2 - 2\sqrt{I_1 I_2}\), d'où :</p>
+      <p>\[ \mathcal{V} = \frac{2\sqrt{I_1 I_2}}{I_1 + I_2}. \]</p>
+      <p>Par l'inégalité arithmético-géométrique, \(\mathcal{V}\leq 1\) avec égalité si et seulement si \(I_1=I_2\). Pour \(I_1/I_2 = 4\) (rapport de 4) : \(\mathcal{V} = 4/(1+4) = 4/5 = 0{,}8\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Contraste avec source de spectre rectangulaire</span>
+      <p>Une source de largeur spectrale \(\Delta\nu\) centrée sur \(\nu_0\) peut être modélisée comme une somme continue de sources monochromatiques de même intensité. L'intensité résultante est :</p>
+      <p>\[ I(\delta) = \int_{\nu_0-\Delta\nu/2}^{\nu_0+\Delta\nu/2} I_0\!\left[1 + \cos\!\left(\frac{2\pi\nu\delta}{c}\right)\right]\frac{\mathrm{d}\nu}{\Delta\nu}. \]</p>
+      <p>En calculant l'intégrale :</p>
+      <p>\[ I(\delta) = I_0\!\left[1 + \mathrm{sinc}\!\left(\frac{\pi\Delta\nu\,\delta}{c}\right)\cos\!\left(\frac{2\pi\nu_0\delta}{c}\right)\right], \]</p>
+      <p>où \(\mathrm{sinc}(u) = \sin(u)/u\). Le contraste est donc \(\mathcal{V}(\delta) = \left|\mathrm{sinc}\!\left(\dfrac{\pi\Delta\nu\,\delta}{c}\right)\right|\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Première annulation du contraste (brouillage)</span>
+      <p>Le contraste s'annule pour la première fois lorsque \(\pi\Delta\nu\,\delta/c = \pi\), soit :</p>
+      <p>\[ \delta_c = \frac{c}{\Delta\nu} = l_c \quad\text{(longueur de cohérence)}. \]</p>
+      <p>En lame d'air, \(\delta = 2e\cos\theta\), donc les franges disparaissent pour \(2e > l_c\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Lien avec la cohérence temporelle</span>
+      <p>\(l_c = c\,\Delta t_c\) avec \(\Delta t_c\sim 1/\Delta\nu\) : la longueur de cohérence est la distance sur laquelle deux trains d'onde émis par la même source peuvent encore interférer.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — éclairement et contraste \(\mathcal{V}(\delta)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-cont" aria-label="Éclairement I(delta) modulé par l'enveloppe sinc et contraste, avec rapport d'intensités et largeur spectrale réglables"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-r">Rapport \(I_1/I_2\) <span class="val" id="v-r">1,0</span></label>
+          <input type="range" id="sl-r" min="1" max="25" step="0.1" value="1">
+          <label for="sl-dnu">Largeur spectrale \(\Delta\nu/\nu_0\) <span class="val" id="v-dnu">0,030</span></label>
+          <input type="range" id="sl-dnu" min="0.005" max="0.08" step="0.001" value="0.03">
+          <span class="hint">\(I_1/I_2\) fixe la visibilité max ; \(\Delta\nu\) fixe la longueur de cohérence \(l_c=c/\Delta\nu\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Balayer \(\delta\)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="gauges">
+            <div class="gauge t"><span class="glabel">𝒱₀</span><span class="gtrack"><span class="gfill" id="g-v"></span></span><span class="gval" id="v-v">1,00</span></div>
+          </div>
+          <div class="readout" style="margin-top:.6rem">
+            <span class="ro">𝒱 max \(= \dfrac{2\sqrt{I_1I_2}}{I_1+I_2}\) = <b id="v-vmax">1,00</b></span>
+            <span class="ro">\(l_c\) ≈ <b id="v-lc">33 \(\lambda\)</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Éclairement \(I(\delta)\) (bleu) : oscillations rapides à \(\nu_0\) modulées par l'enveloppe \(\pm\mathcal{V}(\delta)\) (orange, \(=|\mathrm{sinc}(\pi\Delta\nu\delta/c)|\) plafonnée par \(\mathcal{V}_0\)). Le contraste s'annule au premier brouillage \(\delta=l_c=c/\Delta\nu\) (trait vert).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Éclairement \(I(\delta)\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Enveloppe \(\pm\mathcal{V}(\delta)\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Brouillage \(\delta=l_c\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La formule \(\mathcal{V} = 2\sqrt{I_1 I_2}/(I_1+I_2)\) est à savoir établir rapidement.</li>
+        <li>Retenir que le contraste est maximal pour \(I_1=I_2\) (régler le Michelson en conséquence).</li>
+        <li>La longueur de cohérence est \(l_c = c/\Delta\nu = \lambda^2/\Delta\lambda\) (les deux formes sont utiles).</li>
+        <li>Ordres de grandeur : \(l_c(\text{laser He-Ne})\approx 300\ \mathrm{km}\) ; \(l_c(\text{lampe Na})\approx 30\ \mathrm{cm}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MP. Le calcul de \(I(\delta)\) par intégration sur le spectre est le développement standard attendu ; la formule de Fresnel est établie en MP.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="oo3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OO3 · Michelson : lame &amp; coin d'air</span></a>
+    <a class="next" href="oo5.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OO5 · Réseaux / N ondes / Rayleigh</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 8 : Optique ondulatoire (§3).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-cont');
+  const slR = document.getElementById('sl-r'), slDnu = document.getElementById('sl-dnu');
+  const vR = document.getElementById('v-r'), vDnu = document.getElementById('v-dnu');
+  const vV = document.getElementById('v-v'), vVmax = document.getElementById('v-vmax');
+  const vLc = document.getElementById('v-lc'), gV = document.getElementById('g-v');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, sweep = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function sinc(u) { return Math.abs(u) < 1e-9 ? 1 : Math.sin(u) / u; }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const ratio = parseFloat(slR.value);            // I1/I2
+    const dnu = parseFloat(slDnu.value);             // Δν/ν0 (sans dim)
+    // V0 = 2 sqrt(I1 I2)/(I1+I2) avec I2=1, I1=ratio
+    const V0 = 2 * Math.sqrt(ratio) / (ratio + 1);
+    // unités : delta en unités de lambda0 = c/nu0. lc = c/Δν = lambda0/(Δν/ν0)
+    const lc = 1 / dnu;                              // en λ0
+
+    const pad = { l: 14, r: 14, t: 18, b: 26 };
+    const deltaMax = 2.6 * lc;                        // afficher jusqu'à ~2.6 lc
+    const xToPx = d => pad.l + (d / deltaMax) * (w - pad.l - pad.r);
+    const midY = (pad.t + (h - pad.b)) / 2;
+    const amp = (h - pad.b - pad.t) / 2 - 4;
+
+    // axe central
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad.l, midY); ctx.lineTo(w - pad.r, midY); ctx.stroke();
+
+    // brouillage à delta = lc
+    const lcpx = xToPx(lc);
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.6; ctx.setLineDash([3, 4]);
+    ctx.beginPath(); ctx.moveTo(lcpx, pad.t); ctx.lineTo(lcpx, h - pad.b); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.vert; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('l_c', lcpx, pad.t + 10);
+
+    // enveloppe ±V(δ)
+    const env = d => V0 * Math.abs(sinc(Math.PI * dnu * d));
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.8;
+    [+1, -1].forEach(sgn => {
+      ctx.beginPath(); let started = false;
+      for (let px = pad.l; px <= w - pad.r; px += 1) {
+        const d = (px - pad.l) / (w - pad.l - pad.r) * deltaMax;
+        const Y = midY - sgn * env(d) * amp;
+        started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+      }
+      ctx.stroke();
+    });
+
+    // éclairement I(δ) normalisé : 1 + V(δ) cos(2π δ/λ0)  (centré -> on enlève 1, échelle)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1.8; ctx.beginPath();
+    let started = false;
+    for (let px = pad.l; px <= w - pad.r; px += 1) {
+      const d = (px - pad.l) / (w - pad.l - pad.r) * deltaMax;
+      const I = V0 * sinc(Math.PI * dnu * d) * Math.cos(2 * Math.PI * d);
+      const Y = midY - I * amp;
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+
+    // curseur balayage : point sur l'enveloppe + lecture V
+    let dCur = lc * (0.5 + 0.5 * Math.sin(sweep));
+    if (!animating) dCur = 0;
+    const Vcur = env(dCur);
+    const cpx = xToPx(dCur);
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.2; ctx.setLineDash([2, 3]);
+    ctx.beginPath(); ctx.moveTo(cpx, pad.t); ctx.lineTo(cpx, h - pad.b); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(cpx, midY - Vcur * amp, 3.2, 0, 2 * Math.PI); ctx.fill();
+
+    ctx.fillStyle = c.muted; ctx.textAlign = 'right'; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.fillText('\u03b4', w - pad.r, h - 8);
+
+    vR.textContent = fr(ratio, 1);
+    vDnu.textContent = fr(dnu, 3);
+    vVmax.textContent = fr(V0, 2);
+    vV.textContent = fr(Vcur, 2);
+    gV.style.width = (Vcur * 100) + '%';
+    vLc.textContent = fr(lc, 0) + ' \u03bb';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { sweep += dt * 1.0; draw(); }
+  });
+  slR.addEventListener('input', draw);
+  slDnu.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Arrêter' : 'Balayer δ';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

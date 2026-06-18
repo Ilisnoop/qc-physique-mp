@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T3 — Premier principe industriel · Joule-Kelvin · QC Oraux MP*</title>
+<meta name="description" content="Premier principe pour un système ouvert en régime stationnaire ; détente de Joule-Thomson isenthalpique et coefficient de Joule-Thomson.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Thermodynamique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="t2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="t4.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="t1.html"><span class="qn">T1</span>Machines dithermes &amp; Carnot</a>
+        <a href="t2.html"><span class="qn">T2</span>Second principe &amp; entropie du GP</a>
+        <a href="t3.html" aria-current="page"><span class="qn">T3</span>Premier principe industriel · Joule-Kelvin</a>
+        <a href="t4.html"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
+        <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
+        <a href="t6.html"><span class="qn">T6</span>Changement d'état du corps pur</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Thermodynamique</span>
+    <h1>Premier principe industriel (systèmes ouverts) ; détente de Joule-Kelvin isenthalpique</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-118</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Démontrer le premier principe pour un système ouvert en régime stationnaire (écoulement unidirectionnel). Montrer que la détente de Joule-Thomson (Joule-Kelvin) est isenthalpique. Discuter ses conséquences sur la température.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP uniquement · 5.1 Principes de la thermodynamique</div>
+      <p>Premier et deuxième principes pour un système ouvert en régime stationnaire, écoulement unidimensionnel ; établir les relations \(\Delta h + \Delta e_c = w_u + q\) et \(\Delta s = s_e + s_c\), les utiliser pour étudier des machines thermiques réelles à l'aide du diagramme \((P, h)\). La détente de Joule-Thomson est un exemple canonique de transformation isenthalpique.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère un fluide s'écoulant de façon permanente (régime stationnaire) entre une section d'entrée (indice \(e\)) et une section de sortie (indice \(s\)). On note : \(h = u + Pv\) l'enthalpie massique ; \(e_c = \tfrac{1}{2}c^2 + gz\) l'énergie cinétique et potentielle massique (\(c\) = vitesse, \(z\) = altitude) ; \(w_u\) le travail utile massique (travail de l'arbre, hors travail des forces de pression) ; \(q\) le transfert thermique massique reçu par le fluide.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+
+    <div class="demo-step">
+      <span class="step-label">1 · Établissement du premier principe industriel</span>
+      <p>On choisit comme système le fluide entre les sections d'entrée et de sortie à l'instant \(t\), plus la masse \(\delta m\) qui entre pendant \(\mathrm{d}t\) ; en régime stationnaire, la même masse \(\delta m\) sort côté sortie. Bilan d'énergie sur \(\Sigma\) pendant \(\mathrm{d}t\) : \(\mathrm{d}E_\Sigma = \delta W + \delta Q\).</p>
+      <p>Le travail comprend le travail des forces de pression aux sections (\(P_e v_e \delta m\) entrant, \(-P_s v_s \delta m\) sortant) et le travail utile \(\delta W_u = w_u\,\delta m\) :</p>
+      <p>\[ \delta W = w_u\,\delta m + P_e v_e\,\delta m - P_s v_s\,\delta m. \]</p>
+      <p>La variation d'énergie se réduit à la différence des masses qui sortent et entrent : \(\mathrm{d}E_\Sigma = (u_s + e_{c,s} - u_e - e_{c,e})\,\delta m\). En combinant et en divisant par \(\delta m\), avec \(h = u + Pv\) :</p>
+      <p>\[ \boxed{(h_s + e_{c,s}) - (h_e + e_{c,e}) = w_u + q}, \quad \text{soit} \quad \Delta h + \Delta e_c = w_u + q. \]</p>
+      <p>De même, le second principe en régime stationnaire donne \(s_s - s_e = \dfrac{q}{T_{\text{source}}} + s_c\), avec \(s_c \geq 0\).</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">2 · Détente de Joule-Thomson (Joule-Kelvin)</span>
+      <p>Le fluide s'écoule à travers un milieu poreux (étranglement), en régime stationnaire, sans échange de chaleur (\(q = 0\)), sans travail utile (\(w_u = 0\)), et \(\Delta e_c \approx 0\). D'après le premier principe industriel :</p>
+      <p>\[ h_s - h_e = 0 \quad \Rightarrow \quad h_s = h_e. \]</p>
+      <p><strong>La détente de Joule-Thomson est donc isenthalpique.</strong></p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Effet Joule-Thomson sur la température</span>
+      <p>L'évolution de \(T\) lors d'une détente isenthalpique est caractérisée par le <em>coefficient de Joule-Thomson</em> :</p>
+      <p>\[ \mu_{\text{JT}} = \left(\frac{\partial T}{\partial P}\right)_h. \]</p>
+      <p>Pour un gaz parfait, \(h = h(T)\) (première loi de Joule), donc \(\mu_{\text{JT}} = 0\) : la température ne varie pas. Pour un gaz réel (van der Waals), \(\mu_{\text{JT}}\) peut être positif ou négatif selon \(T\). Au-dessus de la <em>température d'inversion</em>, \(\mu_{\text{JT}} &lt; 0\) (le gaz se réchauffe) ; en dessous, \(\mu_{\text{JT}} &gt; 0\) (le gaz se refroidit). C'est ce refroidissement qu'exploite la liquéfaction de l'air (procédé Linde).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — détente isenthalpique de Joule-Kelvin</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-jt" aria-label="Conduit calorifugé avec paroi poreuse : détente isenthalpique, écoulement animé, variation de température selon le signe du coefficient de Joule-Thomson"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-mu">Coefficient \(\mu_{\text{JT}}\) <span class="val" id="v-mu">+0,20 K/bar</span></label>
+          <input type="range" id="sl-mu" min="-0.3" max="0.3" step="0.01" value="0.2">
+          <span class="hint" id="hint-mu">μ_JT > 0 : refroidissement (gaz sous la température d'inversion).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer l'écoulement</button>
+          </div>
+        </div>
+        <div class="control">
+          <label for="sl-dp">Chute de pression \(P_e - P_s\) <span class="val" id="v-dp">50 bar</span></label>
+          <input type="range" id="sl-dp" min="0" max="120" step="5" value="50">
+          <div class="readout" style="margin-top:.6rem">
+            <span class="ro">\(h_s = h_e\) (isenthalpique)</span>
+            <span class="ro">\(\Delta T \approx \mu_{\text{JT}}\,(P_s - P_e)\) = <b id="v-dt">−10,0</b> K</span>
+            <span class="ro">Régime : <b id="v-reg">refroidissement</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Conduit calorifugé (\(q=0\), \(w_u=0\), \(\Delta e_c\approx 0\)) avec une paroi poreuse au centre. Le fluide passe de l'amont (\(P_e,T_e,h_e\)) à l'aval (\(P_s &lt; P_e\), \(T_s\), \(h_s=h_e\)). La variation de température estimée \(\Delta T \approx \mu_{\text{JT}}(P_s-P_e)\) change de signe avec \(\mu_{\text{JT}}\) ; pour un GP, \(\mu_{\text{JT}}=0\) et \(T_s=T_e\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Écoulement du fluide</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Paroi poreuse</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Indicateur de température</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>C'est un item <strong>MP uniquement</strong> ; bien le préciser.</li>
+        <li>Le travail des forces de pression aux sections (terme \(Pv\)) est la clé : c'est lui qui fait apparaître l'enthalpie \(h = u + Pv\) plutôt que \(u\).</li>
+        <li>L'isenthalpicité ne signifie pas l'isothermicité ; pour un gaz parfait seulement, \(h = h(T)\) implique \(T_s = T_e\).</li>
+        <li>Application industrielle importante : liquéfaction de l'air (cycle Linde), cryogénie.</li>
+        <li>Bien distinguer la détente de Joule-Thomson (isenthalpique, irréversible) de la détente adiabatique réversible (isentropique, par exemple dans une turbine).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Cet item est <strong>au programme MP uniquement</strong> (5.1). Le coefficient de Joule-Thomson est une notion de cours MP standard. Aucune notion hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="t2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">T2 · Second principe &amp; entropie du GP</span></a>
+    <a class="next" href="t4.html"><span class="pn-dir">Suivant →</span><span class="pn-title">T4 · Lois de Joule · Joule Gay-Lussac</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Thermodynamique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-jt');
+  const slMu = document.getElementById('sl-mu'), slDp = document.getElementById('sl-dp');
+  const vMu = document.getElementById('v-mu'), vDp = document.getElementById('v-dp');
+  const vDt = document.getElementById('v-dt'), vReg = document.getElementById('v-reg');
+  const hintMu = document.getElementById('hint-mu'), btnAnim = document.getElementById('btn-anim');
+  let animating = false, flow = 0;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const mu = parseFloat(slMu.value), dp = parseFloat(slDp.value);
+    const dT = mu * (-dp); // ΔT = μ(Ps - Pe) = μ(-dp)
+
+    const yc = h * 0.42;        // axe du conduit
+    const half = 42;            // demi-hauteur du conduit
+    const x0 = 30, x1 = w - 30;
+    const xpor = (x0 + x1) / 2; // position paroi poreuse
+
+    // parois du conduit
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x0, yc - half); ctx.lineTo(x1, yc - half);
+    ctx.moveTo(x0, yc + half); ctx.lineTo(x1, yc + half); ctx.stroke();
+
+    // calorifugeage (hachures légères)
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    for (let xx = x0; xx < x1; xx += 12) {
+      ctx.beginPath(); ctx.moveTo(xx, yc - half - 6); ctx.lineTo(xx + 6, yc - half); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(xx, yc + half + 6); ctx.lineTo(xx + 6, yc + half); ctx.stroke();
+    }
+
+    // paroi poreuse
+    ctx.fillStyle = c.orange; ctx.globalAlpha = 0.28;
+    ctx.fillRect(xpor - 9, yc - half, 18, 2 * half); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.6;
+    ctx.strokeRect(xpor - 9, yc - half, 18, 2 * half);
+    ctx.fillStyle = c.muted; ctx.font = '11px Inter, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('paroi poreuse', xpor, yc - half - 12);
+
+    // particules d'écoulement (animées) : plus serrées et rapides à l'amont (haute P)
+    const Npart = 22;
+    for (let i = 0; i < Npart; i++) {
+      const base = (i / Npart);
+      let prog = (base + flow * (i < Npart / 2 ? 0.9 : 0.6)) % 1;
+      const xx = x0 + 8 + prog * (x1 - x0 - 16);
+      const side = (i % 3 - 1) * (half * 0.55);
+      ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.8;
+      ctx.beginPath(); ctx.arc(xx, yc + side, xx < xpor ? 3 : 2.2, 0, 7); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // flèches d'écoulement
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(x0 + 6, yc); ctx.lineTo(xpor - 18, yc); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xpor - 26, yc - 5); ctx.lineTo(xpor - 18, yc); ctx.lineTo(xpor - 26, yc + 5); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xpor + 14, yc); ctx.lineTo(x1 - 6, yc); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1 - 14, yc - 5); ctx.lineTo(x1 - 6, yc); ctx.lineTo(x1 - 14, yc + 5); ctx.stroke();
+
+    // états amont / aval
+    ctx.fillStyle = c.text; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('amont : Pₑ, Tₑ, hₑ', (x0 + xpor) / 2, yc + half + 26);
+    ctx.fillText('aval : Pₛ<Pₑ, Tₛ, hₛ=hₑ', (xpor + x1) / 2, yc + half + 26);
+
+    // thermomètre / indicateur de température (barre dont la couleur dépend de ΔT)
+    const tcol = dT < -0.5 ? c.bleu : (dT > 0.5 ? c.rouge : c.muted);
+    const ty = h - 34;
+    ctx.fillStyle = c.muted; ctx.font = '12px Inter, sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('ΔT =', x0, ty + 4);
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    const barX = x0 + 46, barW = w - barX - 90, barMid = barX + barW / 2;
+    ctx.beginPath(); ctx.moveTo(barX, ty); ctx.lineTo(barX + barW, ty); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(barMid, ty - 6); ctx.lineTo(barMid, ty + 6); ctx.stroke();
+    const frac = Math.max(-1, Math.min(1, dT / 30));
+    ctx.strokeStyle = tcol; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(barMid, ty); ctx.lineTo(barMid + frac * (barW / 2), ty); ctx.stroke();
+    ctx.fillStyle = tcol; ctx.textAlign = 'left'; ctx.font = '12px IBM Plex Mono, monospace';
+    ctx.fillText(fr(dT, 1) + ' K', barX + barW + 8, ty + 4);
+
+    // lectures
+    vMu.textContent = (mu >= 0 ? '+' : '') + fr(mu, 2) + ' K/bar';
+    vDp.textContent = Math.round(dp) + ' bar';
+    vDt.textContent = fr(dT, 1);
+    let reg;
+    if (mu > 0.005) reg = 'refroidissement (μ_JT>0)';
+    else if (mu < -0.005) reg = 'réchauffement (μ_JT<0)';
+    else reg = 'inchangée (gaz parfait, μ_JT=0)';
+    vReg.textContent = reg;
+    hintMu.textContent = mu > 0.005 ? 'μ_JT > 0 : refroidissement (sous la température d\'inversion).'
+      : mu < -0.005 ? 'μ_JT < 0 : réchauffement (au-dessus de la température d\'inversion).'
+      : 'μ_JT = 0 : cas du gaz parfait, T inchangée (h = h(T)).';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { flow = (flow + dt * 0.4) % 1; draw(); }
+  });
+
+  slMu.addEventListener('input', draw);
+  slDp.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer l\'écoulement';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

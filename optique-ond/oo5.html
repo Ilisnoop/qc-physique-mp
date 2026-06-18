@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OO5 — Réseaux / N ondes / Rayleigh · QC Oraux MP*</title>
+<meta name="description" content="Réseaux et superposition de N ondes : relation fondamentale, intensité sin²(Nφ/2)/sin²(φ/2), demi-largeur 2π/N, critère de Rayleigh et pouvoir de résolution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique ondulatoire</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="oo4.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="oo6.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="oo1.html"><span class="qn">OO1</span>Modèle scalaire de la lumière</a>
+        <a href="oo2.html"><span class="qn">OO2</span>Trous d'Young</a>
+        <a href="oo3.html"><span class="qn">OO3</span>Michelson : lame &amp; coin d'air</a>
+        <a href="oo4.html"><span class="qn">OO4</span>Contraste (visibilité)</a>
+        <a href="oo5.html" aria-current="page"><span class="qn">OO5</span>Réseaux / N ondes / Rayleigh</a>
+        <a href="oo6.html"><span class="qn">OO6</span>Longueur de cohérence temporelle</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 5 · Optique ondulatoire</span>
+    <h1>Réseaux et superposition de N ondes : maxima, largeur des pics, critère de Rayleigh</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span><span class="src">PL-108</span><span class="src">PL-126</span><span class="src">PL-211</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir la relation fondamentale des réseaux. Décrire les maxima principaux et leur position. Donner la demi-largeur des pics principaux. Énoncer et utiliser le critère de Rayleigh pour la résolution angulaire d'un réseau.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 3 §3.2 — Superposition de N ondes</div>
+      <p>Capacités exigibles :</p>
+      <ul>
+        <li>Établir la relation fondamentale des réseaux liant la condition d'interférences constructives à la différence de marche entre deux motifs consécutifs.</li>
+        <li>Établir, par le calcul, la demi-largeur \(2\pi/N\) des pics principaux de la courbe d'intensité en fonction du déphasage.</li>
+        <li><em>Note :</em> la superposition de N ondes ne doit pas donner lieu à des développements calculatoires lourds (programme MP, art. 3.2) — on raisonne sur les maxima et la largeur.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li>Réseau de \(N\) fentes de même amplitude \(a_0\), de pas \(d\) (distance entre fentes consécutives).</li>
+      <li>\(\theta_i\) : angle d'incidence ; \(\theta_d\) : angle de diffraction (mesurés par rapport à la normale).</li>
+      <li>Déphasage entre deux fentes consécutives : \(\varphi = \dfrac{2\pi d}{\lambda}(\sin\theta_d - \sin\theta_i)\).</li>
+      <li>Différence de marche entre deux fentes consécutives : \(\delta_1 = d(\sin\theta_d-\sin\theta_i)\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Relation fondamentale des réseaux</span>
+      <p>Les maxima principaux (interférences constructives de toutes les fentes) ont lieu lorsque \(\delta_1 = p\lambda\) pour \(p\in\mathbb{Z}\) :</p>
+      <p>\[ d(\sin\theta_d - \sin\theta_i) = p\lambda. \]</p>
+      <p>\(p\) est l'<b>ordre</b> du maximum principal. Pour \(\theta_i = 0\) (incidence normale) : \(d\sin\theta_d = p\lambda\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Intensité de N ondes</span>
+      <p>L'amplitude complexe résultante est une somme géométrique :</p>
+      <p>\[ \underline{A} = a_0\sum_{k=0}^{N-1}\mathrm{e}^{jk\varphi} = a_0\,\frac{1-\mathrm{e}^{jN\varphi}}{1-\mathrm{e}^{j\varphi}}. \]</p>
+      <p>En prenant le module au carré :</p>
+      <p>\[ I(\varphi) = I_1\,\frac{\sin^2(N\varphi/2)}{\sin^2(\varphi/2)}, \qquad I_1 = a_0^2/2. \]</p>
+      <p>Au maximum principal (\(\varphi = 2\pi p\)) : \(I_{\max} = N^2 I_1\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Demi-largeur des pics principaux</span>
+      <p>Au voisinage d'un maximum principal (\(\varphi = 2\pi p + \varepsilon\), \(\varepsilon\ll 1\)) :</p>
+      <p>\[ I(\varphi) \approx I_1\,\frac{\sin^2(N\varepsilon/2)}{(\varepsilon/2)^2}. \]</p>
+      <p>Le premier zéro de \(I\) (de part et d'autre du maximum) se produit pour \(N\varepsilon/2 = \pi\), soit \(\varepsilon = 2\pi/N\). La <b>demi-largeur</b> d'un pic principal (distance entre le maximum et le premier zéro adjacent) est donc :</p>
+      <p>\[ \Delta\varphi = \frac{2\pi}{N}. \]</p>
+      <p>Elle est inversement proportionnelle au nombre de fentes : plus \(N\) est grand, plus les pics principaux sont fins (affinement des raies spectrales par un réseau).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Critère de Rayleigh</span>
+      <p>Le critère de Rayleigh stipule que deux raies de longueurs d'onde \(\lambda\) et \(\lambda+\delta\lambda\) sont <em>juste résolues</em> lorsque le maximum de l'une coïncide avec le premier zéro de l'autre. Cela impose que le décalage en \(\varphi\) entre les deux maxima soit égal à la demi-largeur :</p>
+      <p>\[ \delta\varphi = \frac{2\pi}{\lambda}\,d\cos\theta_d\,\delta\theta = \frac{2\pi}{N}. \]</p>
+      <p>Le <b>pouvoir de résolution</b> est :</p>
+      <p>\[ \mathcal{R} = \frac{\lambda}{\delta\lambda} = Np, \]</p>
+      <p>où \(p\) est l'ordre d'utilisation du réseau. Plus \(N\) et \(p\) sont grands, meilleure est la résolution.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — intensité du réseau à \(N\) fentes</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-res" aria-label="Intensité normalisée d'un réseau à N fentes en fonction du déphasage, finesse des pics réglable par N"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-N">Nombre de fentes \(N\) <span class="val" id="v-N">5</span></label>
+          <input type="range" id="sl-N" min="2" max="20" step="1" value="5">
+          <span class="hint" id="hint-N">Demi-largeur d'un pic principal : \(\Delta\varphi = 2\pi/N\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer \(N\)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(I_{\max}=N^2 I_1\) → <b id="v-imax">25</b> \(I_1\)</span>
+            <span class="ro">\(\Delta\varphi = 2\pi/N\) = <b id="v-dphi">1,257</b> rad</span>
+            <span class="ro">\(\mathcal{R}=Np\) (ordre \(p=1\)) = <b id="v-R">5</b></span>
+          </div>
+          <span class="hint">Quand \(N\) croît : pics principaux plus fins, hauteur \(\propto N^2\), apparition de \(N-2\) maxima secondaires.</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Intensité normalisée \(I/(N^2 I_1) = \dfrac{\sin^2(N\varphi/2)}{N^2\sin^2(\varphi/2)}\) en fonction de \(\varphi/(2\pi)\). Les maxima principaux (en \(\varphi=2\pi p\)) ont une demi-largeur \(2\pi/N\) : ils s'affinent quand \(N\) augmente.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(I/(N^2I_1)\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Demi-largeur \(2\pi/N\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Savoir établir la relation fondamentale des réseaux sans calcul lourd (raisonnement sur la différence de marche entre deux fentes consécutives).</li>
+        <li>Le pouvoir de résolution \(\mathcal{R}=Np\) : plus \(N\) est grand et plus l'ordre est élevé, meilleure est la résolution.</li>
+        <li>Ordre de grandeur : réseau de 600 traits/mm utilisé à l'ordre 1 avec \(N=10\,000\) fentes : \(\mathcal{R}=10\,000\).</li>
+        <li>Ne pas confondre les maxima principaux (\(p\lambda=d\sin\theta\)) et les maxima secondaires (beaucoup moins intenses).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MP. La somme géométrique de \(N\) ondes est au programme (avec la restriction que les développements calculatoires lourds ne sont pas imposés) ; le raisonnement sur les maxima et la largeur est exigible.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="oo4.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OO4 · Contraste (visibilité)</span></a>
+    <a class="next" href="oo6.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OO6 · Longueur de cohérence temporelle</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 8 : Optique ondulatoire (§3).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-res');
+  const slN = document.getElementById('sl-N');
+  const vN = document.getElementById('v-N'), vImax = document.getElementById('v-imax');
+  const vDphi = document.getElementById('v-dphi'), vR = document.getElementById('v-R');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, animPhase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // intensité normalisée à N²I1
+  function Inorm(phi, N) {
+    const sd = Math.sin(phi / 2);
+    if (Math.abs(sd) < 1e-7) return 1;          // maximum principal
+    return Math.pow(Math.sin(N * phi / 2), 2) / (N * N * sd * sd);
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const N = parseInt(slN.value, 10);
+
+    const plot = QC.makePlot(ctx, w, h, { xmin: -2.4, xmax: 2.4, ymin: -0.05, ymax: 1.12, pad: { l: 16, r: 14, t: 18, b: 28 } });
+    plot.grid(c, { xticks: 0, yticks: 4 });
+    plot.axes(c, { xlabel: '\u03c6/(2\u03c0)', ylabel: 'I/(N\u00b2I\u2081)' });
+
+    // courbe : x = phi/(2π) -> phi = 2π x
+    plot.curve(x => Inorm(2 * Math.PI * x, N), c.bleu, { lw: 2.2, N: 2400 });
+
+    // marquer la demi-largeur 2π/N autour du pic central (x = ±1/N)
+    const halfX = 1 / N;
+    const y0 = plot.py(0), yTop = plot.py(1);
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.4; ctx.setLineDash([3, 3]);
+    [halfX, -halfX].forEach(xv => {
+      ctx.beginPath(); ctx.moveTo(plot.px(xv), yTop); ctx.lineTo(plot.px(xv), y0); ctx.stroke();
+    });
+    ctx.setLineDash([]);
+    // double flèche largeur entre les deux premiers zéros
+    const ay = plot.py(0.5);
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(plot.px(-halfX), ay); ctx.lineTo(plot.px(halfX), ay); ctx.stroke();
+    ctx.fillStyle = c.orange; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('2\u00d72\u03c0/N', plot.px(0), ay - 6);
+
+    vN.textContent = N;
+    vImax.textContent = (N * N);
+    vDphi.textContent = fr(2 * Math.PI / N, 3);
+    vR.textContent = N; // p=1
+  }
+
+  let lastT = 0, dir = 1;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      animPhase += dt * 2.2;
+      // balaye N de 2 à 20 et retour
+      let val = 2 + (Math.sin(animPhase) * 0.5 + 0.5) * 18;
+      slN.value = Math.round(val);
+      draw();
+    }
+  });
+  slN.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Arrêter' : 'Animer N';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

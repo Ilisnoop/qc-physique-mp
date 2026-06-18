@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q5 — Puits infini 1D · QC Oraux MP*</title>
+<meta name="description" content="Particule dans un puits infini 1D : quantification des niveaux, énergie de confinement, fonctions propres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="q4.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="q6.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html" aria-current="page"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 5 · Mécanique quantique</span>
+    <h1>Puits infini 1D : énergie de confinement et quantification</h1>
+    <p class="q-sources"><span class="src">POLY p.4</span><span class="src">PL-127</span><span class="src">PL-206</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Résoudre l'équation de Schrödinger stationnaire pour une particule dans un puits infini 1D de largeur \(L\). Établir la quantification des niveaux et l'énergie de confinement. Discuter les analogies.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 6 §6.3</div>
+      <p>États stationnaires dans un puits infini (solutions + niveaux) ; énergie de confinement (état fondamental, lien Heisenberg) ; analogies avec d'autres domaines.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>\[ V(x) = \begin{cases} 0 & 0 &lt; x &lt; L \\ +\infty & \text{ailleurs} \end{cases}. \]</p>
+    <p>Particule de masse \(m\) confinée en \([0,L]\). On pose \(k=\sqrt{2mE/\hbar^2}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Résolution</span>
+      <p>À l'intérieur \(-\frac{\hbar^2}{2m}\varphi''=E\varphi \Rightarrow \varphi''+k^2\varphi=0\), solution \(\varphi(x)=A\sin(kx)+B\cos(kx)\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Conditions aux limites</span>
+      <p>\(\varphi(0)=0\Rightarrow B=0\) ; \(\varphi(L)=0\Rightarrow A\sin(kL)=0\). Comme \(A\neq0\) : quantification \(kL=n\pi\), \(n=1,2,3,\dots\) (on exclut \(n=0\)).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Niveaux quantifiés</span>
+      <p>\(k_n=\frac{n\pi}{L}\Rightarrow E_n=\frac{\hbar^2k_n^2}{2m}=\frac{n^2\pi^2\hbar^2}{2mL^2}=n^2E_1\), avec \(E_1=\pi^2\hbar^2/(2mL^2)\) énergie de confinement (fondamental).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Normalisation</span>
+      <p>\(\varphi_n(x)=A\sin(n\pi x/L)\). Normalisation : \[ \int_0^L|A|^2\sin^2(n\pi x/L)\,\mathrm{d}x=|A|^2 \frac{L}{2}=1 \;\Rightarrow\; A=\sqrt{2/L}. \] Donc \(\varphi_n(x)=\sqrt{2/L}\,\sin(n\pi x/L)\) sur \([0,L]\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Lien Heisenberg</span>
+      <p>Dans le fondamental \(\Delta x\sim L/2\), \(\Delta p\gtrsim\hbar/2\Delta x\sim\hbar/L\), \(E_1\sim\hbar^2/2mL^2\), cohérent.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Analogies</span>
+      <p>Corde vibrante (modes \(f_n=nv/2L\), structure \(n^2f_1\)) ; cavité EM 1D (modes \(k_n=n\pi/L\)).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Ordre de grandeur</span>
+      <p>Électron dans \(L=0{,}5\,\mathrm{nm}\) → \(E_1=\pi^2\hbar^2/(2m_eL^2)\approx 1{,}5\,\mathrm{eV}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-puits" aria-label="Puits infini : diagramme des niveaux En=n²E1 et fonctions d'onde"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-n">Niveau \(n\) <span class="val" id="v-n">1</span></label>
+          <input type="range" id="sl-n" min="1" max="6" step="1" value="1">
+          <span class="hint">Met en évidence \(\varphi_n\) (ou \(|\varphi_n|^2\)). Les niveaux se resserrent... non : ils s'écartent en \(n^2\).</span>
+        </div>
+        <div class="control">
+          <label for="sl-L">Largeur \(L\) <span class="val" id="v-L">0,50 nm</span></label>
+          <input type="range" id="sl-L" min="0.2" max="1.2" step="0.01" value="0.5">
+          <span class="hint">Puisque \(E_n\propto 1/L^2\), réduire \(L\) fait monter tous les niveaux (énergie de confinement).</span>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(E_1\) = <b id="v-E1">—</b></span>
+            <span class="ro">\(E_n=n^2E_1\) = <b id="v-En">—</b></span>
+          </div>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn active" id="t-phi" type="button">φₙ(x)</button>
+            <button class="btn" id="t-den" type="button">|φₙ(x)|²</button>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Parois infinies du puits (orange). À gauche, le diagramme d'énergie : niveaux \(E_n=n^2E_1\), espacement croissant en \(n^2\) (lignes pointillées). Pour le niveau sélectionné, la fonction \(\varphi_n\propto\sin(n\pi x/L)\) — ou sa densité \(|\varphi_n|^2\) — est tracée à partir de son niveau.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Parois du puits</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>n=1</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>n=2</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>n=3</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Niveaux en \(n^2\).</li>
+        <li>Énergie fondamentale NON nulle (énergie de point zéro, conséquence de Heisenberg).</li>
+        <li>Savoir normaliser (\(\int_0^L\sin^2=L/2\)).</li>
+        <li>Analogie avec la corde vibrante pincée.</li>
+        <li>Les conditions \(\varphi(0)=\varphi(L)=0\) viennent du potentiel infini.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout au programme MP (§6.3).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="q4.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Q4 · Marche de potentiel</span></a>
+    <a class="next" href="q6.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Q6 · Modèle de Bohr</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-puits');
+  const slN = document.getElementById('sl-n'), slL = document.getElementById('sl-L');
+  const vN = document.getElementById('v-n'), vL = document.getElementById('v-L');
+  const vE1 = document.getElementById('v-E1'), vEn = document.getElementById('v-En');
+  const tPhi = document.getElementById('t-phi'), tDen = document.getElementById('t-den');
+  let showDensity = false;
+
+  const HBAR = 1.0545718e-34, ME = 9.1093837e-31, EV = 1.602176634e-19;
+  const levelColors = ['bleu', 'rouge', 'vert', 'orange', 'bleu', 'rouge'];
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const n = parseInt(slN.value);
+    const L_nm = parseFloat(slL.value);
+    const L = L_nm * 1e-9;
+    const E1 = Math.PI * Math.PI * HBAR * HBAR / (2 * ME * L * L) / EV; // en eV
+
+    const pad = { l: 46, r: 18, t: 22, b: 30 };
+    const x0 = pad.l, x1 = w - pad.r;
+    const yBot = h - pad.b, yTop = pad.t;
+    // échelle d'énergie : on affiche jusqu'à E6 = 36 E1 mais on dilate doucement.
+    const Emax = 36; // en unités de E1
+    const eY = e => yBot - (e / Emax) * (yBot - yTop);
+
+    // parois (puits) — verticales orange aux bords
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(x0, yTop - 4); ctx.lineTo(x0, yBot); ctx.lineTo(x1, yBot); ctx.lineTo(x1, yTop - 4); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.textAlign = 'center'; ctx.fillText('0', x0, yBot + 16); ctx.fillText('L', x1, yBot + 16);
+    ctx.save(); ctx.translate(14, (yTop + yBot) / 2); ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center'; ctx.fillStyle = c.muted; ctx.fillText('Énergie  Eₙ = n²E₁', 0, 0); ctx.restore();
+
+    // niveaux + fonctions
+    for (let m = 1; m <= 6; m++) {
+      const E = m * m; // en unités de E1
+      const Y = eY(E);
+      const active = (m === n);
+      ctx.strokeStyle = c.grid; ctx.lineWidth = active ? 1.4 : 1; ctx.setLineDash(active ? [] : [4, 4]);
+      ctx.beginPath(); ctx.moveTo(x0, Y); ctx.lineTo(x1, Y); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = active ? c.text : c.muted; ctx.font = (active ? '600 ' : '') + '11px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+      ctx.fillText('n=' + m, x0 - 6, Y + 4);
+
+      // fonction d'onde tracée à partir du niveau, amplitude visuelle
+      const col = c[levelColors[m - 1]];
+      ctx.strokeStyle = col; ctx.lineWidth = active ? 2.8 : 1.4; ctx.globalAlpha = active ? 1 : 0.35;
+      const amp = (yBot - yTop) / Emax * 7; // amplitude visuelle
+      ctx.beginPath();
+      const N = 260;
+      for (let i = 0; i <= N; i++) {
+        const xf = i / N;
+        const phi = Math.sin(m * Math.PI * xf);
+        const val = showDensity ? phi * phi : phi;
+        const X = x0 + xf * (x1 - x0);
+        const Yv = Y - val * amp * (showDensity ? 1 : 1);
+        i ? ctx.lineTo(X, Yv) : ctx.moveTo(X, Yv);
+      }
+      ctx.stroke(); ctx.globalAlpha = 1;
+    }
+
+    vN.textContent = n;
+    vL.textContent = fr(L_nm, 2) + ' nm';
+    vE1.textContent = fr(E1, 2) + ' eV';
+    vEn.textContent = fr(n * n * E1, 2) + ' eV';
+    // mettre à jour le titre courbe selon mode
+  }
+
+  function setMode(dens) {
+    showDensity = dens;
+    tPhi.classList.toggle('active', !dens); tDen.classList.toggle('active', dens);
+    draw();
+  }
+  slN.addEventListener('input', draw);
+  slL.addEventListener('input', draw);
+  tPhi.addEventListener('click', () => setMode(false));
+  tDen.addEventListener('click', () => setMode(true));
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

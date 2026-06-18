@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M6 — Équilibre et stabilité · QC Oraux MP*</title>
+<meta name="description" content="Positions d'équilibre et stabilité par approche énergétique : extrema de Ep, critère de stabilité, petits mouvements, puits et barrières de potentiel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m7.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html" aria-current="page"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 6 · Mécanique</span>
+    <h1>Positions d'équilibre et stabilité — approche énergétique</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-409</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Déterminer les positions d'équilibre et analyser leur stabilité à partir du graphe de l'énergie potentielle ; établir l'équation des petits mouvements au voisinage d'un équilibre stable.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · Section 2.3 « Approche énergétique »</div>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Déduire d'un graphe \(E_p(x)\) l'existence de positions d'équilibre ; analyser leur stabilité.</li>
+        <li>Identifier puits et barrières de potentiel.</li>
+        <li>Établir l'équation différentielle des petits mouvements au voisinage d'un équilibre stable.</li>
+      </ul>
+      <p>Niveau <strong>MPSI</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Mouvement conservatif à une dimension ; énergie mécanique \(E_m = \frac{1}{2}m\dot x^2 + E_p(x)\) conservée.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Condition d'équilibre</span>
+      <p>Au point \(x_e\) d'équilibre : \(\dot x = 0\) et \(\ddot x = 0\). Or \(m\ddot x = -E_p'(x)\), donc :</p>
+      <p>\[ E_p'(x_e) = 0. \]</p>
+      <p>Les positions d'équilibre sont les <em>extrema</em> de \(E_p\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Critère de stabilité</span>
+      <p>Au voisinage de \(x_e\), on pose \(x = x_e + \xi\), \(|\xi| \ll 1\) :</p>
+      <p>\[ E_p(x_e+\xi) = E_p(x_e) + E_p'(x_e)\xi + \tfrac{1}{2}E_p''(x_e)\xi^2 + O(\xi^3). \]</p>
+      <p>Comme \(E_p'(x_e)=0\) : \(m\ddot{\xi} = -E_p''(x_e)\,\xi\).</p>
+      <ul>
+        <li>Si \(E_p''(x_e) &gt; 0\) (minimum de \(E_p\)) : \(\ddot\xi + \omega_0^2\xi = 0\) avec \(\omega_0 = \sqrt{E_p''(x_e)/m}\) : oscillations, <em>équilibre stable</em>.</li>
+        <li>Si \(E_p''(x_e) &lt; 0\) (maximum de \(E_p\)) : \(\ddot\xi - |\omega_0|^2\xi = 0\) : divergence exponentielle, <em>équilibre instable</em>.</li>
+        <li>Si \(E_p''(x_e) = 0\) : dégénérescence, analyse au troisième ordre nécessaire.</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Lecture graphique</span>
+      <p>La vitesse \(v(x) = \sqrt{2(E_m - E_p(x))/m}\) est réelle seulement si \(E_p(x) \leq E_m\). Les <em>points de rebroussement</em> sont \(E_p(x) = E_m\). Un puits de potentiel (<em>état lié</em>) enferme la particule ; une barrière de potentiel sépare deux régions accessibles.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — puits de potentiel et niveau d'énergie</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-ep" aria-label="Énergie potentielle à deux puits, niveau d'énergie mécanique réglable montrant état lié ou franchissement de barrière"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-em">Énergie mécanique \(E_m\) <span class="val" id="v-em">0,10</span></label>
+          <input type="range" id="sl-em" min="-0.50" max="1.10" step="0.01" value="0.10">
+          <span class="hint" id="hint-ep">Sous la barrière : la particule est piégée dans un puits (état lié).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer (bille dans le potentiel)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Régime = <b id="v-reg">—</b></span>
+            <span class="ro">Points de rebroussement \(E_p=E_m\) = <b id="v-rb">—</b></span>
+            <span class="ro">\(\omega_0\) au puits stable \(\propto\sqrt{E_p''/m}\) = <b id="v-w0">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Énergie potentielle à deux minima (équilibres <em>stables</em>) séparés par un maximum (équilibre <em>instable</em>), profil \(E_p(x) = 0{,}3(x-0{,}5)^4 - (x-0{,}5)^2 + 0{,}1(x-0{,}5) + 0{,}5\). Le trait orange marque le niveau \(E_m\) réglé : sous la barrière, le mouvement est borné (état lié, bille piégée) ; au-dessus, le système franchit la barrière et peut passer d'un puits à l'autre. La zone accessible \(E_p \le E_m\) est ombrée.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(E_p(x)\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Niveau \(E_m\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Bille (mobile)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Un équilibre <em>stable</em> est un minimum de \(E_p\) ; un équilibre <em>instable</em> est un maximum.</li>
+        <li>La pulsation des petits mouvements est \(\omega_0 = \sqrt{E_p''(x_e)/m}\) : retenir cette formule.</li>
+        <li>Vérifier toujours que \(E_p''(x_e) &gt; 0\) avant d'écrire l'équation harmonique.</li>
+        <li>Attention : la stabilité au sens de Lyapounov n'implique pas forcément l'amortissement.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MPSI</strong> (section 2.3).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M5 · Oscillateurs : analogies et résonances</span></a>
+    <a class="next" href="m7.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M7 · Forces centrales · Ep effective</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-ep');
+  const slEm = document.getElementById('sl-em'), vEm = document.getElementById('v-em');
+  const vReg = document.getElementById('v-reg'), vRb = document.getElementById('v-rb'), vW0 = document.getElementById('v-w0');
+  const hint = document.getElementById('hint-ep'), btn = document.getElementById('btn-anim');
+  let animating = false, t0 = 0;
+  // potentiel : Ep(u) avec u=x-0.5
+  function Ep(x) { const u = x - 0.5; return 0.3 * u * u * u * u - u * u + 0.1 * u + 0.5; }
+  function Epp(x) { const u = x - 0.5; return 3.6 * u * u - 2; } // dérivée seconde
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // points de rebroussement : Ep(x)=Em sur [-1.6,2.55]
+  function turningPoints(Em) {
+    const xs = [], N = 1200, a = -1.6, b = 2.55;
+    let prev = Ep(a) - Em;
+    for (let i = 1; i <= N; i++) {
+      const x = a + (b - a) * i / N, f = Ep(x) - Em;
+      if (prev === 0 || f * prev < 0) {
+        // bissection
+        let lo = a + (b - a) * (i - 1) / N, hi = x;
+        for (let k = 0; k < 40; k++) { const mid = (lo + hi) / 2; if ((Ep(lo) - Em) * (Ep(mid) - Em) <= 0) hi = mid; else lo = mid; }
+        xs.push((lo + hi) / 2);
+      }
+      prev = f;
+    }
+    return xs;
+  }
+
+  // état de la bille pour l'animation
+  let bx = -0.84, bv = 0;
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 340);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const Em = parseFloat(slEm.value);
+
+    const P = QC.makePlot(ctx, w, h, { xmin: -1.6, xmax: 2.55, ymin: -0.9, ymax: 1.35, pad: { l: 44, r: 16, t: 16, b: 30 } });
+    P.grid(c, { xticks: 6, yticks: 5 });
+    P.axes(c, { xlabel: 'x', ylabel: 'Ep(x)' });
+
+    // zone accessible Ep <= Em (ombrée jusqu'au niveau Em)
+    ctx.save();
+    ctx.beginPath();
+    const N = 400;
+    for (let i = 0; i <= N; i++) {
+      const x = -1.6 + (2.55 + 1.6) * i / N;
+      const yv = Math.min(Ep(x), Em);
+      const X = P.px(x), Y = P.py(yv);
+      if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y);
+    }
+    ctx.lineTo(P.px(2.55), P.py(Em));
+    ctx.lineTo(P.px(-1.6), P.py(Em));
+    ctx.closePath();
+    ctx.fillStyle = c.orange; ctx.globalAlpha = 0.12; ctx.fill();
+    ctx.restore();
+
+    // courbe Ep
+    P.curve(Ep, c.bleu, { lw: 2.6 });
+
+    // niveau Em
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); ctx.moveTo(P.px(-1.6), P.py(Em)); ctx.lineTo(P.px(2.55), P.py(Em)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.orange; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('Em', P.px(2.55) - 28, P.py(Em) - 5);
+
+    // extrema repérés (≈ minima à -0.84 et 1.79, max à 0.55)
+    const exo = [[-0.84, 'stable', c.vert], [0.55, 'instable', c.rouge], [1.79, 'stable', c.vert]];
+    for (const [xe, lab, col] of exo) {
+      ctx.fillStyle = col; ctx.beginPath(); ctx.arc(P.px(xe), P.py(Ep(xe)), 4.2, 0, 2 * Math.PI); ctx.fill();
+    }
+
+    // points de rebroussement
+    const tp = turningPoints(Em);
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1; ctx.globalAlpha = 0.5; ctx.setLineDash([2, 4]);
+    for (const xt of tp) { ctx.beginPath(); ctx.moveTo(P.px(xt), P.py(Em)); ctx.lineTo(P.px(xt), P.py(Ep(xt) - 0.0)); ctx.stroke(); }
+    ctx.globalAlpha = 1; ctx.setLineDash([]);
+
+    // bille animée
+    const byv = Ep(bx);
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(P.px(bx), P.py(byv) - 6, 6, 0, 2 * Math.PI); ctx.fill();
+
+    // lectures
+    vEm.textContent = fr(Em, 2);
+    const Emax = Ep(0.55); // barrière
+    const lie = Em < Emax;
+    vReg.textContent = lie ? 'état lié (borné dans un puits)' : 'franchissement de barrière';
+    vRb.textContent = tp.length ? tp.map(x => fr(x, 2)).join(' ; ') : '—';
+    // omega0 au puits stable de gauche
+    const om = Math.sqrt(Math.abs(Epp(-0.84)));
+    vW0.textContent = fr(om, 2) + ' (u.a.)';
+    if (Em < -0.40) hint.textContent = 'Niveau trop bas : aucune région accessible (Em < Ep,min).';
+    else if (lie) hint.textContent = 'Sous la barrière : la particule est piégée dans un puits (état lié).';
+    else hint.textContent = 'Au-dessus de la barrière : la particule peut passer d\'un puits à l\'autre.';
+  }
+
+  QC.loop(function (ts) {
+    if (animating) {
+      const Em = parseFloat(slEm.value);
+      // intégration simple : a = -Ep'(x)/m, m=1
+      const dt = 0.016;
+      const eps = 1e-3;
+      const force = -(Ep(bx + eps) - Ep(bx - eps)) / (2 * eps);
+      bv += force * dt;
+      bx += bv * dt;
+      // confinement par énergie : si Ep(bx) dépasse Em, rebrousse
+      if (Ep(bx) > Em) { bv = -bv * 0.9; bx += bv * dt; }
+      // bornes
+      if (bx < -1.6) { bx = -1.6; bv = Math.abs(bv); }
+      if (bx > 2.55) { bx = 2.55; bv = -Math.abs(bv); }
+      draw();
+    }
+  });
+
+  slEm.addEventListener('input', function () { draw(); });
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer (bille dans le potentiel)';
+    btn.classList.toggle('active', animating);
+    if (animating) { bx = -0.84; bv = 0; }
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND5 — Milieu ohmique & effet de peau · QC Oraux MP*</title>
+<meta name="description" content="Relation de dispersion dans un milieu ohmique en régime lentement variable, épaisseur de peau et ordres de grandeur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond4.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond6.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html" aria-current="page"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 5 · Ondes électromagnétiques</span>
+    <h1>Champ EM dans un milieu ohmique, effet de peau</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">POLY p.3</span><span class="src">PL-122</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir la relation de dispersion dans un milieu ohmique en régime lentement variable. Définir l'épaisseur de peau \(\delta\) et en donner un ordre de grandeur.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5</div>
+      <p>« Établir et interpréter l'expression de la longueur caractéristique d'atténuation de l'onde électromagnétique dans un milieu ohmique. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Milieu ohmique linéaire, homogène, isotrope de conductivité \(\gamma\) (\(\mathrm{S\cdot m^{-1}}\)), permittivité \(\varepsilon\) (supposée réelle). Loi d'Ohm locale : \(\vec{j} = \gamma\vec{E}\).</p>
+    <p>Régime « lentement variable » (bonne approximation pour les métaux aux fréquences usuelles) : \(\gamma/(\varepsilon\omega) \gg 1\), c'est-à-dire le courant de conduction domine sur le courant de déplacement.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Équation de propagation dans le milieu ohmique</span>
+      <p>En substituant \(\vec{j}=\gamma\vec{E}\) dans Maxwell-Ampère :</p>
+      <p>\[ \vec{\mathrm{rot}}\,\vec{B} = \mu_0\gamma\vec{E} + \mu_0\varepsilon\frac{\partial\vec{E}}{\partial t} \]</p>
+      <p>Dans le régime lentement variable, on néglige le terme de déplacement :</p>
+      <p>\[ \vec{\mathrm{rot}}\,\vec{B} \approx \mu_0\gamma\vec{E} \]</p>
+      <p>En combinant avec Maxwell-Faraday (en prenant \(\vec{\mathrm{rot}}\) de \(\vec{\mathrm{rot}}\,\vec{E} = -\partial_t\vec{B}\) et utilisant \(\mathrm{div}\,\vec{E}=0\)) :</p>
+      <p>\[ \Delta\vec{E} = \mu_0\gamma\frac{\partial\vec{E}}{\partial t} \]</p>
+      <p>C'est une <em>équation de diffusion</em> (et non de propagation) avec le coefficient de diffusion \(D = 1/(\mu_0\gamma)\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Solution OPPM</span>
+      <p>En cherchant \(\vec{E} = \vec{E}_0 e^{i(kz-\omega t)}\) :</p>
+      <p>\[ -k^2 = -i\mu_0\gamma\omega \]</p>
+      <p>Donc \(k^2 = i\mu_0\gamma\omega\), d'où :</p>
+      <p>\[ k = \frac{1+i}{\delta}, \quad \text{avec}\quad \delta = \sqrt{\frac{2}{\mu_0\gamma\omega}} \]</p>
+      <p>(en prenant la racine de module positif et de phase \(+\pi/4\)). Le champ s'écrit :</p>
+      <p>\[ \vec{E} = \vec{E}_0\,e^{-z/\delta}\,e^{i(z/\delta - \omega t)} \]</p>
+      <p>Le champ est atténué sur une longueur caractéristique \(\delta\) appelée <b>épaisseur de peau</b>.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Ordres de grandeur</span>
+      <p>\[ \delta = \sqrt{\frac{2}{\mu_0\gamma\omega}} \]</p>
+      <p>Pour le cuivre (\(\gamma = 5{,}9\times10^{7}\ \mathrm{S\cdot m^{-1}}\)) à \(f=50\ \mathrm{Hz}\) : \(\delta \approx 9\ \mathrm{mm}\). À \(f=1\ \mathrm{MHz}\) : \(\delta \approx 66\ \mathrm{\mu m}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — atténuation \(e^{-z/\delta}\) dans le conducteur</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-peau" aria-label="Onde atténuée e^(-z/delta) dans un conducteur ohmique, epaisseur de peau delta"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-d">Épaisseur de peau \(\delta\) <span class="val" id="v-d">1,0 (u.a.)</span></label>
+          <input type="range" id="sl-d" min="0.4" max="3" step="0.05" value="1">
+          <span class="hint" id="hint-d">\(\delta = \sqrt{2/(\mu_0\gamma\omega)} \propto 1/\sqrt{\gamma\omega}\) : plus \(\gamma\) ou \(\omega\) augmente, plus \(\delta\) diminue.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer l'onde amortie</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(E/E_0\) en \(z=\delta\) = <b id="v-1e">0,37</b> (\(=1/e\))</span>
+            <span class="ro">\(E/E_0\) en \(z=3\delta\) = <b id="v-3d">—</b></span>
+            <span class="ro">Profondeur de \(99\%\) d'atténuation \(\approx 4{,}6\,\delta\) = <b id="v-99">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Onde \(E(z) = E_0\,e^{-z/\delta}\cos(z/\delta - \omega t)\) pénétrant dans le conducteur (zone teintée). L'enveloppe \(e^{-z/\delta}\) (rouge pointillé) tombe à \(1/e\) en \(z=\delta\) (repère vert). « Animer » fait osciller la phase ; l'enveloppe d'atténuation reste fixe.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(E(z,t)\) amortie</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>enveloppe \(e^{-z/\delta}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(z=\delta\) (\(1/e\))</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>L'épaisseur de peau \(\delta \propto 1/\sqrt{\omega}\) : plus la fréquence est élevée, plus le courant est confiné en surface.</li>
+        <li>En pratique : à 50 Hz, \(\delta \approx 9\ \mathrm{mm}\) (cuivre) ; à 100 MHz, \(\delta \approx 7\ \mathrm{\mu m}\) — les câbles HF sont creux ou blindés.</li>
+        <li>L'équation de diffusion (et non de d'Alembert) indique que l'onde est <em>fortement dispersive</em> et <em>atténuée</em>.</li>
+        <li>La résistance d'un conducteur massif augmente avec la fréquence (effet de peau) : \(R(\omega)\propto\sqrt{\omega}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section 4.5.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond4.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND4 · OPPM dans un plasma</span></a>
+    <a class="next" href="ond6.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND6 · GPS et ionosphère</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-peau');
+  const slD = document.getElementById('sl-d');
+  const vD = document.getElementById('v-d'), v3d = document.getElementById('v-3d'), v99 = document.getElementById('v-99');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const delta = parseFloat(slD.value);
+    const pad = { l: 16, r: 16, t: 20, b: 28 };
+    const midY = h * 0.5, amp = h * 0.34;
+    const X0 = pad.l, X1 = w - pad.r, span = X1 - X0;
+    const Zmax = 6;                       // domaine z (u.a.)
+    const zof = px => (px - X0) / span * Zmax;
+    const xofz = z => X0 + z / Zmax * span;
+
+    // zone conductrice teintée
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.06; ctx.fillRect(X0, pad.t, span, h - pad.b - pad.t); ctx.globalAlpha = 1;
+    // ligne de référence
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X0, midY); ctx.lineTo(X1, midY); ctx.stroke();
+
+    // onde amortie
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false;
+    for (let px = X0; px <= X1; px += 1) { const z = zof(px); const Y = midY - amp * Math.exp(-z / delta) * Math.cos(z / delta - phase); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke();
+    // enveloppe ± e^{-z/δ}
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.6; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) { const z = zof(px); const Y = midY - amp * Math.exp(-z / delta); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke();
+    ctx.beginPath(); started = false;
+    for (let px = X0; px <= X1; px += 1) { const z = zof(px); const Y = midY + amp * Math.exp(-z / delta); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // repère z=δ
+    const xd = xofz(delta);
+    if (xd < X1) {
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 1.6; ctx.setLineDash([2, 3]);
+      ctx.beginPath(); ctx.moveTo(xd, pad.t); ctx.lineTo(xd, h - pad.b); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = c.vert; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center'; ctx.fillText('z = δ', xd, pad.t + 12);
+      // niveau 1/e
+      const y1e = midY - amp * Math.exp(-1);
+      ctx.fillStyle = c.vert; ctx.beginPath(); ctx.arc(xd, y1e, 3.5, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('conducteur ohmique  →  z', X0 + 4, h - 8);
+
+    vD.textContent = fr(delta, 2) + ' (u.a.)';
+    v3d.textContent = fr(Math.exp(-3), 3);
+    v99.textContent = fr(4.6 * delta, 2) + ' (u.a.)';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) { const dt = t - lastT; lastT = t; if (animating) { phase += dt * 3.5; draw(); } });
+  slD.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer l\u2019onde amortie';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

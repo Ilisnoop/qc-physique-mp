@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M1 — Référentiel terrestre non galiléen · QC Oraux MP*</title>
+<meta name="description" content="Caractère non galiléen du référentiel terrestre : force de Coriolis, force centrifuge, déviation vers l'est, déviation vers la droite.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème">‹ <span class="label-txt">Sommaire</span></a>
+      <a class="qnav-btn" href="m2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html" aria-current="page"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Mécanique</span>
+    <h1>Référentiel terrestre non galiléen</h1>
+    <p class="q-sources"><span class="src">POLY p.1</span><span class="src">POLY p.2</span><span class="src">PL-105</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Mettre en évidence le caractère non galiléen du référentiel terrestre par des expériences concrètes ; définir le champ de pesanteur et expliquer l'origine de la déviation vers l'est et vers la droite (hémisphère nord) d'un objet en chute libre ou en mouvement horizontal.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Section 1.1 « Référentiels non galiléens »</div>
+      <p><em>Notions et contenus :</em> mouvement d'un référentiel par rapport à un autre dans le cas de la rotation uniforme autour d'un axe fixe ; vecteur rotation ; accélérations d'entraînement et de Coriolis ; forces d'inertie.</p>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Citer quelques manifestations du caractère non galiléen du référentiel terrestre.</li>
+        <li>Estimer, en ordre de grandeur, la contribution de la force de Coriolis dans un problème de dynamique terrestre.</li>
+        <li>Exprimer les forces d'inertie dans le cas où le référentiel entraîné est en rotation uniforme autour d'un axe fixe.</li>
+        <li>Utiliser les lois de la dynamique en référentiel non galiléen (rotation uniforme).</li>
+      </ul>
+      <p>Niveau <strong>MP</strong>. Le référentiel terrestre est traité en MPSI uniquement comme cadre d'application du principe d'inertie ; son caractère non galiléen est explicitement au programme MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On note :</p>
+    <ul>
+      <li>\(\mathcal{R}_{G}\) : référentiel géocentrique (supposé galiléen à l'échelle terrestre courante).</li>
+      <li>\(\mathcal{R}_{T}\) : référentiel terrestre, en rotation uniforme par rapport à \(\mathcal{R}_{G}\) à la vitesse angulaire \(\vec{\Omega} = \Omega\,\hat{N}\) où \(\hat{N}\) est dirigé du Sud vers le Nord géographique et \(\Omega = 7{,}27\times10^{-5}\ \mathrm{rad\cdot s^{-1}}\).</li>
+      <li>\(\lambda\) : latitude (positive dans l'hémisphère nord).</li>
+      <li>\(m\) : masse du point matériel \(M\) de position \(\vec{r}\) dans \(\mathcal{R}_{T}\).</li>
+      <li>\(\vec{g_{0}}\) : accélération de la pesanteur newtonienne (gravitationnelle pure).</li>
+      <li>\(\vec{g}\) : champ de pesanteur apparent (observable sur Terre).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Équation du mouvement en référentiel tournant</span>
+      <p>En projetant la loi de Newton depuis \(\mathcal{R}_{G}\) vers \(\mathcal{R}_{T}\), on obtient dans ce dernier :</p>
+      <p>\[ m\,\vec{a}_{\mathcal{R}_T} = \vec{F}_{\text{réel}} - m\,\vec{a}_{e} - 2m\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T}, \]</p>
+      <p>où \(\vec{a}_{e} = \vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r})\) est l'accélération d'entraînement centripète et \(\vec{F}_{\text{Cor}} = -2m\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T}\) est la force de Coriolis.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Champ de pesanteur apparent</span>
+      <p>Au repos dans \(\mathcal{R}_T\), on a \(\vec{v}_{\mathcal{R}_T}=\vec{0}\) donc Coriolis est nulle. L'équilibre donne :</p>
+      <p>\[ \vec{0} = m\vec{g_0} - m\,\vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}) + \vec{R}, \]</p>
+      <p>d'où la définition du <em>champ de pesanteur apparent</em> :</p>
+      <p>\[ \vec{g} = \vec{g_0} - \vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}). \]</p>
+      <p>Le terme centrifuge \(-\vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r})\) est dirigé vers l'axe de rotation et de module \(\Omega^2\,R_T\cos\lambda \approx 3{,}4\times10^{-2}\ \mathrm{m\cdot s^{-2}}\) à l'équateur. Il dévie \(\vec{g}\) vers l'équateur d'un angle maximal \(\approx 0{,}1^\circ\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Déviation vers l'est en chute libre</span>
+      <p>Pour un objet lâché sans vitesse initiale depuis une hauteur \(h\), la force de Coriolis est \(\vec{F}_{\text{Cor}} = -2m\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T}\). En coordonnées locales \((Est, Nord, Vertical)\) à la latitude \(\lambda\) : \(\vec{\Omega} = \Omega(\cos\lambda\,\hat{N} + \sin\lambda\,\hat{Z})\). Au premier ordre la vitesse est \(\vec{v} \approx -gt\,\hat{Z}\). La composante Est de la force de Coriolis vaut :</p>
+      <p>\[ F_{\text{Est}} = 2m\,\Omega\,g\,t\cos\lambda. \]</p>
+      <p>En intégrant deux fois, la déviation vers l'est au bout d'un temps de chute \(t_f = \sqrt{2h/g}\) est :</p>
+      <p>\[ \delta_E = \tfrac{1}{3}\,\Omega\cos\lambda\sqrt{\tfrac{8h^3}{g}}. \]</p>
+      <p>Pour \(h=100\ \mathrm{m}\), \(\lambda=45^\circ\) : \(\delta_E \approx 2{,}2\ \mathrm{cm}\). La déviation est <em>orientée vers l'Est</em>, indépendamment de l'hémisphère.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4. Déviation vers la droite des mouvements horizontaux</span>
+      <p>Pour un projectile se déplaçant horizontalement dans l'hémisphère nord, la composante verticale de \(\vec{\Omega}\) (vers le haut, \(\Omega\sin\lambda > 0\)) donne une force de Coriolis horizontale perpendiculaire à \(\vec{v}_{\mathcal{R}_T}\) orientée vers la <em>droite</em> du mouvement. C'est l'origine de la déviation des vents (cyclones anti-horaires) et des courants marins dans l'hémisphère nord, et vers la gauche dans l'hémisphère sud.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5. Ordre de grandeur de la force de Coriolis</span>
+      <p>\(F_{\text{Cor}} = 2m\Omega v\). Pour \(m = 1\ \mathrm{kg}\), \(v = 10\ \mathrm{m\cdot s^{-1}}\) : \(F_{\text{Cor}} \approx 1{,}5\times10^{-3}\ \mathrm{N}\), soit \(1{,}5\times10^{-4}\) fois le poids. Négligeable à l'échelle du laboratoire, mais observable sur des trajectoires longues (artillerie, météorologie).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — déviation par la force de Coriolis</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-coriolis" aria-label="Chute libre déviée vers l'est par la force de Coriolis selon la latitude et la hauteur"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-lat">Latitude \(\lambda\) <span class="val" id="v-lat">45°</span></label>
+          <input type="range" id="sl-lat" min="0" max="90" step="1" value="45">
+          <label for="sl-h" style="margin-top:.6rem">Hauteur de chute \(h\) (m) <span class="val" id="v-h">100 m</span></label>
+          <input type="range" id="sl-h" min="10" max="300" step="5" value="100">
+          <span class="hint" id="hint-cor">La déviation est toujours dirigée vers l'Est.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la chute</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(t_f=\sqrt{2h/g}\) = <b id="v-tf">—</b> s</span>
+            <span class="ro">\(\delta_E\) = <b id="v-de">—</b></span>
+            <span class="ro">\(\Omega\cos\lambda\) = <b id="v-oc">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Trajectoire d'un objet lâché sans vitesse depuis la hauteur \(h\) : la verticale idéale (pointillé gris) et la chute réelle déviée vers l'Est (bleu) par la force de Coriolis. La déviation \(\delta_E = \tfrac{1}{3}\,\Omega\cos\lambda\sqrt{8h^3/g}\) est calculée en direct ; elle est maximale à l'équateur (\(\lambda=0\)) et nulle aux pôles.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Verticale locale</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Trajectoire déviée (Est)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Force de Coriolis</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Bien distinguer <em>force centrifuge d'entraînement</em> (toujours présente en \(\mathcal{R}_T\)) et <em>force de Coriolis</em> (nulle si \(\vec{v}_{\mathcal{R}_T}=\vec{0}\)).</li>
+        <li>La déviation vers l'est est <em>universelle</em> (même sens quel que soit l'hémisphère).</li>
+        <li>La déviation vers la droite/gauche des mouvements horizontaux est liée au signe de \(\Omega\sin\lambda\) : droite au nord, gauche au sud.</li>
+        <li>Ordre de grandeur : \(\Omega = 7{,}27\times10^{-5}\ \mathrm{rad\cdot s^{-1}}\), période sidérale \(T \approx 24\ \mathrm{h}\).</li>
+        <li>Toujours préciser dans quel référentiel on écrit l'équation du mouvement.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout le développement ci-dessus est au programme <strong>MP</strong> (section 1.1). La correction de la durée du jour sidéral vs solaire est une nuance pédagogique, non exigible.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="index.html"><span class="pn-dir">← Sommaire</span><span class="pn-title">Mécanique · les 11 questions</span></a>
+    <a class="next" href="m2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M2 · Solide en rotation autour d'un axe fixe</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-coriolis');
+  const slLat = document.getElementById('sl-lat'), slH = document.getElementById('sl-h');
+  const vLat = document.getElementById('v-lat'), vH = document.getElementById('v-h');
+  const vTf = document.getElementById('v-tf'), vDe = document.getElementById('v-de'), vOc = document.getElementById('v-oc');
+  const hint = document.getElementById('hint-cor'), btn = document.getElementById('btn-anim');
+  const OMEGA = 7.27e-5, g = 9.81;
+  let animating = false, prog = 1; // prog 0..1 = avancement de la chute
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function compute() {
+    const lat = parseFloat(slLat.value) * Math.PI / 180;
+    const h = parseFloat(slH.value);
+    const tf = Math.sqrt(2 * h / g);
+    const dE = (1 / 3) * OMEGA * Math.cos(lat) * Math.sqrt(8 * h * h * h / g); // mètres
+    return { lat, h, tf, dE };
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const P = compute();
+    const pad = { l: 60, r: 24, t: 24, b: 36 };
+    const topY = pad.t, botY = h - pad.b;
+    const xTop = w * 0.42; // point de lâcher
+    // amplification visuelle de la déviation (sinon invisible : cm sur 100 m)
+    const ampPx = (w - pad.r - xTop) * 0.9;
+    const dEmax = (1/3) * OMEGA * 1 * Math.sqrt(8 * 300*300*300 / g); // déviation max sur l'échelle
+    const devPx = ampPx * (P.dE / dEmax);
+
+    // sol
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(pad.l - 10, botY); ctx.lineTo(w - pad.r, botY); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.textAlign = 'left'; ctx.fillText('sol', pad.l - 6, botY + 16);
+    ctx.textAlign = 'center'; ctx.fillText('E →', w - pad.r - 18, botY + 16);
+
+    // verticale idéale (orange pointillé)
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(xTop, topY); ctx.lineTo(xTop, botY); ctx.stroke(); ctx.setLineDash([]);
+    // graduation hauteur
+    ctx.fillStyle = c.muted; ctx.textAlign = 'right'; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.fillText('h = ' + fr(P.h, 0) + ' m', xTop - 8, topY + 4);
+    ctx.fillText('0', xTop - 8, botY - 2);
+
+    // trajectoire déviée : x(t) = xTop + devPx*(z parcouru)^... ; déviation ∝ t^3, hauteur tombée ∝ t^2
+    // paramétrons par fraction tombée f ; t/tf = sqrt(f) ; dev ∝ (t/tf)^3 = f^1.5
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false; const fMax = prog;
+    for (let i = 0; i <= 100; i++) {
+      const f = i / 100 * fMax;            // fraction de hauteur tombée
+      const X = xTop + devPx * Math.pow(f, 1.5);
+      const Y = topY + f * (botY - topY);
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+    }
+    ctx.stroke();
+    // objet courant
+    const X = xTop + devPx * Math.pow(fMax, 1.5);
+    const Y = topY + fMax * (botY - topY);
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(X, Y, 5, 0, 2 * Math.PI); ctx.fill();
+    // flèche force de Coriolis (vers l'est) sur l'objet
+    if (fMax > 0.05) {
+      ctx.strokeStyle = c.rouge; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(X, Y); ctx.lineTo(X + 26, Y); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(X + 26, Y); ctx.lineTo(X + 20, Y - 4); ctx.lineTo(X + 20, Y + 4); ctx.closePath();
+      ctx.fillStyle = c.rouge; ctx.fill();
+    }
+    // déviation finale au sol
+    if (prog >= 0.999 && devPx > 1) {
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 1.4; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(xTop, botY); ctx.lineTo(xTop + devPx, botY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = c.vert; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+      ctx.fillText('δ_E', xTop + devPx / 2, botY - 6);
+    }
+
+    // lectures
+    vLat.textContent = fr(parseFloat(slLat.value), 0) + '°';
+    vH.textContent = fr(P.h, 0) + ' m';
+    vTf.textContent = fr(P.tf, 2);
+    vDe.textContent = (P.dE * 100 < 100) ? fr(P.dE * 100, 2) + ' cm' : fr(P.dE, 3) + ' m';
+    vOc.textContent = fr(OMEGA * Math.cos(P.lat) * 1e5, 2) + '×10⁻⁵ rad/s';
+    const latd = parseFloat(slLat.value);
+    if (latd >= 89) hint.textContent = 'Au pôle : déviation nulle (cos λ = 0).';
+    else if (latd <= 1) hint.textContent = 'À l\'équateur : déviation maximale (cos λ = 1).';
+    else hint.textContent = 'Déviation toujours dirigée vers l\'Est.';
+  }
+
+  QC.loop(function () {
+    if (animating) {
+      prog += 0.012;
+      if (prog >= 1) { prog = 1; animating = false; btn.textContent = 'Rejouer la chute'; btn.classList.remove('active'); }
+      draw();
+    }
+  });
+
+  slLat.addEventListener('input', draw);
+  slH.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    if (animating) { animating = false; btn.textContent = 'Animer la chute'; btn.classList.remove('active'); return; }
+    prog = 0; animating = true; btn.textContent = 'Pause'; btn.classList.add('active');
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

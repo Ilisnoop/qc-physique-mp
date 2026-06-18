@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM5 — Dipôle électrostatique · QC Oraux MP*</title>
+<meta name="description" content="Potentiel et champ du dipôle électrostatique en approximation dipolaire, couple et énergie dans un champ extérieur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em4.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em6.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html" aria-current="page"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 5 · Électromagnétisme</span>
+    <h1>Dipôle électrostatique : potentiel, champ, action, énergie potentielle</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir un dipôle électrostatique. Établir le potentiel et le champ dans l'approximation dipolaire. Calculer les actions subies dans un champ extérieur et l'énergie potentielle d'interaction.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.1 Électrostatique</div>
+      <p>« Exprimer le moment dipolaire. Établir et exploiter les expressions du champ et du potentiel créés par un doublet de charges dans l'approximation dipolaire. Établir et exploiter les expressions des actions mécaniques subies par un doublet dans un champ extérieur uniforme. Citer et exploiter l'expression de l'énergie potentielle d'interaction. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Un dipôle électrostatique est formé de deux charges \(+q\) et \(-q\) séparées par le vecteur \(\vec{\ell}\) (de \(-q\) vers \(+q\)). Le <em>moment dipolaire</em> est \(\vec{p} = q\vec{\ell}\) (en \(\mathrm{C\cdot m}\)). On travaille en coordonnées sphériques \((r,\theta,\varphi)\) centrées sur le milieu du dipôle, l'axe polaire aligné sur \(\vec{p}\). L'<em>approximation dipolaire</em> suppose \(r \gg \ell\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Potentiel</span>
+      <p>En superposant les potentiels de \(+q\) et \(-q\) et en développant au premier ordre en \(\ell/r\) :</p>
+      <p>\[ V(r,\theta) = \frac{p\cos\theta}{4\pi\varepsilon_0 r^2} \]</p>
+      <p>Homogénéité : \([p/(4\pi\varepsilon_0 r^2)] = \mathrm{C\cdot m}\cdot(\mathrm{F\cdot m^{-1}})^{-1}/\mathrm{m^2} = \mathrm{V}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Champ</span>
+      <p>On applique \(\vec{E} = -\vec{\mathrm{grad}}\,V\) (expressions du gradient en sphériques fournies) :</p>
+      <p>\[ E_r = -\frac{\partial V}{\partial r} = \frac{2p\cos\theta}{4\pi\varepsilon_0 r^3}, \qquad E_\theta = -\frac{1}{r}\frac{\partial V}{\partial\theta} = \frac{p\sin\theta}{4\pi\varepsilon_0 r^3} \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Actions dans un champ extérieur uniforme \(\vec{E}_{\mathrm{ext}}\)</span>
+      <p>La <em>résultante</em> des forces vaut \(\vec{F} = q\vec{E}_{\mathrm{ext}}(+q) + (-q)\vec{E}_{\mathrm{ext}}(-q) = \vec{0}\) (champ uniforme). Le <em>moment</em> (couple) vaut \(\vec{\Gamma} = \vec{p}\times\vec{E}_{\mathrm{ext}}\) : le dipôle tend à s'aligner sur \(\vec{E}_{\mathrm{ext}}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Énergie potentielle d'interaction</span>
+      <p>\[ E_p = -\vec{p}\cdot\vec{E}_{\mathrm{ext}} \]</p>
+      <p>Elle est minimale quand \(\vec{p}\) est aligné avec \(\vec{E}_{\mathrm{ext}}\) (\(\theta=0\), position d'équilibre stable). Dans un champ non uniforme, il apparaît une force \(\vec{F} = \vec{\mathrm{grad}}(\vec{p}\cdot\vec{E}_{\mathrm{ext}})\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — carte de champ dipolaire</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-dipe" aria-label="Lignes de champ d'un dipôle électrostatique partant de +q et convergeant vers -q ; angle du dipôle réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-th">Orientation du dipôle \(\alpha\) <span class="val" id="v-th">0°</span></label>
+          <input type="range" id="sl-th" min="0" max="180" step="1" value="0">
+          <span class="hint">Lignes de \(\vec{E}\) issues de \(+q\), convergeant vers \(-q\). Le couple \(\vec{\Gamma}=\vec{p}\times\vec{E}_{\mathrm{ext}}\) ramène \(\vec{p}\) vers \(\vec{E}_{\mathrm{ext}}\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Relâcher dans \(\vec{E}_{\mathrm{ext}}\)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\Gamma = pE\sin\alpha\) ∝ <b id="v-G">0,00</b></span>
+            <span class="ro">\(E_p=-pE\cos\alpha\) ∝ <b id="v-Ep">−1,00</b></span>
+          </div>
+          <span class="hint" style="margin-top:.3rem">\(\alpha=0\) : équilibre stable (\(E_p\) minimale).</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Lignes de champ d'un dipôle électrostatique : elles partent de \(+q\) (bleu) et convergent vers \(-q\) (rouge), symétriques par rapport à l'axe du dipôle. Le potentiel décroît en \(1/r^2\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Lignes de \(\vec{E}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Champ extérieur \(\vec{E}_{\mathrm{ext}}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Bien préciser \(\vec{p} = q\vec{\ell}\) (de \(-q\) vers \(+q\), et non l'inverse).</li>
+        <li>Le potentiel décroît comme \(1/r^2\) (vs \(1/r\) pour une charge seule) : le dipôle est neutre, ses effets lointains sont plus faibles.</li>
+        <li>Le couple \(\vec{\Gamma} = \vec{p}\times\vec{E}_{\mathrm{ext}}\) s'annule pour \(\vec{p}\parallel\vec{E}_{\mathrm{ext}}\) : deux positions d'équilibre, une seule stable (\(E_p\) minimale).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section §4.1.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em4.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM4 · Condensateur plan</span></a>
+    <a class="next" href="em6.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM6 · Dipôle magnétostatique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-dipe');
+  const slTh = document.getElementById('sl-th');
+  const vTh = document.getElementById('v-th'), vG = document.getElementById('v-G'), vEp = document.getElementById('v-Ep');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, ang = 0, omega = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function fieldLines(ctx, cx, cy, L, a, color) {
+    // dipôle : +q à +L/2 selon a, -q à -L/2
+    const px = Math.cos(a), py = Math.sin(a);
+    const qp = [cx + px*L/2, cy + py*L/2];
+    const qm = [cx - px*L/2, cy - py*L/2];
+    ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+    const nStart = 12;
+    for (let i = 0; i < nStart; i++) {
+      const a0 = 2*Math.PI*i/nStart;
+      let x = qp[0] + 6*Math.cos(a0), y = qp[1] + 6*Math.sin(a0);
+      ctx.beginPath(); ctx.moveTo(x,y);
+      for (let step = 0; step < 220; step++) {
+        // E = champ de +q et -q
+        let ex=0, ey=0;
+        let dx=x-qp[0], dy=y-qp[1], r2=dx*dx+dy*dy+1; let r=Math.sqrt(r2);
+        ex += dx/(r2*r); ey += dy/(r2*r);
+        dx=x-qm[0]; dy=y-qm[1]; r2=dx*dx+dy*dy+1; r=Math.sqrt(r2);
+        ex -= dx/(r2*r); ey -= dy/(r2*r);
+        const n = Math.hypot(ex,ey)||1; ex/=n; ey/=n;
+        x += ex*4; y += ey*4;
+        if (x<0||x>10000||y<0||y>10000) break;
+        ctx.lineTo(x,y);
+        // stop si proche de -q
+        if (Math.hypot(x-qm[0],y-qm[1]) < 7) break;
+      }
+      ctx.stroke();
+    }
+    // charges
+    ctx.fillStyle = '#14468C'; ctx.beginPath(); ctx.arc(qp[0],qp[1],5,0,2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#AA1E28'; ctx.beginPath(); ctx.arc(qm[0],qm[1],5,0,2*Math.PI); ctx.fill();
+  }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 340); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const cx = w/2, cy = h/2;
+    // E_ext vertical (vers le haut) en vert
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.4; ctx.globalAlpha = 0.5;
+    for (let i=0;i<4;i++){ const x=w*0.10 + i*w*0.27;
+      ctx.beginPath(); ctx.moveTo(x, h-14); ctx.lineTo(x, 14);
+      ctx.moveTo(x,14); ctx.lineTo(x-4,24); ctx.moveTo(x,14); ctx.lineTo(x+4,24); ctx.stroke(); }
+    ctx.globalAlpha=1; ctx.fillStyle=c.vert; ctx.font='12px IBM Plex Mono, monospace'; ctx.textAlign='left';
+    ctx.fillText('E_ext', w*0.10+6, 36);
+    // dipôle (angle ang mesuré depuis la verticale E_ext)
+    const a = -Math.PI/2 + ang; // 0 => aligné avec E_ext (vers le haut)
+    fieldLines(ctx, cx, cy, 46, a, c.orange);
+    // vecteur p
+    ctx.strokeStyle = c.text; ctx.lineWidth = 2.4;
+    const px=Math.cos(a), py=Math.sin(a);
+    ctx.beginPath(); ctx.moveTo(cx-px*30, cy-py*30); ctx.lineTo(cx+px*34, cy+py*34);
+    ctx.moveTo(cx+px*34, cy+py*34); ctx.lineTo(cx+px*26-py*7, cy+py*26+px*7);
+    ctx.moveTo(cx+px*34, cy+py*34); ctx.lineTo(cx+px*26+py*7, cy+py*26-px*7); ctx.stroke();
+    ctx.fillStyle=c.text; ctx.textAlign='center'; ctx.fillText('p', cx+px*44, cy+py*44);
+    const al = ang; // angle entre p et E_ext
+    vTh.textContent = fr(al*180/Math.PI,0)+'°';
+    vG.textContent = fr(Math.sin(al),2);
+    vEp.textContent = fr(-Math.cos(al),2);
+  }
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t-lastT; lastT = t;
+    if (animating) {
+      // couple = -k sin(ang) ; petit amortissement
+      omega += (-3*Math.sin(ang) - 0.8*omega)*dt; ang += omega*dt;
+      slTh.value = (Math.abs(((ang*180/Math.PI)%360))).toFixed(0);
+      draw();
+    }
+  });
+  slTh.addEventListener('input', function(){ ang = parseFloat(slTh.value)*Math.PI/180; omega=0; draw(); });
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Relâcher dans E_ext';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  ang = 0; draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

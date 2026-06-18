@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM6 — Dipôle magnétostatique · QC Oraux MP*</title>
+<meta name="description" content="Moment magnétique d'une boucle, champ dipolaire, couple et énergie d'un dipôle magnétique dans B_ext.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em7.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html" aria-current="page"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 6 · Électromagnétisme</span>
+    <h1>Dipôle magnétostatique : moment, champ, action, énergie potentielle</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir le moment magnétique d'une boucle de courant. Donner le champ dans l'approximation dipolaire. Calculer les actions subies dans un champ extérieur et l'énergie potentielle.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.2 Magnétostatique</div>
+      <p>« Exprimer le moment magnétique d'une boucle de courant plane. Exploiter l'expression fournie du champ créé par un dipôle magnétique. Exploiter les expressions fournies des actions mécaniques subies par un dipôle magnétique dans un champ extérieur uniforme. Citer et exploiter l'expression de l'énergie potentielle d'interaction. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Une spire plane, d'aire \(\mathcal{A}\), parcourue par un courant \(I\), de normale \(\hat{n}\) (règle de la main droite), possède un <em>moment magnétique</em> \(\vec{m} = I\mathcal{A}\,\hat{n}\) en \(\mathrm{A\cdot m^2}\). On travaille dans l'approximation dipolaire (\(r\gg\) dimensions de la spire).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Champ créé (fourni, à exploiter)</span>
+      <p>En coordonnées sphériques, axe polaire selon \(\vec{m}\) :</p>
+      <p>\[ B_r = \frac{\mu_0}{4\pi}\frac{2m\cos\theta}{r^3}, \qquad B_\theta = \frac{\mu_0}{4\pi}\frac{m\sin\theta}{r^3} \]</p>
+      <p>Structure identique à celle du dipôle électrique avec \(\vec{p}\leftrightarrow\vec{m}\), \(1/(4\pi\varepsilon_0)\leftrightarrow\mu_0/(4\pi)\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Actions dans un champ extérieur uniforme \(\vec{B}_{\mathrm{ext}}\)</span>
+      <p>Résultante : \(\vec{F} = \vec{0}\) (en champ uniforme). Moment (couple) : \(\vec{\Gamma} = \vec{m}\times\vec{B}_{\mathrm{ext}}\) — tend à aligner \(\vec{m}\) sur \(\vec{B}_{\mathrm{ext}}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Énergie potentielle</span>
+      <p>\[ E_p = -\vec{m}\cdot\vec{B}_{\mathrm{ext}} \]</p>
+      <p>Minimale pour \(\vec{m}\parallel\vec{B}_{\mathrm{ext}}\) (équilibre stable). Dans un champ non uniforme : \(\vec{F} = \vec{\mathrm{grad}}(\vec{m}\cdot\vec{B}_{\mathrm{ext}})\).</p>
+      <p>Ordres de grandeur : moment magnétique d'un électron \(\sim 9{,}3\times10^{-24}\,\mathrm{A\cdot m^2}\) (magnéton de Bohr) ; spire de \(1\,\mathrm{cm^2}\) à \(1\,\mathrm{A}\) : \(m = 10^{-4}\,\mathrm{A\cdot m^2}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — spire dans \(\vec{B}_{\mathrm{ext}}\) et carte dipolaire</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-dipm" aria-label="Spire de courant de moment m dans un champ extérieur uniforme ; couple aligne m sur B_ext"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-th">Inclinaison \(\theta\) de \(\vec{m}\) <span class="val" id="v-th">60°</span></label>
+          <input type="range" id="sl-th" min="0" max="180" step="1" value="60">
+          <span class="hint">Le couple \(\vec{\Gamma}=\vec{m}\times\vec{B}_{\mathrm{ext}}\) fait pivoter la spire vers l'alignement \(\vec{m}\parallel\vec{B}_{\mathrm{ext}}\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Laisser pivoter</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\Gamma = mB\sin\theta\) ∝ <b id="v-G">0,87</b></span>
+            <span class="ro">\(E_p=-mB\cos\theta\) ∝ <b id="v-Ep">−0,50</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Spire de courant dans un champ extérieur uniforme \(\vec{B}_{\mathrm{ext}}\) (vert). Le moment \(\vec{m}=I\mathcal{A}\,\hat{n}\) (rouge) subit le couple \(\vec{\Gamma}=\vec{m}\times\vec{B}_{\mathrm{ext}}\), qui l'aligne sur \(\vec{B}_{\mathrm{ext}}\). Même structure que le dipôle électrique.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Spire (courant \(I\))</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Moment \(\vec{m}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(\vec{B}_{\mathrm{ext}}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>L'expression du champ dipolaire est fournie : ce qui est exigible, c'est son exploitation.</li>
+        <li>Analogie forte avec le dipôle électrostatique : même structure mathématique, \(p\leftrightarrow m\), \(\varepsilon_0\leftrightarrow 1/\mu_0\).</li>
+        <li>Pour un dipôle dans un gradient de champ, la force \(\vec{\mathrm{grad}}(\vec{m}\cdot\vec{B})\) peut être attractive ou répulsive.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section §4.2. Les expressions des champs sont admises, conformément au programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM5 · Dipôle électrostatique</span></a>
+    <a class="next" href="em7.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM7 · Induction : circuit fixe</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-dipm');
+  const slTh = document.getElementById('sl-th');
+  const vTh = document.getElementById('v-th'), vG = document.getElementById('v-G'), vEp = document.getElementById('v-Ep');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, ang = 60*Math.PI/180, omega = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const cx = w/2, cy = h/2;
+    // B_ext vertical (haut) vert
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.5; ctx.globalAlpha = 0.55;
+    for (let i=0;i<5;i++){ const x=w*0.08 + i*w*0.21;
+      ctx.beginPath(); ctx.moveTo(x, h-14); ctx.lineTo(x, 14);
+      ctx.moveTo(x,14); ctx.lineTo(x-4,24); ctx.moveTo(x,14); ctx.lineTo(x+4,24); ctx.stroke(); }
+    ctx.globalAlpha=1; ctx.fillStyle=c.vert; ctx.font='13px IBM Plex Mono, monospace'; ctx.textAlign='left';
+    ctx.fillText('B_ext', w*0.08+6, 34);
+    // spire : ellipse vue en perspective inclinée de ang depuis verticale
+    const a = -Math.PI/2 + ang; // direction de m
+    // moment m
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 3;
+    const mx=Math.cos(a), my=Math.sin(a), R=70;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx+mx*R, cy+my*R);
+    ctx.moveTo(cx+mx*R, cy+my*R); ctx.lineTo(cx+mx*R-mx*12-my*8, cy+my*R-my*12+mx*8);
+    ctx.moveTo(cx+mx*R, cy+my*R); ctx.lineTo(cx+mx*R-mx*12+my*8, cy+my*R-my*12-mx*8); ctx.stroke();
+    ctx.fillStyle=c.rouge; ctx.textAlign='center'; ctx.fillText('m', cx+mx*(R+14), cy+my*(R+14));
+    // spire (ellipse) perpendiculaire à m : grand axe perpendiculaire à m
+    const perpx = -my, perpy = mx;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4;
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(a + Math.PI/2);
+    ctx.beginPath(); ctx.ellipse(0,0, 52, 16, 0, 0, 2*Math.PI); ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle=c.bleu; ctx.textAlign='center'; ctx.fillText('spire, I', cx - mx*40, cy - my*40);
+    // valeurs
+    vTh.textContent = fr(ang*180/Math.PI,0)+'°';
+    vG.textContent = fr(Math.sin(ang),2);
+    vEp.textContent = fr(-Math.cos(ang),2);
+  }
+  let lastT=0;
+  QC.loop(function (t) {
+    const dt=t-lastT; lastT=t;
+    if (animating) { omega += (-3*Math.sin(ang)-0.8*omega)*dt; ang += omega*dt;
+      slTh.value=(Math.abs(((ang*180/Math.PI)%360))).toFixed(0); draw(); }
+  });
+  slTh.addEventListener('input', function(){ ang=parseFloat(slTh.value)*Math.PI/180; omega=0; draw(); });
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Laisser pivoter';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

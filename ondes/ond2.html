@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND2 — Vecteur de Poynting & bilan d'énergie · QC Oraux MP*</title>
+<meta name="description" content="Vecteur de Poynting, équation locale de bilan d'énergie électromagnétique, application à une OPPM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html" aria-current="page"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Ondes électromagnétiques</span>
+    <h1>Vecteur de Poynting et bilan d'énergie électromagnétique</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir le vecteur de Poynting. Établir l'équation locale de bilan d'énergie électromagnétique (équation de Poynting). Appliquer à une OPPM.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.4 « Énergie du champ électromagnétique »</div>
+      <p>« Utiliser le flux du vecteur de Poynting à travers une surface orientée pour évaluer la puissance rayonnée. Effectuer un bilan d'énergie sous forme locale et intégrale. Interpréter chaque terme de l'équation locale de Poynting, celle-ci étant fournie. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Densité volumique d'énergie électromagnétique :</p>
+    <p>\[ u_{em} = \frac{1}{2}\varepsilon_0 E^2 + \frac{1}{2\mu_0}B^2 \]</p>
+    <p>Vecteur de Poynting :</p>
+    <p>\[ \vec{\Pi} = \frac{1}{\mu_0}\vec{E}\times\vec{B} \quad (\mathrm{W\cdot m^{-2}}) \]</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Équation de Poynting (fournie, à interpréter)</span>
+      <p>\[ \frac{\partial u_{em}}{\partial t} + \mathrm{div}\,\vec{\Pi} = -\vec{j}\cdot\vec{E} \]</p>
+      <ul>
+        <li>\(\partial_t u_{em}\) : taux de variation de l'énergie EM locale.</li>
+        <li>\(\mathrm{div}\,\vec{\Pi}\) : divergence du flux d'énergie EM (sortant si \(\mathrm{div}\,\vec{\Pi}&gt;0\)).</li>
+        <li>\(-\vec{j}\cdot\vec{E}\) : puissance volumique cédée par le champ aux charges (terme source/puits). En milieu ohmique (\(\vec{j}=\gamma\vec{E}\)) : \(\vec{j}\cdot\vec{E} = j^2/\gamma \geq 0\) (pertes Joule).</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Forme intégrale</span>
+      <p>En intégrant sur un volume \(V\) et appliquant Ostrogradski :</p>
+      <p>\[ \frac{\mathrm{d}}{\mathrm{d}t}\iiint_V u_{em}\,\mathrm{d}V = -\iint_S \vec{\Pi}\cdot\mathrm{d}\vec{S} - \iiint_V \vec{j}\cdot\vec{E}\,\mathrm{d}V \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Application à une OPPM</span>
+      <p>Pour \(\vec{E} = E_0\cos(\omega t - kz)\,\hat{x}\), \(\vec{B} = (E_0/c)\cos(\omega t-kz)\,\hat{y}\) :</p>
+      <p>\[ \vec{\Pi} = \frac{1}{\mu_0}\vec{E}\times\vec{B} = \frac{E_0^2}{\mu_0 c}\cos^2(\omega t - kz)\,\hat{z} \]</p>
+      <p>Valeur moyenne temporelle (le \(\cos^2\) vaut \(1/2\) en moyenne) :</p>
+      <p>\[ \langle\vec{\Pi}\rangle = \frac{E_0^2}{2\mu_0 c}\,\hat{z} = \frac{E_0^2}{2Z_0}\,\hat{z} \]</p>
+      <p>où \(Z_0 = \mu_0 c = \sqrt{\mu_0/\varepsilon_0} \approx 377\ \Omega\) est l'impédance du vide.</p>
+      <p>On vérifie : \(\langle u_{em}\rangle = \varepsilon_0 E_0^2/2\) et \(\langle\Pi\rangle = c\,\langle u_{em}\rangle\) (énergie transportée à \(c\)).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — flux de Poynting d'une OPPM</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-poynting" aria-label="Flux de Poynting d'une OPPM oscillant entre 0 et Pi_max, de valeur moyenne Pi_max sur 2"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-e0">Amplitude \(E_0\) <span class="val" id="v-e0">1,0 (u.a.)</span></label>
+          <input type="range" id="sl-e0" min="0.4" max="2" step="0.05" value="1">
+          <span class="hint" id="hint-e0">\(\langle\Pi\rangle \propto E_0^2\) : le flux moyen croît comme le carré de l'amplitude.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le flux d'énergie</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\Pi_{\max}\) = <b id="v-pmax">—</b></span>
+            <span class="ro">\(\langle\Pi\rangle = \Pi_{\max}/2\) = <b id="v-pmean">—</b></span>
+            <span class="ro">\(\langle u_{em}\rangle = \varepsilon_0 E_0^2/2\) (u.a.) = <b id="v-u">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Profil instantané \(\Pi(z,t_0) = \Pi_{\max}\cos^2(\omega t_0 - kz)\) (bleu), oscillant entre 0 et \(\Pi_{\max}\), et sa valeur moyenne \(\langle\Pi\rangle = \Pi_{\max}/2\) (pointillé rouge). Les flèches indiquent le transport d'énergie selon \(+\hat{z}\), à la vitesse \(c\). « Animer » fait défiler le motif vers la droite.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\Pi(z,t_0)\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\langle\Pi\rangle = \Pi_{\max}/2\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>\(\vec{\Pi}\) indique la direction et le sens de propagation de l'énergie EM, pas la direction du champ.</li>
+        <li>Pour une OPPM : densités d'énergie électrique et magnétique égales en moyenne (\(\varepsilon_0 E^2/2 = B^2/(2\mu_0)\) en moyenne).</li>
+        <li>Ordre de grandeur : flux solaire \(\approx 1400\ \mathrm{W\cdot m^{-2}}\) ; laser He-Ne de \(1\ \mathrm{mW}\) focalisé sur \(1\ \mathrm{mm^2}\) \(\to 1\ \mathrm{kW\cdot m^{-2}}\).</li>
+        <li>L'équation de Poynting est <em>fournie</em> lors des épreuves : l'exigible est l'interprétation de chaque terme.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section 4.4.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND1 · Propagation dans le vide</span></a>
+    <a class="next" href="ond3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND3 · Réflexion sur conducteur parfait</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-poynting');
+  const slE0 = document.getElementById('sl-e0');
+  const vE0 = document.getElementById('v-e0'), vPmax = document.getElementById('v-pmax');
+  const vPmean = document.getElementById('v-pmean'), vU = document.getElementById('v-u');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const E0 = parseFloat(slE0.value);
+    const Pmax = E0 * E0;                       // Pi_max ∝ E0^2 (u.a.)
+    const k = 2 * Math.PI / 1.5;
+    const P = QC.makePlot(ctx, w, h, { xmin: 0, xmax: 6, ymin: 0, ymax: 4.2, pad: { l: 40, r: 16, t: 18, b: 30 } });
+    P.grid(c, { xticks: 6, yticks: 4 });
+    P.axes(c, { xlabel: 'z', ylabel: 'Π' });
+
+    // moyenne (rouge pointillé)
+    P.curve(() => Pmax / 2, c.rouge, { lw: 1.8, dash: [6, 4] });
+    // remplissage sous Pi
+    P.fill(z => Pmax * Math.pow(Math.cos(k * z - phase), 2), c.bleu, { alpha: 0.14 });
+    // Pi instantané (bleu)
+    P.curve(z => Pmax * Math.pow(Math.cos(k * z - phase), 2), c.bleu, { lw: 2.6 });
+
+    // flèches de flux vers +z (le long de y = Pmax/2)
+    ctx.strokeStyle = c.text; ctx.fillStyle = c.text; ctx.lineWidth = 1.6;
+    const yA = P.py(Pmax / 2);
+    for (let i = 0; i < 4; i++) {
+      const x0 = P.px(0.6 + i * 1.4), x1 = x0 + 36;
+      ctx.beginPath(); ctx.moveTo(x0, yA + 26); ctx.lineTo(x1, yA + 26); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x1, yA + 26); ctx.lineTo(x1 - 6, yA + 22); ctx.lineTo(x1 - 6, yA + 30); ctx.closePath(); ctx.fill();
+    }
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('flux d\u2019\u00e9nergie \u2192 (vitesse c)', P.px(0.6), yA + 48);
+
+    vE0.textContent = fr(E0, 1) + ' (u.a.)';
+    vPmax.textContent = fr(Pmax, 2) + ' (u.a.)';
+    vPmean.textContent = fr(Pmax / 2, 2) + ' (u.a.)';
+    vU.textContent = fr(E0 * E0 / 2, 2);
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) { const dt = t - lastT; lastT = t; if (animating) { phase += dt * 3; draw(); } });
+  slE0.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le flux d\u2019\u00e9nergie';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

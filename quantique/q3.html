@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q3 — Inégalités de Heisenberg · QC Oraux MP*</title>
+<meta name="description" content="Inégalités de Heisenberg position-impulsion et temps-énergie : énoncés, interprétation et couple de Fourier interactif.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="q2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="q4.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html" aria-current="page"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Mécanique quantique</span>
+    <h1>Inégalités de Heisenberg (spatiale et temps-énergie)</h1>
+    <p class="q-sources"><span class="src">POLY p.4</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer les inégalités d'Heisenberg position-impulsion et temps-énergie, les interpréter, illustrer leur portée.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 6 §6.2</div>
+      <p>Inégalité d'Heisenberg spatiale : la localisation s'obtient par superposition d'ondes planes (lien §6.3 énergie de confinement). La relation temps-énergie est présentée en parallèle comme extension culturelle connue des jurys (pas explicitement exigible en MP) ; l'inégalité spatiale est pleinement exigible.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>\(\Delta x\) incertitude (écart-type) sur la position, \(\Delta p_x\) sur l'impulsion ; \(\Delta E\) incertitude sur l'énergie d'un état, \(\Delta t\) durée de vie.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Position-impulsion</span>
+      <p>\[ \Delta x \cdot \Delta p_x \geq \frac{\hbar}{2}. \]</p>
+      <p>Interprétation ondulatoire : paquet d'ondes de largeur \(\Delta x\) = superposition d'ondes planes étalées sur \(\Delta k\sim 1/\Delta x\) ; comme \(p=\hbar k\), \(\Delta p\sim\hbar/\Delta x\), soit \(\Delta x\,\Delta p\gtrsim\hbar\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Temps-énergie</span>
+      <p>\[ \Delta t \cdot \Delta E \geq \frac{\hbar}{2}. \]</p>
+      <p>Un état de durée de vie \(\Delta t\) a une largeur en énergie \(\Delta E\geq\hbar/(2\Delta t)\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Application — énergie de confinement</span>
+      <p>Particule confinée dans une boîte de taille \(L\) → \(\Delta x\sim L\), donc \(\Delta p\gtrsim\hbar/2L\), d'où \(E_{conf}\sim(\Delta p)^2/2m\sim\hbar^2/(8mL^2)\). Pour un électron atomique (\(L\sim 0{,}1\,\mathrm{nm}\)) : \(E_{conf}\sim 1\,\mathrm{eV}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Application — largeur naturelle des raies</span>
+      <p>État excité \(\tau\sim 10^{-8}\,\mathrm{s}\) → \(\Delta E\sim\hbar/\tau\sim 10^{-26}\,\mathrm{J}\), soit \(\Delta\nu\sim 10\,\mathrm{MHz}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-fourier" aria-label="Couple de Fourier : gaussienne en x et sa transformée en k"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-dx">Largeur \(\Delta x\) <span class="val" id="v-dx">1,00</span></label>
+          <input type="range" id="sl-dx" min="0.3" max="3" step="0.02" value="1">
+          <span class="hint">Resserrer la gaussienne de gauche (petit \(\Delta x\)) élargit aussitôt celle de droite (grand \(\Delta k\)) : c'est le couple de Fourier.</span>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\Delta k\) = <b id="v-dk">—</b></span>
+            <span class="ro">\(\Delta x\cdot\Delta k\) = <b id="v-prod">—</b></span>
+          </div>
+          <span class="hint" id="hint-prod">Produit minimal pour une gaussienne : \(\Delta x\,\Delta k=\tfrac12\), soit \(\Delta x\,\Delta p=\hbar/2\).</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        À gauche, la densité \(|\varphi(x)|^2\) (position) ; à droite, sa transformée de Fourier \(|\hat\varphi(k)|^2\) (impulsion via \(p=\hbar k\)). Le produit \(\Delta x\cdot\Delta k\gtrsim 1\) est borné inférieurement : on ne peut pas localiser simultanément en \(x\) et en \(k\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(|\varphi(x)|^2\) — position</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(|\hat\varphi(k)|^2\) — impulsion</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Facteur \(\hbar/2\) exact ; retenir \(\Delta x\,\Delta p\gtrsim\hbar\) en ordre de grandeur.</li>
+        <li>Ne pas confondre incertitude quantique (fondamentale) et imprécision expérimentale.</li>
+        <li>Relier à l'énergie de confinement \(E_1\propto\hbar^2/(mL^2)\).</li>
+        <li>Temps-énergie central en spectroscopie (largeur naturelle des raies).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'inégalité spatiale est pleinement au programme (§6.2, §6.3).</p>
+    <div class="box culture">
+      <div class="box-title">✦ Culture — relation temps-énergie</div>
+      <p>L'inégalité temps-énergie \(\Delta t\,\Delta E\geq\hbar/2\) est attendue culturellement par le jury mais ne figure pas comme capacité exigible explicite MP ; son énoncé et ses applications (largeur de raie, durée de vie) sont couramment attendus en oral.</p>
+    </div>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="q2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Q2 · Dualité onde-corpuscule</span></a>
+    <a class="next" href="q4.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Q4 · Marche de potentiel</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-fourier');
+  const slDx = document.getElementById('sl-dx');
+  const vDx = document.getElementById('v-dx'), vDk = document.getElementById('v-dk'), vProd = document.getElementById('v-prod');
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 270);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const dx = parseFloat(slDx.value);
+    const dk = 0.5 / dx;                 // gaussienne : Δx·Δk = 1/2 (écarts-types)
+
+    const gap = 46;
+    const half = (w - gap) / 2;
+    // --- panneau gauche : |φ(x)|² ---
+    const plL = QC.makePlot(ctx, half, h, { xmin: -4, xmax: 4, ymin: 0, ymax: 1.08, pad: { l: 38, r: 12, t: 26, b: 28 } });
+    plL.grid(c, { yticks: 2 });
+    plL.axes(c, { xlabel: 'x', ylabel: '|φ|²' });
+    const fx = x => Math.exp(-(x * x) / (2 * dx * dx));
+    plL.fill(fx, c.bleu, { alpha: 0.16 }); plL.curve(fx, c.bleu, { lw: 2.6 });
+    ctx.fillStyle = c.text; ctx.font = '600 13px Inter, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Position  |φ(x)|²', half / 2, 16);
+
+    // flèche TF au centre
+    ctx.save();
+    ctx.translate(half, 0);
+    ctx.strokeStyle = c.axis; ctx.fillStyle = c.muted; ctx.lineWidth = 2;
+    const my = h / 2;
+    ctx.beginPath(); ctx.moveTo(6, my); ctx.lineTo(gap - 6, my); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(gap - 6, my); ctx.lineTo(gap - 13, my - 5); ctx.lineTo(gap - 13, my + 5); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(gap - 6, my); ctx.lineTo(6, my); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(6, my); ctx.lineTo(13, my - 5); ctx.lineTo(13, my + 5); ctx.closePath(); ctx.fill();
+    ctx.font = '600 12px IBM Plex Mono, monospace'; ctx.textAlign = 'center'; ctx.fillStyle = c.text;
+    ctx.fillText('TF', gap / 2, my - 10);
+    ctx.restore();
+
+    // --- panneau droite : |φ̂(k)|² ---
+    ctx.save();
+    ctx.translate(half + gap, 0);
+    const plR = QC.makePlot(ctx, half, h, { xmin: -8, xmax: 8, ymin: 0, ymax: 1.08, pad: { l: 38, r: 12, t: 26, b: 28 } });
+    plR.grid(c, { yticks: 2 });
+    plR.axes(c, { xlabel: 'k', ylabel: '|φ̂|²' });
+    const fk = k => Math.exp(-(k * k) / (2 * dk * dk));
+    plR.fill(fk, c.rouge, { alpha: 0.16 }); plR.curve(fk, c.rouge, { lw: 2.6 });
+    ctx.fillStyle = c.text; ctx.font = '600 13px Inter, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Impulsion  |φ̂(k)|²', half / 2, 16);
+    ctx.restore();
+
+    vDx.textContent = dx.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    vDk.textContent = dk.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    vProd.textContent = (dx * dk).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  slDx.addEventListener('input', draw);
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

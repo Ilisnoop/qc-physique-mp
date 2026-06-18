@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OO1 — Modèle scalaire de la lumière · QC Oraux MP*</title>
+<meta name="description" content="Modèle scalaire de la lumière : grandeur scalaire, chemin optique, déphasage, surfaces d'onde, théorème de Malus, intensité comme moyenne temporelle.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique ondulatoire</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="oo2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="oo1.html" aria-current="page"><span class="qn">OO1</span>Modèle scalaire de la lumière</a>
+        <a href="oo2.html"><span class="qn">OO2</span>Trous d'Young</a>
+        <a href="oo3.html"><span class="qn">OO3</span>Michelson : lame &amp; coin d'air</a>
+        <a href="oo4.html"><span class="qn">OO4</span>Contraste (visibilité)</a>
+        <a href="oo5.html"><span class="qn">OO5</span>Réseaux / N ondes / Rayleigh</a>
+        <a href="oo6.html"><span class="qn">OO6</span>Longueur de cohérence temporelle</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Optique ondulatoire</span>
+    <h1>Modèle scalaire de la lumière</h1>
+    <p class="q-sources"><span class="src">POLY p.1</span><span class="src">PL-116</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Présenter le modèle scalaire de la lumière : grandeur scalaire représentant l'onde, chemin optique, déphasage, surfaces d'onde, théorème de Malus. Définir l'intensité lumineuse comme moyenne temporelle du carré de la grandeur scalaire.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 3 §3.1 — Modèle scalaire des ondes lumineuses</div>
+      <p>Capacités exigibles :</p>
+      <ul>
+        <li>Utiliser une grandeur scalaire pour décrire un signal lumineux.</li>
+        <li>Définir le chemin optique, exprimer le déphasage dû à la propagation.</li>
+        <li>Connaître les notions de surfaces d'onde et le théorème de Malus (admis).</li>
+        <li>Relier l'intensité à la moyenne temporelle du carré de la grandeur scalaire.</li>
+        <li>Connaître l'ordre de grandeur du temps de cohérence de quelques radiations.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><b>Grandeur scalaire \(s(\vec r,t)\)</b> : composante du champ électrique (ou sa norme) ; dans le modèle scalaire on néglige la polarisation et on décrit la lumière par un scalaire réel.</li>
+      <li><b>Onde plane monochromatique</b> : \(s(\vec r,t) = a\cos(\omega t - \vec k\cdot\vec r + \varphi_0)\), avec \(\omega = 2\pi\nu\) et \(|\vec k| = n\omega/c\).</li>
+      <li><b>Chemin optique</b> de \(A\) à \(B\) le long d'un rayon : \([AB] = \int_A^B n(\ell)\,\mathrm{d}\ell\) (en mètres).</li>
+      <li><b>Déphasage</b> dû à la propagation de \(A\) à \(B\) : \(\Delta\varphi = \dfrac{2\pi}{\lambda_0}[AB]\) où \(\lambda_0 = c/\nu\) est la longueur d'onde dans le vide.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Surfaces d'onde et théorème de Malus</span>
+      <p>Une <em>surface d'onde</em> est une surface de phase constante à un instant donné. Pour une onde plane, ce sont des plans perpendiculaires à \(\vec k\). Le <b>théorème de Malus</b> (admis) stipule que les rayons lumineux sont orthogonaux aux surfaces d'onde. Il est valable dans un milieu isotrope homogène ou inhomogène.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Chemin optique entre deux points conjugués</span>
+      <p>Dans un système stigmatique, tous les rayons reliant un objet \(A\) à son image \(A'\) ont le même chemin optique : \([AA'] = \mathrm{cte}\) (indépendant du rayon choisi). C'est le principe d'égalité du chemin optique.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Intensité lumineuse</span>
+      <p>L'intensité (ou éclairement) est définie comme la puissance par unité de surface reçue par un détecteur. Dans le modèle scalaire :</p>
+      <p>\[ I = \langle s^2 \rangle = \lim_{T\to\infty}\frac{1}{T}\int_0^T s^2(t)\,\mathrm{d}t. \]</p>
+      <p>Pour une onde monochromatique \(s = a\cos(\omega t + \varphi)\), on obtient \(I = a^2/2\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Modèle d'émission et cohérence temporelle</span>
+      <p>Une source réelle n'est pas strictement monochromatique : elle émet des trains d'ondes de durée \(\Delta t_c\) (temps de cohérence). La largeur spectrale \(\Delta\nu\) et le temps de cohérence sont liés par la relation (admise) :</p>
+      <p>\[ \Delta\nu\cdot\Delta t_c \sim 1. \]</p>
+      <p>Ordres de grandeur : lampe spectrale Na (\(\lambda=589\ \mathrm{nm}\)) : \(\Delta t_c \sim 10^{-10}\ \mathrm{s}\) ; laser He-Ne : \(\Delta t_c \sim 10^{-3}\ \mathrm{s}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — onde plane, surfaces d'onde et intensité</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-scal" aria-label="Onde plane scalaire : surfaces d'onde perpendiculaires aux rayons, intensité moyenne temporelle"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-n">Indice du milieu \(n\) <span class="val" id="v-n">1,50</span></label>
+          <input type="range" id="sl-n" min="1" max="2.5" step="0.01" value="1.5">
+          <span class="hint" id="hint-n">L'interfrange spatial \(\lambda_0/n\) se resserre quand \(n\) augmente.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la propagation</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\lambda_0/n\) = <b id="v-lam">—</b></span>
+            <span class="ro">\(\langle s^2\rangle = a^2/2\) → <b id="v-int">0,50</b></span>
+          </div>
+          <span class="hint">Le détecteur intègre \(s^2(t)\) sur un temps long devant la période optique : il ne « voit » que la moyenne \(I=a^2/2\).</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Onde plane scalaire \(s(x,t)=a\cos(\omega t - kx)\) se propageant dans un milieu d'indice \(n\) (\(k=n\omega/c\)). Les <b>surfaces d'onde</b> (verticales bleues) sont perpendiculaires aux <b>rayons</b> (horizontaux, théorème de Malus) ; leur espacement est \(\lambda_0/n\). La courbe rouge superpose \(s^2(t)\) en un point fixe et sa moyenne temporelle \(I=a^2/2\) (orange).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Surfaces d'onde / \(s(x)\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(s^2(t)\) au point d'observation</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Intensité \(I=\langle s^2\rangle\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Le théorème de Malus est admis au programme MP : l'énoncer clairement sans tenter de le démontrer.</li>
+        <li>L'intensité est une <em>moyenne temporelle</em> (le détecteur intègre sur un temps très long devant la période optique \(T\sim 10^{-15}\ \mathrm{s}\)).</li>
+        <li>La longueur de cohérence est \(l_c = c\,\Delta t_c\) : à distinguer de la cohérence spatiale.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MP (§3.1). La polarisation est hors programme dans le cadre du modèle scalaire.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="index.html"><span class="pn-dir">← Sommaire</span><span class="pn-title">Optique ondulatoire</span></a>
+    <a class="next" href="oo2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OO2 · Trous d'Young</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 8 : Optique ondulatoire (§3).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-scal');
+  const slN = document.getElementById('sl-n');
+  const vN = document.getElementById('v-n'), vLam = document.getElementById('v-lam'), vInt = document.getElementById('v-int');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const n = parseFloat(slN.value);
+    // longueur d'onde dans le vide fixée (px) ; dans le milieu lambda = lam0/n
+    const lam0 = 90;                  // px
+    const lam = lam0 / n;             // px : espacement des surfaces d'onde
+    const k = 2 * Math.PI / lam;
+
+    const padT = 16, fieldH = h * 0.55, midY = padT + fieldH * 0.5;
+    const x0 = 14, x1 = w - 14;
+
+    // ---- champ d'onde : surfaces d'onde verticales (bleu) + rayons (gris) ----
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace';
+    ctx.textAlign = 'left'; ctx.fillText('Surfaces d\u2019onde \u22a5 rayons', x0 + 2, padT + 4);
+
+    // intensité de gris codant s(x) pour visualiser les fronts
+    for (let px = x0; px <= x1; px += 2) {
+      const xph = px - x0;
+      const val = Math.cos(k * xph - phase);     // s(x)
+      const a = 0.18 + 0.32 * (0.5 * (val + 1)); // opacité
+      ctx.strokeStyle = c.bleu; ctx.globalAlpha = a;
+      ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.moveTo(px, padT + 6); ctx.lineTo(px, padT + fieldH - 6); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    // rayons horizontaux (théorème de Malus)
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.setLineDash([2, 4]);
+    [0.28, 0.5, 0.72].forEach(f => {
+      const y = padT + fieldH * f;
+      ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1 - 8, y); ctx.stroke();
+      // flèche
+      ctx.beginPath(); ctx.moveTo(x1 - 14, y - 4); ctx.lineTo(x1 - 6, y); ctx.lineTo(x1 - 14, y + 4); ctx.stroke();
+    });
+    ctx.setLineDash([]);
+    // sinusoïde s(x) sur la ligne médiane
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 1) {
+      const xph = px - x0;
+      const Y = midY - Math.cos(k * xph - phase) * (fieldH * 0.18);
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+    // double-flèche lambda0/n
+    const ax = x0 + 30;
+    ctx.strokeStyle = c.text; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(ax, padT + fieldH - 16); ctx.lineTo(ax + lam, padT + fieldH - 16); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ax, padT + fieldH - 20); ctx.lineTo(ax, padT + fieldH - 12); ctx.moveTo(ax + lam, padT + fieldH - 20); ctx.lineTo(ax + lam, padT + fieldH - 12); ctx.stroke();
+    ctx.fillStyle = c.text; ctx.textAlign = 'center'; ctx.fillText('\u03bb\u2080/n', ax + lam / 2, padT + fieldH - 22);
+
+    // séparateur
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, padT + fieldH + 8); ctx.lineTo(x1, padT + fieldH + 8); ctx.stroke();
+
+    // ---- bas : s^2(t) en un point + moyenne ----
+    const baseY = h - 18, topY = padT + fieldH + 22;
+    const ampS2 = (baseY - topY);
+    ctx.fillStyle = c.muted; ctx.textAlign = 'left';
+    ctx.fillText('Au point d\u2019observation : s\u00b2(t) et sa moyenne', x0 + 2, topY - 4);
+    // s^2(t) : balayage temporel
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.2; ctx.beginPath(); started = false;
+    for (let px = x0; px <= x1; px += 1) {
+      const t = (px - x0) / (x1 - x0) * (6 * Math.PI);
+      const s2 = Math.pow(Math.cos(t - phase), 2);   // a=1 -> s^2 in [0,1]
+      const Y = baseY - s2 * ampS2 * 0.92;
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+    // moyenne 0.5
+    const Ym = baseY - 0.5 * ampS2 * 0.92;
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.8; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(x0, Ym); ctx.lineTo(x1, Ym); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.orange; ctx.textAlign = 'right'; ctx.fillText('I = a\u00b2/2', x1 - 4, Ym - 5);
+
+    vN.textContent = fr(n, 2);
+    vLam.textContent = fr(lam, 0) + ' px';
+    vInt.textContent = fr(0.5, 2);
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { phase += dt * 3.2; draw(); }
+  });
+  slN.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la propagation';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

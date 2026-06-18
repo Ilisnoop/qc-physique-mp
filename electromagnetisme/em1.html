@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM1 — Équations de Maxwell · QC Oraux MP*</title>
+<meta name="description" content="Les quatre équations de Maxwell sous formes locale et intégrale ; sens physique et couplage E/B à l'origine de la propagation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html" aria-current="page"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Électromagnétisme</span>
+    <h1>Équations de Maxwell : formes locales et intégrales</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer les quatre équations de Maxwell sous forme locale, puis sous forme intégrale. Préciser le sens physique de chaque équation.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.3 Équations de Maxwell</div>
+      <p>« Citer, utiliser et interpréter les équations de Maxwell sous forme intégrale. Associer qualitativement le couplage spatio-temporel entre champ électrique et champ magnétique au phénomène de propagation. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On note \(\vec{E}(\vec{r},t)\) le champ électrique (\(\mathrm{V\cdot m^{-1}}\)), \(\vec{B}(\vec{r},t)\) le champ magnétique (\(\mathrm{T}\)), \(\rho(\vec{r},t)\) la densité volumique de charges libres (\(\mathrm{C\cdot m^{-3}}\)), \(\vec{j}(\vec{r},t)\) la densité volumique de courant (\(\mathrm{A\cdot m^{-2}}\)). Les constantes \(\varepsilon_0 = 8{,}85\times10^{-12}\,\mathrm{F\cdot m^{-1}}\) et \(\mu_0 = 4\pi\times10^{-7}\,\mathrm{H\cdot m^{-1}}\) vérifient \(c = 1/\sqrt{\varepsilon_0 \mu_0}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Formes locales (valables en tout point et à tout instant)</span>
+      <p>\[ \mathrm{div}\,\vec{E} = \frac{\rho}{\varepsilon_0} \quad\text{(Maxwell-Gauss : source scalaire de }\vec{E}) \]</p>
+      <p>\[ \mathrm{div}\,\vec{B} = 0 \quad\text{(Maxwell-Thomson : pas de monopôle magnétique)} \]</p>
+      <p>\[ \vec{\mathrm{rot}}\,\vec{E} = -\frac{\partial \vec{B}}{\partial t} \quad\text{(Maxwell-Faraday : }\vec{E}\text{ induit par }B\text{ variable)} \]</p>
+      <p>\[ \vec{\mathrm{rot}}\,\vec{B} = \mu_0 \vec{j} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t} \quad\text{(Maxwell-Ampère : courant + déplacement créent }B) \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Passage aux formes intégrales</span>
+      <p>En appliquant le théorème de Gauss-Ostrogradski (\(\iint_S \vec{A}\cdot\mathrm{d}\vec{S} = \iiint_V \mathrm{div}\,\vec{A}\,\mathrm{d}V\)) aux deux premières, et le théorème de Stokes (\(\oint_C \vec{A}\cdot\mathrm{d}\vec{\ell} = \iint_S \vec{\mathrm{rot}}\,\vec{A}\cdot\mathrm{d}\vec{S}\)) aux deux dernières :</p>
+      <p>\[ \iint_{S} \vec{E}\cdot\mathrm{d}\vec{S} = \frac{Q_{\mathrm{int}}}{\varepsilon_0} \quad\text{(théorème de Gauss)} \]</p>
+      <p>\[ \iint_{S} \vec{B}\cdot\mathrm{d}\vec{S} = 0 \quad\text{(flux de }\vec{B}\text{ nul sur toute surface fermée)} \]</p>
+      <p>\[ \oint_{C} \vec{E}\cdot\mathrm{d}\vec{\ell} = -\frac{\mathrm{d}}{\mathrm{d}t}\iint_{S}\vec{B}\cdot\mathrm{d}\vec{S} \quad\text{(loi de Faraday)} \]</p>
+      <p>\[ \oint_{C} \vec{B}\cdot\mathrm{d}\vec{\ell} = \mu_0 \left(I_{\mathrm{int}} + \varepsilon_0\frac{\mathrm{d}}{\mathrm{d}t}\iint_{S}\vec{E}\cdot\mathrm{d}\vec{S}\right) \quad\text{(Ampère généralisé)} \]</p>
+      <p>où \(Q_{\mathrm{int}}\) est la charge enfermée dans \(S\), et \(I_{\mathrm{int}}\) le courant traversant le contour \(C\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Couplage champ électrique / champ magnétique</span>
+      <p>Maxwell-Faraday montre qu'un \(\vec{B}\) variable engendre un \(\vec{E}\) tourbillonnaire ; Maxwell-Ampère montre qu'un \(\vec{E}\) variable engendre un \(\vec{B}\) tourbillonnaire. Ce couplage autoentretenu est à l'origine de la propagation des ondes électromagnétiques.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — onde plane progressive</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-onde" aria-label="Onde électromagnétique plane : E et B transverses, en phase, avec |B|=|E|/c"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-f">Fréquence \(f\) <span class="val" id="v-f">2,0 unités</span></label>
+          <input type="range" id="sl-f" min="0.5" max="4" step="0.1" value="2">
+          <span class="hint">Nombre d'oscillations visibles : modifie la longueur d'onde \(\lambda = c/f\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la propagation</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\vec{k} \parallel \hat{x}\) (propagation)</span>
+            <span class="ro">\(|\vec{B}| = |\vec{E}|/c\)</span>
+            <span class="ro">\(\lambda\) (u.a.) = <b id="v-lambda">3,0</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Onde plane progressant selon \(\hat{x}\) : \(\vec{E}\) (selon \(\hat{y}\)) et \(\vec{B}\) (selon \(\hat{z}\)) sont transverses, oscillent <em>en phase</em> dans deux plans perpendiculaires, avec \(|\vec{B}|=|\vec{E}|/c\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\vec{E}\) (selon \(\hat{y}\))</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\vec{B}\) (selon \(\hat{z}\), amplitude réduite)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Nommer chaque équation par son nom propre (Gauss, Thomson, Faraday, Ampère généralisé).</li>
+        <li>Signaler que le terme \(\varepsilon_0 \partial_t\vec{E}\) est le <em>courant de déplacement</em>, ajout de Maxwell garantissant la conservation de la charge.</li>
+        <li>Les équations intégrales ne sont valables que pour des contours/surfaces <em>fixes</em> dans le référentiel considéré.</li>
+        <li>Ordre de grandeur : \(c = 3\times10^{8}\,\mathrm{m\cdot s^{-1}}\), \(\mu_0/(4\pi) = 10^{-7}\,\mathrm{H\cdot m^{-1}}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout ce développement figure explicitement dans la section §4.3 du programme MP. Biot-Savart et le potentiel vecteur ne sont pas utilisés.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="index.html"><span class="pn-dir">← Sommaire</span><span class="pn-title">Électromagnétisme · les 12 questions</span></a>
+    <a class="next" href="em2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM2 · Conservation de la charge</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-onde');
+  const slF = document.getElementById('sl-f');
+  const vF = document.getElementById('v-f'), vLambda = document.getElementById('v-lambda');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, phase = 0;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const f = parseFloat(slF.value);
+    const k = f * Math.PI / 1.5;       // nombre d'onde visuel
+    const lambda = 2 * Math.PI / k;
+    const pad = { l: 16, r: 16, t: 16, b: 28 };
+    const midY = h * 0.52;
+    const ampE = h * 0.30, ampB = h * 0.20;
+
+    // axe x
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(pad.l, midY); ctx.lineTo(w - pad.r, midY); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    ctx.fillText('x (propagation)', w - pad.r, midY - 6);
+
+    // E (bleu)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false;
+    for (let px = pad.l; px <= w - pad.r; px += 1) {
+      const x = (px - pad.l) / (w - pad.l - pad.r) * 12;
+      const y = midY - ampE * Math.sin(k * x - phase);
+      started ? ctx.lineTo(px, y) : (ctx.moveTo(px, y), started = true);
+    }
+    ctx.stroke();
+    // flèches E
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1.6;
+    for (let i = 1; i <= 6; i++) {
+      const px = pad.l + i * (w - pad.l - pad.r) / 7;
+      const x = (px - pad.l) / (w - pad.l - pad.r) * 12;
+      const y = midY - ampE * Math.sin(k * x - phase);
+      ctx.beginPath(); ctx.moveTo(px, midY); ctx.lineTo(px, y); ctx.stroke();
+    }
+    // B (rouge, en phase, amplitude réduite)
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.2; ctx.setLineDash([6, 4]); ctx.beginPath();
+    started = false;
+    for (let px = pad.l; px <= w - pad.r; px += 1) {
+      const x = (px - pad.l) / (w - pad.l - pad.r) * 12;
+      const y = midY - ampB * Math.sin(k * x - phase);
+      started ? ctx.lineTo(px, y) : (ctx.moveTo(px, y), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // vecteur k
+    ctx.strokeStyle = c.text; ctx.lineWidth = 2;
+    const ky = h - pad.b + 6;
+    ctx.beginPath(); ctx.moveTo(pad.l, ky); ctx.lineTo(pad.l + 50, ky);
+    ctx.moveTo(pad.l + 44, ky - 4); ctx.lineTo(pad.l + 50, ky); ctx.lineTo(pad.l + 44, ky + 4);
+    ctx.stroke();
+    ctx.fillStyle = c.text; ctx.textAlign = 'left'; ctx.fillText('k', pad.l + 56, ky + 4);
+
+    vF.textContent = fr(f, 1) + ' unités';
+    vLambda.textContent = fr(lambda * 1.0, 1);
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { phase += dt * 4; draw(); }
+  });
+  slF.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la propagation';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

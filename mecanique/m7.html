@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M7 — Forces centrales · Ep effective · QC Oraux MP*</title>
+<meta name="description" content="Forces centrales conservatives : conservation du moment cinétique, énergie potentielle effective, barrière centrifuge, états liés et de diffusion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m6.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m8.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html" aria-current="page"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 7 · Mécanique</span>
+    <h1>Forces centrales conservatives — énergie potentielle effective</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Pour un point matériel soumis à une force centrale conservative, établir la conservation du moment cinétique et de l'énergie mécanique, construire l'énergie potentielle effective, et distinguer états liés et états de diffusion à partir du graphe de \(E_{\text{eff}}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · Section 2.6 « Champ de force centrale conservatif »</div>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Établir la conservation du moment cinétique ; en déduire le mouvement plan et la loi des aires.</li>
+        <li>Exprimer la conservation de l'énergie mécanique ; construire \(E_{\text{eff}}\).</li>
+        <li>Décrire qualitativement le mouvement radial à partir de \(E_{\text{eff}}(r)\).</li>
+        <li>Relier le caractère borné du mouvement radial à la valeur de \(E_m\).</li>
+      </ul>
+      <p>Niveau <strong>MPSI</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Force centrale : \(\vec{F} = F(r)\,\hat{r}\), i.e. dirigée vers (ou depuis) le centre \(O\). Force conservative : \(F(r) = -\mathrm{d}E_p/\mathrm{d}r\). Coordonnées polaires \((r, \theta)\) dans le plan du mouvement. Moment cinétique scalaire : \(L = mr^2\dot\theta\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Conservation du moment cinétique</span>
+      <p>Le moment de la force centrale par rapport à \(O\) est nul (\(\vec{F} \parallel \hat{r}\)). Donc :</p>
+      <p>\[ \frac{\mathrm{d}\vec{L_O}}{\mathrm{d}t} = \vec{0} \implies \vec{L_O} = m\vec{r}\wedge\vec{v} = \text{cste}. \]</p>
+      <p><em>Conséquences :</em> mouvement plan (perpendiculaire à \(\vec{L_O}\)) ; loi des aires : \(r^2\dot\theta = L/m = \text{cste}\) (loi de Kepler 2).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Énergie potentielle effective</span>
+      <p>L'énergie cinétique se décompose :</p>
+      <p>\[ E_c = \frac{1}{2}m(\dot r^2 + r^2\dot\theta^2) = \frac{1}{2}m\dot r^2 + \frac{L^2}{2mr^2}. \]</p>
+      <p>L'énergie mécanique totale, conservée, est :</p>
+      <p>\[ E_m = \frac{1}{2}m\dot r^2 + \underbrace{\frac{L^2}{2mr^2} + E_p(r)}_{E_{\text{eff}}(r)}. \]</p>
+      <p>L'étude du mouvement radial est identique à celle d'un mouvement 1D dans le potentiel effectif \(E_{\text{eff}}(r) = L^2/(2mr^2) + E_p(r)\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. États liés et états de diffusion</span>
+      <p>Le terme centrifuge \(L^2/(2mr^2) \to +\infty\) quand \(r \to 0\) (barrière centrifuge).</p>
+      <ul>
+        <li><em>État lié</em> : le mouvement est borné en \(r\) (\(r_{\min} \leq r \leq r_{\max}\)). La trajectoire est fermée en général dans le cas newtonien (orbite elliptique).</li>
+        <li><em>État de diffusion</em> : \(r \to +\infty\), la particule s'échappe. Pour \(E_p = -k/r\) : état lié si \(E_m &lt; 0\), diffusion si \(E_m \geq 0\).</li>
+      </ul>
+      <p>Pour un potentiel attractif \(E_p(r) = -k/r\) (\(k &gt; 0\)) :</p>
+      <p>\[ E_{\text{eff}}(r) = \frac{L^2}{2mr^2} - \frac{k}{r}. \]</p>
+      <p>Minimum en \(r_0 = L^2/(mk)\), de valeur \(E_{\text{eff,min}} = -mk^2/(2L^2)\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — potentiel effectif et barrière centrifuge</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-eff" aria-label="Énergie potentielle effective pour un potentiel newtonien, moment cinétique L réglable modifiant la barrière centrifuge"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-l">Moment cinétique \(L\) (u.a.) <span class="val" id="v-l">1,00</span></label>
+          <input type="range" id="sl-l" min="0.4" max="2.2" step="0.05" value="1">
+          <label for="sl-em" style="margin-top:.6rem">Énergie \(E_m\) (u.a.) <span class="val" id="v-em">-0,30</span></label>
+          <input type="range" id="sl-em" min="-0.70" max="0.40" step="0.01" value="-0.30">
+          <span class="hint" id="hint-eff">Le minimum de Eₑff correspond à l'orbite circulaire.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer (\(E_m\) variable)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(r_0 = L^2/(mk)\) = <b id="v-r0">—</b></span>
+            <span class="ro">\(E_{\text{eff,min}} = -mk^2/(2L^2)\) = <b id="v-emin">—</b></span>
+            <span class="ro">Régime = <b id="v-reg">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Énergie potentielle effective \(E_{\text{eff}}(r) = L^2/(2mr^2) - k/r\) (trait bleu), somme de la barrière centrifuge \(L^2/(2mr^2)\) et du terme attractif \(-k/r\) (pointillés gris). Le minimum, en \(r_0 = L^2/(mk)\), correspond à l'orbite circulaire (point bleu). Le trait orange marque le niveau \(E_m\) : état lié si \(E_m &lt; 0\) (mouvement borné entre deux apsides), diffusion si \(E_m \geq 0\). On prend \(m = 1\), \(k = 1\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(E_{\text{eff}}(r)\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Niveau \(E_m\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Orbite circulaire \(r_0\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La barrière centrifuge (\(L^2/2mr^2\)) interdit \(r = 0\) si \(L \neq 0\).</li>
+        <li>Le minimum de \(E_{\text{eff}}\) correspond à l'orbite <em>circulaire</em> (mouvement radial nul).</li>
+        <li>En cas de collision (\(L = 0\)) : pas de barrière centrifuge, la particule peut atteindre \(r=0\).</li>
+        <li>La conservation de \(E_m\) et de \(L\) sont les <em>deux</em> intégrales premières qui permettent d'intégrer complètement le mouvement.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MPSI</strong> (section 2.6).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m6.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M6 · Équilibre et stabilité</span></a>
+    <a class="next" href="m8.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M8 · Champ newtonien · Kepler</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-eff');
+  const slL = document.getElementById('sl-l'), vL = document.getElementById('v-l');
+  const slEm = document.getElementById('sl-em'), vEm = document.getElementById('v-em');
+  const vR0 = document.getElementById('v-r0'), vEmin = document.getElementById('v-emin'), vReg = document.getElementById('v-reg');
+  const hint = document.getElementById('hint-eff'), btn = document.getElementById('btn-anim');
+  let animating = false;
+  const k = 1, m = 1;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 340);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const L = parseFloat(slL.value);
+    const Em = parseFloat(slEm.value);
+    const Lc = L * L / (2 * m);
+
+    const Eeff = r => Lc / (r * r) - k / r;
+    const P = QC.makePlot(ctx, w, h, { xmin: 0, xmax: 5.4, ymin: -0.75, ymax: 0.85, pad: { l: 46, r: 16, t: 16, b: 30 } });
+    P.grid(c, { xticks: 6, yticks: 5 });
+    P.axes(c, { xlabel: 'r', ylabel: 'Eeff(r)' });
+
+    // termes individuels (gris pointillés)
+    P.curve(r => Lc / (r * r), c.grid, { lw: 1.6, dash: [3, 4] });
+    P.curve(r => -k / r, c.grid, { lw: 1.6, dash: [3, 4] });
+
+    // Eeff
+    P.curve(Eeff, c.bleu, { lw: 2.6 });
+
+    // niveau Em
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); ctx.moveTo(P.px(0), P.py(Em)); ctx.lineTo(P.px(5.4), P.py(Em)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.orange; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('Em', P.px(5.4) - 30, P.py(Em) - 5);
+
+    // minimum (orbite circulaire)
+    const r0 = L * L / (m * k);
+    const Emin = -m * k * k / (2 * L * L);
+    ctx.fillStyle = c.vert; ctx.beginPath(); ctx.arc(P.px(r0), P.py(Emin), 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.vert; ctx.textAlign = 'center';
+    ctx.fillText('r₀', P.px(r0), P.py(Emin) + 18);
+
+    // lectures
+    vL.textContent = fr(L, 2);
+    vEm.textContent = fr(Em, 2);
+    vR0.textContent = fr(r0, 2);
+    vEmin.textContent = fr(Emin, 3);
+    if (Em < Emin) { vReg.textContent = 'inaccessible (Em < Eeff,min)'; hint.textContent = 'Em sous le minimum : pas de mouvement possible.'; }
+    else if (Em < 0) { vReg.textContent = 'état lié (borné)'; hint.textContent = 'Em < 0 : état lié, le rayon oscille entre rmin et rmax (orbite elliptique).'; }
+    else { vReg.textContent = 'diffusion (non borné)'; hint.textContent = 'Em ≥ 0 : état de diffusion, la particule s\'échappe à l\'infini.'; }
+  }
+
+  let dir = 1;
+  QC.loop(function (ts) {
+    if (animating) {
+      let em = parseFloat(slEm.value) + dir * 0.004;
+      if (em > 0.40) { em = 0.40; dir = -1; }
+      if (em < -0.70) { em = -0.70; dir = 1; }
+      slEm.value = em.toFixed(2);
+      draw();
+    }
+  });
+
+  slL.addEventListener('input', draw);
+  slEm.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer (Em variable)';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM9 — Actions de Laplace · QC Oraux MP*</title>
+<meta name="description" content="Force de Laplace F = I dl ∧ B, puissance, barre sur rails et couple sur une spire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em8.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em10.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html" aria-current="page"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 9 · Électromagnétisme</span>
+    <h1>Actions de Laplace : force, puissance, cas géométriques simples</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer la force de Laplace sur un conducteur parcouru par un courant dans un champ \(\vec{B}\). Calculer la puissance. Traiter un cas géométrique simple.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI/MP · Actions de Laplace</div>
+      <p>Force de Laplace \(\mathrm{d}\vec{F} = I\mathrm{d}\vec{\ell}\times\vec{B}\), puissance associée, applications à la conversion électromécanique. Niveau MPSI/MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Un conducteur filiforme parcouru par un courant \(I\) est soumis à la force de Laplace. On note \(\mathrm{d}\vec{\ell}\) un élément orienté du conducteur dans le sens du courant.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Force de Laplace élémentaire</span>
+      <p>\[ \mathrm{d}\vec{F} = I\,\mathrm{d}\vec{\ell}\times\vec{B} \]</p>
+      <p>La force totale sur un conducteur est \(\vec{F} = I\int_C \mathrm{d}\vec{\ell}\times\vec{B}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Puissance</span>
+      <p>Pour un élément se déplaçant à la vitesse \(\vec{v}\) : \(\mathrm{d}P = \mathrm{d}\vec{F}\cdot\vec{v} = I(\mathrm{d}\vec{\ell}\times\vec{B})\cdot\vec{v}\). Par propriété du produit mixte : \((\mathrm{d}\vec{\ell}\times\vec{B})\cdot\vec{v} = (\vec{v}\times\mathrm{d}\vec{\ell})\cdot\vec{B}\). On retrouve le lien avec la f.e.m. de mouvement.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Exemple : barre mobile sur rails</span>
+      <p>Barre de longueur \(\ell\) dans un champ \(\vec{B} = B\hat{z}\) uniforme, courant \(I\) selon \(\hat{y}\) :</p>
+      <p>\[ \vec{F} = I\ell\hat{y}\times B\hat{z} = I\ell B\,\hat{x} \]</p>
+      <p>La force est dans la direction du déplacement possible \(\hat{x}\). Puissance : \(P = Fv = I\ell B v = I\cdot e\) (avec \(e = B\ell v\)). Cohérence avec EM8.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Spire rectangulaire dans un champ uniforme</span>
+      <p>La force résultante est nulle mais il existe un couple \(\Gamma = mB\sin\theta = I\mathcal{A}B\sin\theta\) (en accord avec EM6).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — force \(\vec{F} = I\vec{\ell}\times\vec{B}\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-laplace" aria-label="Force de Laplace sur une barre : orientation du courant et signe de B réglables, F = I l ^ B"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-I">Courant \(I\) (signé) <span class="val" id="v-I">+2,0 A</span></label>
+          <input type="range" id="sl-I" min="-3" max="3" step="0.1" value="2">
+          <label for="sl-B" style="margin-top:.5rem">Champ \(B\) <span class="val" id="v-B">0,8 T</span></label>
+          <input type="range" id="sl-B" min="0.2" max="1.5" step="0.1" value="0.8">
+          <span class="hint">\(\vec{B}=B\hat{z}\) sortant. \(\vec{F}=I\ell B\,\hat{x}\) : inverser \(I\) inverse le sens de la force.</span>
+          <div class="btn-row" style="margin-top:.5rem"><button class="btn primary" id="btn-anim" type="button">Animer la barre</button></div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\ell\) = <b>0,3 m</b></span>
+            <span class="ro">\(F=I\ell B\) = <b id="v-F">0,48</b> N</span>
+            <span class="ro">Sens \(\vec{F}\) : <b id="v-dir">+x</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Force de Laplace sur une barre de courant : \(\vec{F} = I\vec{\ell}\times\vec{B}\), perpendiculaire à \(\vec{\ell}\) (selon \(\hat{y}\)) et à \(\vec{B}\) (selon \(\hat{z}\) sortant), donc dirigée selon \(\pm\hat{x}\). Le sens dépend du signe de \(I\) — règle de la main droite.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Barre (courant \(I\))</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Force \(\vec{F}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La force de Laplace est la résultante macroscopique des forces de Lorentz sur les porteurs microscopiques.</li>
+        <li>Elle est perpendiculaire à \(\vec{B}\) ; attention au sens : \(\vec{F}=I\vec{\ell}\times\vec{B}\) suit la règle de la main droite, inversé si \(I\) change de signe.</li>
+        <li>Le bilan de puissance \(P_{\mathrm{Laplace}} = e\cdot I\) relie directement Laplace (mécanique) et Faraday (électrique).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MPSI/MP.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em8.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM8 · Induction : circuit mobile</span></a>
+    <a class="next" href="em10.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM10 · Circuits couplés / transformateur</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-laplace');
+  const slI = document.getElementById('sl-I'), slB = document.getElementById('sl-B');
+  const vI = document.getElementById('v-I'), vB = document.getElementById('v-B'), vF = document.getElementById('v-F'), vDir = document.getElementById('v-dir');
+  const btn = document.getElementById('btn-anim');
+  const ELL = 0.3;
+  let running = false, off = 0; // off = déplacement px de la barre sous la force
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const I = parseFloat(slI.value), B = parseFloat(slB.value);
+    const cx = w*0.42 + off, topY = h*0.18, botY = h*0.82, midY=(topY+botY)/2;
+    // B sortant (points)
+    ctx.fillStyle = c.muted;
+    for (let xx=w*0.12; xx<w*0.82; xx+=42) for (let yy=topY+10; yy<botY; yy+=32) {
+      ctx.beginPath(); ctx.arc(xx,yy,2.2,0,2*Math.PI); ctx.fill();
+    }
+    ctx.font='12px IBM Plex Mono, monospace'; ctx.textAlign='left';
+    ctx.fillText('B = B ẑ (sortant ⊙)', w*0.12, topY-8);
+    // barre verticale (selon y)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.moveTo(cx,topY); ctx.lineTo(cx,botY); ctx.stroke();
+    // courant : flèche le long de la barre, sens = signe(I)
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2;
+    const cd = (I>=0)?1:-1; // +y vers le haut (topY < botY donc up = -y px)
+    const ya = (I>=0)? botY-20 : topY+20, yb=(I>=0)? topY+20 : botY-20;
+    ctx.beginPath(); ctx.moveTo(cx-16, ya); ctx.lineTo(cx-16, yb);
+    ctx.moveTo(cx-16,yb); ctx.lineTo(cx-20, yb+cd*8); ctx.moveTo(cx-16,yb); ctx.lineTo(cx-12,yb+cd*8); ctx.stroke();
+    ctx.fillStyle=c.rouge; ctx.textAlign='right'; ctx.fillText('I', cx-24, midY);
+    // force F = I ell B x̂ ; signe(I) détermine +x ou -x
+    const Fmag = Math.abs(I)*ELL*B;
+    const fdir = (I>=0)?1:-1;
+    const flen = 30 + Math.abs(I)*B*45;
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 3.4;
+    ctx.beginPath(); ctx.moveTo(cx, midY); ctx.lineTo(cx+fdir*flen, midY);
+    ctx.moveTo(cx+fdir*flen, midY); ctx.lineTo(cx+fdir*flen-fdir*9, midY-5);
+    ctx.moveTo(cx+fdir*flen, midY); ctx.lineTo(cx+fdir*flen-fdir*9, midY+5); ctx.stroke();
+    ctx.fillStyle=c.orange; ctx.textAlign=(fdir>0)?'left':'right';
+    ctx.fillText('F = IℓB', cx+fdir*(flen+8), midY-8);
+    // repères
+    ctx.strokeStyle=c.text; ctx.lineWidth=1.4; const ox=w*0.10, oy=h*0.90;
+    ctx.beginPath(); ctx.moveTo(ox,oy); ctx.lineTo(ox+26,oy); ctx.moveTo(ox,oy); ctx.lineTo(ox,oy-26); ctx.stroke();
+    ctx.fillStyle=c.text; ctx.textAlign='left'; ctx.fillText('x', ox+30, oy+4); ctx.fillText('y', ox-4, oy-30);
+    vI.textContent = (I>=0?'+':'')+fr(I,1)+' A'; vB.textContent = fr(B,1)+' T'; vF.textContent = fr(Fmag,2);
+    vDir.textContent = (I>=0)?'+x':'−x';
+  }
+  function tick() {
+    if (!running) return;
+    const I = parseFloat(slI.value), B = parseFloat(slB.value);
+    const Fmag = Math.abs(I)*ELL*B, fdir = (I>=0)?1:-1;
+    off += fdir * (0.6 + Fmag*8);   // vitesse ∝ F = IℓB, sens = signe(I)
+    const cv2 = QC.setup(cv, 300);
+    if (cx_off_max(cv2.w)) { off = 0; }  // boucle quand la barre sort du cadre
+    draw();
+    requestAnimationFrame(tick);
+  }
+  function cx_off_max(w) { const base = w*0.42; return (base + off) > w*0.86 || (base + off) < w*0.06; }
+  btn.addEventListener('click', function () {
+    running = !running;
+    btn.textContent = running ? 'Arrêter' : 'Animer la barre';
+    if (running) { off = 0; tick(); } else { off = 0; draw(); }
+  });
+  slI.addEventListener('input', draw); slB.addEventListener('input', draw);
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

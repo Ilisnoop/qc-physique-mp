@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OG3 — Lentilles minces · QC Oraux MP*</title>
+<meta name="description" content="Lentilles minces dans l'approximation de Gauss : foyers, vergence, tracé des trois rayons, formules de conjugaison de Descartes et Newton, grandissement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique géométrique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="og2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="og1.html"><span class="qn">OG1</span>Lois de Descartes / conditions de Gauss</a>
+        <a href="og2.html"><span class="qn">OG2</span>Stigmatisme et aplanétisme</a>
+        <a href="og3.html" aria-current="page"><span class="qn">OG3</span>Lentilles minces</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Optique géométrique</span>
+    <h1>Lentilles minces dans l'approximation de Gauss : définitions, tracés, image réelle d'un objet réel</h1>
+    <p class="q-sources"><span class="src">POLY p.1</span><span class="src">POLY p.3</span><span class="src">PL-101</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir les éléments d'une lentille mince (foyers, distance focale, vergence). Construire géométriquement l'image d'un objet. Établir et utiliser les formules de conjugaison et de grandissement. Donner la condition de formation d'une image réelle d'un objet réel par une lentille convergente.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 1.1 Formation des images</div>
+      <p>Capacités exigibles : définir les propriétés du centre optique, des foyers principaux et secondaires, de la distance focale et de la vergence ; construire l'image d'un objet situé à distance finie ou infinie à l'aide de rayons lumineux ; exploiter les formules de conjugaison et de grandissement de Descartes et de Newton ; établir et utiliser la condition de formation de l'image réelle d'un objet réel par une lentille convergente.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p><strong>Lentille mince.</strong> Une lentille est dite <em>mince</em> lorsque son épaisseur est négligeable devant les autres dimensions caractéristiques du système (rayons de courbure, distances objet/image). Dans l'approximation de Gauss, on peut la caractériser par :</p>
+    <ul>
+      <li>Son <strong>centre optique</strong> \(O\) : tout rayon passant par \(O\) n'est pas dévié.</li>
+      <li>Ses <strong>foyers principaux</strong> : le foyer objet \(F\) (tout rayon passant par \(F\) ressort parallèle à l'axe) et le foyer image \(F'\) (tout rayon incident parallèle à l'axe converge en \(F'\)).</li>
+      <li>Sa <strong>distance focale image</strong> \(f' = \overline{OF'}\) : positive pour une lentille convergente, négative pour une lentille divergente.</li>
+      <li>Sa <strong>vergence</strong> \(V = 1/f'\), exprimée en dioptries (\(1\,\delta = 1\,\mathrm{m^{-1}}\)).</li>
+    </ul>
+    <p>On a \(\overline{OF} = -f'\) (les deux foyers sont symétriques par rapport à \(O\) pour une lentille dans le même milieu de part et d'autre).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Les trois rayons de construction</span>
+      <p>Pour construire l'image \(B'\) du point \(B\) (extrémité d'un objet \(AB\) perpendiculaire à l'axe) :</p>
+      <ol>
+        <li>Rayon passant par \(O\) : non dévié.</li>
+        <li>Rayon parallèle à l'axe : ressort en passant par \(F'\).</li>
+        <li>Rayon passant par \(F\) : ressort parallèle à l'axe.</li>
+      </ol>
+      <p>L'intersection de deux de ces rayons donne \(B'\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Formule de conjugaison de Descartes</span>
+      <p>En posant \(\overline{OA}=p\) (algébrique) et \(\overline{OA'}=p'\) (algébrique) :</p>
+      <p>\[ \frac{1}{\overline{OA'}} - \frac{1}{\overline{OA}} = \frac{1}{f'}. \]</p>
+      <p>Autrement dit : \(\dfrac{1}{p'} - \dfrac{1}{p} = \dfrac{1}{f'}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Formule de conjugaison de Newton</span>
+      <p>En posant \(\overline{FA} = x\) et \(\overline{F'A'} = x'\) : \(\ x\cdot x' = -f'^2.\)</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Grandissement transversal</span>
+      <p>\[ \gamma = \frac{\overline{A'B'}}{\overline{AB}} = \frac{\overline{OA'}}{\overline{OA}} = \frac{p'}{p}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Condition d'image réelle d'un objet réel (lentille convergente)</span>
+      <p>L'objet est réel si \(\overline{OA} &lt; 0\) (objet en amont de \(O\)). L'image est réelle si \(\overline{OA'} &gt; 0\) (image en aval de \(O\)). La formule de Descartes donne \(\ \dfrac{1}{p'} = \dfrac{1}{p} + \dfrac{1}{f'}.\) Pour \(p &lt; 0\) et \(f' &gt; 0\), on a \(p' &gt; 0\) si et seulement si \(|p| &gt; f'\), c'est-à-dire si l'objet est <em>au-delà du foyer objet</em> :</p>
+      <p>\[ \overline{OA} &lt; -f' \quad\Longleftrightarrow\quad |p| &gt; f'. \]</p>
+      <p>La distance minimale objet-image (les deux réels) est \(d_{\min} = 4f'\) (obtenue pour \(p = -2f'\), \(p' = 2f'\)).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Vérification d'homogénéité</span>
+      <p>La formule \(1/p' - 1/p = 1/f'\) est homogène : chaque terme est l'inverse d'une longueur (\(\mathrm{m^{-1}}\)).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — construction de l'image par une lentille mince</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-lens" aria-label="Construction de l'image d'un objet par une lentille mince convergente, tracé des trois rayons, position de l'objet réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-p">Position de l'objet \(\overline{OA}\) (en unités de \(f'\)) <span class="val" id="v-p">−3,00</span></label>
+          <input type="range" id="sl-p" min="-5" max="-0.3" step="0.05" value="-3">
+          <label for="sl-f" style="margin-top:.6rem">Distance focale \(f'\) <span class="val" id="v-f">1,00</span></label>
+          <input type="range" id="sl-f" min="0.6" max="1.6" step="0.05" value="1">
+          <span class="hint" id="hint-lens">Objet réel au-delà de F : image réelle, renversée.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Déplacer l'objet</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\overline{OA'}\) (image) = <b id="v-pp">—</b></span>
+            <span class="ro">Grandissement \(\gamma = p'/p\) = <b id="v-g">—</b></span>
+            <span class="ro">\(\dfrac{1}{\overline{OA'}} - \dfrac{1}{\overline{OA}}\) = <b id="v-check">—</b></span>
+            <span class="ro">\(1/f'\) = <b id="v-vf">1,00</b></span>
+            <span class="ro" id="ro-nat">Nature de l'image : <b id="v-nat">réelle, renversée</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Lentille convergente (\(f'&gt;0\)), foyers \(F\) et \(F'\). Trois rayons issus de \(B\) : rayon par \(O\) non dévié (rouge), rayon parallèle à l'axe ressortant par \(F'\) (vert), rayon par \(F\) ressortant parallèle (bleu). Leur intersection donne \(B'\). La relation de conjugaison \(\frac{1}{\overline{OA'}} - \frac{1}{\overline{OA}} = \frac{1}{f'}\) est vérifiée en direct (la lecture doit égaler \(1/f'\)).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>rayon par \(O\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>rayon parallèle → \(F'\)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>rayon par \(F\) → parallèle</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La formule de Descartes utilise des distances <em>algébriques</em> ; bien préciser la convention d'orientation de l'axe.</li>
+        <li>Pour une lentille divergente (\(f'&lt;0\)), l'image d'un objet réel est toujours virtuelle et droite.</li>
+        <li>La distance minimale objet-image pour une image réelle est \(4f'\) : résultat souvent demandé à l'oral.</li>
+        <li>Ordre de grandeur : \(f' = 20\ \mathrm{cm}\) pour une lentille de vergence \(5\,\delta\). L'œil humain a une distance focale variable entre \(\approx 17\ \mathrm{mm}\) et \(\approx 14\ \mathrm{mm}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MPSI. Les formules de Newton et de Descartes, la construction géométrique et la condition d'image réelle sont toutes exigibles.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="og2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OG2 · Stigmatisme et aplanétisme</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Optique géométrique · 3 questions</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 7 : Optique géométrique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-lens');
+  const slP = document.getElementById('sl-p'), slF = document.getElementById('sl-f');
+  const vP = document.getElementById('v-p'), vF = document.getElementById('v-f'), vPp = document.getElementById('v-pp');
+  const vG = document.getElementById('v-g'), vCheck = document.getElementById('v-check'), vVf = document.getElementById('v-vf');
+  const vNat = document.getElementById('v-nat'), hint = document.getElementById('hint-lens');
+  const btn = document.getElementById('btn-anim');
+
+  let animating = false, dir = 1;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 360);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const fp = parseFloat(slF.value);      // f' (>0), unités physiques
+    // OA = (valeur slider en f') * f' ; le slider exprime OA en unités de f'
+    const OA = parseFloat(slP.value) * fp;
+    // conjugaison : 1/OAp - 1/OA = 1/f'  => OAp = 1/(1/f' + 1/OA)
+    const OAp = 1 / (1 / fp + 1 / OA);
+    const gamma = OAp / OA;
+
+    // échelle px : unité physique -> px. On veut couvrir [-6f', +6f'] horizontalement.
+    const Ox = w * 0.42, oy = h * 0.52;
+    const sc = (w * 0.40) / (6 * fp);     // px par unité physique
+    const X = u => Ox + u * sc;           // u = position algébrique sur l'axe (m)
+    const objH = h * 0.20;                // hauteur de l'objet (B au-dessus de l'axe)
+
+    // axe
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(0, oy); ctx.lineTo(w, oy); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'right'; ctx.fillText('axe', w - 6, oy - 6);
+
+    // lentille
+    const Hl = h * 0.40;
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 2; ctx.beginPath();
+    ctx.moveTo(Ox, oy - Hl); ctx.lineTo(Ox, oy + Hl); ctx.stroke();
+    // flèches lentille convergente
+    ctx.beginPath(); ctx.moveTo(Ox, oy - Hl); ctx.lineTo(Ox - 5, oy - Hl + 8); ctx.moveTo(Ox, oy - Hl); ctx.lineTo(Ox + 5, oy - Hl + 8);
+    ctx.moveTo(Ox, oy + Hl); ctx.lineTo(Ox - 5, oy + Hl - 8); ctx.moveTo(Ox, oy + Hl); ctx.lineTo(Ox + 5, oy + Hl - 8); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.textAlign = 'center'; ctx.fillText('O', Ox, oy + 16);
+
+    // foyers
+    function pt(u, lab, dy) { ctx.fillStyle = c.muted; ctx.beginPath(); ctx.arc(X(u), oy, 3, 0, 2 * Math.PI); ctx.fill(); ctx.fillText(lab, X(u), oy + (dy || 16)); }
+    pt(-fp, 'F'); pt(fp, "F'");
+
+    // objet AB (A sur axe, B en haut)  -- objet réel : OA<0
+    const Bx = X(OA), By = oy - objH;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(X(OA), oy); ctx.lineTo(Bx, By); ctx.stroke();
+    arrow(ctx, X(OA), oy, Bx, By, c.bleu);
+    ctx.fillStyle = c.bleu; ctx.textAlign = 'center'; ctx.fillText('A', X(OA), oy + 16); ctx.fillText('B', Bx, By - 8);
+
+    // image A'B'
+    const imgH = -objH * gamma;   // signe : gamma<0 => renversée
+    const Bpx = X(OAp), Bpy = oy + imgH;
+    const imageReelle = OAp > 0;
+    // rayon 1 : par O, non dévié (rouge)  B -> O -> prolongé
+    ray(ctx, Bx, By, Ox, oy, c.rouge);
+    // rayon 2 : parallèle à l'axe -> F' (vert)
+    ray(ctx, Bx, By, Ox, By, c.vert);          // B -> point lentille à même hauteur
+    ray2(ctx, Ox, By, X(fp), oy, c.vert);       // de la lentille vers F' (prolongé)
+    // rayon 3 : par F -> ressort parallèle (bleu) : B -> point lentille tel que la droite passe par F
+    // direction B->F : trouve hauteur sur lentille
+    const slopeBF = (oy - By) / (X(-fp) - Bx);
+    const yLens3 = By + slopeBF * (Ox - Bx);
+    ray(ctx, Bx, By, Ox, yLens3, c.bleu);
+    ray2(ctx, Ox, yLens3, Ox + 200, yLens3, c.bleu);  // ressort horizontal (parallèle)
+
+    // image
+    if (Math.abs(OAp) < 6 * fp) {
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 2.6; ctx.beginPath(); ctx.moveTo(X(OAp), oy); ctx.lineTo(Bpx, Bpy); ctx.stroke();
+      arrow(ctx, X(OAp), oy, Bpx, Bpy, c.orange);
+      ctx.fillStyle = c.orange; ctx.textAlign = 'center';
+      ctx.fillText("A'", X(OAp), oy + (imgH > 0 ? 26 : -8)); ctx.fillText("B'", Bpx, Bpy + (imgH > 0 ? 14 : -6));
+    }
+
+    // lectures
+    vP.textContent = fr(parseFloat(slP.value), 2);
+    vF.textContent = fr(fp, 2); vVf.textContent = fr(1 / fp, 2);
+    vPp.textContent = fr(OAp, 2);
+    vG.textContent = fr(gamma, 2);
+    vCheck.textContent = fr(1 / OAp - 1 / OA, 2);
+    if (imageReelle) { vNat.textContent = (gamma < 0 ? 'réelle, renversée' : 'réelle, droite'); hint.textContent = 'Objet au-delà de F (|OA| > f\u2032) : image réelle, renversée.'; }
+    else { vNat.textContent = 'virtuelle, droite, agrandie'; hint.textContent = 'Objet entre F et O (|OA| < f\u2032) : image virtuelle, droite (loupe).'; }
+  }
+
+  function arrow(ctx, x0, y0, x1, y1, col) {
+    const a = Math.atan2(y1 - y0, x1 - x0), L = 8;
+    ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(x1, y1);
+    ctx.lineTo(x1 - L * Math.cos(a - 0.4), y1 - L * Math.sin(a - 0.4));
+    ctx.lineTo(x1 - L * Math.cos(a + 0.4), y1 - L * Math.sin(a + 0.4));
+    ctx.closePath(); ctx.fill();
+  }
+  function ray(ctx, x0, y0, x1, y1, col) { ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.globalAlpha = 0.9; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); ctx.globalAlpha = 1; }
+  function ray2(ctx, x0, y0, x1, y1, col) {
+    // prolonge la droite (x0,y0)->(x1,y1) jusqu'au bord droit
+    ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.globalAlpha = 0.9;
+    const dx = x1 - x0, dy = y1 - y0;
+    const k = (cvW() - x0) / (dx || 1e-6);
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + dx * Math.max(k, 1), y0 + dy * Math.max(k, 1)); ctx.stroke(); ctx.globalAlpha = 1;
+  }
+  function cvW() { return cv.clientWidth || 600; }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      let v = parseFloat(slP.value) + dir * dt * 1.0;
+      if (v >= -0.3) { v = -0.3; dir = -1; }
+      if (v <= -5) { v = -5; dir = 1; }
+      slP.value = v; draw();
+    }
+  });
+
+  [slP, slF].forEach(el => el.addEventListener('input', draw));
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer l\u2019objet' : 'Déplacer l\u2019objet';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

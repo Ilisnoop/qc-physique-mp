@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T2 — Second principe & entropie du GP · QC Oraux MP*</title>
+<meta name="description" content="Deuxième principe : variation d'entropie d'un gaz parfait, impossibilité du moteur monotherme (Kelvin) et du transfert spontané froid vers chaud (Clausius).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Thermodynamique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="t1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="t3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="t1.html"><span class="qn">T1</span>Machines dithermes &amp; Carnot</a>
+        <a href="t2.html" aria-current="page"><span class="qn">T2</span>Second principe &amp; entropie du GP</a>
+        <a href="t3.html"><span class="qn">T3</span>Premier principe industriel · Joule-Kelvin</a>
+        <a href="t4.html"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
+        <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
+        <a href="t6.html"><span class="qn">T6</span>Changement d'état du corps pur</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Thermodynamique</span>
+    <h1>Deuxième principe : entropie du GP, impossibilité du moteur monotherme, transfert spontané froid → chaud</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-128</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir l'expression de la variation d'entropie d'un gaz parfait entre deux états quelconques. Démontrer l'impossibilité d'un moteur cyclique monotherme. Démontrer l'impossibilité du transfert spontané de chaleur d'une source froide vers une source chaude.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 3.4 Deuxième principe — bilans d'entropie</div>
+      <p>Fonction d'état entropie ; deuxième principe \(\Delta S = S_{\text{éch}} + S_c\) avec \(S_c \geq 0\) et \(S_{\text{éch}} = \sum Q_i/T_i\) ; utiliser l'expression fournie de la variation d'entropie. <strong>MPSI 3.5</strong> : justifier et utiliser le théorème de Carnot ; analyse des irréversibilités. Capacité exigible : établir pour un gaz parfait \(\Delta S\) ; relier la création d'entropie à une ou plusieurs causes d'irréversibilité.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère \(n\) moles d'un gaz parfait de capacités thermiques molaires \(C_{V,m}\) et \(C_{P,m} = C_{V,m} + R\) (lois de Joule). L'entropie \(S\) est une fonction d'état extensive. Le second principe s'écrit, pour une transformation quelconque d'un système fermé :</p>
+    <p>\[ \mathrm{d}S = \frac{\delta Q_{\text{rév}}}{T} = \frac{\delta Q}{T} + \delta S_c, \quad \delta S_c \geq 0. \]</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+
+    <div class="demo-step">
+      <span class="step-label">1 · Entropie d'un gaz parfait</span>
+      <p>Pour une transformation infinitésimale réversible d'un gaz parfait, le premier principe donne \(\mathrm{d}U = -P\,\mathrm{d}V + T\,\mathrm{d}S\). Avec \(\mathrm{d}U = n C_{V,m}\,\mathrm{d}T\) :</p>
+      <p>\[ T\,\mathrm{d}S = n C_{V,m}\,\mathrm{d}T + P\,\mathrm{d}V. \]</p>
+      <p>En divisant par \(T\) et en utilisant \(P = nRT/V\) :</p>
+      <p>\[ \mathrm{d}S = n C_{V,m}\,\frac{\mathrm{d}T}{T} + nR\,\frac{\mathrm{d}V}{V}. \]</p>
+      <p>Comme \(S\) est une fonction d'état, cette expression vaut pour <em>toute</em> transformation entre deux états du GP. En intégrant :</p>
+      <p>\[ \Delta S = n C_{V,m} \ln\frac{T_2}{T_1} + nR \ln\frac{V_2}{V_1}. \]</p>
+      <p>Avec \(V = nRT/P\), on obtient aussi :</p>
+      <p>\[ \Delta S = n C_{P,m} \ln\frac{T_2}{T_1} - nR \ln\frac{P_2}{P_1}. \]</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">2 · Impossibilité du moteur cyclique monotherme (Kelvin-Planck)</span>
+      <p>Un moteur monotherme échangerait de la chaleur avec une seule source à \(T_0\) et fournirait un travail \(W_f = -W &gt; 0\). Sur un cycle, \(\Delta U = 0\), donc \(W + Q = 0\) et \(W_f = Q\). Le second principe sur un cycle (\(\Delta S = 0\)) impose :</p>
+      <p>\[ 0 = \Delta S = \frac{Q}{T_0} + S_c \geq \frac{Q}{T_0}. \]</p>
+      <p>Donc \(Q \leq 0\) : la machine ne peut extraire de la chaleur tout en produisant du travail. Si \(Q &gt; 0\) (moteur), on aurait \(S_c &lt; 0\), ce qui contredit le second principe. <strong>Un moteur cyclique monotherme est impossible.</strong></p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Impossibilité du transfert spontané froid → chaud (Clausius)</span>
+      <p>Supposons un transfert \(Q &gt; 0\) spontané de la source froide \(T_f\) vers la source chaude \(T_c &gt; T_f\), sans travail. La variation d'entropie de l'univers est :</p>
+      <p>\[ \Delta S_{\text{total}} = -\frac{Q}{T_f} + \frac{Q}{T_c} = Q\left(\frac{1}{T_c} - \frac{1}{T_f}\right). \]</p>
+      <p>Comme \(T_c &gt; T_f\), on a \(1/T_c &lt; 1/T_f\), donc \(\Delta S_{\text{total}} &lt; 0\) pour \(Q &gt; 0\) : cela viole le second principe (\(\Delta S_{\text{total}} \geq 0\) pour un système isolé). <strong>Le transfert spontané froid → chaud est impossible.</strong></p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — entropie du GP &amp; moteur monotherme interdit</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-entropie" aria-label="Variation d'entropie d'un gaz parfait au cours d'une détente isotherme, et bilan d'entropie d'un moteur monotherme"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-rv">Rapport de détente isotherme \(V_2/V_1\) <span class="val" id="v-rv">3,0</span></label>
+          <input type="range" id="sl-rv" min="1" max="8" step="0.1" value="3">
+          <span class="hint" id="hint-s">Détente isotherme réversible : \(\Delta S = nR\ln(V_2/V_1) &gt; 0\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la détente</button>
+          </div>
+        </div>
+        <div class="control">
+          <label for="sl-t0">Source unique \(T_0\) (moteur monotherme) <span class="val" id="v-t0">300 K</span></label>
+          <input type="range" id="sl-t0" min="200" max="800" step="10" value="300">
+          <div class="readout" style="margin-top:.6rem">
+            <span class="ro">\(\Delta S = nR\ln(V_2/V_1)\) = <b id="v-ds">3,29</b> J·K⁻¹ (n=1 mol)</span>
+            <span class="ro">Moteur monotherme : \(S_c = -Q/T_0\) = <b id="v-sc">&lt; 0</b> ⇒ <b id="v-verdict">interdit</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        À gauche : tracé de \(\Delta S(V_2/V_1) = nR\ln(V_2/V_1)\) (croissant, toujours positif), avec le point courant. À droite : schéma du moteur monotherme. Pour \(Q&gt;0\), le bilan \(\Delta S = Q/T_0 + S_c = 0\) impose \(S_c = -Q/T_0 &lt; 0\), interdit par le second principe (énoncé de Kelvin).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\Delta S(V_2/V_1)\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Flux \(Q\) de la source unique</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Point courant</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>L'expression \(\Delta S_{\text{GP}} = nC_{V,m}\ln(T_2/T_1) + nR\ln(V_2/V_1)\) se démontre à partir du premier principe et de \(\mathrm{d}S = \delta Q_{\text{rév}}/T\), en soulignant qu'elle vaut pour <em>toute</em> transformation (\(S\) fonction d'état).</li>
+        <li>Les deux énoncés (Kelvin-Planck et Clausius) du second principe sont équivalents.</li>
+        <li>Toujours préciser les sources et les flux d'entropie ; \(S_c \geq 0\) avec égalité seulement pour un processus réversible.</li>
+        <li>Un moteur monotherme n'est pas seulement « peu efficace » : il est rigoureusement <em>impossible</em>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MPSI (3.4) et MP (5.1). Aucune notion hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="t1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">T1 · Machines dithermes &amp; Carnot</span></a>
+    <a class="next" href="t3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">T3 · Premier principe industriel · Joule-Kelvin</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Thermodynamique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-entropie');
+  const slRv = document.getElementById('sl-rv'), slT0 = document.getElementById('sl-t0');
+  const vRv = document.getElementById('v-rv'), vT0 = document.getElementById('v-t0');
+  const vDs = document.getElementById('v-ds'), vSc = document.getElementById('v-sc'), vVerdict = document.getElementById('v-verdict');
+  const hintS = document.getElementById('hint-s'), btnAnim = document.getElementById('btn-anim');
+  const R = 8.314;
+  let animating = false, anim_rv = 3, dir = 1;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const rv = parseFloat(slRv.value), T0 = parseFloat(slT0.value);
+
+    // --- partie gauche : courbe ΔS(V2/V1) ---
+    const splitX = w * 0.55;
+    const plot = QC.makePlot(ctx, w, h, { xmin: 1, xmax: 8, ymin: 0, ymax: R * Math.log(8) * 1.1, pad: { l: 42, r: w - splitX + 8, t: 18, b: 34 } });
+    plot.grid(c, { xticks: 5, yticks: 4 });
+    plot.axes(c, { xlabel: 'V₂/V₁', ylabel: 'ΔS' });
+    plot.curve(x => R * Math.log(x), c.bleu, { lw: 2.8 });
+    // point courant
+    const PX = plot.px(rv), PY = plot.py(R * Math.log(rv));
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(PX, PY, 5, 0, 7); ctx.fill();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('ΔS>0', PX, PY - 10);
+
+    // --- partie droite : moteur monotherme interdit ---
+    const x0 = splitX + 16, x1 = w - 16;
+    const cx = (x0 + x1) / 2;
+    // source unique
+    ctx.fillStyle = c.rouge; ctx.globalAlpha = 0.16;
+    ctx.fillRect(x0, 30, x1 - x0, 38); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.6; ctx.strokeRect(x0, 30, x1 - x0, 38);
+    ctx.fillStyle = c.text; ctx.font = '12px Inter, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Source unique T₀ = ' + Math.round(T0) + ' K', cx, 54);
+    // machine
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1.6;
+    ctx.strokeRect(cx - 42, 150, 84, 44);
+    ctx.fillStyle = c.text; ctx.fillText('Machine', cx, 176);
+    // flux Q vertical
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.6;
+    ctx.beginPath(); ctx.moveTo(cx, 68); ctx.lineTo(cx, 150); ctx.stroke();
+    // tête de flèche
+    ctx.beginPath(); ctx.moveTo(cx - 5, 142); ctx.lineTo(cx, 150); ctx.lineTo(cx + 5, 142); ctx.stroke();
+    ctx.fillStyle = c.rouge; ctx.textAlign = 'left'; ctx.fillText('Q>0', cx + 8, 110);
+    // travail fourni horizontal
+    ctx.strokeStyle = c.bleu; ctx.beginPath(); ctx.moveTo(cx + 42, 172); ctx.lineTo(x1 - 6, 172); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1 - 14, 167); ctx.lineTo(x1 - 6, 172); ctx.lineTo(x1 - 14, 177); ctx.stroke();
+    ctx.fillStyle = c.bleu; ctx.fillText('W_f = Q ?', cx + 46, 164);
+    // croix d'interdiction
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(cx - 12, 215); ctx.lineTo(cx + 12, 239); ctx.moveTo(cx + 12, 215); ctx.lineTo(cx - 12, 239); ctx.stroke();
+    ctx.fillStyle = c.rouge; ctx.font = 'bold 12px Inter, sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Impossible', cx + 20, 230);
+
+    // lectures
+    vRv.textContent = fr(rv, 1);
+    vT0.textContent = Math.round(T0) + ' K';
+    vDs.textContent = fr(R * Math.log(rv), 2);
+    vSc.textContent = '−Q/' + Math.round(T0) + ' < 0';
+    vVerdict.textContent = 'interdit (Kelvin)';
+    hintS.textContent = 'ΔS = nR·ln(' + fr(rv, 1) + ') = ' + fr(R * Math.log(rv), 2) + ' J·K⁻¹ > 0 (irréversibilité si détente libre).';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      anim_rv += dir * dt * 1.6;
+      if (anim_rv > 8) { anim_rv = 8; dir = -1; }
+      if (anim_rv < 1) { anim_rv = 1; dir = 1; }
+      slRv.value = anim_rv.toFixed(1); draw();
+    }
+  });
+
+  slRv.addEventListener('input', draw);
+  slT0.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating; anim_rv = parseFloat(slRv.value);
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la détente';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

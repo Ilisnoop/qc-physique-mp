@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D3 — Résistance thermique d'un cylindre · QC Oraux MP*</title>
+<meta name="description" content="Résistance thermique d'un cylindre creux, profil de température logarithmique T(r), flux radial, lois d'association série/parallèle et analogie électrocinétique complète.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .tj-table-wrap { overflow-x: auto; margin: 1rem 0; }
+  .tj-table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  .tj-table th, .tj-table td { text-align: left; padding: .55rem .8rem; border-bottom: 1px solid var(--color-border, #dde1e8); }
+  .tj-table thead th { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--color-text); border-bottom-width: 2px; }
+  .tj-table tbody tr:last-child td { border-bottom: none; }
+</style>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Diffusion thermique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="d2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="d1.html"><span class="qn">D1</span>Équation de la diffusion thermique</a>
+        <a href="d2.html"><span class="qn">D2</span>Conduction sphérique &amp; analogie EM</a>
+        <a href="d3.html" aria-current="page"><span class="qn">D3</span>Résistance thermique d'un cylindre</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Diffusion thermique</span>
+    <h1>Résistance thermique en géométrie cylindrique ; analogie électrocinétique</h1>
+    <p class="q-sources"><span class="src">POLY p.1</span><span class="src">POLY p.2</span><span class="src">PL-117</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir l'expression de la résistance thermique d'un cylindre creux de conductivité \(\lambda\), de longueur \(\ell\), de rayons intérieur \(R_1\) et extérieur \(R_2\). Généraliser à l'association de résistances thermiques (série, parallèle). Exploiter l'analogie électrocinétique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Niveau MP (5.2.)</div>
+      <p>Établir l'équation de la diffusion thermique en géométrie cylindrique ; définir la résistance thermique par analogie avec l'électrocinétique ; déterminer l'expression de la résistance thermique d'un solide dans le cas d'un problème unidimensionnel en géométrie cartésienne ; exploiter les lois d'association de résistances thermiques. Capacité exigible : déterminer la résistance thermique d'une géométrie cylindrique (exercice fréquent en concours).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère un cylindre creux de longueur \(\ell\), de rayon intérieur \(R_1\) et de rayon extérieur \(R_2\), de conductivité thermique \(\lambda\). Les surfaces intérieure et extérieure sont maintenues aux températures \(T_1\) et \(T_2\) respectivement (\(T_1 &gt; T_2\)). Par invariance axiale, \(T = T(r)\) en coordonnées cylindriques \((r, \theta, z)\). Le Laplacien cylindrique est :</p>
+    <p>\[ \Delta T = \frac{1}{r}\frac{\partial}{\partial r}\left(r\,\frac{\partial T}{\partial r}\right) \quad \text{(en 1D radial)}. \]</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+
+    <div class="demo-step">
+      <span class="step-label">1 · Équation de diffusion en géométrie cylindrique</span>
+      <p>On raisonne sur une couronne cylindrique de rayons \(r\) et \(r+\mathrm{d}r\), de longueur \(\ell\) et de volume \(2\pi r\ell\,\mathrm{d}r\), avec le vecteur densité de flux radial \(\vec{j}_{\text{th}} = -\lambda(\mathrm{d}T/\mathrm{d}r)\vec{u}_r\). Le flux thermique entrant à travers la surface latérale de rayon \(r\) est \(\Phi(r) = 2\pi r\ell\,j_r = -2\pi r\ell\lambda\,\partial T/\partial r\). Le bilan d'énergie interne (sans terme source) s'écrit en régime quelconque :</p>
+      <p>\[ \rho c\,2\pi r\ell\,\mathrm{d}r\,\frac{\partial T}{\partial t} = \Phi(r) - \Phi(r+\mathrm{d}r) = -\frac{\partial \Phi}{\partial r}\,\mathrm{d}r. \]</p>
+      <p>En divisant par le volume \(2\pi r\ell\,\mathrm{d}r\) et en reportant l'expression de \(\Phi\), on obtient l'équation de diffusion en géométrie cylindrique :</p>
+      <p>\[ \rho c\,\frac{\partial T}{\partial t} = -\frac{1}{2\pi r\ell}\frac{\partial \Phi}{\partial r} = \frac{\lambda}{r}\frac{\partial}{\partial r}\left(r\,\frac{\partial T}{\partial r}\right) = a\,\Delta_{\text{cyl}} T. \]</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">2 · Profil stationnaire et résistance thermique cylindrique</span>
+      <p>En régime stationnaire, l'équation se réduit à \(\frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\,\frac{\mathrm{d}T}{\mathrm{d}r}\right) = 0\). En intégrant une première fois : \(r\,\mathrm{d}T/\mathrm{d}r = A\), d'où \(\mathrm{d}T/\mathrm{d}r = A/r\). En intégrant une deuxième fois :</p>
+      <p>\[ T(r) = A\ln r + B. \]</p>
+      <p>Les constantes sont déterminées par \(T(R_1) = T_1\) et \(T(R_2) = T_2\) : \(T_1 - T_2 = A\ln\frac{R_1}{R_2} = -A\ln\frac{R_2}{R_1}\), d'où \(A = -\frac{T_1 - T_2}{\ln(R_2/R_1)}\). Le profil de température est donc logarithmique :</p>
+      <p>\[ T(r) = T_2 + (T_1 - T_2)\,\frac{\ln(R_2/r)}{\ln(R_2/R_1)}. \]</p>
+      <p>Le flux thermique total à travers la surface cylindrique de rayon \(r\) et de longueur \(\ell\) est :</p>
+      <p>\[ \Phi = 2\pi r\ell\,j_r = -2\pi r\ell\lambda\,\frac{\mathrm{d}T}{\mathrm{d}r} = -2\pi\ell\lambda A = \frac{2\pi\ell\lambda(T_1 - T_2)}{\ln(R_2/R_1)}. \]</p>
+      <p>Ce flux est constant (indépendant de \(r\)) en régime stationnaire, conformément à la conservation de l'énergie. La <strong>résistance thermique cylindrique</strong> est :</p>
+      <p>\[ \boxed{R_{\text{th, cyl}} = \frac{T_1 - T_2}{\Phi} = \frac{\ln(R_2/R_1)}{2\pi\ell\lambda}}. \]</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Analogie électrocinétique complète</span>
+      <div class="tj-table-wrap">
+        <table class="tj-table">
+          <thead><tr><th>Grandeur thermique</th><th>Symbole</th><th>Analogue électrique</th></tr></thead>
+          <tbody>
+            <tr><td>Température</td><td>\(T\)</td><td>Potentiel \(V\)</td></tr>
+            <tr><td>Flux thermique</td><td>\(\Phi\) (W)</td><td>Courant \(I\) (A)</td></tr>
+            <tr><td>Résistance thermique</td><td>\(R_{\text{th}}\) (K/W)</td><td>Résistance \(R\) (\(\Omega\))</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Association de résistances (loi d'Ohm thermique \(\Delta T = R_{\text{th}} \Phi\)) :</p>
+      <ul>
+        <li><strong>En série</strong> (même flux, températures qui s'additionnent) : \(R_{\text{th,total}} = \sum_i R_{\text{th},i}\).</li>
+        <li><strong>En parallèle</strong> (même différence de température, flux qui s'additionnent) : \(1/R_{\text{th,total}} = \sum_i 1/R_{\text{th},i}\).</li>
+      </ul>
+      <p><strong>Exemple : canalisation cylindrique avec convection externe.</strong> Un tube de rayons \(R_1\) (intérieur) et \(R_2\) (extérieur), conductivité \(\lambda\), est en contact avec un fluide externe de coefficient de transfert \(h\) (convection). Les résistances en série sont :</p>
+      <p>\[ R_{\text{total}} = R_{\text{conv,int}} + R_{\text{cyl}} + R_{\text{conv,ext}} = \frac{1}{2\pi R_1\ell h_1} + \frac{\ln(R_2/R_1)}{2\pi\ell\lambda} + \frac{1}{2\pi R_2\ell h_2}. \]</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — profil logarithmique \(T(r)\) dans la paroi</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-cyl" aria-label="Profil de température logarithmique T(r) à travers la paroi d'un cylindre creux, avec la conductivité thermique lambda réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-lam">Conductivité \(\lambda\) (W·m⁻¹·K⁻¹) <span class="val" id="v-lam">1,0</span></label>
+          <input type="range" id="sl-lam" min="0.025" max="50" step="0.025" value="1">
+          <span class="hint" id="hint-c">Le profil \(T(r)\) est logarithmique ; \(\lambda\) fixe le flux mais pas la forme du profil.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le point</button>
+          </div>
+        </div>
+        <div class="control">
+          <label for="sl-r2">Rayon extérieur \(R_2\) (cm) <span class="val" id="v-r2">4,0</span></label>
+          <input type="range" id="sl-r2" min="2.5" max="6" step="0.1" value="4">
+          <div class="readout" style="margin-top:.6rem">
+            <span class="ro">\(R_{\text{th,cyl}} = \ln(R_2/R_1)/(2\pi\ell\lambda)\) : <b id="v-rth">—</b> K/W</span>
+            <span class="ro">Flux \(\Phi = \Delta T/R_{\text{th}}\) : <b id="v-phi">—</b> W</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Profil stationnaire de température dans la paroi d'un cylindre creux (\(R_1 = 1\,\text{cm}\), \(\ell = 1\,\text{m}\), \(T_1 = 100\,°\text{C}\), \(T_2 = 20\,°\text{C}\)) : \(T(r) = T_2 + (T_1 - T_2)\,\ln(R_2/r)/\ln(R_2/R_1)\), de forme logarithmique (courbe verte). La conductivité \(\lambda\) règle la résistance thermique et donc le flux, sans changer la forme du profil. Ordres de grandeur : acier \(\lambda \approx 50\), verre \(\approx 1\), eau \(\approx 0{,}6\), air \(\approx 0{,}025\) W·m⁻¹·K⁻¹.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(T(r)\) logarithmique</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Point mobile</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>C'est un item <strong>MP uniquement</strong>.</li>
+        <li>Le profil de température est <em>logarithmique</em> en cylindrique (et non linéaire en cartésien, ni en \(1/r\) en sphérique). C'est un résultat à connaître de tête.</li>
+        <li>Le flux \(\Phi = 2\pi\ell\lambda(T_1-T_2)/\ln(R_2/R_1)\) est constant en régime stationnaire ; bien vérifier en calculant \(\Phi = -2\pi r\ell\lambda\,\mathrm{d}T/\mathrm{d}r\) et constater que \(r \times A/r = A = \text{cste}\).</li>
+        <li>L'analogie électrocinétique est complète : association série/parallèle fonctionne comme en électricité ; utiliser cette analogie pour les systèmes composites (tube + convection).</li>
+        <li>Dans un concours, on demande souvent d'inclure les résistances de convection \(R_{\text{conv}} = 1/(2\pi r\ell h)\) en série avec la résistance de conduction cylindrique.</li>
+        <li>Ordres de grandeur : \(\lambda_{\text{acier}} \approx 50\), \(\lambda_{\text{verre}} \approx 1\), \(\lambda_{\text{eau}} \approx 0{,}6\), \(\lambda_{\text{air}} \approx 0{,}025\) W·m⁻¹·K⁻¹.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Entièrement au programme MP (5.2.). La géométrie cylindrique, la résistance thermique et l'analogie électrocinétique sont des capacités exigibles explicites du programme MP. Aucune notion hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="d2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">D2 · Conduction sphérique &amp; analogie EM</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Diffusion thermique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Diffusion thermique.<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-cyl');
+  const slLam = document.getElementById('sl-lam'), slR2 = document.getElementById('sl-r2');
+  const vLam = document.getElementById('v-lam'), vR2 = document.getElementById('v-r2');
+  const vRth = document.getElementById('v-rth'), vPhi = document.getElementById('v-phi');
+  const hint = document.getElementById('hint-c'), btnAnim = document.getElementById('btn-anim');
+  const R1 = 1, T1 = 100, T2 = 20, ell = 1; // R1=1cm, ell=1m
+  let animating = false, prog = 0;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const lam = parseFloat(slLam.value);
+    let R2 = parseFloat(slR2.value);
+    if (R2 <= R1 + 0.5) R2 = R1 + 0.5;
+
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: 6.3, ymin: 0, ymax: 115, pad: { l: 44, r: 16, t: 16, b: 34 } });
+    plot.grid(c, { xticks: 6, yticks: 4 });
+    plot.axes(c, { xlabel: 'r (cm)', ylabel: 'T (°C)' });
+
+    // profil logarithmique T(r) = T2 + (T1-T2)*ln(R2/r)/ln(R2/R1)
+    const lnRatio = Math.log(R2 / R1);
+    function Tcyl(r) {
+      if (r < R1 || r > R2) return NaN;
+      return T2 + (T1 - T2) * Math.log(R2 / r) / lnRatio;
+    }
+    plot.curve(Tcyl, c.vert, { lw: 2.8, N: 240 });
+
+    // marqueurs R1, R2
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.globalAlpha = 0.4; ctx.setLineDash([3, 3]);
+    [R1, R2].forEach(function (R) { ctx.beginPath(); ctx.moveTo(plot.px(R), plot.py(0)); ctx.lineTo(plot.px(R), plot.py(115)); ctx.stroke(); });
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('R₁', plot.px(R1), plot.py(0) + 16);
+    ctx.fillText('R₂', plot.px(R2), plot.py(0) + 16);
+
+    // point mobile
+    const r = R1 + prog * (R2 - R1);
+    const Tm = Tcyl(r);
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(plot.px(r), plot.py(Tm), 5, 0, 7); ctx.fill();
+
+    // calculs physiques : R1,R2 en m
+    const R1m = R1 / 100, R2m = R2 / 100;
+    const Rth = Math.log(R2m / R1m) / (2 * Math.PI * ell * lam); // K/W
+    const phi = (T1 - T2) / Rth; // W
+    vLam.textContent = fr(lam, lam < 1 ? 3 : 1);
+    vR2.textContent = fr(R2, 1);
+    vRth.textContent = fr(Rth, 3);
+    vPhi.textContent = (phi >= 100 ? Math.round(phi) : fr(phi, 1));
+    hint.textContent = lam >= 40
+      ? 'Conductivité élevée (acier) : résistance faible, flux intense.'
+      : (lam <= 0.05
+        ? 'Conductivité très faible (air) : excellent isolant, résistance élevée.'
+        : 'Le profil T(r) est logarithmique ; λ fixe le flux mais pas la forme du profil.');
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { prog = (prog + dt * 0.25) % 1; draw(); }
+  });
+
+  slLam.addEventListener('input', draw);
+  slR2.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le point';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

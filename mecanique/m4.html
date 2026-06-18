@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M4 — Pendule simple et pendule pesant · QC Oraux MP*</title>
+<meta name="description" content="Pendule simple et pendule pesant : équation du mouvement, petites oscillations, intégrale première, portrait de phase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m5.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html" aria-current="page"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Mécanique</span>
+    <h1>Pendule simple et pendule pesant</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-411</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir l'équation du mouvement du pendule simple et du pendule pesant ; linéariser pour les petites oscillations ; étudier l'aspect énergétique ; tracer et interpréter le portrait de phase.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · Sections 2.2 et 2.7</div>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Établir l'équation du mouvement du pendule simple (2.2) et du pendule pesant (2.7).</li>
+        <li>Justifier l'analogie avec l'oscillateur harmonique dans l'approximation linéaire.</li>
+        <li>Établir une intégrale première du mouvement (2.7).</li>
+        <li>Réaliser l'étude énergétique ; mettre en évidence la diminution d'énergie mécanique (présence de frottement).</li>
+      </ul>
+      <p>Niveau <strong>MPSI</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p><strong>Pendule simple :</strong> masse ponctuelle \(m\) suspendue par un fil inextensible de longueur \(l\). Angle \(\theta\) par rapport à la verticale.</p>
+    <p><strong>Pendule pesant :</strong> solide \(\mathcal{S}\) de masse \(m\), de centre de masse \(G\) à distance \(d\) du pivot \(O\), de moment d'inertie \(J_O\) par rapport à l'axe de rotation passant par \(O\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Pendule simple — équation du mouvement</span>
+      <p>Par le théorème du moment cinétique par rapport à \(O\) (les tensions du fil ont un moment nul) :</p>
+      <p>\[ ml^2\ddot{\theta} = -mgl\sin\theta, \]</p>
+      <p>soit :</p>
+      <p>\[ \ddot{\theta} + \frac{g}{l}\sin\theta = 0. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Petites oscillations (\(\theta \ll 1\))</span>
+      <p>\(\sin\theta \approx \theta\) (approximation au premier ordre) :</p>
+      <p>\[ \ddot{\theta} + \omega_0^2\,\theta = 0, \qquad \omega_0 = \sqrt{\frac{g}{l}}. \]</p>
+      <p>Solution : \(\theta(t) = \theta_{\max}\cos(\omega_0 t + \varphi)\). Période propre : \(T_0 = 2\pi\sqrt{l/g}\) (<em>isochronisme</em> pour les petites oscillations). Pour \(l = 1\ \mathrm{m}\) : \(T_0 \approx 2{,}0\ \mathrm{s}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Aspect énergétique — intégrale première</span>
+      <p>En multipliant l'équation exacte par \(\dot\theta\) :</p>
+      <p>\[ \frac{\mathrm{d}}{\mathrm{d} t}\!\left[\tfrac{1}{2}ml^2\dot\theta^2 - mgl\cos\theta\right] = 0, \]</p>
+      <p>donc l'énergie mécanique est conservée :</p>
+      <p>\[ E_m = \frac{1}{2}ml^2\dot\theta^2 + mgl(1-\cos\theta) = \text{cste}. \]</p>
+      <p>(Énergie potentielle comptée à zéro en \(\theta=0\).)</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4. Pendule pesant</span>
+      <p>Le TSMC par rapport à \(O\) donne :</p>
+      <p>\[ J_O\ddot\theta = -mgd\sin\theta, \]</p>
+      <p>soit \(\ddot\theta + \omega_0^2\sin\theta = 0\) avec \(\omega_0 = \sqrt{\dfrac{mgd}{J_O}}\). <em>Longueur réduite</em> : \(l_r = J_O/(md)\). La période est \(T_0 = 2\pi\sqrt{J_O/(mgd)} = 2\pi\sqrt{l_r/g}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5. Portrait de phase</span>
+      <p>Les trajectoires dans le plan \((\theta, \dot\theta)\) sont des niveaux d'énergie : \(\frac{1}{2}ml^2\dot\theta^2 = E_m - mgl(1-\cos\theta)\).</p>
+      <ul>
+        <li>Si \(E_m &lt; 2mgl\) : orbites fermées (<em>librations</em>, oscillations).</li>
+        <li>Si \(E_m = 2mgl\) : séparatrice (trajectoire homocline passant par le point instable \(\theta = \pm\pi\), \(\dot\theta = 0\)).</li>
+        <li>Si \(E_m &gt; 2mgl\) : trajectoires ouvertes (<em>rotations</em>).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — isochronisme et son écart</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-pendule" aria-label="Pendule oscillant à amplitude réglable, comparaison période exacte et période petit angle"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-amp">Amplitude \(\theta_{\max}\) <span class="val" id="v-amp">30°</span></label>
+          <input type="range" id="sl-amp" min="5" max="170" step="1" value="30">
+          <label for="sl-l" style="margin-top:.6rem">Longueur \(l\) (m) <span class="val" id="v-l">1,00</span></label>
+          <input type="range" id="sl-l" min="0.2" max="2" step="0.05" value="1">
+          <span class="hint" id="hint-pend">Isochronisme valide tant que θ_max ≲ 15° (erreur &lt; 1 %).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer l'oscillation</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(T_0=2\pi\sqrt{l/g}\) = <b id="v-t0">—</b> s</span>
+            <span class="ro">\(T\) exacte = <b id="v-texact">—</b> s</span>
+            <span class="ro">Écart \(T/T_0-1\) = <b id="v-ecart">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Pendule simple oscillant à l'amplitude \(\theta_{\max}\). La période exacte \(T = T_0\left[1 + \tfrac{1}{16}\theta_{\max}^2 + \tfrac{11}{3072}\theta_{\max}^4 + \dots\right]\) (développement de l'intégrale elliptique) est comparée à la période \(T_0 = 2\pi\sqrt{l/g}\) du petit angle. L'arc orange marque l'amplitude ; l'écart relatif croît avec l'amplitude — l'isochronisme n'est valable que près de \(\theta = 0\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Fil &amp; masse</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Amplitude \(\theta_{\max}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Verticale (\(\theta=0\))</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>L'isochronisme n'est valide que pour \(\theta_{\max} \lesssim 15^\circ\) (erreur \(&lt; 1\,\%\)).</li>
+        <li>Pour le pendule pesant, bien utiliser \(J_O\) (moment d'inertie par rapport au pivot) et non \(J_G\) : utiliser Huygens si nécessaire : \(J_O = J_G + md^2\).</li>
+        <li>La séparatrice correspond à \(\theta = \pi\) atteint en un <em>temps infini</em>.</li>
+        <li>Avec frottement solide (cf. M3), le portrait de phase présente des spirales discontinues avec arcs rectilignes caractéristiques (sujet PL-411).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme <strong>MPSI</strong>.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M3 · Frottement solide (Coulomb)</span></a>
+    <a class="next" href="m5.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M5 · Oscillateurs : analogies et résonances</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-pendule');
+  const slAmp = document.getElementById('sl-amp'), slL = document.getElementById('sl-l');
+  const vAmp = document.getElementById('v-amp'), vL = document.getElementById('v-l');
+  const vT0 = document.getElementById('v-t0'), vTex = document.getElementById('v-texact'), vEc = document.getElementById('v-ecart');
+  const hint = document.getElementById('hint-pend'), btn = document.getElementById('btn-anim');
+  const g = 9.81;
+  let animating = false, t = 0, lastT = 0;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // période exacte par développement en série (intégrale elliptique)
+  function Texact(T0, amp) {
+    const a2 = amp * amp;
+    return T0 * (1 + a2 / 16 + 11 * a2 * a2 / 3072 + 173 * Math.pow(amp, 6) / 737280);
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const amp = parseFloat(slAmp.value) * Math.PI / 180;
+    const l = parseFloat(slL.value);
+    const T0 = 2 * Math.PI * Math.sqrt(l / g);
+    const Tex = Texact(T0, amp);
+
+    const px = w * 0.5, py = 46;            // pivot
+    const Lpx = Math.min(h - 120, w * 0.34);
+
+    // verticale de référence
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.4; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px, py + Lpx + 20); ctx.stroke(); ctx.setLineDash([]);
+
+    // arc d'amplitude
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(px, py, Lpx * 0.55, Math.PI / 2 - amp, Math.PI / 2 + amp); ctx.stroke();
+    ctx.fillStyle = c.orange; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('θ_max', px, py + Lpx * 0.55 + 16);
+    // limites de l'amplitude (positions extrêmes en pointillé léger)
+    ctx.strokeStyle = c.orange; ctx.globalAlpha = 0.35; ctx.lineWidth = 1; ctx.setLineDash([3, 4]);
+    for (const sgn of [-1, 1]) {
+      const ax = px + Lpx * Math.sin(sgn * amp), ay = py + Lpx * Math.cos(amp);
+      ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(ax, ay); ctx.stroke();
+    }
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+    // angle courant (oscillation exacte approchée : θ(t)=θmax cos(2π t / Tex))
+    const th = animating ? amp * Math.cos(2 * Math.PI * t / Tex) : amp;
+    const bx = px + Lpx * Math.sin(th), by = py + Lpx * Math.cos(th);
+    // fil
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(bx, by); ctx.stroke();
+    // pivot
+    ctx.fillStyle = c.text; ctx.beginPath(); ctx.arc(px, py, 4, 0, 2 * Math.PI); ctx.fill();
+    // masse
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(bx, by, 12, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.bg; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('m', bx, by + 4);
+
+    // lectures
+    vAmp.textContent = fr(parseFloat(slAmp.value), 0) + '°';
+    vL.textContent = fr(l, 2);
+    vT0.textContent = fr(T0, 3);
+    vTex.textContent = fr(Tex, 3);
+    const ecart = Tex / T0 - 1;
+    vEc.textContent = (ecart * 100).toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %';
+    const ad = parseFloat(slAmp.value);
+    if (ad <= 15) hint.textContent = 'Petit angle : isochronisme valide (écart < 1 %).';
+    else if (ad >= 120) hint.textContent = 'Grande amplitude : période fortement allongée, isochronisme inopérant.';
+    else hint.textContent = 'Amplitude modérée : la période dépend déjà nettement de θ_max.';
+  }
+
+  QC.loop(function (ts) {
+    const dt = ts - lastT; lastT = ts;
+    if (animating) { t += dt; draw(); }
+  });
+
+  slAmp.addEventListener('input', draw);
+  slL.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer l\'oscillation';
+    btn.classList.toggle('active', animating);
+    if (animating) t = 0;
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

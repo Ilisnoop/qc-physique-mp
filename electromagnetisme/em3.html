@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM3 — Magnétostatique : fil infini · QC Oraux MP*</title>
+<meta name="description" content="Équations de la magnétostatique, lignes de champ et champ d'un fil infini par le théorème d'Ampère.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em4.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html" aria-current="page"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Électromagnétisme</span>
+    <h1>Magnétostatique : Maxwell local/intégral, lignes de champ, fil infini</h1>
+    <p class="q-sources"><span class="src">POLY p.1</span><span class="src">POLY p.3</span><span class="src">PL-127</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer les équations de la magnétostatique (formes locale et intégrale). Décrire les lignes de champ. Calculer le champ créé par un fil infini en utilisant le théorème d'Ampère.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.2 Magnétostatique</div>
+      <p>« Identifier les situations pour lesquelles le champ magnétostatique peut être calculé à l'aide du théorème d'Ampère. Établir les expressions des champs magnétostatiques créés par un fil rectiligne infini. Orienter les lignes de champ. » Biot-Savart hors programme. Théorème d'Ampère admis. Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>En magnétostatique, tous les champs sont indépendants du temps (\(\partial/\partial t = 0\)). On considère un fil rectiligne infini, d'axe \(z\), de section quelconque, parcouru par un courant d'intensité \(I\) dans le sens \(+\hat{z}\). On travaille en coordonnées cylindriques \((r,\theta,z)\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Équations de la magnétostatique</span>
+      <p>En posant \(\partial_t = 0\) dans Maxwell : \(\mathrm{div}\,\vec{B} = 0\) (flux conservatif) et \(\vec{\mathrm{rot}}\,\vec{B} = \mu_0\,\vec{j}\) (Ampère). Sous forme intégrale :</p>
+      <p>\[ \iint_S \vec{B}\cdot\mathrm{d}\vec{S} = 0, \qquad \oint_C \vec{B}\cdot\mathrm{d}\vec{\ell} = \mu_0\,I_{\mathrm{int}} \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Lignes et tubes de champ</span>
+      <p>Les lignes de \(\vec{B}\) sont des courbes tangentes à \(\vec{B}\) en tout point. \(\mathrm{div}\,\vec{B}=0\) implique que les <em>tubes de champ</em> sont sans source ni puits : ils se referment sur eux-mêmes (ou s'étendent à l'infini). La densité de lignes est proportionnelle à \(|\vec{B}|\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Analyse des symétries</span>
+      <p>Le fil est invariant par rotation autour de \(z\) et par translation selon \(z\). Donc \(\vec{B} = B(r)\,\hat{\theta}\) (pas de composante \(r\) ni \(z\), le rotationnel nul de \(\vec{B}\) en dehors du fil l'impose).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Application du théorème d'Ampère</span>
+      <p>On choisit un contour circulaire \(C\) de rayon \(r>0\), centré sur l'axe, dans un plan perpendiculaire à \(z\) : \(\oint_C \vec{B}\cdot\mathrm{d}\vec{\ell} = B(r)\cdot 2\pi r\). D'après le théorème d'Ampère, ce vaut \(\mu_0 I_{\mathrm{int}} = \mu_0 I\) (pour \(r\) supérieur au rayon du fil). Donc :</p>
+      <p>\[ B(r) = \frac{\mu_0 I}{2\pi r}, \qquad \vec{B}(r) = \frac{\mu_0 I}{2\pi r}\,\hat{\theta} \]</p>
+      <p>Ordre de grandeur : pour \(I = 1\,\mathrm{A}\) à \(r = 1\,\mathrm{cm}\), \(B \approx 20\,\mu\mathrm{T}\) (comparable au champ terrestre).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — champ \(B(r)=\mu_0 I/(2\pi r)\) autour d'un fil</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-fil" aria-label="Lignes de champ circulaires autour d'un fil infini ; profil B(r) en 1/r, courant I réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-I">Courant \(I\) <span class="val" id="v-I">1,0 A</span></label>
+          <input type="range" id="sl-I" min="0.1" max="5" step="0.1" value="1">
+          <span class="hint">Densité des lignes \(\propto |\vec{B}|\) : plus \(I\) est fort, plus le champ est intense.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le sens de \(\vec{B}\)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(r\) = <b id="v-r">1,0</b> cm</span>
+            <span class="ro">\(B(r)\) = <b id="v-B">20,0</b> µT</span>
+          </div>
+          <label for="sl-r" style="margin-top:.4rem">Rayon de lecture \(r\) <span class="val" id="v-r2">1,0 cm</span></label>
+          <input type="range" id="sl-r" min="0.3" max="4" step="0.1" value="1">
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Lignes de champ circulaires (bleu) autour du fil (point gris central, courant \(I\) selon \(+\hat{z}\)). Le contour d'Ampère (pointillés rouges) de rayon \(r\) donne \(B = \mu_0 I/(2\pi r)\), décroissant en \(1/r\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Lignes de \(\vec{B}\) (selon \(\hat{\theta}\))</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Contour d'Ampère, rayon \(r\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Ne <strong>jamais</strong> utiliser Biot-Savart en MP : le jury sanctionnerait l'emploi d'un outil hors programme.</li>
+        <li>Justifier soigneusement la direction de \(\vec{B}\) par l'analyse des symétries avant d'appliquer Ampère.</li>
+        <li>À l'intérieur d'un fil de section \(R\), pour \(r&lt;R\) : \(B(r) = \mu_0 I r/(2\pi R^2)\) (courants uniformément répartis).</li>
+        <li>\(\mathrm{div}\,\vec{B}=0\) interdit les sources/puits : les lignes de \(\vec{B}\) se referment toujours.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Entièrement au programme MP. Biot-Savart n'est pas mentionné. Le théorème d'Ampère est admis.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM2 · Conservation de la charge</span></a>
+    <a class="next" href="em4.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM4 · Condensateur plan</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-fil');
+  const slI = document.getElementById('sl-I'), slR = document.getElementById('sl-r');
+  const vI = document.getElementById('v-I'), vB = document.getElementById('v-B');
+  const vr = document.getElementById('v-r'), vr2 = document.getElementById('v-r2');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const I = parseFloat(slI.value), rLec = parseFloat(slR.value);
+    const cx = w/2, cy = h/2;
+    const scale = Math.min(w, h) * 0.10; // px par cm
+    // lignes de champ circulaires, densité ~ I
+    const nLines = Math.max(2, Math.round(2 + I*1.4));
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1.8;
+    for (let i = 1; i <= nLines; i++) {
+      const rr = (i) * (Math.min(w,h)*0.42) / (nLines+1);
+      ctx.globalAlpha = 0.45 + 0.55*(1 - i/(nLines+1));
+      ctx.beginPath(); ctx.arc(cx, cy, rr, 0, 2*Math.PI); ctx.stroke();
+      // flèche d'orientation (sens trigonométrique animé)
+      const a = phase + i*0.4;
+      const ax = cx + rr*Math.cos(a), ay = cy + rr*Math.sin(a);
+      const tx = -Math.sin(a), ty = Math.cos(a);
+      ctx.beginPath(); ctx.moveTo(ax, ay);
+      ctx.lineTo(ax - 7*tx + 4*Math.cos(a), ay - 7*ty + 4*Math.sin(a));
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(ax - 7*tx - 4*Math.cos(a), ay - 7*ty - 4*Math.sin(a));
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    // contour d'Ampère
+    const rPx = rLec * scale;
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.8; ctx.setLineDash([5,4]);
+    ctx.beginPath(); ctx.arc(cx, cy, rPx, 0, 2*Math.PI); ctx.stroke(); ctx.setLineDash([]);
+    // rayon
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + rPx*0.71, cy - rPx*0.71); ctx.stroke();
+    ctx.fillStyle = c.rouge; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('contour C (r)', cx + rPx*0.71 + 4, cy - rPx*0.71);
+    // fil central
+    ctx.fillStyle = c.muted; ctx.beginPath(); ctx.arc(cx, cy, 5, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = c.text; ctx.textAlign = 'center'; ctx.fillText('I ⊙', cx, cy - 12);
+    // lectures : B = mu0 I /(2 pi r), mu0/(2pi)=2e-7 ; en cm: r en m = r/100
+    const B = 2e-7 * I / (rLec/100); // tesla
+    vI.textContent = fr(I,1) + ' A';
+    vr.textContent = fr(rLec,1); vr2.textContent = fr(rLec,1) + ' cm';
+    vB.textContent = fr(B*1e6,1);
+  }
+  let lastT = 0;
+  QC.loop(function (t) { const dt = t-lastT; lastT = t; if (animating) { phase += dt*0.8; draw(); } });
+  slI.addEventListener('input', draw); slR.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le sens de B';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

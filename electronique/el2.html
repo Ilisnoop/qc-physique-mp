@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL2 — RLC en régime forcé / résonances · QC Oraux MP*</title>
+<meta name="description" content="Circuit RLC série en régime sinusoïdal forcé : intensité complexe, résonance en intensité et en tension, surtension, bande passante.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électronique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="el1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="el3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="el1.html"><span class="qn">EL1</span>RLC série en régime libre</a>
+        <a href="el2.html" aria-current="page"><span class="qn">EL2</span>RLC en régime forcé / résonances</a>
+        <a href="el3.html"><span class="qn">EL3</span>Filtrage ordre 1 et 2 / créneau</a>
+        <a href="el4.html"><span class="qn">EL4</span>Filtre passe-bande</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Électronique</span>
+    <h1>Circuit RLC série en régime sinusoïdal forcé : grandeurs caractéristiques et résonances</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Étudier la réponse d'un circuit RLC série à une excitation sinusoïdale : établir la fonction de transfert, identifier la résonance en tension (intensité) et en charge, définir le facteur de qualité, tracer les courbes de résonance.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 1.4 Oscillateurs libres et forcés</div>
+      <p>Capacités exigibles : utiliser la représentation complexe pour étudier le régime forcé ; relier l'acuité d'une résonance au facteur de qualité \(Q\) ; déterminer \(\omega_0\) et \(Q\) à partir de graphes d'amplitude et de phase ; mettre en œuvre un dispositif expérimental visant à caractériser un phénomène de résonance.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Circuit RLC série alimenté par un générateur de f.é.m. \(e(t) = E_0\cos(\omega t)\), d'impédance interne nulle. On note :</p>
+    <ul>
+      <li>\(\underline{e} = E_0\,\mathrm{e}^{j\omega t}\) : représentation complexe de \(e(t)\) ;</li>
+      <li>\(\underline{Z} = R + jL\omega + \dfrac{1}{jC\omega}\) : impédance complexe du circuit ;</li>
+      <li>\(x = \omega/\omega_0\) : pulsation réduite.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Intensité complexe</span>
+      <p>Par la loi d'Ohm généralisée :</p>
+      <p>\[ \underline{I} = \frac{\underline{e}}{\underline{Z}} = \frac{E_0}{R + j\!\left(L\omega - \dfrac{1}{C\omega}\right)}. \]</p>
+      <p>En introduisant \(x = \omega/\omega_0\) et \(Q = \dfrac{\omega_0 L}{R} = \dfrac{1}{R\omega_0 C}\) :</p>
+      <p>\[ \underline{I} = \frac{E_0/R}{1 + jQ\!\left(x - \dfrac{1}{x}\right)}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Résonance en intensité</span>
+      <p>L'amplitude \(I(\omega) = \dfrac{E_0/R}{\sqrt{1+Q^2(x-1/x)^2}}\) est maximale pour \(x=1\), soit \(\omega = \omega_0\) : c'est la <strong>résonance en intensité</strong> (ou résonance en courant). On a alors \(I_{\max} = E_0/R\) et la tension aux bornes de \(R\) est maximale.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Tensions aux bornes de \(L\) et de \(C\)</span>
+      <p>\[ \underline{U}_L = jL\omega\,\underline{I}, \qquad \underline{U}_C = \frac{\underline{I}}{jC\omega}. \]</p>
+      <p>La tension \(U_L\) est maximale pour \(\omega_{rL} = \omega_0\big/\!\sqrt{1-1/(2Q^2)}\) (si \(Q&gt;1/\sqrt{2}\)). La tension \(U_C\) est maximale pour \(\omega_{rC} = \omega_0\sqrt{1-1/(2Q^2)}\) (si \(Q&gt;1/\sqrt{2}\)). Pour \(Q \gg 1\), les deux résonances tendent vers \(\omega_0\) et \(U_{C,\max} \approx U_{L,\max} \approx QE_0 \gg E_0\) : <strong>effet de surtension</strong> de facteur \(Q\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Bande passante</span>
+      <p>Les pulsations de coupure à \(-3\,\mathrm{dB}\) (demi-puissance) sont les racines de \(Q^2(x-1/x)^2 = 1\), soit :</p>
+      <p>\[ \omega_\pm = \omega_0\!\left(\sqrt{1+\frac{1}{4Q^2}} \pm \frac{1}{2Q}\right). \]</p>
+      <p>La bande passante vaut \(\Delta\omega = \omega_+ - \omega_- = \omega_0/Q\), d'où \(\ Q = \dfrac{\omega_0}{\Delta\omega}.\)</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — courbe de résonance en intensité</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-res" aria-label="Courbe de résonance en intensité I/(E0/R) en fonction de x=ω/ω0, facteur de qualité réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-Q">Facteur de qualité \(Q\) <span class="val" id="v-q">5,00</span></label>
+          <input type="range" id="sl-Q" min="0.3" max="12" step="0.05" value="5">
+          <span class="hint" id="hint-q">Plus \(Q\) est grand, plus la résonance est aiguë.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Balayer en fréquence</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(I/(E_0/R)\) au point courant = <b id="v-amp">—</b></span>
+            <span class="ro">\(x = \omega/\omega_0\) courant = <b id="v-x">—</b></span>
+            <span class="ro">Bande passante \(\Delta\omega/\omega_0 = 1/Q\) = <b id="v-bw">0,200</b></span>
+            <span class="ro">\(x_\pm\) (à \(-3\,\mathrm{dB}\)) = <b id="v-xpm">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Courbe de résonance \(I/(E_0/R) = 1/\sqrt{1+Q^2(x-1/x)^2}\) en fonction de \(x=\omega/\omega_0\). Le maximum vaut \(1\) à \(x=1\). La bande passante à \(-3\,\mathrm{dB}\) se lit à \(I/I_{\max}=1/\sqrt{2}\approx 0{,}707\), bornée par \(x_-\) et \(x_+\) (zone teintée).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(I/(E_0/R)\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>seuil \(1/\sqrt{2}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>bande passante</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Distinguer résonance en courant (\(\omega_0\), toujours existante) et résonances en tension (\(\omega_{rL}\), \(\omega_{rC}\), n'existent que pour \(Q &gt; 1/\sqrt{2}\)).</li>
+        <li>La surtension vaut \(Q\) à la résonance en tension, pas à \(\omega_0\).</li>
+        <li>Ordre de grandeur : pour \(L=10\ \mathrm{mH}\), \(C=10\ \mathrm{nF}\), \(R=100\ \Omega\) : \(f_0 \approx 16\ \mathrm{kHz}\), \(Q = 10\).</li>
+        <li>En pratique, \(Q\) se mesure sur la courbe de résonance : \(Q = f_0/\Delta f\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout le développement est au programme MPSI. La notion de résonance en tension et l'effet de surtension sont explicitement au programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="el1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EL1 · RLC série en régime libre</span></a>
+    <a class="next" href="el3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EL3 · Filtrage ordre 1 et 2 / créneau</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 6 : Électronique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-res');
+  const slQ = document.getElementById('sl-Q');
+  const vQ = document.getElementById('v-q'), vAmp = document.getElementById('v-amp'), vX = document.getElementById('v-x');
+  const vBw = document.getElementById('v-bw'), vXpm = document.getElementById('v-xpm'), hint = document.getElementById('hint-q');
+  const btn = document.getElementById('btn-anim');
+
+  let animating = false, xc = 1;  // position courante du balayage
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function amp(x, Q) { return 1 / Math.sqrt(1 + Q * Q * Math.pow(x - 1 / x, 2)); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const Q = parseFloat(slQ.value);
+    const xmin = 0.2, xmax = 3;
+    const P = QC.makePlot(ctx, w, h, { xmin, xmax, ymin: 0, ymax: 1.1, pad: { l: 42, r: 16, t: 16, b: 30 } });
+    P.grid(c, { xticks: 7, yticks: 5 });
+
+    // bande passante : xpm
+    const root = Math.sqrt(1 + 1 / (4 * Q * Q));
+    const xp = root + 1 / (2 * Q);
+    const xm = root - 1 / (2 * Q);
+    // zone teintée bande passante
+    ctx.fillStyle = c.vert; ctx.globalAlpha = 0.10;
+    ctx.fillRect(P.px(Math.max(xm, xmin)), P.pad.t, P.px(Math.min(xp, xmax)) - P.px(Math.max(xm, xmin)), h - P.pad.b - P.pad.t);
+    ctx.globalAlpha = 1;
+
+    P.axes(c, { xlabel: 'x=ω/ω₀', ylabel: 'I/(E₀/R)' });
+    // seuil 1/sqrt2
+    P.curve(() => 1 / Math.SQRT2, c.rouge, { lw: 1.4, dash: [5, 4] });
+    // courbe principale
+    P.curve(x => amp(x, Q), c.bleu, { lw: 2.6, N: 500 });
+
+    // point courant lors du balayage
+    if (animating || xc !== 1) {
+      const yv = amp(xc, Q);
+      ctx.fillStyle = c.orange;
+      ctx.beginPath(); ctx.arc(P.px(xc), P.py(yv), 4.5, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+      ctx.beginPath(); ctx.moveTo(P.px(xc), P.py(0)); ctx.lineTo(P.px(xc), P.py(yv)); ctx.stroke(); ctx.setLineDash([]);
+      vAmp.textContent = fr(yv, 3); vX.textContent = fr(xc, 3);
+    } else {
+      vAmp.textContent = '—'; vX.textContent = '—';
+    }
+
+    vQ.textContent = fr(Q, 2);
+    vBw.textContent = fr(1 / Q, 3);
+    vXpm.textContent = fr(xm, 3) + ' … ' + fr(xp, 3);
+    hint.textContent = Q >= 1 / Math.SQRT2
+      ? 'Résonance aiguë : Q = ' + fr(Q, 2) + ' (résonances en tension possibles).'
+      : 'Q < 1/√2 ≈ 0,71 : pas de résonance en tension sur U_L, U_C.';
+  }
+
+  let last = 0, dir = 1;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      xc += dir * dt * 0.5;
+      if (xc > 3) { xc = 3; dir = -1; }
+      if (xc < 0.2) { xc = 0.2; dir = 1; }
+      draw();
+    }
+  });
+
+  slQ.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Arrêter le balayage' : 'Balayer en fréquence';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS1 — Facteur de Boltzmann / atmosphère isotherme · QC Oraux MP*</title>
+<meta name="description" content="Facteur de Boltzmann et atmosphère isotherme : loi barométrique, poids de Boltzmann, fonction de partition, ordres de grandeur de kBT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Physique statistique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ps2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ps1.html" aria-current="page"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
+        <a href="ps2.html"><span class="qn">PS2</span>Système à deux niveaux</a>
+        <a href="ps3.html"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Physique statistique</span>
+    <h1>Facteur de Boltzmann et atmosphère isotherme</h1>
+    <p class="q-sources"><span class="src">POLY p.4</span><span class="src">PL-123</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Introduire le facteur de Boltzmann à partir du modèle de l'atmosphère isotherme. Établir la loi barométrique, identifier le poids de Boltzmann, et donner des ordres de grandeur de \(k_BT\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 7 §7.1 — Éléments de thermodynamique statistique</div>
+      <ul>
+        <li>Modèle de l'atmosphère isotherme : établir la variation de la pression avec l'altitude.</li>
+        <li>Poids de Boltzmann d'une particule indépendante à l'équilibre avec un thermostat : interpréter la loi du nivellement barométrique avec le poids de Boltzmann.</li>
+        <li>Identifier un facteur de Boltzmann.</li>
+        <li>Comparer \(k_BT\) à des écarts d'énergie et estimer les conséquences d'une variation de température.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère une colonne de gaz parfait monoatomique en équilibre mécanique et thermique dans le champ de pesanteur uniforme \(g\). Température \(T\) uniforme (atmosphère isotherme). Masse d'une molécule : \(m\). Constante de Boltzmann : \(k_B \approx 1{,}38\times10^{-23}\ \mathrm{J\,K^{-1}}\). On note \(z\) l'altitude, \(n(z)\) la densité volumique de molécules, \(P(z)\) la pression.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Établissement de la loi barométrique</span>
+      <p>On considère une tranche de gaz d'épaisseur \(\mathrm{d}z\) à l'altitude \(z\). L'équilibre mécanique de cette tranche (bilan des forces de pression et du poids) donne :</p>
+      <p>\[ P(z+\mathrm{d}z) - P(z) = -\rho g\,\mathrm{d}z \quad \Longrightarrow \quad \frac{\mathrm{d}P}{\mathrm{d}z} = -\rho g, \]</p>
+      <p>où \(\rho = mn(z)\) est la masse volumique. En utilisant la loi des gaz parfaits \(P = nk_BT\) :</p>
+      <p>\[ \frac{\mathrm{d}P}{\mathrm{d}z} = k_BT\,\frac{\mathrm{d}n}{\mathrm{d}z} = -mn(z)g \quad \Longrightarrow \quad \frac{\mathrm{d}n}{n} = -\frac{mg}{k_BT}\,\mathrm{d}z. \]</p>
+      <p>En intégrant entre \(0\) et \(z\) :</p>
+      <p>\[ n(z) = n(0)\,\exp\!\left(-\frac{mgz}{k_BT}\right) = n(0)\,\exp\!\left(-\frac{E_{\rm pot}(z)}{k_BT}\right). \]</p>
+      <p>Le terme \(e^{-mgz/(k_BT)} = e^{-E_{\rm pot}/(k_BT)}\) est le <em>facteur de Boltzmann</em> associé à l'énergie potentielle \(E_{\rm pot} = mgz\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Généralisation : poids de Boltzmann</span>
+      <p>Pour une particule indépendante à l'équilibre avec un thermostat à température \(T\), la <em>probabilité</em> de la trouver dans un état d'énergie \(\varepsilon_i\) est proportionnelle au facteur de Boltzmann :</p>
+      <p>\[ P_i \propto e^{-\varepsilon_i/(k_BT)}. \]</p>
+      <p>La normalisation \(\sum_i P_i = 1\) définit la <em>fonction de partition</em> \(Z = \sum_i e^{-\varepsilon_i/(k_BT)}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Ordres de grandeur de \(k_BT\)</span>
+      <ul>
+        <li>À \(T = 300\ \mathrm{K}\) (température ambiante) : \(k_BT \approx 4{,}1\times10^{-21}\ \mathrm{J} \approx 25\ \mathrm{meV}\).</li>
+        <li>Hauteur d'échelle barométrique : \(H = k_BT/(mg) \approx 8{,}5\ \mathrm{km}\) pour l'air (\(m \approx 29\ \mathrm{u}\), \(g = 9{,}8\ \mathrm{m\,s^{-2}}\)).</li>
+        <li>Transitions électroniques (\(\Delta E \sim 1\ \mathrm{eV} \gg k_BT\)) : à température ambiante, les états excités électroniques sont très peu peuplés.</li>
+        <li>Énergie de vibration d'une molécule diatomique (\(\hbar\omega_{\rm vib} \sim 0{,}1\ \mathrm{eV} \gg k_BT\)) : peu excitée à \(300\ \mathrm{K}\).</li>
+        <li>Énergie de rotation (\(\hbar^2/(2I) \sim 10^{-3}\ \mathrm{eV} &lt; k_BT\)) : degrés rotationnels activés à température ambiante.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — loi barométrique \(n(z)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-baro" aria-label="Densité n(z)=n0 exp(-mgz/kT) de l'atmosphère isotherme, température réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-T">Température \(T\) <span class="val" id="v-T">300 K</span></label>
+          <input type="range" id="sl-T" min="150" max="450" step="1" value="300">
+          <span class="hint" id="hint-T">Air : \(m \approx 29\ \mathrm{u}\), \(g = 9{,}8\ \mathrm{m\,s^{-2}}\). \(H = k_BT/(mg)\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la température</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Hauteur d'échelle \(H\) = <b id="v-H">8,5 km</b></span>
+            <span class="ro">\(k_BT\) = <b id="v-kt">25,9 meV</b></span>
+          </div>
+          <span class="hint">À \(z=H\), la densité est tombée à \(n_0/e\) (trait vert). Augmenter \(T\) dilate l'atmosphère (\(H\) croît).</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Densité réduite \(n(z)/n_0 = \exp(-mgz/k_BT)\) de l'atmosphère isotherme (courbe bleue). La hauteur d'échelle \(H=k_BT/(mg)\) (trait vert, \(n=n_0/e\)) augmente avec la température : l'atmosphère « gonfle » quand on la chauffe.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(n(z)/n_0\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(z=H\), \(n=n_0/e\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Partir systématiquement de l'équilibre mécanique \(\mathrm{d}P = -\rho g\,\mathrm{d}z\), puis utiliser \(P = nk_BT\).</li>
+        <li>Connaître \(k_BT \approx 25\ \mathrm{meV}\) à \(300\ \mathrm{K}\) : ordre de grandeur fondamental.</li>
+        <li>Comparer \(k_BT\) aux différents types d'énergie (électronique, vibrationnelle, rotationnelle) pour juger de l'activation des degrés de liberté.</li>
+        <li>La hauteur d'échelle \(H = k_BT/(mg)\) est un résultat à connaître.</li>
+        <li>L'hypothèse « isotherme » est irréaliste mais pédagogiquement fondamentale.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout le développement est au programme MP (§7.1).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="index.html"><span class="pn-dir">← Sommaire</span><span class="pn-title">Physique statistique</span></a>
+    <a class="next" href="ps2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">PS2 · Système à deux niveaux</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 9 : Physique statistique (§7).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-baro');
+  const slT = document.getElementById('sl-T');
+  const vT = document.getElementById('v-T'), vH = document.getElementById('v-H'), vKt = document.getElementById('v-kt');
+  const btnAnim = document.getElementById('btn-anim');
+  const KB = 1.380649e-23, M = 29 * 1.66054e-27, G = 9.8;
+  let animating = false, ph = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const T = parseFloat(slT.value);
+    const H = KB * T / (M * G) / 1000;        // km
+    const kt = KB * T / 1.602176634e-19 * 1000; // meV
+
+    const zmax = 40;                            // km affichés
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: zmax, ymin: 0, ymax: 1.05, pad: { l: 16, r: 14, t: 18, b: 30 } });
+    plot.grid(c, { xticks: 8, yticks: 5 });
+    plot.axes(c, { xlabel: 'z (km)', ylabel: 'n(z)/n\u2080' });
+
+    // remplissage de la densité (illustration "atmosphère")
+    plot.fill(z => Math.exp(-z / H), c.bleu, { alpha: 0.14 });
+    plot.curve(z => Math.exp(-z / H), c.bleu, { lw: 2.6, N: 400 });
+
+    // hauteur d'échelle H : ligne verticale + n=1/e
+    if (H < zmax) {
+      const xH = plot.px(H), y0 = plot.py(0), ye = plot.py(Math.exp(-1));
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 1.6; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(xH, y0); ctx.lineTo(xH, ye); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(plot.px(0), ye); ctx.lineTo(xH, ye); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = c.vert; ctx.beginPath(); ctx.arc(xH, ye, 3.2, 0, 2 * Math.PI); ctx.fill();
+      ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+      ctx.fillText('z = H, n\u2080/e', xH + 5, ye - 5);
+    }
+
+    vT.textContent = fr(T, 0) + ' K';
+    vH.textContent = fr(H, 1) + ' km';
+    vKt.textContent = fr(kt, 1) + ' meV';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      ph += dt * 0.8;
+      const T = 300 + 140 * Math.sin(ph);
+      slT.value = Math.round(T);
+      draw();
+    }
+  });
+  slT.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la température';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

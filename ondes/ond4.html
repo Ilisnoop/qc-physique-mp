@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND4 — OPPM dans un plasma · QC Oraux MP*</title>
+<meta name="description" content="Relation de dispersion d'une OPPM transverse dans un plasma dilué, fréquence plasma, régimes propagatif et évanescent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond5.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html" aria-current="page"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Ondes électromagnétiques</span>
+    <h1>OPPM transverse dans un plasma : relation de dispersion, fréquence plasma</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span><span class="src">PL-121</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir la relation de dispersion d'une OPPM transverse dans un plasma dilué. Définir la fréquence de coupure \(\omega_p\). Analyser les régimes propagatif et évanescent.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5</div>
+      <p>« Exprimer la conductivité complexe du milieu et établir la relation de dispersion. Relier la fréquence de coupure aux caractéristiques du plasma et citer son ordre de grandeur dans le cas de l'ionosphère. Distinguer qualitativement les ondes évanescentes et les ondes progressives du point de vue du transport de l'énergie. » Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Un plasma dilué est un gaz d'électrons libres (densité \(n_e\), masse \(m_e\), charge \(-e\)) baignant dans un fond de charges positives fixes. On néglige les collisions. On cherche une solution OPPM de la forme \(\vec{E} = \vec{E}_0 e^{i(kz-\omega t)}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Équation de mouvement des électrons</span>
+      <p>En réponse linéaire au champ électrique :</p>
+      <p>\[ m_e\frac{\mathrm{d}\vec{v}}{\mathrm{d}t} = -e\vec{E} \]</p>
+      <p>Pour une dépendance en \(e^{-i\omega t}\), on obtient \(-i\omega m_e\vec{v} = -e\vec{E}\), soit \(\vec{v} = \dfrac{e}{i\omega m_e}\vec{E}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Densité de courant et conductivité complexe</span>
+      <p>\(\vec{j} = -en_e\vec{v} = \dfrac{-n_e e^2}{i\omega m_e}\vec{E}\). On définit :</p>
+      <p>\[ \underline{\gamma}(\omega) = \frac{n_e e^2}{i\omega m_e} = \frac{\varepsilon_0\omega_p^2}{i\omega} \]</p>
+      <p>avec la <b>fréquence plasma</b> :</p>
+      <p>\[ \omega_p = \sqrt{\frac{n_e e^2}{\varepsilon_0 m_e}} \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Relation de dispersion</span>
+      <p>On substitue \(\vec{j} = \underline{\gamma}\vec{E}\) dans Maxwell-Ampère, puis on combine avec Maxwell-Faraday. Après calcul :</p>
+      <p>\[ k^2 = \frac{\omega^2 - \omega_p^2}{c^2} \]</p>
+      <p>soit : \(\omega^2 = \omega_p^2 + k^2 c^2\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Analyse des régimes</span>
+      <ul>
+        <li>\(\omega &gt; \omega_p\) : \(k^2 &gt; 0\), \(k\) réel — <em>onde progressive</em>, le plasma est transparent.</li>
+        <li>\(\omega &lt; \omega_p\) : \(k^2 &lt; 0\), \(k\) purement imaginaire \(k = i\kappa\) — <em>onde évanescente</em>, \(\vec{E}\propto e^{-\kappa z}\). L'onde est atténuée, l'énergie n'est pas transportée.</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Ordres de grandeur et vitesses</span>
+      <p>Pour l'ionosphère : \(n_e \approx 10^{9}\) à \(10^{12}\ \mathrm{m^{-3}}\), ce qui donne \(f_p = \omega_p/(2\pi) \approx 1\) à \(10\ \mathrm{MHz}\).</p>
+      <p>Vitesses caractéristiques : vitesse de phase \(v_\phi = \omega/k &gt; c\), vitesse de groupe \(v_g = \mathrm{d}\omega/\mathrm{d}k = kc^2/\omega &lt; c\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — relation de dispersion \(\omega^2 = \omega_p^2 + c^2k^2\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-disp" aria-label="Relation de dispersion du plasma : zone évanescente sous omega_p, zone propagative au-dessus"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-wp">Fréquence plasma \(\omega_p\) <span class="val" id="v-wp">1,0 (u.a.)</span></label>
+          <input type="range" id="sl-wp" min="0.3" max="2" step="0.05" value="1">
+          <span class="hint" id="hint-wp">\(\omega_p \propto \sqrt{n_e}\) : plus le plasma est dense, plus la coupure est haute.</span>
+          <label for="sl-w" style="margin-top:.7rem">Pulsation de travail \(\omega\) <span class="val" id="v-w">1,6 (u.a.)</span></label>
+          <input type="range" id="sl-w" min="0.2" max="3" step="0.05" value="1.6">
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer l'onde à \(\omega\)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Régime : <b id="v-regime">—</b></span>
+            <span class="ro" id="ro-k">\(k\) = <b id="v-k">—</b></span>
+            <span class="ro" id="ro-vphi">\(v_\phi = \omega/k\) = <b id="v-vphi">—</b></span>
+          </div>
+          <div class="fig-canvas-wrap" style="margin-top:.6rem"><canvas id="cv-wave" aria-label="Onde correspondante : propagative ou évanescente"></canvas></div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Courbe de dispersion \(\omega = \sqrt{\omega_p^2 + c^2k^2}\) (bleu) ; asymptote \(\omega = ck\) du vide (rouge pointillé) ; seuil \(\omega = \omega_p\) (orange). Le point vert marque la pulsation de travail \(\omega\). Si \(\omega &gt; \omega_p\), \(k\) est réel (onde propagative, panneau du bas) ; si \(\omega &lt; \omega_p\), \(k\) est imaginaire (onde évanescente \(e^{-\kappa z}\)).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\omega(\,k\,)\) plasma</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\omega = ck\) (vide)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>\(\omega = \omega_p\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>point de travail</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>\(v_g \cdot v_\phi = c^2\) dans le plasma : la vitesse de groupe (énergie) est toujours inférieure à \(c\).</li>
+        <li>Le plasma réfléchit les ondes radio de fréquence inférieure à \(\omega_p/(2\pi)\) : c'est le principe de la communication HF par réflexion ionosphérique.</li>
+        <li>\(\omega_p\) dépend de \(n_e\) : le jour, l'ionosphère est plus dense (photoionisation) \(\to\) \(\omega_p\) plus élevée.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section 4.5. La dérivation de la conductivité complexe est exigible.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND3 · Réflexion sur conducteur parfait</span></a>
+    <a class="next" href="ond5.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND5 · Milieu ohmique &amp; effet de peau</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cvD = document.getElementById('cv-disp');
+  const cvW = document.getElementById('cv-wave');
+  const slWp = document.getElementById('sl-wp'), slW = document.getElementById('sl-w');
+  const vWp = document.getElementById('v-wp'), vW = document.getElementById('v-w');
+  const vRegime = document.getElementById('v-regime'), vK = document.getElementById('v-k'), vVphi = document.getElementById('v-vphi');
+  const roK = document.getElementById('ro-k'), roVphi = document.getElementById('ro-vphi');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, phase = 0;
+  const cc = 1; // c = 1 en u.a.
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function drawDisp() {
+    const c = QC.colors();
+    const s = QC.setup(cvD, 260);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const wp = parseFloat(slWp.value), wWork = parseFloat(slW.value);
+    const P = QC.makePlot(ctx, w, h, { xmin: 0, xmax: 3, ymin: 0, ymax: 3.5, pad: { l: 40, r: 16, t: 18, b: 30 } });
+    P.grid(c, { xticks: 6, yticks: 7 });
+    P.axes(c, { xlabel: 'k', ylabel: 'ω' });
+    // ω = ck (vide)
+    P.curve(k => cc * k, c.rouge, { lw: 1.6, dash: [6, 4] });
+    // ω = ωp
+    P.curve(() => wp, c.orange, { lw: 1.6, dash: [3, 3] });
+    // ω = sqrt(ωp²+c²k²)
+    P.curve(k => Math.sqrt(wp * wp + cc * cc * k * k), c.bleu, { lw: 2.6 });
+    // point de travail
+    let kReal = null;
+    if (wWork > wp) { kReal = Math.sqrt((wWork * wWork - wp * wp)) / cc; }
+    ctx.fillStyle = c.vert;
+    if (kReal !== null && kReal <= 3) {
+      ctx.beginPath(); ctx.arc(P.px(kReal), P.py(wWork), 5, 0, 2 * Math.PI); ctx.fill();
+    } else {
+      // évanescent : k imaginaire → on marque sur l'axe ω (k=0)
+      ctx.beginPath(); ctx.arc(P.px(0), P.py(wWork), 5, 0, 2 * Math.PI); ctx.fill();
+    }
+    return { wp, wWork, kReal };
+  }
+
+  function drawWave(st) {
+    const c = QC.colors();
+    const s = QC.setup(cvW, 120);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const midY = h * 0.5, amp = h * 0.34, X0 = 8, X1 = w - 8, span = X1 - X0;
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X0, midY); ctx.lineTo(X1, midY); ctx.stroke();
+    if (st.kReal !== null) {
+      // propagative : cos(kz - phase)
+      const k = Math.max(st.kReal, 0.3) * 3 + 2;
+      ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+      let started = false;
+      for (let px = X0; px <= X1; px += 1) { const z = (px - X0) / span * 6; const Y = midY - amp * Math.cos(k * z - phase); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+      ctx.stroke();
+      ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left'; ctx.fillText('propagative', X0, 14);
+    } else {
+      // évanescente : e^{-κz} cos(phase)
+      const kappa = Math.sqrt(Math.max(st.wp * st.wp - st.wWork * st.wWork, 1e-3)) / cc * 3 + 1.2;
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 2.4; ctx.beginPath();
+      let started = false;
+      for (let px = X0; px <= X1; px += 1) { const z = (px - X0) / span * 4; const env = Math.exp(-kappa * z); const Y = midY - amp * env * Math.cos(phase); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+      ctx.stroke();
+      // enveloppe
+      ctx.strokeStyle = c.orange; ctx.globalAlpha = 0.45; ctx.setLineDash([3, 3]); ctx.lineWidth = 1.2; ctx.beginPath(); started = false;
+      for (let px = X0; px <= X1; px += 1) { const z = (px - X0) / span * 4; const Y = midY - amp * Math.exp(-kappa * z); started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true); }
+      ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+      ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left'; ctx.fillText('évanescente e^(−κz)', X0, 14);
+    }
+  }
+
+  function draw() {
+    const st = drawDisp();
+    drawWave(st);
+    vWp.textContent = fr(st.wp, 2) + ' (u.a.)';
+    vW.textContent = fr(st.wWork, 2) + ' (u.a.)';
+    if (st.kReal !== null) {
+      vRegime.textContent = 'propagative (ω > ωp)';
+      vK.textContent = fr(st.kReal, 2) + ' (u.a.)';
+      vVphi.textContent = fr(st.wWork / st.kReal, 2) + ' c';
+      roK.style.display = ''; roVphi.style.display = '';
+    } else {
+      vRegime.textContent = 'évanescente (ω < ωp)';
+      const kappa = Math.sqrt(st.wp * st.wp - st.wWork * st.wWork) / cc;
+      vK.textContent = 'i·' + fr(kappa, 2) + ' (imaginaire)';
+      roK.style.display = ''; roVphi.style.display = 'none';
+    }
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) { const dt = t - lastT; lastT = t; if (animating) { phase += dt * 4; draw(); } });
+  slWp.addEventListener('input', draw);
+  slW.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer l\u2019onde à ω';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

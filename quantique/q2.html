@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q2 — Dualité onde-corpuscule · QC Oraux MP*</title>
+<meta name="description" content="Dualité onde-corpuscule : relations de de Broglie, interprétation probabiliste, interférences d'électrons uniques.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="q1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="q3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html" aria-current="page"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Mécanique quantique</span>
+    <h1>Dualité onde-corpuscule</h1>
+    <p class="q-sources"><span class="src">POLY p.4</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Exposer la dualité onde-corpuscule : relations de de Broglie, interprétation probabiliste, exemples expérimentaux du comportement ondulatoire des particules.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 6 §6.2 « Particule libre »</div>
+      <p>Relation de de Broglie \(p=\hbar k\), \(E=\hbar\omega\) ; fonction d'onde d'une particule libre non localisée, difficulté de normalisation ; inégalité d'Heisenberg spatiale et paquet d'ondes (localisation par superposition d'ondes planes).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Dualité = une entité quantique présente, selon l'expérience, un comportement ondulatoire <em>ou</em> corpusculaire, jamais les deux simultanément. Relations de de Broglie (1924) : \(p=\hbar k\), \(E=\hbar\omega=h\nu\). Longueur d'onde \(\lambda=h/p\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Onde plane (particule libre, \(V=0\))</span>
+      <p>\(-\frac{\hbar^2}{2m}\varphi''=E\varphi\). En posant \(k^2=2mE/\hbar^2&gt;0\) : \(\varphi(x)=A e^{ikx}+B e^{-ikx}\). Onde complète \(\psi(x,t)=A e^{i(kx-\omega t)}\) avec \(\omega=\hbar k^2/2m\). On retrouve \(E=p^2/2m\) avec \(p=\hbar k\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Difficulté de normalisation</span>
+      <p>\(e^{ikx}\) n'est pas de carré intégrable (\(\int|e^{ikx}|^2\mathrm{d}x=+\infty\)). Une particule libre parfaitement définie en impulsion est délocalisée ; l'onde plane est un idéal mathématique. Une particule réelle = paquet d'ondes (superposition d'ondes planes de \(k\) voisins de \(k_0\)).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Ordres de grandeur</span>
+      <p>Électron à 1 eV : \(\lambda_{dB}=h/\sqrt{2m_eE}\approx 1{,}2\,\mathrm{nm}\) (distances interatomiques). Balle 10 g à 10 m/s : \(\lambda_{dB}\approx 6{,}6\times10^{-34}\,\mathrm{m}\), inobservable. → dualité observable seulement à l'échelle microscopique.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Exemples</span>
+      <p>Diffraction d'électrons sur cristal (Davisson-Germer 1927) ; interférences d'électrons uniques type Young (Tonomura 1989), impacts apparemment aléatoires dont l'accumulation reconstitue la figure d'interférences.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive</h2>
+    <figure class="figure">
+      <div class="btn-row" style="padding:1.25rem 1.5rem 0">
+        <button class="btn active" id="mode-impacts" type="button">Impacts d'électrons uniques (Tonomura)</button>
+        <button class="btn" id="mode-paquet" type="button">Paquet d'ondes</button>
+      </div>
+
+      <div id="panel-impacts">
+        <div class="fig-canvas-wrap">
+          <canvas id="cv-screen" aria-label="Écran d'impacts d'électrons s'accumulant en figure d'interférences"></canvas>
+        </div>
+        <div class="controls">
+          <div class="control">
+            <label for="sl-rate">Cadence d'arrivée <span class="val" id="v-rate">moyenne</span></label>
+            <input type="range" id="sl-rate" min="1" max="40" step="1" value="12">
+            <span class="hint">Chaque électron arrive « au hasard », mais sa probabilité \(\propto\cos^2\) reproduit la figure.</span>
+          </div>
+          <div class="control">
+            <div class="readout"><span class="ro">Impacts cumulés : <b id="v-count">0</b></span></div>
+            <div class="btn-row" style="margin-top:.5rem">
+              <button class="btn primary" id="btn-100" type="button">+ 100 électrons</button>
+              <button class="btn" id="btn-pause2" type="button">Pause</button>
+              <button class="btn" id="btn-reset" type="button">Réinitialiser</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-paquet" hidden>
+        <div class="fig-canvas-wrap">
+          <canvas id="cv-paquet" aria-label="Paquet d'ondes : enveloppe gaussienne modulée"></canvas>
+        </div>
+        <div class="controls">
+          <div class="control">
+            <label for="sl-k0">Vecteur d'onde \(k_0\) <span class="val" id="v-k0">8</span></label>
+            <input type="range" id="sl-k0" min="3" max="20" step="0.5" value="8">
+            <span class="hint">Plus \(k_0\) (donc \(p=\hbar k_0\)) est grand, plus \(\lambda_{dB}=2\pi/k_0\) est petite : davantage d'oscillations sous l'enveloppe.</span>
+          </div>
+          <div class="control">
+            <div class="readout"><span class="ro">\(\lambda_{dB}=2\pi/k_0\) = <b id="v-lam">—</b></span></div>
+            <span class="hint">L'enveloppe \(e^{-x^2/0{,}8}\) (largeur \(\Delta x\)) localise la particule.</span>
+          </div>
+        </div>
+      </div>
+
+      <figcaption class="fig-legend">
+        <strong>Impacts :</strong> chaque électron laisse une marque ponctuelle (corpuscule) ; leur accumulation reconstitue la figure d'interférences en \(\cos^2\) (onde). <strong>Paquet d'ondes :</strong> superposition d'ondes planes localisée.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Impacts &amp; partie réelle du paquet</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Enveloppe / figure \(\cos^2\) théorique</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Donner les <strong>deux</strong> relations \(p=\hbar k\) <strong>et</strong> \(E=\hbar\omega\).</li>
+        <li>Savoir calculer \(\lambda_{dB}\) d'un électron.</li>
+        <li>Dualité observable à l'échelle microscopique.</li>
+        <li>Ne pas confondre \(\lambda_{dB}\) électron (\(E=p^2/2m=h^2/2m\lambda^2\)) et \(\lambda\) photon (\(E=hc/\lambda\)).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Au programme MP (§6.2).</p>
+    <div class="box culture">
+      <div class="box-title">✦ Culture expérimentale</div>
+      <p>Davisson-Germer et Tonomura constituent une culture expérimentale : le calcul détaillé n'est pas exigé.</p>
+    </div>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="q1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Q1 · Fonction d'onde &amp; Schrödinger</span></a>
+    <a class="next" href="q3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Q3 · Inégalités de Heisenberg</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  // ---- mode switch ----
+  const mImp = document.getElementById('mode-impacts'), mPaq = document.getElementById('mode-paquet');
+  const pImp = document.getElementById('panel-impacts'), pPaq = document.getElementById('panel-paquet');
+  function setMode(m) {
+    const imp = m === 'impacts';
+    mImp.classList.toggle('active', imp); mPaq.classList.toggle('active', !imp);
+    pImp.hidden = !imp; pPaq.hidden = imp;
+    if (imp) drawScreen(); else drawPaquet();
+  }
+  mImp.addEventListener('click', () => setMode('impacts'));
+  mPaq.addEventListener('click', () => setMode('paquet'));
+
+  // ============ Impacts (Tonomura) ============
+  const cv = document.getElementById('cv-screen');
+  const slRate = document.getElementById('sl-rate');
+  const vRate = document.getElementById('v-rate'), vCount = document.getElementById('v-count');
+  const btn100 = document.getElementById('btn-100'), btnPause = document.getElementById('btn-pause2'), btnReset = document.getElementById('btn-reset');
+  let impacts = [];           // {x: 0..1 fraction de largeur, y: 0..1}
+  let paused = false;
+  // densité de probabilité ∝ cos²(πk x) modulée par une enveloppe douce
+  function prob(xf) {
+    const env = Math.exp(-Math.pow((xf - 0.5) * 2.4, 2)); // enveloppe gaussienne
+    return env * Math.pow(Math.cos(Math.PI * 9 * (xf - 0.5)), 2);
+  }
+  function sampleX() {
+    // rejet
+    for (let i = 0; i < 200; i++) {
+      const x = Math.random();
+      if (Math.random() < prob(x)) return x;
+    }
+    return Math.random();
+  }
+  function addElectron() {
+    impacts.push({ x: sampleX(), y: Math.random() });
+  }
+  function drawScreen() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 260);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    // fond écran
+    ctx.fillStyle = c.surface; ctx.fillRect(0, 0, w, h);
+    // profil cos² théorique (en haut, fin)
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.6; ctx.globalAlpha = 0.55;
+    ctx.beginPath();
+    const top = 14, amp = 40;
+    for (let i = 0; i <= 300; i++) {
+      const xf = i / 300, X = xf * w, Y = top + amp * (1 - prob(xf) / 0.9);
+      i ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y);
+    }
+    ctx.stroke(); ctx.globalAlpha = 1;
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('Probabilité théorique ∝ cos²', 8, 12);
+    // impacts
+    ctx.fillStyle = c.bleu;
+    const y0 = 64, hh = h - y0 - 6;
+    for (const p of impacts) {
+      ctx.beginPath(); ctx.arc(p.x * w, y0 + p.y * hh, 1.7, 0, 7); ctx.fill();
+    }
+  }
+  const rateNames = ['très lente', 'lente', 'moyenne', 'rapide', 'très rapide'];
+  function updRate() {
+    const r = parseInt(slRate.value);
+    vRate.textContent = rateNames[Math.min(4, Math.floor((r - 1) / 8))];
+  }
+  let lastT = 0, carry = 0;
+  let animImp = QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (!paused && !pImp.hidden) {
+      carry += parseInt(slRate.value) * dt;
+      while (carry >= 1) { addElectron(); carry -= 1; }
+      vCount.textContent = impacts.length.toLocaleString('fr-FR');
+      drawScreen();
+    }
+  });
+  btn100.addEventListener('click', function () {
+    for (let i = 0; i < 100; i++) addElectron();
+    vCount.textContent = impacts.length.toLocaleString('fr-FR'); drawScreen();
+  });
+  btnPause.addEventListener('click', function () { paused = !paused; btnPause.textContent = paused ? 'Reprendre' : 'Pause'; });
+  btnReset.addEventListener('click', function () { impacts = []; vCount.textContent = '0'; drawScreen(); });
+  slRate.addEventListener('input', updRate);
+
+  // ============ Paquet d'ondes ============
+  const cvP = document.getElementById('cv-paquet');
+  const slK0 = document.getElementById('sl-k0'), vK0 = document.getElementById('v-k0'), vLam = document.getElementById('v-lam');
+  function drawPaquet() {
+    const c = QC.colors();
+    const s = QC.setup(cvP, 240);
+    QC.clear(s.ctx, s.w, s.h);
+    const k0 = parseFloat(slK0.value);
+    const pl = QC.makePlot(s.ctx, s.w, s.h, { xmin: -4, xmax: 4, ymin: -1.15, ymax: 1.15, pad: { l: 40, r: 16, t: 16, b: 28 } });
+    pl.grid(c, { yticks: 2 });
+    pl.axes(c, { xlabel: 'x', ylabel: 'ψ' });
+    const env = x => Math.exp(-x * x / 0.8);
+    pl.curve(x => env(x), c.rouge, { lw: 1.8, dash: [5, 4] });
+    pl.curve(x => -env(x), c.rouge, { lw: 1.8, dash: [5, 4] });
+    pl.curve(x => env(x) * Math.cos(k0 * x), c.bleu, { lw: 2.4, N: 800 });
+    vK0.textContent = k0.toLocaleString('fr-FR');
+    vLam.textContent = (2 * Math.PI / k0).toLocaleString('fr-FR', { maximumFractionDigits: 2 }) + ' (u.a.)';
+  }
+  slK0.addEventListener('input', drawPaquet);
+
+  // init
+  updRate(); drawScreen();
+  window.addEventListener('themechange', function () { if (pImp.hidden) drawPaquet(); else drawScreen(); });
+  window.addEventListener('resize', function () { if (pImp.hidden) drawPaquet(); else drawScreen(); });
+})();
+</script>
+</body>
+</html>

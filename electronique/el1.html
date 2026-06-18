@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL1 — RLC série en régime libre · QC Oraux MP*</title>
+<meta name="description" content="Régime libre du circuit RLC série : équation canonique, régimes pseudo-périodique, critique et apériodique, bilan énergétique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électronique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="el2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="el1.html" aria-current="page"><span class="qn">EL1</span>RLC série en régime libre</a>
+        <a href="el2.html"><span class="qn">EL2</span>RLC en régime forcé / résonances</a>
+        <a href="el3.html"><span class="qn">EL3</span>Filtrage ordre 1 et 2 / créneau</a>
+        <a href="el4.html"><span class="qn">EL4</span>Filtre passe-bande</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Électronique</span>
+    <h1>Régime libre du circuit RLC série</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span><span class="src">PL-119</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Étudier le régime libre d'un circuit RLC série : établir l'équation différentielle, identifier les régimes selon le facteur de qualité, donner les solutions et discuter l'aspect énergétique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 1.4 Oscillateurs libres et forcés</div>
+      <p>Capacités exigibles : établir l'équation différentielle du second ordre et l'écrire sous forme canonique pour identifier la pulsation propre \(\omega_0\) et le facteur de qualité \(Q\) ; décrire la nature de la réponse (régime apériodique, critique, pseudo-périodique) selon la valeur de \(Q\) (ou de \(m = 1/(2Q)\)) ; déterminer la réponse détaillée en recherchant les racines du polynôme caractéristique ; réaliser un bilan énergétique et interpréter la dissipation par effet Joule.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère un circuit RLC série comportant une résistance \(R\) (en \(\Omega\)), une bobine d'inductance \(L\) (en \(\mathrm{H}\)) et un condensateur de capacité \(C\) (en \(\mathrm{F}\)). On note :</p>
+    <ul>
+      <li>\(u_C(t)\) : tension aux bornes du condensateur (convention récepteur) ;</li>
+      <li>\(i(t)\) : intensité du courant (algébrique, orientée dans le sens de la maille) ;</li>
+      <li>conditions initiales : \(u_C(0)=U_0\), \(i(0)=0\) (condensateur chargé, circuit fermé à \(t=0\)).</li>
+    </ul>
+    <p>Grandeurs caractéristiques :</p>
+    <p>\[ \omega_0 = \frac{1}{\sqrt{LC}}, \qquad Q = \frac{1}{R}\sqrt{\frac{L}{C}}, \qquad \tau = \frac{2L}{R}. \]</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Équation différentielle</span>
+      <p>En appliquant la loi des mailles : \(\ Ri + L\dfrac{\mathrm{d} i}{\mathrm{d} t} + u_C = 0.\) Comme \(i = C\,\dfrac{\mathrm{d} u_C}{\mathrm{d} t}\), on substitue :</p>
+      <p>\[ RC\,\frac{\mathrm{d} u_C}{\mathrm{d} t} + LC\,\frac{\mathrm{d}^2 u_C}{\mathrm{d} t^2} + u_C = 0. \]</p>
+      <p>En divisant par \(LC\) et en introduisant \(\omega_0\) et \(Q\), on obtient la <strong>forme canonique</strong> de l'oscillateur amorti d'ordre 2 :</p>
+      <p>\[ \frac{\mathrm{d}^2 u_C}{\mathrm{d} t^2} + \frac{\omega_0}{Q}\,\frac{\mathrm{d} u_C}{\mathrm{d} t} + \omega_0^2\,u_C = 0. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Polynôme caractéristique</span>
+      <p>On cherche des solutions en \(\mathrm{e}^{r t}\). Le polynôme caractéristique \(\ r^2 + \dfrac{\omega_0}{Q}\,r + \omega_0^2 = 0\ \) a pour discriminant réduit \(\Delta = \omega_0^2\!\left(\dfrac{1}{4Q^2} - 1\right)\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Régime pseudo-périodique (\(Q &gt; 1/2\), \(\Delta &lt; 0\))</span>
+      <p>\[ r_{1,2} = -\frac{\omega_0}{2Q} \pm j\,\omega_1, \qquad \omega_1 = \omega_0\sqrt{1 - \frac{1}{4Q^2}}. \]</p>
+      <p>La solution générale est :</p>
+      <p>\[ u_C(t) = U_0\,\mathrm{e}^{-t/\tau}\!\left(\cos\omega_1 t + \frac{1}{\omega_1\tau}\sin\omega_1 t\right), \qquad \tau = \frac{2Q}{\omega_0}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Régime critique (\(Q = 1/2\), \(\Delta = 0\))</span>
+      <p>\[ u_C(t) = U_0\,(1 + \omega_0 t)\,\mathrm{e}^{-\omega_0 t}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Régime apériodique (\(Q &lt; 1/2\), \(\Delta &gt; 0\))</span>
+      <p>\[ r_{1,2} = \omega_0\!\left(-\frac{1}{2Q} \pm \sqrt{\frac{1}{4Q^2}-1}\right), \qquad r_1, r_2 \in \mathbb{R}^-. \]</p>
+      <p>La solution est une somme de deux exponentielles décroissantes.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Aspect énergétique</span>
+      <p>L'énergie totale stockée à l'instant \(t\) est \(\mathcal{E}(t) = \tfrac{1}{2}Cu_C^2 + \tfrac{1}{2}Li^2\). La puissance dissipée dans \(R\) vaut \(p_R = Ri^2 \geq 0\), d'où \(\ \dfrac{\mathrm{d}\mathcal{E}}{\mathrm{d} t} = -Ri^2 \leq 0.\) L'énergie décroît monotonement : la résistance est le seul siège de dissipation.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — la réponse libre \(u_C(t)/U_0\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-rlc" aria-label="Réponse libre du circuit RLC : courbe u_C(t)/U_0 selon le régime, facteur de qualité réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-Q">Facteur de qualité \(Q\) <span class="val" id="v-q">2,00</span></label>
+          <input type="range" id="sl-Q" min="0.15" max="6" step="0.01" value="2">
+          <span class="hint" id="hint-regime">Régime pseudo-périodique : \(Q &gt; 1/2\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le tracé</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Régime : <b id="v-reg">pseudo-périodique</b></span>
+            <span class="ro">\(m = 1/(2Q)\) = <b id="v-m">0,25</b></span>
+            <span class="ro" id="ro-w1">\(\omega_1/\omega_0\) = <b id="v-w1">0,97</b></span>
+            <span class="ro">\(\tau\,\omega_0 = 2Q\) = <b id="v-tau">4,00</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Réponse libre normalisée \(u_C(t)/U_0\) pour \(u_C(0)=U_0,\ i(0)=0\). Le temps est en unité de \(1/\omega_0\). Faites varier \(Q\) pour passer du régime apériodique (\(Q&lt;1/2\)) au régime pseudo-périodique (\(Q&gt;1/2\)) en passant par le régime critique (\(Q=1/2\), retour le plus rapide sans oscillation).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(u_C(t)/U_0\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>enveloppe \(\pm\mathrm{e}^{-t/\tau}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Bien justifier les signes algébriques dans la loi des mailles (convention choisie).</li>
+        <li>\(Q&gt;1/2\) (et non \(Q&gt;1\)) est la condition du régime pseudo-périodique.</li>
+        <li>La pulsation des oscillations libres est \(\omega_1 &lt; \omega_0\) (pas \(\omega_0\)).</li>
+        <li>Ordre de grandeur : \(\omega_0 \sim 10^{6}\ \mathrm{rad\,s^{-1}}\) pour \(L=1\ \mathrm{mH}\), \(C=1\ \mathrm{nF}\).</li>
+        <li>Ne pas confondre régime critique (retour le plus rapide à l'équilibre sans oscillation) avec le régime quasi-critique.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'ensemble du développement est au programme MPSI (thème 1.4). La forme canonique, les trois régimes et le bilan énergétique sont explicitement exigibles.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="index.html"><span class="pn-dir">← Sommaire</span><span class="pn-title">Électronique · 4 questions</span></a>
+    <a class="next" href="el2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EL2 · RLC en régime forcé / résonances</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 6 : Électronique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-rlc');
+  const slQ = document.getElementById('sl-Q');
+  const vQ = document.getElementById('v-q'), vReg = document.getElementById('v-reg'), vM = document.getElementById('v-m');
+  const vW1 = document.getElementById('v-w1'), vTau = document.getElementById('v-tau');
+  const roW1 = document.getElementById('ro-w1'), hint = document.getElementById('hint-regime');
+  const btn = document.getElementById('btn-anim');
+
+  let animating = false, progress = 1;   // fraction du tracé affichée (0..1)
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // u_C(t)/U_0 en fonction de T = omega0 * t, selon Q
+  function uc(T, Q) {
+    if (Q > 0.5 + 1e-9) {
+      const w1 = Math.sqrt(1 - 1 / (4 * Q * Q));   // /omega0
+      const tau = 2 * Q;                            // *omega0
+      return Math.exp(-T / tau) * (Math.cos(w1 * T) + Math.sin(w1 * T) / (w1 * tau));
+    } else if (Q < 0.5 - 1e-9) {
+      const s = Math.sqrt(1 / (4 * Q * Q) - 1);
+      const r1 = -1 / (2 * Q) + s, r2 = -1 / (2 * Q) - s;   // *omega0, réels<0
+      // u(0)=1, u'(0)=0 (i(0)=0)  =>  A+B=1, A r1 + B r2 = 0
+      const A = -r2 / (r1 - r2), B = r1 / (r1 - r2);
+      return A * Math.exp(r1 * T) + B * Math.exp(r2 * T);
+    } else {
+      return (1 + T) * Math.exp(-T);  // critique
+    }
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const Q = parseFloat(slQ.value);
+    const Tmax = 16;
+    const P = QC.makePlot(ctx, w, h, { xmin: 0, xmax: Tmax, ymin: -0.6, ymax: 1.15, pad: { l: 40, r: 16, t: 16, b: 28 } });
+    P.grid(c, { xticks: 8, yticks: 5 });
+    P.axes(c, { xlabel: 'ω₀t', ylabel: 'u_C/U₀' });
+
+    const tau = 2 * Q;
+    // enveloppe en régime pseudo-périodique
+    if (Q > 0.5) {
+      const Tcut = Tmax * progress;
+      P.curve(T => (T <= Tcut ? Math.exp(-T / tau) : NaN), c.orange, { lw: 1.4, dash: [4, 4] });
+      P.curve(T => (T <= Tcut ? -Math.exp(-T / tau) : NaN), c.orange, { lw: 1.4, dash: [4, 4] });
+    }
+    const Tcut = Tmax * progress;
+    P.curve(T => (T <= Tcut ? uc(T, Q) : NaN), c.bleu, { lw: 2.6, N: 600 });
+
+    // lectures
+    vQ.textContent = fr(Q, 2);
+    vM.textContent = fr(1 / (2 * Q), 2);
+    vTau.textContent = fr(2 * Q, 2);
+    if (Q > 0.5 + 1e-9) {
+      vReg.textContent = 'pseudo-périodique';
+      hint.textContent = 'Régime pseudo-périodique : Q > 1/2, oscillations amorties (ω₁ < ω₀).';
+      const w1 = Math.sqrt(1 - 1 / (4 * Q * Q));
+      vW1.textContent = fr(w1, 3); roW1.style.display = '';
+    } else if (Q < 0.5 - 1e-9) {
+      vReg.textContent = 'apériodique';
+      hint.textContent = 'Régime apériodique : Q < 1/2, somme de deux exponentielles, pas d\u2019oscillation.';
+      roW1.style.display = 'none';
+    } else {
+      vReg.textContent = 'critique';
+      hint.textContent = 'Régime critique : Q = 1/2, retour le plus rapide sans oscillation.';
+      roW1.style.display = 'none';
+    }
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      progress += dt * 0.5;
+      if (progress >= 1) { progress = 1; animating = false; btn.textContent = 'Rejouer le tracé'; btn.classList.remove('active'); }
+      draw();
+    }
+  });
+
+  slQ.addEventListener('input', function () { progress = 1; draw(); });
+  btn.addEventListener('click', function () {
+    progress = 0; animating = true;
+    btn.textContent = 'Tracé en cours…'; btn.classList.add('active');
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D2 — Conduction sphérique &amp; analogie EM · QC Oraux MP*</title>
+<meta name="description" content="Équation de diffusion thermique en symétrie sphérique, profil stationnaire T(r) en 1/r, flux et résistance thermique sphérique, comparaison avec l'électrostatique et l'effet de peau.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Diffusion thermique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="d1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="d3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="d1.html"><span class="qn">D1</span>Équation de la diffusion thermique</a>
+        <a href="d2.html" aria-current="page"><span class="qn">D2</span>Conduction sphérique &amp; analogie EM</a>
+        <a href="d3.html"><span class="qn">D3</span>Résistance thermique d'un cylindre</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Diffusion thermique</span>
+    <h1>Conduction thermique en symétrie sphérique ; comparaison avec les équations d'électromagnétisme</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span><span class="src">PL-106</span><span class="src">PL-108</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir l'équation de la diffusion thermique en symétrie sphérique. Résoudre le régime stationnaire (profil de température et flux entre deux sphères concentriques). Comparer avec les équations de l'électrostatique et identifier l'équation de diffusion en électromagnétisme (effet de peau).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Niveau MP (5.2.)</div>
+      <p>Établir l'équation de la diffusion thermique en géométrie sphérique (cas d'une variable d'espace) ; utiliser le Laplacien en coordonnées sphériques (expression fournie). Comparaison avec l'électromagnétisme : <strong>l'équation de la diffusion apparaît dans le cas de l'effet de peau</strong> (\(\partial \vec{B}/\partial t = (1/\mu_0\sigma)\Delta\vec{B}\)) ; la résistance thermique est analogue à la résistance électrique.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On considère deux sphères concentriques de rayons \(R_1 &lt; R_2\), maintenues à des températures \(T_1\) et \(T_2\). L'espace entre les deux sphères est rempli d'un matériau de conductivité \(\lambda\). Par symétrie sphérique, \(T = T(r)\) uniquement. On utilise les coordonnées sphériques \((r, \theta, \varphi)\) ; le Laplacien scalaire est :</p>
+    <p>\[ \Delta T = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\,\frac{\partial T}{\partial r}\right). \]</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+
+    <div class="demo-step">
+      <span class="step-label">1 · Bilan d'énergie en symétrie sphérique</span>
+      <p>Par symétrie sphérique, le vecteur densité de flux est radial :</p>
+      <p>\[ \vec{j}_{\text{th}} = -\lambda\,\frac{\partial T}{\partial r}\,\vec{u}_r. \]</p>
+      <p>Considérons une coquille sphérique de rayons \(r\) et \(r + \mathrm{d}r\). Le bilan d'énergie interne de cette coquille (de volume \(4\pi r^2\mathrm{d}r\)) s'écrit en régime quelconque :</p>
+      <p>\[ \rho c\,4\pi r^2\mathrm{d}r\,\frac{\partial T}{\partial t} = \Phi(r) - \Phi(r+\mathrm{d}r), \]</p>
+      <p>où \(\Phi(r) = 4\pi r^2 j_r = -4\pi r^2\lambda\,\partial T/\partial r\) est le flux sortant à travers la sphère de rayon \(r\). En développant :</p>
+      <p>\[ \rho c\,\frac{\partial T}{\partial t} = -\frac{1}{4\pi r^2}\frac{\partial \Phi}{\partial r} = \frac{\lambda}{r^2}\frac{\partial}{\partial r}\left(r^2\,\frac{\partial T}{\partial r}\right) = \lambda\,\Delta T. \]</p>
+      <p>On obtient l'<strong>équation de diffusion thermique en coordonnées sphériques</strong> :</p>
+      <p>\[ \boxed{\frac{\partial T}{\partial t} = a\,\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\,\frac{\partial T}{\partial r}\right)}, \quad a = \frac{\lambda}{\rho c}. \]</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">2 · Régime stationnaire : profil de température et flux</span>
+      <p>En régime stationnaire, \(\partial T/\partial t = 0\), l'équation devient :</p>
+      <p>\[ \frac{1}{r^2}\frac{\mathrm{d}}{\mathrm{d}r}\left(r^2\,\frac{\mathrm{d}T}{\mathrm{d}r}\right) = 0. \]</p>
+      <p>En intégrant une première fois : \(r^2\,\mathrm{d}T/\mathrm{d}r = A\), d'où \(\mathrm{d}T/\mathrm{d}r = A/r^2\). En intégrant une deuxième fois :</p>
+      <p>\[ T(r) = -\frac{A}{r} + B. \]</p>
+      <p>Les constantes \(A\) et \(B\) sont déterminées par les conditions aux limites \(T(R_1) = T_1\) et \(T(R_2) = T_2\). En soustrayant les deux relations : \(T_1 - T_2 = A\left(\frac{1}{R_2} - \frac{1}{R_1}\right) = A\,\frac{R_1 - R_2}{R_1 R_2}\). On reporte dans \(T(r) = T_1 + A\left(\frac{1}{R_1} - \frac{1}{r}\right)\), pour obtenir le profil :</p>
+      <p>\[ T(r) = T_1 + (T_2 - T_1)\,\frac{R_2}{R_2 - R_1}\left(1 - \frac{R_1}{r}\right). \]</p>
+      <p>On vérifie bien que \(T(R_1) = T_1\) et \(T(R_2) = T_2\). Le profil varie en \(1/r\) entre les deux sphères. Le flux thermique total à travers toute sphère de rayon \(r\) est constant (conservation de l'énergie) :</p>
+      <p>\[ \Phi = -4\pi r^2 \lambda\,\frac{\mathrm{d}T}{\mathrm{d}r} = -4\pi\lambda A = \frac{4\pi\lambda R_1 R_2 (T_1 - T_2)}{R_2 - R_1}. \]</p>
+      <p>La résistance thermique sphérique est donc :</p>
+      <p>\[ R_{\text{th, sph}} = \frac{T_1 - T_2}{\Phi} = \frac{R_2 - R_1}{4\pi\lambda R_1 R_2}. \]</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Comparaison avec les équations d'électromagnétisme</span>
+      <p><em>a) Analogie avec l'électrostatique en régime stationnaire.</em> En électrostatique, le potentiel \(V(r)\) créé par une distribution à symétrie sphérique obéit à l'équation de Laplace \(\Delta V = 0\) (en dehors des charges). En coordonnées sphériques, le profil \(V(r)\) satisfait la même équation que \(T(r)\) en régime stationnaire :</p>
+      <p>\[ \frac{1}{r^2}\frac{\mathrm{d}}{\mathrm{d}r}\left(r^2\,\frac{\mathrm{d}V}{\mathrm{d}r}\right) = 0 \quad \Rightarrow \quad V(r) = \frac{K}{r} + C. \]</p>
+      <p>La correspondance est parfaite : \(T \leftrightarrow V\), \(\lambda \leftrightarrow \sigma\) (conductivité électrique), \(\Phi_{\text{th}} \leftrightarrow I\). C'est l'analogie électrocinétique.</p>
+      <p><em>b) Équation de diffusion en électromagnétisme : l'effet de peau.</em> Dans un milieu ohmique (conductivité \(\sigma\)), en régime quasi-stationnaire (\(\partial \vec{E}/\partial t\) négligeable devant \(\vec{j}/\sigma\)), les équations de Maxwell conduisent à :</p>
+      <p>\[ \frac{\partial \vec{B}}{\partial t} = \frac{1}{\mu_0\sigma}\,\Delta\vec{B}. \]</p>
+      <p>C'est une <em>équation de diffusion</em> pour \(\vec{B}\), formellement identique à l'équation thermique avec \(a_{\text{EM}} = 1/(\mu_0\sigma)\). Le temps caractéristique de diffusion du champ magnétique dans un conducteur de taille \(L\) est \(\tau_{\text{EM}} \sim \mu_0\sigma L^2\).</p>
+    </div>
+
+    <div class="box oral">
+      <div class="box-title">◆ Piège à éviter — ne pas confondre les deux analogies</div>
+      <p>L'analogie entre thermique et électrostatique (stationnaire) donne \(T \leftrightarrow V\), \(\Phi \leftrightarrow I\). En revanche, l'analogie entre thermique <em>instationnaire</em> et électromagnétisme est \(T \leftrightarrow B\) (ou \(E\)), les deux obéissant à une équation de diffusion. Ces deux analogies sont distinctes.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — profil sphérique \(T(r)\) en \(1/r\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-sph" aria-label="Profil de température T(r) entre deux sphères concentriques, décroissant en 1/r du rayon intérieur R1 au rayon extérieur R2"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-r1">Rayon intérieur \(R_1\) (cm) <span class="val" id="v-r1">1,0</span></label>
+          <input type="range" id="sl-r1" min="0.5" max="2.5" step="0.1" value="1">
+          <span class="hint" id="hint-s">Le profil varie en \(1/r\) : la pente est forte près de la sphère intérieure.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le point</button>
+          </div>
+        </div>
+        <div class="control">
+          <label for="sl-r2">Rayon extérieur \(R_2\) (cm) <span class="val" id="v-r2">4,0</span></label>
+          <input type="range" id="sl-r2" min="3" max="6" step="0.1" value="4">
+          <div class="readout" style="margin-top:.6rem">
+            <span class="ro">Résistance \(R_{\text{th,sph}} \propto (R_2-R_1)/(R_1R_2)\) : <b id="v-rth">—</b></span>
+            <span class="ro">Comparaison profil linéaire (plan) en pointillé bleu.</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Profil stationnaire de température entre deux sphères concentriques (\(T_1 &gt; T_2\)) : \(T(r) = T_1 + (T_2 - T_1)\,\frac{R_2}{R_2 - R_1}(1 - R_1/r)\), décroissant en \(1/r\) (courbe verte). Le profil linéaire d'une paroi plane est tracé en pointillé bleu pour comparaison : en sphérique, la courbure est concave et la chute de température se concentre près de \(R_1\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(T(r)\) sphérique (1/r)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Profil plan (linéaire)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Point mobile</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>C'est un item <strong>MP uniquement</strong>.</li>
+        <li>En symétrie sphérique, le profil stationnaire de température varie en \(1/r\) (et non linéairement comme en plan). C'est la clé : en intégrant \(\Delta T = 0\) en sphérique.</li>
+        <li>Le flux \(\Phi = -4\pi\lambda r^2 \mathrm{d}T/\mathrm{d}r\) est <em>indépendant de \(r\)</em> en régime stationnaire (conservation de l'énergie sans source).</li>
+        <li>La comparaison EM : l'équation de diffusion apparaît en EM dans le milieu ohmique, avec \(a_{\text{EM}} = 1/(\mu_0\sigma)\). La longueur de peau \(\delta = \sqrt{2/(\mu_0\sigma\omega)}\) est l'analogue direct de \(\sqrt{a\tau}\).</li>
+        <li>Savoir énoncer rapidement les deux analogies (stationnaire : électrostatique ; instationnaire : effet de peau) et ne pas les confondre.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Entièrement au programme MP (5.2.). La comparaison avec l'effet de peau est explicitement demandée dans les sources et est au programme MP (électromagnétisme, propagation dans un milieu ohmique). Aucune notion hors-programme.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="d1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">D1 · Équation de la diffusion thermique</span></a>
+    <a class="next" href="d3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">D3 · Résistance thermique d'un cylindre</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Diffusion thermique.<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-sph');
+  const slR1 = document.getElementById('sl-r1'), slR2 = document.getElementById('sl-r2');
+  const vR1 = document.getElementById('v-r1'), vR2 = document.getElementById('v-r2'), vRth = document.getElementById('v-rth');
+  const hint = document.getElementById('hint-s'), btnAnim = document.getElementById('btn-anim');
+  const T1 = 100, T2 = 20; // °C fictifs
+  let animating = false, prog = 0;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    let R1 = parseFloat(slR1.value), R2 = parseFloat(slR2.value);
+    if (R2 <= R1 + 0.5) R2 = R1 + 0.5;
+
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: 6.3, ymin: 0, ymax: 115, pad: { l: 44, r: 16, t: 16, b: 34 } });
+    plot.grid(c, { xticks: 6, yticks: 4 });
+    plot.axes(c, { xlabel: 'r (cm)', ylabel: 'T (°C)' });
+
+    // profil sphérique T(r) = T1 + (T2-T1)*(R2/(R2-R1))*(1 - R1/r)
+    function Tsph(r) {
+      if (r < R1) return NaN;
+      if (r > R2) return NaN;
+      return T1 + (T2 - T1) * (R2 / (R2 - R1)) * (1 - R1 / r);
+    }
+    // profil linéaire (plan) pour comparaison entre R1 et R2
+    function Tlin(r) {
+      if (r < R1 || r > R2) return NaN;
+      return T1 + (T2 - T1) * (r - R1) / (R2 - R1);
+    }
+    plot.curve(Tlin, c.bleu, { lw: 1.6, dash: [5, 4], N: 160 });
+    plot.curve(Tsph, c.vert, { lw: 2.8, N: 220 });
+
+    // marqueurs R1, R2 verticaux pointillés
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.globalAlpha = 0.4; ctx.setLineDash([3, 3]);
+    [R1, R2].forEach(function (R) { ctx.beginPath(); ctx.moveTo(plot.px(R), plot.py(0)); ctx.lineTo(plot.px(R), plot.py(115)); ctx.stroke(); });
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('R₁', plot.px(R1), plot.py(0) + 16);
+    ctx.fillText('R₂', plot.px(R2), plot.py(0) + 16);
+
+    // point mobile
+    const r = R1 + prog * (R2 - R1);
+    const Tm = Tsph(r);
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(plot.px(r), plot.py(Tm), 5, 0, 7); ctx.fill();
+
+    // lectures
+    vR1.textContent = fr(R1, 1);
+    vR2.textContent = fr(R2, 1);
+    const rth = (R2 - R1) / (R1 * R2); // ∝ (R2-R1)/(R1 R2) (en 1/cm, valeur relative)
+    vRth.textContent = fr(rth, 3) + ' (u.a.)';
+    hint.textContent = (R2 - R1) > 3
+      ? 'Épaisseur large : la résistance thermique sphérique augmente.'
+      : 'Le profil varie en 1/r : la pente est forte près de la sphère intérieure.';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { prog = (prog + dt * 0.25) % 1; draw(); }
+  });
+
+  slR1.addEventListener('input', draw);
+  slR2.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le point';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

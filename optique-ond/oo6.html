@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OO6 — Longueur de cohérence temporelle · QC Oraux MP*</title>
+<meta name="description" content="Longueur de cohérence temporelle : train d'onde, lc = c·Δtc, lien avec la largeur spectrale lc = λ²/Δλ, ordres de grandeur, applications Michelson et doublet du sodium.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique ondulatoire</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="oo5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="oo1.html"><span class="qn">OO1</span>Modèle scalaire de la lumière</a>
+        <a href="oo2.html"><span class="qn">OO2</span>Trous d'Young</a>
+        <a href="oo3.html"><span class="qn">OO3</span>Michelson : lame &amp; coin d'air</a>
+        <a href="oo4.html"><span class="qn">OO4</span>Contraste (visibilité)</a>
+        <a href="oo5.html"><span class="qn">OO5</span>Réseaux / N ondes / Rayleigh</a>
+        <a href="oo6.html" aria-current="page"><span class="qn">OO6</span>Longueur de cohérence temporelle</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 6 · Optique ondulatoire</span>
+    <h1>Longueur de cohérence temporelle</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir la cohérence temporelle et la longueur de cohérence. Relier la longueur de cohérence à la largeur spectrale. Donner des ordres de grandeur et des applications (Michelson, spectroscopie).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 3 §3.1 — Modèle scalaire</div>
+      <p>Capacités exigibles :</p>
+      <ul>
+        <li>Citer l'ordre de grandeur du temps de cohérence \(\Delta t_c\) de quelques radiations visibles.</li>
+        <li>Utiliser la relation \(\Delta\nu\cdot\Delta t_c\sim 1\) pour relier le temps de cohérence à la largeur spectrale \(\Delta\lambda\) de la radiation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><b>Train d'onde</b> : paquet d'oscillations de durée \(\Delta t_c\) émis par un atome lors d'une transition ; \(\Delta t_c\) est le <b>temps de cohérence</b>.</li>
+      <li><b>Longueur de cohérence</b> : \(l_c = c\,\Delta t_c\).</li>
+      <li><b>Relation temps-fréquence</b> (admise) : \(\Delta\nu\cdot\Delta t_c \sim 1\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Origine physique de la cohérence temporelle</span>
+      <p>Une source réelle émet des trains d'ondes de durée finie \(\Delta t_c\) à des instants aléatoires avec des phases aléatoires. Deux copies du même train d'onde peuvent interférer seulement si leur déphasage relatif est constant : c'est le cas si la différence de marche \(\delta\) est inférieure à la longueur de cohérence \(l_c = c\Delta t_c\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Lien avec la largeur spectrale</span>
+      <p>Par la relation de Fourier : un train d'onde de durée \(\Delta t_c\) a un spectre de largeur \(\Delta\nu\sim 1/\Delta t_c\). D'où :</p>
+      <p>\[ l_c = c\,\Delta t_c \sim \frac{c}{\Delta\nu} = \frac{\lambda^2}{\Delta\lambda}, \]</p>
+      <p>en utilisant \(\Delta\nu = c\Delta\lambda/\lambda^2\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Ordres de grandeur</span>
+      <ul>
+        <li><b>Lampe blanche</b> : \(\Delta\lambda\sim 300\ \mathrm{nm}\), \(l_c\sim 1\ \mu\mathrm{m}\).</li>
+        <li><b>Doublet du sodium</b> : \(\Delta\lambda=0{,}6\ \mathrm{nm}\), \(l_c\sim 0{,}6\ \mathrm{mm}\).</li>
+        <li><b>Lampe spectrale (Na filtré)</b> : \(\Delta\lambda\sim 0{,}001\ \mathrm{nm}\), \(l_c\sim 30\ \mathrm{cm}\).</li>
+        <li><b>Laser He-Ne multimode</b> : \(\Delta\lambda\sim 10^{-4}\ \mathrm{nm}\), \(l_c\sim 3\ \mathrm{m}\).</li>
+        <li><b>Laser He-Ne monomode</b> : \(\Delta\lambda\sim 10^{-9}\ \mathrm{nm}\), \(l_c\sim 300\ \mathrm{km}\).</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Application au Michelson</span>
+      <p>Les franges du Michelson disparaissent dès que la différence de marche \(\delta = 2e\cos\theta\) excède \(l_c\). Pour mesurer \(l_c\) d'une source, on fait varier \(e\) et on relève la différence de marche au brouillage : \(l_c = 2e_c\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Application au doublet du sodium</span>
+      <p>Le doublet Na (\(\lambda_1=589{,}0\ \mathrm{nm}\), \(\lambda_2=589{,}6\ \mathrm{nm}\), \(\Delta\lambda=0{,}6\ \mathrm{nm}\)) présente des brouillages périodiques espacés de \(\Delta e = \lambda^2/(2\Delta\lambda)\approx 0{,}29\ \mathrm{mm}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — train d'onde et longueur de cohérence</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-coh" aria-label="Train d'onde de durée finie et longueur de cohérence selon la largeur spectrale"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-dl">Largeur spectrale \(\Delta\lambda\) <span class="val" id="v-dl">0,60 nm</span></label>
+          <input type="range" id="sl-dl" min="0.05" max="3" step="0.01" value="0.6">
+          <span class="hint" id="hint-dl">\(\lambda = 589\ \mathrm{nm}\). Plus \(\Delta\lambda\) est grand, plus le train d'onde est court : \(l_c=\lambda^2/\Delta\lambda\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Émettre des trains d'onde</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(l_c = \lambda^2/\Delta\lambda\) = <b id="v-lc">0,58 mm</b></span>
+            <span class="ro">\(\Delta t_c = l_c/c\) = <b id="v-tc">1,9 ps</b></span>
+          </div>
+          <span class="hint">Le paquet (enveloppe rouge) est d'autant plus localisé que le spectre est large : c'est la dualité durée–largeur spectrale \(\Delta\nu\,\Delta t_c\sim 1\).</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Train d'onde : oscillation porteuse à \(\lambda\) (bleu) sous une enveloppe gaussienne (rouge) de largeur \(l_c=\lambda^2/\Delta\lambda\) (verte, double flèche). Le bouton émet des trains successifs à phases aléatoires, illustrant l'émission par paquets d'une source réelle.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Porteuse \(s(x)\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Enveloppe du train</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Longueur de cohérence \(l_c\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>La relation \(\Delta\nu\cdot\Delta t_c\sim 1\) est <em>admise</em> : l'énoncer sans chercher à la démontrer, mais savoir l'utiliser dans les deux sens.</li>
+        <li>Retenir la formule \(l_c = \lambda^2/\Delta\lambda\) (pratique pour les calculs).</li>
+        <li>La cohérence temporelle (propriété d'une source) est distincte de la cohérence spatiale (propriété d'une paire de points sur le front d'onde).</li>
+        <li>Savoir expliquer pourquoi un laser est bien plus cohérent qu'une lampe spectrale : transition unique, faible largeur de raie.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MP. La relation \(\Delta\nu\cdot\Delta t_c\sim 1\) est admise. Le tableau des ordres de grandeur est à connaître.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="oo5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OO5 · Réseaux / N ondes / Rayleigh</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Optique ondulatoire</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 8 : Optique ondulatoire (§3).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-coh');
+  const slDl = document.getElementById('sl-dl');
+  const vDl = document.getElementById('v-dl'), vLc = document.getElementById('v-lc'), vTc = document.getElementById('v-tc');
+  const btnAnim = document.getElementById('btn-anim');
+  const LAMBDA = 589e-9;       // m
+  const Cc = 3e8;              // m/s
+  let animating = false, t0 = 0, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const dl = parseFloat(slDl.value) * 1e-9;      // m
+    const lc = LAMBDA * LAMBDA / dl;                // m
+    const tc = lc / Cc;                             // s
+
+    const pad = { l: 14, r: 14, t: 18, b: 26 };
+    const midY = (pad.t + (h - pad.b)) / 2;
+    const amp = (h - pad.b - pad.t) / 2 - 4;
+    // largeur visuelle du train (px) inversement liée à dl : on borne pour rester lisible
+    const sigmaPx = Math.max(18, Math.min((w - pad.l - pad.r) * 0.42, 22 / dl * 1e-9 * 40));
+    const cx = (pad.l + (w - pad.r)) / 2;
+    const kpx = 0.42;     // pulsation spatiale de la porteuse (px^-1)
+
+    // axe
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad.l, midY); ctx.lineTo(w - pad.r, midY); ctx.stroke();
+
+    // enveloppe gaussienne (rouge) ±
+    const envF = px => Math.exp(-Math.pow((px - cx) / sigmaPx, 2));
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.8;
+    [+1, -1].forEach(sg => {
+      ctx.beginPath(); let started = false;
+      for (let px = pad.l; px <= w - pad.r; px += 1) {
+        const Y = midY - sg * envF(px) * amp;
+        started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+      }
+      ctx.stroke();
+    });
+
+    // porteuse sous enveloppe (bleu)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2; ctx.beginPath();
+    let started = false;
+    for (let px = pad.l; px <= w - pad.r; px += 1) {
+      const env = envF(px);
+      const Y = midY - env * Math.cos(kpx * (px - cx) - phase) * amp;
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+
+    // double flèche l_c (largeur du train ~ 2 sigma)
+    const x1 = cx - sigmaPx, x2 = cx + sigmaPx;
+    const ay = h - pad.b + 0;
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(x1, ay - 4); ctx.lineTo(x2, ay - 4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1, ay - 8); ctx.lineTo(x1, ay); ctx.moveTo(x2, ay - 8); ctx.lineTo(x2, ay); ctx.stroke();
+    ctx.fillStyle = c.vert; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('l_c', cx, ay - 10);
+
+    vDl.textContent = fr(dl * 1e9, 2) + ' nm';
+    vLc.textContent = lc >= 1e-3 ? fr(lc * 1e3, 2) + ' mm' : fr(lc * 1e6, 1) + ' \u00b5m';
+    vTc.textContent = fr(tc * 1e12, 1) + ' ps';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { phase += dt * 4.5; draw(); }
+  });
+  slDl.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Émettre des trains d\u2019onde';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

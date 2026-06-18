@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M5 — Oscillateurs : analogies et résonances · QC Oraux MP*</title>
+<meta name="description" content="Oscillateur mécanique et circuit RLC : équation canonique, analogies, résonances en amplitude et en vitesse, facteur de qualité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m4.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m6.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html" aria-current="page"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 5 · Mécanique</span>
+    <h1>Oscillateur mécanique et oscillateur électrique : analogies et résonances</h1>
+    <p class="q-sources"><span class="src">POLY p.2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Mettre en parallèle les équations d'un oscillateur mécanique amorti forcé et d'un circuit RLC série forcé ; identifier les analogies de grandeurs et de paramètres ; étudier les résonances en amplitude et en vitesse.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · Section 1.4 « Oscillateurs libres et forcés »</div>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Écrire l'équation canonique d'un oscillateur (pulsation propre \(\omega_0\), facteur de qualité \(Q\)).</li>
+        <li>Utiliser la représentation complexe pour étudier le régime forcé.</li>
+        <li>Relier l'acuité de la résonance au facteur de qualité \(Q\).</li>
+        <li>Mettre en évidence la similitude des comportements mécanique et électrique.</li>
+      </ul>
+      <p>Niveau <strong>MPSI</strong>.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p><strong>Oscillateur mécanique (ressort-masse-amortisseur) :</strong> masse \(m\), raideur \(k\), coefficient d'amortissement visqueux \(\lambda\). Force d'excitation \(F_e\cos(\omega t)\).</p>
+    <p><strong>Circuit RLC série :</strong> résistance \(R\), inductance \(L\), capacité \(C\), tension d'excitation \(e(t) = E_0\cos(\omega t)\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1. Équations du mouvement — forme canonique</span>
+      <p><em>Mécanique :</em> \(m\ddot{x} + \lambda\dot{x} + kx = F_e\cos(\omega t)\), soit :</p>
+      <p>\[ \ddot{x} + \frac{\omega_0}{Q}\dot{x} + \omega_0^2 x = \frac{F_e}{m}\cos(\omega t), \qquad \omega_0 = \sqrt{\frac{k}{m}},\quad Q = \frac{m\omega_0}{\lambda} = \frac{\sqrt{km}}{\lambda}. \]</p>
+      <p><em>Électrique :</em> \(L\ddot{q} + R\dot{q} + \dfrac{q}{C} = E_0\cos(\omega t)\), soit :</p>
+      <p>\[ \ddot{q} + \frac{\omega_0}{Q}\dot{q} + \omega_0^2 q = \frac{E_0}{L}\cos(\omega t), \qquad \omega_0 = \frac{1}{\sqrt{LC}},\quad Q = \frac{1}{R}\sqrt{\frac{L}{C}}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2. Table d'analogies électromécaniques</span>
+      <table style="width:100%;border-collapse:collapse;margin:.4rem 0;font-size:.95rem">
+        <thead><tr style="border-bottom:2px solid var(--color-border)"><th style="text-align:left;padding:.4rem .6rem">Grandeur mécanique</th><th style="text-align:center;padding:.4rem"></th><th style="text-align:left;padding:.4rem .6rem">Grandeur électrique</th></tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--color-border)"><td style="padding:.35rem .6rem">Position \(x\)</td><td style="text-align:center">\(\longleftrightarrow\)</td><td style="padding:.35rem .6rem">Charge \(q\)</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border)"><td style="padding:.35rem .6rem">Vitesse \(\dot x\)</td><td style="text-align:center">\(\longleftrightarrow\)</td><td style="padding:.35rem .6rem">Intensité \(i = \dot q\)</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border)"><td style="padding:.35rem .6rem">Masse \(m\)</td><td style="text-align:center">\(\longleftrightarrow\)</td><td style="padding:.35rem .6rem">Inductance \(L\)</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border)"><td style="padding:.35rem .6rem">Raideur \(k\)</td><td style="text-align:center">\(\longleftrightarrow\)</td><td style="padding:.35rem .6rem">\(1/C\)</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border)"><td style="padding:.35rem .6rem">Coefficient \(\lambda\)</td><td style="text-align:center">\(\longleftrightarrow\)</td><td style="padding:.35rem .6rem">Résistance \(R\)</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border)"><td style="padding:.35rem .6rem">Force \(F_e\)</td><td style="text-align:center">\(\longleftrightarrow\)</td><td style="padding:.35rem .6rem">Tension \(E_0\)</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border)"><td style="padding:.35rem .6rem">\(\omega_0 = \sqrt{k/m}\)</td><td style="text-align:center">\(\longleftrightarrow\)</td><td style="padding:.35rem .6rem">\(\omega_0 = 1/\sqrt{LC}\)</td></tr>
+          <tr><td style="padding:.35rem .6rem">\(Q = \sqrt{km}/\lambda\)</td><td style="text-align:center">\(\longleftrightarrow\)</td><td style="padding:.35rem .6rem">\(Q = \frac{1}{R}\sqrt{L/C}\)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3. Régime forcé sinusoïdal — amplitude complexe</span>
+      <p>On cherche \(x_p(t) = \operatorname{Re}(\underline{x}\,e^{j\omega t})\). L'équation complexe donne :</p>
+      <p>\[ \underline{x} = \frac{F_e/m}{\omega_0^2 - \omega^2 + j\,\omega\omega_0/Q}. \]</p>
+      <p>Module :</p>
+      <p>\[ |\underline{x}| = \frac{F_e/m}{\sqrt{(\omega_0^2-\omega^2)^2 + \omega^2\omega_0^2/Q^2}}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4. Résonances</span>
+      <p><em>Résonance en déplacement</em> (maximum de \(|\underline{x}|\)) à \(\omega_r = \omega_0\sqrt{1-1/(2Q^2)}\) (pour \(Q &gt; 1/\sqrt{2}\)).</p>
+      <p><em>Résonance en vitesse</em> (maximum de \(|\underline{\dot x}|\)) à \(\omega = \omega_0\) (toujours). À la résonance en vitesse :</p>
+      <p>\[ |\underline{\dot x}|_{\max} = \frac{F_e\,Q}{m\omega_0} = \frac{F_e}{m}\cdot\frac{Q}{\omega_0}. \]</p>
+      <p>Pour \(Q \gg 1\) : \(\omega_r \approx \omega_0\) et la résonance est aiguë ; bande passante \(\Delta\omega = \omega_0/Q\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — courbe de résonance et facteur de qualité</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-reso" aria-label="Courbe d'amplitude de l'oscillateur forcé en fonction de oméga sur oméga zéro, pour un facteur de qualité Q réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-q">Facteur de qualité \(Q\) <span class="val" id="v-q">3,0</span></label>
+          <input type="range" id="sl-q" min="0.3" max="12" step="0.1" value="3">
+          <span class="hint" id="hint-q">Résonance en déplacement observable si Q &gt; 0,71.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer (balayage en \(Q\))</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\omega_r/\omega_0\) (déplacement) = <b id="v-wr">—</b></span>
+            <span class="ro">Amplitude max \(\cdot(k/F_e)\) = <b id="v-amax">—</b></span>
+            <span class="ro">Bande passante \(\Delta\omega/\omega_0\) = <b id="v-bw">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Amplitude normalisée \(|\underline{x}|\cdot(k/F_e) = 1/\sqrt{(1-u^2)^2 + u^2/Q^2}\) en fonction de \(u = \omega/\omega_0\), pour le facteur de qualité \(Q\) réglé. Le marqueur orange repère la résonance en déplacement \(\omega_r = \omega_0\sqrt{1-1/(2Q^2)}\) ; le trait vert situe \(\omega = \omega_0\) (résonance en vitesse). Plus \(Q\) est grand, plus le pic est haut et étroit : bande passante \(\Delta\omega = \omega_0/Q\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Amplitude \(|\underline{x}|\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Résonance déplacement \(\omega_r\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(\omega = \omega_0\) (vitesse)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Distinguer résonance en <em>déplacement</em> (\(\omega &lt; \omega_0\)) et résonance en <em>vitesse</em> (\(\omega = \omega_0\)). La résonance électrique classique (impédance minimale) est analogue à la résonance en vitesse.</li>
+        <li>\(Q &lt; 1/\sqrt{2}\) : pas de résonance en déplacement ; \(Q &gt; 1/\sqrt{2}\) : résonance observable.</li>
+        <li>À la résonance en vitesse : déphasage de \(\vec{x}\) par rapport à \(F\) de \(\pi/2\).</li>
+        <li>Bande passante \(\Delta\omega = \omega_0/Q\) : plus \(Q\) est grand, plus la résonance est sélective.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MPSI</strong> (section 1.4).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m4.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M4 · Pendule simple et pesant</span></a>
+    <a class="next" href="m6.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M6 · Équilibre et stabilité</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-reso');
+  const slQ = document.getElementById('sl-q'), vQ = document.getElementById('v-q');
+  const vWr = document.getElementById('v-wr'), vAmax = document.getElementById('v-amax'), vBw = document.getElementById('v-bw');
+  const hint = document.getElementById('hint-q'), btn = document.getElementById('btn-anim');
+  let animating = false, t0 = 0;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function amp(u, Q) { return 1 / Math.sqrt((1 - u * u) * (1 - u * u) + u * u / (Q * Q)); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 340);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const Q = parseFloat(slQ.value);
+
+    const P = QC.makePlot(ctx, w, h, { xmin: 0, xmax: 2.5, ymin: 0, ymax: 6, pad: { l: 46, r: 16, t: 16, b: 30 } });
+    P.grid(c, { xticks: 5, yticks: 6 });
+    P.axes(c, { xlabel: 'ω / ω₀', ylabel: '|x|·k/Fₑ' });
+
+    // courbe principale
+    P.curve(function (u) { return amp(u, Q); }, c.bleu, { lw: 2.6 });
+
+    // référence omega = omega0 (résonance vitesse)
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.4; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(P.px(1), P.py(0)); ctx.lineTo(P.px(1), P.py(6)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.vert; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('ω₀', P.px(1), P.py(6) - 4);
+
+    // résonance en déplacement
+    let wr = NaN, amax = NaN;
+    if (Q > 1 / Math.SQRT2) {
+      wr = Math.sqrt(1 - 1 / (2 * Q * Q));
+      amax = amp(wr, Q);
+      const yy = Math.min(amax, 6);
+      ctx.fillStyle = c.orange;
+      ctx.beginPath(); ctx.arc(P.px(wr), P.py(yy), 5, 0, 2 * Math.PI); ctx.fill();
+      ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+      ctx.fillText('ωr', P.px(wr) + 7, P.py(yy) - 2);
+    }
+
+    // lectures
+    vQ.textContent = fr(Q, 1);
+    vWr.textContent = (Q > 1 / Math.SQRT2) ? fr(wr, 3) : 'pas de pic';
+    vAmax.textContent = (Q > 1 / Math.SQRT2) ? fr(amax, 2) : '—';
+    vBw.textContent = fr(1 / Q, 3);
+    if (Q < 1 / Math.SQRT2) hint.textContent = 'Q < 0,71 : amortissement fort, aucune résonance en déplacement.';
+    else if (Q > 6) hint.textContent = 'Q grand : pic aigu, ωr ≈ ω₀, bande passante étroite Δω = ω₀/Q.';
+    else hint.textContent = 'Résonance en déplacement à ωr = ω₀√(1−1/(2Q²)).';
+  }
+
+  QC.loop(function (ts) {
+    if (animating) {
+      const phase = (ts - t0) * 0.5;
+      const Q = 0.6 + 5.7 * (1 - Math.cos(phase)) / 2 + 0.05;
+      slQ.value = Math.min(12, Q).toFixed(1);
+      draw();
+    }
+  });
+
+  slQ.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer (balayage en Q)';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

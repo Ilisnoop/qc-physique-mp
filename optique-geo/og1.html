@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OG1 — Lois de Descartes / conditions de Gauss · QC Oraux MP*</title>
+<meta name="description" content="Lois de Snell-Descartes : réflexion, réfraction, principe de Fermat, réflexion totale interne, fibre optique, conditions de Gauss.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique géométrique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="og2.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="og1.html" aria-current="page"><span class="qn">OG1</span>Lois de Descartes / conditions de Gauss</a>
+        <a href="og2.html"><span class="qn">OG2</span>Stigmatisme et aplanétisme</a>
+        <a href="og3.html"><span class="qn">OG3</span>Lentilles minces</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 1 · Optique géométrique</span>
+    <h1>Lois de Descartes : énoncé, démonstration, applications, conditions de Gauss</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span><span class="src">PL-210</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer les lois de Descartes pour la réflexion et la réfraction, les démontrer à partir du principe de Fermat (ou les admettre et les justifier physiquement), les appliquer à la réflexion totale et à la fibre optique, puis énoncer les conditions de Gauss.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 1.1 Formation des images</div>
+      <p>Capacités exigibles : définir le modèle de l'optique géométrique et le rayon lumineux ; énoncer les lois de Snell-Descartes pour la réflexion et la réfraction ; établir la condition de réflexion totale interne ; énoncer les conditions de l'approximation de Gauss et leurs conséquences ; établir les expressions du cône d'acceptance d'une fibre à saut d'indice (application).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Rayon lumineux</strong> : courbe orthogonale aux surfaces d'onde ; dans un milieu homogène isotrope, c'est une droite.</li>
+      <li><strong>Indice de réfraction</strong> \(n = c/v\) où \(c\) est la célérité de la lumière dans le vide et \(v\) la vitesse de phase dans le milieu. On a \(n\geq 1\) pour les milieux transparents ordinaires.</li>
+      <li>Notations : \(n_1\), \(n_2\) indices des milieux 1 et 2 ; \(\hat{i}\) angle d'incidence, \(\hat{r}\) angle de réflexion, \(\hat{t}\) angle de réfraction (mesurés par rapport à la normale à la dioptre, orientée vers le milieu 2).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Énoncé des lois de Descartes</span>
+      <p><em>Loi 1 (coplanarité) :</em> le rayon incident, le rayon réfléchi, le rayon réfracté et la normale à la surface de séparation au point d'incidence sont coplanaires.</p>
+      <p><em>Loi 2 (réflexion) :</em> l'angle de réflexion est égal à l'angle d'incidence : \(\ \hat{r} = \hat{i}.\)</p>
+      <p><em>Loi 3 (réfraction) :</em> les angles d'incidence et de réfraction sont liés par la loi de Snell-Descartes : \(\ n_1\sin\hat{i} = n_2\sin\hat{t}.\)</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Justification par le principe de Fermat (admis)</span>
+      <p>Le principe de Fermat stipule que le chemin optique suivi par la lumière entre deux points \(A\) et \(B\) est un extremum (ou un point stationnaire) par rapport aux chemins voisins. Pour la réfraction, en cherchant le point \(I\) sur l'interface qui rend stationnaire \(L = n_1 AI + n_2 IB\), la condition \(\mathrm{d} L/\mathrm{d} x = 0\) donne :</p>
+      <p>\[ n_1\,\frac{x}{\sqrt{x^2+h_1^2}} = n_2\,\frac{d-x}{\sqrt{(d-x)^2+h_2^2}}, \]</p>
+      <p>soit \(n_1\sin\hat{i} = n_2\sin\hat{t}\). La loi de réflexion s'obtient de même en imposant \(n_2 = n_1\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Réflexion totale interne</span>
+      <p>Si \(n_1 &gt; n_2\) (passage d'un milieu dense vers un milieu moins dense), la loi de Snell-Descartes donne \(\sin\hat{t} = (n_1/n_2)\sin\hat{i}\). Pour \(\sin\hat{i} \geq n_2/n_1\), il n'existe plus de rayon réfracté : c'est la <strong>réflexion totale interne</strong>. L'angle critique est :</p>
+      <p>\[ \sin\hat{i}_c = \frac{n_2}{n_1}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Application : fibre optique à saut d'indice</span>
+      <p>La fibre est constituée d'un cœur d'indice \(n_1\) entouré d'une gaine d'indice \(n_2 &lt; n_1\). Un rayon se propage par réflexion totale si l'angle d'incidence sur l'interface cœur/gaine dépasse \(\hat{i}_c\). Cela impose pour l'angle d'entrée dans la fibre (dans l'air, \(n_0=1\)) :</p>
+      <p>\[ \sin\hat{\alpha}_{\max} = \frac{1}{n_0}\sqrt{n_1^2 - n_2^2} \quad\text{(ouverture numérique)}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Conditions de Gauss</span>
+      <p>Pour qu'un système optique soit <em>approché stigmatique</em>, on restreint les rayons utilisés :</p>
+      <ul>
+        <li>rayons <strong>paraxiaux</strong> : faiblement inclinés par rapport à l'axe optique (\(\hat{u}\ll 1\)) ;</li>
+        <li>rayons <strong>peu hauts</strong> : passant près de l'axe optique (\(h\ll R\) où \(R\) est le rayon de courbure).</li>
+      </ul>
+      <p>Dans ces conditions, \(\sin\hat{u}\approx\tan\hat{u}\approx\hat{u}\) et toutes les relations optiques se linéarisent : on entre dans l'<strong>approximation de Gauss</strong> (ou approximation paraxiale).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — réfraction à une interface et réflexion totale</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-refr" aria-label="Réfraction et réflexion à une interface, angle d'incidence réglable, réflexion totale"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-i">Angle d'incidence \(\hat{i}\) <span class="val" id="v-i">35°</span></label>
+          <input type="range" id="sl-i" min="0" max="89" step="0.5" value="35">
+          <label for="sl-n1" style="margin-top:.6rem">Indice milieu 1 \(n_1\) <span class="val" id="v-n1">1,50</span></label>
+          <input type="range" id="sl-n1" min="1" max="2.4" step="0.01" value="1.5">
+          <label for="sl-n2" style="margin-top:.6rem">Indice milieu 2 \(n_2\) <span class="val" id="v-n2">1,00</span></label>
+          <input type="range" id="sl-n2" min="1" max="2.4" step="0.01" value="1">
+          <span class="hint" id="hint-tir">—</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer l'incidence</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(n_1\sin\hat{i}\) = <b id="v-prod1">—</b></span>
+            <span class="ro">\(n_2\sin\hat{t}\) = <b id="v-prod2">—</b></span>
+            <span class="ro" id="ro-t">Angle de réfraction \(\hat{t}\) = <b id="v-t">—</b></span>
+            <span class="ro" id="ro-ic">Angle critique \(\hat{i}_c\) = <b id="v-ic">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Rayon incident (bleu) frappant l'interface horizontale ; rayon réfléchi (rouge) symétrique de l'incident ; rayon réfracté (vert) obéissant à \(n_1\sin\hat{i} = n_2\sin\hat{t}\). Quand \(n_1&gt;n_2\) et que \(\hat{i}\) dépasse l'angle critique \(\hat{i}_c=\arcsin(n_2/n_1)\), le rayon réfracté disparaît : réflexion totale interne. Les deux lectures \(n_1\sin\hat{i}\) et \(n_2\sin\hat{t}\) restent égales tant qu'il y a réfraction.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>incident</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>réfléchi</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>réfracté</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Les angles sont mesurés par rapport à la <em>normale</em>, pas à la surface.</li>
+        <li>La loi de réfraction est symétrique : si un rayon va de 1 vers 2, il peut revenir de 2 vers 1 avec le même chemin (retour inverse).</li>
+        <li>Ordre de grandeur : \(n_{\rm verre}\approx 1{,}5\), \(n_{\rm eau}\approx 1{,}33\), \(n_{\rm air}\approx 1\).</li>
+        <li>L'angle critique pour le verre/air est \(\hat{i}_c = \arcsin(1/1{,}5)\approx 42^{\circ}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MPSI. La démonstration par le principe de Fermat peut être mentionnée comme justification mais n'est pas exigée : les lois de Descartes sont des lois fondamentales pouvant être données directement.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="index.html"><span class="pn-dir">← Sommaire</span><span class="pn-title">Optique géométrique · 3 questions</span></a>
+    <a class="next" href="og2.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OG2 · Stigmatisme et aplanétisme</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 7 : Optique géométrique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-refr');
+  const slI = document.getElementById('sl-i'), slN1 = document.getElementById('sl-n1'), slN2 = document.getElementById('sl-n2');
+  const vI = document.getElementById('v-i'), vN1 = document.getElementById('v-n1'), vN2 = document.getElementById('v-n2');
+  const vP1 = document.getElementById('v-prod1'), vP2 = document.getElementById('v-prod2');
+  const vT = document.getElementById('v-t'), vIc = document.getElementById('v-ic'), hint = document.getElementById('hint-tir');
+  const roT = document.getElementById('ro-t'), roIc = document.getElementById('ro-ic');
+  const btn = document.getElementById('btn-anim');
+
+  let animating = false, dir = 1;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  const DEG = Math.PI / 180;
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 340);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const i = parseFloat(slI.value) * DEG;
+    const n1 = parseFloat(slN1.value), n2 = parseFloat(slN2.value);
+    const ox = w / 2, oy = h / 2;     // point d'incidence
+    const R = Math.min(w, h) * 0.42;  // longueur des rayons
+
+    // milieux teintés
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.05; ctx.fillRect(0, 0, w, oy);
+    ctx.fillStyle = c.vert; ctx.globalAlpha = 0.05; ctx.fillRect(0, oy, w, h - oy);
+    ctx.globalAlpha = 1;
+    // interface + normale
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.8; ctx.beginPath(); ctx.moveTo(0, oy); ctx.lineTo(w, oy); ctx.stroke();
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.setLineDash([5, 5]);
+    ctx.beginPath(); ctx.moveTo(ox, oy - R - 14); ctx.lineTo(ox, oy + R + 14); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace';
+    ctx.textAlign = 'left'; ctx.fillText('normale', ox + 6, oy - R - 4);
+    ctx.fillText('milieu 1 · n₁ = ' + fr(n1, 2), 8, 18);
+    ctx.fillText('milieu 2 · n₂ = ' + fr(n2, 2), 8, h - 10);
+
+    // rayon incident (haut-gauche -> O)
+    const ix = ox - R * Math.sin(i), iy = oy - R * Math.cos(i);
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6;
+    ctx.beginPath(); ctx.moveTo(ix, iy); ctx.lineTo(ox, oy); ctx.stroke();
+    // tête de flèche incident
+    arrow(ctx, ix, iy, ox, oy, c.bleu);
+
+    // rayon réfléchi (O -> haut-droite)
+    const rx = ox + R * Math.sin(i), ry = oy - R * Math.cos(i);
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(rx, ry); ctx.stroke();
+    arrow(ctx, ox, oy, rx, ry, c.rouge);
+
+    // réfraction
+    const sint = (n1 / n2) * Math.sin(i);
+    let tir = false, t = 0;
+    if (sint <= 1) {
+      t = Math.asin(sint);
+      const tx = ox + R * Math.sin(t), ty = oy + R * Math.cos(t);
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 2.6;
+      ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(tx, ty); ctx.stroke();
+      arrow(ctx, ox, oy, tx, ty, c.vert);
+    } else { tir = true; }
+
+    // arcs d'angles
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(ox, oy, 26, -Math.PI / 2 - i, -Math.PI / 2); ctx.stroke();
+    ctx.fillStyle = c.bleu; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('î', ox - 38 * Math.sin(i / 2), oy - 38 * Math.cos(i / 2));
+    if (!tir) {
+      ctx.strokeStyle = c.muted; ctx.beginPath(); ctx.arc(ox, oy, 26, Math.PI / 2 - t, Math.PI / 2); ctx.stroke();
+      ctx.fillStyle = c.vert; ctx.fillText('t̂', ox + 40 * Math.sin(t / 2), oy + 42 * Math.cos(t / 2));
+    }
+
+    // marqueur réflexion totale
+    if (tir) {
+      ctx.fillStyle = c.rouge; ctx.font = '600 13px Inter, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('RÉFLEXION TOTALE', ox, oy + R + 24);
+    }
+
+    // lectures
+    vI.textContent = fr(parseFloat(slI.value), 1).replace(',0', '') + '°';
+    vN1.textContent = fr(n1, 2); vN2.textContent = fr(n2, 2);
+    vP1.textContent = fr(n1 * Math.sin(i), 3);
+    if (!tir) {
+      vP2.textContent = fr(n2 * Math.sin(t), 3);
+      vT.textContent = fr(t / DEG, 1) + '°'; roT.style.display = '';
+    } else { vP2.textContent = '—'; vT.textContent = '— (pas de réfracté)'; roT.style.display = ''; }
+    if (n1 > n2) {
+      const ic = Math.asin(n2 / n1) / DEG;
+      vIc.textContent = fr(ic, 1) + '°'; roIc.style.display = '';
+      hint.textContent = tir
+        ? 'î > î_c : réflexion totale interne (n₁ > n₂).'
+        : 'î < î_c : réfraction encore possible (n₁ > n₂).';
+    } else {
+      vIc.textContent = 'aucun (n₁ ≤ n₂)'; roIc.style.display = '';
+      hint.textContent = 'n₁ ≤ n₂ : pas de réflexion totale, toujours un rayon réfracté.';
+    }
+  }
+
+  function arrow(ctx, x0, y0, x1, y1, col) {
+    const a = Math.atan2(y1 - y0, x1 - x0), L = 9;
+    ctx.fillStyle = col; ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x1 - L * Math.cos(a - 0.4), y1 - L * Math.sin(a - 0.4));
+    ctx.lineTo(x1 - L * Math.cos(a + 0.4), y1 - L * Math.sin(a + 0.4));
+    ctx.closePath(); ctx.fill();
+  }
+
+  let last = 0;
+  QC.loop(function (tt) {
+    const dt = tt - last; last = tt;
+    if (animating) {
+      let v = parseFloat(slI.value) + dir * dt * 28;
+      if (v >= 89) { v = 89; dir = -1; }
+      if (v <= 0) { v = 0; dir = 1; }
+      slI.value = v; draw();
+    }
+  });
+
+  [slI, slN1, slN2].forEach(el => el.addEventListener('input', draw));
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer l\u2019incidence' : 'Animer l\u2019incidence';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

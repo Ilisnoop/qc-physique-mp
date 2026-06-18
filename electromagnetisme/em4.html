@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM4 — Condensateur plan · QC Oraux MP*</title>
+<meta name="description" content="Champ uniforme entre armatures (du + vers le −) et capacité C = ε₀A/d d'un condensateur plan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em5.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html" aria-current="page"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Électromagnétisme</span>
+    <h1>Condensateur plan : champ électrique et capacité</h1>
+    <p class="q-sources"><span class="src">POLY p.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Calculer le champ électrique dans un condensateur plan, puis en déduire la capacité \(C\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.1 Électrostatique</div>
+      <p>« Établir et citer l'expression de la capacité d'un condensateur plan dans le vide. » Modèle : superposition de deux distributions surfaciques de charges opposées. Théorème de Gauss admis. Niveau MP.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Deux plaques planes parallèles infinies, séparées d'une distance \(d\) (\(\mathrm{m}\)), portant des densités surfaciques \(+\sigma\) et \(-\sigma\) (\(\mathrm{C\cdot m^{-2}}\)), avec \(\sigma>0\). La surface de chaque armature est \(\mathcal{A}\). Le vide occupe l'espace entre les plaques. On note \(\hat{x}\) la normale orientée de la plaque positive vers la plaque négative (sens dans lequel le champ va effectivement pointer).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Champ d'une plaque infinie (théorème de Gauss)</span>
+      <p>Une plaque de densité surfacique \(\sigma>0\) crée, par symétrie planaire, un champ \(\vec{E} = \dfrac{\sigma}{2\varepsilon_0}\,\hat{n}\) de chaque côté, dirigé en s'<em>éloignant</em> de la plaque (\(\hat{n}\) normale sortante). On l'obtient avec une surface de Gauss cylindrique d'axe perpendiculaire à la plaque, traversée de part et d'autre.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Superposition</span>
+      <p>Entre les plaques, le champ de l'armature positive (dirigé du \(+\) vers le \(-\)) et celui de l'armature négative (dirigé du \(+\) vers le \(-\)) pointent dans le même sens \(\hat{x}\) et s'additionnent :</p>
+      <p>\[ \vec{E} = \frac{\sigma}{2\varepsilon_0}\hat{x} + \frac{\sigma}{2\varepsilon_0}\hat{x} = \frac{\sigma}{\varepsilon_0}\hat{x} \]</p>
+      <p>Le champ va donc <strong>de l'armature positive vers l'armature négative</strong>, conformément à \(\vec{E}=-\vec{\mathrm{grad}}\,V\). À l'extérieur, les deux contributions sont opposées et se compensent exactement : \(\vec{E} = \vec{0}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Tension et capacité</span>
+      <p>\[ U = V_+ - V_- = \int_{+}^{-} \vec{E}\cdot\mathrm{d}\vec{\ell} = E\,d = \frac{\sigma d}{\varepsilon_0} \]</p>
+      <p>La charge sur l'armature positive est \(Q = \sigma\mathcal{A}\). La capacité \(C = Q/U\) vaut :</p>
+      <p>\[ C = \frac{\sigma\mathcal{A}}{\sigma d/\varepsilon_0} = \frac{\varepsilon_0\mathcal{A}}{d} \]</p>
+      <p>Vérification dimensionnelle : \([\varepsilon_0\mathcal{A}/d] = \mathrm{F\cdot m^{-1}}\cdot\mathrm{m^2}/\mathrm{m} = \mathrm{F}\). Ordre de grandeur : \(\mathcal{A} = 100\,\mathrm{cm^2}\), \(d = 1\,\mathrm{mm}\) \(\Rightarrow\) \(C \approx 88\,\mathrm{pF}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — champ \(\vec{E}\) entre armatures et capacité</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-condo" aria-label="Champ E uniforme du + vers le -, écartement d et charge sigma réglables, capacité C calculée en direct"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-d">Écartement \(d\) <span class="val" id="v-d">1,0 mm</span></label>
+          <input type="range" id="sl-d" min="0.5" max="5" step="0.1" value="1">
+          <label for="sl-s" style="margin-top:.5rem">Densité \(\sigma\) <span class="val" id="v-s">1,0 µC·m⁻²</span></label>
+          <input type="range" id="sl-s" min="0.2" max="3" step="0.1" value="1">
+          <span class="hint">Le champ \(\vec{E}\) (orange) pointe de l'armature \(+\) (haut) vers l'armature \(-\) (bas).</span>
+          <div class="btn-row" style="margin-top:.5rem"><button class="btn primary" id="btn-anim" type="button">Animer une charge test \(+q\)</button></div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(E=\sigma/\varepsilon_0\) = <b id="v-E">113</b> kV·m⁻¹</span>
+            <span class="ro">\(U=Ed\) = <b id="v-U">113</b> V</span>
+            <span class="ro">\(C=\varepsilon_0\mathcal{A}/d\) = <b id="v-C">88,5</b> pF</span>
+          </div>
+          <span class="hint" style="margin-top:.3rem">Surface fixée \(\mathcal{A}=100\,\mathrm{cm^2}\).</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Condensateur plan : champ uniforme \(\vec{E}=\sigma/\varepsilon_0\) dirigé de l'armature \(+\) (rouge) vers l'armature \(-\) (bleue), nul à l'extérieur. Rapprocher les armatures (réduire \(d\)) augmente la capacité \(C=\varepsilon_0\mathcal{A}/d\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Armature \(+\sigma\)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Armature \(-\sigma\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Champ \(\vec{E}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>L'étude des conducteurs en équilibre électrostatique est hors programme MP ; on modélise directement par des distributions surfaciques de charges.</li>
+        <li>Bien mentionner que \(\vec{E}=\vec{0}\) à l'extérieur est une conséquence de la superposition, pas un a priori.</li>
+        <li>La capacité augmente avec \(\mathcal{A}\) et diminue avec \(d\) : rapprocher les armatures renforce l'attraction des charges.</li>
+        <li>Le champ pointe du \(+\) vers le \(-\), cohérent avec \(\vec{E}=-\vec{\mathrm{grad}}\,V\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, section §4.1. L'étude des conducteurs en équilibre électrostatique est hors programme et n'est pas abordée ici.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM3 · Magnétostatique : fil infini</span></a>
+    <a class="next" href="em5.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM5 · Dipôle électrostatique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-condo');
+  const slD = document.getElementById('sl-d'), slS = document.getElementById('sl-s');
+  const vD = document.getElementById('v-d'), vS = document.getElementById('v-s');
+  const vE = document.getElementById('v-E'), vU = document.getElementById('v-U'), vC = document.getElementById('v-C');
+  const btn = document.getElementById('btn-anim');
+  const EPS0 = 8.854e-12, AREA = 100e-4; // 100 cm^2 = 0.01 m^2
+  let running = false, qpos = 0, qvel = 0; // qpos = fraction 0(+)→1(−) du trajet
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const d = parseFloat(slD.value), sig = parseFloat(slS.value); // mm, µC/m2
+    // géométrie : plaques horizontales ; espacement visuel ~ d
+    const plL = w*0.18, plR = w*0.72, midX = (plL+plR)/2;
+    const gap = 40 + d*28;
+    const topY = h/2 - gap/2, botY = h/2 + gap/2;
+    // plaque + (rouge, haut)
+    ctx.fillStyle = c.rouge; ctx.fillRect(plL, topY-7, plR-plL, 7);
+    // plaque - (bleu, bas)
+    ctx.fillStyle = c.bleu; ctx.fillRect(plL, botY, plR-plL, 7);
+    ctx.font = '13px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    ctx.fillStyle = c.rouge; ctx.fillText('+σ', plL-8, topY-1);
+    ctx.fillStyle = c.bleu; ctx.fillText('−σ', plL-8, botY+12);
+    // champ E : flèches du + (haut) vers le - (bas) — densité ∝ sigma
+    const nArr = Math.max(3, Math.round(3 + sig*1.5));
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2.2;
+    for (let i = 0; i < nArr; i++) {
+      const x = plL + (plR-plL)*(i+0.5)/nArr;
+      ctx.beginPath(); ctx.moveTo(x, topY+2); ctx.lineTo(x, botY-2);
+      ctx.moveTo(x, botY-2); ctx.lineTo(x-4, botY-10);
+      ctx.moveTo(x, botY-2); ctx.lineTo(x+4, botY-10); ctx.stroke();
+    }
+    ctx.fillStyle = c.orange; ctx.textAlign = 'center';
+    ctx.fillText('E = σ/ε₀  (uniforme, + → −)', midX, topY-16);
+    // distance d
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(plR+18, topY); ctx.lineTo(plR+18, botY); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(plR+14,topY); ctx.lineTo(plR+22,topY); ctx.moveTo(plR+14,botY); ctx.lineTo(plR+22,botY); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.textAlign='left'; ctx.fillText('d', plR+26, (topY+botY)/2+4);
+    // E nul à l'extérieur
+    ctx.fillStyle = c.text; ctx.globalAlpha=0.6; ctx.textAlign='center';
+    ctx.fillText('E = 0 à l\'extérieur', midX, h-12); ctx.globalAlpha=1;
+    // calculs
+    const E = sig*1e-6 / EPS0;   // V/m
+    const U = E * d*1e-3;        // V
+    const C = EPS0 * AREA / (d*1e-3); // F
+    vD.textContent = fr(d,1)+' mm'; vS.textContent = fr(sig,1)+' µC·m⁻²';
+    vE.textContent = fr(E/1000,0); vU.textContent = fr(U,0); vC.textContent = fr(C*1e12,1);
+    // charge test +q en mouvement : du + (haut) vers le - (bas), confirme le sens de E
+    if (running) {
+      const qy = topY + 2 + (botY - topY - 4) * qpos;
+      const qx = midX;
+      ctx.fillStyle = c.rouge;
+      ctx.beginPath(); ctx.arc(qx, qy, 7, 0, 2*Math.PI); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 11px IBM Plex Mono, monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('+q', qx, qy); ctx.textBaseline = 'alphabetic';
+      // vecteur force qE (orange) sur la charge
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(qx+14, qy); ctx.lineTo(qx+14, qy+18);
+      ctx.moveTo(qx+14, qy+18); ctx.lineTo(qx+10, qy+11); ctx.moveTo(qx+14, qy+18); ctx.lineTo(qx+18, qy+11); ctx.stroke();
+      ctx.fillStyle = c.orange; ctx.textAlign='left'; ctx.fillText('q\u00b7E', qx+22, qy+14);
+    }
+  }
+  function tick() {
+    if (!running) return;
+    const sig = parseFloat(slS.value);
+    const acc = 0.00018 * sig;          // accélération ∝ E ∝ σ
+    qvel += acc; qpos += qvel;
+    if (qpos >= 1) { qpos = 0; qvel = 0; } // recommence depuis l'armature +
+    draw();
+    requestAnimationFrame(tick);
+  }
+  btn.addEventListener('click', function () {
+    running = !running;
+    btn.textContent = running ? 'Arrêter' : 'Animer une charge test +q';
+    if (running) { qpos = 0; qvel = 0; tick(); } else { draw(); }
+  });
+  slD.addEventListener('input', draw); slS.addEventListener('input', draw);
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

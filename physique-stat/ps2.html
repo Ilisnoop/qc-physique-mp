@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS2 — Système à deux niveaux d'énergie · QC Oraux MP*</title>
+<meta name="description" content="Système à deux niveaux d'énergie ±ε : énergie moyenne, capacité thermique Cv, anomalie de Schottky, entropie et lien fluctuations–capacité thermique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Physique statistique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ps1.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ps3.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ps1.html"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
+        <a href="ps2.html" aria-current="page"><span class="qn">PS2</span>Système à deux niveaux</a>
+        <a href="ps3.html"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 2 · Physique statistique</span>
+    <h1>Système à deux niveaux d'énergie</h1>
+    <p class="q-sources"><span class="src">POLY p.4</span><span class="src">PL-407</span><span class="src">PL-114</span><span class="src">PL-416</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Étudier un système à deux niveaux d'énergie \(\pm\varepsilon\) : calculer l'énergie moyenne, la capacité thermique \(C_V\), l'entropie, analyser leur évolution avec la température, et établir le lien entre \(C_V\) et les fluctuations d'énergie.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 7 §7.2 — Système à deux niveaux</div>
+      <ul>
+        <li>Système à deux niveaux non dégénérés d'énergies \(\pm\varepsilon\).</li>
+        <li>Citer des exemples de systèmes modélisables par un système à deux niveaux.</li>
+        <li>Déterminer l'énergie moyenne et la capacité thermique ; interpréter l'évolution avec la température (limites haute et basse température).</li>
+        <li>Relier les fluctuations d'énergie à la capacité thermique.</li>
+        <li>Exprimer l'énergie moyenne et l'écart quadratique moyen sous forme d'une somme sur les états ; utiliser la condition de normalisation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Un système à deux niveaux est une entité pouvant occuper deux états d'énergie : \(\varepsilon_- = -\varepsilon\) et \(\varepsilon_+ = +\varepsilon\), avec \(\varepsilon &gt; 0\). En contact avec un thermostat à température \(T\), les probabilités d'occupation sont données par le facteur de Boltzmann. On note \(\beta = 1/(k_BT)\).</p>
+    <p><strong>Exemples.</strong> Spin \(1/2\) dans un champ magnétique (\(\varepsilon = \mu_B B\)) ; dipôle électrique à deux orientations ; défaut ponctuel dans un solide.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Probabilités d'occupation</span>
+      <p>Par normalisation :</p>
+      <p>\[ P_- = \frac{e^{+\beta\varepsilon}}{e^{+\beta\varepsilon}+e^{-\beta\varepsilon}} = \frac{e^{\beta\varepsilon}}{2\cosh(\beta\varepsilon)}, \qquad P_+ = \frac{e^{-\beta\varepsilon}}{2\cosh(\beta\varepsilon)}. \]</p>
+      <p>La fonction de partition est \(Z = e^{+\beta\varepsilon}+e^{-\beta\varepsilon} = 2\cosh(\beta\varepsilon)\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Énergie moyenne</span>
+      <p>\[ \langle E\rangle = (-\varepsilon)\,P_- + (+\varepsilon)\,P_+ = \varepsilon\,\frac{e^{-\beta\varepsilon}-e^{+\beta\varepsilon}}{2\cosh(\beta\varepsilon)} = -\varepsilon\tanh(\beta\varepsilon). \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Limites</span>
+      <p>À basse température (\(k_BT \ll \varepsilon\), soit \(\beta\varepsilon\to\infty\)) :</p>
+      <p>\[ \langle E\rangle \to -\varepsilon \quad \text{(niveau de basse énergie saturé).} \]</p>
+      <p>À haute température (\(k_BT \gg \varepsilon\), soit \(\beta\varepsilon\to 0\)), on linéarise \(\tanh(\beta\varepsilon) \approx \beta\varepsilon\) :</p>
+      <p>\[ \langle E\rangle \approx -\frac{\varepsilon^2}{k_BT} \to 0 \quad \text{(deux niveaux équiprobables).} \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Capacité thermique à volume constant</span>
+      <p>En dérivant \(\langle E\rangle\) par rapport à \(T\) :</p>
+      <p>\[ C_V = \frac{\mathrm{d}\langle E\rangle}{\mathrm{d}T} = k_B\,(\beta\varepsilon)^2\,\frac{1}{\cosh^2(\beta\varepsilon)}, \]</p>
+      <p>soit, de façon équivalente en faisant apparaître les exponentielles :</p>
+      <p>\[ C_V = k_B\left(\frac{\varepsilon}{k_BT}\right)^2 \frac{4\,e^{2\varepsilon/(k_BT)}}{\left(e^{2\varepsilon/(k_BT)}+1\right)^2}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Comportement de \(C_V(T)\) : bosse de Schottky</span>
+      <ul>
+        <li>\(T\to 0\) : \(C_V \to 0\) exponentiellement (gel des fluctuations).</li>
+        <li>Maximum (<em>anomalie de Schottky</em>) vers \(k_BT \approx 0{,}83\,\varepsilon\).</li>
+        <li>\(T\to\infty\) : \(C_V \to 0\) en \(T^{-2}\) (saturation : \(P_\pm \to 1/2\), plus de fluctuations).</li>
+      </ul>
+      <p>Ce maximum (bosse) est caractéristique de tout système à spectre d'énergie borné.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Lien fluctuations–capacité thermique</span>
+      <p>L'écart quadratique moyen de l'énergie est :</p>
+      <p>\[ \Delta E^2 = \langle E^2\rangle - \langle E\rangle^2 = \varepsilon^2 - \varepsilon^2\tanh^2(\beta\varepsilon) = \frac{\varepsilon^2}{\cosh^2(\beta\varepsilon)}. \]</p>
+      <p>On reconnaît alors :</p>
+      <p>\[ C_V = \frac{\Delta E^2}{k_BT^2}. \]</p>
+      <p><em>Plus les fluctuations d'énergie sont grandes, plus la capacité thermique est élevée.</em></p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Entropie</span>
+      <p>En utilisant \(S = -k_B(P_-\ln P_- + P_+\ln P_+)\) :</p>
+      <p>\[ S = k_B\ln\!\left(2\cosh(\beta\varepsilon)\right) - k_B\,\beta\varepsilon\tanh(\beta\varepsilon). \]</p>
+      <p>Limites :</p>
+      <p>\[ T\to 0:\ S \to 0 \quad\text{(troisième principe ; un seul état accessible)}, \qquad T\to\infty:\ S \to k_B\ln 2 \quad\text{(deux états également probables).} \]</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — anomalie de Schottky \(C_V(T)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-schottky" aria-label="Capacité thermique Cv/kB du système à deux niveaux en fonction de kBT/ε, avec populations des deux niveaux, température réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-x">Température réduite \(k_BT/\varepsilon\) <span class="val" id="v-x">0,83</span></label>
+          <input type="range" id="sl-x" min="0.08" max="5" step="0.01" value="0.83">
+          <span class="hint" id="hint-x">Le point se déplace sur la courbe \(C_V(T)/k_B\) ; les deux jauges montrent les populations \(P_-\) et \(P_+\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la température</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(C_V/k_B\) = <b id="v-cv">0,439</b></span>
+            <span class="ro">\(\langle E\rangle/\varepsilon\) = <b id="v-e">−0,77</b></span>
+            <span class="ro">\(S/k_B\) = <b id="v-s">0,57</b></span>
+          </div>
+          <div class="gauges" style="margin-top:.6rem">
+            <div class="gauge t">
+              <span class="glabel">\(P_-\) (niveau \(-\varepsilon\))</span>
+              <div class="gtrack"><div class="gfill" id="g-pm"></div></div>
+              <span class="gval" id="v-pm">0,92</span>
+            </div>
+            <div class="gauge r">
+              <span class="glabel">\(P_+\) (niveau \(+\varepsilon\))</span>
+              <div class="gtrack"><div class="gfill" id="g-pp"></div></div>
+              <span class="gval" id="v-pp">0,08</span>
+            </div>
+          </div>
+          <span class="hint">Maximum \(C_V \approx 0{,}44\,k_B\) atteint vers \(k_BT \approx 0{,}83\,\varepsilon\) (trait rouge).</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Capacité thermique réduite \(C_V/k_B = (\varepsilon/k_BT)^2 / \cosh^2(\varepsilon/k_BT)\) du système à deux niveaux (courbe bleue) : la bosse de Schottky présente un maximum \(\approx 0{,}44\,k_B\) vers \(k_BT \approx 0{,}83\,\varepsilon\) (repère rouge), puis tend vers zéro aux deux extrêmes de température.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(C_V(T)/k_B\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>maximum \(\approx 0{,}44\,k_B\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>point courant</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Énoncer les deux niveaux \(\pm\varepsilon\) et écrire immédiatement la fonction de partition \(Z = 2\cosh(\beta\varepsilon)\).</li>
+        <li>L'énergie moyenne est \(\langle E\rangle = -\varepsilon\tanh(\beta\varepsilon)\) : à mémoriser.</li>
+        <li>La relation \(C_V = \Delta E^2/(k_BT^2)\) est fondamentale et vaut pour tout système.</li>
+        <li>Le maximum de \(C_V\) (anomalie de Schottky) est la signature d'un système à spectre borné supérieurement.</li>
+        <li>Limites à connaître : \(T\to 0\), \(\langle E\rangle\to -\varepsilon\), \(S\to 0\), \(C_V\to 0\) ; \(T\to\infty\), \(\langle E\rangle\to 0\), \(S\to k_B\ln 2\), \(C_V\to 0\).</li>
+        <li>Exemples à citer : spin nucléaire ou électronique en champ magnétique.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout le développement est au programme MP (§7.2).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ps1.html"><span class="pn-dir">← Précédent</span><span class="pn-title">PS1 · Facteur de Boltzmann / atmosphère isotherme</span></a>
+    <a class="next" href="ps3.html"><span class="pn-dir">Suivant →</span><span class="pn-title">PS3 · Équipartition / capacité thermique des gaz</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 9 : Physique statistique (§7).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-schottky');
+  const slX = document.getElementById('sl-x');
+  const vX = document.getElementById('v-x'), vCv = document.getElementById('v-cv'), vE = document.getElementById('v-e'), vS = document.getElementById('v-s');
+  const vPm = document.getElementById('v-pm'), vPp = document.getElementById('v-pp');
+  const gPm = document.getElementById('g-pm'), gPp = document.getElementById('g-pp');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, ph = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // x = kBT/ε  ;  be = βε = 1/x
+  function cvFn(x) { const be = 1 / x; return (be * be) / (Math.cosh(be) * Math.cosh(be)); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const x = parseFloat(slX.value);
+    const be = 1 / x;                 // βε
+    const cvv = cvFn(x);              // Cv/kB
+    const E = -Math.tanh(be);         // ⟨E⟩/ε
+    const Pm = Math.exp(be) / (2 * Math.cosh(be));
+    const Pp = Math.exp(-be) / (2 * Math.cosh(be));
+    const S = Math.log(2 * Math.cosh(be)) - be * Math.tanh(be);
+
+    const xmax = 5;
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: xmax, ymin: 0, ymax: 0.55, pad: { l: 16, r: 14, t: 18, b: 30 } });
+    plot.grid(c, { xticks: 5, yticks: 5 });
+    plot.axes(c, { xlabel: 'kBT/\u03B5', ylabel: 'Cv/kB' });
+
+    // repère du maximum de Schottky : x≈0.83 , Cv≈0.44
+    const xMax = 0.83, cvMax = cvFn(0.83);
+    const xm = plot.px(xMax), y0 = plot.py(0), ymx = plot.py(cvMax);
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(xm, y0); ctx.lineTo(xm, ymx); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // courbe Cv/kB
+    plot.curve(z => cvFn(z), c.bleu, { lw: 2.6, N: 400 });
+
+    // point courant
+    const cx = plot.px(x), cy = plot.py(cvv);
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(cx, cy, 4.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(cx, y0); ctx.lineTo(cx, cy); ctx.stroke();
+    ctx.setLineDash([]);
+
+    vX.textContent = fr(x, 2);
+    vCv.textContent = fr(cvv, 3);
+    vE.textContent = fr(E, 2).replace('-', '\u2212');
+    vS.textContent = fr(S, 2);
+    vPm.textContent = fr(Pm, 2);
+    vPp.textContent = fr(Pp, 2);
+    gPm.style.width = (100 * Pm).toFixed(1) + '%';
+    gPp.style.width = (100 * Pp).toFixed(1) + '%';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      ph += dt * 0.5;
+      const x = 0.08 + (5 - 0.08) * (0.5 - 0.5 * Math.cos(ph));
+      slX.value = x.toFixed(2);
+      draw();
+    }
+  });
+  slX.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la température';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

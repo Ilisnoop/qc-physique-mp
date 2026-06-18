@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS3 — Théorème d'équipartition : capacité thermique des gaz · QC Oraux MP*</title>
+<meta name="description" content="Théorème d'équipartition de l'énergie : contribution kBT/2 par degré quadratique. Capacité thermique molaire des gaz parfaits monoatomiques et diatomiques, loi de Dulong et Petit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Physique statistique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ps2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ps1.html"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
+        <a href="ps2.html"><span class="qn">PS2</span>Système à deux niveaux</a>
+        <a href="ps3.html" aria-current="page"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 3 · Physique statistique</span>
+    <h1>Théorème d'équipartition : capacité thermique des gaz</h1>
+    <p class="q-sources"><span class="src">POLY p.4</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer le théorème d'équipartition de l'énergie, l'appliquer aux gaz parfaits monoatomiques et diatomiques (GPM et GPD), et en déduire leur capacité thermique molaire \(C_V^{\rm mol}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 7 §7.3 — Théorème d'équipartition</div>
+      <ul>
+        <li>Théorème d'équipartition pour un degré de liberté énergétique indépendant quadratique : contribution \(k_BT/2\) par degré quadratique à l'énergie moyenne.</li>
+        <li>Capacité thermique molaire des gaz classiques dilués monoatomiques et diatomiques.</li>
+        <li>Capacité thermique molaire des solides dans le modèle d'Einstein classique : loi de Dulong et Petit.</li>
+        <li>Dénombrer les degrés de liberté énergétiques quadratiques indépendants et en déduire la capacité thermique molaire.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>On dit qu'un degré de liberté est <em>quadratique</em> si son énergie s'écrit \(\alpha q^2\) ou \(\alpha p^2\) (forme quadratique en une variable). La constante des gaz parfaits s'écrit \(R = N_A k_B \approx 8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">Théorème d'équipartition</span>
+      <p><em>À l'équilibre thermique à la température \(T\), chaque degré de liberté énergétique indépendant quadratique contribue pour \(\frac{1}{2}k_BT\) à l'énergie moyenne.</em></p>
+      <p>Ce résultat découle du calcul de la valeur moyenne \(\langle\alpha q^2\rangle\) sur la distribution de Boltzmann :</p>
+      <p>\[ \langle\alpha q^2\rangle = \frac{\int_{-\infty}^{+\infty} \alpha q^2\,e^{-\beta\alpha q^2}\,\mathrm{d}q}{\int_{-\infty}^{+\infty} e^{-\beta\alpha q^2}\,\mathrm{d}q} = -\frac{\mathrm{d}}{\mathrm{d}\beta}\ln\!\left(\int_{-\infty}^{+\infty} e^{-\beta\alpha q^2}\,\mathrm{d}q\right). \]</p>
+      <p>L'intégrale gaussienne donne \(\int e^{-\beta\alpha q^2}\mathrm{d}q = \sqrt{\pi/(\beta\alpha)}\), donc :</p>
+      <p>\[ \langle\alpha q^2\rangle = -\frac{\mathrm{d}}{\mathrm{d}\beta}\left(\frac{1}{2}\ln\frac{\pi}{\alpha} - \frac{1}{2}\ln\beta\right) = \frac{1}{2\beta} = \frac{k_BT}{2}. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Gaz parfait monoatomique (GPM)</span>
+      <p>Chaque atome possède 3 degrés de liberté de translation, chacun d'énergie \(\frac{1}{2}mv_\alpha^2\) (\(\alpha = x,y,z\)). Par le théorème d'équipartition :</p>
+      <p>\[ \langle E\rangle_{\rm atome} = 3 \times \frac{k_BT}{2} = \frac{3}{2}k_BT. \]</p>
+      <p>Pour une mole de gaz (\(N_A\) atomes) :</p>
+      <p>\[ U_m = \frac{3}{2}RT, \qquad C_{V,m}^{\rm GPM} = \frac{\mathrm{d}U_m}{\mathrm{d}T} = \frac{3}{2}R \approx 12{,}5\ \mathrm{J\,mol^{-1}\,K^{-1}}. \]</p>
+      <p>La capacité à pression constante est \(C_{P,m} = C_{V,m} + R = \frac{5}{2}R\), d'où \(\gamma = C_P/C_V = 5/3\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Gaz parfait diatomique (GPD) — régime classique</span>
+      <p>Une molécule diatomique linéaire (ex. \(\mathrm{N_2}\), \(\mathrm{O_2}\) à température ambiante) possède :</p>
+      <ul>
+        <li>3 degrés de translation : contribution \(\frac{3}{2}k_BT\).</li>
+        <li>2 degrés de rotation (autour des deux axes perpendiculaires à l'axe de la molécule) : chaque énergie de rotation \(\frac{1}{2}I\omega^2\) est quadratique en \(\omega\) et contribue donc \(\frac{1}{2}k_BT\), soit \(2\times\frac{1}{2}k_BT = k_BT\) au total.</li>
+      </ul>
+      <p>Au total, 5 degrés de liberté activés à température ambiante :</p>
+      <p>\[ \langle E\rangle_{\rm mol} = \frac{5}{2}k_BT, \qquad C_{V,m}^{\rm GPD} = \frac{5}{2}R \approx 20{,}8\ \mathrm{J\,mol^{-1}\,K^{-1}}, \qquad \gamma = \frac{7}{5} = 1{,}4. \]</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Remarque sur les vibrations</span>
+      <p>Le mode de vibration (1 degré cinétique + 1 degré potentiel = 2 degrés quadratiques) contribuerait \(k_BT\), mais à température ambiante \(k_BT \ll \hbar\omega_{\rm vib}\) : la vibration est <em>gelée</em> quantiquement. C'est une limite du modèle classique.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">Solide — loi de Dulong et Petit</span>
+      <p>Dans le modèle d'Einstein classique, chaque atome oscille en 3D (3 oscillateurs harmoniques indépendants, chacun avec 1 degré cinétique + 1 degré potentiel = 2 degrés quadratiques) :</p>
+      <p>\[ \langle E\rangle_{\rm atome} = 3 \times 2 \times \frac{k_BT}{2} = 3k_BT. \]</p>
+      <p>Pour une mole :</p>
+      <p>\[ C_{V,m}^{\rm solide} = 3R \approx 24{,}9\ \mathrm{J\,mol^{-1}\,K^{-1}} \quad \text{(loi de Dulong et Petit).} \]</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — \(C_{V,m}(T)\) d'un gaz diatomique</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-equi" aria-label="Capacité thermique molaire d'un gaz diatomique en escalier (3/2 R, 5/2 R, 7/2 R) en fonction de la température, comparée au gaz monoatomique, température réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-T">Température \(T\) <span class="val" id="v-T">300 K</span></label>
+          <input type="range" id="sl-T" min="10" max="1500" step="5" value="300">
+          <span class="hint" id="hint-T">Le point suit le palier GPD : translation (\(\frac{3}{2}R\)) → +rotation (\(\frac{5}{2}R\)) → +vibration (\(\frac{7}{2}R\)).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la température</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(C_{V,m}^{\rm GPD}\) = <b id="v-cv">2,50 R</b></span>
+            <span class="ro">soit <b id="v-cvj">20,8</b> J·mol⁻¹·K⁻¹</span>
+            <span class="ro">Degrés actifs : <b id="v-dof">5 (3 trans. + 2 rot.)</b></span>
+          </div>
+          <span class="hint">Le gaz monoatomique (GPM, trait rouge) reste à \(\frac{3}{2}R\) à toute température.</span>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Évolution schématique de \(C_{V,m}\) d'un gaz diatomique (courbe bleue en escalier) : activation successive des degrés de translation (\(\frac{3}{2}R\)), rotation (\(\frac{5}{2}R\)) et vibration (\(\frac{7}{2}R\)) avec la température. Le gaz monoatomique (trait rouge) reste constant à \(\frac{3}{2}R\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(C_{V,m}^{\rm GPD}\) (diatomique)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(C_{V,m}^{\rm GPM} = \frac{3}{2}R\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>point courant</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Énoncer le théorème : \(\frac{1}{2}k_BT\) <em>par degré de liberté quadratique</em>.</li>
+        <li>Dénombrer soigneusement les degrés de liberté : GPM : 3 (translation) ; GPD : 5 (3 trans. + 2 rot.) à température ambiante ; solide monoatomique : 6 (3 cin. + 3 pot.).</li>
+        <li>La rotation autour de l'axe de la molécule diatomique n'est pas activée (moment d'inertie trop faible \(\Rightarrow\) \(\hbar^2/(2I) \gg k_BT\)).</li>
+        <li>Les vibrations sont gelées à température ambiante : justifier par la comparaison \(\hbar\omega_{\rm vib} \gg k_BT\).</li>
+        <li>Résultats clés : \(C_{V,m}^{\rm GPM} = \frac{3}{2}R\), \(\gamma_{\rm GPM}=5/3\) ; \(C_{V,m}^{\rm GPD} = \frac{5}{2}R\), \(\gamma_{\rm GPD}=7/5\) ; \(C_{V,m}^{\rm solide} = 3R\) (Dulong-Petit).</li>
+        <li>L'échec du modèle classique pour les vibrations est une motivation historique de la mécanique quantique (Einstein, 1907).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout le développement est au programme MP (§7.3).</p>
+    <div class="box culture">
+      <div class="box-title">⬢ Hors-programme (culture)</div>
+      <p>L'argument de gel quantique des vibrations dépasse légèrement le programme mais est attendu culturellement à l'oral.</p>
+    </div>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ps2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">PS2 · Système à deux niveaux</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Physique statistique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 9 : Physique statistique (§7).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-equi');
+  const slT = document.getElementById('sl-T');
+  const vT = document.getElementById('v-T'), vCv = document.getElementById('v-cv'), vCvj = document.getElementById('v-cvj'), vDof = document.getElementById('v-dof');
+  const btnAnim = document.getElementById('btn-anim');
+  const R = 8.314;
+  // seuils schématiques d'activation : rotation ~250 K, vibration ~800 K
+  const T_ROT = 250, T_VIB = 800;
+  let animating = false, ph = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // Cv/R diatomique en escalier (lissé par tanh pour l'affichage)
+  function cvGPD(T) {
+    const rot = 0.5 * (1 + Math.tanh((T - T_ROT) / 45)); // 0→1 transition translation→rotation
+    const vib = 0.5 * (1 + Math.tanh((T - T_VIB) / 120));// 0→1 transition →vibration
+    return 1.5 + rot + vib; // 1.5 → 2.5 → 3.5
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const T = parseFloat(slT.value);
+
+    const Tmax = 1500;
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: Tmax, ymin: 1, ymax: 4.1, pad: { l: 18, r: 14, t: 18, b: 30 } });
+    plot.grid(c, { xticks: 6, yticks: 6 });
+    plot.axes(c, { xlabel: 'T (K)', ylabel: 'Cv,m / R' });
+
+    // paliers repères 3/2, 5/2, 7/2
+    ctx.font = '10px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    [[1.5, '3/2 R'], [2.5, '5/2 R'], [3.5, '7/2 R']].forEach(function (p) {
+      const y = plot.py(p[0]);
+      ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.setLineDash([2, 4]);
+      ctx.beginPath(); ctx.moveTo(plot.px(0), y); ctx.lineTo(plot.px(Tmax), y); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = c.muted; ctx.fillText(p[1], plot.px(Tmax) - 2, y - 3);
+    });
+
+    // GPM : droite horizontale à 3/2 R
+    plot.curve(() => 1.5, c.rouge, { lw: 1.8, dash: [6, 4], N: 2 });
+
+    // GPD : escalier
+    plot.curve(T => cvGPD(T), c.bleu, { lw: 2.6, N: 400 });
+
+    // point courant sur GPD
+    const cvv = cvGPD(T);
+    const cx = plot.px(T), cy = plot.py(cvv), y0 = plot.py(1);
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(cx, cy, 4.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(cx, y0); ctx.lineTo(cx, cy); ctx.stroke();
+    ctx.setLineDash([]);
+
+    vT.textContent = fr(T, 0) + ' K';
+    vCv.textContent = fr(cvv, 2) + ' R';
+    vCvj.textContent = fr(cvv * R, 1);
+    if (T < T_ROT - 30) vDof.textContent = '3 (translation)';
+    else if (T < T_VIB - 60) vDof.textContent = '5 (3 trans. + 2 rot.)';
+    else vDof.textContent = '7 (3 trans. + 2 rot. + 2 vib.)';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      ph += dt * 0.5;
+      const T = 10 + 1490 * (0.5 - 0.5 * Math.cos(ph));
+      slT.value = Math.round(T / 5) * 5;
+      draw();
+    }
+  });
+  slT.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la température';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>
