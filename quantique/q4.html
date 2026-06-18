@@ -67,31 +67,52 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>Particule de masse \(m\), énergie \(E&gt;0\), se propageant de gauche à droite vers la marche :</p>
-    <p>\[ V(x) = \begin{cases} 0 & x &lt; 0 \\ V_0 & x \geq 0 \end{cases} \] avec \(V_0&gt;0\).</p>
-    <p>On pose \(k_1=\sqrt{2mE/\hbar^2}\), \(k_2=\sqrt{2m(E-V_0)/\hbar^2}\) (\(E&gt;V_0\)), \(\kappa=\sqrt{2m(V_0-E)/\hbar^2}\) (\(E&lt;V_0\)). Courant de probabilité d'une onde plane \(\psi=Ae^{ikx}\) : \(j=\hbar k|A|^2/m\).</p>
+    <p>\[ V(x) = \begin{cases} 0 &amp; x &lt; 0 \\ V_0 &amp; x \geq 0 \end{cases} \] avec \(V_0&gt;0\).</p>
+    <p>On pose \(k_1=\sqrt{\dfrac{2mE}{\hbar^2}}\), \(k_2=\sqrt{\dfrac{2m(E-V_0)}{\hbar^2}}\) (\(E>V_0\)), \(\kappa=\sqrt{\dfrac{2m(V_0-E)}{\hbar^2}}\) (\(E<V_0\)). Courant de probabilité d'une onde plane \(\psi=Ae^{ikx}\) : \(j=\dfrac{\hbar k|A|^2}{m}\).</p>
   </section>
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
       <span class="step-label">Ansatz</span>
-      <p>En \(x&lt;0\) onde incidente \(e^{ik_1x}\) + réfléchie \(Be^{-ik_1x}\) ; en \(x\geq0\) forme selon \(E\) vs \(V_0\).</p>
+      <p class="lead">On décompose la fonction d'onde de part et d'autre de la marche située en \(x=0\). Dans la région \(x&lt;0\), on a une onde incidente et une onde réfléchie :</p>
+      <div class="calc-line">\[ \psi_1(x) = e^{ik_1x} + B\,e^{-ik_1x} . \]</div>
+      <p>Dans la région \(x\geq0\), la forme de la solution dépend de la comparaison entre \(E\) et \(V_0\).</p>
     </div>
     <div class="demo-step">
       <span class="step-label">Cas \(E&gt;V_0\) (transmission)</span>
-      <p>Solution \(Ce^{ik_2x}\). Raccordement en \(x=0\) : continuité de \(\psi\) : \(1+B=C\) ; continuité de \(\psi'\) : \(ik_1(1-B)=ik_2C\). Résolution :</p>
-      <p>\[ B = \frac{k_1 - k_2}{k_1 + k_2}, \qquad C = \frac{2k_1}{k_1+k_2}. \]</p>
-      <p>Coefficients en courant : \(j_{inc}=\hbar k_1/m\), \(j_r=\hbar k_1|B|^2/m\), \(j_t=\hbar k_2|C|^2/m\).</p>
-      <p>\[ R = |B|^2 = \left(\frac{k_1-k_2}{k_1+k_2}\right)^2, \qquad T = \frac{k_2}{k_1}|C|^2 = \frac{4k_1 k_2}{(k_1+k_2)^2}. \]</p>
-      <p>Le facteur \(k_2/k_1\) traduit que la transmission se mesure en flux, pas en amplitude. Conservation : \(R+T=\dfrac{(k_1-k_2)^2+4k_1k_2}{(k_1+k_2)^2}=1\).</p>
+      <p class="lead">La solution transmise est une onde progressive \(\psi_2(x)=C\,e^{ik_2x}\). On écrit les conditions de raccordement en \(x=0\) (continuité de \(\psi\) et de \(\psi'\)) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          1+B &amp;= C , \\[4pt]
+          ik_1(1-B) &amp;= ik_2\,C .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On résout ce système pour les amplitudes réfléchie et transmise :</p>
+      <div class="calc-line">\[ B = \dfrac{k_1 - k_2}{k_1 + k_2} , \qquad C = \dfrac{2k_1}{k_1+k_2} . \]</div>
+      <p class="lead">Les courants de probabilité incident, réfléchi et transmis s'écrivent :</p>
+      <div class="calc-line">\[ j_{\text{inc}}=\dfrac{\hbar k_1}{m} , \qquad j_r=\dfrac{\hbar k_1\,|B|^2}{m} , \qquad j_t=\dfrac{\hbar k_2\,|C|^2}{m} . \]</div>
+      <p class="lead">On en déduit les coefficients de réflexion \(R=j_r/j_{\text{inc}}\) et de transmission \(T=j_t/j_{\text{inc}}\) :</p>
+      <div class="calc-line">\[ R = |B|^2 = \left(\dfrac{k_1-k_2}{k_1+k_2}\right)^2 , \qquad T = \dfrac{k_2}{k_1}\,|C|^2 = \dfrac{4k_1 k_2}{(k_1+k_2)^2} . \]</div>
+      <p class="lead">Le facteur \(\dfrac{k_2}{k_1}\) traduit que la transmission se mesure en flux, et non en amplitude. On vérifie enfin la conservation :</p>
+      <div class="calc-line">\[ R+T=\dfrac{(k_1-k_2)^2+4k_1k_2}{(k_1+k_2)^2}=1 . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">Différence classique</span>
-      <p>Classiquement \(E&gt;V_0\Rightarrow\) toujours transmise (\(T=1,R=0\)). En MQ \(R\neq0\) dès que \(k_1\neq k_2\) (analogue de la réflexion partielle à l'interface entre deux milieux d'indices différents).</p>
+      <p>Classiquement, pour \(E&gt;V_0\) la particule est toujours transmise (\(T=1\), \(R=0\)). En mécanique quantique, \(R\neq0\) dès que \(k_1\neq k_2\) : c'est l'analogue de la réflexion partielle à l'interface entre deux milieux d'indices différents.</p>
     </div>
     <div class="demo-step">
       <span class="step-label">Cas \(E&lt;V_0\) (évanescence)</span>
-      <p>Solution bornée \(\psi_2=Ce^{-\kappa x}\). Raccordement : \(1+B=C\), \(ik_1(1-B)=-\kappa C\). D'où \(B=\dfrac{k_1-i\kappa}{k_1+i\kappa}\), \(|B|^2=1\) → \(R=1\) (réflexion totale). La fonction d'onde pénètre exponentiellement dans la zone interdite sur une longueur \(\delta=1/\kappa\). Courant transmis nul (\(\psi_2^*\psi_2'\) réel). Classiquement la particule est aussi totalement réfléchie mais ne pénètre pas ; la différence quantique = pénétration évanescente sans transport d'énergie.</p>
+      <p class="lead">La solution bornée dans la zone interdite est évanescente, \(\psi_2(x)=C\,e^{-\kappa x}\). Les conditions de raccordement en \(x=0\) deviennent :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          1+B &amp;= C , \\[4pt]
+          ik_1(1-B) &amp;= -\kappa\,C .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On en déduit l'amplitude réfléchie, de module unité :</p>
+      <div class="calc-line">\[ B=\dfrac{k_1-i\kappa}{k_1+i\kappa} , \qquad |B|^2=1 \;\Longrightarrow\; R=1 . \]</div>
+      <p>La réflexion est donc totale. La fonction d'onde pénètre cependant exponentiellement dans la zone interdite sur une longueur \(\delta=\dfrac{1}{\kappa}\), avec un courant transmis nul. Classiquement, la particule est aussi totalement réfléchie mais ne pénètre pas : la différence quantique est cette pénétration évanescente sans transport d'énergie.</p>
     </div>
   </section>
 
@@ -103,7 +124,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       </div>
       <div class="controls">
         <div class="control">
-          <label for="sl-EV">Rapport \(E/V_0\) <span class="val" id="v-ev">0,60</span></label>
+          <label for="sl-EV">Rapport \(\dfrac{E}{V_0}\) <span class="val" id="v-ev">0,60</span></label>
           <input type="range" id="sl-EV" min="0" max="2.5" step="0.01" value="0.6">
           <span class="hint" id="hint-regime">Régime E &lt; V₀ : réflexion totale, onde évanescente.</span>
           <div class="btn-row" style="margin-top:.5rem">
@@ -140,7 +161,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <li>Continuité de \(\psi\) et de \(\psi'\) en \(x=0\) (admise).</li>
         <li>Conservation \(R+T=1\).</li>
         <li>\(R\neq0\) en MQ même si \(E&gt;V_0\) (réflexion partielle quantique).</li>
-        <li>Onde évanescente : pénétration sans flux d'énergie, longueur \(\delta=1/\kappa\).</li>
+        <li>Onde évanescente : pénétration sans flux d'énergie, longueur \(\delta=\dfrac{1}{\kappa}\).</li>
       </ul>
     </div>
   </section>
@@ -343,5 +364,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

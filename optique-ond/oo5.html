@@ -63,7 +63,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p>Capacités exigibles :</p>
       <ul>
         <li>Établir la relation fondamentale des réseaux liant la condition d'interférences constructives à la différence de marche entre deux motifs consécutifs.</li>
-        <li>Établir, par le calcul, la demi-largeur \(2\pi/N\) des pics principaux de la courbe d'intensité en fonction du déphasage.</li>
+        <li>Établir, par le calcul, la demi-largeur \(\dfrac{2\pi}{N}\) des pics principaux de la courbe d'intensité en fonction du déphasage.</li>
         <li><em>Note :</em> la superposition de N ondes ne doit pas donner lieu à des développements calculatoires lourds (programme MP, art. 3.2) — on raisonne sur les maxima et la largeur.</li>
       </ul>
     </div>
@@ -83,33 +83,33 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
       <span class="step-label">Relation fondamentale des réseaux</span>
-      <p>Les maxima principaux (interférences constructives de toutes les fentes) ont lieu lorsque \(\delta_1 = p\lambda\) pour \(p\in\mathbb{Z}\) :</p>
-      <p>\[ d(\sin\theta_d - \sin\theta_i) = p\lambda. \]</p>
-      <p>\(p\) est l'<b>ordre</b> du maximum principal. Pour \(\theta_i = 0\) (incidence normale) : \(d\sin\theta_d = p\lambda\).</p>
+      <p class="lead">Les maxima principaux (interférences constructives de toutes les fentes) ont lieu lorsque la différence de marche entre deux fentes voisines vaut \(\delta_1 = p\lambda\), avec \(p\in\mathbb{Z}\) :</p>
+      <div class="calc-line">\[ d(\sin\theta_d - \sin\theta_i) = p\lambda . \]</div>
+      <p class="lead">L'entier \(p\) est l'<b>ordre</b> du maximum principal. En incidence normale (\(\theta_i = 0\)), la relation se simplifie :</p>
+      <div class="calc-line">\[ d\sin\theta_d = p\lambda . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Intensité de N ondes</span>
-      <p>L'amplitude complexe résultante est une somme géométrique :</p>
-      <p>\[ \underline{A} = a_0\sum_{k=0}^{N-1}\mathrm{e}^{jk\varphi} = a_0\,\frac{1-\mathrm{e}^{jN\varphi}}{1-\mathrm{e}^{j\varphi}}. \]</p>
-      <p>En prenant le module au carré :</p>
-      <p>\[ I(\varphi) = I_1\,\frac{\sin^2(N\varphi/2)}{\sin^2(\varphi/2)}, \qquad I_1 = a_0^2/2. \]</p>
-      <p>Au maximum principal (\(\varphi = 2\pi p\)) : \(I_{\max} = N^2 I_1\).</p>
+      <span class="step-label">Intensité de N ondes (résultat admis)</span>
+      <p class="lead">Chaque fente rayonne avec le même déphasage \(\varphi\) par rapport à la fente précédente. On admet — sans développement calculatoire, conformément au programme MP — que l'intensité résultante est :</p>
+      <div class="calc-line">\[ I(\varphi) = I_1\,\dfrac{\sin^2\!\left(\frac{N\varphi}{2}\right)}{\sin^2\!\left(\frac{\varphi}{2}\right)} , \qquad I_1 = \dfrac{a_0^2}{2} . \]</div>
+      <p class="lead">Ce résultat peut s'obtenir par sommation d'une suite géométrique de raison \(e^{j\varphi}\), mais ce calcul n'est pas exigible en MP : l'essentiel est de savoir <em>utiliser</em> la formule. Au maximum principal (\(\varphi = 2\pi p\)), le renforcement cohérent en amplitude donne :</p>
+      <div class="calc-line">\[ I_{\max} = N^2 I_1 . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">Demi-largeur des pics principaux</span>
-      <p>Au voisinage d'un maximum principal (\(\varphi = 2\pi p + \varepsilon\), \(\varepsilon\ll 1\)) :</p>
-      <p>\[ I(\varphi) \approx I_1\,\frac{\sin^2(N\varepsilon/2)}{(\varepsilon/2)^2}. \]</p>
-      <p>Le premier zéro de \(I\) (de part et d'autre du maximum) se produit pour \(N\varepsilon/2 = \pi\), soit \(\varepsilon = 2\pi/N\). La <b>demi-largeur</b> d'un pic principal (distance entre le maximum et le premier zéro adjacent) est donc :</p>
-      <p>\[ \Delta\varphi = \frac{2\pi}{N}. \]</p>
+      <p class="lead">On se place au voisinage d'un maximum principal, en posant \(\varphi = 2\pi p + \varepsilon\) avec \(\varepsilon\ll 1\). En linéarisant le sinus du dénominateur :</p>
+      <div class="calc-line">\[ I(\varphi) \approx I_1\,\dfrac{\sin^2\!\left(\frac{N\varepsilon}{2}\right)}{\left(\frac{\varepsilon}{2}\right)^2} . \]</div>
+      <p class="lead">Le premier zéro de \(I\) (de part et d'autre du maximum) se produit pour \(\dfrac{N\varepsilon}{2} = \pi\), soit \(\varepsilon = \dfrac{2\pi}{N}\). La <b>demi-largeur</b> d'un pic principal est donc :</p>
+      <div class="calc-line">\[ \Delta\varphi = \dfrac{2\pi}{N} . \]</div>
       <p>Elle est inversement proportionnelle au nombre de fentes : plus \(N\) est grand, plus les pics principaux sont fins (affinement des raies spectrales par un réseau).</p>
     </div>
     <div class="demo-step">
       <span class="step-label">Critère de Rayleigh</span>
-      <p>Le critère de Rayleigh stipule que deux raies de longueurs d'onde \(\lambda\) et \(\lambda+\delta\lambda\) sont <em>juste résolues</em> lorsque le maximum de l'une coïncide avec le premier zéro de l'autre. Cela impose que le décalage en \(\varphi\) entre les deux maxima soit égal à la demi-largeur :</p>
-      <p>\[ \delta\varphi = \frac{2\pi}{\lambda}\,d\cos\theta_d\,\delta\theta = \frac{2\pi}{N}. \]</p>
-      <p>Le <b>pouvoir de résolution</b> est :</p>
-      <p>\[ \mathcal{R} = \frac{\lambda}{\delta\lambda} = Np, \]</p>
-      <p>où \(p\) est l'ordre d'utilisation du réseau. Plus \(N\) et \(p\) sont grands, meilleure est la résolution.</p>
+      <p class="lead">Le critère de Rayleigh stipule que deux raies de longueurs d'onde \(\lambda\) et \(\lambda+\delta\lambda\) sont <em>juste résolues</em> lorsque le maximum de l'une coïncide avec le premier zéro de l'autre. Le décalage en \(\varphi\) entre les deux maxima doit alors égaler la demi-largeur :</p>
+      <div class="calc-line">\[ \delta\varphi = \dfrac{2\pi}{\lambda}\,d\cos\theta_d\,\delta\theta = \dfrac{2\pi}{N} . \]</div>
+      <p class="lead">On en déduit le <b>pouvoir de résolution</b> du réseau :</p>
+      <div class="calc-line">\[ \mathcal{R} = \dfrac{\lambda}{\delta\lambda} = Np , \]</div>
+      <p>où \(p\) est l'ordre d'utilisation. Plus \(N\) et \(p\) sont grands, meilleure est la résolution.</p>
     </div>
   </section>
 
@@ -123,7 +123,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-N">Nombre de fentes \(N\) <span class="val" id="v-N">5</span></label>
           <input type="range" id="sl-N" min="2" max="20" step="1" value="5">
-          <span class="hint" id="hint-N">Demi-largeur d'un pic principal : \(\Delta\varphi = 2\pi/N\).</span>
+          <span class="hint" id="hint-N">Demi-largeur d'un pic principal : \(\Delta\varphi = \dfrac{2\pi}{N}\).</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Animer \(N\)</button>
           </div>
@@ -131,17 +131,17 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <div class="readout">
             <span class="ro">\(I_{\max}=N^2 I_1\) → <b id="v-imax">25</b> \(I_1\)</span>
-            <span class="ro">\(\Delta\varphi = 2\pi/N\) = <b id="v-dphi">1,257</b> rad</span>
+            <span class="ro">\(\Delta\varphi = \dfrac{2\pi}{N}\) = <b id="v-dphi">1,257</b> rad</span>
             <span class="ro">\(\mathcal{R}=Np\) (ordre \(p=1\)) = <b id="v-R">5</b></span>
           </div>
           <span class="hint">Quand \(N\) croît : pics principaux plus fins, hauteur \(\propto N^2\), apparition de \(N-2\) maxima secondaires.</span>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Intensité normalisée \(I/(N^2 I_1) = \dfrac{\sin^2(N\varphi/2)}{N^2\sin^2(\varphi/2)}\) en fonction de \(\varphi/(2\pi)\). Les maxima principaux (en \(\varphi=2\pi p\)) ont une demi-largeur \(2\pi/N\) : ils s'affinent quand \(N\) augmente.
+        Intensité normalisée \(\dfrac{I}{N^2 I_1} = \dfrac{\sin^2(\dfrac{N\varphi}{2})}{N^2\sin^2(\dfrac{\varphi}{2})}\) en fonction de \(\dfrac{\varphi}{2\pi}\). Les maxima principaux (en \(\varphi=2\pi p\)) ont une demi-largeur \(\dfrac{2\pi}{N}\) : ils s'affinent quand \(N\) augmente.
         <div class="legend-swatches">
-          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(I/(N^2I_1)\)</span>
-          <span class="swatch"><i style="background:var(--curve-orange)"></i>Demi-largeur \(2\pi/N\)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\dfrac{I}{N^2I_1}\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Demi-largeur \(\dfrac{2\pi}{N}\)</span>
         </div>
       </figcaption>
     </figure>
@@ -162,7 +162,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">G</span> Conformité au programme</h2>
-    <p>Tout est au programme MP. La somme géométrique de \(N\) ondes est au programme (avec la restriction que les développements calculatoires lourds ne sont pas imposés) ; le raisonnement sur les maxima et la largeur est exigible.</p>
+    <p>Au programme MP. Conformément à l'article 3.2 du programme (« la superposition de N ondes cohérentes ne doit pas donner lieu à des développements calculatoires »), la formule \(I(\varphi)\) est <strong>admise</strong> sans que la sommation géométrique soit développée. Le raisonnement sur les maxima principaux, la demi-largeur \(\dfrac{2\pi}{N}\) et le pouvoir de résolution \(\mathcal{R}=Np\) est pleinement exigible.</p>
   </section>
 
   <nav class="page-nav" aria-label="Question précédente et suivante">
@@ -254,5 +254,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

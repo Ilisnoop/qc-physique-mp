@@ -78,43 +78,65 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
-    <p>Champ newtonien : \(\vec{F} = -\dfrac{GmM}{r^2}\,\hat{r}\), \(E_p = -\dfrac{GmM}{r}\). \(G = 6{,}67\times10^{-11}\ \mathrm{m^3\,kg^{-1}\,s^{-2}}\), \(M_T = 5{,}97\times10^{24}\ \mathrm{kg}\), \(R_T = 6{,}37\times10^{6}\ \mathrm{m}\), \(g = GM_T/R_T^2 \approx 9{,}81\ \mathrm{m\,s^{-2}}\).</p>
+    <p>Champ newtonien : \(\vec{F} = -\dfrac{GmM}{r^2}\,\hat{r}\), \(E_p = -\dfrac{GmM}{r}\). \(G = 6{,}67\times10^{-11}\ \mathrm{m^3\,kg^{-1}\,s^{-2}}\), \(M_T = 5{,}97\times10^{24}\ \mathrm{kg}\), \(R_T = 6{,}37\times10^{6}\ \mathrm{m}\), \(g = \dfrac{GM_T}{R_T^2} \approx 9{,}81\ \mathrm{m\,s^{-2}}\).</p>
   </section>
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">1. Lois de Kepler (énoncé)</span>
+      <span class="step-label">1 — Lois de Kepler (énoncé)</span>
       <ul>
         <li>Les planètes décrivent des <em>ellipses</em> dont le Soleil occupe un foyer.</li>
         <li>Le rayon vecteur Soleil-planète balaie des <em>aires égales</em> en des temps égaux (conservation du moment cinétique).</li>
-        <li>Le carré de la période est proportionnel au cube du demi-grand axe : \(T^2/a^3 = \text{cste}\) (pour toutes les planètes du même système).</li>
+        <li>Le carré de la période est proportionnel au cube du demi-grand axe : \(\dfrac{T^2}{a^3} = \text{cste}\) (pour toutes les planètes d'un même système).</li>
       </ul>
     </div>
     <div class="demo-step">
-      <span class="step-label">2. Mouvement circulaire</span>
-      <p>Pour une orbite de rayon \(r\) :</p>
-      <p>\[ \frac{mv^2}{r} = \frac{GmM}{r^2} \implies v_c = \sqrt{\frac{GM}{r}}. \]</p>
-      <p>La période est \(T = 2\pi r/v_c\), d'où :</p>
-      <p>\[ T^2 = \frac{4\pi^2}{GM}\,r^3 \quad \text{(3ᵉ loi de Kepler pour le cercle).} \]</p>
-      <p>L'énergie mécanique sur orbite circulaire :</p>
-      <p>\[ E_m = \frac{1}{2}mv_c^2 - \frac{GmM}{r} = -\frac{GmM}{2r} &lt; 0 \quad \text{(état lié).} \]</p>
+      <span class="step-label">2 — Mouvement circulaire</span>
+      <p>On considère un satellite de masse \(m\) en orbite circulaire de rayon \(r\) autour d'un astre de masse \(M\).</p>
+      <p class="lead"><strong>Étape A — On applique le PFD en projection radiale.</strong> La gravitation fournit la force centripète \(\dfrac{mv_c^2}{r}\) :</p>
+      <div class="calc-line">\[ \dfrac{mv_c^2}{r} = \dfrac{GmM}{r^2} \quad\Longrightarrow\quad v_c = \sqrt{\dfrac{GM}{r}} . \]</div>
+      <p class="lead"><strong>Étape B — On calcule la période</strong> à partir de \(T = \dfrac{2\pi r}{v_c}\), ce qui redonne la 3ᵉ loi de Kepler :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          T &amp;= \dfrac{2\pi r}{v_c} = 2\pi r\sqrt{\dfrac{r}{GM}} \\[4pt]
+          \Longrightarrow\quad T^2 &amp;= \dfrac{4\pi^2}{GM}\,r^3 .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape C — On calcule l'énergie mécanique</strong> en sommant énergie cinétique et potentielle, avec \(v_c^2 = \dfrac{GM}{r}\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          E_m &amp;= \tfrac{1}{2}mv_c^2 - \dfrac{GmM}{r} = \dfrac{GmM}{2r} - \dfrac{GmM}{r} \\[4pt]
+              &amp;= -\dfrac{GmM}{2r} \;&lt;\; 0 .
+        \end{aligned}
+      \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">3. Première vitesse cosmique</span>
-      <p>Vitesse minimale pour mettre un satellite en orbite basse (\(r \approx R_T\)) :</p>
-      <p>\[ v_1 = \sqrt{\frac{GM_T}{R_T}} = \sqrt{g\,R_T} \approx 7{,}9\ \mathrm{km\,s^{-1}}. \]</p>
+      <span class="step-label">3 — Première vitesse cosmique</span>
+      <p class="lead">C'est la vitesse minimale pour mettre un satellite en orbite basse (\(r \approx R_T\)). On reprend la vitesse circulaire et on utilise \(g = \dfrac{GM_T}{R_T^2}\) :</p>
+      <div class="calc-line">\[ v_1 = \sqrt{\dfrac{GM_T}{R_T}} = \sqrt{g\,R_T} \approx 7{,}9\ \mathrm{km\,s^{-1}} . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">4. Deuxième vitesse cosmique (vitesse de libération)</span>
-      <p>Condition \(E_m = 0\) (évasion à l'infini) :</p>
-      <p>\[ \frac{1}{2}mv_2^2 = \frac{GmM_T}{R_T}, \quad v_2 = \sqrt{2}\,v_1 = \sqrt{2gR_T} \approx 11{,}2\ \mathrm{km\,s^{-1}}. \]</p>
+      <span class="step-label">4 — Deuxième vitesse cosmique (vitesse de libération)</span>
+      <p>C'est la vitesse permettant à un objet de s'échapper à l'infini avec une vitesse nulle, soit \(E_m = 0\).</p>
+      <p class="lead"><strong>Étape A — On écrit \(E_m = 0\)</strong> au départ (depuis la surface, \(r = R_T\)) :</p>
+      <div class="calc-line">\[ \tfrac{1}{2}mv_2^2 - \dfrac{GmM_T}{R_T} = 0 \quad\Longrightarrow\quad \tfrac{1}{2}mv_2^2 = \dfrac{GmM_T}{R_T} . \]</div>
+      <p class="lead"><strong>Étape B — On isole \(v_2\)</strong> et on la compare à \(v_1\) :</p>
+      <div class="calc-line">\[ v_2 = \sqrt{\dfrac{2GM_T}{R_T}} = \sqrt{2}\,v_1 = \sqrt{2gR_T} \approx 11{,}2\ \mathrm{km\,s^{-1}} . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">5. Satellite géostationnaire</span>
-      <p>Période \(T_{\text{géo}} = 24\ \mathrm{h}\) (période de rotation de la Terre). D'après Kepler 3 :</p>
-      <p>\[ r_{\text{géo}}^3 = \frac{GM_T\,T_{\text{géo}}^2}{4\pi^2}, \]</p>
-      <p>soit \(r_{\text{géo}} \approx 42\,200\ \mathrm{km}\), altitude \(h_{\text{géo}} = r_{\text{géo}} - R_T \approx 35\,800\ \mathrm{km}\). Le satellite doit être sur l'orbite <em>équatoriale</em> pour que sa vitesse angulaire coïncide avec la rotation terrestre dans un plan perpendiculaire à \(\vec\Omega\).</p>
+      <span class="step-label">5 — Satellite géostationnaire</span>
+      <p>Le satellite doit tourner à la même vitesse angulaire que la Terre, soit une période \(T_{\text{géo}} = 24\ \mathrm{h}\).</p>
+      <p class="lead"><strong>Étape A — On applique la 3ᵉ loi de Kepler</strong> pour en déduire le rayon orbital :</p>
+      <div class="calc-line">\[ r_{\text{géo}}^3 = \dfrac{GM_T\,T_{\text{géo}}^2}{4\pi^2} . \]</div>
+      <p class="lead"><strong>Étape B — On en tire le rayon puis l'altitude</strong> en retranchant le rayon terrestre :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          r_{\text{géo}} &amp;\approx 42\,200\ \mathrm{km} , \\[4pt]
+          h_{\text{géo}} = r_{\text{géo}} - R_T &amp;\approx 35\,800\ \mathrm{km} .
+        \end{aligned}
+      \]</div>
+      <p>Le satellite doit en outre être sur l'orbite <em>équatoriale</em> pour que sa vitesse angulaire coïncide avec celle de la Terre, dans un plan perpendiculaire à \(\vec\Omega\).</p>
     </div>
   </section>
 
@@ -126,7 +148,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       </div>
       <div class="controls">
         <div class="control">
-          <label for="sl-r">Rayon d'orbite \(r/R_T\) <span class="val" id="v-r">6,6</span></label>
+          <label for="sl-r">Rayon d'orbite \(\dfrac{r}{R_T}\) <span class="val" id="v-r">6,6</span></label>
           <input type="range" id="sl-r" min="1.05" max="9" step="0.05" value="6.6">
           <span class="hint" id="hint-orb">À r ≈ 6,6 RT : orbite géostationnaire (période 24 h).</span>
           <div class="btn-row" style="margin-top:.5rem">
@@ -135,14 +157,14 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
         <div class="control">
           <div class="readout">
-            <span class="ro">Vitesse \(v_c = \sqrt{GM/r}\) = <b id="v-vc">—</b> km/s</span>
-            <span class="ro">Période \(T = 2\pi\sqrt{r^3/GM}\) = <b id="v-t">—</b></span>
-            <span class="ro">Énergie \(E_m = -GmM/2r\) (signe) = <b id="v-sign">&lt; 0 (lié)</b></span>
+            <span class="ro">Vitesse \(v_c = \sqrt{\dfrac{GM}{r}}\) = <b id="v-vc">—</b> km/s</span>
+            <span class="ro">Période \(T = 2\pi\sqrt{\dfrac{r^3}{GM}}\) = <b id="v-t">—</b></span>
+            <span class="ro">Énergie \(E_m = -\dfrac{GmM}{2r}\) (signe) = <b id="v-sign">&lt; 0 (lié)</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Terre (bleu) et orbite circulaire de rayon \(r\) réglable (en unités de rayon terrestre \(R_T\)). Le satellite (rouge) parcourt l'orbite avec la vitesse \(v_c = \sqrt{GM/r}\) et la période \(T = 2\pi\sqrt{r^3/GM}\) : plus l'orbite est grande, plus le satellite est lent (3ᵉ loi de Kepler). À \(r \approx 6{,}6\,R_T\) la période vaut 24 h : c'est l'orbite géostationnaire (trait vert). L'orbite basse (\(r \approx R_T\)) correspond à la première vitesse cosmique \(v_1 \approx 7{,}9\ \mathrm{km\,s^{-1}}\).
+        Terre (bleu) et orbite circulaire de rayon \(r\) réglable (en unités de rayon terrestre \(R_T\)). Le satellite (rouge) parcourt l'orbite avec la vitesse \(v_c = \sqrt{\dfrac{GM}{r}}\) et la période \(T = 2\pi\sqrt{\dfrac{r^3}{GM}}\) : plus l'orbite est grande, plus le satellite est lent (3ᵉ loi de Kepler). À \(r \approx 6{,}6\,R_T\) la période vaut 24 h : c'est l'orbite géostationnaire (trait vert). L'orbite basse (\(r \approx R_T\)) correspond à la première vitesse cosmique \(v_1 \approx 7{,}9\ \mathrm{km\,s^{-1}}\).
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Terre &amp; orbite</span>
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>Satellite</span>
@@ -158,7 +180,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="box-title">◆ Points clés</div>
       <ul>
         <li>\(v_1 = \sqrt{gR_T}\) et \(v_2 = \sqrt{2gR_T}\) : retenir ces expressions compactes.</li>
-        <li>L'énergie mécanique sur orbite circulaire est \(E_m = -GmM/(2r)\) : la moitié de l'énergie potentielle (théorème du viriel).</li>
+        <li>L'énergie mécanique sur orbite circulaire est \(E_m = -\dfrac{GmM}{2r}\) : la moitié de l'énergie potentielle (théorème du viriel).</li>
         <li>Pour le géostationnaire : orbite équatoriale obligatoire (sinon la projection sur le plan équatorial ne tourne pas à \(\Omega\)).</li>
         <li>Ordres de grandeur : \(v_1 \approx 7{,}9\ \mathrm{km\,s^{-1}}\), \(v_2 \approx 11{,}2\ \mathrm{km\,s^{-1}}\), \(h_{\text{géo}} \approx 36\,000\ \mathrm{km}\).</li>
       </ul>
@@ -272,5 +294,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

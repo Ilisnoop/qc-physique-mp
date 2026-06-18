@@ -45,13 +45,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 <main class="wrap">
   <header class="q-head">
     <span class="q-kicker">Question 4 · Électronique</span>
-    <h1>Fonction de transfert passe-bande \(\underline{H} = 1/(1+jQ(x-1/x))\)</h1>
+    <h1>Fonction de transfert passe-bande \(\underline{H} = \dfrac{1}{1+jQ\!\left(x-\dfrac{1}{x}\right)}\)</h1>
     <p class="q-sources"><span class="src">POLY p.3</span></p>
   </header>
 
   <section class="rubric">
     <h2><span class="rl">A</span> Intitulé</h2>
-    <p>Analyser la fonction de transfert passe-bande \(\underline{H}(j\omega) = 1/\bigl(1+jQ(x-1/x)\bigr)\) avec \(x=\omega/\omega_0\) : tracer le diagramme de Bode, identifier un montage électrique réalisant cette fonction, calculer la réponse à \(e(t)=E_0\cos^2(\omega_0 t/2)\).</p>
+    <p>Analyser la fonction de transfert passe-bande \(\underline{H}(j\omega) = \dfrac{1}{1+jQ\!\left(x-\dfrac{1}{x}\right)}\) avec \(x=\dfrac{\omega}{\omega_0}\) : tracer le diagramme de Bode, identifier un montage électrique réalisant cette fonction, calculer la réponse à \(e(t)=E_0\cos^2\!\left(\dfrac{\omega_0 t}{2}\right)\).</p>
   </section>
 
   <section class="rubric">
@@ -65,40 +65,56 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <ul>
-      <li>\(x = \omega/\omega_0\) : pulsation réduite ; \(\omega_0 = 1/\sqrt{LC}\).</li>
-      <li>\(Q = \omega_0 L / R = 1/(R\omega_0 C)\) : facteur de qualité.</li>
-      <li>La fonction \(\underline{H}\) est la tension relative aux bornes de \(R\) dans un circuit RLC série : \(\underline{H} = \underline{U}_R/\underline{E}\).</li>
+      <li>\(x = \dfrac{\omega}{\omega_0}\) : pulsation réduite ; \(\omega_0 = \dfrac{1}{\sqrt{LC}}\).</li>
+      <li>\(Q = \dfrac{\omega_0 L}{R} = \dfrac{1}{R\omega_0 C}\) : facteur de qualité.</li>
+      <li>La fonction \(\underline{H}\) est la tension relative aux bornes de \(R\) dans un circuit RLC série : \(\underline{H} = \dfrac{\underline{U}_R}{\underline{E}}\).</li>
     </ul>
   </section>
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">Identification du filtre</span>
-      <p>Dans un circuit RLC série (entrée \(e(t)\), sortie \(s(t) = u_R(t)\)) :</p>
-      <p>\[ \underline{H} = \frac{R}{R+jL\omega+1/(jC\omega)} = \frac{1}{1 + \dfrac{jL\omega}{R} + \dfrac{1}{jRC\omega}} = \frac{1}{1 + jQ\!\left(\dfrac{\omega}{\omega_0} - \dfrac{\omega_0}{\omega}\right)}. \]</p>
-      <p>Avec \(x=\omega/\omega_0\), on retrouve exactement \(\underline{H}=1/(1+jQ(x-1/x))\).</p>
+      <span class="step-label">1 — Identification du filtre</span>
+      <p class="lead"><strong>On écrit la fonction de transfert</strong> du circuit RLC série (entrée \(e(t)\), sortie \(s(t) = u_R(t)\)) comme pont diviseur de tension, puis on la met sous forme canonique :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \underline{H} &amp;= \dfrac{R}{R+jL\omega+\dfrac{1}{jC\omega}} = \dfrac{1}{1 + \dfrac{jL\omega}{R} + \dfrac{1}{jRC\omega}} \\[4pt]
+          &amp;= \dfrac{1}{1 + jQ\!\left(\dfrac{\omega}{\omega_0} - \dfrac{\omega_0}{\omega}\right)} .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>On introduit la pulsation réduite</strong> \(x=\dfrac{\omega}{\omega_0}\), ce qui donne la forme caractéristique d'un passe-bande :</p>
+      <div class="calc-line">\[ \underline{H}=\dfrac{1}{1+jQ\!\left(x-\dfrac{1}{x}\right)} . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Gain et comportements asymptotiques</span>
-      <p>\[ G(x) = \frac{1}{\sqrt{1+Q^2(x-1/x)^2}}. \]</p>
+      <span class="step-label">2 — Gain et comportements asymptotiques</span>
+      <p class="lead"><strong>On prend le module</strong> de la fonction de transfert :</p>
+      <div class="calc-line">\[ G(x) = \dfrac{1}{\sqrt{1+Q^2\left(x-\dfrac{1}{x}\right)^2}} . \]</div>
+      <p class="lead"><strong>On étudie les limites</strong> :</p>
       <ul>
-        <li>\(x\to 0\) : \(Q(x-1/x)\approx -Q/x\to -\infty\), donc \(G\to 0\) (le condensateur bloque les basses fréquences, pente \(+20\,\)dB/déc).</li>
-        <li>\(x=1\) : \(G=1\) (pas d'atténuation à \(\omega_0\)).</li>
-        <li>\(x\to +\infty\) : \(Q(x-1/x)\approx Qx\to+\infty\), donc \(G\to 0\) (la bobine bloque les hautes fréquences, pente \(-20\,\)dB/déc).</li>
+        <li>\(x\to 0\) : \(Q\!\left(x-\dfrac{1}{x}\right)\approx -\dfrac{Q}{x}\to -\infty\), donc \(G\to 0\) (le condensateur bloque les basses fréquences, pente \(+20\,\)dB/déc) ;</li>
+        <li>\(x=1\) : \(G=1\) (aucune atténuation à \(\omega_0\)) ;</li>
+        <li>\(x\to +\infty\) : \(Q\!\left(x-\dfrac{1}{x}\right)\approx Qx\to+\infty\), donc \(G\to 0\) (la bobine bloque les hautes fréquences, pente \(-20\,\)dB/déc).</li>
       </ul>
-      <p>La bande passante à \(-3\,\mathrm{dB}\) est \(\Delta\omega = \omega_0/Q\).</p>
+      <p>Le gain est donc maximal autour de \(\omega_0\) : la bande passante à \(-3\,\mathrm{dB}\) vaut \(\Delta\omega = \dfrac{\omega_0}{Q}\).</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Réponse à \(e(t)=E_0\cos^2(\omega_0 t/2)\)</span>
-      <p>On développe l'entrée :</p>
-      <p>\[ e(t) = E_0\cos^2\!\left(\frac{\omega_0}{2}t\right) = \frac{E_0}{2}\!\left(1 + \cos(\omega_0 t)\right) = \frac{E_0}{2} + \frac{E_0}{2}\cos(\omega_0 t). \]</p>
-      <p>On identifie deux composantes : une composante continue (\(\omega=0\)) et une composante à \(\omega_0\) (\(x=1\)).</p>
+      <span class="step-label">3 — Réponse à \(e(t)=E_0\cos^2\!\left(\dfrac{\omega_0 t}{2}\right)\)</span>
+      <p class="lead"><strong>On linéarise l'entrée</strong> à l'aide de l'identité \(\cos^2\theta = \dfrac{1+\cos 2\theta}{2}\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          e(t) = E_0\cos^2\!\left(\dfrac{\omega_0}{2}t\right)
+          &amp;= \dfrac{E_0}{2}\bigl(1 + \cos(\omega_0 t)\bigr) \\[4pt]
+          &amp;= \dfrac{E_0}{2} + \dfrac{E_0}{2}\cos(\omega_0 t) .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>On identifie deux composantes</strong> : une composante continue \((\omega=0)\) et une composante à \(\omega_0\) \((x=1)\). <strong>On applique le filtre à chacune</strong> :</p>
       <ul>
-        <li>Composante continue : \(\underline{H}(0) = 0\) (condensateur bloquant pour \(\omega=0\)), donc la sortie de la composante continue est nulle.</li>
-        <li>Composante à \(\omega_0\) (\(x=1\)) : \(\underline{H}(j\omega_0) = 1/1 = 1\), donc cette composante passe sans atténuation ni déphasage.</li>
+        <li>composante continue : \(\underline{H}(0) = 0\) (le condensateur bloque \(\omega=0\)), donc sa sortie est nulle ;</li>
+        <li>composante à \(\omega_0\) \((x=1)\) : \(\underline{H}(j\omega_0) = 1\), donc elle passe sans atténuation ni déphasage.</li>
       </ul>
-      <p>La réponse en régime permanent est donc \(\ s(t) = \dfrac{E_0}{2}\cos(\omega_0 t).\) Le filtre passe-bande sélectionne la composante à \(\omega_0\) et rejette la composante continue.</p>
+      <p class="lead"><strong>On en déduit la réponse en régime permanent</strong> :</p>
+      <div class="calc-line">\[ s(t) = \dfrac{E_0}{2}\cos(\omega_0 t) . \]</div>
+      <p>Le filtre passe-bande sélectionne ainsi la composante à \(\omega_0\) et rejette la composante continue.</p>
     </div>
   </section>
 
@@ -112,7 +128,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-Q">Facteur de qualité \(Q\) <span class="val" id="v-q">5,00</span></label>
           <input type="range" id="sl-Q" min="0.3" max="15" step="0.05" value="5">
-          <span class="hint">La largeur de bande \(\Delta x = 1/Q\) se resserre quand \(Q\) augmente.</span>
+          <span class="hint">La largeur de bande \(\Delta x = \dfrac{1}{Q}\) se resserre quand \(Q\) augmente.</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn" id="btn-echelle" type="button">Échelle : linéaire</button>
             <button class="btn primary" id="btn-anim" type="button">Balayer en fréquence</button>
@@ -122,13 +138,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           <div class="readout">
             <span class="ro">\(G\) au point courant = <b id="v-g">—</b></span>
             <span class="ro">\(x\) courant = <b id="v-x">—</b></span>
-            <span class="ro">Bande passante \(\Delta x = 1/Q\) = <b id="v-bw">0,200</b></span>
+            <span class="ro">Bande passante \(\Delta x = \dfrac{1}{Q}\) = <b id="v-bw">0,200</b></span>
             <span class="ro">\(x_\pm\) (à \(-3\,\mathrm{dB}\)) = <b id="v-xpm">—</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Gain \(G(x) = 1/\sqrt{1+Q^2(x-1/x)^2}\) en fonction de \(x=\omega/\omega_0\). Le gain vaut \(1\) à \(x=1\) (\(\omega=\omega_0\)). La bande passante à \(-3\,\mathrm{dB}\), de largeur \(\Delta x = 1/Q\), est délimitée par \(x_\pm = \sqrt{1+1/(4Q^2)}\pm 1/(2Q)\) (zone teintée). Basculez l'échelle en dB pour voir les pentes asymptotiques \(\pm 20\) dB/décade.
+        Gain \(G(x) = \dfrac{1}{\sqrt{1+Q^2(x-\dfrac{1}{x})^2}}\) en fonction de \(x=\dfrac{\omega}{\omega_0}\). Le gain vaut \(1\) à \(x=1\) (\(\omega=\omega_0\)). La bande passante à \(-3\,\mathrm{dB}\), de largeur \(\Delta x = \dfrac{1}{Q}\), est délimitée par \(x_\pm = \dfrac{\sqrt{1+\dfrac{1}{4Q^2}}\pm 1}{2Q}\) (zone teintée). Basculez l'échelle en dB pour voir les pentes asymptotiques \(\pm 20\) dB/décade.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(G(x)\)</span>
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>seuil \(-3\,\mathrm{dB}\)</span>
@@ -143,9 +159,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>Savoir identifier immédiatement \(\omega_0\) et \(Q\) sur le diagramme de Bode (\(G=1\) en \(\omega_0\), bande passante \(\Delta\omega = \omega_0/Q\)).</li>
+        <li>Savoir identifier immédiatement \(\omega_0\) et \(Q\) sur le diagramme de Bode (\(G=1\) en \(\omega_0\), bande passante \(\Delta\omega = \dfrac{\omega_0}{Q}\)).</li>
         <li>Pour la réponse au signal, toujours décomposer en harmoniques <em>avant</em> d'appliquer \(\underline{H}\).</li>
-        <li>Le facteur \(1/2\) dans la réponse vient de la décomposition de \(\cos^2\), pas de l'atténuation du filtre.</li>
+        <li>Le facteur \(\dfrac{1}{2}\) dans la réponse vient de la décomposition de \(\cos^2\), pas de l'atténuation du filtre.</li>
         <li>Préciser que la réponse calculée est le <em>régime permanent</em> (le transitoire s'est amorti).</li>
       </ul>
     </div>
@@ -280,5 +296,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

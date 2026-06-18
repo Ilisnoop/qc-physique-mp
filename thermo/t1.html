@@ -75,37 +75,82 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
     <div class="demo-step">
       <span class="step-label">1 · Premier principe sur un cycle</span>
-      <p>Le système est fermé et revient à son état initial ; d'après le premier principe :</p>
-      <p>\[ \Delta U = 0 \quad\Rightarrow\quad W + Q_c + Q_f = 0. \]</p>
+      <p>Le système (le fluide) est fermé et décrit un cycle : il revient à son état initial, donc sa fonction d'état \(U\) reprend sa valeur de départ.</p>
+      <p class="lead">On écrit le premier principe sur le cycle, où \(\Delta U = 0\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \Delta U &amp;= W + Q_c + Q_f = 0 \\[4pt]
+          \Longrightarrow\quad W + Q_c + Q_f &amp;= 0 .
+        \end{aligned}
+      \]</div>
+      <p>Ici \(W\) est le travail reçu par le fluide, \(Q_c\) et \(Q_f\) les transferts thermiques reçus respectivement de la source chaude \(T_c\) et de la source froide \(T_f\).</p>
     </div>
 
     <div class="demo-step">
       <span class="step-label">2 · Deuxième principe sur un cycle</span>
-      <p>Le second principe impose, pour une machine ditherme en contact avec deux sources \(T_c\) et \(T_f\) :</p>
-      <p>\[ \Delta S = S_{\text{créée}} + S_{\text{échangée}} \;\Rightarrow\; 0 = S_c + \frac{Q_c}{T_c} + \frac{Q_f}{T_f}, \]</p>
-      <p>où \(S_c \geq 0\) est l'entropie créée (nulle pour un cycle réversible). On en tire l'<strong>inégalité de Clausius</strong> :</p>
-      <p>\[ \frac{Q_c}{T_c} + \frac{Q_f}{T_f} \leq 0. \]</p>
+      <p class="lead">On applique le second principe sur le cycle, pour une machine ditherme en contact avec les deux sources \(T_c\) et \(T_f\). La variation d'entropie se décompose en entropie échangée et entropie créée \(S_c \geq 0\), avec \(\Delta S = 0\) sur un cycle :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \Delta S &amp;= S_{\text{échangée}} + S_{\text{créée}} = 0 \\[4pt]
+          \Longrightarrow\quad 0 &amp;= \dfrac{Q_c}{T_c} + \dfrac{Q_f}{T_f} + S_c .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On isole les termes d'entropie échangée, puis on utilise \(S_c \geq 0\) pour obtenir l'<strong>inégalité de Clausius</strong> :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \dfrac{Q_c}{T_c} + \dfrac{Q_f}{T_f} &amp;= -\,S_c \\[4pt]
+          \Longrightarrow\quad \dfrac{Q_c}{T_c} + \dfrac{Q_f}{T_f} &amp;\leq 0 .
+        \end{aligned}
+      \]</div>
+      <p>L'égalité (cas \(S_c = 0\)) correspond au cycle réversible.</p>
     </div>
 
     <div class="demo-step">
       <span class="step-label">3 · Moteur thermique &amp; théorème de Carnot</span>
-      <p>Pour un <em>moteur</em>, le fluide reçoit de la chaleur de la source chaude (\(Q_c &gt; 0\)) et en cède à la source froide (\(Q_f &lt; 0\)), et fournit un travail (\(W &lt; 0\) reçu par le fluide, soit \(W_{\text{fourni}} = -W &gt; 0\)). Le rendement est le rapport « travail utile fourni / coût thermique » :</p>
-      <p>\[ \eta = \frac{-W}{Q_c} = \frac{Q_c + Q_f}{Q_c} = 1 + \frac{Q_f}{Q_c}. \]</p>
-      <p>On exploite l'inégalité de Clausius réécrite \(\dfrac{Q_f}{T_f} \leq -\dfrac{Q_c}{T_c}\). Comme \(Q_c &gt; 0\) et \(T_f &gt; 0\), on multiplie par \(T_f/Q_c &gt; 0\) (ce qui conserve le sens de l'inégalité) :</p>
-      <p>\[ \frac{Q_f}{Q_c} \leq -\frac{T_f}{T_c}. \]</p>
-      <p>En reportant dans \(\eta = 1 + Q_f/Q_c\), on obtient le <strong>théorème de Carnot</strong> :</p>
-      <p>\[ \eta = 1 + \frac{Q_f}{Q_c} \leq 1 - \frac{T_f}{T_c} = \eta_{\text{Carnot}}. \]</p>
+      <p>Pour un <em>moteur</em>, le fluide reçoit de la chaleur de la source chaude \((Q_c &gt; 0)\), en cède à la source froide \((Q_f &lt; 0)\) et fournit un travail \((W &lt; 0\) reçu par le fluide, soit un travail fourni \(W_{\text{fourni}} = -W &gt; 0)\).</p>
+      <p class="lead"><strong>Étape A — On définit le rendement</strong> comme le rapport « travail utile fourni / coût thermique payé à la source chaude », puis on élimine \(W\) grâce au premier principe \(W = -(Q_c + Q_f)\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \eta = \dfrac{-W}{Q_c} &amp;= \dfrac{Q_c + Q_f}{Q_c} \\[4pt]
+          &amp;= 1 + \dfrac{Q_f}{Q_c} .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape B — On majore le rapport \(\dfrac{Q_f}{Q_c}\)</strong> à partir de l'inégalité de Clausius réécrite \(\dfrac{Q_f}{T_f} \leq -\dfrac{Q_c}{T_c}\). Comme \(Q_c &gt; 0\) et \(T_f &gt; 0\), on multiplie par \(\dfrac{T_f}{Q_c} &gt; 0\), ce qui conserve le sens de l'inégalité :</p>
+      <div class="calc-line">\[ \dfrac{Q_f}{Q_c} \;\leq\; -\dfrac{T_f}{T_c} . \]</div>
+      <p class="lead"><strong>Étape C — On reporte</strong> cette majoration dans l'expression du rendement, ce qui donne le <strong>théorème de Carnot</strong> :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \eta &amp;= 1 + \dfrac{Q_f}{Q_c} \\[4pt]
+               &amp;\leq 1 - \dfrac{T_f}{T_c} = \eta_{\text{Carnot}} .
+        \end{aligned}
+      \]</div>
       <p>L'égalité est atteinte pour un cycle réversible (entropie créée nulle).</p>
     </div>
 
     <div class="demo-step">
       <span class="step-label">4 · Réfrigérateur &amp; pompe à chaleur</span>
-      <p>Pour un <em>récepteur thermique</em>, le fluide reçoit du travail (\(W &gt; 0\)) et transfère de la chaleur du froid vers le chaud (\(Q_f &gt; 0\), \(Q_c &lt; 0\)).</p>
-      <p>Efficacité du réfrigérateur (effet utile = chaleur extraite du froid) :</p>
-      <p>\[ e_{\text{frigo}} = \frac{Q_f}{W} = \frac{Q_f}{-(Q_c + Q_f)} \leq \frac{T_f}{T_c - T_f} = e_{\text{frigo}}^{\text{Carnot}}. \]</p>
-      <p>Efficacité de la pompe à chaleur (effet utile = chaleur fournie au chaud) :</p>
-      <p>\[ e_{\text{PAC}} = \frac{-Q_c}{W} = \frac{-Q_c}{-(Q_c + Q_f)} \leq \frac{T_c}{T_c - T_f} = e_{\text{PAC}}^{\text{Carnot}}. \]</p>
-      <p>Relation : comme \(W = -(Q_c + Q_f)\), on a \(e_{\text{PAC}} - e_{\text{frigo}} = \dfrac{W}{W} = 1\), soit \(e_{\text{PAC}} = e_{\text{frigo}} + 1\).</p>
+      <p>Pour un <em>récepteur thermique</em>, le fluide reçoit du travail \((W &gt; 0)\) et transfère de la chaleur du froid vers le chaud \((Q_f &gt; 0,\ Q_c &lt; 0)\). Le premier principe donne toujours \(W = -(Q_c + Q_f)\).</p>
+      <p class="lead">Pour le <strong>réfrigérateur</strong>, l'effet utile est la chaleur extraite de la source froide :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          e_{\text{frigo}} = \dfrac{Q_f}{W} &amp;= \dfrac{Q_f}{-(Q_c + Q_f)} \\[4pt]
+          &amp;\leq \dfrac{T_f}{T_c - T_f} = e_{\text{frigo}}^{\text{Carnot}} .
+        \end{aligned}
+      \]</div>
+      <p class="lead">Pour la <strong>pompe à chaleur</strong>, l'effet utile est la chaleur fournie à la source chaude :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          e_{\text{PAC}} = \dfrac{-Q_c}{W} &amp;= \dfrac{-Q_c}{-(Q_c + Q_f)} \\[4pt]
+          &amp;\leq \dfrac{T_c}{T_c - T_f} = e_{\text{PAC}}^{\text{Carnot}} .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On relie enfin les deux efficacités : comme \(W = -(Q_c + Q_f)\), leur différence vaut</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          e_{\text{PAC}} - e_{\text{frigo}} &amp;= \dfrac{-Q_c - Q_f}{-(Q_c + Q_f)} = \dfrac{W}{W} = 1 \\[4pt]
+          \Longrightarrow\quad e_{\text{PAC}} &amp;= e_{\text{frigo}} + 1 .
+        \end{aligned}
+      \]</div>
     </div>
 
     <div class="demo-step">
@@ -142,13 +187,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
             <div class="gauge t"><span class="glabel">η</span><span class="gtrack"><span class="gfill" id="g-eta"></span></span><span class="gval" id="v-eta">0,50</span></div>
           </div>
           <div class="readout" style="margin-top:.6rem">
-            <span class="ro">\(\eta_{\text{Carnot}} = 1 - T_f/T_c\) = <b id="v-eta2">0,50</b></span>
+            <span class="ro">\(\eta_{\text{Carnot}} = 1 - \dfrac{T_f}{T_c}\) = <b id="v-eta2">0,50</b></span>
             <span class="ro" id="ro-pos">Point sur le cycle : <b id="v-pos">1 → 2</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Cycle de Carnot moteur parcouru en sens horaire dans le diagramme de Clapeyron \((P,v)\). Les deux isothermes (chaude à \(T_c\), froide à \(T_f\)) sont les hyperboles \(Pv=\text{cste}\) ; les deux adiabatiques réversibles suivent \(Pv^\gamma=\text{cste}\) (\(\gamma=1{,}4\)). Le rendement \(\eta_{\text{Carnot}}=1-T_f/T_c\) est calculé en direct.
+        Cycle de Carnot moteur parcouru en sens horaire dans le diagramme de Clapeyron \((P,v)\). Les deux isothermes (chaude à \(T_c\), froide à \(T_f\)) sont les hyperboles \(Pv=\text{cste}\) ; les deux adiabatiques réversibles suivent \(Pv^\gamma=\text{cste}\) (\(\gamma=1{,}4\)). Le rendement \(\eta_{\text{Carnot}}=1-\dfrac{T_f}{T_c}\) est calculé en direct.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Isotherme \(T_c\) (\(Q_c&gt;0\))</span>
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>Isotherme \(T_f\) (\(Q_f&lt;0\))</span>
@@ -314,5 +359,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

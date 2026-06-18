@@ -82,29 +82,40 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
       <span class="step-label">Contraste avec intensités différentes</span>
-      <p>La formule de Fresnel donne :</p>
-      <p>\[ I(\delta) = I_1 + I_2 + 2\sqrt{I_1 I_2}\cos\!\left(\frac{2\pi\delta}{\lambda}\right). \]</p>
-      <p>On identifie \(I_{\max} = I_1 + I_2 + 2\sqrt{I_1 I_2}\) et \(I_{\min} = I_1 + I_2 - 2\sqrt{I_1 I_2}\), d'où :</p>
-      <p>\[ \mathcal{V} = \frac{2\sqrt{I_1 I_2}}{I_1 + I_2}. \]</p>
-      <p>Par l'inégalité arithmético-géométrique, \(\mathcal{V}\leq 1\) avec égalité si et seulement si \(I_1=I_2\). Pour \(I_1/I_2 = 4\) (rapport de 4) : \(\mathcal{V} = 4/(1+4) = 4/5 = 0{,}8\).</p>
+      <p class="lead">On part de la formule de Fresnel pour l'éclairement :</p>
+      <div class="calc-line">\[ I(\delta) = I_1 + I_2 + 2\sqrt{I_1 I_2}\,\cos\!\left(\dfrac{2\pi\delta}{\lambda}\right) . \]</div>
+      <p class="lead">Le cosinus variant entre \(+1\) et \(-1\), on identifie les extrema de l'éclairement :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          I_{\max} &amp;= I_1 + I_2 + 2\sqrt{I_1 I_2} , \\[4pt]
+          I_{\min} &amp;= I_1 + I_2 - 2\sqrt{I_1 I_2} .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On en déduit le contraste \(\mathcal{V} = \dfrac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}\) :</p>
+      <div class="calc-line">\[ \mathcal{V} = \dfrac{2\sqrt{I_1 I_2}}{I_1 + I_2} . \]</div>
+      <p class="lead">Par l'inégalité arithmético-géométrique, \(\mathcal{V}\leq 1\), avec égalité si et seulement si \(I_1=I_2\). Pour un rapport \(\dfrac{I_1}{I_2} = 4\) :</p>
+      <div class="calc-line">\[ \mathcal{V} = \dfrac{2\sqrt{4}}{1+4} = \dfrac{4}{5} = 0{,}8 . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">Contraste avec source de spectre rectangulaire</span>
-      <p>Une source de largeur spectrale \(\Delta\nu\) centrée sur \(\nu_0\) peut être modélisée comme une somme continue de sources monochromatiques de même intensité. L'intensité résultante est :</p>
-      <p>\[ I(\delta) = \int_{\nu_0-\Delta\nu/2}^{\nu_0+\Delta\nu/2} I_0\!\left[1 + \cos\!\left(\frac{2\pi\nu\delta}{c}\right)\right]\frac{\mathrm{d}\nu}{\Delta\nu}. \]</p>
-      <p>En calculant l'intégrale :</p>
-      <p>\[ I(\delta) = I_0\!\left[1 + \mathrm{sinc}\!\left(\frac{\pi\Delta\nu\,\delta}{c}\right)\cos\!\left(\frac{2\pi\nu_0\delta}{c}\right)\right], \]</p>
-      <p>où \(\mathrm{sinc}(u) = \sin(u)/u\). Le contraste est donc \(\mathcal{V}(\delta) = \left|\mathrm{sinc}\!\left(\dfrac{\pi\Delta\nu\,\delta}{c}\right)\right|\).</p>
+      <p class="lead">Une source de largeur spectrale \(\Delta\nu\) centrée sur \(\nu_0\) se modélise comme une somme continue de sources monochromatiques de même intensité. L'éclairement résultant est l'intégrale :</p>
+      <div class="calc-line">\[ I(\delta) = \int_{\nu_0-\frac{\Delta\nu}{2}}^{\nu_0+\frac{\Delta\nu}{2}} I_0\!\left[1 + \cos\!\left(\dfrac{2\pi\nu\delta}{c}\right)\right]\dfrac{\mathrm{d}\nu}{\Delta\nu} . \]</div>
+      <p class="lead">En intégrant le cosinus sur la bande spectrale, on fait apparaître un sinus cardinal :</p>
+      <div class="calc-line">\[ I(\delta) = I_0\!\left[1 + \mathrm{sinc}\!\left(\dfrac{\pi\Delta\nu\,\delta}{c}\right)\cos\!\left(\dfrac{2\pi\nu_0\delta}{c}\right)\right] , \]</div>
+      <p class="lead">où \(\mathrm{sinc}(u) = \dfrac{\sin(u)}{u}\). Le contraste est l'enveloppe du terme oscillant :</p>
+      <div class="calc-line">\[ \mathcal{V}(\delta) = \left|\,\mathrm{sinc}\!\left(\dfrac{\pi\Delta\nu\,\delta}{c}\right)\right| . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">Première annulation du contraste (brouillage)</span>
-      <p>Le contraste s'annule pour la première fois lorsque \(\pi\Delta\nu\,\delta/c = \pi\), soit :</p>
-      <p>\[ \delta_c = \frac{c}{\Delta\nu} = l_c \quad\text{(longueur de cohérence)}. \]</p>
-      <p>En lame d'air, \(\delta = 2e\cos\theta\), donc les franges disparaissent pour \(2e > l_c\).</p>
+      <p class="lead">Le sinus cardinal s'annule pour la première fois lorsque son argument vaut \(\pi\), soit \(\pi\Delta\nu\,\dfrac{\delta}{c} = \pi\). On en déduit la différence de marche critique, égale à la longueur de cohérence :</p>
+      <div class="calc-line">\[ \delta_c = \dfrac{c}{\Delta\nu} = l_c . \]</div>
+      <p>En lame d'air, \(\delta = 2e\cos\theta\) : les franges disparaissent donc pour \(2e &gt; l_c\).</p>
     </div>
     <div class="demo-step">
       <span class="step-label">Lien avec la cohérence temporelle</span>
-      <p>\(l_c = c\,\Delta t_c\) avec \(\Delta t_c\sim 1/\Delta\nu\) : la longueur de cohérence est la distance sur laquelle deux trains d'onde émis par la même source peuvent encore interférer.</p>
+      <p class="lead">En reliant la longueur de cohérence au temps de cohérence \(\Delta t_c\sim \dfrac{1}{\Delta\nu}\) :</p>
+      <div class="calc-line">\[ l_c = c\,\Delta t_c . \]</div>
+      <p>La longueur de cohérence est ainsi la distance sur laquelle deux trains d'onde émis par la même source peuvent encore interférer.</p>
     </div>
   </section>
 
@@ -116,11 +127,11 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       </div>
       <div class="controls">
         <div class="control">
-          <label for="sl-r">Rapport \(I_1/I_2\) <span class="val" id="v-r">1,0</span></label>
+          <label for="sl-r">Rapport \(\dfrac{I_1}{I_2}\) <span class="val" id="v-r">1,0</span></label>
           <input type="range" id="sl-r" min="1" max="25" step="0.1" value="1">
-          <label for="sl-dnu">Largeur spectrale \(\Delta\nu/\nu_0\) <span class="val" id="v-dnu">0,030</span></label>
+          <label for="sl-dnu">Largeur spectrale \(\dfrac{\Delta\nu}{\nu_0}\) <span class="val" id="v-dnu">0,030</span></label>
           <input type="range" id="sl-dnu" min="0.005" max="0.08" step="0.001" value="0.03">
-          <span class="hint">\(I_1/I_2\) fixe la visibilité max ; \(\Delta\nu\) fixe la longueur de cohérence \(l_c=c/\Delta\nu\).</span>
+          <span class="hint">\(\dfrac{I_1}{I_2}\) fixe la visibilité max ; \(\Delta\nu\) fixe la longueur de cohérence \(l_c=\dfrac{c}{\Delta\nu}\).</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Balayer \(\delta\)</button>
           </div>
@@ -136,7 +147,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
       </div>
       <figcaption class="fig-legend">
-        Éclairement \(I(\delta)\) (bleu) : oscillations rapides à \(\nu_0\) modulées par l'enveloppe \(\pm\mathcal{V}(\delta)\) (orange, \(=|\mathrm{sinc}(\pi\Delta\nu\delta/c)|\) plafonnée par \(\mathcal{V}_0\)). Le contraste s'annule au premier brouillage \(\delta=l_c=c/\Delta\nu\) (trait vert).
+        Éclairement \(I(\delta)\) (bleu) : oscillations rapides à \(\nu_0\) modulées par l'enveloppe \(\pm\mathcal{V}(\delta)\) (orange, \(=|\mathrm{sinc}(\dfrac{\pi\Delta\nu\delta}{c})|\) plafonnée par \(\mathcal{V}_0\)). Le contraste s'annule au premier brouillage \(\delta=l_c=\dfrac{c}{\Delta\nu}\) (trait vert).
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Éclairement \(I(\delta)\)</span>
           <span class="swatch"><i style="background:var(--curve-orange)"></i>Enveloppe \(\pm\mathcal{V}(\delta)\)</span>
@@ -151,9 +162,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>La formule \(\mathcal{V} = 2\sqrt{I_1 I_2}/(I_1+I_2)\) est à savoir établir rapidement.</li>
+        <li>La formule \(\mathcal{V} = \dfrac{2\sqrt{I_1 I_2}}{I_1+I_2}\) est à savoir établir rapidement.</li>
         <li>Retenir que le contraste est maximal pour \(I_1=I_2\) (régler le Michelson en conséquence).</li>
-        <li>La longueur de cohérence est \(l_c = c/\Delta\nu = \lambda^2/\Delta\lambda\) (les deux formes sont utiles).</li>
+        <li>La longueur de cohérence est \(l_c = \dfrac{c}{\Delta\nu} = \dfrac{\lambda^2}{\Delta\lambda}\) (les deux formes sont utiles).</li>
         <li>Ordres de grandeur : \(l_c(\text{laser He-Ne})\approx 300\ \mathrm{km}\) ; \(l_c(\text{lampe Na})\approx 30\ \mathrm{cm}\).</li>
       </ul>
     </div>
@@ -281,5 +292,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

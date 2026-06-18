@@ -77,27 +77,39 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">Équation de Poynting (fournie, à interpréter)</span>
-      <p>\[ \frac{\partial u_{em}}{\partial t} + \mathrm{div}\,\vec{\Pi} = -\vec{j}\cdot\vec{E} \]</p>
+      <span class="step-label">1 — Équation de Poynting (fournie, à interpréter)</span>
+      <p class="lead"><strong>On part du bilan local d'énergie électromagnétique</strong> (équation de Poynting, admise) :</p>
+      <div class="calc-line">\[ \dfrac{\partial u_{em}}{\partial t} + \mathrm{div}\,\vec{\Pi} = -\,\vec{j}\cdot\vec{E} . \]</div>
+      <p class="lead"><strong>On interprète chaque terme</strong> :</p>
       <ul>
-        <li>\(\partial_t u_{em}\) : taux de variation de l'énergie EM locale.</li>
-        <li>\(\mathrm{div}\,\vec{\Pi}\) : divergence du flux d'énergie EM (sortant si \(\mathrm{div}\,\vec{\Pi}&gt;0\)).</li>
-        <li>\(-\vec{j}\cdot\vec{E}\) : puissance volumique cédée par le champ aux charges (terme source/puits). En milieu ohmique (\(\vec{j}=\gamma\vec{E}\)) : \(\vec{j}\cdot\vec{E} = j^2/\gamma \geq 0\) (pertes Joule).</li>
+        <li>\(\partial_t u_{em}\) : taux de variation de la densité volumique d'énergie EM locale ;</li>
+        <li>\(\mathrm{div}\,\vec{\Pi}\) : divergence du vecteur de Poynting, c'est-à-dire le flux d'énergie EM sortant (positif si \(\mathrm{div}\,\vec{\Pi} &gt; 0\)) ;</li>
+        <li>\(-\,\vec{j}\cdot\vec{E}\) : puissance volumique cédée par le champ aux charges (terme source ou puits).</li>
       </ul>
+      <p class="lead">Dans un milieu ohmique \((\vec{j}=\gamma\vec{E})\), ce dernier terme se réécrit</p>
+      <div class="calc-line">\[ \vec{j}\cdot\vec{E} = \dfrac{j^2}{\gamma} \;\geq\; 0 , \]</div>
+      <p>ce qui correspond aux pertes Joule, toujours positives.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Forme intégrale</span>
-      <p>En intégrant sur un volume \(V\) et appliquant Ostrogradski :</p>
-      <p>\[ \frac{\mathrm{d}}{\mathrm{d}t}\iiint_V u_{em}\,\mathrm{d}V = -\iint_S \vec{\Pi}\cdot\mathrm{d}\vec{S} - \iiint_V \vec{j}\cdot\vec{E}\,\mathrm{d}V \]</p>
+      <span class="step-label">2 — Forme intégrale</span>
+      <p class="lead"><strong>On intègre le bilan local sur un volume \(V\)</strong> de surface fermée \(S\), et on applique le théorème d'Ostrogradski au terme \(\mathrm{div}\,\vec{\Pi}\) :</p>
+      <div class="calc-line">\[ \dfrac{\mathrm{d}}{\mathrm{d}t}\iiint_V u_{em}\,\mathrm{d}V = -\iint_S \vec{\Pi}\cdot\mathrm{d}\vec{S} - \iiint_V \vec{j}\cdot\vec{E}\,\mathrm{d}V . \]</div>
+      <p>La variation de l'énergie EM contenue dans \(V\) égale le flux entrant à travers \(S\) diminué de la puissance cédée aux charges.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Application à une OPPM</span>
-      <p>Pour \(\vec{E} = E_0\cos(\omega t - kz)\,\hat{x}\), \(\vec{B} = (E_0/c)\cos(\omega t-kz)\,\hat{y}\) :</p>
-      <p>\[ \vec{\Pi} = \frac{1}{\mu_0}\vec{E}\times\vec{B} = \frac{E_0^2}{\mu_0 c}\cos^2(\omega t - kz)\,\hat{z} \]</p>
-      <p>Valeur moyenne temporelle (le \(\cos^2\) vaut \(1/2\) en moyenne) :</p>
-      <p>\[ \langle\vec{\Pi}\rangle = \frac{E_0^2}{2\mu_0 c}\,\hat{z} = \frac{E_0^2}{2Z_0}\,\hat{z} \]</p>
-      <p>où \(Z_0 = \mu_0 c = \sqrt{\mu_0/\varepsilon_0} \approx 377\ \Omega\) est l'impédance du vide.</p>
-      <p>On vérifie : \(\langle u_{em}\rangle = \varepsilon_0 E_0^2/2\) et \(\langle\Pi\rangle = c\,\langle u_{em}\rangle\) (énergie transportée à \(c\)).</p>
+      <span class="step-label">3 — Application à une OPPM</span>
+      <p class="lead"><strong>On considère une OPPM polarisée rectilignement</strong> se propageant selon \(\hat{z}\) :</p>
+      <div class="calc-line">\[ \vec{E} = E_0\cos(\omega t - kz)\,\hat{x} , \qquad \vec{B} = \dfrac{E_0}{c}\cos(\omega t-kz)\,\hat{y} . \]</div>
+      <p class="lead"><strong>On calcule le vecteur de Poynting instantané</strong> \(\vec{\Pi} = \dfrac{1}{\mu_0}\,\vec{E}\times\vec{B}\), puis sa moyenne temporelle (la valeur moyenne de \(\cos^2\) valant \(\tfrac12\)) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \vec{\Pi} &amp;= \dfrac{1}{\mu_0}\,\vec{E}\times\vec{B} = \dfrac{E_0^2}{\mu_0 c}\cos^2(\omega t - kz)\,\hat{z} , \\[4pt]
+          \langle\vec{\Pi}\rangle &amp;= \dfrac{E_0^2}{2\mu_0 c}\,\hat{z} = \dfrac{E_0^2}{2Z_0}\,\hat{z} ,
+        \end{aligned}
+      \]</div>
+      <p class="lead">où \(Z_0 = \mu_0 c = \sqrt{\dfrac{\mu_0}{\varepsilon_0}} \approx 377\ \Omega\) est l'impédance du vide. <strong>On vérifie enfin le lien énergie–flux</strong> : la densité moyenne d'énergie vaut</p>
+      <div class="calc-line">\[ \langle u_{em}\rangle = \dfrac{\varepsilon_0 E_0^2}{2} , \qquad \langle\Pi\rangle = c\,\langle u_{em}\rangle , \]</div>
+      <p>ce qui exprime que l'énergie est transportée à la vitesse \(c\).</p>
     </div>
   </section>
 
@@ -119,16 +131,16 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <div class="readout">
             <span class="ro">\(\Pi_{\max}\) = <b id="v-pmax">—</b></span>
-            <span class="ro">\(\langle\Pi\rangle = \Pi_{\max}/2\) = <b id="v-pmean">—</b></span>
-            <span class="ro">\(\langle u_{em}\rangle = \varepsilon_0 E_0^2/2\) (u.a.) = <b id="v-u">—</b></span>
+            <span class="ro">\(\langle\Pi\rangle = \dfrac{\Pi_{\max}}{2}\) = <b id="v-pmean">—</b></span>
+            <span class="ro">\(\langle u_{em}\rangle = \dfrac{\varepsilon_0 E_0^2}{2}\) (u.a.) = <b id="v-u">—</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Profil instantané \(\Pi(z,t_0) = \Pi_{\max}\cos^2(\omega t_0 - kz)\) (bleu), oscillant entre 0 et \(\Pi_{\max}\), et sa valeur moyenne \(\langle\Pi\rangle = \Pi_{\max}/2\) (pointillé rouge). Les flèches indiquent le transport d'énergie selon \(+\hat{z}\), à la vitesse \(c\). « Animer » fait défiler le motif vers la droite.
+        Profil instantané \(\Pi(z,t_0) = \Pi_{\max}\cos^2(\omega t_0 - kz)\) (bleu), oscillant entre 0 et \(\Pi_{\max}\), et sa valeur moyenne \(\langle\Pi\rangle = \dfrac{\Pi_{\max}}{2}\) (pointillé rouge). Les flèches indiquent le transport d'énergie selon \(+\hat{z}\), à la vitesse \(c\). « Animer » fait défiler le motif vers la droite.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\Pi(z,t_0)\)</span>
-          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\langle\Pi\rangle = \Pi_{\max}/2\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\langle\Pi\rangle = \dfrac{\Pi_{\max}}{2}\)</span>
         </div>
       </figcaption>
     </figure>
@@ -140,7 +152,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="box-title">◆ Points clés</div>
       <ul>
         <li>\(\vec{\Pi}\) indique la direction et le sens de propagation de l'énergie EM, pas la direction du champ.</li>
-        <li>Pour une OPPM : densités d'énergie électrique et magnétique égales en moyenne (\(\varepsilon_0 E^2/2 = B^2/(2\mu_0)\) en moyenne).</li>
+        <li>Pour une OPPM : densités d'énergie électrique et magnétique égales en moyenne (\(\dfrac{\varepsilon_0 E^2}{2} = \dfrac{B^2}{2\mu_0}\) en moyenne).</li>
         <li>Ordre de grandeur : flux solaire \(\approx 1400\ \mathrm{W\cdot m^{-2}}\) ; laser He-Ne de \(1\ \mathrm{mW}\) focalisé sur \(1\ \mathrm{mm^2}\) \(\to 1\ \mathrm{kW\cdot m^{-2}}\).</li>
         <li>L'équation de Poynting est <em>fournie</em> lors des épreuves : l'exigible est l'interprétation de chaque terme.</li>
       </ul>
@@ -226,5 +238,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

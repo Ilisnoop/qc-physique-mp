@@ -68,7 +68,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">B</span> Rattachement au programme</h2>
     <div class="box prog">
       <div class="box-title">▣ Programme MPSI · 3.3 Premier principe &amp; 3.4 Entropie</div>
-      <p>Enthalpie d'un gaz parfait, capacité thermique à pression constante ; lois de Joule ; applications du premier principe (isochore, isobare, isotherme, adiabatique réversible). Entropie d'un gaz parfait \(\Delta S = nC_{V,m}\ln(T_2/T_1) + nR\ln(V_2/V_1)\).</p>
+      <p>Enthalpie d'un gaz parfait, capacité thermique à pression constante ; lois de Joule ; applications du premier principe (isochore, isobare, isotherme, adiabatique réversible). Entropie d'un gaz parfait \(\Delta S = nC_{V,m}\ln(\dfrac{T_2}{T_1}) + nR\ln(\dfrac{V_2}{V_1})\).</p>
     </div>
   </section>
 
@@ -86,9 +86,15 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
     <div class="demo-step">
       <span class="step-label">1 · Démonstration des lois de Joule</span>
-      <p>La première loi se démontre à partir de la première relation de Clapeyron \(\left(\dfrac{\partial U}{\partial V}\right)_T = T\left(\dfrac{\partial P}{\partial T}\right)_V - P\). En injectant \(P = nRT/V\) et donc \((\partial P/\partial T)_V = nR/V\) :</p>
-      <p>\[ \left(\frac{\partial U}{\partial V}\right)_T = T \cdot \frac{nR}{V} - \frac{nRT}{V} = 0. \]</p>
-      <p>L'énergie interne ne dépend donc pas du volume : \(U = U(T)\). Avec \(H = U + PV = U(T) + nRT\), on a aussi \(H = H(T)\) (deuxième loi de Joule).</p>
+      <p class="lead"><strong>Étape A — On part de la première relation de Clapeyron</strong> et on y injecte l'équation d'état du gaz parfait \(P = \dfrac{nRT}{V}\), qui donne \(\left(\dfrac{\partial P}{\partial T}\right)_V = \dfrac{nR}{V}\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \left(\dfrac{\partial U}{\partial V}\right)_T &amp;= T\left(\dfrac{\partial P}{\partial T}\right)_V - P \\[4pt]
+          &amp;= T \cdot \dfrac{nR}{V} - \dfrac{nRT}{V} = 0 .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape B — On conclut.</strong> L'énergie interne ne dépend donc pas du volume : \(U = U(T)\) (première loi de Joule). Avec \(H = U + PV = U(T) + nRT\), on a aussi :</p>
+      <div class="calc-line">\[ H = H(T) \qquad \text{(deuxième loi de Joule)} . \]</div>
     </div>
 
     <div class="demo-step">
@@ -99,7 +105,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <tbody>
           <tr><td>Isochore</td><td>\(nC_{V,m}\Delta T\)</td><td>\(nC_{P,m}\Delta T\)</td><td>\(0\)</td><td>\(\Delta U\)</td></tr>
           <tr><td>Isobare</td><td>\(nC_{V,m}\Delta T\)</td><td>\(nC_{P,m}\Delta T\)</td><td>\(-P\Delta V = -nR\Delta T\)</td><td>\(\Delta H\)</td></tr>
-          <tr><td>Isotherme</td><td>\(0\)</td><td>\(0\)</td><td>\(-nRT\ln(V_2/V_1)\)</td><td>\(-W\)</td></tr>
+          <tr><td>Isotherme</td><td>\(0\)</td><td>\(0\)</td><td>\(-nRT\ln(\dfrac{V_2}{V_1})\)</td><td>\(-W\)</td></tr>
           <tr><td>Adiab. rév.</td><td>\(nC_{V,m}\Delta T\)</td><td>\(nC_{P,m}\Delta T\)</td><td>\(\Delta U\)</td><td>\(0\)</td></tr>
         </tbody>
       </table>
@@ -108,21 +114,27 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
     <div class="demo-step">
       <span class="step-label">3 · Détente de Joule Gay-Lussac</span>
-      <p>Le gaz parfait s'étend librement (contre le vide) dans un calorimètre adiabatique de volume total fixé \(V_{\text{total}} = V_1 + V_2\).</p>
-      <ul>
-        <li><em>Travail</em> : détente contre le vide, donc \(W = 0\).</li>
-        <li><em>Chaleur</em> : enceinte adiabatique, donc \(Q = 0\).</li>
-        <li>Premier principe : \(\Delta U = W + Q = 0\).</li>
-        <li>Comme \(U = U(T)\), \(\Delta U = 0 \Rightarrow\) <strong>\(\Delta T = 0\) : la température ne varie pas</strong>.</li>
-        <li>Pressions : \(P_1\) initiale, \(P_f = nRT/V_{\text{total}}\) finale.</li>
-      </ul>
+      <p>Le gaz parfait s'étend librement (contre le vide) dans un calorimètre adiabatique de volume total fixé \(V_{\text{total}} = V_1 + V_2\). On relève les deux échanges : détente contre le vide \((W = 0)\) et enceinte adiabatique \((Q = 0)\).</p>
+      <p class="lead"><strong>Étape A — On applique le premier principe</strong> avec \(W = 0\) et \(Q = 0\) :</p>
+      <div class="calc-line">\[ \Delta U = W + Q = 0 . \]</div>
+      <p class="lead"><strong>Étape B — On en déduit la température.</strong> Comme \(U = U(T)\) pour un gaz parfait, l'annulation de \(\Delta U\) impose celle de \(\Delta T\) :</p>
+      <div class="calc-line">\[ \Delta U = 0 \quad\Longrightarrow\quad \Delta T = 0 . \]</div>
+      <p>La température ne varie donc pas. La pression passe de \(P_1\) (initiale) à la valeur finale :</p>
+      <div class="calc-line">\[ P_f = \dfrac{nRT}{V_{\text{total}}} . \]</div>
     </div>
 
     <div class="demo-step">
       <span class="step-label">4 · Calcul de \(\Delta S\)</span>
-      <p>La transformation est irréversible. On imagine un chemin réversible reliant les mêmes états (même \(T\), volume \(V_1 \to V_{\text{total}}\)) et on utilise la formule de T2 :</p>
-      <p>\[ \Delta S = nC_{V,m}\ln\underbrace{\frac{T}{T}}_{=1} + nR\ln\frac{V_{\text{total}}}{V_1} = nR\ln\frac{V_{\text{total}}}{V_1} &gt; 0. \]</p>
-      <p>La variation d'entropie est positive, ce qui confirme l'irréversibilité. Comme \(Q = 0\) (pas d'échange d'entropie), on a \(\Delta S = S_c &gt; 0\).</p>
+      <p>La transformation est irréversible. \(S\) étant une fonction d'état, on imagine un chemin réversible reliant les mêmes états (même température \(T\), volume \(V_1 \to V_{\text{total}}\)) et on applique la formule établie en T2.</p>
+      <p class="lead">Comme la température est inchangée, le terme en \(\ln(T/T)\) s'annule et il ne reste que le terme de volume :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \Delta S &amp;= nC_{V,m}\ln\underbrace{\dfrac{T}{T}}_{=\,1} + nR\ln\dfrac{V_{\text{total}}}{V_1} \\[4pt]
+          &amp;= nR\ln\dfrac{V_{\text{total}}}{V_1} \;&gt;\; 0 .
+        \end{aligned}
+      \]</div>
+      <p class="lead">La variation d'entropie est positive, ce qui confirme l'irréversibilité. Comme \(Q = 0\) (aucune entropie échangée), toute cette variation est de l'entropie créée :</p>
+      <div class="calc-line">\[ \Delta S = S_c \;&gt;\; 0 . \]</div>
     </div>
   </section>
 
@@ -134,7 +146,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       </div>
       <div class="controls">
         <div class="control">
-          <label for="sl-vt">Volume total \(V_{\text{total}}/V_1\) <span class="val" id="v-vt">2,0</span></label>
+          <label for="sl-vt">Volume total \(V_\dfrac{{\text{total}}}{V_1}\) <span class="val" id="v-vt">2,0</span></label>
           <input type="range" id="sl-vt" min="1" max="6" step="0.05" value="2">
           <span class="hint" id="hint-jgl">Plus le gaz se dilue, plus la création d'entropie est grande.</span>
           <div class="btn-row" style="margin-top:.5rem">
@@ -144,13 +156,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <div class="readout" style="margin-top:.2rem">
             <span class="ro">\(\Delta U = 0\) ⇒ \(\Delta T = 0\) : <b id="v-t">T inchangée</b></span>
-            <span class="ro">\(P_f/P_1 = V_1/V_{\text{total}}\) = <b id="v-pf">0,50</b></span>
-            <span class="ro">\(\Delta S = nR\ln(V_{\text{total}}/V_1)\) = <b id="v-ds">5,76</b> J·K⁻¹ (n=1)</span>
+            <span class="ro">\(\dfrac{P_f}{P_1} = \dfrac{V_1}{V}_{\text{total}}\) = <b id="v-pf">0,50</b></span>
+            <span class="ro">\(\Delta S = nR\ln(V_\dfrac{{\text{total}}}{V_1})\) = <b id="v-ds">5,76</b> J·K⁻¹ (n=1)</span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Enceinte adiabatique et rigide (\(Q=0\), \(W=0\)) à deux compartiments. À l'ouverture de la paroi, le gaz parfait (bleu) se répartit dans tout le volume. La température reste constante (\(\Delta U = 0\) et \(U = U(T)\)), mais l'entropie créée \(\Delta S = nR\ln(V_{\text{total}}/V_1) &gt; 0\) traduit l'irréversibilité.
+        Enceinte adiabatique et rigide (\(Q=0\), \(W=0\)) à deux compartiments. À l'ouverture de la paroi, le gaz parfait (bleu) se répartit dans tout le volume. La température reste constante (\(\Delta U = 0\) et \(U = U(T)\)), mais l'entropie créée \(\Delta S = nR\ln(V_\dfrac{{\text{total}}}{V_1}) &gt; 0\) traduit l'irréversibilité.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Gaz parfait</span>
           <span class="swatch"><i style="background:var(--curve-orange)"></i>Paroi amovible</span>
@@ -165,7 +177,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>Les lois de Joule (\(U = U(T)\), \(H = H(T)\)) ne sont exactes que pour un <em>gaz parfait</em> ; pour un gaz réel, \(\partial U/\partial V|_T \neq 0\).</li>
+        <li>Les lois de Joule (\(U = U(T)\), \(H = H(T)\)) ne sont exactes que pour un <em>gaz parfait</em> ; pour un gaz réel, \(\dfrac{\partial U}{\partial V}|_T \neq 0\).</li>
         <li>Dans la détente de Joule Gay-Lussac : \(W = 0\) (contre le vide) et \(Q = 0\) (adiabatique) \(\Rightarrow \Delta U = 0 \Rightarrow \Delta T = 0\).</li>
         <li>Le calcul de \(\Delta S\) se fait en inventant un chemin réversible entre les mêmes états (isotherme réversible ici) : méthode standard.</li>
         <li>Pour un gaz réel, la détente de Joule Gay-Lussac donne \(\Delta T \neq 0\) en général (voir T5).</li>
@@ -295,5 +307,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

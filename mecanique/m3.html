@@ -88,27 +88,65 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
+    
     <div class="demo-step">
-      <span class="step-label">1. Lois de Coulomb — énoncé</span>
-      <p><strong>Absence de glissement (adhérence) :</strong> la condition d'adhérence est \(T \leq \mu_s\,N\), et la force tangentielle \(\vec{T}\) prend la valeur nécessaire à l'équilibre.</p>
-      <p><strong>Seuil de mise en mouvement :</strong> glissement imminent si \(T = \mu_s\,N\).</p>
-      <p><strong>Glissement :</strong> la force de frottement est opposée à la vitesse de glissement \(\vec{v}_{12}\) (vitesse de \(S_1\) par rapport à \(S_2\)) :</p>
-      <p>\[ \vec{T} = -\mu_d\,N\,\frac{\vec{v}_{12}}{\|\vec{v}_{12}\|}, \qquad T = \mu_d\,N. \]</p>
-      <p>La loi de Coulomb ignore la surface de contact et la vitesse de glissement (dans les limites de validité du modèle).</p>
+      <span class="step-label">1 — Les trois régimes des lois de Coulomb</span>
+      <p>L'action de contact se décompose en une composante normale \(\vec N\) et une composante tangentielle \(\vec T\). Le comportement de \(\vec T\) dépend du régime de mouvement ; on distingue trois situations.</p>
+      <p><strong>Régime d'adhérence (pas de glissement).</strong> La composante tangentielle s'ajuste pour assurer l'équilibre, sans dépasser un seuil :</p>
+      <div class="calc-line">\[ \|\vec T\| \;\leq\; \mu_s\,N . \]</div>
+      <p><strong>Seuil de mise en mouvement.</strong> Le glissement devient imminent lorsque la borne est atteinte :</p>
+      <div class="calc-line">\[ \|\vec T\| \;=\; \mu_s\,N . \]</div>
+      <p><strong>Régime de glissement.</strong> La force de frottement s'oppose alors à la vitesse de glissement \(\vec v_{12}\) de \(S_1\) par rapport à \(S_2\), et sa norme est fixée :</p>
+      <div class="calc-line">\[ \vec T \;=\; -\,\mu_d\,N\,\dfrac{\vec v_{12}}{\|\vec v_{12}\|} , \qquad \|\vec T\| \;=\; \mu_d\,N . \]</div>
+      <p>Dans ce modèle, \(\vec T\) ne dépend ni de l'aire de contact, ni de la norme de la vitesse de glissement (avec \(\mu_d \leq \mu_s\)).</p>
     </div>
+
     <div class="demo-step">
-      <span class="step-label">2. Application : solide sur plan incliné</span>
-      <p>Plan incliné d'angle \(\alpha\). Bilan des forces : \(\vec{P} = m\vec{g}\) (vers le bas), \(\vec{N}\) (normale au plan), \(\vec{T}\) (tangentielle). Projection sur le plan (sens positif vers le bas) et sur la normale :</p>
-      <p>\[ \text{Normale :} \quad N = mg\cos\alpha, \qquad \text{Plan :} \quad ma = mg\sin\alpha - T. \]</p>
-      <p><em>Hypothèse adhérence</em> (\(a=0\)) : \(T = mg\sin\alpha\). On vérifie \(T \leq \mu_s N\) : \(\tan\alpha \leq \mu_s\). Si \(\tan\alpha > \mu_s\), glissement : \(T = \mu_d\,N = \mu_d\,mg\cos\alpha\), donc</p>
-      <p>\[ a = g(\sin\alpha - \mu_d\cos\alpha). \]</p>
+      <span class="step-label">2 — Application : solide sur un plan incliné</span>
+      <p>On étudie un solide de masse \(m\) posé sur un plan incliné d'angle \(\alpha\). Trois forces s'exercent : le poids \(\vec P = m\vec g\), la réaction normale \(\vec N\) et la force tangentielle \(\vec T\).</p>
+      <p class="lead">On projette le principe fondamental de la dynamique sur deux axes : l'axe du plan (orienté vers le bas) et la normale au plan. On obtient le système :</p>
+      <div class="calc-line">\[
+        \left\{
+        \begin{aligned}
+          \text{(normale)} \quad &amp; N = mg\cos\alpha , \\[4pt]
+          \text{(plan)} \quad &amp; m\,a = mg\sin\alpha - \|\vec T\| .
+        \end{aligned}
+        \right.
+      \]</div>
+      <p class="lead"><strong>Étape A — On formule l'hypothèse d'adhérence</strong> \((a = 0)\). La deuxième équation donne directement la valeur que doit prendre la force tangentielle :</p>
+      <div class="calc-line">\[ \|\vec T\| = mg\sin\alpha . \]</div>
+      <p class="lead"><strong>Étape B — On valide (ou non) cette hypothèse</strong> à l'aide de la condition d'adhérence \(\|\vec T\| \leq \mu_s N\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \|\vec T\| \;\leq\; \mu_s N
+          \;&amp;\Longleftrightarrow\; mg\sin\alpha \;\leq\; \mu_s\,mg\cos\alpha \\[4pt]
+          \;&amp;\Longleftrightarrow\; \tan\alpha \;\leq\; \mu_s .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape C — On en déduit le régime.</strong> Si \(\tan\alpha \leq \mu_s\), le solide reste en équilibre. Sinon (\(\tan\alpha &gt; \mu_s\)) il glisse, et la force tangentielle vaut \(\|\vec T\| = \mu_d N = \mu_d\,mg\cos\alpha\). On reporte dans l'équation du mouvement :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          m\,a &amp;= mg\sin\alpha - \mu_d\,mg\cos\alpha \\[4pt]
+          \Longrightarrow\quad a &amp;= g\,(\sin\alpha - \mu_d\cos\alpha) .
+        \end{aligned}
+      \]</div>
     </div>
+
     <div class="demo-step">
-      <span class="step-label">3. Bilan énergétique</span>
-      <p>La puissance dissipée par frottement (chaleur dégagée) est :</p>
-      <p>\[ \mathcal{P}_{\text{frot}} = \vec{T}\cdot\vec{v}_{12} = -\mu_d\,N\,\|\vec{v}_{12}\| \leq 0. \]</p>
-      <p>L'énergie mécanique <em>n'est pas conservée</em> : \(\Delta E_{\text{mec}} = W_{\text{frot}} < 0\). L'énergie dissipée apparaît comme énergie thermique à l'interface.</p>
+      <span class="step-label">3 — Bilan énergétique</span>
+      <p>En régime de glissement, la force de frottement développe une puissance. On la calcule à partir de \(\vec T = -\mu_d N\,\vec v_{12}/\|\vec v_{12}\|\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \mathcal P_{\text{frot}} = \vec T \cdot \vec v_{12}
+          &amp;= -\,\mu_d\,N\,\dfrac{\vec v_{12}\cdot\vec v_{12}}{\|\vec v_{12}\|} \\[4pt]
+          &amp;= -\,\mu_d\,N\,\|\vec v_{12}\| \;\leq\; 0 .
+        \end{aligned}
+      \]</div>
+      <p class="lead">Cette puissance est négative : l'énergie mécanique <em>n'est pas conservée</em>. Sur un déplacement, le travail des frottements vérifie</p>
+      <div class="calc-line">\[ \Delta E_{\text{mec}} = W_{\text{frot}} &lt; 0 , \]</div>
+      <p>l'énergie dissipée étant transférée sous forme thermique à l'interface de contact.</p>
     </div>
+  
   </section>
 
   <section class="rubric">
@@ -306,5 +344,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

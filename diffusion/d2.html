@@ -57,7 +57,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">B</span> Rattachement au programme</h2>
     <div class="box prog">
       <div class="box-title">▣ Niveau MP (5.2.)</div>
-      <p>Établir l'équation de la diffusion thermique en géométrie sphérique (cas d'une variable d'espace) ; utiliser le Laplacien en coordonnées sphériques (expression fournie). Comparaison avec l'électromagnétisme : <strong>l'équation de la diffusion apparaît dans le cas de l'effet de peau</strong> (\(\partial \vec{B}/\partial t = (1/\mu_0\sigma)\Delta\vec{B}\)) ; la résistance thermique est analogue à la résistance électrique.</p>
+      <p>Établir l'équation de la diffusion thermique en géométrie sphérique (cas d'une variable d'espace) ; utiliser le Laplacien en coordonnées sphériques (expression fournie). Comparaison avec l'électromagnétisme : <strong>l'équation de la diffusion apparaît dans le cas de l'effet de peau</strong> (\(\dfrac{\partial \vec{B}}{\partial t} = (\dfrac{1}{\mu_0\sigma})\Delta\vec{B}\)) ; la résistance thermique est analogue à la résistance électrique.</p>
     </div>
   </section>
 
@@ -72,38 +72,57 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
     <div class="demo-step">
       <span class="step-label">1 · Bilan d'énergie en symétrie sphérique</span>
-      <p>Par symétrie sphérique, le vecteur densité de flux est radial :</p>
-      <p>\[ \vec{j}_{\text{th}} = -\lambda\,\frac{\partial T}{\partial r}\,\vec{u}_r. \]</p>
-      <p>Considérons une coquille sphérique de rayons \(r\) et \(r + \mathrm{d}r\). Le bilan d'énergie interne de cette coquille (de volume \(4\pi r^2\mathrm{d}r\)) s'écrit en régime quelconque :</p>
-      <p>\[ \rho c\,4\pi r^2\mathrm{d}r\,\frac{\partial T}{\partial t} = \Phi(r) - \Phi(r+\mathrm{d}r), \]</p>
-      <p>où \(\Phi(r) = 4\pi r^2 j_r = -4\pi r^2\lambda\,\partial T/\partial r\) est le flux sortant à travers la sphère de rayon \(r\). En développant :</p>
-      <p>\[ \rho c\,\frac{\partial T}{\partial t} = -\frac{1}{4\pi r^2}\frac{\partial \Phi}{\partial r} = \frac{\lambda}{r^2}\frac{\partial}{\partial r}\left(r^2\,\frac{\partial T}{\partial r}\right) = \lambda\,\Delta T. \]</p>
-      <p>On obtient l'<strong>équation de diffusion thermique en coordonnées sphériques</strong> :</p>
-      <p>\[ \boxed{\frac{\partial T}{\partial t} = a\,\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\,\frac{\partial T}{\partial r}\right)}, \quad a = \frac{\lambda}{\rho c}. \]</p>
+      <p class="lead"><strong>Étape A — On écrit la loi de Fourier.</strong> Par symétrie sphérique, le vecteur densité de flux est radial :</p>
+      <div class="calc-line">\[ \vec{j}_{\text{th}} = -\lambda\,\dfrac{\partial T}{\partial r}\,\vec{u}_r . \]</div>
+      <p class="lead"><strong>Étape B — On écrit le bilan d'énergie</strong> sur une coquille sphérique de rayons \(r\) et \(r + \mathrm{d}r\), de volume \(4\pi r^2\,\mathrm{d}r\) :</p>
+      <div class="calc-line">\[ \rho c\,4\pi r^2\,\mathrm{d}r\,\dfrac{\partial T}{\partial t} = \Phi(r) - \Phi(r+\mathrm{d}r) . \]</div>
+      <p class="lead"><strong>Étape C — On introduit le flux sortant</strong> à travers la sphère de rayon \(r\), puis on développe au premier ordre :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \Phi(r) &amp;= 4\pi r^2 j_r = -4\pi r^2\lambda\,\dfrac{\partial T}{\partial r} \\[4pt]
+          \Phi(r+\mathrm{d}r) - \Phi(r) &amp;= \dfrac{\partial \Phi}{\partial r}\,\mathrm{d}r .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape D — On divise par \(4\pi r^2\,\mathrm{d}r\)</strong> et on reporte l'expression de \(\Phi\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \rho c\,\dfrac{\partial T}{\partial t} &amp;= -\dfrac{1}{4\pi r^2}\dfrac{\partial \Phi}{\partial r} \\[4pt]
+          &amp;= \dfrac{\lambda}{r^2}\dfrac{\partial}{\partial r}\left(r^2\,\dfrac{\partial T}{\partial r}\right) = \lambda\,\Delta T .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On obtient l'<strong>équation de diffusion thermique en coordonnées sphériques</strong>, avec \(a = \dfrac{\lambda}{\rho c}\) :</p>
+      <div class="calc-line">\[ \boxed{\dfrac{\partial T}{\partial t} = a\,\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2\,\dfrac{\partial T}{\partial r}\right)} . \]</div>
     </div>
 
     <div class="demo-step">
       <span class="step-label">2 · Régime stationnaire : profil de température et flux</span>
-      <p>En régime stationnaire, \(\partial T/\partial t = 0\), l'équation devient :</p>
-      <p>\[ \frac{1}{r^2}\frac{\mathrm{d}}{\mathrm{d}r}\left(r^2\,\frac{\mathrm{d}T}{\mathrm{d}r}\right) = 0. \]</p>
-      <p>En intégrant une première fois : \(r^2\,\mathrm{d}T/\mathrm{d}r = A\), d'où \(\mathrm{d}T/\mathrm{d}r = A/r^2\). En intégrant une deuxième fois :</p>
-      <p>\[ T(r) = -\frac{A}{r} + B. \]</p>
-      <p>Les constantes \(A\) et \(B\) sont déterminées par les conditions aux limites \(T(R_1) = T_1\) et \(T(R_2) = T_2\). En soustrayant les deux relations : \(T_1 - T_2 = A\left(\frac{1}{R_2} - \frac{1}{R_1}\right) = A\,\frac{R_1 - R_2}{R_1 R_2}\). On reporte dans \(T(r) = T_1 + A\left(\frac{1}{R_1} - \frac{1}{r}\right)\), pour obtenir le profil :</p>
-      <p>\[ T(r) = T_1 + (T_2 - T_1)\,\frac{R_2}{R_2 - R_1}\left(1 - \frac{R_1}{r}\right). \]</p>
-      <p>On vérifie bien que \(T(R_1) = T_1\) et \(T(R_2) = T_2\). Le profil varie en \(1/r\) entre les deux sphères. Le flux thermique total à travers toute sphère de rayon \(r\) est constant (conservation de l'énergie) :</p>
-      <p>\[ \Phi = -4\pi r^2 \lambda\,\frac{\mathrm{d}T}{\mathrm{d}r} = -4\pi\lambda A = \frac{4\pi\lambda R_1 R_2 (T_1 - T_2)}{R_2 - R_1}. \]</p>
-      <p>La résistance thermique sphérique est donc :</p>
-      <p>\[ R_{\text{th, sph}} = \frac{T_1 - T_2}{\Phi} = \frac{R_2 - R_1}{4\pi\lambda R_1 R_2}. \]</p>
+      <p class="lead"><strong>Étape A — On simplifie en régime stationnaire</strong> \(\big(\partial T/\partial t = 0\big)\) :</p>
+      <div class="calc-line">\[ \dfrac{1}{r^2}\dfrac{\mathrm{d}}{\mathrm{d}r}\left(r^2\,\dfrac{\mathrm{d}T}{\mathrm{d}r}\right) = 0 . \]</div>
+      <p class="lead"><strong>Étape B — On intègre deux fois.</strong> La première intégration donne \(r^2\,\dfrac{\mathrm{d}T}{\mathrm{d}r} = A\), soit \(\dfrac{\mathrm{d}T}{\mathrm{d}r} = \dfrac{A}{r^2}\) ; la seconde donne :</p>
+      <div class="calc-line">\[ T(r) = -\dfrac{A}{r} + B . \]</div>
+      <p class="lead"><strong>Étape C — On détermine \(A\) et \(B\)</strong> par les conditions aux limites \(T(R_1) = T_1\) et \(T(R_2) = T_2\). La soustraction des deux relations donne :</p>
+      <div class="calc-line">\[ T_1 - T_2 = A\left(\dfrac{1}{R_2} - \dfrac{1}{R_1}\right) = A\,\dfrac{R_1 - R_2}{R_1 R_2} . \]</div>
+      <p class="lead">On reporte dans \(T(r) = T_1 + A\left(\dfrac{1}{R_1} - \dfrac{1}{r}\right)\) pour obtenir le profil, qui varie en \(\dfrac{1}{r}\) :</p>
+      <div class="calc-line">\[ T(r) = T_1 + (T_2 - T_1)\,\dfrac{R_2}{R_2 - R_1}\left(1 - \dfrac{R_1}{r}\right) . \]</div>
+      <p class="lead"><strong>Étape D — On calcule le flux total</strong> à travers une sphère de rayon \(r\). Il est constant (conservation de l'énergie en régime stationnaire) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \Phi &amp;= -4\pi r^2 \lambda\,\dfrac{\mathrm{d}T}{\mathrm{d}r} = -4\pi\lambda A \\[4pt]
+          &amp;= \dfrac{4\pi\lambda R_1 R_2 (T_1 - T_2)}{R_2 - R_1} .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On en déduit la <strong>résistance thermique sphérique</strong> :</p>
+      <div class="calc-line">\[ R_{\text{th, sph}} = \dfrac{T_1 - T_2}{\Phi} = \dfrac{R_2 - R_1}{4\pi\lambda R_1 R_2} . \]</div>
     </div>
 
     <div class="demo-step">
       <span class="step-label">3 · Comparaison avec les équations d'électromagnétisme</span>
       <p><em>a) Analogie avec l'électrostatique en régime stationnaire.</em> En électrostatique, le potentiel \(V(r)\) créé par une distribution à symétrie sphérique obéit à l'équation de Laplace \(\Delta V = 0\) (en dehors des charges). En coordonnées sphériques, le profil \(V(r)\) satisfait la même équation que \(T(r)\) en régime stationnaire :</p>
-      <p>\[ \frac{1}{r^2}\frac{\mathrm{d}}{\mathrm{d}r}\left(r^2\,\frac{\mathrm{d}V}{\mathrm{d}r}\right) = 0 \quad \Rightarrow \quad V(r) = \frac{K}{r} + C. \]</p>
+      <div class="calc-line">\[ \dfrac{1}{r^2}\dfrac{\mathrm{d}}{\mathrm{d}r}\left(r^2\,\dfrac{\mathrm{d}V}{\mathrm{d}r}\right) = 0 \quad \Longrightarrow \quad V(r) = \dfrac{K}{r} + C . \]</div>
       <p>La correspondance est parfaite : \(T \leftrightarrow V\), \(\lambda \leftrightarrow \sigma\) (conductivité électrique), \(\Phi_{\text{th}} \leftrightarrow I\). C'est l'analogie électrocinétique.</p>
-      <p><em>b) Équation de diffusion en électromagnétisme : l'effet de peau.</em> Dans un milieu ohmique (conductivité \(\sigma\)), en régime quasi-stationnaire (\(\partial \vec{E}/\partial t\) négligeable devant \(\vec{j}/\sigma\)), les équations de Maxwell conduisent à :</p>
-      <p>\[ \frac{\partial \vec{B}}{\partial t} = \frac{1}{\mu_0\sigma}\,\Delta\vec{B}. \]</p>
-      <p>C'est une <em>équation de diffusion</em> pour \(\vec{B}\), formellement identique à l'équation thermique avec \(a_{\text{EM}} = 1/(\mu_0\sigma)\). Le temps caractéristique de diffusion du champ magnétique dans un conducteur de taille \(L\) est \(\tau_{\text{EM}} \sim \mu_0\sigma L^2\).</p>
+      <p><em>b) Équation de diffusion en électromagnétisme : l'effet de peau.</em> Dans un milieu ohmique (conductivité \(\sigma\)), en régime quasi-stationnaire (\(\dfrac{\partial \vec{E}}{\partial t}\) négligeable devant \(\dfrac{\vec{j}}{\sigma}\)), les équations de Maxwell conduisent à une équation de diffusion pour le champ magnétique :</p>
+      <div class="calc-line">\[ \dfrac{\partial \vec{B}}{\partial t} = \dfrac{1}{\mu_0\sigma}\,\Delta\vec{B} . \]</div>
+      <p>C'est une <em>équation de diffusion</em> pour \(\vec{B}\), formellement identique à l'équation thermique avec \(a_{\text{EM}} = \dfrac{1}{\mu_0\sigma}\). Le temps caractéristique de diffusion du champ magnétique dans un conducteur de taille \(L\) est \(\tau_{\text{EM}} \sim \mu_0\sigma L^2\).</p>
     </div>
 
     <div class="box oral">
@@ -113,7 +132,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   </section>
 
   <section class="rubric">
-    <h2><span class="rl">E</span> Figure interactive — profil sphérique \(T(r)\) en \(1/r\)</h2>
+    <h2><span class="rl">E</span> Figure interactive — profil sphérique \(T(r)\) en \(\dfrac{1}{r}\)</h2>
     <figure class="figure">
       <div class="fig-canvas-wrap">
         <canvas id="cv-sph" aria-label="Profil de température T(r) entre deux sphères concentriques, décroissant en 1/r du rayon intérieur R1 au rayon extérieur R2"></canvas>
@@ -122,7 +141,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-r1">Rayon intérieur \(R_1\) (cm) <span class="val" id="v-r1">1,0</span></label>
           <input type="range" id="sl-r1" min="0.5" max="2.5" step="0.1" value="1">
-          <span class="hint" id="hint-s">Le profil varie en \(1/r\) : la pente est forte près de la sphère intérieure.</span>
+          <span class="hint" id="hint-s">Le profil varie en \(\dfrac{1}{r}\) : la pente est forte près de la sphère intérieure.</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Animer le point</button>
           </div>
@@ -131,13 +150,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           <label for="sl-r2">Rayon extérieur \(R_2\) (cm) <span class="val" id="v-r2">4,0</span></label>
           <input type="range" id="sl-r2" min="3" max="6" step="0.1" value="4">
           <div class="readout" style="margin-top:.6rem">
-            <span class="ro">Résistance \(R_{\text{th,sph}} \propto (R_2-R_1)/(R_1R_2)\) : <b id="v-rth">—</b></span>
+            <span class="ro">Résistance \(R_\dfrac{{\text{th,sph}} \propto (R_2-R_1)}{R_1R_2}\) : <b id="v-rth">—</b></span>
             <span class="ro">Comparaison profil linéaire (plan) en pointillé bleu.</span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Profil stationnaire de température entre deux sphères concentriques (\(T_1 &gt; T_2\)) : \(T(r) = T_1 + (T_2 - T_1)\,\frac{R_2}{R_2 - R_1}(1 - R_1/r)\), décroissant en \(1/r\) (courbe verte). Le profil linéaire d'une paroi plane est tracé en pointillé bleu pour comparaison : en sphérique, la courbure est concave et la chute de température se concentre près de \(R_1\).
+        Profil stationnaire de température entre deux sphères concentriques (\(T_1 &gt; T_2\)) : \(T(r) = T_1 + (T_2 - T_1)\,\frac{R_2}{R_2 - R_1}(1 - \dfrac{R_1}{r})\), décroissant en \(\dfrac{1}{r}\) (courbe verte). Le profil linéaire d'une paroi plane est tracé en pointillé bleu pour comparaison : en sphérique, la courbure est concave et la chute de température se concentre près de \(R_1\).
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-vert)"></i>\(T(r)\) sphérique (1/r)</span>
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Profil plan (linéaire)</span>
@@ -153,9 +172,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="box-title">◆ Points clés</div>
       <ul>
         <li>C'est un item <strong>MP uniquement</strong>.</li>
-        <li>En symétrie sphérique, le profil stationnaire de température varie en \(1/r\) (et non linéairement comme en plan). C'est la clé : en intégrant \(\Delta T = 0\) en sphérique.</li>
-        <li>Le flux \(\Phi = -4\pi\lambda r^2 \mathrm{d}T/\mathrm{d}r\) est <em>indépendant de \(r\)</em> en régime stationnaire (conservation de l'énergie sans source).</li>
-        <li>La comparaison EM : l'équation de diffusion apparaît en EM dans le milieu ohmique, avec \(a_{\text{EM}} = 1/(\mu_0\sigma)\). La longueur de peau \(\delta = \sqrt{2/(\mu_0\sigma\omega)}\) est l'analogue direct de \(\sqrt{a\tau}\).</li>
+        <li>En symétrie sphérique, le profil stationnaire de température varie en \(\dfrac{1}{r}\) (et non linéairement comme en plan). C'est la clé : en intégrant \(\Delta T = 0\) en sphérique.</li>
+        <li>Le flux \(\Phi = -4\pi\lambda r^2 \dfrac{\mathrm{d}T}{\mathrm{d}r}\) est <em>indépendant de \(r\)</em> en régime stationnaire (conservation de l'énergie sans source).</li>
+        <li>La comparaison EM : l'équation de diffusion apparaît en EM dans le milieu ohmique, avec \(a_{\text{EM}} = \dfrac{1}{\mu_0\sigma}\). La longueur de peau \(\delta = \sqrt{\dfrac{2}{\mu_0\sigma\omega}}\) est l'analogue direct de \(\sqrt{a\tau}\).</li>
         <li>Savoir énoncer rapidement les deux analogies (stationnaire : électrostatique ; instationnaire : effet de peau) et ne pas les confondre.</li>
       </ul>
     </div>
@@ -259,5 +278,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

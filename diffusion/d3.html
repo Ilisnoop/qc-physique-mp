@@ -79,22 +79,42 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
     <div class="demo-step">
       <span class="step-label">1 · Équation de diffusion en géométrie cylindrique</span>
-      <p>On raisonne sur une couronne cylindrique de rayons \(r\) et \(r+\mathrm{d}r\), de longueur \(\ell\) et de volume \(2\pi r\ell\,\mathrm{d}r\), avec le vecteur densité de flux radial \(\vec{j}_{\text{th}} = -\lambda(\mathrm{d}T/\mathrm{d}r)\vec{u}_r\). Le flux thermique entrant à travers la surface latérale de rayon \(r\) est \(\Phi(r) = 2\pi r\ell\,j_r = -2\pi r\ell\lambda\,\partial T/\partial r\). Le bilan d'énergie interne (sans terme source) s'écrit en régime quelconque :</p>
-      <p>\[ \rho c\,2\pi r\ell\,\mathrm{d}r\,\frac{\partial T}{\partial t} = \Phi(r) - \Phi(r+\mathrm{d}r) = -\frac{\partial \Phi}{\partial r}\,\mathrm{d}r. \]</p>
-      <p>En divisant par le volume \(2\pi r\ell\,\mathrm{d}r\) et en reportant l'expression de \(\Phi\), on obtient l'équation de diffusion en géométrie cylindrique :</p>
-      <p>\[ \rho c\,\frac{\partial T}{\partial t} = -\frac{1}{2\pi r\ell}\frac{\partial \Phi}{\partial r} = \frac{\lambda}{r}\frac{\partial}{\partial r}\left(r\,\frac{\partial T}{\partial r}\right) = a\,\Delta_{\text{cyl}} T. \]</p>
+      <p>On raisonne sur une couronne cylindrique de rayons \(r\) et \(r+\mathrm{d}r\), de longueur \(\ell\) et de volume \(2\pi r\ell\,\mathrm{d}r\) (géométrie à une seule variable d'espace).</p>
+      <p class="lead"><strong>Étape A — On écrit le flux.</strong> Le vecteur densité de flux est radial, \(\vec{j}_{\text{th}} = -\lambda\dfrac{\mathrm{d}T}{\mathrm{d}r}\vec{u}_r\), d'où le flux thermique à travers la surface latérale de rayon \(r\) :</p>
+      <div class="calc-line">\[ \Phi(r) = 2\pi r\ell\,j_r = -2\pi r\ell\lambda\,\dfrac{\partial T}{\partial r} . \]</div>
+      <p class="lead"><strong>Étape B — On écrit le bilan d'énergie</strong> de la couronne (sans terme source), en développant au premier ordre :</p>
+      <div class="calc-line">\[ \rho c\,2\pi r\ell\,\mathrm{d}r\,\dfrac{\partial T}{\partial t} = \Phi(r) - \Phi(r+\mathrm{d}r) = -\dfrac{\partial \Phi}{\partial r}\,\mathrm{d}r . \]</div>
+      <p class="lead"><strong>Étape C — On divise par le volume</strong> \(2\pi r\ell\,\mathrm{d}r\) et on reporte l'expression de \(\Phi\), ce qui donne l'équation de diffusion en géométrie cylindrique :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \rho c\,\dfrac{\partial T}{\partial t} &amp;= -\dfrac{1}{2\pi r\ell}\dfrac{\partial \Phi}{\partial r} \\[4pt]
+          &amp;= \dfrac{\lambda}{r}\dfrac{\partial}{\partial r}\left(r\,\dfrac{\partial T}{\partial r}\right) = a\,\Delta_{\text{cyl}} T .
+        \end{aligned}
+      \]</div>
     </div>
 
     <div class="demo-step">
       <span class="step-label">2 · Profil stationnaire et résistance thermique cylindrique</span>
-      <p>En régime stationnaire, l'équation se réduit à \(\frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\,\frac{\mathrm{d}T}{\mathrm{d}r}\right) = 0\). En intégrant une première fois : \(r\,\mathrm{d}T/\mathrm{d}r = A\), d'où \(\mathrm{d}T/\mathrm{d}r = A/r\). En intégrant une deuxième fois :</p>
-      <p>\[ T(r) = A\ln r + B. \]</p>
-      <p>Les constantes sont déterminées par \(T(R_1) = T_1\) et \(T(R_2) = T_2\) : \(T_1 - T_2 = A\ln\frac{R_1}{R_2} = -A\ln\frac{R_2}{R_1}\), d'où \(A = -\frac{T_1 - T_2}{\ln(R_2/R_1)}\). Le profil de température est donc logarithmique :</p>
-      <p>\[ T(r) = T_2 + (T_1 - T_2)\,\frac{\ln(R_2/r)}{\ln(R_2/R_1)}. \]</p>
-      <p>Le flux thermique total à travers la surface cylindrique de rayon \(r\) et de longueur \(\ell\) est :</p>
-      <p>\[ \Phi = 2\pi r\ell\,j_r = -2\pi r\ell\lambda\,\frac{\mathrm{d}T}{\mathrm{d}r} = -2\pi\ell\lambda A = \frac{2\pi\ell\lambda(T_1 - T_2)}{\ln(R_2/R_1)}. \]</p>
-      <p>Ce flux est constant (indépendant de \(r\)) en régime stationnaire, conformément à la conservation de l'énergie. La <strong>résistance thermique cylindrique</strong> est :</p>
-      <p>\[ \boxed{R_{\text{th, cyl}} = \frac{T_1 - T_2}{\Phi} = \frac{\ln(R_2/R_1)}{2\pi\ell\lambda}}. \]</p>
+      <p class="lead"><strong>Étape A — On simplifie en régime stationnaire</strong> et on intègre une première fois \(\big(r\,\dfrac{\mathrm{d}T}{\mathrm{d}r} = A\big)\), puis une seconde fois :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \dfrac{1}{r}\dfrac{\mathrm{d}}{\mathrm{d}r}\left(r\,\dfrac{\mathrm{d}T}{\mathrm{d}r}\right) = 0 \;&amp;\Longrightarrow\; \dfrac{\mathrm{d}T}{\mathrm{d}r} = \dfrac{A}{r} \\[4pt]
+          &amp;\Longrightarrow\; T(r) = A\ln r + B .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape B — On détermine les constantes</strong> par les conditions aux limites \(T(R_1) = T_1\) et \(T(R_2) = T_2\) :</p>
+      <div class="calc-line">\[ T_1 - T_2 = A\ln\dfrac{R_1}{R_2} = -A\ln\dfrac{R_2}{R_1} \quad\Longrightarrow\quad A = -\dfrac{T_1 - T_2}{\ln\!\left(\dfrac{R_2}{R_1}\right)} . \]</div>
+      <p class="lead">On obtient ainsi le profil de température, logarithmique en \(r\) :</p>
+      <div class="calc-line">\[ T(r) = T_2 + (T_1 - T_2)\,\dfrac{\ln\!\left(\dfrac{R_2}{r}\right)}{\ln\!\left(\dfrac{R_2}{R_1}\right)} . \]</div>
+      <p class="lead"><strong>Étape C — On calcule le flux total</strong> à travers la surface cylindrique de rayon \(r\) et de longueur \(\ell\). Il est constant en régime stationnaire (conservation de l'énergie) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \Phi = 2\pi r\ell\,j_r &amp;= -2\pi r\ell\lambda\,\dfrac{\mathrm{d}T}{\mathrm{d}r} = -2\pi\ell\lambda A \\[4pt]
+          &amp;= \dfrac{2\pi\ell\lambda(T_1 - T_2)}{\ln\!\left(\dfrac{R_2}{R_1}\right)} .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On en déduit la <strong>résistance thermique cylindrique</strong> :</p>
+      <div class="calc-line">\[ \boxed{R_{\text{th, cyl}} = \dfrac{T_1 - T_2}{\Phi} = \dfrac{\ln\!\left(\dfrac{R_2}{R_1}\right)}{2\pi\ell\lambda}} . \]</div>
     </div>
 
     <div class="demo-step">
@@ -109,13 +129,18 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           </tbody>
         </table>
       </div>
-      <p>Association de résistances (loi d'Ohm thermique \(\Delta T = R_{\text{th}} \Phi\)) :</p>
+      <p>Association de résistances, régie par la loi d'Ohm thermique \(\Delta T = R_{\text{th}}\,\Phi\) :</p>
       <ul>
         <li><strong>En série</strong> (même flux, températures qui s'additionnent) : \(R_{\text{th,total}} = \sum_i R_{\text{th},i}\).</li>
-        <li><strong>En parallèle</strong> (même différence de température, flux qui s'additionnent) : \(1/R_{\text{th,total}} = \sum_i 1/R_{\text{th},i}\).</li>
+        <li><strong>En parallèle</strong> (même différence de température, flux qui s'additionnent) : \(\dfrac{1}{R_{\text{th,total}}} = \sum_i \dfrac{1}{R_{\text{th},i}}\).</li>
       </ul>
-      <p><strong>Exemple : canalisation cylindrique avec convection externe.</strong> Un tube de rayons \(R_1\) (intérieur) et \(R_2\) (extérieur), conductivité \(\lambda\), est en contact avec un fluide externe de coefficient de transfert \(h\) (convection). Les résistances en série sont :</p>
-      <p>\[ R_{\text{total}} = R_{\text{conv,int}} + R_{\text{cyl}} + R_{\text{conv,ext}} = \frac{1}{2\pi R_1\ell h_1} + \frac{\ln(R_2/R_1)}{2\pi\ell\lambda} + \frac{1}{2\pi R_2\ell h_2}. \]</p>
+      <p class="lead"><strong>Exemple : canalisation cylindrique avec convection externe.</strong> Un tube de rayons \(R_1\) (intérieur) et \(R_2\) (extérieur), de conductivité \(\lambda\), est en contact avec des fluides de coefficients de transfert \(h_1\) et \(h_2\). Les trois résistances en série s'ajoutent :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          R_{\text{total}} &amp;= R_{\text{conv,int}} + R_{\text{cyl}} + R_{\text{conv,ext}} \\[4pt]
+          &amp;= \dfrac{1}{2\pi R_1\ell h_1} + \dfrac{\ln\!\left(\dfrac{R_2}{R_1}\right)}{2\pi\ell\lambda} + \dfrac{1}{2\pi R_2\ell h_2} .
+        \end{aligned}
+      \]</div>
     </div>
   </section>
 
@@ -138,13 +163,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           <label for="sl-r2">Rayon extérieur \(R_2\) (cm) <span class="val" id="v-r2">4,0</span></label>
           <input type="range" id="sl-r2" min="2.5" max="6" step="0.1" value="4">
           <div class="readout" style="margin-top:.6rem">
-            <span class="ro">\(R_{\text{th,cyl}} = \ln(R_2/R_1)/(2\pi\ell\lambda)\) : <b id="v-rth">—</b> K/W</span>
-            <span class="ro">Flux \(\Phi = \Delta T/R_{\text{th}}\) : <b id="v-phi">—</b> W</span>
+            <span class="ro">\(R_{\text{th,cyl}} = \dfrac{\ln(\dfrac{R_2}{R_1})}{2\pi\ell\lambda}\) : <b id="v-rth">—</b> K/W</span>
+            <span class="ro">Flux \(\Phi = \dfrac{\Delta T}{R}_{\text{th}}\) : <b id="v-phi">—</b> W</span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Profil stationnaire de température dans la paroi d'un cylindre creux (\(R_1 = 1\,\text{cm}\), \(\ell = 1\,\text{m}\), \(T_1 = 100\,°\text{C}\), \(T_2 = 20\,°\text{C}\)) : \(T(r) = T_2 + (T_1 - T_2)\,\ln(R_2/r)/\ln(R_2/R_1)\), de forme logarithmique (courbe verte). La conductivité \(\lambda\) règle la résistance thermique et donc le flux, sans changer la forme du profil. Ordres de grandeur : acier \(\lambda \approx 50\), verre \(\approx 1\), eau \(\approx 0{,}6\), air \(\approx 0{,}025\) W·m⁻¹·K⁻¹.
+        Profil stationnaire de température dans la paroi d'un cylindre creux (\(R_1 = 1\,\text{cm}\), \(\ell = 1\,\text{m}\), \(T_1 = 100\,°\text{C}\), \(T_2 = 20\,°\text{C}\)) : \(T(r) = T_2 + (T_1 - T_2)\,\dfrac{\ln(\dfrac{R_2}{r})}{\ln(\dfrac{R_2}{R_1})}\), de forme logarithmique (courbe verte). La conductivité \(\lambda\) règle la résistance thermique et donc le flux, sans changer la forme du profil. Ordres de grandeur : acier \(\lambda \approx 50\), verre \(\approx 1\), eau \(\approx 0{,}6\), air \(\approx 0{,}025\) W·m⁻¹·K⁻¹.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-vert)"></i>\(T(r)\) logarithmique</span>
           <span class="swatch"><i style="background:var(--curve-orange)"></i>Point mobile</span>
@@ -159,10 +184,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="box-title">◆ Points clés</div>
       <ul>
         <li>C'est un item <strong>MP uniquement</strong>.</li>
-        <li>Le profil de température est <em>logarithmique</em> en cylindrique (et non linéaire en cartésien, ni en \(1/r\) en sphérique). C'est un résultat à connaître de tête.</li>
-        <li>Le flux \(\Phi = 2\pi\ell\lambda(T_1-T_2)/\ln(R_2/R_1)\) est constant en régime stationnaire ; bien vérifier en calculant \(\Phi = -2\pi r\ell\lambda\,\mathrm{d}T/\mathrm{d}r\) et constater que \(r \times A/r = A = \text{cste}\).</li>
+        <li>Le profil de température est <em>logarithmique</em> en cylindrique (et non linéaire en cartésien, ni en \(\dfrac{1}{r}\) en sphérique). C'est un résultat à connaître de tête.</li>
+        <li>Le flux \(\Phi = \dfrac{2\pi\ell\lambda(T_1-T_2)}{\ln(\dfrac{R_2}{R_1})}\) est constant en régime stationnaire ; bien vérifier en calculant \(\Phi = -2\pi r\ell\lambda\,\dfrac{\mathrm{d}T}{\mathrm{d}r}\) et constater que \(\dfrac{r \times A}{r} = A = \text{cste}\).</li>
         <li>L'analogie électrocinétique est complète : association série/parallèle fonctionne comme en électricité ; utiliser cette analogie pour les systèmes composites (tube + convection).</li>
-        <li>Dans un concours, on demande souvent d'inclure les résistances de convection \(R_{\text{conv}} = 1/(2\pi r\ell h)\) en série avec la résistance de conduction cylindrique.</li>
+        <li>Dans un concours, on demande souvent d'inclure les résistances de convection \(R_{\text{conv}} = \dfrac{1}{2\pi r\ell h}\) en série avec la résistance de conduction cylindrique.</li>
         <li>Ordres de grandeur : \(\lambda_{\text{acier}} \approx 50\), \(\lambda_{\text{verre}} \approx 1\), \(\lambda_{\text{eau}} \approx 0{,}6\), \(\lambda_{\text{air}} \approx 0{,}025\) W·m⁻¹·K⁻¹.</li>
       </ul>
     </div>
@@ -267,5 +292,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

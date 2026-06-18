@@ -69,59 +69,83 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
-    <p>Un système à deux niveaux est une entité pouvant occuper deux états d'énergie : \(\varepsilon_- = -\varepsilon\) et \(\varepsilon_+ = +\varepsilon\), avec \(\varepsilon &gt; 0\). En contact avec un thermostat à température \(T\), les probabilités d'occupation sont données par le facteur de Boltzmann. On note \(\beta = 1/(k_BT)\).</p>
-    <p><strong>Exemples.</strong> Spin \(1/2\) dans un champ magnétique (\(\varepsilon = \mu_B B\)) ; dipôle électrique à deux orientations ; défaut ponctuel dans un solide.</p>
+    <p>Un système à deux niveaux est une entité pouvant occuper deux états d'énergie : \(\varepsilon_- = -\varepsilon\) et \(\varepsilon_+ = +\varepsilon\), avec \(\varepsilon &gt; 0\). En contact avec un thermostat à température \(T\), les probabilités d'occupation sont données par le facteur de Boltzmann. On note \(\beta = \dfrac{1}{k_BT}\).</p>
+    <p><strong>Exemples.</strong> Spin \(\dfrac{1}{2}\) dans un champ magnétique (\(\varepsilon = \mu_B B\)) ; dipôle électrique à deux orientations ; défaut ponctuel dans un solide.</p>
   </section>
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">Probabilités d'occupation</span>
-      <p>Par normalisation :</p>
-      <p>\[ P_- = \frac{e^{+\beta\varepsilon}}{e^{+\beta\varepsilon}+e^{-\beta\varepsilon}} = \frac{e^{\beta\varepsilon}}{2\cosh(\beta\varepsilon)}, \qquad P_+ = \frac{e^{-\beta\varepsilon}}{2\cosh(\beta\varepsilon)}. \]</p>
-      <p>La fonction de partition est \(Z = e^{+\beta\varepsilon}+e^{-\beta\varepsilon} = 2\cosh(\beta\varepsilon)\).</p>
+      <span class="step-label">1 — Probabilités d'occupation</span>
+      <p>Chaque état est peuplé selon son facteur de Boltzmann \(e^{-\beta\varepsilon_i}\), avec \(\varepsilon_- = -\varepsilon\) et \(\varepsilon_+ = +\varepsilon\).</p>
+      <p class="lead"><strong>Étape A — On écrit la fonction de partition</strong> en sommant les deux facteurs de Boltzmann :</p>
+      <div class="calc-line">\[ Z = e^{+\beta\varepsilon} + e^{-\beta\varepsilon} = 2\cosh(\beta\varepsilon) . \]</div>
+      <p class="lead"><strong>Étape B — On normalise</strong> chaque probabilité par \(Z\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          P_- &amp;= \dfrac{e^{+\beta\varepsilon}}{e^{+\beta\varepsilon}+e^{-\beta\varepsilon}} = \dfrac{e^{+\beta\varepsilon}}{2\cosh(\beta\varepsilon)} , \\[4pt]
+          P_+ &amp;= \dfrac{e^{-\beta\varepsilon}}{2\cosh(\beta\varepsilon)} .
+        \end{aligned}
+      \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Énergie moyenne</span>
-      <p>\[ \langle E\rangle = (-\varepsilon)\,P_- + (+\varepsilon)\,P_+ = \varepsilon\,\frac{e^{-\beta\varepsilon}-e^{+\beta\varepsilon}}{2\cosh(\beta\varepsilon)} = -\varepsilon\tanh(\beta\varepsilon). \]</p>
+      <span class="step-label">2 — Énergie moyenne</span>
+      <p>On moyenne l'énergie sur les deux états, pondérés par leurs probabilités :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \langle E\rangle &amp;= (-\varepsilon)\,P_- + (+\varepsilon)\,P_+ \\[4pt]
+          &amp;= \varepsilon\,\dfrac{e^{-\beta\varepsilon}-e^{+\beta\varepsilon}}{2\cosh(\beta\varepsilon)} \\[4pt]
+          &amp;= -\varepsilon\,\tanh(\beta\varepsilon) .
+        \end{aligned}
+      \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Limites</span>
-      <p>À basse température (\(k_BT \ll \varepsilon\), soit \(\beta\varepsilon\to\infty\)) :</p>
-      <p>\[ \langle E\rangle \to -\varepsilon \quad \text{(niveau de basse énergie saturé).} \]</p>
-      <p>À haute température (\(k_BT \gg \varepsilon\), soit \(\beta\varepsilon\to 0\)), on linéarise \(\tanh(\beta\varepsilon) \approx \beta\varepsilon\) :</p>
-      <p>\[ \langle E\rangle \approx -\frac{\varepsilon^2}{k_BT} \to 0 \quad \text{(deux niveaux équiprobables).} \]</p>
+      <span class="step-label">3 — Limites en température</span>
+      <p class="lead"><strong>Basse température</strong> (\(k_BT \ll \varepsilon\), soit \(\beta\varepsilon\to\infty\)) : le système se fige dans le niveau de basse énergie :</p>
+      <div class="calc-line">\[ \langle E\rangle \to -\varepsilon \quad \text{(niveau bas saturé).} \]</div>
+      <p class="lead"><strong>Haute température</strong> (\(k_BT \gg \varepsilon\), soit \(\beta\varepsilon\to 0\)) : on linéarise \(\tanh(\beta\varepsilon) \approx \beta\varepsilon\) :</p>
+      <div class="calc-line">\[ \langle E\rangle \approx -\dfrac{\varepsilon^2}{k_BT} \to 0 \quad \text{(deux niveaux équiprobables).} \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Capacité thermique à volume constant</span>
-      <p>En dérivant \(\langle E\rangle\) par rapport à \(T\) :</p>
-      <p>\[ C_V = \frac{\mathrm{d}\langle E\rangle}{\mathrm{d}T} = k_B\,(\beta\varepsilon)^2\,\frac{1}{\cosh^2(\beta\varepsilon)}, \]</p>
-      <p>soit, de façon équivalente en faisant apparaître les exponentielles :</p>
-      <p>\[ C_V = k_B\left(\frac{\varepsilon}{k_BT}\right)^2 \frac{4\,e^{2\varepsilon/(k_BT)}}{\left(e^{2\varepsilon/(k_BT)}+1\right)^2}. \]</p>
+      <span class="step-label">4 — Capacité thermique à volume constant</span>
+      <p class="lead"><strong>On dérive</strong> l'énergie moyenne \(\langle E\rangle\) par rapport à la température :</p>
+      <div class="calc-line">\[ C_V = \dfrac{\mathrm{d}\langle E\rangle}{\mathrm{d}T} = k_B\,(\beta\varepsilon)^2\,\dfrac{1}{\cosh^2(\beta\varepsilon)} . \]</div>
+      <p class="lead"><strong>Forme équivalente —</strong> en faisant apparaître les exponentielles :</p>
+      <div class="calc-line">\[ C_V = k_B\left(\dfrac{\varepsilon}{k_BT}\right)^2 \dfrac{4\,e^{\dfrac{2\varepsilon}{k_BT}}}{\left(e^{\dfrac{2\varepsilon}{k_BT}}+1\right)^2} . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Comportement de \(C_V(T)\) : bosse de Schottky</span>
+      <span class="step-label">5 — Comportement de \(C_V(T)\) : bosse de Schottky</span>
       <ul>
         <li>\(T\to 0\) : \(C_V \to 0\) exponentiellement (gel des fluctuations).</li>
         <li>Maximum (<em>anomalie de Schottky</em>) vers \(k_BT \approx 0{,}83\,\varepsilon\).</li>
-        <li>\(T\to\infty\) : \(C_V \to 0\) en \(T^{-2}\) (saturation : \(P_\pm \to 1/2\), plus de fluctuations).</li>
+        <li>\(T\to\infty\) : \(C_V \to 0\) en \(T^{-2}\) (saturation : \(P_\pm \to \tfrac12\), plus de fluctuations).</li>
       </ul>
       <p>Ce maximum (bosse) est caractéristique de tout système à spectre d'énergie borné.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Lien fluctuations–capacité thermique</span>
-      <p>L'écart quadratique moyen de l'énergie est :</p>
-      <p>\[ \Delta E^2 = \langle E^2\rangle - \langle E\rangle^2 = \varepsilon^2 - \varepsilon^2\tanh^2(\beta\varepsilon) = \frac{\varepsilon^2}{\cosh^2(\beta\varepsilon)}. \]</p>
-      <p>On reconnaît alors :</p>
-      <p>\[ C_V = \frac{\Delta E^2}{k_BT^2}. \]</p>
+      <span class="step-label">6 — Lien fluctuations–capacité thermique</span>
+      <p class="lead"><strong>On calcule l'écart quadratique moyen</strong> de l'énergie (avec \(\langle E^2\rangle = \varepsilon^2\) puisque \(\varepsilon_\pm^2 = \varepsilon^2\)) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \Delta E^2 = \langle E^2\rangle - \langle E\rangle^2 &amp;= \varepsilon^2 - \varepsilon^2\tanh^2(\beta\varepsilon) \\[4pt]
+          &amp;= \dfrac{\varepsilon^2}{\cosh^2(\beta\varepsilon)} .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>On en déduit</strong> la relation fluctuation–dissipation, en comparant à l'expression de \(C_V\) de l'étape 4 :</p>
+      <div class="calc-line">\[ C_V = \dfrac{\Delta E^2}{k_BT^2} . \]</div>
       <p><em>Plus les fluctuations d'énergie sont grandes, plus la capacité thermique est élevée.</em></p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Entropie</span>
-      <p>En utilisant \(S = -k_B(P_-\ln P_- + P_+\ln P_+)\) :</p>
-      <p>\[ S = k_B\ln\!\left(2\cosh(\beta\varepsilon)\right) - k_B\,\beta\varepsilon\tanh(\beta\varepsilon). \]</p>
-      <p>Limites :</p>
-      <p>\[ T\to 0:\ S \to 0 \quad\text{(troisième principe ; un seul état accessible)}, \qquad T\to\infty:\ S \to k_B\ln 2 \quad\text{(deux états également probables).} \]</p>
+      <span class="step-label">7 — Entropie</span>
+      <p class="lead"><strong>On part de l'entropie statistique</strong> \(S = -k_B(P_-\ln P_- + P_+\ln P_+)\), qui se met sous la forme :</p>
+      <div class="calc-line">\[ S = k_B\ln\!\left(2\cosh(\beta\varepsilon)\right) - k_B\,\beta\varepsilon\,\tanh(\beta\varepsilon) . \]</div>
+      <p class="lead"><strong>Limites —</strong> aux deux bornes de température :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          T\to 0 :\ &amp; S \to 0 &amp;&amp; \text{(troisième principe ; un seul état accessible)}, \\[4pt]
+          T\to\infty :\ &amp; S \to k_B\ln 2 &amp;&amp; \text{(deux états également probables).}
+        \end{aligned}
+      \]</div>
     </div>
   </section>
 
@@ -133,18 +157,18 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       </div>
       <div class="controls">
         <div class="control">
-          <label for="sl-x">Température réduite \(k_BT/\varepsilon\) <span class="val" id="v-x">0,83</span></label>
+          <label for="sl-x">Température réduite \(\dfrac{k_BT}{\varepsilon}\) <span class="val" id="v-x">0,83</span></label>
           <input type="range" id="sl-x" min="0.08" max="5" step="0.01" value="0.83">
-          <span class="hint" id="hint-x">Le point se déplace sur la courbe \(C_V(T)/k_B\) ; les deux jauges montrent les populations \(P_-\) et \(P_+\).</span>
+          <span class="hint" id="hint-x">Le point se déplace sur la courbe \(\dfrac{C_V(T)}{k_B}\) ; les deux jauges montrent les populations \(P_-\) et \(P_+\).</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Animer la température</button>
           </div>
         </div>
         <div class="control">
           <div class="readout">
-            <span class="ro">\(C_V/k_B\) = <b id="v-cv">0,439</b></span>
-            <span class="ro">\(\langle E\rangle/\varepsilon\) = <b id="v-e">−0,77</b></span>
-            <span class="ro">\(S/k_B\) = <b id="v-s">0,57</b></span>
+            <span class="ro">\(\dfrac{C_V}{k_B}\) = <b id="v-cv">0,439</b></span>
+            <span class="ro">\(\dfrac{\langle E\rangle}{\varepsilon}\) = <b id="v-e">−0,77</b></span>
+            <span class="ro">\(\dfrac{S}{k_B}\) = <b id="v-s">0,57</b></span>
           </div>
           <div class="gauges" style="margin-top:.6rem">
             <div class="gauge t">
@@ -162,9 +186,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
       </div>
       <figcaption class="fig-legend">
-        Capacité thermique réduite \(C_V/k_B = (\varepsilon/k_BT)^2 / \cosh^2(\varepsilon/k_BT)\) du système à deux niveaux (courbe bleue) : la bosse de Schottky présente un maximum \(\approx 0{,}44\,k_B\) vers \(k_BT \approx 0{,}83\,\varepsilon\) (repère rouge), puis tend vers zéro aux deux extrêmes de température.
+        Capacité thermique réduite \(\dfrac{C_V}{k_B} = \dfrac{(\beta\varepsilon)^2}{\cosh^2(\beta\varepsilon)}\) du système à deux niveaux (courbe bleue) : la bosse de Schottky présente un maximum \(\approx 0{,}44\,k_B\) vers \(k_BT \approx 0{,}83\,\varepsilon\) (repère rouge), puis tend vers zéro aux deux extrêmes de température.
         <div class="legend-swatches">
-          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(C_V(T)/k_B\)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\dfrac{C_V(T)}{k_B}\)</span>
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>maximum \(\approx 0{,}44\,k_B\)</span>
           <span class="swatch"><i style="background:var(--curve-orange)"></i>point courant</span>
         </div>
@@ -179,7 +203,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <ul>
         <li>Énoncer les deux niveaux \(\pm\varepsilon\) et écrire immédiatement la fonction de partition \(Z = 2\cosh(\beta\varepsilon)\).</li>
         <li>L'énergie moyenne est \(\langle E\rangle = -\varepsilon\tanh(\beta\varepsilon)\) : à mémoriser.</li>
-        <li>La relation \(C_V = \Delta E^2/(k_BT^2)\) est fondamentale et vaut pour tout système.</li>
+        <li>La relation \(C_V = \dfrac{\Delta E^2}{k_BT^2}\) est fondamentale et vaut pour tout système.</li>
         <li>Le maximum de \(C_V\) (anomalie de Schottky) est la signature d'un système à spectre borné supérieurement.</li>
         <li>Limites à connaître : \(T\to 0\), \(\langle E\rangle\to -\varepsilon\), \(S\to 0\), \(C_V\to 0\) ; \(T\to\infty\), \(\langle E\rangle\to 0\), \(S\to k_B\ln 2\), \(C_V\to 0\).</li>
         <li>Exemples à citer : spin nucléaire ou électronique en champ magnétique.</li>
@@ -287,5 +311,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

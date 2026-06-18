@@ -66,7 +66,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <p>On considère un solide homogène, isotrope, de masse volumique \(\rho\), capacité thermique massique \(c\) et conductivité thermique \(\lambda > 0\). On note \(T(x,t)\) la température en un point d'abscisse \(x\) et à l'instant \(t\), dans une géométrie unidimensionnelle (plaques parallèles).</p>
     <p><strong>Loi de Fourier</strong> : le vecteur densité de flux thermique (flux par unité de surface) est :</p>
     <p>\[ \vec{j}_{\text{th}} = -\lambda\,\vec{\nabla} T. \]</p>
-    <p>En 1D cartésien : \(j_x = -\lambda\,\partial T/\partial x\). Le signe négatif traduit le fait que la chaleur se propage dans le sens des températures décroissantes.</p>
+    <p>En 1D cartésien : \(j_x = -\lambda\,\dfrac{\partial T}{\partial x}\). Le signe négatif traduit le fait que la chaleur se propage dans le sens des températures décroissantes.</p>
   </section>
 
   <section class="rubric">
@@ -74,37 +74,56 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
     <div class="demo-step">
       <span class="step-label">1 · Bilan d'énergie interne sur un élément de volume</span>
-      <p>Considérons une tranche de solide d'épaisseur \(\mathrm{d}x\), de section \(S\), comprise entre \(x\) et \(x + \mathrm{d}x\). En régime quelconque, le premier principe appliqué à cet élément de volume \(S\,\mathrm{d}x\) donne (pas de travail mécanique, pas de terme source ici) :</p>
-      <p>\[ \rho S\,\mathrm{d}x\,c\,\frac{\partial T}{\partial t} = \Phi(x,t) - \Phi(x+\mathrm{d}x,t), \]</p>
-      <p>où \(\Phi = j_x S = -\lambda S\,\partial T/\partial x\) est le flux thermique entrant par la face gauche. En développant au premier ordre en \(\mathrm{d}x\) :</p>
-      <p>\[ \rho c\,\frac{\partial T}{\partial t} = -\frac{\partial j_x}{\partial x} = \lambda\,\frac{\partial^2 T}{\partial x^2}. \]</p>
-      <p>On définit la <em>diffusivité thermique</em> \(a = \lambda/(\rho c)\) (en \(\mathrm{m^2\,s^{-1}}\)), et l'on obtient l'<strong>équation de la diffusion thermique</strong> :</p>
-      <p>\[ \boxed{\frac{\partial T}{\partial t} = a\,\frac{\partial^2 T}{\partial x^2}}. \]</p>
-      <p>La forme générale en 3D est \(\partial T/\partial t = a\,\Delta T\) (Laplacien de \(T\)).</p>
+      <p>Considérons une tranche de solide d'épaisseur \(\mathrm{d}x\), de section \(S\), comprise entre \(x\) et \(x + \mathrm{d}x\) (géométrie à une seule variable d'espace).</p>
+      <p class="lead"><strong>Étape A — On écrit le bilan d'énergie.</strong> Le premier principe appliqué à l'élément de volume \(S\,\mathrm{d}x\) (sans travail mécanique ni terme source) égale la variation d'énergie interne au bilan des flux entrant et sortant :</p>
+      <div class="calc-line">\[ \rho\,S\,\mathrm{d}x\,c\,\dfrac{\partial T}{\partial t} = \Phi(x,t) - \Phi(x+\mathrm{d}x,t) . \]</div>
+      <p class="lead"><strong>Étape B — On introduit la loi de Fourier.</strong> Le flux thermique à travers une face est \(\Phi = j_x S = -\lambda S\,\dfrac{\partial T}{\partial x}\). On développe le terme sortant au premier ordre en \(\mathrm{d}x\) :</p>
+      <div class="calc-line">\[ \Phi(x+\mathrm{d}x,t) - \Phi(x,t) = \dfrac{\partial \Phi}{\partial x}\,\mathrm{d}x . \]</div>
+      <p class="lead"><strong>Étape C — On divise par \(S\,\mathrm{d}x\)</strong> et on reporte la loi de Fourier \(j_x = -\lambda\,\dfrac{\partial T}{\partial x}\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \rho c\,\dfrac{\partial T}{\partial t} &amp;= -\dfrac{\partial j_x}{\partial x} \\[4pt]
+          &amp;= \lambda\,\dfrac{\partial^2 T}{\partial x^2} .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape D — On introduit la diffusivité thermique</strong> \(a = \dfrac{\lambda}{\rho c}\) (en \(\mathrm{m^2\,s^{-1}}\)), ce qui donne l'<strong>équation de la diffusion thermique</strong> :</p>
+      <div class="calc-line">\[ \boxed{\dfrac{\partial T}{\partial t} = a\,\dfrac{\partial^2 T}{\partial x^2}} . \]</div>
+      <p>La forme générale en 3D est \(\dfrac{\partial T}{\partial t} = a\,\Delta T\) (Laplacien de \(T\) ; forme admise, non démontrée).</p>
     </div>
 
     <div class="demo-step">
       <span class="step-label">2 · Vérification de l'homogénéité</span>
-      <ul>
-        <li>Membre gauche : \([T/t] = \mathrm{K\,s^{-1}}\).</li>
-        <li>Membre droit : \([a \cdot T/x^2] = \mathrm{m^2\,s^{-1}} \cdot \mathrm{K\,m^{-2}} = \mathrm{K\,s^{-1}}\). \(\checkmark\)</li>
-      </ul>
+      <p class="lead">On vérifie que les deux membres de l'équation ont la même dimension. Pour le membre de gauche :</p>
+      <div class="calc-line">\[ \left[\dfrac{\partial T}{\partial t}\right] = \mathrm{K\,s^{-1}} . \]</div>
+      <p class="lead">Pour le membre de droite, avec \([a] = \mathrm{m^2\,s^{-1}}\) :</p>
+      <div class="calc-line">\[ \left[a\,\dfrac{\partial^2 T}{\partial x^2}\right] = \mathrm{m^2\,s^{-1}} \cdot \mathrm{K\,m^{-2}} = \mathrm{K\,s^{-1}} . \]</div>
+      <p>Les deux membres sont bien homogènes \((\checkmark)\).</p>
     </div>
 
     <div class="demo-step">
       <span class="step-label">3 · Échelles caractéristiques</span>
-      <p>En comparant les deux membres, l'équation de diffusion relie une échelle de longueur \(L\) et une échelle de temps \(\tau\) par :</p>
-      <p>\[ \frac{T}{\tau} \sim a\,\frac{T}{L^2} \quad \Rightarrow \quad \boxed{\tau \sim \frac{L^2}{a}}. \]</p>
-      <p>Interprétation : pour que la chaleur diffuse sur une longueur \(L\), il faut un temps de l'ordre de \(L^2/a\). Ordres de grandeur de \(a\) (en \(\mathrm{m^2\,s^{-1}}\)) : air \(a \approx 2\times 10^{-5}\), eau \(a \approx 1{,}4\times 10^{-7}\), verre \(a \approx 5\times 10^{-7}\), acier \(a \approx 1\times 10^{-5}\). Exemple : pour \(L = 1\,\text{cm}\) dans l'eau, \(\tau \sim (10^{-2})^2 / (1{,}4\times 10^{-7}) \approx 700\,\text{s}\).</p>
+      <p class="lead">En évaluant chaque membre par analyse dimensionnelle (\(\partial_t \sim 1/\tau\), \(\partial_x^2 \sim 1/L^2\)), l'équation de diffusion relie une échelle de longueur \(L\) et une échelle de temps \(\tau\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \dfrac{T}{\tau} &amp;\sim a\,\dfrac{T}{L^2} \\[4pt]
+          \Longrightarrow\quad &amp;\boxed{\tau \sim \dfrac{L^2}{a}} .
+        \end{aligned}
+      \]</div>
+      <p>Interprétation : pour que la chaleur diffuse sur une longueur \(L\), il faut un temps de l'ordre de \(\dfrac{L^2}{a}\). Ordres de grandeur de \(a\) (en \(\mathrm{m^2\,s^{-1}}\)) : air \(a \approx 2\times 10^{-5}\), eau \(a \approx 1{,}4\times 10^{-7}\), verre \(a \approx 5\times 10^{-7}\), acier \(a \approx 1\times 10^{-5}\).</p>
+      <p class="lead">Exemple numérique : pour \(L = 1\,\text{cm}\) dans l'eau,</p>
+      <div class="calc-line">\[ \tau \sim \dfrac{L^2}{a} = \dfrac{(10^{-2})^2}{1{,}4\times 10^{-7}} \approx 700\,\text{s} . \]</div>
     </div>
 
     <div class="demo-step">
       <span class="step-label">4 · Analogie électrique en régime stationnaire</span>
-      <p>En régime stationnaire (\(\partial T/\partial t = 0\)), l'équation de diffusion devient \(\mathrm{d}^2 T/\mathrm{d}x^2 = 0\), ce qui implique que le profil de température est linéaire. Le flux thermique est alors constant :</p>
-      <p>\[ \Phi = -\lambda S\,\frac{\mathrm{d}T}{\mathrm{d}x} = \lambda S\,\frac{T_1 - T_2}{L}, \]</p>
-      <p>où \(T_1\) et \(T_2\) sont les températures aux faces de la paroi d'épaisseur \(L\). On définit la <strong>résistance thermique</strong> :</p>
-      <p>\[ R_{\text{th}} = \frac{T_1 - T_2}{\Phi} = \frac{L}{\lambda S}. \]</p>
-      <p>L'analogie avec la loi d'Ohm \(U = RI\) est complète : \(\Delta T \leftrightarrow U\), \(\Phi \leftrightarrow I\), \(R_{\text{th}} \leftrightarrow R\). Ainsi, des parois en série (conductivités \(\lambda_1, \lambda_2\), épaisseurs \(L_1, L_2\)) ont une résistance thermique totale \(R_{\text{th}} = R_1 + R_2 = L_1/(\lambda_1 S) + L_2/(\lambda_2 S)\).</p>
+      <p class="lead"><strong>Étape A — On simplifie l'équation en régime stationnaire</strong> \(\big(\partial T/\partial t = 0\big)\) : le profil de température devient linéaire :</p>
+      <div class="calc-line">\[ \dfrac{\mathrm{d}^2 T}{\mathrm{d}x^2} = 0 . \]</div>
+      <p class="lead"><strong>Étape B — On calcule le flux</strong> à travers une paroi d'épaisseur \(L\), entre les faces aux températures \(T_1\) et \(T_2\). Le profil étant linéaire, le flux est constant :</p>
+      <div class="calc-line">\[ \Phi = -\lambda S\,\dfrac{\mathrm{d}T}{\mathrm{d}x} = \lambda S\,\dfrac{T_1 - T_2}{L} . \]</div>
+      <p class="lead"><strong>Étape C — On définit la résistance thermique</strong> comme le rapport entre l'écart de température et le flux :</p>
+      <div class="calc-line">\[ R_{\text{th}} = \dfrac{T_1 - T_2}{\Phi} = \dfrac{L}{\lambda S} . \]</div>
+      <p>L'analogie avec la loi d'Ohm \(U = RI\) est complète : \(\Delta T \leftrightarrow U\), \(\Phi \leftrightarrow I\), \(R_{\text{th}} \leftrightarrow R\). Pour deux parois en série (conductivités \(\lambda_1, \lambda_2\), épaisseurs \(L_1, L_2\)), les résistances s'ajoutent :</p>
+      <div class="calc-line">\[ R_{\text{th}} = R_1 + R_2 = \dfrac{L_1}{\lambda_1 S} + \dfrac{L_2}{\lambda_2 S} . \]</div>
     </div>
   </section>
 
@@ -129,12 +148,12 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           <input type="range" id="sl-L" min="2" max="20" step="1" value="10">
           <div class="readout" style="margin-top:.6rem">
             <span class="ro">Temps écoulé : <b id="v-t">0,0</b> s</span>
-            <span class="ro">Temps caractéristique \(\tau \sim L^2/a\) : <b id="v-tau">—</b></span>
+            <span class="ro">Temps caractéristique \(\dfrac{\tau \sim L^2}{a}\) : <b id="v-tau">—</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Solution fondamentale de l'équation de diffusion : une perturbation initialement localisée s'étale en gaussienne dont la largeur croît comme \(\sqrt{a\,t}\) et dont le maximum décroît comme \(1/\sqrt{t}\). L'aire sous la courbe (énergie) est conservée. Le temps caractéristique pour diffuser sur tout le domaine est \(\tau \sim L^2/a\).
+        Illustration numérique de la diffusion thermique : une perturbation initialement localisée s'étale au cours du temps, conformément à l'équation \(\partial_t T = a\,\partial^2_x T\). L'énergie (aire sous la courbe) est conservée. L'ordre de grandeur à retenir est le temps caractéristique \(\tau \sim \dfrac{L^2}{a}\) ; la forme exacte des solutions n'est pas exigible au programme MP.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>Profil \(T(x,t)\)</span>
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Profil initial</span>
@@ -150,10 +169,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <ul>
         <li>C'est un item <strong>MP uniquement</strong> ; bien le préciser.</li>
         <li>Le signe dans la loi de Fourier (\(\vec{j} = -\lambda\vec{\nabla} T\)) est crucial : la chaleur va du chaud vers le froid.</li>
-        <li>La diffusivité \(a = \lambda/(\rho c)\) est l'analogue de la diffusivité massique ou du coefficient de diffusion électrique.</li>
-        <li>La relation \(\tau \sim L^2/a\) est à retenir et à utiliser pour estimer des ordres de grandeur rapidement à l'oral.</li>
+        <li>La diffusivité \(a = \dfrac{\lambda}{\rho c}\) est l'analogue de la diffusivité massique ou du coefficient de diffusion électrique.</li>
+        <li>La relation \(\dfrac{\tau \sim L^2}{a}\) est à retenir et à utiliser pour estimer des ordres de grandeur rapidement à l'oral.</li>
         <li>En régime stationnaire, le flux est constant dans la paroi (pas d'accumulation d'énergie) ; le profil \(T(x)\) est linéaire pour une géométrie cartésienne.</li>
-        <li>L'analogie électrique s'étend à la convection : \(R_{\text{conv}} = 1/(hS)\) où \(h\) est le coefficient d'échange.</li>
+        <li>L'analogie électrique s'étend à la convection : \(R_{\text{conv}} = \dfrac{1}{hS}\) où \(h\) est le coefficient d'échange.</li>
       </ul>
     </div>
   </section>
@@ -262,5 +281,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

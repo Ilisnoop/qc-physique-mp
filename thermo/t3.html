@@ -74,25 +74,36 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
     <div class="demo-step">
       <span class="step-label">1 · Établissement du premier principe industriel</span>
-      <p>On choisit comme système le fluide entre les sections d'entrée et de sortie à l'instant \(t\), plus la masse \(\delta m\) qui entre pendant \(\mathrm{d}t\) ; en régime stationnaire, la même masse \(\delta m\) sort côté sortie. Bilan d'énergie sur \(\Sigma\) pendant \(\mathrm{d}t\) : \(\mathrm{d}E_\Sigma = \delta W + \delta Q\).</p>
-      <p>Le travail comprend le travail des forces de pression aux sections (\(P_e v_e \delta m\) entrant, \(-P_s v_s \delta m\) sortant) et le travail utile \(\delta W_u = w_u\,\delta m\) :</p>
-      <p>\[ \delta W = w_u\,\delta m + P_e v_e\,\delta m - P_s v_s\,\delta m. \]</p>
-      <p>La variation d'énergie se réduit à la différence des masses qui sortent et entrent : \(\mathrm{d}E_\Sigma = (u_s + e_{c,s} - u_e - e_{c,e})\,\delta m\). En combinant et en divisant par \(\delta m\), avec \(h = u + Pv\) :</p>
-      <p>\[ \boxed{(h_s + e_{c,s}) - (h_e + e_{c,e}) = w_u + q}, \quad \text{soit} \quad \Delta h + \Delta e_c = w_u + q. \]</p>
-      <p>De même, le second principe en régime stationnaire donne \(s_s - s_e = \dfrac{q}{T_{\text{source}}} + s_c\), avec \(s_c \geq 0\).</p>
+      <p>On choisit comme système le fluide entre les sections d'entrée et de sortie à l'instant \(t\), plus la masse \(\delta m\) qui entre pendant \(\mathrm{d}t\) ; en régime stationnaire, la même masse \(\delta m\) sort côté sortie.</p>
+      <p class="lead"><strong>Étape A — On écrit le bilan d'énergie</strong> sur le système \(\Sigma\) pendant \(\mathrm{d}t\) :</p>
+      <div class="calc-line">\[ \mathrm{d}E_\Sigma = \delta W + \delta Q . \]</div>
+      <p class="lead"><strong>Étape B — On détaille le travail.</strong> Il comprend le travail des forces de pression aux sections (\(P_e v_e\,\delta m\) entrant, \(-P_s v_s\,\delta m\) sortant) et le travail utile \(\delta W_u = w_u\,\delta m\) :</p>
+      <div class="calc-line">\[ \delta W = w_u\,\delta m + P_e v_e\,\delta m - P_s v_s\,\delta m . \]</div>
+      <p class="lead"><strong>Étape C — On exprime la variation d'énergie</strong> du système, qui se réduit à la différence entre la masse qui sort et celle qui entre :</p>
+      <div class="calc-line">\[ \mathrm{d}E_\Sigma = \big(u_s + e_{c,s} - u_e - e_{c,e}\big)\,\delta m . \]</div>
+      <p class="lead"><strong>Étape D — On combine</strong> les trois relations, on divise par \(\delta m\) et on introduit l'enthalpie massique \(h = u + Pv\). On obtient le <strong>premier principe industriel</strong> :</p>
+      <div class="calc-line">\[ \boxed{(h_s + e_{c,s}) - (h_e + e_{c,e}) = w_u + q} \quad \text{soit} \quad \Delta h + \Delta e_c = w_u + q . \]</div>
+      <p class="lead">De même, le second principe en régime stationnaire s'écrit, avec l'entropie créée massique \(s_c \geq 0\) :</p>
+      <div class="calc-line">\[ s_s - s_e = \dfrac{q}{T_{\text{source}}} + s_c . \]</div>
     </div>
 
     <div class="demo-step">
       <span class="step-label">2 · Détente de Joule-Thomson (Joule-Kelvin)</span>
-      <p>Le fluide s'écoule à travers un milieu poreux (étranglement), en régime stationnaire, sans échange de chaleur (\(q = 0\)), sans travail utile (\(w_u = 0\)), et \(\Delta e_c \approx 0\). D'après le premier principe industriel :</p>
-      <p>\[ h_s - h_e = 0 \quad \Rightarrow \quad h_s = h_e. \]</p>
+      <p>Le fluide s'écoule à travers un milieu poreux (étranglement), en régime stationnaire, sans échange de chaleur \((q = 0)\), sans travail utile \((w_u = 0)\), et avec \(\Delta e_c \approx 0\).</p>
+      <p class="lead">On reporte ces hypothèses dans le premier principe industriel \(\Delta h + \Delta e_c = w_u + q\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          h_s - h_e &amp;= w_u + q - \Delta e_c = 0 \\[4pt]
+          \Longrightarrow\quad h_s &amp;= h_e .
+        \end{aligned}
+      \]</div>
       <p><strong>La détente de Joule-Thomson est donc isenthalpique.</strong></p>
     </div>
 
     <div class="demo-step">
       <span class="step-label">3 · Effet Joule-Thomson sur la température</span>
       <p>L'évolution de \(T\) lors d'une détente isenthalpique est caractérisée par le <em>coefficient de Joule-Thomson</em> :</p>
-      <p>\[ \mu_{\text{JT}} = \left(\frac{\partial T}{\partial P}\right)_h. \]</p>
+      <div class="calc-line">\[ \mu_{\text{JT}} = \left(\dfrac{\partial T}{\partial P}\right)_h . \]</div>
       <p>Pour un gaz parfait, \(h = h(T)\) (première loi de Joule), donc \(\mu_{\text{JT}} = 0\) : la température ne varie pas. Pour un gaz réel (van der Waals), \(\mu_{\text{JT}}\) peut être positif ou négatif selon \(T\). Au-dessus de la <em>température d'inversion</em>, \(\mu_{\text{JT}} &lt; 0\) (le gaz se réchauffe) ; en dessous, \(\mu_{\text{JT}} &gt; 0\) (le gaz se refroidit). C'est ce refroidissement qu'exploite la liquéfaction de l'air (procédé Linde).</p>
     </div>
   </section>
@@ -282,5 +293,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

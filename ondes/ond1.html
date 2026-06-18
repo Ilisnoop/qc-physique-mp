@@ -68,39 +68,59 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
-    <p>On se place dans le vide, loin de toute source (\(\rho=0\), \(\vec{j}=\vec{0}\)). On note \(c = 1/\sqrt{\varepsilon_0\mu_0} = 3{,}00\times10^{8}\ \mathrm{m\cdot s^{-1}}\) la vitesse de la lumière dans le vide.</p>
+    <p>On se place dans le vide, loin de toute source (\(\rho=0\), \(\vec{j}=\vec{0}\)). On note \(c = \dfrac{1}{\sqrt{\varepsilon_0\mu_0}} = 3{,}00\times10^{8}\ \mathrm{m\cdot s^{-1}}\) la vitesse de la lumière dans le vide.</p>
   </section>
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">Établissement de l'équation de propagation</span>
-      <p>En prenant le rotationnel de Maxwell-Faraday :</p>
-      <p>\[ \vec{\mathrm{rot}}(\vec{\mathrm{rot}}\,\vec{E}) = -\frac{\partial}{\partial t}(\vec{\mathrm{rot}}\,\vec{B}) \]</p>
-      <p>D'après la formule d'analyse vectorielle \(\vec{\mathrm{rot}}(\vec{\mathrm{rot}}\,\vec{A}) = \vec{\mathrm{grad}}(\mathrm{div}\,\vec{A}) - \Delta\vec{A}\) et Maxwell-Gauss (\(\mathrm{div}\,\vec{E}=0\) dans le vide) :</p>
-      <p>\[ -\Delta\vec{E} = -\frac{\partial}{\partial t}\!\left(\mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}\right) = -\mu_0\varepsilon_0\frac{\partial^2\vec{E}}{\partial t^2} \]</p>
-      <p>D'où l'équation de d'Alembert :</p>
-      <p>\[ \Delta\vec{E} - \frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} = \vec{0} \]</p>
-      <p>De même pour \(\vec{B}\).</p>
+      <span class="step-label">1 — Établissement de l'équation de propagation</span>
+      <p class="lead"><strong>Étape A — On prend le rotationnel de Maxwell-Faraday</strong> \(\vec{\mathrm{rot}}\,\vec{E} = -\partial_t\vec{B}\) :</p>
+      <div class="calc-line">\[ \vec{\mathrm{rot}}\,(\vec{\mathrm{rot}}\,\vec{E}) = -\dfrac{\partial}{\partial t}\,(\vec{\mathrm{rot}}\,\vec{B}) . \]</div>
+      <p class="lead"><strong>Étape B — On développe le double rotationnel</strong> avec l'identité d'analyse vectorielle et Maxwell-Gauss dans le vide \((\mathrm{div}\,\vec{E}=0)\) :</p>
+      <div class="calc-line">\[ \vec{\mathrm{rot}}\,(\vec{\mathrm{rot}}\,\vec{E}) = \vec{\mathrm{grad}}(\mathrm{div}\,\vec{E}) - \Delta\vec{E} = -\,\Delta\vec{E} . \]</div>
+      <p class="lead"><strong>Étape C — On exprime le second membre</strong> en remplaçant \(\vec{\mathrm{rot}}\,\vec{B}\) par Maxwell-Ampère dans le vide \((\vec{\mathrm{rot}}\,\vec{B} = \mu_0\varepsilon_0\,\partial_t\vec{E})\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          -\Delta\vec{E} &amp;= -\dfrac{\partial}{\partial t}\!\left(\mu_0\varepsilon_0\dfrac{\partial\vec{E}}{\partial t}\right) \\[4pt]
+          &amp;= -\,\mu_0\varepsilon_0\dfrac{\partial^2\vec{E}}{\partial t^2} .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape D — On en déduit l'équation de d'Alembert</strong>, avec \(c^2 = \dfrac{1}{\mu_0\varepsilon_0}\) :</p>
+      <div class="calc-line">\[ \Delta\vec{E} - \dfrac{1}{c^2}\dfrac{\partial^2\vec{E}}{\partial t^2} = \vec{0} . \]</div>
+      <p>Le champ magnétique \(\vec{B}\) vérifie une équation identique, obtenue par le même calcul à partir de Maxwell-Ampère.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Structure d'une OPPM</span>
-      <p>On cherche des solutions de la forme \(\vec{E}(\vec{r},t) = \vec{E}_0\,e^{i(\vec{k}\cdot\vec{r}-\omega t)}\) (notation complexe, partie réelle physique). En substituant dans l'équation de d'Alembert :</p>
-      <p>\[ -k^2\vec{E}_0 + \frac{\omega^2}{c^2}\vec{E}_0 = \vec{0} \]</p>
-      <p><b>Relation de dispersion dans le vide :</b></p>
-      <p>\[ k^2 = \frac{\omega^2}{c^2}, \quad\text{soit}\quad \omega = ck \quad (k&gt;0) \]</p>
+      <span class="step-label">2 — Structure d'une OPPM</span>
+      <p class="lead"><strong>On cherche une solution de forme imposée</strong> : une onde plane progressive monochromatique en notation complexe (la grandeur physique étant la partie réelle),</p>
+      <div class="calc-line">\[ \vec{E}(\vec{r},t) = \vec{E}_0\,e^{i(\vec{k}\cdot\vec{r}-\omega t)} . \]</div>
+      <p class="lead"><strong>On substitue dans l'équation de d'Alembert</strong> : la dérivation spatiale donne \(\Delta \to -k^2\) et la dérivation temporelle \(\partial_t^2 \to -\omega^2\), d'où</p>
+      <div class="calc-line">\[ -k^2\,\vec{E}_0 + \dfrac{\omega^2}{c^2}\,\vec{E}_0 = \vec{0} . \]</div>
+      <p class="lead"><strong>On en déduit la relation de dispersion dans le vide</strong> (pour \(\vec{E}_0 \neq \vec{0}\)) :</p>
+      <div class="calc-line">\[ k^2 = \dfrac{\omega^2}{c^2} \quad\Longrightarrow\quad \omega = ck \qquad (k &gt; 0) . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Propriétés de l'OPPM</span>
-      <p>En appliquant \(\mathrm{div}\,\vec{E}=0\) et \(\mathrm{div}\,\vec{B}=0\) :</p>
-      <p>\[ \vec{k}\cdot\vec{E}_0 = 0, \quad \vec{k}\cdot\vec{B}_0 = 0 \quad \text{(onde transverse)} \]</p>
-      <p>Maxwell-Faraday donne le lien entre \(\vec{E}\) et \(\vec{B}\) :</p>
-      <p>\[ \vec{B}_0 = \frac{1}{\omega}\vec{k}\times\vec{E}_0 = \frac{1}{c}\hat{k}\times\vec{E}_0 \]</p>
-      <p>Donc \(|\vec{B}_0| = |\vec{E}_0|/c\) et \((\vec{E}_0, \vec{B}_0, \vec{k})\) forme un trièdre direct.</p>
+      <span class="step-label">3 — Propriétés de l'OPPM</span>
+      <p class="lead"><strong>On exploite les équations de Maxwell à flux conservatif</strong> \((\mathrm{div}\,\vec{E}=0,\ \mathrm{div}\,\vec{B}=0)\) : pour une OPPM, l'opérateur divergence se traduit par \(\mathrm{div} \to i\,\vec{k}\cdot\,\), d'où la transversalité</p>
+      <div class="calc-line">\[ \vec{k}\cdot\vec{E}_0 = 0 , \qquad \vec{k}\cdot\vec{B}_0 = 0 \qquad \text{(onde transverse)} . \]</div>
+      <p class="lead"><strong>On relie \(\vec{E}\) et \(\vec{B}\) par Maxwell-Faraday</strong>, qui pour une OPPM s'écrit \(i\,\vec{k}\times\vec{E}_0 = i\,\omega\,\vec{B}_0\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \vec{B}_0 &amp;= \dfrac{1}{\omega}\,\vec{k}\times\vec{E}_0 \\[4pt]
+          &amp;= \dfrac{1}{c}\,\hat{k}\times\vec{E}_0 ,
+        \end{aligned}
+      \]</div>
+      <p class="lead">en utilisant \(\omega = ck\) et le vecteur unitaire \(\hat{k} = \vec{k}/k\). <strong>On en déduit</strong> la relation entre amplitudes</p>
+      <div class="calc-line">\[ \|\vec{B}_0\| = \dfrac{\|\vec{E}_0\|}{c} , \]</div>
+      <p>et le fait que \((\vec{E}_0, \vec{B}_0, \vec{k})\) forme un trièdre direct.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Polarisation</span>
-      <p>Si \(\vec{E}_0\) est réel et fixe : polarisation rectiligne. Si \(\vec{E}_0 = E_0(\hat{x} + i\hat{y})\) : polarisation circulaire gauche.</p>
+      <span class="step-label">4 — Polarisation</span>
+      <p>L'état de polarisation est fixé par la nature de l'amplitude \(\vec{E}_0\) :</p>
+      <ul>
+        <li>si \(\vec{E}_0\) est réel et de direction fixe, la polarisation est <em>rectiligne</em> ;</li>
+        <li>si \(\vec{E}_0 = E_0(\hat{x} + i\,\hat{y})\), le déphasage de \(\dfrac{\pi}{2}\) entre les deux composantes donne une polarisation <em>circulaire gauche</em>.</li>
+      </ul>
     </div>
   </section>
 
@@ -122,13 +142,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <div class="readout">
             <span class="ro">\(\lambda\) = <b id="v-lambda">—</b></span>
-            <span class="ro">\(|\vec{B}|/|\vec{E}|\) = <b id="v-ratio">1/c</b></span>
+            <span class="ro">\(\dfrac{|\vec{B}|}{|\vec{E}|}\) = <b id="v-ratio">1/c</b></span>
             <span class="ro">Trièdre <b id="v-trio">(E, B, k) direct</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        OPPM se propageant selon \(\hat{z}\) : \(\vec{E}\parallel\hat{x}\) (bleu) et \(\vec{B}\parallel\hat{y}\) (rouge) sont transverses et en phase, avec \(|\vec{B}|=|\vec{E}|/c\). L'amplitude de \(\vec{B}\) est représentée à échelle réduite pour la lisibilité. Le trièdre \((\vec{E},\vec{B},\hat{k})\) est direct.
+        OPPM se propageant selon \(\hat{z}\) : \(\vec{E}\parallel\hat{x}\) (bleu) et \(\vec{B}\parallel\hat{y}\) (rouge) sont transverses et en phase, avec \(|\vec{B}|=\dfrac{|\vec{E}|}{c}\). L'amplitude de \(\vec{B}\) est représentée à échelle réduite pour la lisibilité. Le trièdre \((\vec{E},\vec{B},\hat{k})\) est direct.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\vec{E}\parallel\hat{x}\)</span>
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\vec{B}\parallel\hat{y}\) (éch. réduite)</span>
@@ -243,5 +263,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

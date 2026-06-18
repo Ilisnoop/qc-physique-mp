@@ -69,40 +69,44 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>Milieu ohmique linéaire, homogène, isotrope de conductivité \(\gamma\) (\(\mathrm{S\cdot m^{-1}}\)), permittivité \(\varepsilon\) (supposée réelle). Loi d'Ohm locale : \(\vec{j} = \gamma\vec{E}\).</p>
-    <p>Régime « lentement variable » (bonne approximation pour les métaux aux fréquences usuelles) : \(\gamma/(\varepsilon\omega) \gg 1\), c'est-à-dire le courant de conduction domine sur le courant de déplacement.</p>
+    <p>Régime « lentement variable » (bonne approximation pour les métaux aux fréquences usuelles) : \(\dfrac{\gamma}{\varepsilon\omega} \gg 1\), c'est-à-dire le courant de conduction domine sur le courant de déplacement.</p>
   </section>
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">Équation de propagation dans le milieu ohmique</span>
-      <p>En substituant \(\vec{j}=\gamma\vec{E}\) dans Maxwell-Ampère :</p>
-      <p>\[ \vec{\mathrm{rot}}\,\vec{B} = \mu_0\gamma\vec{E} + \mu_0\varepsilon\frac{\partial\vec{E}}{\partial t} \]</p>
-      <p>Dans le régime lentement variable, on néglige le terme de déplacement :</p>
-      <p>\[ \vec{\mathrm{rot}}\,\vec{B} \approx \mu_0\gamma\vec{E} \]</p>
-      <p>En combinant avec Maxwell-Faraday (en prenant \(\vec{\mathrm{rot}}\) de \(\vec{\mathrm{rot}}\,\vec{E} = -\partial_t\vec{B}\) et utilisant \(\mathrm{div}\,\vec{E}=0\)) :</p>
-      <p>\[ \Delta\vec{E} = \mu_0\gamma\frac{\partial\vec{E}}{\partial t} \]</p>
-      <p>C'est une <em>équation de diffusion</em> (et non de propagation) avec le coefficient de diffusion \(D = 1/(\mu_0\gamma)\).</p>
+      <span class="step-label">1 — Équation de propagation dans le milieu ohmique</span>
+      <p class="lead"><strong>On part de Maxwell-Ampère</strong> en y injectant la loi d'Ohm locale \(\vec{j}=\gamma\vec{E}\) :</p>
+      <div class="calc-line">\[ \vec{\mathrm{rot}}\,\vec{B} = \mu_0\gamma\,\vec{E} + \mu_0\varepsilon\dfrac{\partial\vec{E}}{\partial t} . \]</div>
+      <p class="lead"><strong>On se place dans l'approximation des régimes lentement variables</strong> : le courant de conduction domine le courant de déplacement, que l'on néglige</p>
+      <div class="calc-line">\[ \vec{\mathrm{rot}}\,\vec{B} \approx \mu_0\gamma\,\vec{E} . \]</div>
+      <p class="lead"><strong>On prend le rotationnel de Maxwell-Faraday</strong> \(\vec{\mathrm{rot}}\,\vec{E} = -\partial_t\vec{B}\) et on utilise \(\mathrm{div}\,\vec{E}=0\) ainsi que la relation précédente :</p>
+      <div class="calc-line">\[ \Delta\vec{E} = \mu_0\gamma\dfrac{\partial\vec{E}}{\partial t} . \]</div>
+      <p>Il s'agit d'une <em>équation de diffusion</em> (et non de propagation), de coefficient de diffusion \(D = \dfrac{1}{\mu_0\gamma}\).</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Solution OPPM</span>
-      <p>En cherchant \(\vec{E} = \vec{E}_0 e^{i(kz-\omega t)}\) :</p>
-      <p>\[ -k^2 = -i\mu_0\gamma\omega \]</p>
-      <p>Donc \(k^2 = i\mu_0\gamma\omega\), d'où :</p>
-      <p>\[ k = \frac{1+i}{\delta}, \quad \text{avec}\quad \delta = \sqrt{\frac{2}{\mu_0\gamma\omega}} \]</p>
-      <p>(en prenant la racine de module positif et de phase \(+\pi/4\)). Le champ s'écrit :</p>
-      <p>\[ \vec{E} = \vec{E}_0\,e^{-z/\delta}\,e^{i(z/\delta - \omega t)} \]</p>
-      <p>Le champ est atténué sur une longueur caractéristique \(\delta\) appelée <b>épaisseur de peau</b>.</p>
+      <span class="step-label">2 — Solution OPPM</span>
+      <p class="lead"><strong>On cherche une solution de forme imposée</strong> \(\vec{E} = \vec{E}_0\,e^{i(kz-\omega t)}\) ; la substitution dans l'équation de diffusion \((\Delta \to -k^2,\ \partial_t \to -i\omega)\) donne</p>
+      <div class="calc-line">\[ -k^2 = -i\mu_0\gamma\omega \quad\Longrightarrow\quad k^2 = i\mu_0\gamma\omega . \]</div>
+      <p class="lead"><strong>On prend la racine carrée</strong> de module \(\sqrt{\mu_0\gamma\omega}\) et d'argument \(+\dfrac{\pi}{4}\) (soit \(\sqrt{i} = \tfrac{1+i}{\sqrt2}\)), ce qui fait apparaître la longueur \(\delta\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          k &amp;= \dfrac{1+i}{\delta} , \quad \text{avec}\quad \delta = \sqrt{\dfrac{2}{\mu_0\gamma\omega}} , \\[4pt]
+          \vec{E} &amp;= \vec{E}_0\,e^{-z/\delta}\,e^{i(z/\delta - \omega t)} .
+        \end{aligned}
+      \]</div>
+      <p>Le champ est atténué sur la longueur caractéristique \(\delta\), appelée <strong>épaisseur de peau</strong>.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Ordres de grandeur</span>
-      <p>\[ \delta = \sqrt{\frac{2}{\mu_0\gamma\omega}} \]</p>
-      <p>Pour le cuivre (\(\gamma = 5{,}9\times10^{7}\ \mathrm{S\cdot m^{-1}}\)) à \(f=50\ \mathrm{Hz}\) : \(\delta \approx 9\ \mathrm{mm}\). À \(f=1\ \mathrm{MHz}\) : \(\delta \approx 66\ \mathrm{\mu m}\).</p>
+      <span class="step-label">3 — Ordres de grandeur</span>
+      <p class="lead"><strong>On rappelle l'expression de l'épaisseur de peau</strong> :</p>
+      <div class="calc-line">\[ \delta = \sqrt{\dfrac{2}{\mu_0\gamma\omega}} . \]</div>
+      <p>Pour le cuivre \((\gamma = 5{,}9\times10^{7}\ \mathrm{S\cdot m^{-1}})\), elle vaut \(\delta \approx 9\ \mathrm{mm}\) à \(f=50\ \mathrm{Hz}\), et \(\delta \approx 66\ \mathrm{\mu m}\) à \(f=1\ \mathrm{MHz}\) : le champ est d'autant plus confiné en surface que la fréquence est élevée.</p>
     </div>
   </section>
 
   <section class="rubric">
-    <h2><span class="rl">E</span> Figure interactive — atténuation \(e^{-z/\delta}\) dans le conducteur</h2>
+    <h2><span class="rl">E</span> Figure interactive — atténuation \(e^{-\dfrac{z}{\delta}}\) dans le conducteur</h2>
     <figure class="figure">
       <div class="fig-canvas-wrap">
         <canvas id="cv-peau" aria-label="Onde atténuée e^(-z/delta) dans un conducteur ohmique, epaisseur de peau delta"></canvas>
@@ -111,25 +115,25 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-d">Épaisseur de peau \(\delta\) <span class="val" id="v-d">1,0 (u.a.)</span></label>
           <input type="range" id="sl-d" min="0.4" max="3" step="0.05" value="1">
-          <span class="hint" id="hint-d">\(\delta = \sqrt{2/(\mu_0\gamma\omega)} \propto 1/\sqrt{\gamma\omega}\) : plus \(\gamma\) ou \(\omega\) augmente, plus \(\delta\) diminue.</span>
+          <span class="hint" id="hint-d">\(\delta = \dfrac{\sqrt{\dfrac{2}{\mu_0\gamma\omega}} \propto 1}{\sqrt{\gamma\omega}}\) : plus \(\gamma\) ou \(\omega\) augmente, plus \(\delta\) diminue.</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Animer l'onde amortie</button>
           </div>
         </div>
         <div class="control">
           <div class="readout">
-            <span class="ro">\(E/E_0\) en \(z=\delta\) = <b id="v-1e">0,37</b> (\(=1/e\))</span>
-            <span class="ro">\(E/E_0\) en \(z=3\delta\) = <b id="v-3d">—</b></span>
+            <span class="ro">\(\dfrac{E}{E_0}\) en \(z=\delta\) = <b id="v-1e">0,37</b> (\(=\dfrac{1}{e}\))</span>
+            <span class="ro">\(\dfrac{E}{E_0}\) en \(z=3\delta\) = <b id="v-3d">—</b></span>
             <span class="ro">Profondeur de \(99\%\) d'atténuation \(\approx 4{,}6\,\delta\) = <b id="v-99">—</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Onde \(E(z) = E_0\,e^{-z/\delta}\cos(z/\delta - \omega t)\) pénétrant dans le conducteur (zone teintée). L'enveloppe \(e^{-z/\delta}\) (rouge pointillé) tombe à \(1/e\) en \(z=\delta\) (repère vert). « Animer » fait osciller la phase ; l'enveloppe d'atténuation reste fixe.
+        Onde \(E(z) = E_0\,e^{-\dfrac{z}{\delta}}\cos(\dfrac{z}{\delta} - \omega t)\) pénétrant dans le conducteur (zone teintée). L'enveloppe \(e^{-\dfrac{z}{\delta}}\) (rouge pointillé) tombe à \(\dfrac{1}{e}\) en \(z=\delta\) (repère vert). « Animer » fait osciller la phase ; l'enveloppe d'atténuation reste fixe.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(E(z,t)\) amortie</span>
-          <span class="swatch"><i style="background:var(--curve-rouge)"></i>enveloppe \(e^{-z/\delta}\)</span>
-          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(z=\delta\) (\(1/e\))</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>enveloppe \(e^{-\dfrac{z}{\delta}}\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(z=\delta\) (\(\dfrac{1}{e}\))</span>
         </div>
       </figcaption>
     </figure>
@@ -140,7 +144,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>L'épaisseur de peau \(\delta \propto 1/\sqrt{\omega}\) : plus la fréquence est élevée, plus le courant est confiné en surface.</li>
+        <li>L'épaisseur de peau \(\dfrac{\delta \propto 1}{\sqrt{\omega}}\) : plus la fréquence est élevée, plus le courant est confiné en surface.</li>
         <li>En pratique : à 50 Hz, \(\delta \approx 9\ \mathrm{mm}\) (cuivre) ; à 100 MHz, \(\delta \approx 7\ \mathrm{\mu m}\) — les câbles HF sont creux ou blindés.</li>
         <li>L'équation de diffusion (et non de d'Alembert) indique que l'onde est <em>fortement dispersive</em> et <em>atténuée</em>.</li>
         <li>La résistance d'un conducteur massif augmente avec la fréquence (effet de peau) : \(R(\omega)\propto\sqrt{\omega}\).</li>
@@ -240,5 +244,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

@@ -84,29 +84,51 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">1. Conservation du moment cinétique</span>
-      <p>Le moment de la force centrale par rapport à \(O\) est nul (\(\vec{F} \parallel \hat{r}\)). Donc :</p>
-      <p>\[ \frac{\mathrm{d}\vec{L_O}}{\mathrm{d}t} = \vec{0} \implies \vec{L_O} = m\vec{r}\wedge\vec{v} = \text{cste}. \]</p>
-      <p><em>Conséquences :</em> mouvement plan (perpendiculaire à \(\vec{L_O}\)) ; loi des aires : \(r^2\dot\theta = L/m = \text{cste}\) (loi de Kepler 2).</p>
+      <span class="step-label">1 — Conservation du moment cinétique</span>
+      <p>On considère un point matériel soumis à une force centrale \(\vec F = F(r)\,\hat r\), dirigée vers (ou depuis) le centre \(O\).</p>
+      <p class="lead"><strong>Étape A — On calcule le moment de la force en \(O\).</strong> Comme \(\vec F \parallel \hat r\), son moment est nul. Le théorème du moment cinétique donne alors :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \dfrac{\mathrm{d}\vec{L_O}}{\mathrm{d}t} &amp;= \vec{r}\wedge\vec{F} = \vec{0} \\[4pt]
+          \Longrightarrow\quad \vec{L_O} &amp;= m\,\vec{r}\wedge\vec{v} = \text{cste} .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Étape B — On en tire les conséquences.</strong> Le mouvement est plan (perpendiculaire à \(\vec{L_O}\)), et la conservation du moment cinétique fournit la loi des aires :</p>
+      <div class="calc-line">\[ r^2\dot\theta = \dfrac{L}{m} = \text{cste} \qquad \text{(2ᵉ loi de Kepler).} \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">2. Énergie potentielle effective</span>
-      <p>L'énergie cinétique se décompose :</p>
-      <p>\[ E_c = \frac{1}{2}m(\dot r^2 + r^2\dot\theta^2) = \frac{1}{2}m\dot r^2 + \frac{L^2}{2mr^2}. \]</p>
-      <p>L'énergie mécanique totale, conservée, est :</p>
-      <p>\[ E_m = \frac{1}{2}m\dot r^2 + \underbrace{\frac{L^2}{2mr^2} + E_p(r)}_{E_{\text{eff}}(r)}. \]</p>
-      <p>L'étude du mouvement radial est identique à celle d'un mouvement 1D dans le potentiel effectif \(E_{\text{eff}}(r) = L^2/(2mr^2) + E_p(r)\).</p>
+      <span class="step-label">2 — Énergie potentielle effective</span>
+      <p>On ramène le problème à deux dimensions à un mouvement radial à une dimension.</p>
+      <p class="lead"><strong>Étape A — On décompose l'énergie cinétique</strong> en parts radiale et orthoradiale (coordonnées polaires, vitesse \((\dot r,\,r\dot\theta)\)) :</p>
+      <div class="calc-line">\[ E_c = \tfrac{1}{2}m\big(\dot r^2 + r^2\dot\theta^2\big) . \]</div>
+      <p class="lead"><strong>Étape B — On élimine \(\dot\theta\)</strong> grâce à \(L = mr^2\dot\theta\), soit \(\dot\theta = \dfrac{L}{mr^2}\) :</p>
+      <div class="calc-line">\[ E_c = \tfrac{1}{2}m\dot r^2 + \dfrac{L^2}{2mr^2} . \]</div>
+      <p class="lead"><strong>Étape C — On regroupe les termes ne dépendant que de \(r\)</strong> dans une énergie potentielle effective :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          E_m &amp;= \tfrac{1}{2}m\dot r^2 + \underbrace{\dfrac{L^2}{2mr^2} + E_p(r)}_{E_{\text{eff}}(r)} .
+        \end{aligned}
+      \]</div>
+      <p>L'étude du mouvement radial est donc identique à celle d'un mouvement à une dimension dans le potentiel effectif \(E_{\text{eff}}(r) = \dfrac{L^2}{2mr^2} + E_p(r)\).</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">3. États liés et états de diffusion</span>
-      <p>Le terme centrifuge \(L^2/(2mr^2) \to +\infty\) quand \(r \to 0\) (barrière centrifuge).</p>
+      <span class="step-label">3 — États liés et états de diffusion</span>
+      <p class="lead">Le terme centrifuge domine quand \(r \to 0\) : il forme une <em>barrière centrifuge</em> infranchissable :</p>
+      <div class="calc-line">\[ \dfrac{L^2}{2mr^2} \xrightarrow[r\to 0]{} +\infty . \]</div>
+      <p class="lead">Selon que le mouvement radial est borné ou non, on distingue deux régimes :</p>
       <ul>
-        <li><em>État lié</em> : le mouvement est borné en \(r\) (\(r_{\min} \leq r \leq r_{\max}\)). La trajectoire est fermée en général dans le cas newtonien (orbite elliptique).</li>
-        <li><em>État de diffusion</em> : \(r \to +\infty\), la particule s'échappe. Pour \(E_p = -k/r\) : état lié si \(E_m &lt; 0\), diffusion si \(E_m \geq 0\).</li>
+        <li><em>État lié</em> : le mouvement est borné en \(r\) (\(r_{\min} \leq r \leq r_{\max}\)). La trajectoire est fermée dans le cas newtonien (orbite elliptique).</li>
+        <li><em>État de diffusion</em> : \(r \to +\infty\), la particule s'échappe. Pour \(E_p = -\dfrac{k}{r}\), l'état est lié si \(E_m &lt; 0\) et diffusif si \(E_m \geq 0\).</li>
       </ul>
-      <p>Pour un potentiel attractif \(E_p(r) = -k/r\) (\(k &gt; 0\)) :</p>
-      <p>\[ E_{\text{eff}}(r) = \frac{L^2}{2mr^2} - \frac{k}{r}. \]</p>
-      <p>Minimum en \(r_0 = L^2/(mk)\), de valeur \(E_{\text{eff,min}} = -mk^2/(2L^2)\).</p>
+      <p class="lead"><strong>Cas du potentiel attractif</strong> \(E_p(r) = -\dfrac{k}{r}\) (\(k &gt; 0\)). Le potentiel effectif s'écrit :</p>
+      <div class="calc-line">\[ E_{\text{eff}}(r) = \dfrac{L^2}{2mr^2} - \dfrac{k}{r} . \]</div>
+      <p class="lead">On cherche son minimum en annulant \(E_{\text{eff}}'(r)\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          E_{\text{eff}}'(r) = -\dfrac{L^2}{mr^3} + \dfrac{k}{r^2} = 0 \;&amp;\Longrightarrow\; r_0 = \dfrac{L^2}{mk} , \\[4pt]
+          E_{\text{eff,min}} = E_{\text{eff}}(r_0) &amp;= -\dfrac{mk^2}{2L^2} .
+        \end{aligned}
+      \]</div>
     </div>
   </section>
 
@@ -129,14 +151,14 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
         <div class="control">
           <div class="readout">
-            <span class="ro">\(r_0 = L^2/(mk)\) = <b id="v-r0">—</b></span>
-            <span class="ro">\(E_{\text{eff,min}} = -mk^2/(2L^2)\) = <b id="v-emin">—</b></span>
+            <span class="ro">\(r_0 = \dfrac{L^2}{mk}\) = <b id="v-r0">—</b></span>
+            <span class="ro">\(E_{\text{eff,min}} = -\dfrac{mk^2}{2L^2}\) = <b id="v-emin">—</b></span>
             <span class="ro">Régime = <b id="v-reg">—</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Énergie potentielle effective \(E_{\text{eff}}(r) = L^2/(2mr^2) - k/r\) (trait bleu), somme de la barrière centrifuge \(L^2/(2mr^2)\) et du terme attractif \(-k/r\) (pointillés gris). Le minimum, en \(r_0 = L^2/(mk)\), correspond à l'orbite circulaire (point bleu). Le trait orange marque le niveau \(E_m\) : état lié si \(E_m &lt; 0\) (mouvement borné entre deux apsides), diffusion si \(E_m \geq 0\). On prend \(m = 1\), \(k = 1\).
+        Énergie potentielle effective \(E_{\text{eff}}(r) = \dfrac{L^2}{2mr^2} - \dfrac{k}{r}\) (trait bleu), somme de la barrière centrifuge \(\dfrac{L^2}{2mr^2}\) et du terme attractif \(-\dfrac{k}{r}\) (pointillés gris). Le minimum, en \(r_0 = \dfrac{L^2}{mk}\), correspond à l'orbite circulaire (point bleu). Le trait orange marque le niveau \(E_m\) : état lié si \(E_m &lt; 0\) (mouvement borné entre deux apsides), diffusion si \(E_m \geq 0\). On prend \(m = 1\), \(k = 1\).
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(E_{\text{eff}}(r)\)</span>
           <span class="swatch"><i style="background:var(--curve-orange)"></i>Niveau \(E_m\)</span>
@@ -151,7 +173,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>La barrière centrifuge (\(L^2/2mr^2\)) interdit \(r = 0\) si \(L \neq 0\).</li>
+        <li>La barrière centrifuge (\(\dfrac{L^2}{2mr^2}\)) interdit \(r = 0\) si \(L \neq 0\).</li>
         <li>Le minimum de \(E_{\text{eff}}\) correspond à l'orbite <em>circulaire</em> (mouvement radial nul).</li>
         <li>En cas de collision (\(L = 0\)) : pas de barrière centrifuge, la particule peut atteindre \(r=0\).</li>
         <li>La conservation de \(E_m\) et de \(L\) sont les <em>deux</em> intégrales premières qui permettent d'intégrer complètement le mouvement.</li>
@@ -257,5 +279,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

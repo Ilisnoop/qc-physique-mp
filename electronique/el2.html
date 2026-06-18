@@ -68,33 +68,43 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <ul>
       <li>\(\underline{e} = E_0\,\mathrm{e}^{j\omega t}\) : représentation complexe de \(e(t)\) ;</li>
       <li>\(\underline{Z} = R + jL\omega + \dfrac{1}{jC\omega}\) : impédance complexe du circuit ;</li>
-      <li>\(x = \omega/\omega_0\) : pulsation réduite.</li>
+      <li>\(x = \dfrac{\omega}{\omega_0}\) : pulsation réduite.</li>
     </ul>
   </section>
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">Intensité complexe</span>
-      <p>Par la loi d'Ohm généralisée :</p>
-      <p>\[ \underline{I} = \frac{\underline{e}}{\underline{Z}} = \frac{E_0}{R + j\!\left(L\omega - \dfrac{1}{C\omega}\right)}. \]</p>
-      <p>En introduisant \(x = \omega/\omega_0\) et \(Q = \dfrac{\omega_0 L}{R} = \dfrac{1}{R\omega_0 C}\) :</p>
-      <p>\[ \underline{I} = \frac{E_0/R}{1 + jQ\!\left(x - \dfrac{1}{x}\right)}. \]</p>
+      <span class="step-label">1 — Intensité complexe</span>
+      <p class="lead"><strong>On applique la loi d'Ohm généralisée</strong> au circuit RLC série, d'impédance \(\underline{Z} = R + j\!\left(L\omega - \tfrac{1}{C\omega}\right)\) :</p>
+      <div class="calc-line">\[ \underline{I} = \dfrac{\underline{e}}{\underline{Z}} = \dfrac{E_0}{R + j\!\left(L\omega - \dfrac{1}{C\omega}\right)} . \]</div>
+      <p class="lead"><strong>On introduit la pulsation réduite</strong> \(x = \dfrac{\omega}{\omega_0}\) et le facteur de qualité \(Q = \dfrac{\omega_0 L}{R} = \dfrac{1}{R\omega_0 C}\), ce qui met l'intensité sous forme canonique :</p>
+      <div class="calc-line">\[ \underline{I} = \dfrac{\frac{E_0}{R}}{1 + jQ\!\left(x - \dfrac{1}{x}\right)} . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Résonance en intensité</span>
-      <p>L'amplitude \(I(\omega) = \dfrac{E_0/R}{\sqrt{1+Q^2(x-1/x)^2}}\) est maximale pour \(x=1\), soit \(\omega = \omega_0\) : c'est la <strong>résonance en intensité</strong> (ou résonance en courant). On a alors \(I_{\max} = E_0/R\) et la tension aux bornes de \(R\) est maximale.</p>
+      <span class="step-label">2 — Résonance en intensité</span>
+      <p class="lead"><strong>On considère l'amplitude de l'intensité</strong>, module de l'expression précédente :</p>
+      <div class="calc-line">\[ I(\omega) = \dfrac{\frac{E_0}{R}}{\sqrt{1+Q^2\!\left(x-\dfrac{1}{x}\right)^2}} . \]</div>
+      <p class="lead"><strong>On cherche son maximum</strong> : le dénominateur est minimal lorsque \(x-\dfrac{1}{x}=0\), soit \(x=1\) \((\omega = \omega_0)\). C'est la <strong>résonance en intensité</strong> ; on a alors</p>
+      <div class="calc-line">\[ I_{\max} = \dfrac{E_0}{R} , \]</div>
+      <p>et la tension aux bornes de \(R\) est maximale.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Tensions aux bornes de \(L\) et de \(C\)</span>
-      <p>\[ \underline{U}_L = jL\omega\,\underline{I}, \qquad \underline{U}_C = \frac{\underline{I}}{jC\omega}. \]</p>
-      <p>La tension \(U_L\) est maximale pour \(\omega_{rL} = \omega_0\big/\!\sqrt{1-1/(2Q^2)}\) (si \(Q&gt;1/\sqrt{2}\)). La tension \(U_C\) est maximale pour \(\omega_{rC} = \omega_0\sqrt{1-1/(2Q^2)}\) (si \(Q&gt;1/\sqrt{2}\)). Pour \(Q \gg 1\), les deux résonances tendent vers \(\omega_0\) et \(U_{C,\max} \approx U_{L,\max} \approx QE_0 \gg E_0\) : <strong>effet de surtension</strong> de facteur \(Q\).</p>
+      <span class="step-label">3 — Tensions aux bornes de \(L\) et de \(C\)</span>
+      <p class="lead"><strong>On exprime les tensions complexes</strong> de la bobine et du condensateur en fonction de l'intensité :</p>
+      <div class="calc-line">\[ \underline{U}_L = jL\omega\,\underline{I} , \qquad \underline{U}_C = \dfrac{\underline{I}}{jC\omega} . \]</div>
+      <p class="lead"><strong>On localise leurs résonances</strong> (existantes si \(Q &gt; \tfrac{1}{\sqrt{2}}\)) :</p>
+      <div class="calc-line">\[ \omega_{rL} = \dfrac{\omega_0}{\sqrt{1-\dfrac{1}{2Q^2}}} , \qquad \omega_{rC} = \omega_0\sqrt{1-\dfrac{1}{2Q^2}} . \]</div>
+      <p class="lead"><strong>On en déduit le comportement à fort facteur de qualité</strong> : pour \(Q \gg 1\), les deux résonances tendent vers \(\omega_0\) et</p>
+      <div class="calc-line">\[ U_{C,\max} \approx U_{L,\max} \approx Q\,E_0 \;\gg\; E_0 , \]</div>
+      <p>c'est l'<strong>effet de surtension</strong> de facteur \(Q\).</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Bande passante</span>
-      <p>Les pulsations de coupure à \(-3\,\mathrm{dB}\) (demi-puissance) sont les racines de \(Q^2(x-1/x)^2 = 1\), soit :</p>
-      <p>\[ \omega_\pm = \omega_0\!\left(\sqrt{1+\frac{1}{4Q^2}} \pm \frac{1}{2Q}\right). \]</p>
-      <p>La bande passante vaut \(\Delta\omega = \omega_+ - \omega_- = \omega_0/Q\), d'où \(\ Q = \dfrac{\omega_0}{\Delta\omega}.\)</p>
+      <span class="step-label">4 — Bande passante</span>
+      <p class="lead"><strong>On détermine les pulsations de coupure à \(-3\,\mathrm{dB}\)</strong> (demi-puissance), racines de la condition \(Q^2\!\left(x-\dfrac{1}{x}\right)^2 = 1\) :</p>
+      <div class="calc-line">\[ \omega_\pm = \omega_0\!\left(\sqrt{1+\dfrac{1}{4Q^2}} \pm \dfrac{1}{2Q}\right) . \]</div>
+      <p class="lead"><strong>On en déduit la bande passante</strong> par différence :</p>
+      <div class="calc-line">\[ \Delta\omega = \omega_+ - \omega_- = \dfrac{\omega_0}{Q} \quad\Longrightarrow\quad Q = \dfrac{\omega_0}{\Delta\omega} . \]</div>
     </div>
   </section>
 
@@ -115,18 +125,18 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
         <div class="control">
           <div class="readout">
-            <span class="ro">\(I/(E_0/R)\) au point courant = <b id="v-amp">—</b></span>
-            <span class="ro">\(x = \omega/\omega_0\) courant = <b id="v-x">—</b></span>
-            <span class="ro">Bande passante \(\Delta\omega/\omega_0 = 1/Q\) = <b id="v-bw">0,200</b></span>
+            <span class="ro">\(\dfrac{I}{\dfrac{E_0}{R}}\) au point courant = <b id="v-amp">—</b></span>
+            <span class="ro">\(x = \dfrac{\omega}{\omega_0}\) courant = <b id="v-x">—</b></span>
+            <span class="ro">Bande passante \(\dfrac{\Delta\omega}{\omega_0} = \dfrac{1}{Q}\) = <b id="v-bw">0,200</b></span>
             <span class="ro">\(x_\pm\) (à \(-3\,\mathrm{dB}\)) = <b id="v-xpm">—</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Courbe de résonance \(I/(E_0/R) = 1/\sqrt{1+Q^2(x-1/x)^2}\) en fonction de \(x=\omega/\omega_0\). Le maximum vaut \(1\) à \(x=1\). La bande passante à \(-3\,\mathrm{dB}\) se lit à \(I/I_{\max}=1/\sqrt{2}\approx 0{,}707\), bornée par \(x_-\) et \(x_+\) (zone teintée).
+        Courbe de résonance \(\dfrac{I}{\dfrac{E_0}{R}} = \dfrac{1}{\sqrt{1+Q^2(x-\dfrac{1}{x})^2}}\) en fonction de \(x=\dfrac{\omega}{\omega_0}\). Le maximum vaut \(1\) à \(x=1\). La bande passante à \(-3\,\mathrm{dB}\) se lit à \(\dfrac{I}{I_{\max}}=\dfrac{1}{\sqrt{2}\approx 0{,}707}\), bornée par \(x_-\) et \(x_+\) (zone teintée).
         <div class="legend-swatches">
-          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(I/(E_0/R)\)</span>
-          <span class="swatch"><i style="background:var(--curve-rouge)"></i>seuil \(1/\sqrt{2}\)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\dfrac{I}{\dfrac{E_0}{R}}\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>seuil \(\dfrac{1}{\sqrt{2}}\)</span>
           <span class="swatch"><i style="background:var(--curve-vert)"></i>bande passante</span>
         </div>
       </figcaption>
@@ -138,10 +148,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>Distinguer résonance en courant (\(\omega_0\), toujours existante) et résonances en tension (\(\omega_{rL}\), \(\omega_{rC}\), n'existent que pour \(Q &gt; 1/\sqrt{2}\)).</li>
+        <li>Distinguer résonance en courant (\(\omega_0\), toujours existante) et résonances en tension (\(\omega_{rL}\), \(\omega_{rC}\), n'existent que pour \(Q > \dfrac{1}{\sqrt{2}}\)).</li>
         <li>La surtension vaut \(Q\) à la résonance en tension, pas à \(\omega_0\).</li>
         <li>Ordre de grandeur : pour \(L=10\ \mathrm{mH}\), \(C=10\ \mathrm{nF}\), \(R=100\ \Omega\) : \(f_0 \approx 16\ \mathrm{kHz}\), \(Q = 10\).</li>
-        <li>En pratique, \(Q\) se mesure sur la courbe de résonance : \(Q = f_0/\Delta f\).</li>
+        <li>En pratique, \(Q\) se mesure sur la courbe de résonance : \(Q = \dfrac{f_0}{\Delta f}\).</li>
       </ul>
     </div>
   </section>
@@ -245,5 +255,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

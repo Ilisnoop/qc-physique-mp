@@ -93,34 +93,72 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">1. Équation du mouvement en référentiel tournant</span>
-      <p>En projetant la loi de Newton depuis \(\mathcal{R}_{G}\) vers \(\mathcal{R}_{T}\), on obtient dans ce dernier :</p>
-      <p>\[ m\,\vec{a}_{\mathcal{R}_T} = \vec{F}_{\text{réel}} - m\,\vec{a}_{e} - 2m\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T}, \]</p>
-      <p>où \(\vec{a}_{e} = \vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r})\) est l'accélération d'entraînement centripète et \(\vec{F}_{\text{Cor}} = -2m\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T}\) est la force de Coriolis.</p>
+      <span class="step-label">1 — Équation du mouvement en référentiel tournant</span>
+      <p>Le référentiel terrestre \(\mathcal{R}_T\) tourne par rapport au référentiel géocentrique galiléen \(\mathcal{R}_G\) à la vitesse angulaire \(\vec\Omega\) (rotation uniforme d'axe \(\Delta\)). On relie les deux par la composition des accélérations.</p>
+      <p class="lead"><strong>Étape A — On compose les accélérations.</strong> La loi de composition s'écrit :</p>
+      <div class="calc-line">\[ \vec{a}_{\mathcal{R}_G} = \vec{a}_{\mathcal{R}_T} + \vec{a}_e + 2\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T} , \]</div>
+      <p class="lead">où l'accélération d'entraînement, pour une rotation uniforme, est purement centripète :</p>
+      <div class="calc-line">\[ \vec{a}_e = \vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}) . \]</div>
+      <p class="lead"><strong>Étape B — On applique la 2ᵉ loi de Newton dans \(\mathcal{R}_G\)</strong>, puis on transpose dans \(\mathcal{R}_T\) en isolant \(m\,\vec{a}_{\mathcal{R}_T}\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          m\,\vec{a}_{\mathcal{R}_G} &amp;= \vec{F}_{\text{réel}} \\[4pt]
+          \Longrightarrow\quad m\,\vec{a}_{\mathcal{R}_T} &amp;= \vec{F}_{\text{réel}} - m\,\vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}) - 2m\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T} .
+        \end{aligned}
+      \]</div>
+      <p class="lead">On identifie les deux forces d'inertie. Le terme centrifuge d'entraînement :</p>
+      <div class="calc-line">\[ \vec{F}_{\text{ie}} = -\,m\,\vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}) , \]</div>
+      <p class="lead">et la force de Coriolis, nulle au repos dans \(\mathcal{R}_T\) :</p>
+      <div class="calc-line">\[ \vec{F}_{\text{Cor}} = -\,2m\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T} \quad\big(=\vec{0}\ \text{si}\ \vec{v}_{\mathcal{R}_T}=\vec{0}\big) . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">2. Champ de pesanteur apparent</span>
-      <p>Au repos dans \(\mathcal{R}_T\), on a \(\vec{v}_{\mathcal{R}_T}=\vec{0}\) donc Coriolis est nulle. L'équilibre donne :</p>
-      <p>\[ \vec{0} = m\vec{g_0} - m\,\vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}) + \vec{R}, \]</p>
-      <p>d'où la définition du <em>champ de pesanteur apparent</em> :</p>
-      <p>\[ \vec{g} = \vec{g_0} - \vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}). \]</p>
-      <p>Le terme centrifuge \(-\vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r})\) est dirigé vers l'axe de rotation et de module \(\Omega^2\,R_T\cos\lambda \approx 3{,}4\times10^{-2}\ \mathrm{m\cdot s^{-2}}\) à l'équateur. Il dévie \(\vec{g}\) vers l'équateur d'un angle maximal \(\approx 0{,}1^\circ\).</p>
+      <span class="step-label">2 — Champ de pesanteur apparent</span>
+      <p>On cherche le poids apparent \(m\vec g\) ressenti par un objet au repos dans \(\mathcal{R}_T\).</p>
+      <p class="lead"><strong>Étape A — On écrit l'équilibre au repos.</strong> Comme \(\vec{v}_{\mathcal{R}_T}=\vec{0}\), la force de Coriolis est nulle. En notant \(\vec{R}\) la réaction du support et \(m\vec{g_0}\) l'attraction gravitationnelle, l'équilibre dans \(\mathcal{R}_T\) donne :</p>
+      <div class="calc-line">\[ \vec{0} = m\vec{g_0} - m\,\vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}) + \vec{R} . \]</div>
+      <p class="lead"><strong>Étape B — On définit le poids apparent</strong> par \(m\vec g = -\vec R\), ce qui regroupe gravitation et terme centrifuge :</p>
+      <div class="calc-line">\[ \vec{g} = \vec{g_0} - \vec{\Omega}\wedge(\vec{\Omega}\wedge\vec{r}) . \]</div>
+      <p class="lead"><strong>Étape C — Ordre de grandeur.</strong> Le terme centrifuge est dirigé vers l'axe de rotation, de module maximal à l'équateur :</p>
+      <div class="calc-line">\[ \Omega^2\,R_T\cos\lambda \;\approx\; 3{,}4\times10^{-2}\ \mathrm{m\cdot s^{-2}} \quad (\lambda = 0) . \]</div>
+      <p>Il dévie \(\vec{g}\) vers l'équateur d'un angle maximal \(\approx 0{,}1^\circ\).</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">3. Déviation vers l'est en chute libre</span>
-      <p>Pour un objet lâché sans vitesse initiale depuis une hauteur \(h\), la force de Coriolis est \(\vec{F}_{\text{Cor}} = -2m\,\vec{\Omega}\wedge\vec{v}_{\mathcal{R}_T}\). En coordonnées locales \((Est, Nord, Vertical)\) à la latitude \(\lambda\) : \(\vec{\Omega} = \Omega(\cos\lambda\,\hat{N} + \sin\lambda\,\hat{Z})\). Au premier ordre la vitesse est \(\vec{v} \approx -gt\,\hat{Z}\). La composante Est de la force de Coriolis vaut :</p>
-      <p>\[ F_{\text{Est}} = 2m\,\Omega\,g\,t\cos\lambda. \]</p>
-      <p>En intégrant deux fois, la déviation vers l'est au bout d'un temps de chute \(t_f = \sqrt{2h/g}\) est :</p>
-      <p>\[ \delta_E = \tfrac{1}{3}\,\Omega\cos\lambda\sqrt{\tfrac{8h^3}{g}}. \]</p>
-      <p>Pour \(h=100\ \mathrm{m}\), \(\lambda=45^\circ\) : \(\delta_E \approx 2{,}2\ \mathrm{cm}\). La déviation est <em>orientée vers l'Est</em>, indépendamment de l'hémisphère.</p>
+      <span class="step-label">3 — Déviation vers l'est en chute libre</span>
+      <p>On lâche un objet sans vitesse initiale depuis une hauteur \(h\), à la latitude \(\lambda\), et on évalue la déviation horizontale due à Coriolis.</p>
+      <p class="lead"><strong>Étape A — On pose le repère local.</strong> Dans la base \((\hat E,\hat N,\hat Z)\) (Est, Nord, Vertical), le vecteur rotation se décompose en :</p>
+      <div class="calc-line">\[ \vec{\Omega} = \Omega\,(\cos\lambda\,\hat{N} + \sin\lambda\,\hat{Z}) . \]</div>
+      <p class="lead"><strong>Étape B — On calcule la force de Coriolis au premier ordre.</strong> Au premier ordre, la vitesse est celle de la chute libre \(\vec{v} \approx -gt\,\hat{Z}\). On en déduit sa composante Est :</p>
+      <div class="calc-line">\[ F_{\text{Est}} = 2m\,\Omega\,g\,t\cos\lambda . \]</div>
+      <p class="lead"><strong>Étape C — On intègre deux fois.</strong> Une première intégration (avec \(v_E(0)=0\)) donne la vitesse vers l'Est :</p>
+      <div class="calc-line">\[ v_E(t) = \Omega\,g\,t^2 \cos\lambda . \]</div>
+      <p class="lead">Une seconde intégration (avec \(x_E(0)=0\)), évaluée au temps de chute \(t_f = \sqrt{\dfrac{2h}{g}}\), fournit la déviation totale :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \delta_E &amp;= \tfrac{1}{3}\,\Omega\,g\cos\lambda\,t_f^{3} \\[4pt]
+                   &amp;= \tfrac{1}{3}\,\Omega\cos\lambda\sqrt{\dfrac{8h^3}{g}} .
+        \end{aligned}
+      \]</div>
+      <p class="lead"><strong>Application numérique.</strong> Pour \(h=100\ \mathrm{m}\) et \(\lambda=45^\circ\) :</p>
+      <div class="calc-line">\[ \delta_E \approx 2{,}2\ \mathrm{cm} . \]</div>
+      <p>La déviation est <em>orientée vers l'Est</em>, indépendamment de l'hémisphère.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">4. Déviation vers la droite des mouvements horizontaux</span>
-      <p>Pour un projectile se déplaçant horizontalement dans l'hémisphère nord, la composante verticale de \(\vec{\Omega}\) (vers le haut, \(\Omega\sin\lambda > 0\)) donne une force de Coriolis horizontale perpendiculaire à \(\vec{v}_{\mathcal{R}_T}\) orientée vers la <em>droite</em> du mouvement. C'est l'origine de la déviation des vents (cyclones anti-horaires) et des courants marins dans l'hémisphère nord, et vers la gauche dans l'hémisphère sud.</p>
+      <span class="step-label">4 — Déviation vers la droite des mouvements horizontaux</span>
+      <p>Pour un projectile se déplaçant horizontalement dans l'hémisphère nord, c'est la composante verticale de \(\vec{\Omega}\) qui intervient (vers le haut, \(\Omega\sin\lambda &gt; 0\)).</p>
+      <p class="lead">La force de Coriolis associée est horizontale et perpendiculaire à la vitesse :</p>
+      <div class="calc-line">\[ \vec{F}_{\text{Cor}} = -\,2m\,(\Omega\sin\lambda)\,\hat Z\wedge\vec{v}_{\mathcal{R}_T} , \]</div>
+      <p>orientée vers la <em>droite</em> du mouvement dans l'hémisphère nord. C'est l'origine de la déviation des vents (cyclones anti-horaires) et des courants marins dans l'hémisphère nord, et vers la gauche dans l'hémisphère sud.</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">5. Ordre de grandeur de la force de Coriolis</span>
-      <p>\(F_{\text{Cor}} = 2m\Omega v\). Pour \(m = 1\ \mathrm{kg}\), \(v = 10\ \mathrm{m\cdot s^{-1}}\) : \(F_{\text{Cor}} \approx 1{,}5\times10^{-3}\ \mathrm{N}\), soit \(1{,}5\times10^{-4}\) fois le poids. Négligeable à l'échelle du laboratoire, mais observable sur des trajectoires longues (artillerie, météorologie).</p>
+      <span class="step-label">5 — Ordre de grandeur de la force de Coriolis</span>
+      <p class="lead">La norme de la force de Coriolis est \(F_{\text{Cor}} = 2m\Omega v\). Pour \(m = 1\ \mathrm{kg}\) et \(v = 10\ \mathrm{m\cdot s^{-1}}\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          F_{\text{Cor}} &amp;= 2m\Omega v \approx 1{,}5\times10^{-3}\ \mathrm{N} \\[4pt]
+          \dfrac{F_{\text{Cor}}}{mg} &amp;\approx 1{,}5\times10^{-4} .
+        \end{aligned}
+      \]</div>
+      <p>La force vaut donc environ \(1{,}5\times10^{-4}\) fois le poids : négligeable à l'échelle du laboratoire, mais observable sur des trajectoires longues (artillerie, météorologie).</p>
     </div>
   </section>
 
@@ -143,14 +181,14 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
         <div class="control">
           <div class="readout">
-            <span class="ro">\(t_f=\sqrt{2h/g}\) = <b id="v-tf">—</b> s</span>
+            <span class="ro">\(t_f=\sqrt{\dfrac{2h}{g}}\) = <b id="v-tf">—</b> s</span>
             <span class="ro">\(\delta_E\) = <b id="v-de">—</b></span>
             <span class="ro">\(\Omega\cos\lambda\) = <b id="v-oc">—</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Trajectoire d'un objet lâché sans vitesse depuis la hauteur \(h\) : la verticale idéale (pointillé gris) et la chute réelle déviée vers l'Est (bleu) par la force de Coriolis. La déviation \(\delta_E = \tfrac{1}{3}\,\Omega\cos\lambda\sqrt{8h^3/g}\) est calculée en direct ; elle est maximale à l'équateur (\(\lambda=0\)) et nulle aux pôles.
+        Trajectoire d'un objet lâché sans vitesse depuis la hauteur \(h\) : la verticale idéale (pointillé gris) et la chute réelle déviée vers l'Est (bleu) par la force de Coriolis. La déviation \(\delta_E = \frac{1}{3}\,\Omega\cos\lambda\sqrt{\frac{8h^3}{g}}\) est calculée en direct ; elle est maximale à l'équateur (\(\lambda=0\)) et nulle aux pôles.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-orange)"></i>Verticale locale</span>
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Trajectoire déviée (Est)</span>
@@ -303,5 +341,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

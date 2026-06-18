@@ -76,29 +76,32 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">Relations de passage (admises)</span>
-      <p>À l'interface \(z=0\) entre le vide et le conducteur parfait :</p>
+      <span class="step-label">1 — Relations de passage (admises)</span>
+      <p class="lead"><strong>On rappelle les relations de passage</strong> à l'interface \(z=0\) entre le vide et le conducteur parfait :</p>
       <ul>
-        <li>La composante tangentielle de \(\vec{E}\) est continue : \(E_{t,\mathrm{vide}} = E_{t,\mathrm{cond}} = 0\) (car \(\vec{E}=\vec{0}\) dans le conducteur parfait).</li>
-        <li>La composante tangentielle de \(\vec{B}\) est discontinue : \(\Delta H_t = \vec{K}\times\hat{n}\) (courant surfacique).</li>
+        <li>la composante tangentielle de \(\vec{E}\) est continue, et nulle car \(\vec{E}=\vec{0}\) dans le conducteur parfait : \(E_{t,\mathrm{vide}} = E_{t,\mathrm{cond}} = 0\) ;</li>
+        <li>la composante tangentielle de \(\vec{B}\) est discontinue, la discontinuité étant liée au courant surfacique : \(\Delta H_t = \vec{K}\times\hat{n}\).</li>
       </ul>
     </div>
     <div class="demo-step">
-      <span class="step-label">Condition de continuité sur \(E_x\) en \(z=0\)</span>
-      <p>On impose \(E_x = 0\) :</p>
-      <p>\[ E_0\cos(\omega t) + E_r\cos(\omega t + \phi) = 0 \quad \forall\, t \]</p>
-      <p>Cela impose \(E_r = -E_0\) et \(\phi = 0\). L'onde réfléchie est donc :</p>
-      <p>\[ \vec{E}_r = -E_0\cos(\omega t + kz)\,\hat{x} \]</p>
+      <span class="step-label">2 — Condition de continuité sur \(E_x\) en \(z=0\)</span>
+      <p class="lead"><strong>On impose l'annulation du champ tangentiel</strong> \(E_x = 0\) en \(z=0\), à tout instant, pour la somme de l'onde incidente et de l'onde réfléchie :</p>
+      <div class="calc-line">\[ E_0\cos(\omega t) + E_r\cos(\omega t + \phi) = 0 \qquad \forall\, t . \]</div>
+      <p class="lead"><strong>On en déduit l'amplitude et la phase réfléchies</strong> : la relation étant valable pour tout \(t\), il faut \(E_r = -E_0\) et \(\phi = 0\). L'onde réfléchie s'écrit donc</p>
+      <div class="calc-line">\[ \vec{E}_r = -E_0\cos(\omega t + kz)\,\hat{x} . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Onde stationnaire</span>
-      <p>On superpose onde incidente et onde réfléchie :</p>
-      <p>\[ \vec{E}_{\mathrm{tot}} = \vec{E}_i + \vec{E}_r = E_0\left[\cos(\omega t - kz) - \cos(\omega t + kz)\right]\hat{x} \]</p>
-      <p>En développant par addition/soustraction des arcs :</p>
-      <p>\[ \vec{E}_{\mathrm{tot}} = 2E_0\sin(kz)\sin(\omega t)\,\hat{x} \]</p>
-      <p>C'est une onde stationnaire : la dépendance spatiale (en \(\sin(kz)\)) et temporelle (en \(\sin(\omega t)\)) sont séparées. Les nœuds sont fixes. De même :</p>
-      <p>\[ \vec{B}_{\mathrm{tot}} = \frac{2E_0}{c}\cos(kz)\cos(\omega t)\,\hat{y} \]</p>
-      <p>Les nœuds de \(\vec{E}\) coïncident avec les ventres de \(\vec{B}\) et vice versa.</p>
+      <span class="step-label">3 — Onde stationnaire</span>
+      <p class="lead"><strong>On superpose l'onde incidente et l'onde réfléchie</strong>, puis on factorise à l'aide de l'identité trigonométrique \(\cos a - \cos b = 2\sin\!\tfrac{a+b}{2}\,\sin\!\tfrac{b-a}{2}\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \vec{E}_{\mathrm{tot}} = \vec{E}_i + \vec{E}_r &amp;= E_0\bigl[\cos(\omega t - kz) - \cos(\omega t + kz)\bigr]\,\hat{x} \\[4pt]
+          &amp;= 2E_0\sin(kz)\sin(\omega t)\,\hat{x} .
+        \end{aligned}
+      \]</div>
+      <p class="lead">Les dépendances spatiale (en \(\sin(kz)\)) et temporelle (en \(\sin(\omega t)\)) sont séparées : c'est une <em>onde stationnaire</em>, dont les nœuds sont fixes. <strong>On obtient de même le champ magnétique total</strong> :</p>
+      <div class="calc-line">\[ \vec{B}_{\mathrm{tot}} = \dfrac{2E_0}{c}\cos(kz)\cos(\omega t)\,\hat{y} . \]</div>
+      <p>Les nœuds de \(\vec{E}\) coïncident avec les ventres de \(\vec{B}\), et réciproquement.</p>
     </div>
   </section>
 
@@ -112,14 +115,14 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-k">Nombre d'onde \(k\) <span class="val" id="v-k">3,0 (u.a.)</span></label>
           <input type="range" id="sl-k" min="1" max="6" step="0.1" value="3">
-          <span class="hint" id="hint-k">Les nœuds de \(\vec{E}\) sont en \(z=0,\ -\lambda/2,\ -\lambda,\ \ldots\) ; \(\lambda = 2\pi/k\).</span>
+          <span class="hint" id="hint-k">Les nœuds de \(\vec{E}\) sont en \(z=0,\ -\dfrac{\lambda}{2,}\ -\lambda,\ \ldots\) ; \(\lambda = \dfrac{2\pi}{k}\).</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Animer (vibration en \(\sin\omega t\))</button>
           </div>
         </div>
         <div class="control">
           <div class="readout">
-            <span class="ro">\(\lambda = 2\pi/k\) = <b id="v-lambda">—</b></span>
+            <span class="ro">\(\lambda = \dfrac{2\pi}{k}\) = <b id="v-lambda">—</b></span>
             <span class="ro">Coef. réflexion \(r\) = <b id="v-r">−1</b></span>
             <span class="ro">Nœuds de \(\vec{E}\) dans la fenêtre = <b id="v-nodes">—</b></span>
           </div>
@@ -249,5 +252,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

@@ -72,34 +72,43 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
-    <p>En magnétostatique, tous les champs sont indépendants du temps (\(\partial/\partial t = 0\)). On considère un fil rectiligne infini, d'axe \(z\), de section quelconque, parcouru par un courant d'intensité \(I\) dans le sens \(+\hat{z}\). On travaille en coordonnées cylindriques \((r,\theta,z)\).</p>
+    <p>En magnétostatique, tous les champs sont indépendants du temps (\(\dfrac{\partial}{\partial t} = 0\)). On considère un fil rectiligne infini, d'axe \(z\), de section quelconque, parcouru par un courant d'intensité \(I\) dans le sens \(+\hat{z}\). On travaille en coordonnées cylindriques \((r,\theta,z)\).</p>
   </section>
 
   <section class="rubric">
     <h2><span class="rl">D</span> Développement du cours</h2>
     <div class="demo-step">
-      <span class="step-label">Équations de la magnétostatique</span>
-      <p>En posant \(\partial_t = 0\) dans Maxwell : \(\mathrm{div}\,\vec{B} = 0\) (flux conservatif) et \(\vec{\mathrm{rot}}\,\vec{B} = \mu_0\,\vec{j}\) (Ampère). Sous forme intégrale :</p>
-      <p>\[ \iint_S \vec{B}\cdot\mathrm{d}\vec{S} = 0, \qquad \oint_C \vec{B}\cdot\mathrm{d}\vec{\ell} = \mu_0\,I_{\mathrm{int}} \]</p>
+      <span class="step-label">1 — Équations de la magnétostatique</span>
+      <p>On se place en régime stationnaire en posant \(\partial_t = 0\) dans les équations de Maxwell. Le champ magnétique reste à flux conservatif :</p>
+      <div class="calc-line">\[ \operatorname{div}\vec{B} = 0 . \]</div>
+      <p class="lead">et Maxwell-Ampère se réduit à sa forme statique :</p>
+      <div class="calc-line">\[ \vec{\operatorname{rot}}\,\vec{B} = \mu_0\,\vec{j} . \]</div>
+      <p class="lead"><strong>Formes intégrales.</strong> Le flux de \(\vec B\) à travers toute surface fermée est nul, et la circulation de \(\vec B\) sur un contour fermé \(C\) vaut le courant enlacé (théorème d'Ampère) :</p>
+      <div class="calc-line">\[ \iint_{S} \vec{B}\cdot\mathrm{d}\vec{S} = 0 , \qquad \oint_{C} \vec{B}\cdot\mathrm{d}\vec{\ell} = \mu_0\,I_{\mathrm{int}} . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Lignes et tubes de champ</span>
-      <p>Les lignes de \(\vec{B}\) sont des courbes tangentes à \(\vec{B}\) en tout point. \(\mathrm{div}\,\vec{B}=0\) implique que les <em>tubes de champ</em> sont sans source ni puits : ils se referment sur eux-mêmes (ou s'étendent à l'infini). La densité de lignes est proportionnelle à \(|\vec{B}|\).</p>
+      <span class="step-label">2 — Lignes et tubes de champ</span>
+      <p>Les lignes de \(\vec{B}\) sont les courbes tangentes à \(\vec{B}\) en tout point. La relation \(\operatorname{div}\vec{B}=0\) impose que les <em>tubes de champ</em> soient sans source ni puits : ils se referment sur eux-mêmes (ou s'étendent à l'infini). La densité de lignes est proportionnelle à \(|\vec{B}|\).</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">Analyse des symétries</span>
-      <p>Le fil est invariant par rotation autour de \(z\) et par translation selon \(z\). Donc \(\vec{B} = B(r)\,\hat{\theta}\) (pas de composante \(r\) ni \(z\), le rotationnel nul de \(\vec{B}\) en dehors du fil l'impose).</p>
+      <span class="step-label">3 — Analyse des symétries pour le fil infini</span>
+      <p>Le fil rectiligne infini est invariant par rotation autour de l'axe \(z\) et par translation selon \(z\). Le champ ne peut donc dépendre que de la distance \(r\) à l'axe. L'étude des plans de symétrie de la distribution de courant impose de plus que \(\vec B\) soit orthoradial :</p>
+      <div class="calc-line">\[ \vec{B} = B(r)\,\hat{\theta} . \]</div>
     </div>
     <div class="demo-step">
-      <span class="step-label">Application du théorème d'Ampère</span>
-      <p>On choisit un contour circulaire \(C\) de rayon \(r>0\), centré sur l'axe, dans un plan perpendiculaire à \(z\) : \(\oint_C \vec{B}\cdot\mathrm{d}\vec{\ell} = B(r)\cdot 2\pi r\). D'après le théorème d'Ampère, ce vaut \(\mu_0 I_{\mathrm{int}} = \mu_0 I\) (pour \(r\) supérieur au rayon du fil). Donc :</p>
-      <p>\[ B(r) = \frac{\mu_0 I}{2\pi r}, \qquad \vec{B}(r) = \frac{\mu_0 I}{2\pi r}\,\hat{\theta} \]</p>
-      <p>Ordre de grandeur : pour \(I = 1\,\mathrm{A}\) à \(r = 1\,\mathrm{cm}\), \(B \approx 20\,\mu\mathrm{T}\) (comparable au champ terrestre).</p>
+      <span class="step-label">4 — Application du théorème d'Ampère</span>
+      <p class="lead"><strong>On choisit le contour</strong> adapté aux symétries : un cercle \(C\) de rayon \(r>0\), centré sur l'axe, dans un plan perpendiculaire à \(z\). La circulation se calcule alors directement car \(B(r)\) est constant le long de \(C\) :</p>
+      <div class="calc-line">\[ \oint_{C} \vec{B}\cdot\mathrm{d}\vec{\ell} = B(r)\times 2\pi r . \]</div>
+      <p class="lead"><strong>On applique le théorème d'Ampère.</strong> Pour \(r\) supérieur au rayon du fil, le courant enlacé vaut \(I\) :</p>
+      <div class="calc-line">\[ B(r)\times 2\pi r = \mu_0\,I . \]</div>
+      <p class="lead"><strong>On en déduit le champ</strong> en isolant \(B(r)\) :</p>
+      <div class="calc-line">\[ B(r) = \dfrac{\mu_0 I}{2\pi r} , \qquad \vec{B}(r) = \dfrac{\mu_0 I}{2\pi r}\,\hat{\theta} . \]</div>
+      <p>Ordre de grandeur : pour \(I = 1\,\mathrm{A}\) à \(r = 1\,\mathrm{cm}\), on obtient \(B \approx 20\,\mu\mathrm{T}\), comparable au champ magnétique terrestre.</p>
     </div>
   </section>
 
   <section class="rubric">
-    <h2><span class="rl">E</span> Figure interactive — champ \(B(r)=\mu_0 I/(2\pi r)\) autour d'un fil</h2>
+    <h2><span class="rl">E</span> Figure interactive — champ \(B(r)=\dfrac{\mu_0 I}{2\pi r}\) autour d'un fil</h2>
     <figure class="figure">
       <div class="fig-canvas-wrap">
         <canvas id="cv-fil" aria-label="Lignes de champ circulaires autour d'un fil infini ; profil B(r) en 1/r, courant I réglable"></canvas>
@@ -123,7 +132,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
       </div>
       <figcaption class="fig-legend">
-        Lignes de champ circulaires (bleu) autour du fil (point gris central, courant \(I\) selon \(+\hat{z}\)). Le contour d'Ampère (pointillés rouges) de rayon \(r\) donne \(B = \mu_0 I/(2\pi r)\), décroissant en \(1/r\).
+        Lignes de champ circulaires (bleu) autour du fil (point gris central, courant \(I\) selon \(+\hat{z}\)). Le contour d'Ampère (pointillés rouges) de rayon \(r\) donne \(B = \dfrac{\mu_0 I}{2\pi r}\), décroissant en \(\dfrac{1}{r}\).
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Lignes de \(\vec{B}\) (selon \(\hat{\theta}\))</span>
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>Contour d'Ampère, rayon \(r\)</span>
@@ -139,7 +148,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <ul>
         <li>Ne <strong>jamais</strong> utiliser Biot-Savart en MP : le jury sanctionnerait l'emploi d'un outil hors programme.</li>
         <li>Justifier soigneusement la direction de \(\vec{B}\) par l'analyse des symétries avant d'appliquer Ampère.</li>
-        <li>À l'intérieur d'un fil de section \(R\), pour \(r&lt;R\) : \(B(r) = \mu_0 I r/(2\pi R^2)\) (courants uniformément répartis).</li>
+        <li>À l'intérieur d'un fil de section \(R\), pour \(r&lt;R\) : \(B(r) = \dfrac{\mu_0 I r}{2\pi R^2}\) (courants uniformément répartis).</li>
         <li>\(\mathrm{div}\,\vec{B}=0\) interdit les sources/puits : les lignes de \(\vec{B}\) se referment toujours.</li>
       </ul>
     </div>
@@ -230,5 +239,333 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   window.addEventListener('resize', draw);
 })();
 </script>
-</body>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
 </html>

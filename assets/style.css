@@ -417,9 +417,69 @@ figcaption.fig-legend {
 
 /* MathJax sizing */
 mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
-mjx-container[display="true"] { margin: var(--space-3) 0 !important; }
+mjx-container[display="true"] { margin: var(--space-4) 0 !important; padding-bottom: 2px; }
+/* Les longs blocs alignés peuvent défiler horizontalement sans rogner le contenu */
+mjx-container[display="true"] mjx-math { padding: 0 2px; }
 /* Les formules en ligne trop longues défilent au lieu de déborder (mobile) */
-mjx-container:not([display="true"]) { max-width: 100%; vertical-align: bottom; }
+/* baseline (et non bottom) pour aligner les maths en ligne sur le texte */
+mjx-container:not([display="true"]) { max-width: 100%; vertical-align: baseline; }
+
+/* ============================================================
+   Démonstrations : étapes de calcul lisibles et alignées
+   ============================================================ */
+.demo-step {
+  position: relative;
+  margin: var(--space-5) 0;
+  padding: var(--space-5) var(--space-5) var(--space-4) var(--space-6);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+}
+.demo-step .step-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: .01em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+/* Texte de raisonnement : aéré, lignes lisibles */
+.demo-step p {
+  margin: var(--space-3) 0;
+  line-height: 1.85;
+}
+.demo-step p:first-of-type { margin-top: 0; }
+.demo-step p:last-child { margin-bottom: 0; }
+/* Connecteurs logiques (d'où, donc, or, ainsi) mis en valeur */
+.demo-step .lead {
+  color: var(--color-text-muted);
+  font-style: normal;
+}
+/* Blocs d'équations (display math) : centrés, espacés, jamais collés au texte */
+.demo-step mjx-container[display="true"] {
+  margin: var(--space-4) 0 !important;
+}
+/* Étape de calcul isolée : équation présentée sur sa propre ligne encadrée */
+.calc-line {
+  margin: var(--space-3) 0;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+.calc-line mjx-container[display="true"] { margin: var(--space-2) 0 !important; }
+/* Annotation à droite d'une étape (justification du passage) */
+.demo-step .why {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: calc(var(--space-1) * -1);
+  margin-bottom: var(--space-2);
+}
 /* Empêche le MathML d'assistance (caché) de provoquer un dépassement horizontal */
 mjx-assistive-mml { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; left: 0 !important; }
 
