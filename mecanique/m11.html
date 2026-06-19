@@ -87,6 +87,51 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li>\(R\) : constante des gaz parfaits ; \(M_{\text{mol}}\) : masse molaire.</li>
       <li>\(\mathcal{V}\) : volume d'un solide immergé, de masse \(m_s\).</li>
     </ul>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 320" class="schema-svg" role="img" aria-label="Statique des fluides : élément de fluide à la profondeur z dans un récipient, forces de pression sur ses faces">
+        <!-- Récipient (parois et fond) -->
+        <path class="wire" d="M170,70 L170,280 L450,280 L450,70"/>
+        <!-- surface libre du fluide (en haut, P0) -->
+        <line class="wire" stroke-dasharray="6 4" x1="170" y1="92" x2="450" y2="92"/>
+        <text x="178" y="86" class="lbl-mut">surface libre (P₀)</text>
+        <!-- petites vaguelettes de fluide (déco légère) -->
+        <!-- AXE z vertical, orienté vers le HAUT (z ascendant) à gauche -->
+        <g class="wire">
+          <line x1="150" y1="270" x2="150" y2="110" stroke-width="1.6"/>
+          <path d="M150,110 L146,120 L154,120 z" style="fill:var(--color-text)"/>
+        </g>
+        <text x="140" y="108" class="lbl-mut">z</text>
+        <!-- Élément de fluide à la profondeur z : rectangle en pointillés, centré en (310,180) -->
+        <rect class="wire" stroke-dasharray="5 4" x="275" y="160" width="70" height="50"/>
+        <text x="310" y="190" text-anchor="middle" class="lbl-mut">dV</text>
+        <!-- profondeur z (cote en pointillés depuis la surface jusqu'au centre de l'élément) -->
+        <line class="wire" stroke-width="1" stroke-dasharray="3 3" x1="240" y1="92" x2="240" y2="185"/>
+        <text x="222" y="142" class="lbl-mut">z</text>
+        <!-- Forces de pression sur les faces (bleu). Pression plus FORTE en bas => flèche du bas (vers le haut) plus longue. -->
+        <!-- Face SUPÉRIEURE : pression P(z+dz) pousse vers le BAS (plus courte) -->
+        <g class="accent-bleu" style="fill:var(--bleu)">
+          <line x1="310" y1="132" x2="310" y2="160" stroke-width="2.4"/>
+          <path d="M310,160 L305,150 L315,150 z"/>
+        </g>
+        <!-- Face INFÉRIEURE : pression P(z) pousse vers le HAUT (plus longue) -->
+        <g class="accent-bleu" style="fill:var(--bleu)">
+          <line x1="310" y1="248" x2="310" y2="210" stroke-width="2.4"/>
+          <path d="M310,210 L305,220 L315,220 z"/>
+        </g>
+        <!-- Face GAUCHE : pression pousse vers la DROITE (vers l'intérieur) -->
+        <g class="accent-bleu" style="fill:var(--bleu)">
+          <line x1="249" y1="185" x2="275" y2="185" stroke-width="2.4"/>
+          <path d="M275,185 L265,180 L265,190 z"/>
+        </g>
+        <!-- Face DROITE : pression pousse vers la GAUCHE (vers l'intérieur) -->
+        <g class="accent-bleu" style="fill:var(--bleu)">
+          <line x1="406" y1="185" x2="345" y2="185" stroke-width="2.4"/>
+          <path d="M345,185 L355,180 L355,190 z"/>
+        </g>
+      </svg>
+      <figcaption>Figure — Élément de fluide (en pointillés) à la profondeur \(z\) sous la surface libre (pression \(P_0\)) d'un récipient. Les forces de pression (en bleu) s'exercent perpendiculairement à chaque face, dirigées vers l'intérieur de l'élément ; comme la pression croît avec la profondeur, la poussée sur la face inférieure (vers le haut) l'emporte sur celle de la face supérieure (vers le bas), ce qui équilibre le poids. Avec l'axe \(z\) orienté vers le haut, la relation fondamentale de la statique des fluides s'écrit \(\dfrac{\mathrm{d}P}{\mathrm{d}z} = -\rho g\) ; pour un fluide incompressible, \(P = P_0 + \rho g h\) à la profondeur \(h\).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

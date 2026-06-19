@@ -72,6 +72,47 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li><strong>Conditions de Gauss</strong> : rayons paraxiaux (faiblement inclinés et proches de l'axe) ; le miroir est alors stigmatique et aplanétique de façon approchée.</li>
       <li><strong>Foyer principal</strong> \(F\) : image d'un point objet à l'infini sur l'axe (et objet dont l'image est à l'infini, par retour inverse). Pour un miroir, foyer objet et foyer image sont <em>confondus</em>.</li>
     </ul>
+
+    <figure class="schema">
+      <svg viewBox="0 0 640 340" class="schema-svg" role="img" aria-label="Construction de l'image d'un objet par un miroir sphérique concave : rayons particuliers">
+        <!-- axe optique horizontal (pointillés), y=170 -->
+        <line class="wire" x1="30" y1="170" x2="540" y2="170" stroke-dasharray="6 5"/>
+        <text x="36" y="162" text-anchor="start" class="lbl-mut">axe</text>
+        <!-- miroir concave : arc de cercle de centre C(230,170), rayon 240, sommet S(470,170), concavité vers la gauche -->
+        <path class="wire" d="M456,80 A 240 240 0 0 0 456 260" stroke-width="2.4"/>
+        <!-- sommet S, centre C, foyer F (milieu de SC) -->
+        <circle class="node" cx="470" cy="170" r="3"/>
+        <text x="470" y="160" text-anchor="middle">S</text>
+        <circle class="node" cx="230" cy="170" r="3"/>
+        <text x="230" y="160" text-anchor="middle">C</text>
+        <circle class="node" cx="350" cy="170" r="3"/>
+        <text x="350" y="160" text-anchor="middle">F</text>
+        <!-- objet AB (flèche bleue), A(110,170), B(110,110) -->
+        <g class="accent-bleu">
+          <line x1="110" y1="170" x2="110" y2="110" stroke-width="2.6"/>
+          <path d="M110,110 l-5,11 l10,0 z" style="fill:var(--bleu);stroke:none"/>
+        </g>
+        <text x="110" y="188" text-anchor="middle" style="fill:var(--bleu)">A</text>
+        <text x="102" y="106" text-anchor="end" style="fill:var(--bleu)">B</text>
+        <!-- RAYONS (orange), issus de B(110,110), convergeant en B'(290,200) -->
+        <!-- rayon 1 : parallèle à l'axe jusqu'au miroir (470,110), réfléchi en passant par F(350,170) et au-delà -->
+        <line class="accent-orange" x1="110" y1="110" x2="470" y2="110" stroke-width="1.8"/>
+        <line class="accent-orange" x1="470" y1="110" x2="230" y2="230" stroke-width="1.8"/>
+        <!-- rayon 2 : par C(230,170), frappe le miroir normalement et revient sur lui-même (s'arrête sur l'arc) -->
+        <line class="accent-orange" x1="110" y1="110" x2="445" y2="277" stroke-width="1.8"/>
+        <!-- rayon 3 : par F(350,170), frappe le miroir en (470,200), réfléchi parallèle à l'axe -->
+        <line class="accent-orange" x1="110" y1="110" x2="470" y2="200" stroke-width="1.8"/>
+        <line class="accent-orange" x1="470" y1="200" x2="150" y2="200" stroke-width="1.8"/>
+        <!-- image A'B' (flèche rouge, réelle, renversée), A'(290,170), B'(290,200) -->
+        <g class="accent-rouge">
+          <line x1="290" y1="170" x2="290" y2="200" stroke-width="2.6"/>
+          <path d="M290,200 l-5,-11 l10,0 z" style="fill:var(--rouge);stroke:none"/>
+        </g>
+        <text x="290" y="160" text-anchor="middle" style="fill:var(--rouge)">A'</text>
+        <text x="298" y="212" text-anchor="start" style="fill:var(--rouge)">B'</text>
+      </svg>
+      <figcaption>Figure — Construction de l'image d'un objet réel \(AB\) (en bleu) par un miroir concave de sommet \(S\), centre \(C\) et foyer \(F\) (milieu de \([SC]\)). Rayons issus de \(B\) (en orange) : le rayon parallèle à l'axe se réfléchit en passant par \(F\) ; le rayon passant par \(C\) revient sur lui-même (incidence normale) ; le rayon passant par \(F\) se réfléchit parallèlement à l'axe. Leur intersection donne \(B'\) : l'image \(A'B'\) (en rouge) est réelle, renversée et réduite (objet au-delà de \(C\)). Relation de conjugaison \(\dfrac{1}{\overline{SA'}}+\dfrac{1}{\overline{SA}}=\dfrac{2}{\overline{SC}}=\dfrac{1}{\overline{SF}}\), valable dans les conditions de Gauss (rayons paraxiaux).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

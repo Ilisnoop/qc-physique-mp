@@ -73,6 +73,54 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li>\(\underline{Z} = R + jL\omega + \dfrac{1}{jC\omega}\) : impédance complexe du circuit ;</li>
       <li>\(x = \dfrac{\omega}{\omega_0}\) : pulsation réduite.</li>
     </ul>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 280" class="schema-svg" role="img" aria-label="Schéma du circuit RLC série en régime sinusoïdal forcé">
+        <!-- maille rectangulaire : coins (90,70)-(540,70)-(540,210)-(90,210) -->
+        <!-- générateur sinusoïdal e(t) sur le côté gauche -->
+        <line class="wire" x1="90" y1="70" x2="90" y2="126"/>
+        <circle class="wire" cx="90" cy="140" r="14"/>
+        <path class="wire" d="M82,140 q4,-7 8,0 t8,0"/>
+        <line class="wire" x1="90" y1="154" x2="90" y2="210"/>
+        <text x="68" y="144" text-anchor="end">e(t)</text>
+        <!-- côté haut : R puis L -->
+        <line class="wire" x1="90" y1="70" x2="180" y2="70"/>
+        <!-- Résistance R (rectangle normalisé) -->
+        <rect class="fill-bg" x="180" y="62" width="60" height="16"/>
+        <rect class="wire" x="180" y="62" width="60" height="16"/>
+        <text x="210" y="52" text-anchor="middle">R</text>
+        <line class="wire" x1="240" y1="70" x2="320" y2="70"/>
+        <!-- Bobine L (4 arches) -->
+        <path class="wire" d="M320,70 a9,9 0 0 1 18,0 a9,9 0 0 1 18,0 a9,9 0 0 1 18,0 a9,9 0 0 1 18,0"/>
+        <text x="356" y="52" text-anchor="middle">L</text>
+        <line class="wire" x1="392" y1="70" x2="540" y2="70"/>
+        <!-- côté droit : descend vers le condensateur -->
+        <line class="wire" x1="540" y1="70" x2="540" y2="128"/>
+        <!-- Condensateur C (deux barres horizontales) sur le côté droit -->
+        <line class="wire" x1="522" y1="128" x2="558" y2="128"/>
+        <line class="wire" x1="522" y1="144" x2="558" y2="144"/>
+        <line class="wire" x1="540" y1="144" x2="540" y2="210"/>
+        <text x="580" y="140" text-anchor="middle">C</text>
+        <!-- fil bas -->
+        <line class="wire" x1="540" y1="210" x2="90" y2="210"/>
+        <!-- noeuds -->
+        <circle class="node" cx="90" cy="70" r="3"/>
+        <circle class="node" cx="540" cy="70" r="3"/>
+        <!-- flèche de courant i (sens de la maille, orange) en haut à gauche -->
+        <g class="accent-orange">
+          <line x1="125" y1="70" x2="155" y2="70" stroke-width="2.2"/>
+          <path d="M155,70 l-9,-4.5 l0,9 z"/>
+        </g>
+        <text x="140" y="88" text-anchor="middle" style="fill:var(--orange)">i</text>
+        <!-- flèche de tension u_C aux bornes de C (convention récepteur) rouge -->
+        <g class="accent-rouge">
+          <line x1="495" y1="144" x2="495" y2="128" stroke-width="2.2"/>
+          <path d="M495,128 l-4.5,9 l9,0 z"/>
+        </g>
+        <text x="478" y="140" text-anchor="end" style="fill:var(--rouge)">u_C</text>
+      </svg>
+      <figcaption>Figure — Circuit RLC série en régime sinusoïdal forcé. Le générateur \(e(t)=E_0\cos(\omega t)\) (à gauche) impose dans la maille un courant \(i(t)\) (en orange) commun à \(R\), \(L\) et \(C\) ; \(u_C(t)\) (en rouge, convention récepteur) est la tension aux bornes du condensateur. L'impédance complexe du circuit est \(\underline{Z}=R+jL\omega+\dfrac{1}{jC\omega}\), minimale en module à la résonance \(\omega=\omega_0=\dfrac{1}{\sqrt{LC}}\).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

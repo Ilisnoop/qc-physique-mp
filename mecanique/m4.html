@@ -82,6 +82,48 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p><strong>Pendule simple :</strong> masse ponctuelle \(m\) suspendue par un fil inextensible de longueur \(l\). Angle \(\theta\) par rapport à la verticale.</p>
     <p><strong>Pendule pesant :</strong> solide \(\mathcal{S}\) de masse \(m\), de centre de masse \(G\) à distance \(d\) du pivot \(O\), de moment d'inertie \(J_O\) par rapport à l'axe de rotation passant par \(O\).</p>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 300" class="schema-svg" role="img" aria-label="Pendule simple : masse m suspendue à un fil de longueur l faisant un angle thêta avec la verticale">
+        <!-- support / plafond en O(300,45) -->
+        <line class="wire" x1="232" y1="45" x2="368" y2="45"/>
+        <g class="wire" stroke-width="1">
+          <line x1="244" y1="45" x2="234" y2="35"/>
+          <line x1="268" y1="45" x2="258" y2="35"/>
+          <line x1="292" y1="45" x2="282" y2="35"/>
+          <line x1="316" y1="45" x2="306" y2="35"/>
+          <line x1="340" y1="45" x2="330" y2="35"/>
+          <line x1="364" y1="45" x2="354" y2="35"/>
+        </g>
+        <!-- point de suspension O -->
+        <circle class="node" cx="300" cy="45" r="3.2"/>
+        <text x="286" y="42" class="lbl-mut">O</text>
+        <!-- verticale de référence (pointillés) -->
+        <line class="wire" stroke-width="1.2" stroke-dasharray="5 5" x1="300" y1="45" x2="300" y2="260"/>
+        <!-- fil de longueur l (angle thêta avec la verticale) -->
+        <line class="wire" x1="300" y1="45" x2="384" y2="209.8"/>
+        <text x="325" y="135" class="lbl-mut">ℓ</text>
+        <!-- masse m (cercle plein) -->
+        <circle class="node" cx="384" cy="209.8" r="9"/>
+        <text x="398" y="206" class="lbl-mut">m</text>
+        <!-- arc d'angle thêta entre la verticale et le fil -->
+        <path class="wire" stroke-width="1.2" d="M300,91 A46,46 0 0 0 320.9,86"/>
+        <text x="309" y="80" class="lbl-mut">θ</text>
+        <!-- TENSION T : le long du fil, de la masse vers O -->
+        <g class="accent-bleu" style="fill:var(--bleu)">
+          <line x1="384" y1="209.8" x2="348.6" y2="140.3" stroke-width="2.4"/>
+          <path d="M348.6,140.3 L358.0,147.9 L349.1,152.4 z"/>
+        </g>
+        <text x="330" y="138" style="fill:var(--bleu)">T</text>
+        <!-- POIDS P = mg : vertical vers le bas -->
+        <g class="accent-bleu" style="fill:var(--bleu)">
+          <line x1="384" y1="209.8" x2="384" y2="281.8" stroke-width="2.4"/>
+          <path d="M384,281.8 L379.0,270.8 L389.0,270.8 z"/>
+        </g>
+        <text x="391" y="278" style="fill:var(--bleu)">P = mg</text>
+      </svg>
+      <figcaption>Figure — Pendule simple : une masse ponctuelle \(m\) est suspendue en \(O\) par un fil inextensible de longueur \(\ell\), écarté d'un angle \(\theta\) par rapport à la verticale (en pointillés). Deux forces (en bleu) s'exercent sur la masse : le poids \(\vec P = m\vec g\) (vertical, vers le bas) et la tension \(\vec T\) du fil (dirigée le long du fil, de la masse vers \(O\)). La projection sur la tangente donne \(\ddot\theta + \dfrac{g}{\ell}\sin\theta = 0\) ; aux petites oscillations, \(\omega_0 = \sqrt{\dfrac{g}{\ell}}\) et \(T_0 = 2\pi\sqrt{\dfrac{\ell}{g}}\).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

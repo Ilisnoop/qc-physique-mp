@@ -77,6 +77,43 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>En magnétostatique, tous les champs sont indépendants du temps (\(\dfrac{\partial}{\partial t} = 0\)). On considère un fil rectiligne infini, d'axe \(z\), de section quelconque, parcouru par un courant d'intensité \(I\) dans le sens \(+\hat{z}\). On travaille en coordonnées cylindriques \((r,\theta,z)\).</p>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 320" class="schema-svg" role="img" aria-label="Champ magnétique azimutal autour d'un fil rectiligne infini parcouru par un courant">
+        <!-- fil vertical (axe z), courant I vers le haut -->
+        <line class="wire" x1="300" y1="30" x2="300" y2="290" stroke-width="4"/>
+        <text x="316" y="40">z</text>
+        <!-- flèche de courant I (orange) vers le haut -->
+        <g class="accent-orange">
+          <line x1="300" y1="250" x2="300" y2="150" stroke-width="3"/>
+          <path d="M300,150 l-5,11 l10,0 z"/>
+        </g>
+        <text x="284" y="205" text-anchor="end" style="fill:var(--orange)">I</text>
+        <!-- cercles concentriques = champ B azimutal, vus en perspective (ellipses) -->
+        <g class="accent-vert" style="fill:none">
+          <ellipse cx="300" cy="160" rx="60" ry="20"/>
+          <ellipse cx="300" cy="160" rx="120" ry="40"/>
+          <ellipse cx="300" cy="160" rx="180" ry="60"/>
+        </g>
+        <!-- petites flèches d'orientation (règle de la main droite : courant vers +z -> B trigonométrique vu de dessus). Sur l'ellipse vue de face, l'avant (bas) va vers la droite côté observateur. -->
+        <g class="accent-vert">
+          <!-- ellipse moyenne, point avant droit y=200 -->
+          <path d="M300,200 l-12,-2 l5,9 z"/>
+          <!-- ellipse externe, point arrière gauche -->
+          <path d="M300,100 l12,2 l-5,-9 z"/>
+        </g>
+        <text x="372" y="118" style="fill:var(--vert)">B</text>
+        <!-- point M à distance r sur l'ellipse moyenne (côté droit) -->
+        <circle class="node" cx="420" cy="160" r="3.2"/>
+        <text x="428" y="156">M</text>
+        <!-- rayon r de l'axe vers M -->
+        <g class="lbl-mut">
+          <line x1="300" y1="160" x2="420" y2="160" stroke="var(--color-text-muted)" stroke-width="1.4" stroke-dasharray="4 3"/>
+        </g>
+        <text x="360" y="178" text-anchor="middle" class="lbl-mut">r</text>
+      </svg>
+      <figcaption>Figure — Fil rectiligne infini d'axe \(z\) parcouru par le courant \(I\) (en orange, sens \(+\hat z\)). Le champ magnétique (en vert) est <strong>azimutal</strong> : ses lignes sont des cercles centrés sur l'axe, contenus dans des plans perpendiculaires à \(z\). Son sens est donné par la règle de la main droite (pouce selon \(I\), doigts selon \(\vec B\)) : \(\vec B = \dfrac{\mu_0 I}{2\pi r}\,\vec e_\theta\). Le système est invariant par translation selon \(z\) et par rotation autour de \(z\), donc \(\vec B\) ne dépend que de la distance \(r\) à l'axe (point \(M\)).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

@@ -69,6 +69,45 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>On considère un fluide s'écoulant de façon permanente (régime stationnaire) entre une section d'entrée (indice \(e\)) et une section de sortie (indice \(s\)). On note : \(h = u + Pv\) l'enthalpie massique ; \(e_c = \tfrac{1}{2}c^2 + gz\) l'énergie cinétique et potentielle massique (\(c\) = vitesse, \(z\) = altitude) ; \(w_u\) le travail utile massique (travail de l'arbre, hors travail des forces de pression) ; \(q\) le transfert thermique massique reçu par le fluide.</p>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 280" class="schema-svg" role="img" aria-label="Détente de Joule-Kelvin : conduite horizontale avec bouchon poreux séparant l'amont (P1, T1) de l'aval (P2, T2)">
+        <!-- Conduite horizontale : deux parois parallèles -->
+        <line class="wire" x1="90" y1="95" x2="510" y2="95"/>
+        <line class="wire" x1="90" y1="185" x2="510" y2="185"/>
+        <!-- Bouchon poreux / étranglement au milieu (zone hachurée), x de 280 à 320 -->
+        <rect class="wire" x="280" y="95" width="40" height="90" style="fill:none"/>
+        <g class="wire" stroke-width="1">
+          <line x1="284" y1="185" x2="320" y2="149"/>
+          <line x1="280" y1="171" x2="320" y2="131"/>
+          <line x1="280" y1="153" x2="320" y2="113"/>
+          <line x1="280" y1="135" x2="320" y2="95"/>
+          <line x1="280" y1="117" x2="302" y2="95"/>
+          <line x1="280" y1="99" x2="284" y2="95"/>
+          <line x1="288" y1="185" x2="320" y2="167"/>
+          <line x1="306" y1="185" x2="320" y2="177"/>
+        </g>
+        <text x="300" y="210" text-anchor="middle" class="lbl-mut">bouchon poreux</text>
+        <!-- AMONT : état 1 -->
+        <text x="150" y="75" text-anchor="middle">Amont</text>
+        <text x="150" y="135" text-anchor="middle">P₁ , T₁</text>
+        <!-- AVAL : état 2 (P2 < P1) -->
+        <text x="445" y="75" text-anchor="middle">Aval</text>
+        <text x="445" y="135" text-anchor="middle">P₂ , T₂</text>
+        <!-- Flèche d'écoulement (sens de l'écoulement, ORANGE) en amont -->
+        <g class="accent-orange">
+          <line x1="120" y1="152" x2="190" y2="152" stroke-width="2.6"/>
+          <path d="M190,152 l-13,-6 l0,12 z"/>
+        </g>
+        <!-- Flèche d'écoulement en aval -->
+        <g class="accent-orange">
+          <line x1="360" y1="152" x2="430" y2="152" stroke-width="2.6"/>
+          <path d="M430,152 l-13,-6 l0,12 z"/>
+        </g>
+        <text x="300" y="248" text-anchor="middle" class="lbl-mut">P₁ &gt; P₂</text>
+      </svg>
+      <figcaption>Figure — Détente de Joule-Kelvin (Joule-Thomson) : un fluide s'écoule en régime permanent dans une conduite horizontale calorifugée à travers un bouchon poreux (étranglement, zone hachurée), qui maintient une différence de pression \(P_1 &gt; P_2\). En l'absence de travail utile et d'échange thermique, le bilan enthalpique impose une détente isenthalpique \(h_1 = h_2\). On caractérise l'effet par le coefficient de Joule-Thomson \(\mu_{JT} = \left(\dfrac{\partial T}{\partial P}\right)_h\), qui donne le signe de la variation de température lors de la détente.</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

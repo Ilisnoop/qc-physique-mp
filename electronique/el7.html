@@ -73,6 +73,69 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li>On note \(T_e = \dfrac{1}{f_e}\) la période d'échantillonnage, \(e_n = e(nT_e)\) et \(s_n = s(nT_e)\).</li>
       <li>Filtre étudié : passe-bas du premier ordre, gain maximal \(H_0 = 1\), pulsation de coupure \(\omega_c = 2\pi f_c\).</li>
     </ul>
+
+    <figure class="schema">
+      <svg viewBox="0 0 640 300" class="schema-svg" role="img" aria-label="Schéma-blocs du filtre numérique récursif">
+        <!-- entrée e_n -->
+        <text x="40" y="84" text-anchor="middle">e_n</text>
+        <g class="accent-orange">
+          <line x1="60" y1="90" x2="108" y2="90" stroke-width="2.2"/>
+          <path d="M108,90 l-9,-4.5 l0,9 z"/>
+        </g>
+        <!-- sommateur 1 : (e_n) + , (s_n) − -->
+        <circle class="wire fill-bg" cx="125" cy="90" r="17"/>
+        <text x="114" y="86" text-anchor="middle">+</text>
+        <text x="132" y="108" text-anchor="middle">−</text>
+        <!-- vers le bloc gain -->
+        <g class="accent-orange">
+          <line x1="142" y1="90" x2="200" y2="90" stroke-width="2.2"/>
+          <path d="M200,90 l-9,-4.5 l0,9 z"/>
+        </g>
+        <text x="171" y="80" text-anchor="middle" class="lbl-mut">e_n − s_n</text>
+        <!-- bloc gain ωc·Te -->
+        <rect class="wire fill-bg" x="200" y="66" width="96" height="48" rx="4"/>
+        <text x="248" y="95" text-anchor="middle" style="fill:var(--bleu)">ωc · Te</text>
+        <!-- vers sommateur 2 -->
+        <g class="accent-orange">
+          <line x1="296" y1="90" x2="360" y2="90" stroke-width="2.2"/>
+          <path d="M360,90 l-9,-4.5 l0,9 z"/>
+        </g>
+        <!-- sommateur 2 : (gain) + , (s_n) + -->
+        <circle class="wire fill-bg" cx="378" cy="90" r="17"/>
+        <text x="367" y="86" text-anchor="middle">+</text>
+        <text x="385" y="108" text-anchor="middle">+</text>
+        <!-- sortie s_{n+1} vers le retard -->
+        <g class="accent-orange">
+          <line x1="395" y1="90" x2="460" y2="90" stroke-width="2.2"/>
+          <path d="M460,90 l-9,-4.5 l0,9 z"/>
+        </g>
+        <text x="428" y="80" text-anchor="middle" class="lbl-mut">s_(n+1)</text>
+        <!-- bloc retard z^-1 -->
+        <rect class="wire fill-bg" x="460" y="66" width="86" height="48" rx="4"/>
+        <text x="503" y="95" text-anchor="middle">retard Te</text>
+        <!-- sortie s_n à droite -->
+        <line class="wire" x1="546" y1="90" x2="600" y2="90"/>
+        <circle class="node" cx="600" cy="90" r="3"/>
+        <text x="600" y="80" text-anchor="middle">s_n</text>
+        <!-- noeud de prélèvement pour la boucle de retour -->
+        <circle class="node" cx="570" cy="90" r="3"/>
+        <!-- boucle de retour de s_n (descend, va à gauche, remonte) -->
+        <g class="accent-orange">
+          <line x1="570" y1="90" x2="570" y2="230" stroke-width="2.2"/>
+          <line x1="570" y1="230" x2="125" y2="230" stroke-width="2.2"/>
+          <line x1="125" y1="230" x2="125" y2="109" stroke-width="2.2"/>
+          <path d="M125,109 l-4.5,9 l9,0 z"/>
+        </g>
+        <!-- dérivation de s_n vers le sommateur 2 (+) -->
+        <g class="accent-orange">
+          <circle cx="378" cy="230" r="3"/>
+          <line x1="378" y1="230" x2="378" y2="109" stroke-width="2.2"/>
+          <path d="M378,109 l-4.5,9 l9,0 z"/>
+        </g>
+        <text x="300" y="248" text-anchor="middle" class="lbl-mut">retour s_n</text>
+      </svg>
+      <figcaption>Figure — Filtre numérique passe-bas du premier ordre, réalisé par la récurrence \(s_{n+1}=s_n+\omega_c T_e\,(e_n-s_n)\). Le premier sommateur forme l'écart \(e_n-s_n\), multiplié par le gain \(\omega_c T_e\) (en bleu) ; le second sommateur ajoute \(s_n\) pour produire \(s_{n+1}\). Le bloc de retard (\(z^{-1}\), un pas \(T_e\)) renvoie \(s_n\) dans la boucle de retour (en orange), assurant le caractère récursif du filtre.</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

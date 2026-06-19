@@ -77,6 +77,59 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>Le haut-parleur comporte une bobine mobile (résistance \(R\), inductance \(L\), \(n\) spires de longueur active totale \(\ell\) dans un entrefer d'induction radiale \(B\)) fixée à une membrane de masse \(m\) et de raideur \(k\), amortisseur de coefficient \(f\). La bobine se déplace selon \(\hat{x}\). On note \(u(t)\) la tension d'alimentation, \(i(t)\) le courant, \(x(t)\) le déplacement.</p>
+
+    <figure class="schema">
+      <svg viewBox="0 0 620 320" class="schema-svg" role="img" aria-label="Haut-parleur électrodynamique : bobine mobile dans l'entrefer d'un aimant à champ radial, force de Laplace axiale">
+        <!-- aimant en U (coupe) : noyau central N, culasse externe S -->
+        <!-- pôle central N -->
+        <g class="lbl-mut">
+          <rect x="150" y="130" width="110" height="60" style="fill:none" stroke="var(--color-text-muted)" stroke-width="3"/>
+        </g>
+        <text x="205" y="165" text-anchor="middle" class="lbl-mut">N</text>
+        <!-- culasse externe (haut et bas) = pôle S -->
+        <g class="lbl-mut">
+          <path d="M150,120 L80,120 L80,200 L150,200" style="fill:none" stroke="var(--color-text-muted)" stroke-width="3"/>
+        </g>
+        <text x="96" y="112" text-anchor="middle" class="lbl-mut">S</text>
+        <text x="96" y="218" text-anchor="middle" class="lbl-mut">S</text>
+        <!-- entrefer : bobine (deux sections de spire, en coupe) au-dessus et en dessous du pôle central -->
+        <g class="wire">
+          <circle cx="300" cy="118" r="6" fill="none"/>
+          <circle cx="300" cy="202" r="6" fill="none"/>
+        </g>
+        <line class="wire" x1="300" y1="124" x2="300" y2="196"/>
+        <text x="300" y="244" text-anchor="middle">bobine (ℓ, n spires)</text>
+        <!-- champ B radial (vert), du pôle central N vers la culasse : horizontal pointant vers la bobine -->
+        <g class="accent-vert">
+          <line x1="262" y1="118" x2="292" y2="118" stroke-width="2.4"/>
+          <path d="M292,118 l-11,-5 l0,10 z"/>
+          <line x1="262" y1="202" x2="292" y2="202" stroke-width="2.4"/>
+          <path d="M292,202 l-11,-5 l0,10 z"/>
+        </g>
+        <text x="272" y="108" style="fill:var(--vert)">B</text>
+        <!-- courant i dans la bobine (orange) : entrant en haut, sortant en bas (sens opposés dans la coupe) -->
+        <g class="accent-orange">
+          <circle cx="300" cy="118" r="2.4"/>
+          <line x1="296" y1="198" x2="304" y2="206" stroke-width="2"/>
+          <line x1="304" y1="198" x2="296" y2="206" stroke-width="2"/>
+        </g>
+        <text x="316" y="114" style="fill:var(--orange)">i ⊙</text>
+        <text x="316" y="208" style="fill:var(--orange)">i ⊗</text>
+        <!-- force de Laplace axiale F (rouge), horizontale selon x, qui pousse la membrane -->
+        <g class="accent-rouge">
+          <line x1="320" y1="160" x2="420" y2="160" stroke-width="2.8"/>
+          <path d="M420,160 l-11,-5 l0,10 z"/>
+        </g>
+        <text x="370" y="150" text-anchor="middle" style="fill:var(--rouge)">F</text>
+        <text x="388" y="178" class="lbl-mut">x</text>
+        <!-- membrane (trait incliné, cône) liée à la bobine -->
+        <line class="wire" x1="300" y1="118" x2="470" y2="70" stroke-width="3"/>
+        <line class="wire" x1="300" y1="202" x2="470" y2="250" stroke-width="3"/>
+        <line class="wire" x1="470" y1="70" x2="470" y2="250" stroke-width="1.4"/>
+        <text x="492" y="164" class="lbl-mut">membrane</text>
+      </svg>
+      <figcaption>Figure — Haut-parleur électrodynamique (coupe). La bobine mobile, de longueur active \(\ell\) et de \(n\) spires, est placée dans l'entrefer d'un aimant permanent où le champ \(\vec B\) (en vert) est <strong>radial</strong>. Parcourue par le courant \(i\) (en orange), elle subit la force de Laplace \(\vec F = I\vec\ell\wedge\vec B\) (en rouge), <strong>axiale</strong> (selon \(\hat x\)) car \(\vec\ell\) (orthoradial) et \(\vec B\) (radial) sont orthogonaux. Cette force, proportionnelle à \(i\), entraîne la membrane et rayonne le son.</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

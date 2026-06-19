@@ -82,6 +82,45 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li><strong>Vecteur de Poynting</strong> : \(\vec{\Pi} = \dfrac{\vec{E}\wedge\vec{B}}{\mu_0}\) ; sa dimension est une puissance surfacique (W·m\(^{-2}\)).</li>
       <li><strong>Champ magnétique intérieur</strong> (donné) : \(\vec{B} = \dfrac{\mu_0\, I\, r}{2\pi a^2}\,\vec{e_\theta}\) (orthoradial), de valeur \(\dfrac{\mu_0 I}{2\pi a}\) à la surface \(r=a\).</li>
     </ul>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 340" class="schema-svg" role="img" aria-label="Fil ohmique cylindrique : champ E axial, champ B azimutal et vecteur de Poynting radial rentrant en surface">
+        <!-- cylindre conducteur vertical : deux génératrices + ellipses haut/bas -->
+        <ellipse class="wire" cx="300" cy="50" rx="70" ry="20" fill="none"/>
+        <line class="wire" x1="230" y1="50" x2="230" y2="290"/>
+        <line class="wire" x1="370" y1="50" x2="370" y2="290"/>
+        <path class="wire" d="M230,290 a70,20 0 0 0 140,0" fill="none"/>
+        <path class="wire" d="M230,290 a70,20 0 0 1 140,0" fill="none" stroke-dasharray="4 4"/>
+        <text x="300" y="316" text-anchor="middle" class="lbl-mut">fil ohmique (rayon a, axe Oz)</text>
+        <!-- courant I (sens du courant, gris/orange) le long de l'axe vers le haut -->
+        <text x="300" y="40" text-anchor="middle" class="lbl-mut">I ↑</text>
+        <!-- E axial (orange), parallèle à I, sur la génératrice droite -->
+        <g class="accent-orange">
+          <line x1="370" y1="200" x2="370" y2="120" stroke-width="2.6"/>
+          <path d="M370,120 l-5,11 l10,0 z"/>
+        </g>
+        <text x="382" y="160" style="fill:var(--orange)">E</text>
+        <!-- B azimutal (vert), tangent à la surface : sur la génératrice droite, vu de face, tangent = vers l'arrière (petite ellipse de section) -->
+        <g class="accent-vert" style="fill:none" stroke-width="2.4">
+          <ellipse cx="300" cy="170" rx="70" ry="20"/>
+        </g>
+        <g class="accent-vert">
+          <!-- flèche de sens sur l'avant de l'ellipse (bas), orientée vers la droite (règle main droite, I vers +z) -->
+          <path d="M300,190 l-12,-3 l4,10 z"/>
+        </g>
+        <text x="222" y="176" text-anchor="end" style="fill:var(--vert)">B</text>
+        <!-- Poynting Pi (bleu), radial RENTRANT : flèches horizontales pointant vers l'axe -->
+        <g class="accent-bleu" fill="var(--bleu)" stroke-width="2.6">
+          <line x1="450" y1="170" x2="380" y2="170"/>
+          <path d="M380,170 l11,-5 l0,10 z"/>
+          <line x1="150" y1="230" x2="220" y2="230"/>
+          <path d="M220,230 l-11,-5 l0,10 z"/>
+        </g>
+        <text x="460" y="166" style="fill:var(--bleu)">Π</text>
+        <text x="140" y="226" text-anchor="end" style="fill:var(--bleu)">Π</text>
+      </svg>
+      <figcaption>Figure — Fil ohmique cylindrique parcouru par le courant \(I\). En surface coexistent trois vecteurs : le champ électrique \(\vec E\) (en orange) <strong>axial</strong> (parallèle à \(I\), via \(\vec j = \gamma\vec E\)), le champ magnétique \(\vec B\) (en vert) <strong>azimutal</strong> (tangent à la surface), et le vecteur de Poynting \(\vec\Pi = \dfrac{\vec E \wedge \vec B}{\mu_0}\) (en bleu) dirigé <strong>radialement vers l'intérieur</strong> du fil. Le flux de \(\vec\Pi\) entrant à travers la surface latérale égale exactement la puissance dissipée par effet Joule \(RI^2\).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">
@@ -211,14 +250,16 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     ctx.fillStyle = c.bleu; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
     ctx.fillText('E (axial, ⊙)', cx + 16, cy - rad - 8);
 
-    // B orthoradial : flèches tangentes au cercle
+    // B orthoradial : flèches tangentes au cercle.
+    // Longueur ∝ I (B = μ₀ I / 2πr ∝ I) -> l'intensité du courant agit visiblement.
     ctx.strokeStyle = c.vert; ctx.lineWidth = 2;
     const Nb = 8;
+    const lenB = 13 * I;            // I=1 A -> 13 px (ancrage)
     for (let i = 0; i < Nb; i++) {
       const a = 2 * Math.PI * i / Nb;
       const bx = cx + (rad + 16) * Math.cos(a), by = cy + (rad + 16) * Math.sin(a);
       // direction tangentielle (+e_theta)
-      const tx = -Math.sin(a), ty = Math.cos(a), len = 13;
+      const tx = -Math.sin(a), ty = Math.cos(a), len = lenB;
       const ex = bx + tx * len, ey = by + ty * len;
       ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(ex, ey);
       const ang = Math.atan2(ey - by, ex - bx), hl = 5;

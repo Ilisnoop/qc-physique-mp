@@ -77,6 +77,55 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>Deux bobines d'inductances propres \(L_1\), \(L_2\) et de mutuelle \(M\) (\(|M|\leq\sqrt{L_1 L_2}\)). Les courants sont \(i_1\), \(i_2\). Les conventions de signe sont choisies de sorte que les flux mutuels soient additifs (couplage « passant »).</p>
+
+    <figure class="schema">
+      <svg viewBox="0 0 620 320" class="schema-svg" role="img" aria-label="Transformateur : enroulements primaire et secondaire sur un noyau ferromagnétique commun parcouru par un flux">
+        <!-- noyau ferromagnétique : deux barres verticales reliées -->
+        <g class="lbl-mut">
+          <rect x="280" y="60" width="60" height="200" rx="6" style="fill:none" stroke="var(--color-text-muted)" stroke-width="7"/>
+        </g>
+        <text x="310" y="288" text-anchor="middle" class="lbl-mut">noyau ferro.</text>
+        <!-- bobine primaire (gauche du noyau, côté droit de la branche gauche) : arches verticales -->
+        <g class="wire">
+          <path d="M280,90 a14,14 0 0 0 0,28 a14,14 0 0 0 0,28 a14,14 0 0 0 0,28 a14,14 0 0 0 0,28"/>
+        </g>
+        <!-- connexions primaire vers la source e1 à gauche -->
+        <line class="wire" x1="280" y1="90" x2="120" y2="90"/>
+        <line class="wire" x1="280" y1="202" x2="120" y2="202"/>
+        <circle cx="120" cy="146" r="22" class="wire"/>
+        <path class="wire" d="M108,146 q6,-10 12,0 t12,0"/>
+        <line class="wire" x1="120" y1="90" x2="120" y2="124"/>
+        <line class="wire" x1="120" y1="168" x2="120" y2="202"/>
+        <text x="120" y="50" text-anchor="middle">e₁ (N₁ spires)</text>
+        <!-- courant primaire i1 (orange) -->
+        <g class="accent-orange">
+          <line x1="170" y1="90" x2="200" y2="90" stroke-width="2.4"/>
+          <path d="M200,90 l-11,-5 l0,10 z"/>
+        </g>
+        <text x="185" y="80" text-anchor="middle" style="fill:var(--orange)">i₁</text>
+        <!-- bobine secondaire (droite du noyau) -->
+        <g class="wire">
+          <path d="M340,90 a14,14 0 0 1 0,28 a14,14 0 0 1 0,28 a14,14 0 0 1 0,28 a14,14 0 0 1 0,28"/>
+        </g>
+        <!-- connexions secondaire vers la charge à droite -->
+        <line class="wire" x1="340" y1="90" x2="500" y2="90"/>
+        <line class="wire" x1="340" y1="202" x2="500" y2="202"/>
+        <rect class="fill-bg" x="492" y="126" width="16" height="40"/>
+        <rect class="wire" x="492" y="126" width="16" height="40"/>
+        <line class="wire" x1="500" y1="90" x2="500" y2="126"/>
+        <line class="wire" x1="500" y1="166" x2="500" y2="202"/>
+        <text x="500" y="50" text-anchor="middle">charge (N₂ spires)</text>
+        <!-- flux commun Phi dans le noyau (vert), sens horaire -->
+        <g class="accent-vert" style="fill:none" stroke-width="2.4">
+          <path d="M310,120 l0,-30"/>
+        </g>
+        <g class="accent-vert">
+          <path d="M310,90 l-5,11 l10,0 z"/>
+        </g>
+        <text x="322" y="108" style="fill:var(--vert)">Φ</text>
+      </svg>
+      <figcaption>Figure — Transformateur. L'enroulement primaire (\(N_1\) spires, alimenté par \(e_1\), courant \(i_1\) en orange) et l'enroulement secondaire (\(N_2\) spires, fermé sur une charge) sont bobinés sur un même noyau ferromagnétique. Le flux magnétique \(\Phi\) (en vert), canalisé par le noyau, est commun aux deux bobines : il réalise le couplage par mutuelle inductance \(M\). En régime sinusoïdal et pour un transformateur idéal, \(\dfrac{u_2}{u_1}=\dfrac{N_2}{N_1}\).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

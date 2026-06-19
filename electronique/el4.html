@@ -72,6 +72,51 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li>\(Q = \dfrac{\omega_0 L}{R} = \dfrac{1}{R\omega_0 C}\) : facteur de qualité.</li>
       <li>La fonction \(\underline{H}\) est la tension relative aux bornes de \(R\) dans un circuit RLC série : \(\underline{H} = \dfrac{\underline{U}_R}{\underline{E}}\).</li>
     </ul>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 280" class="schema-svg" role="img" aria-label="Filtre passe-bande RLC série, sortie aux bornes de la résistance">
+        <!-- maille : générateur e(t) à gauche, L puis C en haut, R sur le côté droit (sortie u_R) -->
+        <!-- générateur sinusoïdal e(t) côté gauche -->
+        <line class="wire" x1="80" y1="60" x2="80" y2="116"/>
+        <circle class="wire" cx="80" cy="130" r="14"/>
+        <path class="wire" d="M72,130 q4,-7 8,0 t8,0"/>
+        <line class="wire" x1="80" y1="144" x2="80" y2="210"/>
+        <text x="58" y="134" text-anchor="end">e(t)</text>
+        <!-- branche haute : L puis C -->
+        <line class="wire" x1="80" y1="60" x2="170" y2="60"/>
+        <path class="wire" d="M170,60 a9,9 0 0 1 18,0 a9,9 0 0 1 18,0 a9,9 0 0 1 18,0 a9,9 0 0 1 18,0"/>
+        <text x="206" y="44" text-anchor="middle">L</text>
+        <line class="wire" x1="242" y1="60" x2="320" y2="60"/>
+        <line class="wire" x1="320" y1="48" x2="320" y2="72"/>
+        <line class="wire" x1="336" y1="48" x2="336" y2="72"/>
+        <text x="328" y="38" text-anchor="middle">C</text>
+        <line class="wire" x1="336" y1="60" x2="500" y2="60"/>
+        <!-- côté droit : R (rectangle vertical) = sortie -->
+        <line class="wire" x1="500" y1="60" x2="500" y2="105"/>
+        <rect class="fill-bg" x="492" y="105" width="16" height="60"/>
+        <rect class="wire" x="492" y="105" width="16" height="60"/>
+        <text x="524" y="139" text-anchor="middle" style="fill:var(--bleu)">R</text>
+        <line class="wire" x1="500" y1="165" x2="500" y2="210"/>
+        <!-- fil bas (retour) -->
+        <line class="wire" x1="500" y1="210" x2="80" y2="210"/>
+        <!-- noeuds -->
+        <circle class="node" cx="500" cy="60" r="3"/>
+        <circle class="node" cx="500" cy="210" r="3"/>
+        <!-- flèche de courant i (orange) -->
+        <g class="accent-orange">
+          <line x1="110" y1="60" x2="140" y2="60" stroke-width="2.2"/>
+          <path d="M140,60 l-9,-4.5 l0,9 z"/>
+        </g>
+        <text x="125" y="78" text-anchor="middle" style="fill:var(--orange)">i</text>
+        <!-- tension de sortie u_R aux bornes de R (rouge) -->
+        <g class="accent-rouge">
+          <line x1="460" y1="165" x2="460" y2="105" stroke-width="2.2"/>
+          <path d="M460,105 l-4.5,9 l9,0 z"/>
+        </g>
+        <text x="446" y="139" text-anchor="end" style="fill:var(--rouge)">u_R</text>
+      </svg>
+      <figcaption>Figure — Filtre passe-bande RLC série. Le générateur \(e(t)\) alimente la maille \(L\)–\(C\)–\(R\) ; la <strong>sortie est prise aux bornes de la résistance</strong> \(R\) (en bleu), \(u_R\) (en rouge), ce qui définit un passe-bande : \(\underline{H}=\dfrac{\underline{U}_R}{\underline{E}}\). Le module \(|\underline{H}|\) est maximal (égal à 1) à la résonance \(\omega=\omega_0\), où les effets de \(L\) et \(C\) se compensent ; le facteur de qualité \(Q=\dfrac{\omega_0 L}{R}\) fixe l'acuité de la bande passante. Le courant \(i\) est en orange.</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

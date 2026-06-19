@@ -74,6 +74,57 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li><strong>Pleine échelle</strong> : étendue \(V_{\rm PE}\) de la plage de tension convertible (calibre).</li>
       <li><strong>Pas de quantification</strong> \(q\) : plus petite variation de tension distinguable, associée au changement du bit de poids le plus faible.</li>
     </ul>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 260" class="schema-svg" role="img" aria-label="Schéma de l'échantillonneur-bloqueur">
+        <!-- entrée V_e à gauche -->
+        <text x="40" y="84" text-anchor="middle">V_e</text>
+        <circle class="node" cx="70" cy="90" r="3"/>
+        <line class="wire" x1="70" y1="90" x2="150" y2="90"/>
+        <!-- interrupteur commandé (lame ouverte) -->
+        <circle class="node" cx="150" cy="90" r="2.6"/>
+        <line class="wire" x1="150" y1="90" x2="196" y2="72"/>
+        <circle class="node" cx="210" cy="90" r="2.6"/>
+        <line class="wire" x1="210" y1="90" x2="360" y2="90"/>
+        <text x="180" y="54" text-anchor="middle" class="lbl-mut">K</text>
+        <!-- commande par horloge (trait pointillé bleu vers la lame) -->
+        <g class="accent-bleu">
+          <line x1="180" y1="118" x2="180" y2="82" stroke-width="1.6" stroke-dasharray="4 3"/>
+        </g>
+        <text x="180" y="136" text-anchor="middle" style="fill:var(--bleu)">horloge</text>
+        <!-- noeud de mémorisation -->
+        <circle class="node" cx="300" cy="90" r="3"/>
+        <!-- condensateur C vers la masse -->
+        <line class="wire" x1="300" y1="90" x2="300" y2="128"/>
+        <line class="wire" x1="282" y1="128" x2="318" y2="128"/>
+        <line class="wire" x1="282" y1="144" x2="318" y2="144"/>
+        <line class="wire" x1="300" y1="144" x2="300" y2="176"/>
+        <text x="330" y="140" text-anchor="middle">C</text>
+        <!-- masse -->
+        <g class="wire">
+          <line x1="300" y1="176" x2="300" y2="186"/>
+          <line x1="291" y1="186" x2="309" y2="186"/>
+          <line x1="294.5" y1="190" x2="305.5" y2="190"/>
+          <line x1="297.5" y1="194" x2="302.5" y2="194"/>
+        </g>
+        <!-- sortie V_eb à droite -->
+        <circle class="node" cx="360" cy="90" r="3"/>
+        <line class="wire" x1="360" y1="90" x2="470" y2="90"/>
+        <circle class="node" cx="470" cy="90" r="3"/>
+        <text x="500" y="84" text-anchor="middle" style="fill:var(--rouge)">V_eb</text>
+        <!-- tension de sortie V_eb (rouge) entre la sortie et la masse -->
+        <g class="accent-rouge">
+          <line x1="470" y1="176" x2="470" y2="100" stroke-width="2.2"/>
+          <path d="M470,100 l-4.5,9 l9,0 z"/>
+        </g>
+        <line class="wire" x1="470" y1="90" x2="470" y2="100"/>
+        <text x="486" y="150" text-anchor="start" class="lbl-mut">sortie</text>
+        <!-- légende des phases -->
+        <text x="150" y="222" text-anchor="start" class="lbl-mut">sample : K fermé → V_eb suit V_e</text>
+        <text x="150" y="240" text-anchor="start" class="lbl-mut">hold : K ouvert → V_eb = V_C (mémorisée)</text>
+      </svg>
+      <figcaption>Figure — Échantillonneur-bloqueur (E/B). L'interrupteur commandé \(K\) (piloté par l'horloge, en bleu) connecte périodiquement l'entrée \(V_e\) au condensateur \(C\). En phase d'échantillonnage (\(K\) fermé), \(C\) se charge et la sortie suit l'entrée ; en phase de blocage (\(K\) ouvert), le condensateur conserve sa charge et impose une tension constante \(V_{eb}=V_C\) (en rouge) le temps de la conversion. Le CAN code ensuite cette tension sur \(n\) bits, avec un pas de quantification \(q=\dfrac{V_{\rm PE}}{2^n}\).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

@@ -222,9 +222,11 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     const pad = { l: 46, r: 18, t: 22, b: 30 };
     const x0 = pad.l, x1 = w - pad.r;
     const yBot = h - pad.b, yTop = pad.t;
-    // échelle d'énergie : on affiche jusqu'à E6 = 36 E1 mais on dilate doucement.
-    const Emax = 36; // en unités de E1
-    const eY = e => yBot - (e / Emax) * (yBot - yTop);
+    // Échelle d'énergie ABSOLUE (en eV), FIXE : ainsi quand on augmente L les
+    // niveaux E_n = n^2 E1 ∝ 1/L^2 descendent et se resserrent visiblement
+    // (physique clé du puits : grande boîte -> niveaux bas et serrés).
+    const EmaxEV = 40; // eV, plafond d'affichage fixe
+    const eY = e => yBot - (e / EmaxEV) * (yBot - yTop); // e en eV
 
     // parois (puits) — verticales orange aux bords
     ctx.strokeStyle = c.orange; ctx.lineWidth = 3;
@@ -232,11 +234,21 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace';
     ctx.textAlign = 'center'; ctx.fillText('0', x0, yBot + 16); ctx.fillText('L', x1, yBot + 16);
     ctx.save(); ctx.translate(14, (yTop + yBot) / 2); ctx.rotate(-Math.PI / 2);
-    ctx.textAlign = 'center'; ctx.fillStyle = c.muted; ctx.fillText('Énergie  Eₙ = n²E₁', 0, 0); ctx.restore();
+    ctx.textAlign = 'center'; ctx.fillStyle = c.muted; ctx.fillText('Énergie (eV)  —  Eₙ = n²E₁', 0, 0); ctx.restore();
 
-    // niveaux + fonctions
+    // graduations de l'axe d'énergie (eV) : 0, 10, 20, 30, 40
+    ctx.fillStyle = c.muted; ctx.font = '10px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    for (let ev = 0; ev <= EmaxEV; ev += 10) {
+      const Yg = eY(ev);
+      ctx.globalAlpha = 0.35; ctx.beginPath(); ctx.moveTo(x0, Yg); ctx.lineTo(x1, Yg); ctx.stroke(); ctx.globalAlpha = 1;
+      ctx.fillText(ev, x0 - 6, Yg + 3);
+    }
+
+    // niveaux + fonctions (énergies absolues E_n = n^2 E1 en eV)
     for (let m = 1; m <= 6; m++) {
-      const E = m * m; // en unités de E1
+      const E = m * m * E1; // eV
+      if (E > EmaxEV * 1.02) continue; // hors cadre : niveau trop haut, on n'affiche pas
       const Y = eY(E);
       const active = (m === n);
       ctx.strokeStyle = c.grid; ctx.lineWidth = active ? 1.4 : 1; ctx.setLineDash(active ? [] : [4, 4]);
@@ -247,7 +259,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       // fonction d'onde tracée à partir du niveau, amplitude visuelle
       const col = c[levelColors[m - 1]];
       ctx.strokeStyle = col; ctx.lineWidth = active ? 2.8 : 1.4; ctx.globalAlpha = active ? 1 : 0.35;
-      const amp = (yBot - yTop) / Emax * 7; // amplitude visuelle
+      const amp = (yBot - yTop) / 40 * 7; // amplitude visuelle (échelle fixe)
       ctx.beginPath();
       const N = 260;
       for (let i = 0; i <= N; i++) {

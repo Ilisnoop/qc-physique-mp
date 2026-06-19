@@ -77,6 +77,45 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>Deux plaques planes parallèles infinies, séparées d'une distance \(d\) (\(\mathrm{m}\)), portant des densités surfaciques \(+\sigma\) et \(-\sigma\) (\(\mathrm{C\cdot m^{-2}}\)), avec \(\sigma>0\). La surface de chaque armature est \(\mathcal{A}\). Le vide occupe l'espace entre les plaques. On note \(\hat{x}\) la normale orientée de la plaque positive vers la plaque négative (sens dans lequel le champ va effectivement pointer).</p>
+
+    <figure class="schema">
+      <svg viewBox="0 0 560 300" class="schema-svg" role="img" aria-label="Condensateur plan : armature positive en haut, armature négative en bas, champ électrique uniforme dirigé vers le bas">
+        <!-- armature supérieure +sigma -->
+        <line class="wire" x1="120" y1="70" x2="440" y2="70" stroke-width="5"/>
+        <text x="100" y="75" text-anchor="end">+σ</text>
+        <!-- armature inférieure -sigma -->
+        <line class="wire" x1="120" y1="230" x2="440" y2="230" stroke-width="5"/>
+        <text x="100" y="235" text-anchor="end">−σ</text>
+        <!-- lignes de champ E verticales (vert), du + (haut) vers le - (bas) -->
+        <g class="accent-vert">
+          <g>
+            <line x1="170" y1="82" x2="170" y2="218" stroke-width="2.4"/>
+            <path d="M170,218 l-5,-11 l10,0 z"/>
+          </g>
+          <g>
+            <line x1="245" y1="82" x2="245" y2="218" stroke-width="2.4"/>
+            <path d="M245,218 l-5,-11 l10,0 z"/>
+          </g>
+          <g>
+            <line x1="320" y1="82" x2="320" y2="218" stroke-width="2.4"/>
+            <path d="M320,218 l-5,-11 l10,0 z"/>
+          </g>
+          <g>
+            <line x1="395" y1="82" x2="395" y2="218" stroke-width="2.4"/>
+            <path d="M395,218 l-5,-11 l10,0 z"/>
+          </g>
+        </g>
+        <text x="335" y="152" style="fill:var(--vert)">E</text>
+        <!-- cote de la distance d (à droite) -->
+        <g class="lbl-mut">
+          <line x1="470" y1="70" x2="470" y2="230" stroke="var(--color-text-muted)" stroke-width="1.4"/>
+          <line x1="464" y1="70" x2="476" y2="70" stroke="var(--color-text-muted)" stroke-width="1.4"/>
+          <line x1="464" y1="230" x2="476" y2="230" stroke="var(--color-text-muted)" stroke-width="1.4"/>
+        </g>
+        <text x="484" y="154" class="lbl-mut">d</text>
+      </svg>
+      <figcaption>Figure — Condensateur plan. L'armature supérieure porte la densité surfacique \(+\sigma\), l'armature inférieure \(-\sigma\) (\(\sigma>0\)), séparées de \(d\). Entre les armatures, le champ électrique (en vert) est <strong>uniforme</strong>, dirigé de l'armature positive vers l'armature négative, de norme \(E = \dfrac{\sigma}{\varepsilon_0}\). À l'extérieur, le champ est nul (modèle des plaques infinies).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

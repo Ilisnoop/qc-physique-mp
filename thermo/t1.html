@@ -70,6 +70,42 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>On considère un système thermodynamique fonctionnant en cycle entre deux thermostats : un thermostat chaud à température \(T_c\) (source chaude) et un thermostat froid à température \(T_f &lt; T_c\) (source froide).</p>
     <p>On note, par convention algébrique (signe \(+\) = reçu par le fluide) : \(Q_c\) le transfert thermique échangé avec la source chaude, \(Q_f\) le transfert thermique échangé avec la source froide, et \(W\) le travail échangé avec l'extérieur au cours d'un cycle. Un <em>cycle</em> ramène le fluide à son état initial, donc \(\Delta U = 0\).</p>
+
+    <figure class="schema">
+      <svg viewBox="0 0 600 360" class="schema-svg" role="img" aria-label="Schéma-blocs énergétique d'un moteur ditherme entre source chaude et source froide">
+        <!-- SOURCE CHAUDE (rectangle en haut) -->
+        <rect class="wire" x="180" y="30" width="240" height="54"/>
+        <text x="300" y="54" text-anchor="middle">Source chaude</text>
+        <text x="300" y="72" text-anchor="middle">T_c</text>
+        <!-- MOTEUR (cercle central) -->
+        <circle class="wire" cx="300" cy="185" r="40"/>
+        <text x="300" y="191" text-anchor="middle">M</text>
+        <!-- SOURCE FROIDE (rectangle en bas) -->
+        <rect class="wire" x="180" y="286" width="240" height="54"/>
+        <text x="300" y="310" text-anchor="middle">Source froide</text>
+        <text x="300" y="328" text-anchor="middle">T_f</text>
+        <!-- Q_c : transfert reçu de la source chaude (Q_c > 0), flèche descendante (chaud -> moteur), ROUGE -->
+        <g class="accent-rouge">
+          <line x1="300" y1="84" x2="300" y2="145" stroke-width="3"/>
+          <path d="M300,145 l-6,-13 l12,0 z"/>
+        </g>
+        <text x="312" y="118" style="fill:var(--rouge)">Q_c &gt; 0</text>
+        <!-- Q_f : transfert cédé à la source froide (Q_f < 0), flèche descendante (moteur -> froid), BLEU -->
+        <g class="accent-bleu" style="fill:var(--bleu)">
+          <line x1="300" y1="225" x2="300" y2="286" stroke-width="3"/>
+          <path d="M300,286 l-6,-13 l12,0 z"/>
+        </g>
+        <text x="312" y="262" style="fill:var(--bleu)">Q_f &lt; 0</text>
+        <!-- W : travail fourni par le moteur (W < 0), flèche horizontale sortante vers la droite, ORANGE -->
+        <g class="accent-orange">
+          <line x1="340" y1="185" x2="470" y2="185" stroke-width="3"/>
+          <path d="M470,185 l-13,-6 l0,12 z"/>
+        </g>
+        <text x="405" y="176" text-anchor="middle" style="fill:var(--orange)">W &lt; 0</text>
+        <text x="478" y="189" class="lbl-mut">(travail fourni)</text>
+      </svg>
+      <figcaption>Figure — Schéma-blocs énergétique d'un moteur ditherme. Au cours d'un cycle, le fluide reçoit le transfert thermique \(Q_c &gt; 0\) de la source chaude (\(T_c\), en rouge), cède \(Q_f &lt; 0\) à la source froide (\(T_f\), en bleu) et fournit un travail \(W &lt; 0\) à l'extérieur (en orange). Les transferts sont comptés algébriquement comme reçus par le système. Le premier principe sur un cycle (\(\Delta U = 0\)) donne \(W + Q_c + Q_f = 0\) ; le rendement vaut \(\eta = -\dfrac{W}{Q_c}\) et, dans le cas réversible de Carnot, \(\eta_C = 1 - \dfrac{T_f}{T_c}\).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">

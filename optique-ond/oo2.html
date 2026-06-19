@@ -78,6 +78,61 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li>\(M\) : point d'observation d'abscisse \(y\) sur l'écran (axe perpendiculaire à \(S_1S_2\)).</li>
       <li>On suppose \(D \gg a\) et \(D \gg y\) (approximation des petits angles).</li>
     </ul>
+
+    <figure class="schema">
+      <svg viewBox="0 0 640 320" class="schema-svg" role="img" aria-label="Géométrie du montage des trous d'Young : source, plan des deux trous séparés de a, écran à la distance D">
+        <!-- axe optique (pointillés) y=160 -->
+        <line class="wire" x1="40" y1="160" x2="600" y2="160" stroke-dasharray="6 5"/>
+        <!-- source ponctuelle S à gauche -->
+        <circle cx="70" cy="160" r="4" style="fill:var(--bleu);stroke:none"/>
+        <text x="70" y="150" text-anchor="middle" style="fill:var(--bleu)">S</text>
+        <!-- plan des trous (x=240), barre verticale opaque avec deux ouvertures S1 (haut) et S2 (bas) -->
+        <line class="wire" x1="240" y1="60" x2="240" y2="124"/>
+        <line class="wire" x1="240" y1="136" x2="240" y2="184"/>
+        <line class="wire" x1="240" y1="196" x2="240" y2="260"/>
+        <circle class="node" cx="240" cy="130" r="3"/>
+        <text x="230" y="126" text-anchor="end">S₁</text>
+        <circle class="node" cx="240" cy="190" r="3"/>
+        <text x="230" y="196" text-anchor="end">S₂</text>
+        <!-- cote a entre S1 et S2 (orange annotation -> on garde wire/muted) -->
+        <g class="accent-vert">
+          <line x1="264" y1="130" x2="264" y2="190" stroke-width="1.4"/>
+          <path d="M264,130 l-3,7 l6,0 z" style="fill:var(--vert);stroke:none"/>
+          <path d="M264,190 l-3,-7 l6,0 z" style="fill:var(--vert);stroke:none"/>
+        </g>
+        <text x="272" y="164" text-anchor="start" style="fill:var(--vert)">a</text>
+        <!-- écran d'observation (x=560) -->
+        <line class="wire" x1="560" y1="50" x2="560" y2="270" stroke-width="2.4"/>
+        <text x="560" y="288" text-anchor="middle" class="lbl-mut">écran</text>
+        <!-- centre O' de l'écran et point M -->
+        <circle class="node" cx="560" cy="160" r="2.6"/>
+        <text x="552" y="176" text-anchor="end" class="lbl-mut">O</text>
+        <circle class="node" cx="560" cy="110" r="3"/>
+        <text x="570" y="112" text-anchor="start">M</text>
+        <!-- faisceaux incidents (orange) : S vers S1 et S vers S2 -->
+        <line class="accent-orange" x1="70" y1="160" x2="240" y2="130" stroke-width="1.8"/>
+        <line class="accent-orange" x1="70" y1="160" x2="240" y2="190" stroke-width="1.8"/>
+        <!-- faisceaux diffractés (orange) : S1 vers M (r₁) et S2 vers M (r₂) -->
+        <line class="accent-orange" x1="240" y1="130" x2="560" y2="110" stroke-width="1.8"/>
+        <line class="accent-orange" x1="240" y1="190" x2="560" y2="110" stroke-width="1.8"/>
+        <text x="380" y="108" text-anchor="middle" class="lbl-mut">r₁</text>
+        <text x="392" y="166" text-anchor="middle" class="lbl-mut">r₂</text>
+        <!-- cote D entre le plan des trous et l'écran -->
+        <g class="wire">
+          <line x1="240" y1="284" x2="560" y2="284" stroke-width="1.2"/>
+          <line x1="240" y1="278" x2="240" y2="290" stroke-width="1.2"/>
+          <line x1="560" y1="278" x2="560" y2="290" stroke-width="1.2"/>
+        </g>
+        <text x="400" y="300" text-anchor="middle" class="lbl-mut">D</text>
+        <!-- ordonnée x de M sur l'écran -->
+        <g class="accent-rouge">
+          <line x1="586" y1="160" x2="586" y2="110" stroke-width="1.4"/>
+          <path d="M586,110 l-3,7 l6,0 z" style="fill:var(--rouge);stroke:none"/>
+        </g>
+        <text x="594" y="138" text-anchor="start" style="fill:var(--rouge)">x</text>
+      </svg>
+      <figcaption>Figure — Géométrie du montage des trous d'Young (vue de dessus). La source ponctuelle \(S\) (en bleu) éclaire un plan percé de deux trous \(S_1\) et \(S_2\) séparés de \(a\) ; les faisceaux diffractés (en orange), de chemins \(r_1=S_1M\) et \(r_2=S_2M\), se superposent sur l'écran placé à la distance \(D\). Au point \(M\) d'ordonnée \(x\), la différence de marche vaut \(\delta=r_1-r_2\approx\dfrac{ax}{D}\) et l'interfrange \(i=\dfrac{\lambda D}{a}\) (la figure d'interférences correspondante est tracée dans la figure interactive ci-dessous).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">
@@ -203,10 +258,18 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     const D = parseFloat(slD.value);           // m
     const i = D * LAMBDA / a;                  // m, interfrange
 
-    // demi-largeur d'écran observée : on en montre ~ 9 interfranges
-    const halfY = 4.5 * i;                      // m
+    // Fenêtre d'écran À ÉCHELLE FIXE (ne suit PAS l'interfrange) : augmenter a
+    // resserre réellement les franges, augmenter D les écarte. On borne seulement
+    // la fenêtre pour garder un interfrange visible ∈ [18 px, 220 px] à l'écran,
+    // évitant le moiré (franges trop fines) comme la frange unique (trop larges).
     const x0 = 14, x1 = w - 14;
-    const yToPx = y => (x0 + x1) / 2 + (y / halfY) * ((x1 - x0) / 2);
+    const spanPx = x1 - x0;                     // largeur utile en pixels
+    const WIN_FIXE = 9.0e-3;                    // demi-fenêtre de référence : 9 mm
+    let halfY = WIN_FIXE;
+    const ipxNow = () => (i / (2 * halfY)) * spanPx;   // interfrange en pixels
+    if (ipxNow() < 18) halfY = (i * spanPx) / (2 * 18);    // zoom avant si trop fin
+    if (ipxNow() > 220) halfY = (i * spanPx) / (2 * 220);  // zoom arrière si trop large
+    const yToPx = y => (x0 + x1) / 2 + (y / halfY) * (spanPx / 2);
 
     const titleY = 12;                          // libellé au-dessus de la bande
     const bandTop = 22, bandH = 42;

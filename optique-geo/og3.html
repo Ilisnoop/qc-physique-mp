@@ -72,6 +72,49 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <li>Sa <strong>vergence</strong> \(V = \dfrac{1}{f'}\), exprimée en dioptries (\(1\,\delta = 1\,\mathrm{m^{-1}}\)).</li>
     </ul>
     <p>On a \(\overline{OF} = -f'\) (les deux foyers sont symétriques par rapport à \(O\) pour une lentille dans le même milieu de part et d'autre).</p>
+
+    <figure class="schema">
+      <svg viewBox="0 0 640 320" class="schema-svg" role="img" aria-label="Construction de l'image réelle d'un objet réel par une lentille mince convergente : tracé des trois rayons">
+        <!-- axe optique horizontal (pointillés), y=170 -->
+        <line class="wire" x1="40" y1="170" x2="610" y2="170" stroke-dasharray="6 5"/>
+        <text x="604" y="162" text-anchor="end" class="lbl-mut">axe</text>
+        <!-- lentille mince convergente : segment vertical en O (x=320), pointes vers l'extérieur en haut et en bas -->
+        <line class="wire" x1="320" y1="45" x2="320" y2="295"/>
+        <path class="wire" d="M312,54 L320,45 L328,54"/>
+        <path class="wire" d="M312,286 L320,295 L328,286"/>
+        <!-- centre O et foyers F, F' -->
+        <circle class="node" cx="320" cy="170" r="3"/>
+        <text x="320" y="312" text-anchor="middle">O</text>
+        <circle class="node" cx="230" cy="170" r="3"/>
+        <text x="230" y="188" text-anchor="middle">F</text>
+        <circle class="node" cx="410" cy="170" r="3"/>
+        <text x="410" y="188" text-anchor="middle">F'</text>
+        <!-- objet AB (flèche bleue verticale, B en haut), A en (140,170), B en (140,100) -->
+        <g class="accent-bleu">
+          <line x1="140" y1="170" x2="140" y2="100" stroke-width="2.6"/>
+          <path d="M140,100 l-5,11 l10,0 z" style="fill:var(--bleu);stroke:none"/>
+        </g>
+        <text x="140" y="188" text-anchor="middle" style="fill:var(--bleu)">A</text>
+        <text x="132" y="96" text-anchor="end" style="fill:var(--bleu)">B</text>
+        <!-- TROIS RAYONS (orange) issus de B(140,100), convergeant en B'(500,240) -->
+        <!-- rayon 1 : par O, non dévié -->
+        <line class="accent-orange" x1="140" y1="100" x2="500" y2="240" stroke-width="1.8"/>
+        <!-- rayon 2 : parallèle à l'axe jusqu'à la lentille (320,100), puis par F' -->
+        <line class="accent-orange" x1="140" y1="100" x2="320" y2="100" stroke-width="1.8"/>
+        <line class="accent-orange" x1="320" y1="100" x2="500" y2="240" stroke-width="1.8"/>
+        <!-- rayon 3 : par F, atteint la lentille en (320,240), ressort parallèle à l'axe -->
+        <line class="accent-orange" x1="140" y1="100" x2="320" y2="240" stroke-width="1.8"/>
+        <line class="accent-orange" x1="320" y1="240" x2="500" y2="240" stroke-width="1.8"/>
+        <!-- image A'B' (flèche rouge, renversée, réelle), A' en (500,170), B' en (500,240) -->
+        <g class="accent-rouge">
+          <line x1="500" y1="170" x2="500" y2="240" stroke-width="2.6"/>
+          <path d="M500,240 l-5,-11 l10,0 z" style="fill:var(--rouge);stroke:none"/>
+        </g>
+        <text x="500" y="162" text-anchor="middle" style="fill:var(--rouge)">A'</text>
+        <text x="508" y="252" text-anchor="start" style="fill:var(--rouge)">B'</text>
+      </svg>
+      <figcaption>Figure — Construction de l'image d'un objet réel \(AB\) (en bleu) par une lentille mince convergente. Trois rayons issus de \(B\) (en orange) : le rayon passant par \(O\) n'est pas dévié, le rayon parallèle à l'axe émerge en passant par \(F'\), et le rayon passant par \(F\) émerge parallèle à l'axe. Leur intersection donne \(B'\) : l'image \(A'B'\) (en rouge) est ici réelle et renversée. Relation de conjugaison \(\dfrac{1}{\overline{OA'}}-\dfrac{1}{\overline{OA}}=\dfrac{1}{f'}\) et grandissement \(\gamma=\dfrac{\overline{A'B'}}{\overline{AB}}=\dfrac{\overline{OA'}}{\overline{OA}}\).</figcaption>
+    </figure>
   </section>
 
   <section class="rubric">
