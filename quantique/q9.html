@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q9 — Vecteur densité de courant de probabilité · QC Oraux MP*</title>
+<meta name="description" content="Vecteur densité de courant de probabilité j = (ħ/m) Im(ψ* grad ψ), équation de continuité ∂_t|ψ|² + div j = 0, conservation locale de la probabilité, application à l'onde plane j = (ħk/m)|A|².">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="q8.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="q10.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+        <a href="q7.html"><span class="qn">Q7</span>Barrière de potentiel &amp; effet tunnel</a>
+        <a href="q8.html"><span class="qn">Q8</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="q9.html" aria-current="page"><span class="qn">Q9</span>Courant de probabilité &amp; continuité</a>
+        <a href="q10.html"><span class="qn">Q10</span>États non stationnaires</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 9 · Mécanique quantique</span>
+    <h1>Vecteur densité de courant de probabilité et conservation locale</h1>
+    <p class="q-sources"><span class="src">POLY §2.4</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir le vecteur densité de courant de probabilité \(\overrightarrow{\jmath}\) associé à une fonction d'onde, établir l'équation de continuité \(\dfrac{\partial|\psi|^2}{\partial t}+\operatorname{div}\overrightarrow{\jmath}=0\) traduisant la conservation locale de la probabilité, et l'appliquer à l'onde plane de de Broglie pour laquelle \(j=\dfrac{\hbar k}{m}\,|A|^2\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 6 §6.2 (Conservation de la probabilité)</div>
+      <p>Associer à une fonction d'onde un vecteur densité de courant de probabilité ; traduire la conservation de la probabilité par une équation de continuité locale ; relier le courant de probabilité au flux de particules pour un faisceau décrit par une onde de de Broglie. Le bilan local de probabilité s'établit par analogie avec les bilans de flux conservatifs vus dans l'année.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Densité de probabilité de présence</strong> : \(\rho(x,t)=|\psi(x,t)|^2=\psi^\star\psi\) (probabilité par unité de longueur en 1D).</li>
+      <li><strong>Courant de probabilité (1D)</strong> : défini comme la grandeur \(j(x,t)\) telle que la probabilité \(\mathrm{d}q\) traversant le point \(x\) pendant \(\mathrm{d}t\) vaut \(\mathrm{d}q=\overrightarrow{\jmath}\cdot\overrightarrow{\mathrm{d}t}\). On en déduit l'expression :
+      \(\;\overrightarrow{\jmath}=\dfrac{\hbar}{m}\,\mathrm{Im}\!\left(\psi^\star\,\overrightarrow{\mathrm{grad}}\,\psi\right).\)</li>
+      <li><strong>Convention complexe</strong> : \(e^{+i\omega t}\) (onde de de Broglie \(\psi\propto e^{i(kx-\omega t)}\), \(\partial_t\to-i\omega\), \(\partial_x\to+ik\)).</li>
+      <li><strong>Conservation locale</strong> : aucune particule n'est créée ni détruite ; la probabilité totale \(\displaystyle\int|\psi|^2\,\mathrm{d}x=1\) est conservée au cours du temps.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Bilan local de probabilité</span>
+      <p class="lead">On note \(P_+(x,t)\) la probabilité de trouver la particule dans \([x,+\infty[\). Sa variation entre \(t\) et \(t+\mathrm{d}t\) correspond au passage d'une probabilité \(\mathrm{d}q\) à travers le point \(x\). Par analogie avec un flux conservatif, on définit le courant de probabilité par :</p>
+      <div class="calc-line">\[ \mathrm{d}q=\overrightarrow{\jmath}\cdot\overrightarrow{\mathrm{d}t} , \]</div>
+      <p>ce qui revient à voir l'évolution de la probabilité comme un déplacement de « matière probabiliste » de la droite vers la gauche (ou inversement).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Expression du courant de probabilité</span>
+      <p class="lead">L'identification précédente, combinée à l'équation de Schrödinger, conduit à exprimer le courant à partir de la fonction d'onde :</p>
+      <div class="calc-line">\[ \overrightarrow{\jmath}(x,t)=\dfrac{\hbar}{m}\,\mathrm{Im}\!\left(\psi^\star\,\overrightarrow{\mathrm{grad}}\,\psi\right) =\dfrac{\hbar}{2im}\left(\psi^\star\,\overrightarrow{\mathrm{grad}}\,\psi-\psi\,\overrightarrow{\mathrm{grad}}\,\psi^\star\right) . \]</div>
+      <p>En une dimension, \(\overrightarrow{\mathrm{grad}}\,\psi=\dfrac{\partial\psi}{\partial x}\,\overrightarrow{u_x}\), si bien que \(j=\dfrac{\hbar}{m}\,\mathrm{Im}\!\left(\psi^\star\dfrac{\partial\psi}{\partial x}\right)\). Le courant est réel : si \(\psi\) est réelle (état lié, onde stationnaire), \(j=0\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Équation de continuité</span>
+      <p class="lead">On calcule \(\dfrac{\partial|\psi|^2}{\partial t}=\psi^\star\dfrac{\partial\psi}{\partial t}+\psi\dfrac{\partial\psi^\star}{\partial t}\) à l'aide de l'équation de Schrödinger \(i\hbar\,\partial_t\psi=-\dfrac{\hbar^2}{2m}\partial_x^2\psi+V\psi\) et de sa conjuguée. Les termes en \(V\) (réel) se compensent et il reste, en regroupant les dérivées spatiales :</p>
+      <div class="calc-line">\[ \dfrac{\partial|\psi|^2}{\partial t}+\operatorname{div}\overrightarrow{\jmath}=0 . \]</div>
+      <p>C'est l'<strong>équation de continuité</strong> : elle traduit la <strong>conservation locale de la probabilité</strong>, exactement comme l'équation de conservation de la charge ou de la masse rencontrée en électromagnétisme et en mécanique des fluides.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Conservation globale de la norme</span>
+      <p class="lead">En intégrant l'équation de continuité sur tout l'espace et en supposant \(\psi\to0\) à l'infini (donc \(j\to0\) aux bornes) :</p>
+      <div class="calc-line">\[ \dfrac{\mathrm{d}}{\mathrm{d}t}\int_{-\infty}^{+\infty}|\psi|^2\,\mathrm{d}x=-\Bigl[\,j\,\Bigr]_{-\infty}^{+\infty}=0 . \]</div>
+      <p>La <strong>norme est conservée</strong> au cours du temps : si \(\psi\) est normalisée à un instant, elle le reste. La probabilité totale de présence vaut toujours \(1\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Application : onde plane de de Broglie</span>
+      <p class="lead">Pour une onde plane \(\psi=A\,e^{i(kx-\omega t)}\), on a \(\dfrac{\partial\psi}{\partial x}=ik\,\psi\), d'où \(\psi^\star\dfrac{\partial\psi}{\partial x}=ik\,|A|^2\) et :</p>
+      <div class="calc-line">\[ j=\dfrac{\hbar}{m}\,\mathrm{Im}\!\bigl(ik\,|A|^2\bigr)=\dfrac{\hbar k}{m}\,|A|^2 . \]</div>
+      <p class="lead">En posant la densité linéique de particules \(n=|A|^2\) pour un faisceau, le courant de probabilité s'identifie à un <strong>courant de particules</strong> :</p>
+      <div class="calc-line">\[ \overrightarrow{\jmath}=n\,\overrightarrow{v} , \qquad v=\dfrac{\hbar k}{m}=v_g , \]</div>
+      <p>où \(v=\dfrac{\hbar k}{m}\) est la vitesse de groupe (vitesse de la particule, Q8). Le flux de particules traversant un point pendant \(\mathrm{d}t\) vaut \(\overrightarrow{\jmath}\cdot\overrightarrow{\mathrm{d}t}\), résultat utilisé pour les coefficients de réflexion et de transmission (Q4, Q7).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — densité \(|\psi|^2\) et courant \(j\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-cour" aria-label="Densité de probabilité et flèches de courant pour une onde plane (courant uniforme) ou un paquet (courant maximal au centre, se déplaçant)"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-k">Vecteur d'onde \(\dfrac{k}{k_0}\) <span class="val" id="v-k">1,00</span></label>
+          <input type="range" id="sl-k" min="0.3" max="2" step="0.05" value="1">
+          <span class="hint">Pour l'onde plane, \(j=\dfrac{\hbar k}{m}|A|^2\) croît linéairement avec \(k\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-mode" type="button">Onde plane</button>
+            <button class="btn primary" id="btn-anim" type="button">Animer</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro" id="ro-rho">\(|\psi|^2\) <b id="v-rho">uniforme</b></span>
+            <span class="ro" id="ro-j">\(j\) (en \(\dfrac{\hbar k_0}{m}|A|^2\)) <b id="v-j">1,00</b></span>
+            <span class="ro">\(\partial_t|\psi|^2+\operatorname{div}\overrightarrow{\jmath}\) <b id="v-cont">= 0</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        En haut : densité de probabilité de présence \(|\psi|^2\) (bleu). En bas : vecteur densité de courant \(\overrightarrow{\jmath}\) (flèches vertes). Pour l'<strong>onde plane</strong>, \(|\psi|^2=|A|^2\) est uniforme et \(j=\dfrac{\hbar k}{m}|A|^2\) est constant : le profil n'évolue pas (\(\partial_t|\psi|^2=0\) et \(\operatorname{div}\overrightarrow{\jmath}=0\)). Pour le <strong>paquet</strong>, la densité est localisée et se translate à \(v_g\) : le courant est maximal au centre, et l'équation de continuité \(\partial_t|\psi|^2+\operatorname{div}\overrightarrow{\jmath}=0\) est vérifiée en chaque point.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>densité \(|\psi|^2\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>courant \(\overrightarrow{\jmath}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Définition : \(\overrightarrow{\jmath}=\dfrac{\hbar}{m}\,\mathrm{Im}\!\left(\psi^\star\,\overrightarrow{\mathrm{grad}}\,\psi\right)\) ; courant réel, nul si \(\psi\) est réelle.</li>
+        <li>Équation de continuité : \(\dfrac{\partial|\psi|^2}{\partial t}+\operatorname{div}\overrightarrow{\jmath}=0\) = conservation <strong>locale</strong> de la probabilité (les termes en \(V\) réel se compensent).</li>
+        <li>Conséquence globale : la norme \(\displaystyle\int|\psi|^2\mathrm{d}x\) est conservée (probabilité totale \(=1\)).</li>
+        <li>Onde plane : \(j=\dfrac{\hbar k}{m}|A|^2\) ; on identifie \(\overrightarrow{\jmath}=n\,\overrightarrow{v}\) avec \(v=\dfrac{\hbar k}{m}=v_g\).</li>
+        <li>Analogie forte avec les bilans conservatifs (charge, masse) vus dans l'année.</li>
+        <li>Outil clé pour définir \(R\) et \(T\) (marche Q4, barrière Q7) à partir des courants incident/réfléchi/transmis.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Au programme MP (§6.2). Le vecteur densité de courant de probabilité et l'équation de continuité formalisent la conservation de la probabilité déjà utilisée pour établir \(R+T=1\) (Q4, Q7). L'expression de \(\overrightarrow{\jmath}\) et son application à l'onde plane sont conformes au cours (POLY §2.4).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="q8.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Q8 · Paquet d'ondes et vitesse de groupe</span></a>
+    <a class="next" href="q10.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Q10 · États non stationnaires</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-cour');
+  const slK = document.getElementById('sl-k');
+  const vK = document.getElementById('v-k'), vRho = document.getElementById('v-rho'), vJ = document.getElementById('v-j');
+  const btnMode = document.getElementById('btn-mode'), btnAnim = document.getElementById('btn-anim');
+
+  let mode = 'plane', animating = false, tphys = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const k = parseFloat(slK.value);    // k/k0
+    const topMid = h * 0.30, topAmp = h * 0.18;
+    const botY = h * 0.74;
+    const xspan = 24, x0 = -2;
+    const px = u => 10 + (u - x0) / xspan * (w - 20);
+
+    // séparateur visuel
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(10, topMid + topAmp + 6); ctx.lineTo(w - 10, topMid + topAmp + 6); ctx.stroke();
+
+    // ---- densité |psi|^2 (bleu) ----
+    let center = x0 + ((k * tphys) % xspan);   // paquet avance à v ∝ k
+    const sigx = 2.2;
+    function rho(u) {
+      if (mode === 'plane') return 0.6;        // uniforme normalisé
+      const d = (u - center) / sigx; return Math.exp(-d * d);
+    }
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let st = false;
+    for (let u = x0; u <= x0 + xspan; u += 0.05) {
+      const Y = topMid + topAmp - rho(u) * 2 * topAmp;
+      const X = px(u);
+      st ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), st = true);
+    }
+    ctx.stroke();
+    // remplissage léger
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.10; ctx.beginPath();
+    ctx.moveTo(px(x0), topMid + topAmp);
+    for (let u = x0; u <= x0 + xspan; u += 0.05) ctx.lineTo(px(u), topMid + topAmp - rho(u) * 2 * topAmp);
+    ctx.lineTo(px(x0 + xspan), topMid + topAmp); ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    QC.subText(ctx, '|ψ|', '2', 14, topMid - topAmp + 4);
+
+    // ---- courant j : flèches vertes ----
+    ctx.strokeStyle = c.vert; ctx.fillStyle = c.vert; ctx.lineWidth = 2;
+    const nArr = 11;
+    for (let i = 0; i < nArr; i++) {
+      const u = x0 + 1 + (xspan - 2) * i / (nArr - 1);
+      const X = px(u);
+      // amplitude du courant ∝ k * densité locale
+      const jmag = k * (mode === 'plane' ? 0.6 : Math.exp(-Math.pow((u - center) / sigx, 2)));
+      const len = 6 + jmag * 26;
+      ctx.globalAlpha = mode === 'plane' ? 0.8 : Math.max(0.12, jmag);
+      ctx.beginPath(); ctx.moveTo(X - len / 2, botY); ctx.lineTo(X + len / 2, botY); ctx.stroke();
+      // pointe
+      ctx.beginPath();
+      ctx.moveTo(X + len / 2, botY);
+      ctx.lineTo(X + len / 2 - 5, botY - 3.5);
+      ctx.lineTo(X + len / 2 - 5, botY + 3.5);
+      ctx.closePath(); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = c.muted; ctx.textAlign = 'left';
+    QC.subText(ctx, 'j', '', 14, botY - 22);
+    ctx.fillText('x →', w - 34, h - 8);
+
+    // lectures
+    vK.textContent = fr(k, 2);
+    vRho.textContent = mode === 'plane' ? 'uniforme' : 'localisée (paquet)';
+    vJ.textContent = mode === 'plane' ? fr(k, 2) : 'localisé (max au centre)';
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) { tphys += dt * 2; draw(); }
+  });
+
+  slK.addEventListener('input', draw);
+  btnMode.addEventListener('click', function () {
+    mode = mode === 'plane' ? 'paquet' : 'plane';
+    btnMode.textContent = mode === 'plane' ? 'Onde plane' : 'Paquet';
+    draw();
+  });
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

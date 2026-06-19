@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q10 — États non stationnaires et battement quantique · QC Oraux MP*</title>
+<meta name="description" content="États non stationnaires : superposition de deux états stationnaires d'énergies différentes, densité de probabilité oscillant à la pulsation de Bohr ω = (E₂−E₁)/ħ (battement quantique), exemple du puits infini n=1,2.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="q9.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+        <a href="q7.html"><span class="qn">Q7</span>Barrière de potentiel &amp; effet tunnel</a>
+        <a href="q8.html"><span class="qn">Q8</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="q9.html"><span class="qn">Q9</span>Courant de probabilité &amp; continuité</a>
+        <a href="q10.html" aria-current="page"><span class="qn">Q10</span>États non stationnaires</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 10 · Mécanique quantique</span>
+    <h1>États non stationnaires et battement quantique</h1>
+    <p class="q-sources"><span class="src">POLY §1.4.2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Montrer que la superposition de deux états stationnaires d'énergies différentes \(\mathcal{E}_1\neq\mathcal{E}_2\) n'est pas un état stationnaire : la densité de probabilité de présence \(|\psi(x,t)|^2\) oscille au cours du temps à la <strong>pulsation de Bohr</strong> \(\omega=\dfrac{|\mathcal{E}_2-\mathcal{E}_1|}{\hbar}\) (battement quantique). Illustrer sur le puits infini avec les états \(n=1\) et \(n=2\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 6 §6.1 (Principe de superposition, états stationnaires)</div>
+      <p>Utiliser la linéarité de l'équation de Schrödinger pour superposer des états stationnaires ; reconnaître qu'une superposition d'états d'énergies différentes n'est pas stationnaire ; établir que la densité de probabilité de présence est alors une fonction sinusoïdale du temps, de pulsation \(\omega=\dfrac{|\mathcal{E}_2-\mathcal{E}_1|}{\hbar}\) ; relier ce résultat au principe d'indétermination temps-énergie (Q3).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>État stationnaire</strong> : \(\psi_n(x,t)=\varphi_n(x)\,e^{-i\mathcal{E}_n t/\hbar}\), pour lequel \(|\psi_n|^2=|\varphi_n|^2\) est <em>indépendant du temps</em> (convention \(e^{+i\omega t}\), partie temporelle \(e^{-i\mathcal{E}_n t/\hbar}\)).</li>
+      <li><strong>Pulsation propre</strong> de l'état \(n\) : \(\omega_n=\dfrac{\mathcal{E}_n}{\hbar}\).</li>
+      <li><strong>Principe de superposition</strong> : l'équation de Schrödinger étant linéaire, toute combinaison \(\psi=\alpha\,\psi_1+\beta\,\psi_2\) (avec \((\alpha,\beta)\in\mathbb{C}^2\)) est encore solution.</li>
+      <li><strong>Pulsation de Bohr</strong> : \(\omega=\dfrac{|\mathcal{E}_2-\mathcal{E}_1|}{\hbar}=|\omega_2-\omega_1|\), pulsation de l'oscillation temporelle de la densité.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Superposition de deux états stationnaires</span>
+      <p class="lead">On considère deux états stationnaires d'énergies \(\mathcal{E}_1\neq\mathcal{E}_2\) :</p>
+      <div class="calc-line">\[ \psi_1(x,t)=\varphi_1(x)\,e^{-i\mathcal{E}_1 t/\hbar}, \qquad \psi_2(x,t)=\varphi_2(x)\,e^{-i\mathcal{E}_2 t/\hbar} . \]</div>
+      <p class="lead">Par linéarité de l'équation de Schrödinger, on construit une nouvelle solution :</p>
+      <div class="calc-line">\[ \psi(x,t)=\alpha\,\psi_1(x,t)+\beta\,\psi_2(x,t), \qquad (\alpha,\beta)\in\mathbb{C}^2 . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Densité de probabilité de présence</span>
+      <p class="lead">On calcule \(|\psi|^2=|\alpha\psi_1+\beta\psi_2|^2\) en développant le module au carré :</p>
+      <div class="calc-line">\[ |\psi|^2=|\alpha\psi_1|^2+|\beta\psi_2|^2+2\,\mathrm{Re}\!\left(\alpha\beta^\star\,\psi_1\psi_2^\star\right) . \]</div>
+      <p class="lead">Les deux premiers termes sont indépendants du temps. Dans le terme croisé, les exponentielles temporelles donnent \(\psi_1\psi_2^\star\propto e^{-i(\mathcal{E}_1-\mathcal{E}_2)t/\hbar}\). En regroupant, la densité se met sous la forme :</p>
+      <div class="calc-line">\[ |\psi(x,t)|^2=m(x)+n(x)\,\cos\!\Bigl(\tfrac{\mathcal{E}_2-\mathcal{E}_1}{\hbar}\,t+\phi(x)\Bigr) , \]</div>
+      <p>avec \(m(x)=|\alpha\varphi_1|^2+|\beta\varphi_2|^2\), \(n(x)=2\,|\alpha\beta\,\varphi_1\varphi_2|\) et \(\phi(x)=\arg(\alpha\beta^\star\varphi_1\varphi_2^\star)\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — État non stationnaire et pulsation de Bohr</span>
+      <p class="lead">La densité de probabilité <strong>dépend du temps</strong> : l'état n'est <strong>pas stationnaire</strong>. En un point donné, \(|\psi|^2\) est une fonction sinusoïdale du temps, de pulsation :</p>
+      <div class="calc-line">\[ \omega=\dfrac{|\mathcal{E}_2-\mathcal{E}_1|}{\hbar} . \]</div>
+      <p>C'est la <strong>pulsation de Bohr</strong> associée à la transition entre les deux niveaux : la probabilité de présence « bat » d'un profil à l'autre, phénomène appelé <strong>battement quantique</strong>. La période associée est \(T=\dfrac{2\pi\hbar}{|\mathcal{E}_2-\mathcal{E}_1|}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Lien avec l'indétermination temps-énergie</span>
+      <p>Plus l'écart \(|\mathcal{E}_2-\mathcal{E}_1|\) est grand, plus l'oscillation est rapide. Une transition (émission/absorption d'un photon de pulsation \(\omega\)) correspond précisément à cette pulsation de Bohr, en accord avec la relation de Planck-Einstein \(\hbar\omega=|\mathcal{E}_2-\mathcal{E}_1|\) et avec la relation temps-énergie de Heisenberg \(\Delta\mathcal{E}\cdot\tau\sim\hbar\) (Q3).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Exemple : puits infini, états \(n=1\) et \(n=2\)</span>
+      <p class="lead">Pour le puits infini de largeur \(a\) (Q5), \(\varphi_n(x)=\sqrt{\dfrac{2}{a}}\sin\!\dfrac{n\pi x}{a}\) (réelles) et \(\mathcal{E}_n=\dfrac{n^2\pi^2\hbar^2}{2ma^2}\). Pour la superposition équipondérée des états \(n=1,2\) :</p>
+      <div class="calc-line">\[ |\psi(x,t)|^2=\tfrac12\bigl[\varphi_1^2+\varphi_2^2\bigr]+\varphi_1(x)\varphi_2(x)\cos(\omega t), \qquad \omega=\dfrac{\mathcal{E}_2-\mathcal{E}_1}{\hbar}=\dfrac{3\pi^2\hbar}{2ma^2} . \]</div>
+      <p>La densité oscille entre un profil décalé vers la gauche et un profil décalé vers la droite du puits : le « centre de masse » de la probabilité oscille à la pulsation de Bohr \(\omega\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — densité oscillant entre deux profils (puits infini \(n=1,2\))</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-bat" aria-label="Densité de probabilité d'une superposition n=1 et n=2 dans un puits infini, oscillant entre un profil à gauche et un profil à droite à la pulsation de Bohr ; poids relatif réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-w">Poids relatif \(\dfrac{|\beta|^2}{|\alpha|^2+|\beta|^2}\) <span class="val" id="v-w">0,50</span></label>
+          <input type="range" id="sl-w" min="0" max="1" step="0.01" value="0.5">
+          <span class="hint">Pondération de l'état \(n=2\). Le battement est maximal pour des poids égaux ; nul si un seul état est peuplé (état stationnaire).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le battement</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\omega=\dfrac{\mathcal{E}_2-\mathcal{E}_1}{\hbar}\) <b id="v-om">3 unités</b></span>
+            <span class="ro" id="ro-ph">Phase \(\omega t\) <b id="v-ph">0,00</b></span>
+            <span class="ro" id="ro-stat">État <b id="v-stat">non stationnaire</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Densité de probabilité \(|\psi(x,t)|^2\) (bleu) de la superposition des états \(n=1\) et \(n=2\) du puits infini, à l'instant courant. Les deux profils extrêmes (en \(\cos\omega t=\pm1\)) sont rappelés en pointillés rouges : la densité oscille entre eux à la pulsation de Bohr \(\omega=\dfrac{\mathcal{E}_2-\mathcal{E}_1}{\hbar}\). Si l'un des poids est nul, la densité devient indépendante du temps (état stationnaire).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(|\psi(x,t)|^2\) (instant courant)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>profils extrêmes</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>parois du puits</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Un <strong>seul</strong> état stationnaire : \(|\psi|^2\) indépendant du temps. <strong>Superposition</strong> de deux énergies différentes : \(|\psi|^2\) dépend du temps.</li>
+        <li>Le terme croisé \(2\,\mathrm{Re}(\alpha\beta^\star\psi_1\psi_2^\star)\) fait apparaître l'oscillation temporelle.</li>
+        <li>Pulsation de Bohr : \(\omega=\dfrac{|\mathcal{E}_2-\mathcal{E}_1|}{\hbar}\) — c'est la pulsation du photon émis/absorbé lors de la transition.</li>
+        <li>Battement maximal pour des poids égaux ; nul si un seul état est peuplé.</li>
+        <li>Lien direct avec la relation temps-énergie \(\Delta\mathcal{E}\cdot\tau\sim\hbar\) (Q3).</li>
+        <li>Justifier l'usage de la linéarité de l'équation de Schrödinger (principe de superposition).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Au programme MP (§6.1). Le principe de superposition et le caractère non stationnaire d'une combinaison d'états d'énergies différentes sont au cœur du cours ; la pulsation de Bohr \(\omega=\dfrac{|\mathcal{E}_2-\mathcal{E}_1|}{\hbar}\) y est explicitement établie. L'exemple s'appuie sur le puits infini (Q5) et la relation temps-énergie (Q3). Conforme au cours (POLY §1.4.2).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="q9.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Q9 · Courant de probabilité et continuité</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Mécanique quantique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-bat');
+  const slW = document.getElementById('sl-w');
+  const vW = document.getElementById('v-w'), vPh = document.getElementById('v-ph'), vStat = document.getElementById('v-stat');
+  const btnAnim = document.getElementById('btn-anim');
+
+  let animating = false, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // Puits [0,1]. phi1 = sqrt(2) sin(pi x), phi2 = sqrt(2) sin(2 pi x).
+  function phi1(x) { return Math.SQRT2 * Math.sin(Math.PI * x); }
+  function phi2(x) { return Math.SQRT2 * Math.sin(2 * Math.PI * x); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const wB = parseFloat(slW.value);          // poids de n=2 (|beta|^2 normalisé)
+    const a = 1 - wB, b = wB;                    // |alpha|^2, |beta|^2
+    const sa = Math.sqrt(a), sb = Math.sqrt(b);
+    const padL = 40, padR = 16, padT = 18, padB = 30;
+    const x0 = padL, x1 = w - padR;
+    const px = u => x0 + u * (x1 - x0);          // u dans [0,1]
+    const baseY = h - padB, topY = padT;
+    const py = d => baseY - d * (baseY - topY);  // densité d >= 0
+
+    // échelle : densité max possible ~ (sa*phi1 + sb*phi2)^2, borne ~ 4
+    const dmax = 3.2;
+    const sc = d => d / dmax;
+
+    // parois du puits (orange)
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2.6;
+    ctx.beginPath();
+    ctx.moveTo(px(0), topY); ctx.lineTo(px(0), baseY); ctx.lineTo(px(1), baseY); ctx.lineTo(px(1), topY);
+    ctx.stroke();
+
+    // grille horizontale légère
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+    ctx.moveTo(px(0), baseY); ctx.lineTo(px(1), baseY); ctx.stroke();
+
+    function dens(u, cw) {
+      // |psi|^2 = a phi1^2 + b phi2^2 + 2 sa sb phi1 phi2 cos(wt)
+      return a * phi1(u) * phi1(u) + b * phi2(u) * phi2(u) + 2 * sa * sb * phi1(u) * phi2(u) * cw;
+    }
+
+    // profils extrêmes (rouge pointillé) cos = +1 et -1
+    ctx.strokeStyle = c.rouge; ctx.globalAlpha = 0.55; ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
+    [1, -1].forEach(cw => {
+      ctx.beginPath(); let st = false;
+      for (let u = 0; u <= 1.0001; u += 0.01) {
+        const Y = py(sc(Math.max(0, dens(u, cw))));
+        const X = px(u);
+        st ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), st = true);
+      }
+      ctx.stroke();
+    });
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+    // densité instantanée (bleu) cos(phase)
+    const cw = Math.cos(phase);
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.12; ctx.beginPath();
+    ctx.moveTo(px(0), baseY);
+    for (let u = 0; u <= 1.0001; u += 0.005) ctx.lineTo(px(u), py(sc(Math.max(0, dens(u, cw)))));
+    ctx.lineTo(px(1), baseY); ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let st = false;
+    for (let u = 0; u <= 1.0001; u += 0.005) {
+      const Y = py(sc(Math.max(0, dens(u, cw))));
+      const X = px(u);
+      st ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), st = true);
+    }
+    ctx.stroke();
+
+    // étiquettes
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace';
+    ctx.textAlign = 'left'; QC.subText(ctx, '|ψ|', '2', padL - 30, topY + 10);
+    ctx.textAlign = 'center'; ctx.fillText('0', px(0), baseY + 16); ctx.fillText('a', px(1), baseY + 16);
+    ctx.fillText('x', (px(0) + px(1)) / 2, baseY + 18);
+
+    // lectures
+    vW.textContent = fr(wB, 2);
+    vPh.textContent = fr(phase % (2 * Math.PI), 2);
+    const stationnaire = (a < 1e-6 || b < 1e-6);
+    vStat.textContent = stationnaire ? 'stationnaire' : 'non stationnaire';
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) { phase += dt * 1.6; draw(); }
+  });
+
+  slW.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer le battement' : 'Animer le battement';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

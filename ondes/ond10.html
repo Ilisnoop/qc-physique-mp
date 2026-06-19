@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND10 — Paquet d'ondes &amp; vitesse de groupe · QC Oraux MP*</title>
+<meta name="description" content="Paquet d'ondes : vitesse de phase v_φ=ω/k, vitesse de groupe v_g=dω/dk, propagation de l'enveloppe, étalement dispersif. Cas non dispersif v_g=v_φ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond9.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond11.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html" aria-current="page"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 10 · Ondes électromagnétiques</span>
+    <h1>Paquet d'ondes : vitesse de phase, vitesse de groupe et étalement dispersif</h1>
+    <p class="q-sources"><span class="src">POLY p.3 · §2 (paquet d'ondes)</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir un paquet d'ondes comme superposition d'OPPM de pulsations proches. Introduire la vitesse de phase \(v_\varphi = \dfrac{\omega}{k}\) et la vitesse de groupe \(v_g = \dfrac{\mathrm{d}\omega}{\mathrm{d}k}\). Montrer que l'enveloppe se propage à \(v_g\), discuter l'étalement dispersif et le cas non dispersif où \(v_g = v_\varphi\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5 (Dispersion, paquets d'ondes)</div>
+      <p>Capacités exigibles : associer la vitesse de phase à la propagation d'une OPPM ; définir un milieu dispersif par la dépendance de \(v_\varphi\) en \(\omega\) ; construire un paquet d'ondes par superposition et identifier l'enveloppe ; définir la vitesse de groupe \(v_g = \dfrac{\mathrm{d}\omega}{\mathrm{d}k}\) comme vitesse de propagation de l'énergie / de l'information ; relier la déformation du paquet au caractère dispersif du milieu.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Relation de dispersion</strong> : relation \(\omega(k)\) (ou \(k(\omega)\)) imposée par le milieu de propagation.</li>
+      <li><strong>Vitesse de phase</strong> : \(v_\varphi = \dfrac{\omega}{k}\), vitesse de propagation d'une OPPM (d'un point de phase constante).</li>
+      <li><strong>Paquet d'ondes</strong> : superposition d'un nombre fini ou infini d'OPPM de pulsations proches d'une pulsation centrale \(\omega_0\).</li>
+      <li><strong>Milieu dispersif</strong> : milieu pour lequel \(v_\varphi\) dépend de \(\omega\) ; il est caractérisé par son indice \(n = \dfrac{c}{v_\varphi}\). Dans le vide \(v_\varphi = c\) est indépendant de \(\omega\) : pas de dispersion.</li>
+      <li><strong>Vitesse de groupe</strong> : \(v_g = \dfrac{\mathrm{d}\omega}{\mathrm{d}k}\Big|_{\omega_0}\), vitesse de propagation de l'enveloppe du paquet.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Superposition de deux ondes proches</span>
+      <p class="lead"><strong>On considère deux OPPM</strong> de même amplitude \(E_0\), de pulsations \(\omega_1 = \omega_0 - \dfrac{\delta\omega}{2}\) et \(\omega_2 = \omega_0 + \dfrac{\delta\omega}{2}\) (\(\delta\omega \ll \omega_0\)), de modules d'onde \(k_1 = k_0 - \dfrac{\delta k}{2}\), \(k_2 = k_0 + \dfrac{\delta k}{2}\) :</p>
+      <div class="calc-line">\[ E(x,t) = E_0\cos(\omega_1 t - k_1 x) + E_0\cos(\omega_2 t - k_2 x) . \]</div>
+      <p class="lead"><strong>On factorise</strong> à l'aide de \(\cos a + \cos b = 2\cos\!\dfrac{a-b}{2}\cos\!\dfrac{a+b}{2}\) :</p>
+      <div class="calc-line">\[ E(x,t) = \underbrace{2E_0\cos\!\left(\dfrac{\delta\omega}{2}t - \dfrac{\delta k}{2}x\right)}_{\text{enveloppe}}\;\underbrace{\cos(\omega_0 t - k_0 x)}_{\text{porteuse}} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Deux vitesses distinctes</span>
+      <p class="lead"><strong>On lit les deux vitesses de propagation</strong> sur l'expression précédente :</p>
+      <ul>
+        <li>la <strong>porteuse</strong> \(\cos(\omega_0 t - k_0 x)\) se propage à la vitesse de phase \(v_\varphi = \dfrac{\omega_0}{k_0}\) ;</li>
+        <li>l'<strong>enveloppe</strong> (le battement) \(\cos\!\left(\dfrac{\delta\omega}{2}t - \dfrac{\delta k}{2}x\right)\) se propage à la vitesse \(\dfrac{\delta\omega}{\delta k}\), qui tend vers la <strong>vitesse de groupe</strong> :</li>
+      </ul>
+      <div class="calc-line">\[ v_g = \lim_{\delta k\to 0}\dfrac{\delta\omega}{\delta k} = \dfrac{\mathrm{d}\omega}{\mathrm{d}k}\Big|_{\omega_0} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Généralisation et signification physique</span>
+      <p>Tout paquet d'ondes peut se mettre sous la forme d'une onde moyenne se propageant à \(v_\varphi\), dont l'amplitude est modulée par une enveloppe se propageant à \(v_g\). La vitesse de groupe est <strong>la vitesse de transmission de l'information</strong> : c'est elle qui transporte l'énergie et qui, conformément à la relativité restreinte, reste inférieure à \(c\) (alors que \(v_\varphi\) peut, elle, dépasser \(c\), comme dans un plasma).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Cas non dispersif et étalement dispersif</span>
+      <p class="lead"><strong>Milieu non dispersif</strong> : si \(\omega = v\,k\) avec \(v\) constante (cas du vide, \(\omega = ck\)), alors</p>
+      <div class="calc-line">\[ v_\varphi = \dfrac{\omega}{k} = v , \qquad v_g = \dfrac{\mathrm{d}\omega}{\mathrm{d}k} = v \quad\Rightarrow\quad v_g = v_\varphi . \]</div>
+      <p>Toutes les composantes avancent à la même vitesse : le paquet <strong>ne se déforme pas</strong>. </p>
+      <p class="lead"><strong>Milieu dispersif</strong> : si \(v_\varphi\) dépend de \(\omega\), chaque composante avance à une vitesse différente. Le paquet <strong>s'étale</strong> au cours de la propagation (étalement dispersif) ; sa durée et sa largeur spatiale augmentent. Ce phénomène limite par exemple le débit des transmissions par fibre optique.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — battement de deux ondes proches</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-pq" aria-label="Superposition de deux ondes de pulsations proches formant un battement, avec une porteuse se propageant à la vitesse de phase et une enveloppe se propageant à la vitesse de groupe"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-dw">Écart relatif \(\dfrac{\delta\omega}{\omega_0}\) <span class="val" id="v-dw">0,15</span></label>
+          <input type="range" id="sl-dw" min="0.04" max="0.30" step="0.01" value="0.15">
+          <span class="hint">Plus l'écart est petit, plus l'enveloppe (paquet) est large.</span>
+          <label for="sl-vg" style="margin-top:.6rem">Rapport \(\dfrac{v_g}{v_\varphi}\) <span class="val" id="v-vg">0,60</span></label>
+          <input type="range" id="sl-vg" min="-0.5" max="1.6" step="0.05" value="0.6">
+          <span class="hint">\(\dfrac{v_g}{v_\varphi}=1\) : non dispersif (enveloppe et porteuse en phase).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la propagation</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro" id="ro-disp">Milieu : <b id="v-disp">dispersif</b></span>
+            <span class="ro">Vitesse de phase \(v_\varphi\) (porteuse, ●)</span>
+            <span class="ro">Vitesse de groupe \(v_g\) (enveloppe, ▲)</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Superposition \(E = 2E_0\cos\!\left(\frac{\delta\omega}{2}t - \frac{\delta k}{2}x\right)\cos(\omega_0 t - k_0 x)\). La porteuse bleue se déplace à la vitesse de phase \(v_\varphi\) (point bleu suivant une crête) ; l'enveloppe rouge se déplace à la vitesse de groupe \(v_g\) (triangle vert suivant un maximum du battement). Si \(v_g \neq v_\varphi\), crêtes et maxima de l'enveloppe se décalent : le milieu est dispersif.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>onde résultante &amp; porteuse</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>enveloppe (paquet)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>maximum de l'enveloppe (\(v_g\))</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>\(v_\varphi = \dfrac{\omega}{k}\) (rapport) tandis que \(v_g = \dfrac{\mathrm{d}\omega}{\mathrm{d}k}\) (dérivée) : ne pas confondre.</li>
+        <li>La vitesse de groupe est la vitesse de l'enveloppe, donc de l'énergie et de l'information ; c'est elle qui doit rester \(\leq c\).</li>
+        <li>Non dispersif \(\Leftrightarrow\) \(\omega = ck\) \(\Leftrightarrow\) \(v_g = v_\varphi\) : le paquet ne se déforme pas.</li>
+        <li>Dispersif : \(v_\varphi\) dépend de \(\omega\) ; le paquet s'étale au cours de la propagation.</li>
+        <li>Relation \(\delta x \cdot \delta k \sim 1\) (et \(\delta t \cdot \delta\omega \sim 1\)) : un paquet bref en espace est large en \(k\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Notions au programme MP (§4.5). La construction du paquet à deux ondes, les définitions de \(v_\varphi\) et \(v_g\) et la discussion du caractère dispersif sont exigibles. L'application au plasma (\(v_\varphi v_g = c^2\)) est traitée en OND4 et OND11.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond9.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND9 · Polarisation d'une OPPM</span></a>
+    <a class="next" href="ond11.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND11 · Bilan d'énergie dans un plasma</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-pq');
+  const slDw = document.getElementById('sl-dw'), slVg = document.getElementById('sl-vg');
+  const vDw = document.getElementById('v-dw'), vVg = document.getElementById('v-vg'), vDisp = document.getElementById('v-disp');
+  const btn = document.getElementById('btn-anim');
+  let animating = true, t = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const pad = { l: 16, r: 16, t: 20, b: 28 };
+    const cy = (pad.t + (h - pad.b)) / 2, amp = (h - pad.t - pad.b) / 2 - 6;
+    const rel = parseFloat(slDw.value);     // delta_omega / omega0
+    const ratio = parseFloat(slVg.value);   // v_g / v_phi
+    // unités d'écran : x en pixels, on fixe k0 et omega0 en valeurs d'affichage
+    const k0 = 0.10, w0 = 0.10;             // porteuse : v_phi = w0/k0 = 1 px/unité de t
+    const dw = rel * w0;                    // delta_omega
+    const dk = (ratio !== 0) ? dw / (ratio * (w0 / k0)) : 1e6; // v_g = dw/dk => dk = dw/v_g
+    const vphi = w0 / k0;
+    const xmin = pad.l, xmax = w - pad.r;
+
+    // axe
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+    ctx.moveTo(xmin, cy); ctx.lineTo(xmax, cy); ctx.stroke();
+
+    // onde résultante
+    function field(xpix) {
+      const x = xpix - xmin;
+      const env = Math.cos(0.5 * dw * t - 0.5 * dk * x);
+      const car = Math.cos(w0 * t - k0 * x);
+      return 2 * env * car;
+    }
+    function envel(xpix) {
+      const x = xpix - xmin;
+      return 2 * Math.cos(0.5 * dw * t - 0.5 * dk * x);
+    }
+    // enveloppe (rouge) ±
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]);
+    ctx.beginPath();
+    for (let xp = xmin; xp <= xmax; xp += 2) { const y = cy - amp * envel(xp) / 2; xp === xmin ? ctx.moveTo(xp, y) : ctx.lineTo(xp, y); }
+    ctx.stroke();
+    ctx.beginPath();
+    for (let xp = xmin; xp <= xmax; xp += 2) { const y = cy + amp * envel(xp) / 2; xp === xmin ? ctx.moveTo(xp, y) : ctx.lineTo(xp, y); }
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // onde résultante (bleu)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.2; ctx.beginPath();
+    for (let xp = xmin; xp <= xmax; xp += 1) { const y = cy - amp * field(xp) / 2; xp === xmin ? ctx.moveTo(xp, y) : ctx.lineTo(xp, y); }
+    ctx.stroke();
+
+    // marqueur enveloppe (vert, vitesse de groupe) : maximum près du centre
+    // position du max de l'enveloppe : 0.5*dw*t - 0.5*dk*x = 0  => x = (dw/dk) t = v_g t
+    let xg = xmin + (dw / dk) * t;
+    const span = xmax - xmin;
+    xg = xmin + (((xg - xmin) % span) + span) % span;
+    ctx.fillStyle = c.vert; ctx.beginPath();
+    ctx.moveTo(xg, cy - amp - 6); ctx.lineTo(xg - 6, cy - amp + 4); ctx.lineTo(xg + 6, cy - amp + 4); ctx.closePath(); ctx.fill();
+
+    // marqueur porteuse (bleu, vitesse de phase) : crête w0 t - k0 x = 0 => x = v_phi t
+    let xp0 = xmin + vphi * t;
+    xp0 = xmin + (((xp0 - xmin) % span) + span) % span;
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(xp0, cy + amp + 4, 4.5, 0, 2 * Math.PI); ctx.fill();
+
+    // libellés
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('x →', xmax - 30, cy - 6);
+
+    vDw.textContent = fr(rel, 2);
+    vVg.textContent = fr(ratio, 2);
+    vDisp.textContent = (Math.abs(ratio - 1) < 0.03) ? 'non dispersif (vᵍ = vᵩ)' : 'dispersif';
+  }
+
+  let last = 0;
+  QC.loop(function (ts) {
+    const dt = ts - last; last = ts;
+    if (animating) { t += dt * 60; draw(); }
+  });
+
+  slDw.addEventListener('input', draw);
+  slVg.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Arrêter' : 'Animer la propagation';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  btn.classList.add('active');
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

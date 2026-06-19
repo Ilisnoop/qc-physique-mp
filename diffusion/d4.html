@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D4 — Loi de Newton, conditions aux limites convectives et ailette · QC Oraux MP*</title>
+<meta name="description" content="Loi de Newton φ = h·S·(T_s − T_f) comme condition aux limites solide-fluide ; ailette de refroidissement : bilan sur une tranche, équation d²θ/dx² = θ/δ², profil de température, longueur caractéristique et efficacité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Diffusion thermique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="d3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="d1.html"><span class="qn">D1</span>Équation de la diffusion thermique</a>
+        <a href="d2.html"><span class="qn">D2</span>Conduction sphérique &amp; analogie EM</a>
+        <a href="d3.html"><span class="qn">D3</span>Résistance thermique d'un cylindre</a>
+        <a href="d4.html" aria-current="page"><span class="qn">D4</span>Loi de Newton &amp; ailette</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Diffusion thermique</span>
+    <h1>Loi de Newton, conditions aux limites convectives et ailette de refroidissement</h1>
+    <p class="q-sources"><span class="src">POLY §2.4.3</span><span class="src">TD T7 — T7204</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer la loi de Newton pour le flux convectif à une interface solide-fluide et l'utiliser comme condition aux limites. Établir, par un bilan sur une tranche, l'équation différentielle du profil de température d'une <strong>ailette de refroidissement</strong>, la résoudre, introduire la longueur caractéristique et discuter l'efficacité de l'ailette.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §5.2 (Transferts thermiques) — Loi de Newton</div>
+      <p>Capacité exigible : <em>« Utiliser la loi de Newton comme condition aux limites à une interface solide-fluide. »</em> Coefficient de transfert thermique de surface ; flux convectif pariétal ; application au bilan local d'énergie sur un système à une variable d'espace en géométrie cartésienne (tranche d'ailette).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Loi de Newton</strong> : à l'interface entre un solide à la température de paroi \(T_s\) et un fluide à la température \(T_f\), le flux thermique surfacique sortant du solide vers le fluide est \(\vec{\jmath}_{\mathrm{th}}\cdot\vec{n}=h\,(T_s-T_f)\), soit pour une surface \(S\) le flux \(\varphi=h\,S\,(T_s-T_f)\).</li>
+      <li><strong>Coefficient de transfert de surface</strong> \(h\) (en \(\mathrm{W\cdot m^{-2}\cdot K^{-1}}\)) : constante phénoménologique, dépendant du fluide et du régime de convection.</li>
+      <li><strong>Ailette</strong> : tige conductrice de section \(S\), de périmètre \(p\), reliée à un corps chaud, qui dissipe de la chaleur vers le fluide par sa surface latérale (rôle de refroidissement).</li>
+      <li>On note \(\theta(x)=T(x)-T_f\) l'écart de température au fluide, \(\lambda\) la conductivité thermique du matériau.</li>
+    </ul>
+    <p>Ordres de grandeur de \(h\) (loi de Newton) selon le régime de convection (table 7.2 du cours) :</p>
+    <div class="calc-line">
+      <table style="border-collapse:collapse;width:100%;font-size:.95rem">
+        <thead><tr style="border-bottom:2px solid var(--curve-grid)"><th style="text-align:left;padding:.4rem .6rem">Fluide</th><th style="text-align:left;padding:.4rem .6rem">Type de transfert</th><th style="text-align:right;padding:.4rem .6rem">\(h\) (\(\mathrm{W\cdot m^{-2}\cdot K^{-1}}\))</th></tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--curve-grid)"><td style="padding:.35rem .6rem">gaz</td><td style="padding:.35rem .6rem">convection naturelle</td><td style="text-align:right;padding:.35rem .6rem">5 – 30</td></tr>
+          <tr style="border-bottom:1px solid var(--curve-grid)"><td style="padding:.35rem .6rem">gaz</td><td style="padding:.35rem .6rem">convection forcée</td><td style="text-align:right;padding:.35rem .6rem">10 – 300</td></tr>
+          <tr style="border-bottom:1px solid var(--curve-grid)"><td style="padding:.35rem .6rem">eau</td><td style="padding:.35rem .6rem">convection naturelle</td><td style="text-align:right;padding:.35rem .6rem">100 – 1000</td></tr>
+          <tr style="border-bottom:1px solid var(--curve-grid)"><td style="padding:.35rem .6rem">eau</td><td style="padding:.35rem .6rem">convection forcée</td><td style="text-align:right;padding:.35rem .6rem">300 – 12 000</td></tr>
+          <tr><td style="padding:.35rem .6rem">métal liquide</td><td style="padding:.35rem .6rem">convection forcée</td><td style="text-align:right;padding:.35rem .6rem">6000 – 110 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — La loi de Newton comme condition aux limites</span>
+      <p class="lead">À la frontière entre un solide et un fluide, la continuité du flux impose que le flux conductif arrivant à la paroi soit évacué par convection selon la loi de Newton. En notant \(\vec{n}\) la normale sortante du solide :</p>
+      <div class="calc-line">\[ \underbrace{-\lambda\,\dfrac{\partial T}{\partial n}}_{\text{conduction (Fourier)}} = \underbrace{h\,(T_s-T_f)}_{\text{convection (Newton)}} . \]</div>
+      <p>Cette relation fournit une <strong>condition aux limites</strong> (de type Robin) qui ferme le problème de diffusion thermique dans le solide.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Bilan sur une tranche \(\mathrm{d}x\) de l'ailette</span>
+      <p class="lead">On considère, en régime permanent, une tranche de la tige comprise entre \(x\) et \(x+\mathrm{d}x\). La température \(T(x)\) y est supposée uniforme sur la section. Le bilan d'énergie compare le flux conductif entrant en \(x\), sortant en \(x+\mathrm{d}x\) et la perte latérale par convection sur la surface \(p\,\mathrm{d}x\) :</p>
+      <div class="calc-line">\[ \Phi_{\mathrm{cond}}(x) = \Phi_{\mathrm{cond}}(x+\mathrm{d}x) + \underbrace{h\,p\,\mathrm{d}x\,\bigl(T(x)-T_f\bigr)}_{\text{perte latérale (Newton)}} . \]</div>
+      <p class="lead">Avec la loi de Fourier \(\Phi_{\mathrm{cond}}(x)=-\lambda S\,\dfrac{\mathrm{d}T}{\mathrm{d}x}\), un développement au premier ordre donne :</p>
+      <div class="calc-line">\[ \lambda S\,\dfrac{\mathrm{d}^2 T}{\mathrm{d}x^2}\,\mathrm{d}x = h\,p\,\mathrm{d}x\,\bigl(T-T_f\bigr) . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Équation de l'ailette et longueur caractéristique</span>
+      <p class="lead">En posant \(\theta=T-T_f\), on obtient une équation différentielle linéaire du second ordre :</p>
+      <div class="calc-line">\[ \dfrac{\mathrm{d}^2\theta}{\mathrm{d}x^2} = \dfrac{\theta}{\delta^2}, \qquad \delta=\sqrt{\dfrac{\lambda S}{h\,p}} . \]</div>
+      <p>La grandeur \(\delta\) est la <strong>longueur caractéristique</strong> de l'ailette : c'est l'échelle sur laquelle l'écart de température au fluide s'amortit. Pour une tige cylindrique de rayon \(a\) (\(S=\pi a^2\), \(p=2\pi a\)) : \(\delta=\sqrt{\dfrac{\lambda a}{2h}}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Solutions selon les conditions aux limites</span>
+      <p class="lead">La solution générale est \(\theta(x)=A\,e^{x/\delta}+B\,e^{-x/\delta}\), équivalente à une combinaison de \(\mathrm{ch}\) et \(\mathrm{sh}\). On la fixe par les conditions aux limites, avec \(\theta_0=T_0-T_f\) imposé à la base \(x=0\) :</p>
+      <ul>
+        <li><strong>Ailette « infinie »</strong> (ou très longue, \(\ell\gg\delta\)) : on impose \(\theta\to0\) quand \(x\to\infty\), d'où une <strong>décroissance exponentielle</strong> :
+          <div class="calc-line">\[ \theta(x)=\theta_0\,e^{-x/\delta} , \qquad T(x)=T_f+(T_0-T_f)\,e^{-x/\delta} . \]</div>
+        </li>
+        <li><strong>Ailette de longueur \(\ell\) à extrémité calorifugée</strong> (\(\theta'(\ell)=0\)) : profil en cosinus hyperbolique
+          <div class="calc-line">\[ \theta(x)=\theta_0\,\dfrac{\mathrm{ch}\!\left(\dfrac{\ell-x}{\delta}\right)}{\mathrm{ch}\!\left(\dfrac{\ell}{\delta}\right)} . \]</div>
+        </li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Flux dissipé et efficacité de l'ailette</span>
+      <p class="lead">Le flux total évacué est celui qui entre par la base \(x=0\), \(\Phi=-\lambda S\,\theta'(0)\). Pour l'ailette infinie :</p>
+      <div class="calc-line">\[ \Phi_{\infty}=\dfrac{\lambda S}{\delta}\,\theta_0=\sqrt{\lambda S\,h\,p}\;\theta_0 . \]</div>
+      <p>L'ailette n'est utile que si elle augmente le flux évacué par rapport à la surface nue de la base : c'est d'autant plus efficace que \(\lambda\) est grand et \(h\) modéré (\(\delta\) grand devant \(\ell\) signifie au contraire une tige quasi isotherme peu rentable). On compare le flux <em>avec</em> ailette au flux <em>sans</em> ailette pour quantifier l'efficacité.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — profil de température le long de l'ailette</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-ailette" aria-label="Profil de température T(x) le long d'une ailette : décroissance exponentielle vers la température du fluide, longueur caractéristique réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-h">Coefficient de Newton \(h\) <span class="val" id="v-h">155</span> W·m⁻²·K⁻¹</label>
+          <input type="range" id="sl-h" min="5" max="2000" step="5" value="155">
+          <span class="hint">Plus \(h\) est grand (convection forcée), plus \(\delta=\sqrt{\lambda a/(2h)}\) est petit et plus la température chute vite vers \(T_f\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-mode" type="button">Modèle : exponentiel (infini)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Longueur caractéristique \(\delta\) = <b id="v-delta">—</b></span>
+            <span class="ro">Rapport \(\ell/\delta\) = <b id="v-ratio">—</b></span>
+            <span class="ro">Température en bout \(T(\ell)\) = <b id="v-tend">—</b></span>
+            <span class="ro">Flux dissipé \(\Phi\) = <b id="v-flux">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Profil \(T(x)\) le long de l'ailette (cuivre, \(\lambda=389\,\mathrm{W\cdot m^{-1}\cdot K^{-1}}\), rayon \(a=1\,\mathrm{mm}\), longueur \(\ell=10\,\mathrm{cm}\), base à \(T_0=80\,^\circ\mathrm{C}\), fluide à \(T_f=20\,^\circ\mathrm{C}\) — données du TD T7204). La courbe décroît de \(T_0\) vers \(T_f\) sur l'échelle \(\delta\). Le modèle « infini » donne \(T_f+(T_0-T_f)e^{-x/\delta}\) ; le modèle « extrémité calorifugée » donne le profil en \(\mathrm{ch}\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(T(x)\) le long de l'ailette</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Température du fluide \(T_f\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>Longueur caractéristique \(\delta\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Loi de Newton : \(\varphi=h\,S\,(T_s-T_f)\) — flux <strong>convectif</strong> pariétal, condition aux limites de type Robin (relie \(T\) et \(\partial_n T\)).</li>
+        <li>Le bilan sur la tranche fait apparaître la perte latérale \(h\,p\,\mathrm{d}x\,(T-T_f)\) : c'est elle qui couple conduction longitudinale et convection.</li>
+        <li>Équation de l'ailette : \(\dfrac{\mathrm{d}^2\theta}{\mathrm{d}x^2}=\dfrac{\theta}{\delta^2}\) avec \(\theta=T-T_f\) et \(\delta=\sqrt{\dfrac{\lambda S}{h\,p}}\).</li>
+        <li>Solution exponentielle pour l'ailette longue, profil en \(\mathrm{ch}\) pour l'extrémité calorifugée.</li>
+        <li>Ordre de grandeur de \(\delta\) : pour le cuivre (TD), \(\delta=\sqrt{\dfrac{\lambda a}{2h}}\approx3{,}5\,\mathrm{cm}\) — comparable à \(\ell\), d'où l'intérêt de la modélisation exacte.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Au programme MP (§5.2) : la loi de Newton est explicitement exigible comme condition aux limites à une interface solide-fluide. L'étude de l'ailette (bilan sur une tranche, équation différentielle, profil de température) est l'application directe traitée en TD (exercice T7204) ; les ordres de grandeur de \(h\) sont ceux du cours (table 7.2).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="d3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">D3 · Résistance thermique d'un cylindre</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Diffusion thermique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Diffusion thermique.<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-ailette');
+  const slH = document.getElementById('sl-h');
+  const vH = document.getElementById('v-h'), vDelta = document.getElementById('v-delta');
+  const vRatio = document.getElementById('v-ratio'), vTend = document.getElementById('v-tend');
+  const vFlux = document.getElementById('v-flux'), btnMode = document.getElementById('btn-mode');
+
+  // Données TD T7204
+  const lambda = 389;     // W/m/K
+  const a = 1e-3;         // rayon 1 mm
+  const ell = 0.10;       // 10 cm
+  const T0 = 80, Tf = 20; // °C
+  const S = Math.PI * a * a;
+  const p = 2 * Math.PI * a;
+  let mode = 0;           // 0 = infini (exp), 1 = extrémité calorifugée (ch)
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function delta(h) { return Math.sqrt(lambda * S / (h * p)); }      // = sqrt(λ a /(2h))
+  function theta(x, h) {
+    const d = delta(h), th0 = T0 - Tf;
+    if (mode === 0) return th0 * Math.exp(-x / d);
+    return th0 * Math.cosh((ell - x) / d) / Math.cosh(ell / d);
+  }
+  function flux(h) {
+    const d = delta(h), th0 = T0 - Tf;
+    // Φ = -λ S θ'(0)
+    if (mode === 0) return lambda * S / d * th0;
+    return lambda * S / d * th0 * Math.tanh(ell / d);
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const sz = QC.setup(cv, 300);
+    const ctx = sz.ctx, w = sz.w, h = sz.h;
+    QC.clear(ctx, w, h);
+    const hc = parseFloat(slH.value);
+    const d = delta(hc);
+
+    const pad = { l: 44, r: 16, t: 18, b: 30 };
+    const x2px = x => pad.l + (x / ell) * (w - pad.l - pad.r);
+    const Tmin = Tf - 4, Tmax = T0 + 4;
+    const T2py = T => pad.t + (Tmax - T) / (Tmax - Tmin) * (h - pad.t - pad.b);
+
+    // grille
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+    for (let i = 0; i <= 5; i++) { const x = ell * i / 5; ctx.moveTo(x2px(x), pad.t); ctx.lineTo(x2px(x), h - pad.b); }
+    for (let T = 20; T <= 80; T += 20) { ctx.moveTo(pad.l, T2py(T)); ctx.lineTo(w - pad.r, T2py(T)); }
+    ctx.stroke();
+    // étiquettes axes
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.textAlign = 'right';
+    for (let T = 20; T <= 80; T += 20) ctx.fillText(T + '°C', pad.l - 5, T2py(T) + 4);
+    ctx.textAlign = 'center';
+    for (let i = 0; i <= 5; i++) { const x = ell * i / 5; ctx.fillText(fr(x * 100, 0), x2px(x), h - pad.b + 16); }
+    ctx.fillText('x (cm)', (w) / 2, h - 6);
+
+    // T_f (orange pointillé)
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(pad.l, T2py(Tf)); ctx.lineTo(w - pad.r, T2py(Tf)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.orange; ctx.textAlign = 'left'; QC.subText(ctx, 'T', 'f', w - pad.r - 34, T2py(Tf) - 6);
+
+    // ligne verticale δ (si dans le domaine, vert)
+    if (d < ell) {
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 1.6; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(x2px(d), pad.t); ctx.lineTo(x2px(d), h - pad.b); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = c.vert; ctx.textAlign = 'center'; ctx.fillText('δ', x2px(d), pad.t + 11);
+    }
+
+    // courbe T(x)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false;
+    for (let i = 0; i <= 300; i++) {
+      const x = ell * i / 300;
+      const T = Tf + theta(x, hc);
+      const X = x2px(x), Y = T2py(T);
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+    }
+    ctx.stroke();
+
+    // point base
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(x2px(0), T2py(T0), 4, 0, 2 * Math.PI); ctx.fill();
+
+    // lectures
+    vH.textContent = fr(hc, 0);
+    vDelta.textContent = fr(d * 1000, 1) + ' mm';
+    vRatio.textContent = fr(ell / d, 2);
+    vTend.textContent = fr(Tf + theta(ell, hc), 1) + ' °C';
+    vFlux.textContent = fr(flux(hc) * 1000, 2) + ' mW';
+  }
+
+  slH.addEventListener('input', draw);
+  btnMode.addEventListener('click', function () {
+    mode = mode === 0 ? 1 : 0;
+    btnMode.textContent = 'Modèle : ' + (mode === 0 ? 'exponentiel (infini)' : 'extrémité calorifugée (ch)');
+    draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

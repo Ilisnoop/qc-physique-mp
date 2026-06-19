@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS5 — Niveaux dégénérés et fonction de partition · QC Oraux MP*</title>
+<meta name="description" content="Niveaux d'énergie dégénérés : dégénérescence g_i dans la fonction de partition Z=Σ g_i e^{−βE_i}, effet de g_i sur les populations de Boltzmann.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Physique statistique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ps4.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ps6.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ps1.html"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
+        <a href="ps2.html"><span class="qn">PS2</span>Système à deux niveaux</a>
+        <a href="ps3.html"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+        <a href="ps4.html"><span class="qn">PS4</span>Distribution de Maxwell des vitesses</a>
+        <a href="ps5.html" aria-current="page"><span class="qn">PS5</span>Niveaux dégénérés et fonction de partition</a>
+        <a href="ps6.html"><span class="qn">PS6</span>Fluctuations relatives d'énergie</a>
+        <a href="ps7.html"><span class="qn">PS7</span>Capacité thermique et degrés de liberté</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 5 · Physique statistique</span>
+    <h1>Niveaux dégénérés et dégénérescence \(g_i\) dans la fonction de partition : effet sur les populations de Boltzmann</h1>
+    <p class="q-sources"><span class="src">TDPM2 · PM2207</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir la dégénérescence \(g_i\) d'un niveau d'énergie et l'introduire dans la fonction de partition \(Z=\sum_i g_i\,e^{-\beta E_i}\). Montrer comment \(g_i\) modifie la probabilité d'occupation d'un niveau et les populations de Boltzmann, sur l'exemple à trois niveaux \(E_1=0\ (g_1=1)\), \(E_2=E\ (g_2=2)\), \(E_3=2E\ (g_3=4)\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 7 (Physique statistique) — exercice PM2207</div>
+      <ul>
+        <li>Probabilité d'occupation d'un état d'énergie non dégénéré par une particule indépendante ; condition de normalisation.</li>
+        <li>Exploiter un rapport de probabilités entre deux états.</li>
+        <li>Fonction de partition d'une particule ; passage du dénombrement des <em>états</em> au dénombrement des <em>niveaux</em> par la dégénérescence \(g_i\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>État quantique</strong> : configuration microscopique élémentaire. <strong>Niveau d'énergie</strong> \(E_i\) : valeur d'énergie pouvant regrouper plusieurs états.</li>
+      <li><strong>Dégénérescence</strong> \(g_i\) du niveau \(E_i\) : nombre d'états quantiques <em>distincts</em> partageant la même énergie \(E_i\). Un niveau est <em>non dégénéré</em> si \(g_i=1\), <em>dégénéré</em> si \(g_i\geqslant 2\).</li>
+      <li><strong>Température inverse</strong> \(\beta=\dfrac{1}{k_BT}\). <strong>Facteur de Boltzmann</strong> d'un état : \(e^{-\beta E_i}\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Probabilité d'un niveau dégénéré</span>
+      <p class="lead"><strong>On part de la probabilité d'un état</strong> : chaque état quantique d'énergie \(E_i\) a une probabilité d'occupation proportionnelle à \(e^{-\beta E_i}\). Comme \(g_i\) états distincts partagent l'énergie \(E_i\), la probabilité du <em>niveau</em> est la somme sur ces états :</p>
+      <div class="calc-line">\[ P(E_i) \;\propto\; g_i\,e^{-\beta E_i} . \]</div>
+      <p>La dégénérescence agit comme un <strong>poids statistique</strong> : un niveau dégénéré est favorisé, à énergie égale, proportionnellement à \(g_i\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Fonction de partition avec dégénérescences</span>
+      <p class="lead"><strong>On normalise</strong> : la somme des probabilités vaut 1. La constante de normalisation est l'inverse de la fonction de partition, où la somme porte sur les <em>niveaux</em> pondérés par \(g_i\) :</p>
+      <div class="calc-line">\[ Z = \sum_i g_i\,e^{-\beta E_i} , \qquad P(E_i) = \frac{g_i\,e^{-\beta E_i}}{Z} . \]</div>
+      <p>Sommer sur les <em>états</em> (chacun comptant \(e^{-\beta E}\)) ou sur les <em>niveaux</em> (chacun comptant \(g_i\,e^{-\beta E_i}\)) donne la même valeur de \(Z\) : la dégénérescence est exactement le décompte des états par niveau.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Rapport de populations</span>
+      <p class="lead"><strong>On forme le rapport</strong> des populations de deux niveaux \(i\) et \(j\) : il combine l'écart d'énergie (facteur de Boltzmann) et le rapport des dégénérescences :</p>
+      <div class="calc-line">\[ \frac{P(E_i)}{P(E_j)} = \frac{g_i}{g_j}\,\exp\!\left(-\frac{E_i-E_j}{k_BT}\right) . \]</div>
+      <p>Un niveau plus haut en énergie peut être <em>plus peuplé</em> qu'un niveau plus bas si sa dégénérescence est suffisamment grande pour compenser le facteur de Boltzmann.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Exemple à trois niveaux (\(g_1=1,\ g_2=2,\ g_3=4\))</span>
+      <p>On considère \(E_1=0\) non dégénéré, \(E_2=E\) de dégénérescence \(g_2=2\), \(E_3=2E\) de dégénérescence \(g_3=4\). On pose \(x=e^{-\beta E}\).</p>
+      <p class="lead"><strong>On écrit la fonction de partition :</strong></p>
+      <div class="calc-line">\[ Z = 1 + 2\,e^{-\beta E} + 4\,e^{-2\beta E} = 1 + 2x + 4x^2 . \]</div>
+      <p class="lead"><strong>On en déduit les probabilités d'occupation</strong> de chaque niveau :</p>
+      <div class="calc-line">\[ P_1 = \frac{1}{Z} , \qquad P_2 = \frac{2x}{Z} , \qquad P_3 = \frac{4x^2}{Z} . \]</div>
+      <p class="lead"><strong>Cas particulier</strong> \(k_BT = E\) (soit \(\beta E = 1\), \(x=e^{-1}\approx 0{,}368\)) : on trouve \(Z\approx 1+0{,}736+0{,}541 = 2{,}28\), d'où</p>
+      <div class="calc-line">\[ P_1 \approx 0{,}44 , \qquad P_2 \approx 0{,}32 , \qquad P_3 \approx 0{,}24 . \]</div>
+      <p>Sans la dégénérescence (\(g_i=1\)), on aurait \(P_3\propto x^2\approx 0{,}135\) bien plus faible : c'est \(g_3=4\) qui rapproche fortement la population du niveau le plus haut de celle des niveaux bas.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Limites de température</span>
+      <ul>
+        <li><strong>\(T\to 0\)</strong> (\(\beta\to\infty\), \(x\to 0\)) : \(Z\to 1\), \(P_1\to 1\), \(P_2,P_3\to 0\). Seul le niveau fondamental est peuplé, quelle que soit sa dégénérescence.</li>
+        <li><strong>\(T\to\infty\)</strong> (\(\beta\to 0\), \(x\to 1\)) : \(Z\to g_1+g_2+g_3 = 7\), et \(P_i\to \dfrac{g_i}{\sum_k g_k}\). Les états deviennent <em>équiprobables</em> ; les niveaux se peuplent au prorata de leur dégénérescence : \(P_1\to\dfrac{1}{7},\ P_2\to\dfrac{2}{7},\ P_3\to\dfrac{4}{7}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — niveaux, dégénérescences et populations</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-deg" aria-label="Diagramme des trois niveaux d'énergie avec leurs dégénérescences et histogramme des populations de Boltzmann, température réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-T">Paramètre \(k_BT/E\) <span class="val" id="v-T">1,00</span></label>
+          <input type="range" id="sl-T" min="0.1" max="6" step="0.05" value="1">
+          <span class="hint">Rapport entre l'agitation thermique \(k_BT\) et l'écart \(E\). À droite (chaud), les populations tendent vers \(g_i/\sum g_k\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-deg" type="button">Dégénérescences : actives</button>
+            <button class="btn primary" id="btn-anim" type="button">Animer la température</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(Z\) = <b id="v-Z">—</b></span>
+            <span class="ro">\(P_1\) = <b id="v-P1">—</b></span>
+            <span class="ro">\(P_2\) = <b id="v-P2">—</b></span>
+            <span class="ro">\(P_3\) = <b id="v-P3">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        À gauche : les trois niveaux \(E_1=0\) (\(g_1=1\)), \(E_2=E\) (\(g_2=2\)), \(E_3=2E\) (\(g_3=4\)), représentés par autant de traits que d'états. À droite : histogramme des probabilités d'occupation \(P_i=\dfrac{g_i e^{-\beta E_i}}{Z}\). Le bouton « Dégénérescences » bascule entre \(g_i\) réelles et \(g_i=1\) pour visualiser leur effet.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>niveaux d'énergie</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>populations \(P_i\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>états dégénérés</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Distinguer <em>état</em> et <em>niveau</em> : \(g_i\) compte les états par niveau. La somme dans \(Z\) peut s'écrire sur les états (sans \(g_i\)) ou sur les niveaux (avec \(g_i\)) — c'est la même chose.</li>
+        <li>\(g_i\) agit comme un poids statistique : à énergie fixée, un niveau dégénéré est plus probable.</li>
+        <li>Rapport de populations : \(\dfrac{P_i}{P_j}=\dfrac{g_i}{g_j}\,e^{-\beta(E_i-E_j)}\) — bien faire apparaître le rapport des dégénérescences.</li>
+        <li>Un niveau haut très dégénéré peut dépasser un niveau bas peu dégénéré dès que \(g_i\) compense le facteur de Boltzmann.</li>
+        <li>Limites : \(T\to 0\Rightarrow\) tout dans le fondamental ; \(T\to\infty\Rightarrow P_i\to \dfrac{g_i}{\sum_k g_k}\) (équiprobabilité des états).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'introduction de la dégénérescence dans la fonction de partition et l'exploitation des rapports de probabilités sont au programme (probabilité d'occupation, condition de normalisation, exercice PM2207). Le cours établit explicitement que la probabilité d'un niveau dégénéré est proportionnelle à \(g_i\,e^{-\beta E_i}\).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ps4.html"><span class="pn-dir">← Précédent</span><span class="pn-title">PS4 · Distribution de Maxwell des vitesses</span></a>
+    <a class="next" href="ps6.html"><span class="pn-dir">Suivant →</span><span class="pn-title">PS6 · Fluctuations relatives d'énergie</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 9 : Physique statistique (§7).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-deg');
+  const slT = document.getElementById('sl-T');
+  const vT = document.getElementById('v-T'), vZ = document.getElementById('v-Z');
+  const vP1 = document.getElementById('v-P1'), vP2 = document.getElementById('v-P2'), vP3 = document.getElementById('v-P3');
+  const btnDeg = document.getElementById('btn-deg'), btnAnim = document.getElementById('btn-anim');
+  let useDeg = true, animating = false, ph = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // niveaux : E/E = 0, 1, 2 ; dégénérescences 1,2,4
+  const lev = [{ E: 0, g: 1 }, { E: 1, g: 2 }, { E: 2, g: 4 }];
+
+  function probs(kT) {
+    const beta = 1 / kT;
+    const w = lev.map(l => (useDeg ? l.g : 1) * Math.exp(-beta * l.E));
+    const Z = w[0] + w[1] + w[2];
+    return { Z, P: w.map(x => x / Z) };
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const kT = parseFloat(slT.value);
+    const { Z, P } = probs(kT);
+
+    const padT = 24, padB = 36, padL = 14;
+    const colSplit = w * 0.46;
+    const Emax = 2.4;
+    // ---- gauche : niveaux d'énergie ----
+    const gx0 = padL + 28, gx1 = colSplit - 16;
+    const yOf = E => padT + (Emax - E) / Emax * (h - padT - padB);
+    // axe vertical énergie
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(gx0 - 12, padT - 6); ctx.lineTo(gx0 - 12, h - padB); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('E', gx0 - 22, padT + 2);
+    // chaque niveau : g traits horizontaux espacés
+    const labels = ['E₁=0', 'E₂=E', 'E₃=2E'];
+    lev.forEach((l, i) => {
+      const y = yOf(l.E);
+      const n = l.g;
+      const span = gx1 - gx0;
+      ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6;
+      for (let k = 0; k < n; k++) {
+        const seg = span / n * 0.78;
+        const x0 = gx0 + (span / n) * k + (span / n - seg) / 2;
+        ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x0 + seg, y); ctx.stroke();
+      }
+      // pastilles d'états (vert)
+      ctx.fillStyle = c.vert;
+      for (let k = 0; k < n; k++) {
+        const seg = span / n * 0.78;
+        const xc = gx0 + (span / n) * k + (span / n) / 2;
+        ctx.beginPath(); ctx.arc(xc, y, 2.6, 0, 2 * Math.PI); ctx.fill();
+      }
+      ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+      ctx.fillText(labels[i] + '  g=' + l.g, gx0, y - 8);
+    });
+
+    // ---- droite : histogramme des populations ----
+    const hx0 = colSplit + 24, hx1 = w - 16;
+    const baseY = h - padB, topY = padT;
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(hx0 - 8, topY - 6); ctx.lineTo(hx0 - 8, baseY); ctx.lineTo(hx1, baseY); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.textAlign = 'left'; ctx.font = '12px IBM Plex Mono, monospace';
+    QC.subText(ctx, 'P', 'i', hx0 - 6, topY + 4);
+    const bw = (hx1 - hx0) / 3 * 0.6;
+    const gap = (hx1 - hx0) / 3;
+    const barLab = ['P₁', 'P₂', 'P₃'];
+    P.forEach((p, i) => {
+      const x = hx0 + gap * i + (gap - bw) / 2;
+      const bh = p * (baseY - topY);
+      ctx.fillStyle = c.orange; ctx.globalAlpha = 0.85;
+      ctx.fillRect(x, baseY - bh, bw, bh);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = c.text; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+      ctx.fillText(fr(p, 2), x + bw / 2, baseY - bh - 5);
+      ctx.fillStyle = c.muted; ctx.fillText(barLab[i], x + bw / 2, baseY + 16);
+    });
+
+    vT.textContent = fr(kT, 2);
+    vZ.textContent = fr(Z, 2);
+    vP1.textContent = fr(P[0], 3);
+    vP2.textContent = fr(P[1], 3);
+    vP3.textContent = fr(P[2], 3);
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      ph += dt * 0.5;
+      const kT = 0.1 + 5.9 * (0.5 - 0.5 * Math.cos(ph));
+      slT.value = (Math.round(kT / 0.05) * 0.05).toFixed(2);
+      draw();
+    }
+  });
+  slT.addEventListener('input', draw);
+  btnDeg.addEventListener('click', function () {
+    useDeg = !useDeg;
+    btnDeg.textContent = 'Dégénérescences : ' + (useDeg ? 'actives' : 'gᵢ=1');
+    btnDeg.classList.toggle('active', !useDeg);
+    draw();
+  });
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la température';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

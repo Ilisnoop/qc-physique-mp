@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND12 — Diffusion Rayleigh &amp; ciel bleu · QC Oraux MP*</title>
+<meta name="description" content="Diffusion Rayleigh : modèle de l'électron élastiquement lié, puissance rayonnée P∝ω⁴∝1/λ⁴, explication du ciel bleu et du rougissement au couchant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond11.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html" aria-current="page"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 12 · Ondes électromagnétiques</span>
+    <h1>Diffusion Rayleigh : modèle de l'électron élastiquement lié, loi en \(\omega^4\) et couleur du ciel</h1>
+    <p class="q-sources"><span class="src">POLY p.3 · §3 (rayonnement dipolaire)</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Modéliser l'interaction lumière–molécule par l'électron élastiquement lié. Établir que la puissance diffusée varie en \(P \propto \omega^4 \propto \dfrac{1}{\lambda^4}\) dans le domaine de Rayleigh (\(\omega \ll \omega_0\)). En déduire l'explication de la couleur bleue du ciel et du rougissement du Soleil au couchant.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5 (Rayonnement dipolaire)</div>
+      <p>Capacités exigibles : modéliser une molécule par un électron élastiquement lié soumis au champ d'une onde ; déterminer le moment dipolaire induit en régime sinusoïdal forcé ; relier la puissance diffusée à la puissance rayonnée par un dipôle oscillant (\(\propto \omega^4\)) ; exploiter la loi en \(\dfrac{1}{\lambda^4}\) pour interpréter la couleur du ciel et du Soleil couchant. La formule de Larmor / puissance du dipôle est utilisée comme résultat de cours.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Électron élastiquement lié</strong> : électron de charge \(-e\) rappelé vers sa position d'équilibre par une force \(\vec{f} = -m_e\omega_0^2\,\vec{r}\), avec un amortissement \(-\dfrac{m_e}{\tau}\dfrac{\mathrm{d}\vec{r}}{\mathrm{d}t}\) ; pulsation propre \(\omega_0\) (dans l'ultraviolet pour l'air).</li>
+      <li><strong>Régime de Rayleigh</strong> : \(\omega \ll \omega_0\), c'est-à-dire excitation par une onde dont la pulsation est très inférieure à la résonance.</li>
+      <li><strong>Section efficace de diffusion</strong> : surface \(\sigma\) telle que \(\langle P\rangle = \sigma\,\Pi_{\text{inc}}\), où \(\Pi_{\text{inc}} = \dfrac{E_0^2}{2\mu_0 c}\) est la puissance surfacique incidente.</li>
+      <li><strong>Diffusion de Mie</strong> : diffusion par des particules grandes devant \(\lambda\) (gouttelettes) ; la puissance rayonnée ne dépend plus de \(\lambda\) (nuages blancs).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Équation du mouvement et moment dipolaire induit</span>
+      <p class="lead"><strong>On applique le PFD</strong> à l'électron, le champ magnétique de l'onde et le poids étant négligés, le champ électrique étant supposé uniforme à l'échelle de l'électron :</p>
+      <div class="calc-line">\[ m_e\dfrac{\mathrm{d}^2\vec{r}}{\mathrm{d}t^2} = -m_e\omega_0^2\,\vec{r} - \dfrac{m_e}{\tau}\dfrac{\mathrm{d}\vec{r}}{\mathrm{d}t} - e\vec{E}_0\,e^{\,i\omega t} . \]</div>
+      <p class="lead"><strong>On cherche un régime sinusoïdal forcé</strong> \(\vec{r} = \vec{r}_0\,e^{\,i\omega t}\) et on en déduit le moment dipolaire induit \(\vec{p} = -e\vec{r}\) :</p>
+      <div class="calc-line">\[ \underline{\vec{p}}(\omega) = \dfrac{\dfrac{e^2}{m_e}}{\omega_0^2 - \omega^2 + i\dfrac{\omega}{\tau}}\;\underline{\vec{E}} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Puissance rayonnée par le dipôle induit</span>
+      <p class="lead"><strong>On reprend la puissance moyenne rayonnée</strong> par un dipôle oscillant d'amplitude \(p_0\) (résultat de cours, cf. OND7) : \(\langle P\rangle = \dfrac{\mu_0\,\omega^4 p_0^2}{12\pi c}\). En reportant \(p_0 = \bigl|\underline{p}\bigr|\) :</p>
+      <div class="calc-line">\[ \langle P\rangle = \dfrac{\mu_0}{12\pi c}\,\dfrac{\left(\dfrac{e^2}{m_e}\right)^2 \omega^4\,E_0^2}{\bigl(\omega_0^2 - \omega^2\bigr)^2 + \left(\dfrac{\omega}{\tau}\right)^2} . \]</div>
+      <p>La section efficace \(\sigma\) qui s'en déduit a la forme d'un <strong>passe-haut d'ordre 2</strong> de grand facteur de qualité.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Domaine de Rayleigh : loi en \(\omega^4\)</span>
+      <p class="lead"><strong>On simplifie dans le cas \(\omega \ll \omega_0\)</strong> : le dénominateur se réduit à \(\omega_0^4\), d'où</p>
+      <div class="calc-line">\[ \sigma \simeq \sigma_0\,\dfrac{\omega^4}{\omega_0^4} \qquad\Longrightarrow\qquad \langle P\rangle \simeq \langle P\rangle_0\left(\dfrac{\omega}{\omega_0}\right)^4 . \]</div>
+      <p class="lead"><strong>On traduit en longueur d'onde</strong> avec \(\omega = \dfrac{2\pi c}{\lambda}\) :</p>
+      <div class="calc-line">\[ \langle P\rangle \;\propto\; \omega^4 \;\propto\; \dfrac{1}{\lambda^4} . \]</div>
+      <p>La lumière de courte longueur d'onde (bleu, violet) est beaucoup plus diffusée que celle de grande longueur d'onde (rouge).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Couleur du ciel et du Soleil couchant</span>
+      <p class="lead"><strong>Ciel bleu :</strong> avec \(\lambda_{\text{rouge}} \approx 2\,\lambda_{\text{bleu}}\),</p>
+      <div class="calc-line">\[ \dfrac{\langle P\rangle_{\text{rouge}}}{\langle P\rangle_{\text{bleu}}} = \left(\dfrac{\lambda_{\text{bleu}}}{\lambda_{\text{rouge}}}\right)^4 = \left(\dfrac{1}{2}\right)^4 = \dfrac{1}{16} . \]</div>
+      <p>Le bleu est diffusé environ \(16\) fois plus que le rouge : la lumière diffusée par l'atmosphère, qui forme le fond du ciel, est dominée par le bleu (l'œil étant peu sensible au violet, le ciel apparaît bleu).</p>
+      <p class="lead"><strong>Soleil couchant :</strong> au coucher, la lumière traverse une plus grande épaisseur d'atmosphère et perd davantage sa composante bleue par diffusion. La lumière transmise en ligne directe s'appauvrit en bleu : le Soleil apparaît rouge-orangé. Les <strong>nuages</strong> (gouttelettes \(\gg\lambda\)) relèvent de la diffusion de Mie, indépendante de \(\lambda\), et apparaissent blancs.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — intensité diffusée en \(1/\lambda^4\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-ray" aria-label="Intensité diffusée par diffusion Rayleigh en fonction de la longueur d'onde, suivant une loi en un sur lambda puissance quatre, sur le spectre visible"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-lam">Longueur d'onde \(\lambda\) (nm) <span class="val" id="v-lam">450</span></label>
+          <input type="range" id="sl-lam" min="380" max="750" step="1" value="450">
+          <span class="hint">Déplacer le curseur sur le spectre visible (violet → rouge).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-norm" type="button">Référence : bleu (450 nm)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Intensité relative \(\propto \dfrac{1}{\lambda^4}\) : <b id="v-int">1,00</b></span>
+            <span class="ro" id="ro-rap">Rapport bleu / rouge : <b id="v-rap">16</b></span>
+            <span class="ro">Régime de Rayleigh : \(\langle P\rangle \propto \omega^4\)</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Intensité diffusée \(I(\lambda) \propto \dfrac{1}{\lambda^4}\) tracée sur le spectre visible. Le fond coloré rappelle la teinte associée à chaque \(\lambda\). Le point bleu marque la longueur d'onde sélectionnée. La diffusion croît fortement vers les courtes longueurs d'onde : c'est pourquoi le ciel est bleu et le Soleil couchant rouge-orangé.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>intensité diffusée \(1/\lambda^4\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>longueur d'onde sélectionnée</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Le facteur \(\omega^4\) vient de la puissance rayonnée par un dipôle (\(\propto \ddot{p}^2 \propto \omega^4 p_0^2\)).</li>
+        <li>Dans le régime de Rayleigh \(\omega \ll \omega_0\), \(p_0\) est quasi constant : \(\langle P\rangle \propto \omega^4 \propto \dfrac{1}{\lambda^4}\).</li>
+        <li>Rapport bleu/rouge \(\approx \left(\dfrac{\lambda_{\text{rouge}}}{\lambda_{\text{bleu}}}\right)^4 = 2^4 = 16\).</li>
+        <li>Ciel bleu = lumière diffusée ; Soleil couchant rouge = lumière transmise appauvrie en bleu sur un grand trajet.</li>
+        <li>Nuages blancs : diffusion de Mie (particules \(\gg\lambda\)), indépendante de \(\lambda\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Notions au programme MP (§4.5, rayonnement dipolaire). Le modèle de l'électron élastiquement lié, le moment dipolaire induit et la loi en \(\dfrac{1}{\lambda^4}\) sont conformes au cours. La puissance rayonnée par le dipôle oscillant, établie en OND7, est ici réutilisée comme résultat de cours.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond11.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND11 · Bilan d'énergie dans un plasma</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Sommaire du thème</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-ray');
+  const slLam = document.getElementById('sl-lam');
+  const vLam = document.getElementById('v-lam'), vInt = document.getElementById('v-int'), vRap = document.getElementById('v-rap');
+  const btnNorm = document.getElementById('btn-norm');
+  let lamRef = 450;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // teinte approchée d'une longueur d'onde visible (nm) -> rgb
+  function wlColor(wl) {
+    let r = 0, g = 0, b = 0;
+    if (wl >= 380 && wl < 440) { r = -(wl - 440) / 60; b = 1; }
+    else if (wl < 490) { g = (wl - 440) / 50; b = 1; }
+    else if (wl < 510) { g = 1; b = -(wl - 510) / 20; }
+    else if (wl < 580) { r = (wl - 510) / 70; g = 1; }
+    else if (wl < 645) { r = 1; g = -(wl - 645) / 65; }
+    else if (wl <= 750) { r = 1; }
+    let f = 1;
+    if (wl > 700) f = 0.3 + 0.7 * (750 - wl) / 50;
+    else if (wl < 420) f = 0.3 + 0.7 * (wl - 380) / 40;
+    const C = v => Math.round(255 * Math.max(0, Math.min(1, v)) * f);
+    return 'rgb(' + C(r) + ',' + C(g) + ',' + C(b) + ')';
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const pad = { l: 46, r: 16, t: 18, b: 34 };
+    const lmin = 380, lmax = 750;
+    const px = l => pad.l + (l - lmin) / (lmax - lmin) * (w - pad.l - pad.r);
+    const inten = l => Math.pow(450 / l, 4); // normalisée à 1 à 450 nm
+    const Imax = inten(lmin) * 1.05;
+    const py = I => (h - pad.b) - I / Imax * (h - pad.t - pad.b);
+
+    // bande spectrale en fond
+    for (let xp = pad.l; xp <= w - pad.r; xp += 2) {
+      const l = lmin + (xp - pad.l) / (w - pad.l - pad.r) * (lmax - lmin);
+      ctx.fillStyle = wlColor(l); ctx.globalAlpha = 0.18;
+      ctx.fillRect(xp, pad.t, 2, h - pad.t - pad.b);
+    }
+    ctx.globalAlpha = 1;
+
+    // axes
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+    ctx.moveTo(pad.l, h - pad.b); ctx.lineTo(w - pad.r, h - pad.b);
+    ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, h - pad.b); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    [400, 500, 600, 700].forEach(l => ctx.fillText(l + '', px(l), h - pad.b + 16));
+    ctx.fillText('λ (nm)', (pad.l + w - pad.r) / 2, h - 6);
+    ctx.save(); ctx.textAlign = 'left'; ctx.fillText('I ∝ 1/λ⁴', pad.l + 4, pad.t + 10); ctx.restore();
+
+    // courbe 1/lambda^4
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false;
+    for (let l = lmin; l <= lmax; l += 1) {
+      const X = px(l), Y = py(inten(l));
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+    }
+    ctx.stroke();
+
+    // point sélectionné
+    const lam = parseFloat(slLam.value);
+    const I = inten(lam);
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(px(lam), py(I), 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(px(lam), py(I)); ctx.lineTo(px(lam), h - pad.b); ctx.stroke(); ctx.setLineDash([]);
+
+    vLam.textContent = Math.round(lam);
+    vInt.textContent = fr(Math.pow(lamRef / lam, 4), 2);
+    vRap.textContent = fr(Math.pow(700 / 450, 4), 0);
+  }
+
+  slLam.addEventListener('input', draw);
+  btnNorm.addEventListener('click', function () {
+    lamRef = (lamRef === 450) ? 650 : 450;
+    btnNorm.textContent = 'Référence : ' + (lamRef === 450 ? 'bleu (450 nm)' : 'rouge (650 nm)');
+    draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

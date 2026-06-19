@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q8 — Paquet d'ondes et vitesse de groupe · QC Oraux MP*</title>
+<meta name="description" content="Paquet d'ondes : superposition d'ondes de de Broglie, vitesse de groupe v_g = dω/dk = ħk₀/m (particule libre), vitesse de phase v_φ = ω/k, dispersion et étalement, lien avec la localisation Δx·Δk ∼ 1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="q7.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="q9.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+        <a href="q7.html"><span class="qn">Q7</span>Barrière de potentiel &amp; effet tunnel</a>
+        <a href="q8.html" aria-current="page"><span class="qn">Q8</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="q9.html"><span class="qn">Q9</span>Courant de probabilité &amp; continuité</a>
+        <a href="q10.html"><span class="qn">Q10</span>États non stationnaires</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 8 · Mécanique quantique</span>
+    <h1>Paquet d'ondes et vitesse de groupe</h1>
+    <p class="q-sources"><span class="src">POLY §2.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Construire un paquet d'ondes par superposition d'ondes de de Broglie de vecteurs d'onde voisins de \(k_0\). Définir la vitesse de phase \(v_\varphi=\dfrac{\omega}{k}\) et la vitesse de groupe \(v_g=\dfrac{\mathrm{d}\omega}{\mathrm{d}k}\), montrer que pour une particule libre \(v_g=\dfrac{\hbar k_0}{m}\) (vitesse de la particule) tandis que \(v_\varphi=\dfrac{\hbar k}{2m}\). Discuter le caractère dispersif (étalement) et le lien avec la localisation \(\Delta x\cdot\Delta k\sim 1\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 6 §6.2 (Particule libre, paquet d'ondes)</div>
+      <p>Associer à une particule libre une fonction d'onde construite comme superposition d'ondes de de Broglie (paquet d'ondes) ; relier la vitesse de groupe \(v_g=\dfrac{\mathrm{d}\omega}{\mathrm{d}k}\) à la vitesse de la particule ; distinguer vitesse de phase et vitesse de groupe ; reconnaître le caractère dispersif de la propagation libre ; relier l'extension spatiale du paquet à l'indétermination de position via \(\Delta x\cdot\Delta k\sim 1\) puis \(\Delta x\cdot\Delta p\sim\hbar\). La valeur de l'intégrale du sinus cardinal au carré est admise.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Onde de de Broglie</strong> : onde plane progressive monochromatique \(\psi(x,t)=A\,e^{i(kx-\omega t)}\), solution de l'équation de Schrödinger de la particule libre (convention \(e^{+i\omega t}\), c'est-à-dire partie temporelle \(e^{-i\omega t}\)).</li>
+      <li><strong>Relation de dispersion</strong> (particule libre, masse \(m\)) : \(\omega(k)=\dfrac{\hbar k^{2}}{2m}\), obtenue en injectant l'onde de de Broglie dans l'équation de Schrödinger.</li>
+      <li><strong>Vitesse de phase</strong> : \(v_\varphi=\dfrac{\omega}{k}\) (vitesse des surfaces de phase constante).</li>
+      <li><strong>Vitesse de groupe</strong> : \(v_g=\dfrac{\mathrm{d}\omega}{\mathrm{d}k}\) (vitesse de déplacement de l'enveloppe, donc du maximum de probabilité de présence).</li>
+      <li><strong>Paquet d'ondes</strong> : superposition d'ondes de de Broglie de vecteurs d'onde dans un intervalle étroit \([k_0-\dfrac{\Delta k}{2},\,k_0+\dfrac{\Delta k}{2}]\) avec \(\Delta k\ll k_0\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Relation de dispersion et vitesse de phase</span>
+      <p class="lead">On injecte l'onde de de Broglie \(\psi=A\,e^{i(kx-\omega t)}\) dans l'équation de Schrödinger de la particule libre \(i\hbar\,\partial_t\psi=-\dfrac{\hbar^{2}}{2m}\,\partial_x^{2}\psi\) (\(\partial_t\to-i\omega\), \(\partial_x\to+ik\)). Il vient \(\hbar\omega=\dfrac{\hbar^{2}k^{2}}{2m}\), soit la <strong>relation de dispersion</strong> :</p>
+      <div class="calc-line">\[ \omega(k)=\dfrac{\hbar k^{2}}{2m} . \]</div>
+      <p class="lead">On en déduit la <strong>vitesse de phase</strong> :</p>
+      <div class="calc-line">\[ v_\varphi=\dfrac{\omega}{k}=\dfrac{\hbar k}{2m} . \]</div>
+      <p>Elle dépend de \(k\) : la propagation d'une onde libre est <strong>dispersive</strong>. Une onde plane seule n'est d'ailleurs pas normalisable (densité \(|A|^2\) uniforme) : elle n'a pas de réalité physique isolée.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Construction du paquet d'ondes</span>
+      <p class="lead">On superpose des ondes de de Broglie de poids constant sur un intervalle étroit autour de \(k_0\) :</p>
+      <div class="calc-line">\[ \psi(x,t)=\dfrac{1}{\Delta k}\int_{k_0-\Delta k/2}^{\,k_0+\Delta k/2} e^{\,i(kx-\omega(k)t)}\,\mathrm{d}k , \qquad \omega(k)=\dfrac{\hbar k^{2}}{2m} . \]</div>
+      <p class="lead">Comme \(\Delta k\ll k_0\), on linéarise la relation de dispersion autour de \(k_0\) :</p>
+      <div class="calc-line">\[ \omega(k)\simeq \omega(k_0)+\left(\dfrac{\mathrm{d}\omega}{\mathrm{d}k}\right)_{k_0}\!(k-k_0)=\omega_0+v_g\,(k-k_0) . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Enveloppe et vitesse de groupe</span>
+      <p class="lead">Avec le changement de variable \(k'=k-k_0\), le paquet se factorise en une <strong>onde porteuse</strong> et une <strong>enveloppe</strong> :</p>
+      <div class="calc-line">\[ \psi(x,t)=\underbrace{e^{\,i(k_0 x-\omega_0 t)}}_{\text{porteuse}}\;\underbrace{\operatorname{sinc}\!\left(\dfrac{(x-v_g t)\,\Delta k}{2}\right)}_{\text{enveloppe}} . \]</div>
+      <p>La porteuse se déplace à la <strong>vitesse de phase</strong> \(v_\varphi=\dfrac{\omega_0}{k_0}\) ; l'<strong>enveloppe</strong>, et donc la densité de probabilité de présence, se déplace à la <strong>vitesse de groupe</strong> :</p>
+      <div class="calc-line">\[ v_g=\left(\dfrac{\mathrm{d}\omega}{\mathrm{d}k}\right)_{k_0}=\dfrac{\hbar k_0}{m} . \]</div>
+      <p>La densité de probabilité associée est \(|\psi(x,t)|^2\propto\operatorname{sinc}^2\!\left(\dfrac{(x-v_g t)\,\Delta k}{2}\right)\), profil qui se propage à \(v_g\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Identification à la particule</span>
+      <p class="lead">La vitesse de groupe coïncide avec la vitesse de la particule. En effet, d'après la relation de de Broglie \(p=\hbar k_0\) :</p>
+      <div class="calc-line">\[ v_g=\dfrac{\hbar k_0}{m}=\dfrac{p}{m}=v_{\text{particule}} . \]</div>
+      <p>On note la différence essentielle \(v_\varphi=\dfrac{\hbar k_0}{2m}=\dfrac{v_g}{2}\) : la vitesse de phase n'a pas de signification cinématique directe, c'est la vitesse de groupe qui transporte la particule (et l'énergie).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Localisation : relation de Heisenberg</span>
+      <p class="lead">L'enveloppe \(\operatorname{sinc}^2\) s'annule pour la première fois lorsque \(\dfrac{x\,\Delta k}{2}=\pm\pi\) : l'extension spatiale du pic principal est \(\Delta x_0=\dfrac{4\pi}{\Delta k}\), d'où l'ordre de grandeur :</p>
+      <div class="calc-line">\[ \Delta x\cdot\Delta k\sim 1 . \]</div>
+      <p class="lead">En multipliant par \(\hbar\) et en utilisant \(p=\hbar k\) (donc \(\Delta p=\hbar\,\Delta k\)), on retrouve la <strong>relation de Heisenberg spatiale</strong> :</p>
+      <div class="calc-line">\[ \Delta x\cdot\Delta p\sim\hbar . \]</div>
+      <p>Mieux le paquet est localisé (\(\Delta x\) petit), plus large est l'éventail de vecteurs d'onde \(\Delta k\) nécessaires pour le construire.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">6 — Étalement (dispersion)</span>
+      <p>La relation de dispersion \(\omega(k)=\dfrac{\hbar k^2}{2m}\) n'étant pas linéaire, les différentes composantes ne se propagent pas exactement à la même vitesse : au-delà de l'approximation linéaire, le paquet se <strong>déforme et s'étale</strong> au cours du temps. À l'ordre où l'on s'est placé (linéarisation de \(\omega\)), cette déformation est négligée et le paquet se propage en bloc à \(v_g\) sans déformation.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — paquet d'ondes en propagation</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-paquet" aria-label="Paquet d'ondes : oscillation porteuse modulée par une enveloppe gaussienne se déplaçant vers la droite à la vitesse de groupe ; largeur réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-dk">Largeur spectrale \(\dfrac{\Delta k}{k_0}\) <span class="val" id="v-dk">0,20</span></label>
+          <input type="range" id="sl-dk" min="0.05" max="0.5" step="0.01" value="0.2">
+          <span class="hint">Plus \(\Delta k\) est grand, plus le paquet est étroit en \(x\) (relation \(\Delta x\cdot\Delta k\sim 1\)).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-env" type="button">Enveloppe : oui</button>
+            <button class="btn primary" id="btn-anim" type="button">Animer la propagation</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(v_g=\dfrac{\hbar k_0}{m}\) <b id="v-vg">1,00 u</b></span>
+            <span class="ro">\(v_\varphi=\dfrac{\hbar k_0}{2m}=\dfrac{v_g}{2}\) <b id="v-vp">0,50 u</b></span>
+            <span class="ro" id="ro-dx">Extension \(\Delta x\) <b id="v-dx">—</b></span>
+            <span class="ro" id="ro-prod">\(\Delta x\cdot\Delta k\) <b id="v-prod">≈ 1</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Partie réelle de la fonction d'onde (bleu) : oscillation porteuse \(e^{i(k_0 x-\omega_0 t)}\) modulée par une enveloppe (rouge). L'enveloppe — donc la densité de probabilité — se déplace à la vitesse de groupe \(v_g\) (repère vert), deux fois plus vite que les crêtes de la porteuse (vitesse de phase \(v_\varphi\)). Réduire \(\Delta k\) élargit le paquet : illustration de \(\Delta x\cdot\Delta k\sim 1\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\mathrm{Re}\,\psi\) (porteuse modulée)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>enveloppe \(\pm|\psi|\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>centre du paquet (à \(v_g\))</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Relation de dispersion de la particule libre : \(\omega=\dfrac{\hbar k^{2}}{2m}\) (à savoir établir à partir de l'équation de Schrödinger).</li>
+        <li>\(v_g=\dfrac{\mathrm{d}\omega}{\mathrm{d}k}=\dfrac{\hbar k_0}{m}=\dfrac{p}{m}\) : c'est la vitesse de la particule. \(v_\varphi=\dfrac{\omega}{k}=\dfrac{\hbar k}{2m}=\dfrac{v_g}{2}\).</li>
+        <li>L'enveloppe (donc la densité de présence) se déplace à \(v_g\) ; les crêtes de la porteuse à \(v_\varphi\).</li>
+        <li>Propagation libre = <strong>dispersive</strong> (\(v_\varphi\) dépend de \(k\)) : le paquet s'étale dans le temps.</li>
+        <li>Localisation : \(\Delta x\cdot\Delta k\sim 1\), soit \(\Delta x\cdot\Delta p\sim\hbar\) (relation de Heisenberg).</li>
+        <li>Une onde plane seule n'est pas normalisable : il faut un paquet pour décrire une particule localisée.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Au programme MP (§6.2). La notion de paquet d'ondes, la distinction entre vitesse de phase et vitesse de groupe et le lien \(v_g=\dfrac{\mathrm{d}\omega}{\mathrm{d}k}\) prolongent l'étude de l'onde de de Broglie. La construction explicite du paquet (sinus cardinal) et la valeur de l'intégrale \(\int\operatorname{sinc}^2\) sont admises ; le lien \(\Delta x\cdot\Delta k\sim 1\) avec la relation de Heisenberg (Q3) est exigible (POLY §2.3).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="q7.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Q7 · Barrière de potentiel et effet tunnel</span></a>
+    <a class="next" href="q9.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Q9 · Courant de probabilité et continuité</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-paquet');
+  const slDk = document.getElementById('sl-dk');
+  const vDk = document.getElementById('v-dk'), vVg = document.getElementById('v-vg'), vVp = document.getElementById('v-vp');
+  const vDx = document.getElementById('v-dx'), vProd = document.getElementById('v-prod');
+  const btnEnv = document.getElementById('btn-env'), btnAnim = document.getElementById('btn-anim');
+
+  let showEnv = true, animating = false, tphys = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // Unités réduites : k0 = 1, vg = 1 (donc vphi = 0,5). Enveloppe gaussienne de largeur sigma_x ~ 2/Δk.
+  const k0 = 1, vg = 1, vphi = 0.5;
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const dk = parseFloat(slDk.value) * k0;     // Δk
+    const sigx = 2 / dk;                          // largeur spatiale ~ 1/Δk
+    const midY = h * 0.52, amp = h * 0.30;
+
+    // domaine spatial fixe en "u" (unités), centre du paquet avance à vg
+    const Xspan = 28;                              // largeur de fenêtre en u
+    const x0win = -4;                              // bord gauche
+    const center = x0win + ((vg * tphys) % Xspan); // position du centre, boucle
+    const px = u => 8 + (u - x0win) / Xspan * (w - 16);
+
+    // axe de référence
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(8, midY); ctx.lineTo(w - 8, midY); ctx.stroke();
+
+    // enveloppe gaussienne (rouge, pointillé) ±
+    function env(u) { const d = (u - center) / sigx; return Math.exp(-d * d / 2); }
+    if (showEnv) {
+      ctx.strokeStyle = c.rouge; ctx.globalAlpha = 0.7; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]);
+      [1, -1].forEach(sgn => {
+        ctx.beginPath(); let st = false;
+        for (let u = x0win; u <= x0win + Xspan; u += 0.05) {
+          const Y = midY - sgn * env(u) * amp;
+          const X = px(u);
+          st ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), st = true);
+        }
+        ctx.stroke();
+      });
+      ctx.setLineDash([]); ctx.globalAlpha = 1;
+    }
+
+    // Re(psi) = env(u) * cos(k0*(u) - omega0*t) ; porteuse à vphi
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+    let st = false;
+    for (let u = x0win; u <= x0win + Xspan; u += 0.04) {
+      const carrier = Math.cos(2 * Math.PI * (k0 * u - vphi * k0 * tphys));
+      const Y = midY - env(u) * carrier * amp;
+      const X = px(u);
+      st ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), st = true);
+    }
+    ctx.stroke();
+
+    // marqueur du centre (vert) à vg
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.6; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(px(center), 14); ctx.lineTo(px(center), h - 26); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = c.vert; ctx.beginPath(); ctx.arc(px(center), midY, 4, 0, 2 * Math.PI); ctx.fill();
+
+    // étiquettes
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('enveloppe → vg', px(center), 12);
+    ctx.textAlign = 'left'; ctx.fillText('x →', w - 34, h - 8);
+
+    // lectures
+    vDk.textContent = fr(dk / k0, 2);
+    vVg.textContent = '1,00 u';
+    vVp.textContent = '0,50 u';
+    vDx.textContent = fr(2.355 * sigx, 1) + ' u';   // FWHM ~ 2,355 σ
+    vProd.textContent = '≈ ' + fr(2.355 * sigx * dk, 1);
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) { tphys += dt * 2.2; draw(); }
+  });
+
+  slDk.addEventListener('input', draw);
+  btnEnv.addEventListener('click', function () {
+    showEnv = !showEnv;
+    btnEnv.textContent = 'Enveloppe : ' + (showEnv ? 'oui' : 'non');
+    draw();
+  });
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer la propagation' : 'Animer la propagation';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

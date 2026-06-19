@@ -46,6 +46,8 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="t4.html" aria-current="page"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
         <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
         <a href="t6.html"><span class="qn">T6</span>Changement d'état du corps pur</a>
+        <a href="t7.html"><span class="qn">T7</span>Équilibre liquide-vapeur · titre</a>
+        <a href="t8.html"><span class="qn">T8</span>Air humide · point de rosée</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -86,7 +88,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
     <div class="demo-step">
       <span class="step-label">1 · Démonstration des lois de Joule</span>
-      <p class="lead"><strong>Étape A — On part de la première relation de Clapeyron</strong> et on y injecte l'équation d'état du gaz parfait \(P = \dfrac{nRT}{V}\), qui donne \(\left(\dfrac{\partial P}{\partial T}\right)_V = \dfrac{nR}{V}\) :</p>
+      <p class="lead"><strong>Étape A — On part de la première relation de Clapeyron</strong> (relation énergétique <em>admise</em>, \(\left(\dfrac{\partial U}{\partial V}\right)_T = T\left(\dfrac{\partial P}{\partial T}\right)_V - P\)) et on y injecte l'équation d'état du gaz parfait \(P = \dfrac{nRT}{V}\), qui donne \(\left(\dfrac{\partial P}{\partial T}\right)_V = \dfrac{nR}{V}\) :</p>
       <div class="calc-line">\[
         \begin{aligned}
           \left(\dfrac{\partial U}{\partial V}\right)_T &amp;= T\left(\dfrac{\partial P}{\partial T}\right)_V - P \\[4pt]
@@ -146,7 +148,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       </div>
       <div class="controls">
         <div class="control">
-          <label for="sl-vt">Volume total \(V_\dfrac{{\text{total}}}{V_1}\) <span class="val" id="v-vt">2,0</span></label>
+          <label for="sl-vt">Rapport \(\dfrac{V_{\text{total}}}{V_1}\) <span class="val" id="v-vt">2,0</span></label>
           <input type="range" id="sl-vt" min="1" max="6" step="0.05" value="2">
           <span class="hint" id="hint-jgl">Plus le gaz se dilue, plus la création d'entropie est grande.</span>
           <div class="btn-row" style="margin-top:.5rem">
@@ -156,13 +158,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <div class="readout" style="margin-top:.2rem">
             <span class="ro">\(\Delta U = 0\) ⇒ \(\Delta T = 0\) : <b id="v-t">T inchangée</b></span>
-            <span class="ro">\(\dfrac{P_f}{P_1} = \dfrac{V_1}{V}_{\text{total}}\) = <b id="v-pf">0,50</b></span>
-            <span class="ro">\(\Delta S = nR\ln(V_\dfrac{{\text{total}}}{V_1})\) = <b id="v-ds">5,76</b> J·K⁻¹ (n=1)</span>
+            <span class="ro">\(\dfrac{P_f}{P_1} = \dfrac{V_1}{V_{\text{total}}}\) = <b id="v-pf">0,50</b></span>
+            <span class="ro">\(\Delta S = nR\ln\!\left(\dfrac{V_{\text{total}}}{V_1}\right)\) = <b id="v-ds">5,76</b> J·K⁻¹ (n=1)</span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Enceinte adiabatique et rigide (\(Q=0\), \(W=0\)) à deux compartiments. À l'ouverture de la paroi, le gaz parfait (bleu) se répartit dans tout le volume. La température reste constante (\(\Delta U = 0\) et \(U = U(T)\)), mais l'entropie créée \(\Delta S = nR\ln(V_\dfrac{{\text{total}}}{V_1}) &gt; 0\) traduit l'irréversibilité.
+        Enceinte adiabatique et rigide (\(Q=0\), \(W=0\)) à deux compartiments. À l'ouverture de la paroi, le gaz parfait (bleu) se répartit dans tout le volume. La température reste constante (\(\Delta U = 0\) et \(U = U(T)\)), mais l'entropie créée \(\Delta S = nR\ln\!\left(\dfrac{V_{\text{total}}}{V_1}\right) &gt; 0\) traduit l'irréversibilité.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Gaz parfait</span>
           <span class="swatch"><i style="background:var(--curve-orange)"></i>Paroi amovible</span>
@@ -187,7 +189,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">G</span> Conformité au programme</h2>
-    <p>Entièrement au programme MPSI (3.3 et 3.4). Aucune notion hors-programme.</p>
+    <p>Lois de Joule, premier principe et entropie du gaz parfait : programme MPSI (3.3 et 3.4). La première relation de Clapeyron utilisée pour démontrer \(U=U(T)\) est un résultat <em>admis</em> (programme MP) ; sa démonstration via les relations de Maxwell n'est pas exigible.</p>
   </section>
 
   <nav class="page-nav" aria-label="Question précédente et suivante">
@@ -274,7 +276,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     const by = h - 30, bx = x0, bw = (w - 2 * x0);
     ctx.fillStyle = c.muted; ctx.font = '12px Inter, sans-serif'; ctx.textAlign = 'left';
     ctx.fillStyle = c.vert; ctx.fillRect(bx, by, bw * Math.min(1, ds / (R * Math.log(6))), 5);
-    ctx.fillStyle = c.muted; ctx.fillText('S_c créée ∝ ln(V_total/V₁)', bx, by - 6);
+    ctx.fillStyle = c.muted; QC.subText(ctx, 'S', 'c', bx, by - 6, ' créée ∝ ln(V/V₁)');
 
     // lectures
     vVt.textContent = fr(vt, 2);

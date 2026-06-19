@@ -40,6 +40,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
         <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
         <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -93,21 +97,21 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="demo-step">
       <span class="step-label">2 — Structure d'une OPPM</span>
       <p class="lead"><strong>On cherche une solution de forme imposée</strong> : une onde plane progressive monochromatique en notation complexe (la grandeur physique étant la partie réelle),</p>
-      <div class="calc-line">\[ \vec{E}(\vec{r},t) = \vec{E}_0\,e^{i(\vec{k}\cdot\vec{r}-\omega t)} . \]</div>
-      <p class="lead"><strong>On substitue dans l'équation de d'Alembert</strong> : la dérivation spatiale donne \(\Delta \to -k^2\) et la dérivation temporelle \(\partial_t^2 \to -\omega^2\), d'où</p>
+      <div class="calc-line">\[ \vec{E}(\vec{r},t) = \vec{E}_0\,e^{i(\omega t-\vec{k}\cdot\vec{r})} . \]</div>
+      <p class="lead"><strong>On substitue dans l'équation de d'Alembert</strong> avec la convention \(e^{+i\omega t}\) du cours (\(\partial_t\to+i\omega\), \(\overrightarrow{\nabla}\to-i\vec{k}\)) : la dérivation spatiale donne \(\Delta \to -k^2\) et la dérivation temporelle \(\partial_t^2 \to -\omega^2\), d'où</p>
       <div class="calc-line">\[ -k^2\,\vec{E}_0 + \dfrac{\omega^2}{c^2}\,\vec{E}_0 = \vec{0} . \]</div>
       <p class="lead"><strong>On en déduit la relation de dispersion dans le vide</strong> (pour \(\vec{E}_0 \neq \vec{0}\)) :</p>
       <div class="calc-line">\[ k^2 = \dfrac{\omega^2}{c^2} \quad\Longrightarrow\quad \omega = ck \qquad (k &gt; 0) . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">3 — Propriétés de l'OPPM</span>
-      <p class="lead"><strong>On exploite les équations de Maxwell à flux conservatif</strong> \((\mathrm{div}\,\vec{E}=0,\ \mathrm{div}\,\vec{B}=0)\) : pour une OPPM, l'opérateur divergence se traduit par \(\mathrm{div} \to i\,\vec{k}\cdot\,\), d'où la transversalité</p>
+      <p class="lead"><strong>On exploite les équations de Maxwell à flux conservatif</strong> \((\mathrm{div}\,\vec{E}=0,\ \mathrm{div}\,\vec{B}=0)\) : pour une OPPM, l'opérateur divergence se traduit par \(\mathrm{div} \to -i\,\vec{k}\cdot\,\), d'où la transversalité</p>
       <div class="calc-line">\[ \vec{k}\cdot\vec{E}_0 = 0 , \qquad \vec{k}\cdot\vec{B}_0 = 0 \qquad \text{(onde transverse)} . \]</div>
-      <p class="lead"><strong>On relie \(\vec{E}\) et \(\vec{B}\) par Maxwell-Faraday</strong>, qui pour une OPPM s'écrit \(i\,\vec{k}\times\vec{E}_0 = i\,\omega\,\vec{B}_0\) :</p>
+      <p class="lead"><strong>On relie \(\vec{E}\) et \(\vec{B}\) par Maxwell-Faraday</strong> \((\overrightarrow{\mathrm{rot}}\,\vec{E}=-\partial_t\vec{B})\), qui pour une OPPM s'écrit \(-i\,\vec{k}\wedge\vec{E}_0 = -i\,\omega\,\vec{B}_0\) :</p>
       <div class="calc-line">\[
         \begin{aligned}
-          \vec{B}_0 &amp;= \dfrac{1}{\omega}\,\vec{k}\times\vec{E}_0 \\[4pt]
-          &amp;= \dfrac{1}{c}\,\hat{k}\times\vec{E}_0 ,
+          \vec{B}_0 &amp;= \dfrac{1}{\omega}\,\vec{k}\wedge\vec{E}_0 \\[4pt]
+          &amp;= \dfrac{1}{c}\,\hat{k}\wedge\vec{E}_0 ,
         \end{aligned}
       \]</div>
       <p class="lead">en utilisant \(\omega = ck\) et le vecteur unitaire \(\hat{k} = \vec{k}/k\). <strong>On en déduit</strong> la relation entre amplitudes</p>
@@ -119,7 +123,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p>L'état de polarisation est fixé par la nature de l'amplitude \(\vec{E}_0\) :</p>
       <ul>
         <li>si \(\vec{E}_0\) est réel et de direction fixe, la polarisation est <em>rectiligne</em> ;</li>
-        <li>si \(\vec{E}_0 = E_0(\hat{x} + i\,\hat{y})\), le déphasage de \(\dfrac{\pi}{2}\) entre les deux composantes donne une polarisation <em>circulaire gauche</em>.</li>
+        <li>si \(\vec{E}_0 = E_0(\hat{x} + i\,\hat{y})\), le déphasage de \(\dfrac{\pi}{2}\) entre les deux composantes donne, en convention \(e^{+i\omega t}\), une polarisation <em>circulaire droite</em> (et \(\hat{x} - i\,\hat{y}\) donne la circulaire gauche).</li>
       </ul>
     </div>
   </section>

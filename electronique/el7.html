@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL7 — Filtrage numérique · QC Oraux MP*</title>
+<meta name="description" content="Filtrage numérique : passe-bas du premier ordre, discrétisation de l'équation différentielle par la méthode d'Euler, équation de récurrence sₙ₊₁ = sₙ + ωc Tₑ (eₙ − sₙ), limites du schéma.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électronique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="el6.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="el1.html"><span class="qn">EL1</span>RLC série en régime libre</a>
+        <a href="el2.html"><span class="qn">EL2</span>RLC en régime forcé / résonances</a>
+        <a href="el3.html"><span class="qn">EL3</span>Filtrage ordre 1 et 2 / créneau</a>
+        <a href="el4.html"><span class="qn">EL4</span>Filtre passe-bande</a>
+        <a href="el5.html"><span class="qn">EL5</span>Acquisition numérique / Nyquist-Shannon</a>
+        <a href="el6.html"><span class="qn">EL6</span>Échantillonneur-bloqueur et CAN</a>
+        <a href="el7.html" aria-current="page"><span class="qn">EL7</span>Filtrage numérique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 7 · Électronique numérique</span>
+    <h1>Filtrage numérique : équation de récurrence d'un passe-bas du premier ordre</h1>
+    <p class="q-sources"><span class="src">POLY E3 · Électronique numérique §3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>À partir de la fonction de transfert d'un passe-bas du premier ordre, établir l'équation différentielle associée puis la discrétiser (méthode d'Euler) pour obtenir l'<strong>équation de récurrence</strong> donnant la suite des valeurs filtrées \(s_n\). Discuter les limites du schéma numérique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Traitement numérique du signal</div>
+      <p>Capacités exigibles : établir l'équation différentielle d'un filtre du premier ordre à partir de sa fonction de transfert ; discrétiser une équation différentielle par la méthode d'Euler explicite ; mettre l'algorithme sous la forme d'une équation de récurrence ; discuter la validité du schéma (condition sur \(f_e\)). Le contenu suit le cours de la classe (Lycée Sainte-Geneviève, MP), §3.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Filtrage numérique</strong> : transformation d'une suite d'échantillons d'entrée \((e_n)\) en une suite de sortie \((s_n)\) par un algorithme, simulant l'action d'un filtre analogique.</li>
+      <li><strong>Équation de récurrence</strong> : relation exprimant \(s_{n+1}\) en fonction des valeurs déjà connues \(s_n, e_n, \dots\).</li>
+      <li>On note \(T_e = \dfrac{1}{f_e}\) la période d'échantillonnage, \(e_n = e(nT_e)\) et \(s_n = s(nT_e)\).</li>
+      <li>Filtre étudié : passe-bas du premier ordre, gain maximal \(H_0 = 1\), pulsation de coupure \(\omega_c = 2\pi f_c\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — De la fonction de transfert à l'équation différentielle</span>
+      <p class="lead"><strong>On part de la fonction de transfert</strong> du passe-bas d'ordre 1, de gain maximal \(1\) et de pulsation de coupure \(\omega_c\) :</p>
+      <div class="calc-line">\[ \underline{H}(j\omega) = \dfrac{\underline{s}}{\underline{e}} = \dfrac{1}{1+j\dfrac{\omega}{\omega_c}} . \]</div>
+      <p class="lead"><strong>On revient au domaine temporel</strong> en utilisant la correspondance \(j\omega \leftrightarrow \dfrac{\mathrm{d}}{\mathrm{d}t}\) : la relation \(\left(1+j\dfrac{\omega}{\omega_c}\right)\underline{s} = \underline{e}\) donne</p>
+      <div class="calc-line">\[ \dfrac{1}{\omega_c}\,\dfrac{\mathrm{d}s}{\mathrm{d}t} + s(t) = e(t) , \]</div>
+      <p>en notant \(e(t)\) le signal d'entrée et \(s(t)\) le signal de sortie.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Discrétisation (méthode d'Euler)</span>
+      <p class="lead"><strong>On discrétise le temps</strong> en posant \(t_n = nT_e\), \(e_n = e(t_n)\) et \(s_n = s(t_n)\). La fréquence d'échantillonnage étant supposée suffisamment grande, on approche la dérivée par le taux d'accroissement :</p>
+      <div class="calc-line">\[ \dfrac{\mathrm{d}s}{\mathrm{d}t}(t_n) \simeq \dfrac{s(t_n+T_e)-s(t_n)}{T_e} = \dfrac{s_{n+1}-s_n}{T_e} . \]</div>
+      <p class="lead"><strong>On reporte dans l'équation différentielle</strong> écrite à l'instant \(t_n\) :</p>
+      <div class="calc-line">\[ \dfrac{1}{\omega_c}\,\dfrac{s_{n+1}-s_n}{T_e} + s_n = e_n . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Équation de récurrence</span>
+      <p class="lead"><strong>On isole \(s_{n+1}\)</strong> pour obtenir l'équation de récurrence du filtre numérique :</p>
+      <div class="calc-line">\[ \boxed{\,s_{n+1} = s_n + \omega_c T_e\,(e_n - s_n)\,} \]</div>
+      <p>La suite des valeurs \(s_n\) est ainsi définie immédiatement par récurrence. Sa connaissance dépend de la condition initiale ; on peut prendre par exemple \(s_0 = 0\). C'est exactement la structure d'un algorithme programmable (la fonction Python <code>sortie_filtre(entree, fc, fe)</code> du cours applique cette relation point par point).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Limites du schéma numérique</span>
+      <p class="lead"><strong>On évalue la validité de l'approximation</strong> de la dérivée. Le développement de Taylor donne \(s(t_n+T_e) = s(t_n) + T_e\,\dot s(t_n) + \dfrac{T_e^{2}}{2}\,\ddot s(t_n)+\dots\) ; le schéma d'Euler néglige le terme en \(\dfrac{T_e^2}{2}\,\ddot s\). Pour un signal de fréquence \(f\), ce terme reste négligeable devant le terme de dérivée première tant que</p>
+      <div class="calc-line">\[ f \ll \dfrac{1}{\pi T_e} = \dfrac{f_e}{\pi} . \]</div>
+      <p class="lead"><strong>On observe la conséquence pratique</strong> : la réponse en gain du filtre numérique coïncide avec celle du filtre analogique jusqu'à \(f \simeq \dfrac{f_e}{\pi}\) (de l'ordre de \(3\ \mathrm{kHz}\) pour \(f_e = 10\ \mathrm{kHz}\)), puis diverge au-delà. Multiplier \(f_e\) par \(10\) repousse ce seuil d'une décade. On peut améliorer le schéma en définissant la dérivée au second ordre, \(\dot s(t_n)\simeq \dfrac{s_{n+1}-s_{n-1}}{2T_e}\), au prix d'une récurrence plus lourde.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — filtre numérique par récurrence \(s_{n+1}=s_n+\omega_c T_e(e_n-s_n)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-rec" aria-label="Signal d'entrée et signal filtré par l'équation de récurrence d'un passe-bas numérique, fréquence de coupure et d'échantillonnage réglables"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-fc">Fréquence de coupure \(f_c\) <span class="val" id="v-fc">2,0 Hz</span></label>
+          <input type="range" id="sl-fc" min="0.3" max="8" step="0.1" value="2">
+          <label for="sl-fe" style="margin-top:.5rem">Fréquence d'échantillonnage \(f_e\) <span class="val" id="v-fe">60 Hz</span></label>
+          <input type="range" id="sl-fe" min="8" max="120" step="1" value="60">
+          <span class="hint">Le signal d'entrée superpose une composante lente (\(1\ \mathrm{Hz}\)) et une composante rapide (\(7\ \mathrm{Hz}\)). Réglez \(f_c\) pour atténuer la rapide. Si \(\omega_c T_e\) approche \(1\), le schéma d'Euler diverge.</span>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\omega_c T_e = 2\pi f_c/f_e\) = <b id="v-wt">0,209</b></span>
+            <span class="ro">Seuil de validité \(f_e/\pi\) = <b id="v-seuil">19,1 Hz</b></span>
+            <span class="ro">Stabilité (\(\omega_c T_e<2\)) = <b id="v-stab">OK</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Signal d'entrée \(e(t)=\sin(2\pi t)+0{,}5\sin(2\pi\cdot 7\,t)\) (bleu) et sortie \(s_n\) calculée par la récurrence \(s_{n+1}=s_n+\omega_c T_e(e_n-s_n)\) avec \(\omega_c=2\pi f_c\) (rouge). Le filtre passe-bas atténue la composante rapide ; quand \(\omega_c T_e\) devient grand, l'approximation d'Euler se dégrade puis le schéma devient instable (\(\omega_c T_e \geqslant 2\)).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>entrée \(e(t)\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>sortie \(s_n\) (récurrence)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Bien faire apparaître la chaîne : fonction de transfert → équation différentielle (\(j\omega\to\dfrac{\mathrm{d}}{\mathrm{d}t}\)) → discrétisation d'Euler → récurrence.</li>
+        <li>L'équation de récurrence \(s_{n+1}=s_n+\omega_c T_e(e_n-s_n)\) est explicite : \(s_{n+1}\) se calcule à partir de valeurs déjà connues, sans résolution implicite.</li>
+        <li>Préciser la condition initiale (\(s_0=0\) usuellement) sans laquelle la suite n'est pas définie.</li>
+        <li>Le schéma n'est fiable que pour \(f \ll \dfrac{f_e}{\pi}\) : c'est une limite intrinsèque de la discrétisation, distincte du repliement.</li>
+        <li>Augmenter \(f_e\) (donc diminuer \(T_e\)) rapproche le filtre numérique du filtre analogique idéal.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'établissement de l'équation différentielle, sa discrétisation par la méthode d'Euler et l'équation de récurrence \(s_{n+1}=s_n+\omega_c T_e(e_n-s_n)\) figurent au programme MP de traitement numérique du signal et correspondent au chapitre 3 « Électronique numérique » du cours de la classe (Lycée Sainte-Geneviève, MP), §3.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="el6.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EL6 · Échantillonneur-bloqueur et CAN</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Électronique · 7 questions</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 6 : Électronique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-rec');
+  const slFc = document.getElementById('sl-fc'), slFe = document.getElementById('sl-fe');
+  const vFc = document.getElementById('v-fc'), vFe = document.getElementById('v-fe');
+  const vWt = document.getElementById('v-wt'), vSeuil = document.getElementById('v-seuil'), vStab = document.getElementById('v-stab');
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function entree(t) { return Math.sin(2 * Math.PI * 1.0 * t) + 0.5 * Math.sin(2 * Math.PI * 7.0 * t); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const fc = parseFloat(slFc.value), fe = parseFloat(slFe.value);
+    const wc = 2 * Math.PI * fc, Te = 1 / fe, a = wc * Te;
+    const Tobs = 2.0;
+    const pad = { l: 30, r: 16, t: 16, b: 28 };
+    const ymax = 1.7;
+    const px = t => pad.l + t / Tobs * (w - pad.l - pad.r);
+    const py = v => pad.t + (ymax - v) / (2 * ymax) * (h - pad.t - pad.b);
+
+    // grille + axe
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+    for (let k = 0; k <= 8; k++) { ctx.moveTo(px(Tobs * k / 8), pad.t); ctx.lineTo(px(Tobs * k / 8), h - pad.b); }
+    ctx.stroke();
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.4; ctx.beginPath();
+    ctx.moveTo(pad.l, py(0)); ctx.lineTo(w - pad.r, py(0)); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.textAlign = 'right'; ctx.fillText('t (s)', w - pad.r, py(0) - 6);
+
+    // entrée (bleu) tracé fin continu
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1.8; ctx.globalAlpha = 0.85; ctx.beginPath();
+    for (let i = 0; i <= 800; i++) {
+      const t = Tobs * i / 800, v = entree(t);
+      i ? ctx.lineTo(px(t), py(v)) : ctx.moveTo(px(t), py(v));
+    }
+    ctx.stroke(); ctx.globalAlpha = 1;
+
+    // sortie par récurrence (rouge)
+    const N = Math.max(2, Math.floor(Tobs * fe));
+    let sn = 0;
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.4; ctx.beginPath();
+    let started = false;
+    for (let n = 0; n <= N; n++) {
+      const t = n * Te;
+      const en = entree(t);
+      const X = px(t), Y = py(Math.max(-ymax, Math.min(ymax, sn)));
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+      sn = sn + a * (en - sn);
+    }
+    ctx.stroke();
+
+    vFc.textContent = fr(fc, 1) + ' Hz';
+    vFe.textContent = Math.round(fe) + ' Hz';
+    vWt.textContent = fr(a, 3);
+    vSeuil.textContent = fr(fe / Math.PI, 1) + ' Hz';
+    const stable = a < 2;
+    vStab.textContent = stable ? 'OK' : 'instable !';
+    vStab.style.color = stable ? c.vert : c.rouge;
+  }
+
+  slFc.addEventListener('input', draw);
+  slFe.addEventListener('input', draw);
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

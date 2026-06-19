@@ -35,6 +35,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="d1.html"><span class="qn">D1</span>Équation de la diffusion thermique</a>
         <a href="d2.html" aria-current="page"><span class="qn">D2</span>Conduction sphérique &amp; analogie EM</a>
         <a href="d3.html"><span class="qn">D3</span>Résistance thermique d'un cylindre</a>
+        <a href="d4.html"><span class="qn">D4</span>Loi de Newton &amp; ailette</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -90,8 +91,8 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           &amp;= \dfrac{\lambda}{r^2}\dfrac{\partial}{\partial r}\left(r^2\,\dfrac{\partial T}{\partial r}\right) = \lambda\,\Delta T .
         \end{aligned}
       \]</div>
-      <p class="lead">On obtient l'<strong>équation de diffusion thermique en coordonnées sphériques</strong>, avec \(a = \dfrac{\lambda}{\rho c}\) :</p>
-      <div class="calc-line">\[ \boxed{\dfrac{\partial T}{\partial t} = a\,\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2\,\dfrac{\partial T}{\partial r}\right)} . \]</div>
+      <p class="lead">On obtient l'<strong>équation de diffusion thermique en coordonnées sphériques</strong>, avec \(D_{\text{th}} = \dfrac{\lambda}{\rho c}\) :</p>
+      <div class="calc-line">\[ \boxed{\dfrac{\partial T}{\partial t} = D_{\text{th}}\,\dfrac{1}{r^2}\dfrac{\partial}{\partial r}\left(r^2\,\dfrac{\partial T}{\partial r}\right)} . \]</div>
     </div>
 
     <div class="demo-step">
@@ -122,7 +123,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p>La correspondance est parfaite : \(T \leftrightarrow V\), \(\lambda \leftrightarrow \sigma\) (conductivité électrique), \(\Phi_{\text{th}} \leftrightarrow I\). C'est l'analogie électrocinétique.</p>
       <p><em>b) Équation de diffusion en électromagnétisme : l'effet de peau.</em> Dans un milieu ohmique (conductivité \(\sigma\)), en régime quasi-stationnaire (\(\dfrac{\partial \vec{E}}{\partial t}\) négligeable devant \(\dfrac{\vec{j}}{\sigma}\)), les équations de Maxwell conduisent à une équation de diffusion pour le champ magnétique :</p>
       <div class="calc-line">\[ \dfrac{\partial \vec{B}}{\partial t} = \dfrac{1}{\mu_0\sigma}\,\Delta\vec{B} . \]</div>
-      <p>C'est une <em>équation de diffusion</em> pour \(\vec{B}\), formellement identique à l'équation thermique avec \(a_{\text{EM}} = \dfrac{1}{\mu_0\sigma}\). Le temps caractéristique de diffusion du champ magnétique dans un conducteur de taille \(L\) est \(\tau_{\text{EM}} \sim \mu_0\sigma L^2\).</p>
+      <p>C'est une <em>équation de diffusion</em> pour \(\vec{B}\), formellement identique à l'équation thermique avec \(D_{\text{EM}} = \dfrac{1}{\mu_0\sigma}\) (analogue électromagnétique de la diffusivité thermique \(D_{\text{th}}\)). Le temps caractéristique de diffusion du champ magnétique dans un conducteur de taille \(L\) est \(\tau_{\text{EM}} \sim \mu_0\sigma L^2\).</p>
     </div>
 
     <div class="box oral">
@@ -150,7 +151,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           <label for="sl-r2">Rayon extérieur \(R_2\) (cm) <span class="val" id="v-r2">4,0</span></label>
           <input type="range" id="sl-r2" min="3" max="6" step="0.1" value="4">
           <div class="readout" style="margin-top:.6rem">
-            <span class="ro">Résistance \(R_\dfrac{{\text{th,sph}} \propto (R_2-R_1)}{R_1R_2}\) : <b id="v-rth">—</b></span>
+            <span class="ro">Résistance \(R_{\text{th,sph}} \propto \dfrac{R_2-R_1}{R_1R_2}\) : <b id="v-rth">—</b></span>
             <span class="ro">Comparaison profil linéaire (plan) en pointillé bleu.</span>
           </div>
         </div>
@@ -174,7 +175,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <li>C'est un item <strong>MP uniquement</strong>.</li>
         <li>En symétrie sphérique, le profil stationnaire de température varie en \(\dfrac{1}{r}\) (et non linéairement comme en plan). C'est la clé : en intégrant \(\Delta T = 0\) en sphérique.</li>
         <li>Le flux \(\Phi = -4\pi\lambda r^2 \dfrac{\mathrm{d}T}{\mathrm{d}r}\) est <em>indépendant de \(r\)</em> en régime stationnaire (conservation de l'énergie sans source).</li>
-        <li>La comparaison EM : l'équation de diffusion apparaît en EM dans le milieu ohmique, avec \(a_{\text{EM}} = \dfrac{1}{\mu_0\sigma}\). La longueur de peau \(\delta = \sqrt{\dfrac{2}{\mu_0\sigma\omega}}\) est l'analogue direct de \(\sqrt{a\tau}\).</li>
+        <li>La comparaison EM : l'équation de diffusion apparaît en EM dans le milieu ohmique, avec \(D_{\text{EM}} = \dfrac{1}{\mu_0\sigma}\). La longueur de peau \(\delta = \sqrt{\dfrac{2}{\mu_0\sigma\omega}}\) est l'analogue direct de \(\sqrt{D_{\text{th}}\tau}\).</li>
         <li>Savoir énoncer rapidement les deux analogies (stationnaire : électrostatique ; instationnaire : effet de peau) et ne pas les confondre.</li>
       </ul>
     </div>

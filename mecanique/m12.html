@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M12 — Forces de marée · QC Oraux MP*</title>
+<meta name="description" content="Forces de marée : terme différentiel du champ de gravitation dans le référentiel géocentrique, deux marées par jour, vives-eaux et mortes-eaux selon l'alignement Soleil-Terre-Lune.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m11.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="m13.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+        <a href="m12.html" aria-current="page"><span class="qn">M12</span>Forces de marée</a>
+        <a href="m13.html"><span class="qn">M13</span>Frottement solide · coller-glisser</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 12 · Mécanique</span>
+    <h1>Forces de marée</h1>
+    <p class="q-sources"><span class="src">POLY §4.2–4.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir, dans le référentiel géocentrique, le terme différentiel (ou terme de marée) du champ de gravitation d'un astre attracteur. Expliquer pourquoi il y a deux marées par jour et discuter des marées de vives-eaux et de mortes-eaux selon l'alignement Soleil-Terre-Lune.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Mécanique en référentiel non galiléen (caractère galiléen approché du référentiel géocentrique)</div>
+      <p><em>Notions et contenus :</em> référentiel géocentrique en translation (quasi) elliptique dans le référentiel de Copernic ; force d'inertie d'entraînement ; champ de gravitation d'un astre lointain.</p>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Écrire le principe fondamental de la dynamique dans le référentiel géocentrique non galiléen.</li>
+        <li>Identifier le terme de marée comme la différence entre le champ de gravitation local et celui évalué au centre de la Terre.</li>
+        <li>Interpréter qualitativement la déformation des masses océaniques et la périodicité des marées.</li>
+      </ul>
+      <p>Le calcul détaillé du champ de marée et l'explication des marées océaniques relèvent d'une <strong>application / point culture</strong> du cours ; les notions de force d'inertie d'entraînement et de champ de gravitation sont, elles, exigibles.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li>\(\mathcal{R}\) : référentiel de Copernic (supposé galiléen) ; \(\mathcal{R}_G\) : référentiel géocentrique, en translation (quasi) elliptique dans \(\mathcal{R}\), donc \(\vec{\Omega}_{\mathcal{R}_G/\mathcal{R}} = \vec{0}\).</li>
+      <li>\(T\) : centre de la Terre ; \(M\) : point matériel de masse \(m\) à la surface terrestre, \(\overrightarrow{TM}\) de norme \(R\) (rayon terrestre).</li>
+      <li>\(L\) : astre attracteur (la Lune, par exemple), de masse \(m_L\), situé à la distance \(d = TL \gg R\) de la Terre.</li>
+      <li>\(\vec{\mathcal{G}}_L(P)\) : champ de gravitation créé par l'astre \(L\) au point \(P\) ; \(\mathcal{G}\) : constante de gravitation universelle.</li>
+      <li><strong>Terme de marée</strong> \(\vec{C}_L(M)\) : terme différentiel \(\vec{\mathcal{G}}_L(M) - \vec{\mathcal{G}}_L(T)\), c'est-à-dire le champ de l'astre <em>relativement</em> à sa valeur au centre de la Terre.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — PFD dans le référentiel géocentrique</span>
+      <p>On applique le principe fondamental de la dynamique au point matériel \(M\) de masse \(m\) dans le référentiel géocentrique \(\mathcal{R}_G\). Comme \(\vec{\Omega}_{\mathcal{R}_G/\mathcal{R}} = \vec{0}\), seule la force d'inertie d'entraînement intervient (pas de force de Coriolis).</p>
+      <p class="lead"><strong>Étape A — On écrit le bilan des forces</strong> : gravitation de tous les astres (\(L\), Soleil, …), force d'inertie d'entraînement \(\vec{f}_{ie} = -m\,\vec{a}_T(\mathcal{R})\) où \(\vec{a}_T(\mathcal{R})\) est l'accélération du centre \(T\) de la Terre dans \(\mathcal{R}\), et les autres forces \(\vec{F}\) :</p>
+      <div class="calc-line">\[ m\,\vec{a}_{\mathcal{R}_G}(M) = m\bigl(\vec{\mathcal{G}}_L(M) + \cdots\bigr) - m\,\vec{a}_T(\mathcal{R}) + \vec{F} . \]</div>
+      <p class="lead"><strong>Étape B — On exprime l'accélération du centre \(T\)</strong> en appliquant le PFD à la Terre dans \(\mathcal{R}\) galiléen : son mouvement n'est dû qu'aux gravitations des autres astres, évaluées au centre \(T\) :</p>
+      <div class="calc-line">\[ \vec{a}_T(\mathcal{R}) = \vec{\mathcal{G}}_L(T) + \cdots \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Apparition du terme de marée</span>
+      <p class="lead"><strong>On reporte \(\vec{a}_T(\mathcal{R})\) dans le PFD.</strong> Le champ de l'astre au point \(M\) et la force d'inertie d'entraînement (proportionnelle au champ au centre \(T\)) se combinent :</p>
+      <div class="calc-line">\[ m\,\vec{a}_{\mathcal{R}_G}(M) = m\,\vec{g}_T(M) + m\,\underbrace{\bigl(\vec{\mathcal{G}}_L(M) - \vec{\mathcal{G}}_L(T)\bigr)}_{\textstyle \vec{C}_L(M)} + \vec{F} , \]</div>
+      <p>où \(\vec{g}_T(M)\) regroupe le champ de gravitation propre de la Terre. Le champ de l'astre lointain n'intervient donc <em>que par sa variation</em> entre le point \(M\) et le centre \(T\) : c'est le <strong>terme différentiel</strong>, ou terme de marée \(\vec{C}_L(M)\).</p>
+      <p class="lead"><strong>On développe au premier ordre en \(\dfrac{R}{d}\).</strong> En notant \(\theta\) l'angle entre \(\overrightarrow{TL}\) (axe \(\vec{u}_x\), dirigé vers l'astre) et \(\overrightarrow{TM}\), le calcul (admis) donne le champ de marée :</p>
+      <div class="calc-line">\[ \vec{C}_L(M) = \dfrac{\mathcal{G}\,m_L\,R}{d^{3}}\,\bigl(2\cos\theta\;\vec{u}_x - \sin\theta\;\vec{u}_y\bigr) . \]</div>
+      <p>Sa dépendance en \(\dfrac{m_L}{d^{3}}\) (et non en \(\dfrac{m_L}{d^{2}}\)) explique l'influence prépondérante de la Lune malgré sa faible masse devant celle du Soleil.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Deux marées par jour</span>
+      <p class="lead"><strong>On examine la composante radiale</strong> \(C_{r} = \vec{C}_L(M)\cdot\vec{u}_{TM}\) du champ de marée, responsable du soulèvement de l'eau. On constate qu'elle est dirigée vers l'extérieur (eau soulevée) à la fois du côté de l'astre (\(\theta = 0\)) et du côté opposé (\(\theta = \pi\)) :</p>
+      <div class="calc-line">\[ C_{r}(\theta = 0) > 0 , \qquad C_{r}(\theta = \pi) > 0 , \qquad \bigl|C_{r}(\theta = \tfrac{\pi}{2})\bigr| = \dfrac{1}{2}\,C_{r}(0) . \]</div>
+      <p>Les masses océaniques se déforment ainsi en un <strong>bourrelet allongé</strong> (ellipsoïde) selon l'axe Terre-astre, avec <em>deux</em> renflements diamétralement opposés. En une rotation propre de la Terre, un point de sa surface passe donc par deux maxima de hauteur d'eau : <strong>il y a deux marées par jour</strong>.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Vives-eaux et mortes-eaux</span>
+      <p>Les effets des termes de marée de la Lune et du Soleil sont additifs. La configuration relative des trois astres module donc l'amplitude (le marnage, différence de hauteur entre basse mer et pleine mer).</p>
+      <p class="lead"><strong>Alignement (syzygie)</strong> — directions \(TL\) et \(TS\) parallèles (nouvelle ou pleine Lune) : les deux bourrelets se superposent, les effets s'ajoutent et la déformation est maximale :</p>
+      <div class="calc-line">\[ \text{Soleil, Terre, Lune alignés} \;\Longrightarrow\; \text{marées de vives-eaux (marnage maximal).} \]</div>
+      <p class="lead"><strong>Quadrature</strong> — directions \(TL\) et \(TS\) perpendiculaires (premier/dernier quartier) : les effets se compensent partiellement et le marnage est plus faible :</p>
+      <div class="calc-line">\[ \overrightarrow{TL} \perp \overrightarrow{TS} \;\Longrightarrow\; \text{marées de mortes-eaux (marnage minimal).} \]</div>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — champ de marée et déformation en ellipse</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-maree" aria-label="Champ de marée autour de la Terre : déformation des masses océaniques en ellipsoïde, position angulaire de l'astre réglable, illustration des vives-eaux et mortes-eaux"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-phi">Position angulaire de la Lune \(\varphi\) <span class="val" id="v-phi">0°</span></label>
+          <input type="range" id="sl-phi" min="0" max="360" step="1" value="0">
+          <span class="hint">L'astre (Lune) tourne autour de la Terre ; le Soleil reste fixe à droite.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-vect" type="button">Vecteurs : champ de marée</button>
+            <button class="btn primary" id="btn-anim" type="button">Animer la rotation</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Configuration = <b id="v-config">alignement (vives-eaux)</b></span>
+            <span class="ro">Marnage relatif = <b id="v-marn">maximal</b></span>
+            <span class="ro">Norme max du champ = <b id="v-cmax">2·𝒢mₗ R/d³</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Le champ de marée \(\vec{C}_L(M) = \dfrac{\mathcal{G}\,m_L\,R}{d^{3}}(2\cos\theta\,\vec{u}_x - \sin\theta\,\vec{u}_y)\) étire les masses océaniques en un ellipsoïde (deux bourrelets opposés selon l'axe Terre-astre). Les vecteurs oranges sont le champ différentiel en quelques points de la surface : dirigés vers l'extérieur aux pôles de l'axe, vers l'intérieur sur l'équateur de l'axe. Lorsque Lune et Soleil sont alignés avec la Terre, les déformations s'ajoutent (vives-eaux) ; lorsqu'ils sont en quadrature, elles se compensent partiellement (mortes-eaux).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>Terre &amp; océan déformé</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>champ de marée \(\vec{C}_L\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>astres (Lune, Soleil)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>L'effet de marée est un <em>terme différentiel</em> : c'est l'écart \(\vec{\mathcal{G}}_L(M) - \vec{\mathcal{G}}_L(T)\), non le champ lui-même. Un champ uniforme ne produirait aucune marée (il serait exactement compensé par la force d'inertie d'entraînement).</li>
+        <li>La dépendance en \(\dfrac{m_L}{d^{3}}\) (et non \(\dfrac{m_L}{d^{2}}\)) explique que la Lune, bien moins massive que le Soleil mais bien plus proche, domine : son influence est environ deux fois celle du Soleil.</li>
+        <li>Deux bourrelets diamétralement opposés \(\Rightarrow\) deux marées par jour (côté astre <em>et</em> côté opposé).</li>
+        <li>Vives-eaux : Soleil-Terre-Lune alignés ; mortes-eaux : Soleil et Lune en quadrature.</li>
+        <li>Modèle très simplifié (pas d'entraînement des océans, pas de continents, astres coplanaires) ; la période réelle des marées est légèrement supérieure à 12 h car la Lune se déplace pendant que la Terre tourne.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Le cadre (PFD en référentiel géocentrique non galiléen, force d'inertie d'entraînement, champ de gravitation) est au programme <strong>MP</strong>. Le calcul explicite du champ de marée et l'explication des marées océaniques sont présentés dans le cours comme un point culture / application : le développement au premier ordre en \(\dfrac{R}{d}\) est admis, l'interprétation qualitative (deux marées par jour, vives-eaux / mortes-eaux) est à connaître.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="m11.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M11 · Statique des fluides</span></a>
+    <a class="next" href="m13.html"><span class="pn-dir">Suivant →</span><span class="pn-title">M13 · Frottement solide · coller-glisser</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-maree');
+  const slPhi = document.getElementById('sl-phi'), vPhi = document.getElementById('v-phi');
+  const vConfig = document.getElementById('v-config'), vMarn = document.getElementById('v-marn');
+  const btnVect = document.getElementById('btn-vect'), btn = document.getElementById('btn-anim');
+  let animating = false, phi = 0, showVect = true;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 380);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const cx = w * 0.42, cy = h * 0.5;
+    const R0 = Math.min(w, h) * 0.13;           // rayon "Terre" non déformé
+    const amp = R0 * 0.42;                        // amplitude de la déformation
+    const phr = phi * Math.PI / 180;             // direction de la Lune
+
+    // axe de déformation = direction Terre-Lune (phr)
+    // ellipsoïde : r(beta) = R0 + amp*(2*cos^2 - sin^2) reparamétré ~ étirement selon l'axe
+    function rSurf(beta) {
+      const a = beta - phr;                       // angle relatif à l'axe Terre-Lune
+      return R0 + amp * (Math.cos(a) * Math.cos(a) - 0.5 * Math.sin(a) * Math.sin(a));
+    }
+
+    // océan déformé (aire bleutée)
+    ctx.beginPath();
+    for (let i = 0; i <= 360; i++) {
+      const b = i * Math.PI / 180, r = rSurf(b);
+      const X = cx + r * Math.cos(b), Y = cy - r * Math.sin(b);
+      i === 0 ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = c.bleu; ctx.globalAlpha = 0.16; ctx.fill(); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.stroke();
+
+    // Terre solide (cercle)
+    ctx.beginPath(); ctx.arc(cx, cy, R0 * 0.72, 0, 2 * Math.PI);
+    ctx.fillStyle = c.grid; ctx.globalAlpha = 0.5; ctx.fill(); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = c.text; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('Terre', cx, cy + 4);
+
+    // vecteurs champ de marée en 8 points de la surface non déformée
+    if (showVect) {
+      const k = amp * 0.9;
+      for (let i = 0; i < 12; i++) {
+        const b = i * 2 * Math.PI / 12;
+        const a = b - phr;
+        // composantes dans le repère (u_x = axe Terre-Lune, u_y perp)
+        const Cx = 2 * Math.cos(a), Cy = -Math.sin(a);
+        // base locale tournée de phr
+        const ex = Math.cos(phr), ey = Math.sin(phr);
+        const vx = Cx * ex - Cy * ey, vy = Cx * ey + Cy * ex;
+        const px = cx + R0 * Math.cos(b), py = cy - R0 * Math.sin(b);
+        const qx = px + k * vx * 0.5, qy = py - k * vy * 0.5;
+        ctx.strokeStyle = c.orange; ctx.lineWidth = 1.8; ctx.beginPath();
+        ctx.moveTo(px, py); ctx.lineTo(qx, qy); ctx.stroke();
+        // pointe
+        const ang = Math.atan2(qy - py, qx - px), hl = 4;
+        ctx.beginPath(); ctx.moveTo(qx, qy);
+        ctx.lineTo(qx - hl * Math.cos(ang - 0.5), qy - hl * Math.sin(ang - 0.5));
+        ctx.moveTo(qx, qy);
+        ctx.lineTo(qx - hl * Math.cos(ang + 0.5), qy - hl * Math.sin(ang + 0.5));
+        ctx.stroke();
+      }
+    }
+
+    // Soleil (fixe à droite) et Lune (mobile)
+    const sunX = w - 26, sunY = cy;
+    ctx.fillStyle = c.vert; ctx.beginPath(); ctx.arc(sunX, sunY, 9, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('Soleil', sunX, sunY - 14);
+    const dMoon = Math.min(w, h) * 0.34;
+    const moonX = cx + dMoon * Math.cos(phr), moonY = cy - dMoon * Math.sin(phr);
+    ctx.fillStyle = c.vert; ctx.globalAlpha = 0.85; ctx.beginPath(); ctx.arc(moonX, moonY, 6, 0, 2 * Math.PI); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.fillStyle = c.muted; ctx.fillText('Lune', moonX, moonY - 11);
+    // ligne Terre-Lune
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1; ctx.setLineDash([3, 4]);
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(moonX, moonY); ctx.stroke(); ctx.setLineDash([]);
+
+    // configuration : aligné si phi ~ 0 ou 180 ; quadrature si ~ 90 ou 270
+    const m = ((phi % 180) + 180) % 180;       // 0..180
+    const dAlign = Math.min(m, 180 - m);
+    let conf, marn;
+    if (dAlign < 22) { conf = 'alignement (vives-eaux)'; marn = 'maximal'; }
+    else if (Math.abs(m - 90) < 22) { conf = 'quadrature (mortes-eaux)'; marn = 'minimal'; }
+    else { conf = 'configuration intermédiaire'; marn = 'intermédiaire'; }
+    vConfig.textContent = conf; vMarn.textContent = marn;
+    vPhi.textContent = Math.round(phi) + '°';
+  }
+
+  QC.loop(function () {
+    if (animating) { phi = (phi + 0.5) % 360; slPhi.value = phi; draw(); }
+  });
+
+  slPhi.addEventListener('input', function () { phi = parseFloat(slPhi.value); draw(); });
+  btnVect.addEventListener('click', function () {
+    showVect = !showVect;
+    btnVect.textContent = showVect ? 'Vecteurs : champ de marée' : 'Vecteurs : masqués';
+    btnVect.classList.toggle('active', showVect);
+    draw();
+  });
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer la rotation';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

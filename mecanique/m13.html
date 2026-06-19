@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M13 — Frottement solide · coller-glisser · QC Oraux MP*</title>
+<meta name="description" content="Frottement solide et mouvement de coller-glisser (stick-slip) : lois de Coulomb statique et dynamique, oscillations de relaxation, portrait de phase et vitesse en dents de scie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="m12.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Sommaire</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="m1.html"><span class="qn">M1</span>Référentiel terrestre non galiléen</a>
+        <a href="m2.html"><span class="qn">M2</span>Solide en rotation (axe fixe)</a>
+        <a href="m3.html"><span class="qn">M3</span>Frottement solide (Coulomb)</a>
+        <a href="m4.html"><span class="qn">M4</span>Pendule simple &amp; pesant</a>
+        <a href="m5.html"><span class="qn">M5</span>Oscillateurs : analogies &amp; résonances</a>
+        <a href="m6.html"><span class="qn">M6</span>Équilibre &amp; stabilité</a>
+        <a href="m7.html"><span class="qn">M7</span>Forces centrales · Ep effective</a>
+        <a href="m8.html"><span class="qn">M8</span>Champ newtonien · Kepler</a>
+        <a href="m9.html"><span class="qn">M9</span>Énergie · trajectoire elliptique</a>
+        <a href="m10.html"><span class="qn">M10</span>Particule chargée dans E ou B</a>
+        <a href="m11.html"><span class="qn">M11</span>Statique des fluides</a>
+        <a href="m12.html"><span class="qn">M12</span>Forces de marée</a>
+        <a href="m13.html" aria-current="page"><span class="qn">M13</span>Frottement solide · coller-glisser</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 13 · Mécanique</span>
+    <h1>Frottement solide : coller-glisser (stick-slip) et portrait de phase</h1>
+    <p class="q-sources"><span class="src">POLY chap.2 §1 &amp; §4</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Rappeler les lois de Coulomb du frottement solide (régimes statique et dynamique, avec \(\mu_d \leq \mu_s\)). Décrire le mouvement de coller-glisser (stick-slip) d'un solide entraîné par l'intermédiaire d'un ressort, l'identifier comme une oscillation de relaxation, et le représenter dans le portrait de phase et par sa vitesse en dents de scie.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · « Lois du frottement solide » · simulation numérique d'un mouvement de coller-glisser</div>
+      <p><em>Notions et contenus :</em> lois de Coulomb du frottement de glissement (cas de la translation) ; succession de phases de glissement et de non-glissement ; étude par simulation numérique.</p>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Distinguer les régimes d'adhérence et de glissement, formuler puis valider une hypothèse de mouvement.</li>
+        <li>Mettre en équation un mouvement combinant phases de glissement et de non-glissement.</li>
+        <li>Exploiter une simulation numérique pour visualiser une évolution de coller-glisser.</li>
+      </ul>
+      <p>Niveau <strong>MP</strong>. La phénoménologie (lois de Coulomb) prolonge la question M3 ; l'application coller-glisser est l'objet d'une étude par simulation numérique (DM).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Modèle d'étude : un solide \(S_2\) de masse \(m\), posé sur un tapis \(S_1\) défilant à vitesse constante \(V\), est relié à un mur fixe par un ressort de raideur \(k\) (longueur à vide telle que le ressort est détendu en \(x = 0\)). On note \(x\) la position du solide dans le référentiel du laboratoire.</p>
+    <ul>
+      <li>\(\vec{N}\) : réaction normale du tapis (\(N = mg\) ici) ; \(\vec{T}\) : composante tangentielle de l'action de contact.</li>
+      <li><strong>Vitesse de glissement</strong> \(\vec{v}_g = \vec{v}_{S_2/S_1}\) du solide par rapport au tapis ; non-glissement \(\Leftrightarrow \vec{v}_g = \vec{0}\) (donc \(\dot{x} = V\)).</li>
+      <li>\(\mu_s\) : coefficient de frottement statique ; \(\mu_d\) : coefficient dynamique, avec \(\mu_d \leq \mu_s\). Ces coefficients ne dépendent ni de l'aire de contact, ni de \(N\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Lois de Coulomb : les deux régimes</span>
+      <p>L'action de contact se décompose en \(\vec{N}\) (normale, \(\vec{N}\cdot\vec{n} > 0\)) et \(\vec{T}\) (tangentielle). Le comportement de \(\vec{T}\) dépend de la vitesse de glissement.</p>
+      <p class="lead"><strong>Non-glissement (adhérence)</strong> — \(\vec{v}_g = \vec{0}\) : la composante tangentielle s'ajuste pour assurer le non-glissement, sans dépasser un seuil :</p>
+      <div class="calc-line">\[ \vec{v}_g = \vec{0} \qquad \Longrightarrow \qquad \|\vec{T}\| \;\leq\; \mu_s\,N . \]</div>
+      <p class="lead"><strong>Glissement</strong> — \(\vec{v}_g \neq \vec{0}\) : la force tangentielle s'oppose à la vitesse de glissement et sa norme est fixée :</p>
+      <div class="calc-line">\[ \vec{T} \;=\; -\,\mu_d\,N\,\dfrac{\vec{v}_g}{\|\vec{v}_g\|} , \qquad \|\vec{T}\| = \mu_d\,N . \]</div>
+      <p>La discontinuité au démarrage — il faut vaincre \(\mu_s N\) pour mettre en mouvement, puis le frottement chute à \(\mu_d N < \mu_s N\) — est à l'origine du caractère saccadé du coller-glisser.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Phase de collage (stick)</span>
+      <p class="lead"><strong>Étape A — On suppose le solide collé au tapis</strong> : il avance à la vitesse \(V\), donc \(\dot{x} = V\) et \(x(t) = x_0 + V t\). Le PFD selon l'axe horizontal donne la force tangentielle nécessaire (équilibrant la force de rappel) :</p>
+      <div class="calc-line">\[ 0 = -\,k\,x + T \qquad \Longrightarrow \qquad T = k\,x = k\,(x_0 + V t) . \]</div>
+      <p class="lead"><strong>Étape B — On suit la validité de l'hypothèse</strong> : tant que \(|T| \leq \mu_s N\), le collage persiste. La force de rappel \(kx\) croît linéairement avec le temps jusqu'à atteindre le seuil de décollage :</p>
+      <div class="calc-line">\[ k\,x = \mu_s\,N \qquad \Longrightarrow \qquad x_{\max} = \dfrac{\mu_s\,N}{k} . \]</div>
+      <p>Au-delà, l'adhérence ne peut plus être assurée : le solide décroche et se met à glisser.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Phase de glissement (slip)</span>
+      <p class="lead"><strong>Étape A — Le solide glisse vers l'arrière par rapport au tapis</strong> (\(\dot{x} < V\)), donc \(\vec{v}_g\) est dirigée vers l'arrière et le frottement dynamique, opposé, agit vers l'avant avec la norme constante \(\mu_d N\). Le PFD s'écrit :</p>
+      <div class="calc-line">\[ m\,\ddot{x} = -\,k\,x + \mu_d\,N . \]</div>
+      <p class="lead"><strong>Étape B — On reconnaît un oscillateur harmonique</strong> de pulsation \(\omega_0 = \sqrt{\dfrac{k}{m}}\), centré sur la position d'équilibre \(x_{\text{eq}} = \dfrac{\mu_d N}{k}\) :</p>
+      <div class="calc-line">\[ \ddot{x} + \omega_0^{2}\,x = \omega_0^{2}\,x_{\text{eq}} , \qquad \omega_0 = \sqrt{\dfrac{k}{m}} , \qquad x_{\text{eq}} = \dfrac{\mu_d\,N}{k} . \]</div>
+      <p class="lead"><strong>Étape C — Le solide ralentit puis recule</strong> en décrivant un arc d'oscillation ; le glissement cesse lorsque sa vitesse redevient égale à celle du tapis (\(\dot{x} = V\), donc \(v_g = 0\)). Il se recolle alors, et le cycle recommence.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Oscillation de relaxation</span>
+      <p>Le mouvement est ainsi une <strong>succession périodique</strong> de phases de collage (charge lente du ressort, \(\dot{x} = V\) constant) et de glissement (relâchement rapide). C'est une <em>oscillation de relaxation</em> : non sinusoïdale, asymétrique, avec une charge lente suivie d'une décharge brusque.</p>
+      <p class="lead"><strong>Signature dans le portrait de phase</strong> \((x, \dot{x})\) : un cycle limite formé d'un segment horizontal \(\dot{x} = V\) (collage) refermé par un arc de glissement (portion d'ellipse de l'oscillateur). La vitesse \(\dot{x}(t)\) présente un profil <strong>en dents de scie</strong> : plateaux à \(V\) entrecoupés de plongées.</p>
+      <div class="calc-line">\[ \text{Amplitude de décollage : } \Delta x = x_{\max} - x_{\text{eq}} = \dfrac{(\mu_s - \mu_d)\,N}{k} \;>\; 0 \quad (\text{car } \mu_s \geq \mu_d). \]</div>
+      <p>Le coller-glisser disparaît si \(\mu_s = \mu_d\) : c'est l'écart entre seuils statique et dynamique qui entretient les oscillations (crissement de craie, archet de violon, grincements).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — portrait de phase et vitesse en dents de scie</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-stick" aria-label="Mouvement de coller-glisser : portrait de phase position-vitesse avec cycle limite, ou vitesse en fonction du temps en dents de scie, écart des coefficients de frottement réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-mus">Coefficient statique \(\mu_s\) <span class="val" id="v-mus">0,60</span></label>
+          <input type="range" id="sl-mus" min="0.2" max="0.9" step="0.01" value="0.6">
+          <label for="sl-mud" style="margin-top:.6rem">Coefficient dynamique \(\mu_d\) <span class="val" id="v-mud">0,40</span></label>
+          <input type="range" id="sl-mud" min="0.1" max="0.9" step="0.01" value="0.4">
+          <span class="hint">Le coller-glisser n'existe que si \(\mu_d \leq \mu_s\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-vue" type="button">Vue : portrait de phase</button>
+            <button class="btn primary" id="btn-anim" type="button">Animer</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Seuil de décollage \(x_{\max} = \dfrac{\mu_s N}{k}\) = <b id="v-xmax">—</b></span>
+            <span class="ro">Centre du glissement \(x_{\text{eq}} = \dfrac{\mu_d N}{k}\) = <b id="v-xeq">—</b></span>
+            <span class="ro">Amplitude \(\Delta x\) = <b id="v-dx">—</b></span>
+            <span class="ro" id="ro-reg">Régime = <b id="v-reg">coller-glisser</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Modèle solide-ressort sur tapis défilant (\(V\), \(k\), \(m\), \(N = mg\) normalisés). <em>Portrait de phase</em> \((x, \dot{x})\) : le cycle limite (bleu) est formé du segment de collage \(\dot{x} = V\) et de l'arc de glissement (portion d'ellipse de l'oscillateur de pulsation \(\omega_0 = \sqrt{k/m}\) centré en \(x_{\text{eq}}\)). <em>Vue temporelle</em> : la vitesse \(\dot{x}(t)\) en dents de scie (plateaux à \(V\) puis plongées de glissement). L'amplitude \(\Delta x = (\mu_s - \mu_d)N/k\) mesure l'intensité du phénomène ; elle s'annule pour \(\mu_s = \mu_d\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>trajectoire / cycle limite</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>point courant</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>seuils \(x_{\max}\), \(x_{\text{eq}}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Deux lois distinctes : adhérence \(\|\vec{T}\| \leq \mu_s N\) (inégalité, \(\vec{T}\) inconnue à déterminer par le PFD) ; glissement \(\|\vec{T}\| = \mu_d N\) (égalité, \(\vec{T}\) opposée à \(\vec{v}_g\)).</li>
+        <li>Méthode systématique : <em>faire une hypothèse</em> (collage ou glissement), résoudre, puis <em>valider</em> (vérifier \(\|\vec{T}\| \leq \mu_s N\) en collage, ou le signe de \(\vec{v}_g\) en glissement).</li>
+        <li>Le moteur du coller-glisser est l'écart \(\mu_s - \mu_d > 0\) : à seuils égaux, pas d'oscillation.</li>
+        <li>C'est une oscillation de relaxation : charge lente (\(\dot{x} = V\)), décharge rapide (glissement) ; vitesse en dents de scie, cycle limite dans le portrait de phase.</li>
+        <li>Exemples : crissement de la craie, son de l'archet sur la corde, grincement de portes, broutement (chatter) en usinage.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MP</strong>. Les lois de Coulomb (statique et dynamique) et la résolution d'un problème avec frottement solide sont exigibles ; l'étude du mouvement de coller-glisser est explicitement prévue par <em>simulation numérique</em> (DM). Le tracé du portrait de phase et l'identification d'une oscillation de relaxation sont des outils d'analyse standards de l'épreuve orale.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et sommaire">
+    <a href="m12.html"><span class="pn-dir">← Précédent</span><span class="pn-title">M12 · Forces de marée</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Mécanique · Sommaire du thème</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 1 : Mécanique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-stick');
+  const slMus = document.getElementById('sl-mus'), vMus = document.getElementById('v-mus');
+  const slMud = document.getElementById('sl-mud'), vMud = document.getElementById('v-mud');
+  const vXmax = document.getElementById('v-xmax'), vXeq = document.getElementById('v-xeq');
+  const vDx = document.getElementById('v-dx'), vReg = document.getElementById('v-reg');
+  const btnVue = document.getElementById('btn-vue'), btn = document.getElementById('btn-anim');
+  let animating = false, phaseMode = true, tphase = 0;
+  // unités normalisées : k = 1, m = 1, N = 1, donc omega0 = 1 ; V = vitesse tapis
+  const V = 0.35;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // Simule un cycle de coller-glisser et renvoie un tableau de points {t, x, v, phase}
+  function simulate(mus, mud) {
+    const w0 = 1, dt = 0.004, pts = [];
+    let t = 0, x = mud, v = V, stick = true;        // démarrer en collage à x = x_eq
+    const xmax = mus, xeq = mud;
+    // si pas de stick-slip (mus<=mud quasi égaux), retourner mouvement collé pur
+    let n = 0, Nmax = 6000;
+    while (n < Nmax) {
+      pts.push({ t: t, x: x, v: v, stick: stick });
+      if (stick) {
+        // collage : x avance à V ; T = k x = x. Décolle quand x >= xmax
+        x += V * dt; v = V;
+        if (x >= xmax) { stick = false; }
+      } else {
+        // glissement : x'' = -x + xeq (oscillateur centré en xeq), v_g = v - V < 0 supposé
+        const a = -(x - xeq);
+        v += a * dt; x += v * dt;
+        // recolle quand v remonte à V (v_g = 0)
+        if (v >= V) { v = V; stick = true; x = Math.max(x, xeq); }
+      }
+      t += dt; n++;
+      // arrêter après ~2,2 cycles pour la lisibilité (détecter retour proche du départ)
+      if (n > 200 && stick && Math.abs(x - mud) < V * dt * 1.5 && t > 1) {
+        if (pts.filter(p => p.stick && Math.abs(p.x - mud) < 0.01).length > 2) break;
+      }
+    }
+    return { pts, xmax, xeq };
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 360);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    let mus = parseFloat(slMus.value), mud = parseFloat(slMud.value);
+    const stickslip = mud < mus - 1e-3;
+    const sim = simulate(mus, mud);
+    const pts = sim.pts;
+
+    if (phaseMode) {
+      // portrait de phase (x, v)
+      const xs = pts.map(p => p.x), vs = pts.map(p => p.v);
+      const xmin = Math.min(...xs) - 0.05, xmx = Math.max(...xs, mus) + 0.05;
+      const vmin = Math.min(...vs) - 0.05, vmx = V + 0.15;
+      const P = QC.makePlot(ctx, w, h, { xmin: xmin, xmax: xmx, ymin: vmin, ymax: vmx, pad: { l: 50, r: 16, t: 16, b: 34 } });
+      P.grid(c, { xticks: 5, yticks: 4 });
+      P.axes(c, { xlabel: 'x', ylabel: 'ẋ' });
+      // seuils verticaux
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 1.3; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(P.px(mus), P.py(vmin)); ctx.lineTo(P.px(mus), P.py(vmx)); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(P.px(mud), P.py(vmin)); ctx.lineTo(P.px(mud), P.py(vmx)); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = c.vert; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+      QC.subText(ctx, 'x', 'max', P.px(mus), P.py(vmx) + 12);
+      QC.subText(ctx, 'x', 'eq', P.px(mud), P.py(vmin) - 4);
+      // trajectoire / cycle limite
+      ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+      let started = false;
+      pts.forEach(p => { const X = P.px(p.x), Y = P.py(p.v); started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true); });
+      ctx.stroke();
+      // point courant
+      const idx = Math.min(pts.length - 1, Math.floor(tphase * pts.length));
+      const pc = pts[idx];
+      ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(P.px(pc.x), P.py(pc.v), 5.5, 0, 2 * Math.PI); ctx.fill();
+    } else {
+      // vitesse en fonction du temps (dents de scie)
+      const tmax = pts[pts.length - 1].t;
+      const P = QC.makePlot(ctx, w, h, { xmin: 0, xmax: tmax, ymin: Math.min(0, Math.min(...pts.map(p => p.v))) - 0.05, ymax: V + 0.15, pad: { l: 50, r: 16, t: 16, b: 34 } });
+      P.grid(c, { xticks: 6, yticks: 4 });
+      P.axes(c, { xlabel: 't', ylabel: 'ẋ' });
+      // niveau V (tapis)
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 1.3; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(P.px(0), P.py(V)); ctx.lineTo(P.px(tmax), P.py(V)); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = c.vert; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+      ctx.fillText('V (tapis)', P.px(0) + 6, P.py(V) - 5);
+      // courbe v(t)
+      ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+      let started = false;
+      pts.forEach(p => { const X = P.px(p.t), Y = P.py(p.v); started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true); });
+      ctx.stroke();
+      const idx = Math.min(pts.length - 1, Math.floor(tphase * pts.length));
+      const pc = pts[idx];
+      ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(P.px(pc.t), P.py(pc.v), 5.5, 0, 2 * Math.PI); ctx.fill();
+    }
+
+    // lectures (k=N=1)
+    vMus.textContent = fr(mus, 2); vMud.textContent = fr(mud, 2);
+    vXmax.textContent = fr(mus, 2); vXeq.textContent = fr(mud, 2);
+    vDx.textContent = fr(Math.max(0, mus - mud), 2);
+    vReg.textContent = stickslip ? 'coller-glisser' : 'glissement permanent (μd ≈ μs)';
+  }
+
+  QC.loop(function () {
+    if (animating) { tphase = (tphase + 0.004) % 1; draw(); }
+  });
+
+  slMus.addEventListener('input', function () {
+    // garantir mu_d <= mu_s
+    if (parseFloat(slMud.value) > parseFloat(slMus.value)) slMud.value = slMus.value;
+    draw();
+  });
+  slMud.addEventListener('input', function () {
+    if (parseFloat(slMud.value) > parseFloat(slMus.value)) slMus.value = slMud.value;
+    draw();
+  });
+  btnVue.addEventListener('click', function () {
+    phaseMode = !phaseMode;
+    btnVue.textContent = phaseMode ? 'Vue : portrait de phase' : 'Vue : vitesse ẋ(t)';
+    draw();
+  });
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

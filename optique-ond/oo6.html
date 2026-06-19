@@ -26,7 +26,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <div class="nav-controls">
     <nav class="qnav" aria-label="Navigation entre questions">
       <a class="qnav-btn" href="oo5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
-      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+      <a class="qnav-btn" href="oo7.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
     </nav>
     <div class="qmenu">
       <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
@@ -38,6 +38,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="oo4.html"><span class="qn">OO4</span>Contraste (visibilité)</a>
         <a href="oo5.html"><span class="qn">OO5</span>Réseaux / N ondes / Rayleigh</a>
         <a href="oo6.html" aria-current="page"><span class="qn">OO6</span>Longueur de cohérence temporelle</a>
+        <a href="oo7.html"><span class="qn">OO7</span>Cohérence spatiale</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -94,7 +95,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <span class="step-label">Ordres de grandeur</span>
       <ul>
         <li><b>Lampe blanche</b> : \(\Delta\lambda\sim 300\ \mathrm{nm}\), \(l_c\sim 1\ \mu\mathrm{m}\).</li>
-        <li><b>Doublet du sodium</b> : \(\Delta\lambda=0{,}6\ \mathrm{nm}\), \(l_c\sim 0{,}6\ \mathrm{mm}\).</li>
+        <li><b>Doublet du sodium</b> : \(\Delta\lambda=0{,}6\ \mathrm{nm}\) (écart entre les <em>deux raies</em>) — il ne s'agit pas ici d'une longueur de cohérence mais de la <b>période de battement (brouillage)</b> \(\Lambda = \dfrac{\lambda^2}{\Delta\lambda}\sim 0{,}6\ \mathrm{mm}\), qui mesure la période des annulations de contraste, distincte de la longueur de cohérence d'une raie isolée.</li>
         <li><b>Lampe spectrale (Na filtré)</b> : \(\Delta\lambda\sim 0{,}001\ \mathrm{nm}\), \(l_c\sim 30\ \mathrm{cm}\).</li>
         <li><b>Laser He-Ne multimode</b> : \(\Delta\lambda\sim 10^{-4}\ \mathrm{nm}\), \(l_c\sim 3\ \mathrm{m}\).</li>
         <li><b>Laser He-Ne monomode</b> : \(\Delta\lambda\sim 10^{-9}\ \mathrm{nm}\), \(l_c\sim 300\ \mathrm{km}\).</li>
@@ -107,8 +108,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     </div>
     <div class="demo-step">
       <span class="step-label">Application au doublet du sodium</span>
-      <p class="lead">Le doublet du sodium (\(\lambda_1=589{,}0\ \mathrm{nm}\), \(\lambda_2=589{,}6\ \mathrm{nm}\), soit \(\Delta\lambda=0{,}6\ \mathrm{nm}\)) présente des brouillages périodiques. Leur espacement en épaisseur vaut :</p>
-      <div class="calc-line">\[ \Delta e = \dfrac{\lambda^2}{2\,\Delta\lambda} \approx 0{,}29\ \mathrm{mm} . \]</div>
+      <p class="lead">Le doublet du sodium (\(\lambda_1=589{,}0\ \mathrm{nm}\), \(\lambda_2=589{,}6\ \mathrm{nm}\), soit \(\Delta\lambda=0{,}6\ \mathrm{nm}\)) présente des <b>brouillages périodiques</b> : ici \(\Delta\lambda\) est l'écart entre <em>deux raies fines</em>, le contraste suit un <b>battement</b> (et non une enveloppe décroissante de cohérence). L'espacement en épaisseur entre deux brouillages successifs vaut :</p>
+      <div class="calc-line">\[ \Delta e = \dfrac{\lambda^2}{2\,\Delta\lambda} \approx 0{,}29\ \mathrm{mm} \qquad\Big(\text{période de battement } \Lambda = 2\,\Delta e = \dfrac{\lambda^2}{\Delta\lambda}\Big) . \]</div>
+      <p>À ne pas confondre avec la longueur de cohérence d'une <em>raie isolée</em> (liée à la largeur propre de la raie, et non à l'écart du doublet) : pour le doublet, c'est la <em>période de battement</em> qui gouverne l'alternance net/brouillé.</p>
     </div>
   </section>
 
@@ -166,7 +168,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <nav class="page-nav" aria-label="Question précédente et suivante">
     <a href="oo5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OO5 · Réseaux / N ondes / Rayleigh</span></a>
-    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Optique ondulatoire</span></a>
+    <a class="next" href="oo7.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OO7 · Cohérence spatiale</span></a>
   </nav>
 </main>
 
@@ -239,7 +241,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     ctx.beginPath(); ctx.moveTo(x1, ay - 4); ctx.lineTo(x2, ay - 4); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(x1, ay - 8); ctx.lineTo(x1, ay); ctx.moveTo(x2, ay - 8); ctx.lineTo(x2, ay); ctx.stroke();
     ctx.fillStyle = c.vert; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
-    ctx.fillText('l_c', cx, ay - 10);
+    QC.subText(ctx, 'l', 'c', cx, ay - 10);
 
     vDl.textContent = fr(dl * 1e9, 2) + ' nm';
     vLc.textContent = lc >= 1e-3 ? fr(lc * 1e3, 2) + ' mm' : fr(lc * 1e6, 1) + ' \u00b5m';

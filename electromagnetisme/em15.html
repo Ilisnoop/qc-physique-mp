@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM15 — Théorème de Gauss appliqué · QC Oraux MP*</title>
+<meta name="description" content="Application du théorème de Gauss : champ d'une sphère uniformément chargée (intérieur/extérieur) et d'un fil ou cylindre infini chargé ; choix de la surface de Gauss et profil E(r).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em14.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em16.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+        <a href="em13.html"><span class="qn">EM13</span>Symétries et invariances</a>
+        <a href="em14.html"><span class="qn">EM14</span>Lecture d'une carte de champ</a>
+        <a href="em15.html" aria-current="page"><span class="qn">EM15</span>Théorème de Gauss appliqué</a>
+        <a href="em16.html"><span class="qn">EM16</span>Vecteur de Poynting dans un fil</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 15 · Électromagnétisme</span>
+    <h1>Théorème de Gauss appliqué : sphère chargée et fil / cylindre infini</h1>
+    <p class="q-sources"><span class="src">POLY §2.4</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Appliquer le théorème de Gauss pour déterminer le champ électrostatique d'une sphère uniformément chargée en volume (à l'intérieur et à l'extérieur) puis d'un fil ou cylindre infini chargé. Justifier le choix de la surface de Gauss et tracer le profil \(E(r)\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.1 Électrostatique — Théorème de Gauss</div>
+      <p>Capacités exigibles : énoncer le théorème de Gauss ; choisir une surface de Gauss adaptée aux symétries ; calculer le champ créé par une distribution à symétrie sphérique ou cylindrique. Le préalable d'analyse des symétries et invariances (EM13) est supposé acquis. Conforme au POLY §2.4.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Théorème de Gauss</strong> : le flux du champ \(\vec{E}\) sortant d'une surface fermée \(\Sigma\) vaut \(\displaystyle \Phi = \unicode{x222F}_{\,\Sigma} \vec{E}\cdot\mathrm{d}\vec{S} = \dfrac{Q_{\text{int}}}{\varepsilon_0}\), où \(Q_{\text{int}}\) est la charge intérieure à \(\Sigma\).</li>
+      <li><strong>Choix de la surface de Gauss</strong> : elle doit passer par le point \(M\) où l'on cherche le champ et être composée de portions soit tangentes à \(\vec{E}\) (flux nul), soit perpendiculaires à \(\vec{E}\) avec \(\|\vec{E}\|\) uniforme (flux immédiat).</li>
+      <li><strong>Sphère</strong> : boule de rayon \(R\), charge volumique uniforme \(\rho\), charge totale \(Q = \dfrac{4}{3}\pi R^3 \rho\). Symétrie ⟹ \(\vec{E} = E(r)\,\vec{e_r}\).</li>
+      <li><strong>Fil / cylindre infini</strong> : densité linéique \(\lambda\) (fil) ou volumique \(\rho\) (cylindre de rayon \(R\)). Symétrie ⟹ \(\vec{E} = E(r)\,\vec{e_r}\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Sphère : choix de la surface et flux</span>
+      <p>La symétrie sphérique impose \(\vec{E}(M) = E(r)\,\vec{e_r}\). On prend pour surface de Gauss une sphère \(\Sigma\) de centre \(O\) et de rayon \(r\) passant par \(M\). Comme \(\vec{E}\parallel \mathrm{d}\vec{S}\) et \(E\) uniforme sur \(\Sigma\) :</p>
+      <div class="calc-line">\[ \Phi = \unicode{x222F}_{\,\Sigma} \vec{E}\cdot\mathrm{d}\vec{S} = E(r)\cdot 4\pi r^2 = \dfrac{Q_{\text{int}}}{\varepsilon_0} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Sphère : charge intérieure et champ</span>
+      <p class="lead"><strong>On exprime \(Q_{\text{int}}\)</strong> selon la position de \(M\) :</p>
+      <ul>
+        <li>pour \(r \lt R\) : \(Q_{\text{int}} = \dfrac{4}{3}\pi r^3 \rho\) (la sphère de Gauss n'enferme qu'une partie de la charge) ;</li>
+        <li>pour \(r \gt R\) : \(Q_{\text{int}} = Q = \dfrac{4}{3}\pi R^3 \rho\) (toute la charge est enfermée).</li>
+      </ul>
+      <p class="lead"><strong>On en déduit le champ</strong> :</p>
+      <div class="calc-line">\[ r \lt R : \; E(r) = \dfrac{\rho\,r}{3\varepsilon_0} = \dfrac{Q\,r}{4\pi\varepsilon_0 R^3} , \qquad r \gt R : \; E(r) = \dfrac{Q}{4\pi\varepsilon_0 r^2} . \]</div>
+      <p>Le champ croît linéairement en \(r\) à l'intérieur, est continu en \(r = R\), puis décroît en \(\dfrac{1}{r^2}\) à l'extérieur (champ d'une charge ponctuelle \(Q\) au centre).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Fil / cylindre : choix de la surface et flux</span>
+      <p>La symétrie cylindrique impose \(\vec{E}(M) = E(r)\,\vec{e_r}\). On prend un cylindre de Gauss coaxial, de rayon \(r\) et de hauteur \(h\) arbitraire. Le flux à travers les deux bases est nul (\(\vec{E}\perp \mathrm{d}\vec{S}\)) ; seule la surface latérale contribue :</p>
+      <div class="calc-line">\[ \Phi = E(r)\cdot 2\pi r\, h = \dfrac{Q_{\text{int}}}{\varepsilon_0} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Fil infini : champ en \(\dfrac{1}{r}\)</span>
+      <p>Pour un fil infini de densité linéique \(\lambda\), la charge intérieure vaut \(Q_{\text{int}} = \lambda h\). On obtient :</p>
+      <div class="calc-line">\[ E(r)\cdot 2\pi r\, h = \dfrac{\lambda h}{\varepsilon_0} \quad\Longrightarrow\quad \boxed{\;E(r) = \dfrac{\lambda}{2\pi\varepsilon_0\, r}\;} \]</div>
+      <p>Pour un cylindre plein de rayon \(R\) et de densité volumique \(\rho\) (\(\lambda=\pi R^2\rho\)), à l'intérieur \(Q_{\text{int}}=\pi r^2\rho\,h\), d'où \(E(r) = \dfrac{\rho\,r}{2\varepsilon_0}\) (croissance linéaire pour \(r \lt R\)), puis \(E(r) = \dfrac{\lambda}{2\pi\varepsilon_0\,r}\) à l'extérieur.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — profil \(E(r)\) : sphère et fil</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-er" aria-label="Profil radial du champ électrique : sphère uniformément chargée (linéaire puis 1/r²) et fil infini (1/r), rayon R réglable."></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-R">Rayon de la distribution \(R\) <span class="val" id="v-R">1,00</span></label>
+          <input type="range" id="sl-R" min="0.5" max="2" step="0.02" value="1">
+          <span class="hint">Pour le fil pur (\(R\to 0\)), seul subsiste le profil extérieur en \(\dfrac{1}{r}\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-geo" type="button">Géométrie : sphère</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Intérieur (\(r \lt R\)) : <b id="v-in">E ∝ r</b></span>
+            <span class="ro">Extérieur (\(r \gt R\)) : <b id="v-out">E ∝ 1/r²</b></span>
+            <span class="ro">Maximum en \(r=R\) : <b id="v-max">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Champ radial \(E(r)\). <strong>Sphère</strong> : croissance linéaire \(E=\dfrac{\rho r}{3\varepsilon_0}\) pour \(r \lt R\), maximum en \(R\), puis décroissance en \(\dfrac{1}{r^2}\). <strong>Fil / cylindre</strong> : \(E=\dfrac{\rho r}{2\varepsilon_0}\) pour \(r \lt R\) puis \(\dfrac{1}{r}\). Le champ est continu en \(r = R\) (densité volumique).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>E(r) exact</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>rayon R de la distribution</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Toujours <strong>commencer par les symétries et invariances</strong> (EM13) pour connaître la direction de \(\vec{E}\) et ses variables avant d'écrire le flux.</li>
+        <li>La surface de Gauss doit <strong>passer par le point \(M\)</strong> et exploiter la symétrie : sphère pour la symétrie sphérique, cylindre coaxial pour la symétrie cylindrique.</li>
+        <li>Sphère : \(E\propto r\) à l'intérieur, \(E\propto \dfrac{1}{r^2}\) à l'extérieur ; le champ extérieur est celui d'une charge ponctuelle \(Q\) au centre.</li>
+        <li>Fil infini : \(E = \dfrac{\lambda}{2\pi\varepsilon_0 r}\) en \(\dfrac{1}{r}\) (et non \(\dfrac{1}{r^2}\)) : la dimensionnalité change l'exposant.</li>
+        <li>Vérifier la <strong>continuité</strong> du champ en \(r=R\) pour une densité volumique (discontinuité seulement pour une charge surfacique).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, §4.1 (théorème de Gauss et applications). Conforme au POLY §2.4 (symétries sphérique et cylindrique).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em14.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM14 · Lecture d'une carte de champ</span></a>
+    <a class="next" href="em16.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM16 · Vecteur de Poynting dans un fil</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-er');
+  const slR = document.getElementById('sl-R');
+  const vR = document.getElementById('v-R'), vIn = document.getElementById('v-in'), vOut = document.getElementById('v-out'), vMax = document.getElementById('v-max');
+  const btnGeo = document.getElementById('btn-geo');
+  let sphere = true;   // true = sphère (1/r²), false = fil (1/r)
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // champ normalisé : continuité en r=R, max = 1 en R
+  function Efield(r, R) {
+    if (r <= R) return r / R;                       // intérieur linéaire, =1 en R
+    return sphere ? (R * R) / (r * r) : (R / r);     // extérieur 1/r² (sphère) ou 1/r (fil)
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const R = parseFloat(slR.value);
+    const rmax = 4.0, Emax = 1.12;
+    const pad = { l: 44, r: 16, t: 18, b: 30 };
+    const PX = r => pad.l + r / rmax * (w - pad.l - pad.r);
+    const PY = E => h - pad.b - E / Emax * (h - pad.t - pad.b);
+
+    // grille
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+    for (let r = 0; r <= rmax; r += 1) { ctx.moveTo(PX(r), pad.t); ctx.lineTo(PX(r), h - pad.b); }
+    for (let E = 0; E <= 1; E += 0.25) { ctx.moveTo(pad.l, PY(E)); ctx.lineTo(w - pad.r, PY(E)); }
+    ctx.stroke();
+    // axes
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.4; ctx.beginPath();
+    ctx.moveTo(pad.l, h - pad.b); ctx.lineTo(w - pad.r, h - pad.b);
+    ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, h - pad.b); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace';
+    ctx.textAlign = 'right'; ctx.fillText('r', w - pad.r, h - pad.b - 6);
+    ctx.textAlign = 'left'; QC.subText(ctx, 'E', 'r', pad.l + 4, pad.t + 12, ' (r)');
+    // étiquettes axe r
+    ctx.textAlign = 'center';
+    for (let r = 1; r <= rmax; r++) ctx.fillText(r + '', PX(r), h - pad.b + 14);
+
+    // marqueur R (orange pointillé)
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.4; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(PX(R), pad.t); ctx.lineTo(PX(R), h - pad.b); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.orange; ctx.textAlign = 'center'; ctx.fillText('R', PX(R), pad.t + 10);
+
+    // courbe E(r)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    let started = false;
+    for (let i = 0; i <= 500; i++) {
+      const r = 0.001 + rmax * i / 500;
+      const E = Math.min(Emax, Efield(r, R));
+      const X = PX(r), Y = PY(E);
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+    }
+    ctx.stroke();
+
+    vR.textContent = fr(R, 2);
+    vIn.textContent = 'E ∝ r';
+    vOut.textContent = sphere ? 'E ∝ 1/r²' : 'E ∝ 1/r';
+    vMax.textContent = 'r = ' + fr(R, 2);
+  }
+  slR.addEventListener('input', draw);
+  btnGeo.addEventListener('click', function () {
+    sphere = !sphere;
+    btnGeo.textContent = 'Géométrie : ' + (sphere ? 'sphère' : 'fil / cylindre');
+    draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

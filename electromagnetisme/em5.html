@@ -44,6 +44,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
         <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
         <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+        <a href="em13.html"><span class="qn">EM13</span>Symétries et invariances</a>
+        <a href="em14.html"><span class="qn">EM14</span>Lecture d'une carte de champ</a>
+        <a href="em15.html"><span class="qn">EM15</span>Théorème de Gauss appliqué</a>
+        <a href="em16.html"><span class="qn">EM16</span>Vecteur de Poynting dans un fil</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -97,7 +101,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p class="lead"><strong>Résultante des forces.</strong> Dans un champ extérieur uniforme \(\vec{E}_{\mathrm{ext}}\), les forces sur \(+q\) et \(-q\) sont opposées et se compensent :</p>
       <div class="calc-line">\[ \vec{F} = q\,\vec{E}_{\mathrm{ext}} + (-q)\,\vec{E}_{\mathrm{ext}} = \vec{0} . \]</div>
       <p class="lead"><strong>Moment du couple.</strong> En revanche, il subsiste un couple qui tend à aligner le dipôle sur le champ :</p>
-      <div class="calc-line">\[ \vec{\Gamma} = \vec{p}\times\vec{E}_{\mathrm{ext}} . \]</div>
+      <div class="calc-line">\[ \vec{\Gamma} = \vec{p}\wedge\vec{E}_{\mathrm{ext}} . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">4 — Énergie potentielle d'interaction</span>
@@ -119,7 +123,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-th">Orientation du dipôle \(\alpha\) <span class="val" id="v-th">0°</span></label>
           <input type="range" id="sl-th" min="0" max="180" step="1" value="0">
-          <span class="hint">Lignes de \(\vec{E}\) issues de \(+q\), convergeant vers \(-q\). Le couple \(\vec{\Gamma}=\vec{p}\times\vec{E}_{\mathrm{ext}}\) ramène \(\vec{p}\) vers \(\vec{E}_{\mathrm{ext}}\).</span>
+          <span class="hint">Lignes de \(\vec{E}\) issues de \(+q\), convergeant vers \(-q\). Le couple \(\vec{\Gamma}=\vec{p}\wedge\vec{E}_{\mathrm{ext}}\) ramène \(\vec{p}\) vers \(\vec{E}_{\mathrm{ext}}\).</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Relâcher dans \(\vec{E}_{\mathrm{ext}}\)</button>
           </div>
@@ -149,7 +153,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <ul>
         <li>Bien préciser \(\vec{p} = q\vec{\ell}\) (de \(-q\) vers \(+q\), et non l'inverse).</li>
         <li>Le potentiel décroît comme \(r^{-2}\) (contre \(r^{-1}\) pour une charge seule) : le dipôle est neutre, ses effets lointains sont plus faibles.</li>
-        <li>Le couple \(\vec{\Gamma} = \vec{p}\times\vec{E}_{\mathrm{ext}}\) s'annule pour \(\vec{p}\parallel\vec{E}_{\mathrm{ext}}\) : deux positions d'équilibre, une seule stable (\(E_p\) minimale).</li>
+        <li>Le couple \(\vec{\Gamma} = \vec{p}\wedge\vec{E}_{\mathrm{ext}}\) s'annule pour \(\vec{p}\parallel\vec{E}_{\mathrm{ext}}\) : deux positions d'équilibre, une seule stable (\(E_p\) minimale).</li>
       </ul>
     </div>
   </section>
@@ -223,7 +227,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       ctx.beginPath(); ctx.moveTo(x, h-14); ctx.lineTo(x, 14);
       ctx.moveTo(x,14); ctx.lineTo(x-4,24); ctx.moveTo(x,14); ctx.lineTo(x+4,24); ctx.stroke(); }
     ctx.globalAlpha=1; ctx.fillStyle=c.vert; ctx.font='12px IBM Plex Mono, monospace'; ctx.textAlign='left';
-    ctx.fillText('E_ext', w*0.10+6, 36);
+    ctx.fillText('Eₑₓₜ', w*0.10+6, 36);
     // dipôle (angle ang mesuré depuis la verticale E_ext)
     const a = -Math.PI/2 + ang; // 0 => aligné avec E_ext (vers le haut)
     fieldLines(ctx, cx, cy, 46, a, c.orange);

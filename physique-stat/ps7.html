@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS7 — Capacité thermique d'un gaz : dénombrement des degrés de liberté · QC Oraux MP*</title>
+<meta name="description" content="Capacité thermique d'un gaz par dénombrement des degrés de liberté quadratiques : monoatomique 3/2 R, diatomique 5/2 R, triatomique. Théorème d'équipartition et paliers translation / rotation / vibration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Physique statistique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ps6.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ps1.html"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
+        <a href="ps2.html"><span class="qn">PS2</span>Système à deux niveaux</a>
+        <a href="ps3.html"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+        <a href="ps4.html"><span class="qn">PS4</span>Distribution de Maxwell des vitesses</a>
+        <a href="ps5.html"><span class="qn">PS5</span>Niveaux dégénérés et fonction de partition</a>
+        <a href="ps6.html"><span class="qn">PS6</span>Fluctuations relatives d'énergie</a>
+        <a href="ps7.html" aria-current="page"><span class="qn">PS7</span>Capacité thermique et degrés de liberté</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 7 · Physique statistique</span>
+    <h1>Capacité thermique d'un gaz par dénombrement des degrés de liberté : monoatomique, diatomique, triatomique</h1>
+    <p class="q-sources"><span class="src">TDPM2 · PM2202</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>À partir du théorème d'équipartition, dénombrer les degrés de liberté quadratiques d'une molécule et en déduire la capacité thermique molaire à volume constant \(C_{V,m}\) : gaz monoatomique \(\dfrac{3}{2}R\), diatomique \(\dfrac{5}{2}R\), et gaz triatomique selon le modèle mécanique retenu.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 7 §7.3 — exercice PM2202 (gaz triatomiques)</div>
+      <ul>
+        <li>Théorème d'équipartition : exploiter la contribution \(\dfrac{k_BT}{2}\) par degré de liberté énergétique quadratique indépendant.</li>
+        <li>Capacité thermique molaire des gaz classiques dilués monoatomiques et diatomiques.</li>
+        <li>Dénombrer les degrés de liberté énergétiques quadratiques indépendants et en déduire la capacité thermique molaire d'un système.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Degré de liberté quadratique</strong> : variable \(q\) (ou \(p\)) dont l'énergie s'écrit sous la forme \(\alpha q^2\). Chacun contribue \(\dfrac{1}{2}k_BT\) à l'énergie moyenne par molécule (équipartition, cf. PS3).</li>
+      <li><strong>Capacité thermique molaire à volume constant</strong> : \(C_{V,m}=\dfrac{\mathrm{d}U_m}{\mathrm{d}T}\). Chaque degré quadratique augmente \(C_{V,m}\) de \(\dfrac{1}{2}R\).</li>
+      <li><strong>Constante des gaz parfaits</strong> : \(R=N_A k_B\approx 8{,}314\ \mathrm{J\,mol^{-1}\,K^{-1}}\).</li>
+      <li><strong>Température caractéristique</strong> d'un mouvement : \(\Theta=\dfrac{\Delta\mathcal{E}}{k_B}\) ; un mode est <em>actif</em> si \(T\gg\Theta\), <em>gelé</em> si \(T\ll\Theta\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Règle de dénombrement</span>
+      <p class="lead"><strong>On compte les degrés quadratiques actifs</strong> \(s\) d'une molécule, puis on applique l'équipartition pour l'énergie interne molaire et on dérive :</p>
+      <div class="calc-line">\[ U_m = s\times\frac{1}{2}RT , \qquad C_{V,m} = \frac{\mathrm{d}U_m}{\mathrm{d}T} = \frac{s}{2}R . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Gaz monoatomique (\(s=3\))</span>
+      <p>Une molécule monoatomique est un point matériel : 3 degrés de translation quadratiques \(\dfrac{1}{2}m(\dot x^2+\dot y^2+\dot z^2)\), aucune rotation ni vibration utile.</p>
+      <div class="calc-line">\[ C_{V,m} = \frac{3}{2}R \approx 12{,}5\ \mathrm{J\,mol^{-1}\,K^{-1}} . \]</div>
+      <p>Accord expérimental : hélium \(12{,}47\), argon \(12{,}6\ \mathrm{J\,mol^{-1}\,K^{-1}}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Gaz diatomique (\(s=5\) à température usuelle)</span>
+      <p>Molécule diatomique rigide : 3 translations + 2 rotations (autour des deux axes perpendiculaires à l'axe de la molécule). La rotation propre autour de l'axe de la molécule n'est pas comptée (\(\Theta\) trop grand).</p>
+      <div class="calc-line">\[ C_{V,m} = \frac{5}{2}R \approx 20{,}8\ \mathrm{J\,mol^{-1}\,K^{-1}} , \qquad \gamma = \frac{C_P}{C_V} = \frac{7}{5} = 1{,}4 . \]</div>
+      <p class="lead"><strong>À haute température</strong>, le mode de vibration (1 degré cinétique + 1 degré potentiel = 2 degrés quadratiques) s'active, portant la molécule à \(s=7\) :</p>
+      <div class="calc-line">\[ C_{V,m} = \frac{7}{2}R . \]</div>
+      <p>Accord expérimental à température usuelle : dihydrogène \(20{,}79\), diazote \(20{,}8\ \mathrm{J\,mol^{-1}\,K^{-1}}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Gaz triatomique (selon le modèle mécanique)</span>
+      <p>Pour un gaz triatomique, le dénombrement dépend de la géométrie (alignée ou coudée) et de la rigidité (modèles de l'exercice PM2202). On distingue toujours 3 translations, puis les rotations et vibrations.</p>
+      <ul>
+        <li><strong>Molécule rigide coudée</strong> (ex. \(\mathrm{H_2O}\)) : 3 translations + 3 rotations \(\Rightarrow s=6\), soit \(C_{V,m}=3R\).</li>
+        <li><strong>Molécule rigide linéaire</strong> (ex. \(\mathrm{CO_2}\) modèle rigide) : 3 translations + 2 rotations \(\Rightarrow s=5\), soit \(C_{V,m}=\dfrac{5}{2}R\) (l'axe de la molécule ne porte pas de rotation utile).</li>
+        <li><strong>Molécule déformable</strong> : chaque liaison vibrante ajoute \(2\) degrés quadratiques (\(+R\) par mode actif). Un modèle linéaire avec 2 modes de vibration actifs donne \(s = 5+4 = 9\), soit \(C_{V,m}=\dfrac{9}{2}R\).</li>
+      </ul>
+      <p class="lead"><strong>Méthode générale</strong> : on additionne translation, rotation et (si \(T\gg\Theta_{\rm vib}\)) vibration, chaque degré quadratique apportant \(\dfrac{1}{2}R\) :</p>
+      <div class="calc-line">\[ C_{V,m} = \frac{s_{\rm trans}+s_{\rm rot}+s_{\rm vib}}{2}\,R . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Gel des degrés et paliers en température</span>
+      <p>L'équipartition suppose tous les degrés actifs (\(T\gg\Theta\)). En réalité chaque mode s'active progressivement : \(\Theta_{\rm trans}\) est minuscule (translation toujours active), \(\Theta_{\rm rot}\sim\) quelques K à \(100\ \mathrm{K}\), \(\Theta_{\rm vib}\sim 500\) à \(6000\ \mathrm{K}\). D'où des <strong>paliers</strong> successifs de \(C_{V,m}\) lorsque \(T\) augmente : translation seule, puis +rotation, puis +vibration. C'est l'allure observée pour le diazote (\(\Theta_{\rm rot}=2{,}9\ \mathrm{K}\), \(\Theta_{\rm vib}=3395\ \mathrm{K}\)).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — \(C_{V,m}(T)\) en paliers</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-cv" aria-label="Capacité thermique molaire en paliers en fonction de la température, activation des modes translation rotation vibration, type de molécule sélectionnable, température réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-T">Température \(T\) <span class="val" id="v-T">300 K</span></label>
+          <input type="range" id="sl-T" min="10" max="6000" step="10" value="300">
+          <span class="hint" id="hint-T">Le point suit l'activation progressive des modes : translation → +rotation → +vibration.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-mol" type="button">Molécule : diatomique</button>
+            <button class="btn primary" id="btn-anim" type="button">Animer la température</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(C_{V,m}\) = <b id="v-cv">2,50 R</b></span>
+            <span class="ro">soit <b id="v-cvj">20,8</b> J·mol⁻¹·K⁻¹</span>
+            <span class="ro">Degrés actifs : <b id="v-dof">5 (3 trans. + 2 rot.)</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Capacité thermique molaire \(C_{V,m}/R\) en paliers (courbe bleue) : activation successive translation (\(\dfrac{3}{2}R\)), rotation (\(\dfrac{5}{2}R\) pour un diatomique), vibration (\(\dfrac{7}{2}R\)) selon que \(T\) dépasse les températures caractéristiques \(\Theta_{\rm rot}\) et \(\Theta_{\rm vib}\). Le gaz monoatomique (trait rouge) reste à \(\dfrac{3}{2}R\) à toute température.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(C_{V,m}\) (molécule choisie)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(\dfrac{3}{2}R\) (monoatomique)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>point courant</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Règle d'or : \(C_{V,m}=\dfrac{s}{2}R\) où \(s\) est le nombre de degrés de liberté quadratiques <em>actifs</em>.</li>
+        <li>Dénombrer soigneusement : monoatomique \(s=3\) ; diatomique \(s=5\) (usuel) ou \(7\) (vibration active) ; triatomique \(s=6\) (rigide coudé) ou \(5\) (rigide linéaire), plus \(+2\) par vibration active.</li>
+        <li>Une vibration compte <strong>2</strong> degrés quadratiques (cinétique + potentiel), pas un seul.</li>
+        <li>La rotation autour de l'axe d'une molécule linéaire n'est pas comptée (moment d'inertie trop faible \(\Rightarrow\Theta\) très grand).</li>
+        <li>Justifier les paliers par la comparaison \(T\) vs \(\Theta=\dfrac{\Delta\mathcal{E}}{k_B}\) : modes gelés si \(T\ll\Theta\), actifs si \(T\gg\Theta\).</li>
+        <li>Ordres de grandeur : \(\dfrac{3}{2}R\approx12{,}5\), \(\dfrac{5}{2}R\approx20{,}8\), \(\dfrac{7}{2}R\approx29{,}1\ \mathrm{J\,mol^{-1}\,K^{-1}}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Le dénombrement des degrés de liberté quadratiques et l'expression \(C_{V,m}=\dfrac{s}{2}R\) sont au programme MP (§7.3, capacité exigible explicite). Le cas triatomique fait l'objet de l'exercice PM2202. Le calcul quantique détaillé de l'activation progressive des modes (au-delà de la comparaison \(T\) vs \(\Theta\)) est hors-programme ; seul le résultat qualitatif des paliers est attendu.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ps6.html"><span class="pn-dir">← Précédent</span><span class="pn-title">PS6 · Fluctuations relatives d'énergie</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Physique statistique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 9 : Physique statistique (§7).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-cv');
+  const slT = document.getElementById('sl-T');
+  const vT = document.getElementById('v-T'), vCv = document.getElementById('v-cv'), vCvj = document.getElementById('v-cvj'), vDof = document.getElementById('v-dof');
+  const btnMol = document.getElementById('btn-mol'), btnAnim = document.getElementById('btn-anim');
+  const R = 8.314;
+  // 'mono' | 'di' | 'tri' (linéaire déformable, modèle pédagogique)
+  let mol = 'di', animating = false, ph = 0;
+  const T_ROT = 60, T_VIB = 1600; // seuils schématiques d'activation (échelle 10..6000 K)
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // Cv/R en escalier lissé par tanh
+  function cvOf(T, kind) {
+    if (kind === 'mono') return 1.5;
+    const rot = 0.5 * (1 + Math.tanh((T - T_ROT) / 18));   // +1 (deux demis) translation→rotation
+    if (kind === 'di') {
+      const vib = 0.5 * (1 + Math.tanh((T - T_VIB) / 260)); // +1 → vibration
+      return 1.5 + rot + vib;            // 1.5 → 2.5 → 3.5
+    }
+    // triatomique linéaire déformable : 3 trans + 2 rot + 2 vib actives = 9/2
+    const vib = 2 * 0.5 * (1 + Math.tanh((T - T_VIB) / 320)); // +2 (deux modes)
+    return 1.5 + rot + vib;              // 1.5 → 2.5 → 4.5
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const T = parseFloat(slT.value);
+    const Tmax = 6000;
+
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: Tmax, ymin: 1, ymax: 5.0, pad: { l: 18, r: 14, t: 18, b: 30 } });
+    plot.grid(c, { xticks: 6, yticks: 8 });
+    plot.axes(c, { xlabel: 'T (K)', ylabel: 'Cv,m / R' });
+
+    // paliers repères
+    ctx.font = '10px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    [[1.5, '3/2 R'], [2.5, '5/2 R'], [3.5, '7/2 R'], [4.5, '9/2 R']].forEach(function (p) {
+      const y = plot.py(p[0]);
+      ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.setLineDash([2, 4]);
+      ctx.beginPath(); ctx.moveTo(plot.px(0), y); ctx.lineTo(plot.px(Tmax), y); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = c.muted; ctx.fillText(p[1], plot.px(Tmax) - 2, y - 3);
+    });
+
+    // monoatomique de référence (rouge)
+    plot.curve(() => 1.5, c.rouge, { lw: 1.8, dash: [6, 4], N: 2 });
+    // molécule choisie (bleu)
+    plot.curve(t => cvOf(t, mol), c.bleu, { lw: 2.6, N: 400 });
+
+    // point courant
+    const cvv = cvOf(T, mol);
+    const cx = plot.px(T), cy = plot.py(cvv), y0 = plot.py(1);
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(cx, cy, 4.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(cx, y0); ctx.lineTo(cx, cy); ctx.stroke(); ctx.setLineDash([]);
+
+    vT.textContent = fr(T, 0) + ' K';
+    vCv.textContent = fr(cvv, 2) + ' R';
+    vCvj.textContent = fr(cvv * R, 1);
+    if (mol === 'mono') vDof.textContent = '3 (translation)';
+    else if (T < T_ROT - 10) vDof.textContent = '3 (translation)';
+    else if (T < T_VIB - 200) vDof.textContent = '5 (3 trans. + 2 rot.)';
+    else vDof.textContent = (mol === 'di') ? '7 (3 trans. + 2 rot. + 2 vib.)' : '9 (3 trans. + 2 rot. + 4 vib.)';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      ph += dt * 0.5;
+      const T = 10 + 5990 * (0.5 - 0.5 * Math.cos(ph));
+      slT.value = Math.round(T / 10) * 10;
+      draw();
+    }
+  });
+  slT.addEventListener('input', draw);
+  btnMol.addEventListener('click', function () {
+    mol = (mol === 'di') ? 'tri' : (mol === 'tri') ? 'mono' : 'di';
+    const lab = { mono: 'monoatomique', di: 'diatomique', tri: 'triatomique' };
+    btnMol.textContent = 'Molécule : ' + lab[mol];
+    draw();
+  });
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la température';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

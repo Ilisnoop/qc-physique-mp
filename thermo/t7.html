@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T7 — Équilibre liquide-vapeur · QC Oraux MP*</title>
+<meta name="description" content="Équilibre liquide-vapeur : vapeur sèche et saturante, pression de vapeur saturante p*(T), titre massique en vapeur, diagramme de Clapeyron (isothermes d'Andrews) et théorème des moments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Thermodynamique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="t6.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="t8.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="t1.html"><span class="qn">T1</span>Machines dithermes &amp; Carnot</a>
+        <a href="t2.html"><span class="qn">T2</span>Second principe &amp; entropie du GP</a>
+        <a href="t3.html"><span class="qn">T3</span>Premier principe industriel · Joule-Kelvin</a>
+        <a href="t4.html"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
+        <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
+        <a href="t6.html"><span class="qn">T6</span>Changement d'état du corps pur</a>
+        <a href="t7.html" aria-current="page"><span class="qn">T7</span>Équilibre liquide-vapeur · titre</a>
+        <a href="t8.html"><span class="qn">T8</span>Air humide · point de rosée</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 7 · Thermodynamique</span>
+    <h1>Équilibre liquide-vapeur : pression de vapeur saturante, titre, diagramme de Clapeyron</h1>
+    <p class="q-sources"><span class="src">POLY §2.1</span><span class="src">§2.3</span><span class="src">T2a01</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Distinguer vapeur sèche et vapeur saturante ; définir la pression de vapeur saturante \(p^*(T)\) et le titre massique en vapeur. Lire le diagramme de Clapeyron \((p, v)\) d'un corps pur (isothermes d'Andrews) et déterminer le titre par le théorème (règle) des moments.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Changements d'état du corps pur (équilibre liquide-vapeur)</div>
+      <p><em>Notions et contenus :</em> équilibre liquide-vapeur ; pression de vapeur saturante ; diagramme de Clapeyron \((p, v)\) ; titres massiques ; théorème des moments.</p>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Distinguer une vapeur sèche d'une vapeur saturante ; déterminer la nature d'une vapeur à partir des données.</li>
+        <li>Positionner un état sur le diagramme de Clapeyron ; identifier les domaines monophasiques et diphasique.</li>
+        <li>Calculer un titre massique en vapeur par le théorème des moments.</li>
+      </ul>
+      <p>Niveau <strong>MP</strong>. Prolonge le diagramme \((p, T)\) de la question T6.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Vapeur sèche</strong> : gaz <em>sans</em> présence du liquide associé.</li>
+      <li><strong>Vapeur saturante</strong> (ou humide) : gaz <em>en équilibre</em> avec le liquide associé.</li>
+      <li><strong>Pression de vapeur saturante</strong> \(p^*(T)\) (aussi notée \(p_s\) ou \(p_{\text{sat}}\)) : pression de l'équilibre liquide-vapeur à la température \(T\). On admet que \(p^*\) <em>croît</em> avec \(T\).</li>
+      <li>\(v\) : volume massique ; \(v_L\) (resp. \(v_V\)) : volume massique du liquide saturant (resp. de la vapeur saturante).</li>
+      <li><strong>Titres massiques</strong> : \(w_V = \dfrac{m_V}{m}\) (titre en vapeur), \(w_L = \dfrac{m_L}{m}\) (titre en liquide), avec \(w_V + w_L = 1\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Pression de vapeur saturante et nature de la vapeur</span>
+      <p>Dans une enceinte fermée, le liquide et sa vapeur coexistent en équilibre à la pression \(p = p^*(T)\). Pour déterminer si une vapeur donnée est sèche ou saturante, on raisonne par hypothèse.</p>
+      <p class="lead"><strong>Méthode — hypothèse « vapeur sèche »</strong> : on suppose la vapeur sèche et parfaite, on calcule sa pression \(p\), puis on compare à \(p^*(T)\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          p < p^*(T) \;&\Longrightarrow\; \text{hypothèse vérifiée : vapeur sèche, pas de liquide ;} \\[4pt]
+          p \geq p^*(T) \;&\Longrightarrow\; \text{hypothèse fausse : } p = p^*(T) \text{ et il y a du liquide.}
+        \end{aligned}
+      \]</div>
+      <p>La pression partielle d'une vapeur est ainsi <em>plafonnée</em> par \(p^*(T)\) : tout excès se condense.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Diagramme de Clapeyron : isothermes d'Andrews</span>
+      <p>On trace un réseau d'isothermes dans le plan \((p, v)\) (isothermes d'Andrews). Leur allure délimite le domaine diphasique.</p>
+      <ul>
+        <li>\(T < T_C\) : présence d'un <strong>palier de liquéfaction</strong> (changement d'état à \(p = p^*(T)\) constant) ;</li>
+        <li>\(T = T_C\) : isotherme critique (point d'inflexion à tangente horizontale au point critique \(C\)) ;</li>
+        <li>\(T > T_C\) : pas de palier, fluide supercritique.</li>
+      </ul>
+      <p>Sur une isotherme \(T < T_C\), en partant des grands volumes : \(B\) (vapeur sèche) \(\to V\) (dernière goutte de liquide disparue, début de palier côté vapeur) \(\to L\) (première bulle de vapeur, côté liquide) \(\to A\) (liquide seul). Le lieu des points \(L\) est la <strong>courbe d'ébullition</strong>, celui des points \(V\) la <strong>courbe de rosée</strong> ; leur réunion est la <strong>courbe de saturation</strong>, en cloche, sous le point critique \(C\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Titre en vapeur et théorème des moments</span>
+      <p class="lead"><strong>Étape A — On écrit l'additivité des volumes.</strong> Pour un point \(M\) du palier, de volume massique \(v\), le mélange occupe la somme des volumes des deux phases :</p>
+      <div class="calc-line">\[ m\,v = m_V\,v_V + m_L\,v_L \qquad \Longrightarrow \qquad v = w_V\,v_V + w_L\,v_L . \]</div>
+      <p class="lead"><strong>Étape B — On utilise \(w_L = 1 - w_V\)</strong> et on isole le titre en vapeur :</p>
+      <div class="calc-line">\[ v = w_V\,v_V + (1 - w_V)\,v_L \qquad \Longrightarrow \qquad w_V = \dfrac{v - v_L}{v_V - v_L} , \quad w_L = \dfrac{v_V - v}{v_V - v_L} . \]</div>
+      <p class="lead"><strong>Étape C — Lecture graphique (règle des moments).</strong> Sur le palier, \(M\) est entre \(L\) (côté liquide) et \(V\) (côté vapeur). Les titres sont les rapports de longueurs des segments :</p>
+      <div class="calc-line">\[ \dfrac{\overline{LM}}{\overline{MV}} = \dfrac{w_V}{w_L} . \]</div>
+      <p>Cohérence : si \(M\) est voisin de \(V\), alors \(v \simeq v_V\), donc \(w_V \simeq 1\) (presque toute vapeur) ; voisin de \(L\), \(w_V \simeq 0\) (presque tout liquide).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — isothermes d'Andrews, palier et titre</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-andrews" aria-label="Diagramme de Clapeyron pression-volume : courbe de saturation en cloche, isotherme avec palier de changement d'état, point M sur le palier dont le titre en vapeur se lit par la règle des moments"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-t">Température de l'isotherme \(\dfrac{T}{T_C}\) <span class="val" id="v-t">0,85</span></label>
+          <input type="range" id="sl-t" min="0.55" max="1.05" step="0.01" value="0.85">
+          <label for="sl-m" style="margin-top:.6rem">Position du point \(M\) sur le palier <span class="val" id="v-pos">50 %</span></label>
+          <input type="range" id="sl-m" min="0" max="100" step="1" value="50">
+          <span class="hint">Le point \(M\) ne se déplace que dans le domaine diphasique (\(T < T_C\)).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le balayage de M</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Pression du palier \(p^*(T)\) = <b id="v-ps">—</b></span>
+            <span class="ro">Titre en vapeur \(w_V\) = <b id="v-wv">—</b></span>
+            <span class="ro">Titre en liquide \(w_L\) = <b id="v-wl">—</b></span>
+            <span class="ro" id="ro-state">État = <b id="v-state">diphasique</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Diagramme de Clapeyron \((p, v)\). La <em>courbe de saturation</em> (rouge, en cloche) réunit la courbe d'ébullition (points \(L\)) et la courbe de rosée (points \(V\)), avec le point critique \(C\) au sommet. L'isotherme d'Andrews (bleu) présente un <em>palier horizontal</em> à \(p = p^*(T)\) tant que \(T < T_C\). Le titre en vapeur du point \(M\) se lit par le <em>théorème des moments</em> \(w_V = (v - v_L)/(v_V - v_L)\) ; graphiquement \(\overline{LM}/\overline{MV} = w_V/w_L\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>isotherme d'Andrews</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>courbe de saturation</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>point \(M\) (titre \(w_V\))</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Vapeur saturante \(\Leftrightarrow\) présence du liquide \(\Leftrightarrow\) \(p = p^*(T)\). Vapeur sèche \(\Leftrightarrow\) pas de liquide \(\Leftrightarrow\) \(p < p^*(T)\).</li>
+        <li>Sur le palier, \(p\) et \(T\) sont liées par \(p = p^*(T)\) : c'est un système monovariant (un seul paramètre intensif libre).</li>
+        <li>Le théorème des moments donne \(w_V = \dfrac{v - v_L}{v_V - v_L}\) : le titre se lit comme le « bras de levier » depuis le côté <em>liquide</em> \(L\).</li>
+        <li>Le palier rétrécit quand \(T \to T_C\) et disparaît au point critique (\(v_L = v_V\)).</li>
+        <li>Le diagramme \((p, v)\) et le diagramme \((p, T)\) sont deux projections complémentaires de la même surface d'état.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MP</strong>. Les définitions (vapeur sèche/saturante, \(p^*(T)\)), la lecture du diagramme de Clapeyron et le théorème des moments sont exigibles. L'application T2a01 (vapeur sèche ou saturante) illustre la méthode par hypothèse.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="t6.html"><span class="pn-dir">← Précédent</span><span class="pn-title">T6 · Changement d'état du corps pur</span></a>
+    <a class="next" href="t8.html"><span class="pn-dir">Suivant →</span><span class="pn-title">T8 · Air humide · point de rosée</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Thermodynamique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-andrews');
+  const slT = document.getElementById('sl-t'), vT = document.getElementById('v-t');
+  const slM = document.getElementById('sl-m'), vPos = document.getElementById('v-pos');
+  const vPs = document.getElementById('v-ps'), vWv = document.getElementById('v-wv');
+  const vWl = document.getElementById('v-wl'), vState = document.getElementById('v-state');
+  const btn = document.getElementById('btn-anim');
+  let animating = false, mpos = 0.5;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // Modèle réduit (qualitatif, sans valeurs physiques) : v en abscisse, p en ordonnée.
+  // Courbe de saturation : cloche symétrique en log autour de vc, sommet au point critique.
+  const vc = 1.0;                       // volume critique réduit
+  const VMIN = 0.25, VMAX = 4.0;        // bornes en v
+  // pression de saturation réduite croissante avec T : p*(Tr) = Tr^3 (qualitatif, croissant)
+  function psat(Tr) { return Math.pow(Tr, 3); }
+  // demi-largeur de la cloche en log(v) pour une température Tr<1 : s'annule à Tr=1
+  function halfWidth(Tr) { return 1.15 * Math.sqrt(Math.max(0, 1 - Tr)); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 380);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const Tr = parseFloat(slT.value);
+    const diph = Tr < 1 - 1e-3;
+
+    // repère : x = log(v), y = p
+    const Lx = v => Math.log(v);
+    const xmin = Lx(VMIN), xmax = Lx(VMAX);
+    const ymin = 0, ymax = 1.35;
+    const P = QC.makePlot(ctx, w, h, { xmin: xmin, xmax: xmax, ymin: ymin, ymax: ymax, pad: { l: 50, r: 16, t: 16, b: 34 } });
+    P.grid(c, { xticks: 5, yticks: 5 });
+    P.axes(c, { xlabel: 'v (éch. log)', ylabel: 'p' });
+
+    // courbe de saturation (rouge) : pour chaque Tr' de 0 à 1, points L et V à p*(Tr')
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    let started = false;
+    // branche liquide (gauche) : Tr' croissant de 0.4 à 1
+    for (let i = 0; i <= 120; i++) {
+      const tr = 0.4 + (1 - 0.4) * i / 120;
+      const hw = halfWidth(tr);
+      const x = Lx(vc) - hw, y = psat(tr);
+      const X = P.px(x), Y = P.py(y);
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+    }
+    // branche vapeur (droite) : Tr' décroissant de 1 à 0.4
+    for (let i = 0; i <= 120; i++) {
+      const tr = 1 - (1 - 0.4) * i / 120;
+      const hw = halfWidth(tr);
+      const x = Lx(vc) + hw, y = psat(tr);
+      ctx.lineTo(P.px(x), P.py(y));
+    }
+    ctx.stroke();
+    // point critique C
+    ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(P.px(Lx(vc)), P.py(psat(1)), 4.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('C', P.px(Lx(vc)) + 6, P.py(psat(1)) - 4);
+
+    // isotherme d'Andrews (bleu)
+    const ps = psat(Tr);
+    const hw = halfWidth(Tr);
+    const xL = Lx(vc) - hw, xV = Lx(vc) + hw;       // bornes du palier en log(v)
+    const vL = Math.exp(xL), vV = Math.exp(xV);
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.6; ctx.beginPath();
+    started = false;
+    for (let i = 0; i <= 260; i++) {
+      const x = xmin + (xmax - xmin) * i / 260;
+      const v = Math.exp(x);
+      let p;
+      if (diph && x >= xL && x <= xV) {
+        p = ps;                                       // palier horizontal
+      } else {
+        // branche monophasique : hyperbole douce décalée pour passer par le palier
+        // p ~ ps * (vref/v)^gamma raccordée ; on prend une loi simple décroissante
+        if (!diph) { p = ps * Math.pow(vc / v, 1.25); }
+        else if (x < xL) { p = ps + (ps) * 1.6 * (xL - x); }   // liquide : p monte vite
+        else { p = ps * Math.pow(vV / v, 1.1); }               // vapeur : p descend
+      }
+      p = Math.max(ymin, Math.min(ymax, p));
+      const X = P.px(x), Y = P.py(p);
+      started ? ctx.lineTo(X, Y) : (ctx.moveTo(X, Y), started = true);
+    }
+    ctx.stroke();
+
+    // point M et règle des moments (si diphasique)
+    let wV = NaN, wL = NaN;
+    if (diph) {
+      const xM = xL + (xV - xL) * mpos;
+      const vM = Math.exp(xM);
+      wV = (vM - vL) / (vV - vL);
+      wL = 1 - wV;
+      // marqueurs L, V
+      ctx.fillStyle = c.rouge;
+      ctx.beginPath(); ctx.arc(P.px(xL), P.py(ps), 3.5, 0, 2 * Math.PI); ctx.fill();
+      ctx.beginPath(); ctx.arc(P.px(xV), P.py(ps), 3.5, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = c.muted; ctx.textAlign = 'center';
+      ctx.fillText('L', P.px(xL), P.py(ps) - 8);
+      ctx.fillText('V', P.px(xV), P.py(ps) - 8);
+      // point M
+      ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(P.px(xM), P.py(ps), 6, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = c.orange; ctx.fillText('M', P.px(xM), P.py(ps) + 18);
+    }
+
+    // lectures
+    vT.textContent = fr(Tr, 2);
+    vPos.textContent = Math.round(mpos * 100) + ' %';
+    vPs.textContent = fr(ps, 2);
+    vWv.textContent = diph ? fr(Math.max(0, Math.min(1, wV)), 2) : '—';
+    vWl.textContent = diph ? fr(Math.max(0, Math.min(1, wL)), 2) : '—';
+    vState.textContent = diph ? 'diphasique (palier)' : 'supercritique (T ≥ Tc)';
+  }
+
+  QC.loop(function () {
+    if (animating) { mpos = (mpos + 0.006) % 1; slM.value = Math.round(mpos * 100); draw(); }
+  });
+
+  slT.addEventListener('input', draw);
+  slM.addEventListener('input', function () { mpos = parseFloat(slM.value) / 100; draw(); });
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Animer le balayage de M';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

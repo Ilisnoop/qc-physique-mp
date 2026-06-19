@@ -44,6 +44,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
         <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
         <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+        <a href="em13.html"><span class="qn">EM13</span>Symétries et invariances</a>
+        <a href="em14.html"><span class="qn">EM14</span>Lecture d'une carte de champ</a>
+        <a href="em15.html"><span class="qn">EM15</span>Théorème de Gauss appliqué</a>
+        <a href="em16.html"><span class="qn">EM16</span>Vecteur de Poynting dans un fil</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -72,7 +76,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
-    <p>Circuit \(\mathcal{C}\) se déplaçant avec une vitesse \(\vec{v}\) dans un champ \(\vec{B}(\vec{r})\) stationnaire (\(\partial_t\vec{B}=0\)). La f.e.m. est due à la force de Lorentz magnétique \(\vec{F}=q\vec{v}\times\vec{B}\) agissant sur les porteurs de charges dans les conducteurs en mouvement.</p>
+    <p>Circuit \(\mathcal{C}\) se déplaçant avec une vitesse \(\vec{v}\) dans un champ \(\vec{B}(\vec{r})\) stationnaire (\(\partial_t\vec{B}=0\)). La f.e.m. est due à la force de Lorentz magnétique \(\vec{F}=q\vec{v}\wedge\vec{B}\) agissant sur les porteurs de charges dans les conducteurs en mouvement.</p>
   </section>
 
   <section class="rubric">
@@ -80,7 +84,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="demo-step">
       <span class="step-label">1 — F.e.m. de mouvement</span>
       <p>Sur un élément \(\mathrm{d}\vec{\ell}\) du circuit se déplaçant à la vitesse \(\vec{v}\) dans un champ \(\vec B\), la force de Lorentz sur les porteurs fait apparaître une contribution élémentaire à la f.e.m. :</p>
-      <div class="calc-line">\[ \mathrm{d}e = (\vec{v}\times\vec{B})\cdot\mathrm{d}\vec{\ell} . \]</div>
+      <div class="calc-line">\[ \mathrm{d}e = (\vec{v}\wedge\vec{B})\cdot\mathrm{d}\vec{\ell} . \]</div>
       <p class="lead"><strong>On intègre sur tout le contour.</strong> On retrouve alors la loi de Faraday sous sa forme générale, valable même pour un circuit mobile (champ stationnaire ou variable) :</p>
       <div class="calc-line">\[ e = -\,\dfrac{\mathrm{d}\Phi}{\mathrm{d}t} . \]</div>
       <p class="lead"><strong>Cas de la barre sur rails.</strong> Pour une barre de longueur \(\ell\) glissant à la vitesse \(v\) perpendiculairement à un champ uniforme \(B\), l'intégration donne :</p>

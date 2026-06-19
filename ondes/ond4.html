@@ -40,6 +40,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
         <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
         <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -68,7 +72,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
-    <p>Un plasma dilué est un gaz d'électrons libres (densité \(n_e\), masse \(m_e\), charge \(-e\)) baignant dans un fond de charges positives fixes. On néglige les collisions. On cherche une solution OPPM de la forme \(\vec{E} = \vec{E}_0 e^{i(kz-\omega t)}\).</p>
+    <p>Un plasma dilué est un gaz d'électrons libres (densité \(n_e\), masse \(m_e\), charge \(-e\)) baignant dans un fond de charges positives fixes. On néglige les collisions. On cherche une solution OPPM de la forme \(\vec{E} = \vec{E}_0 e^{i(\omega t-kz)}\) (convention \(e^{+i\omega t}\) du cours).</p>
   </section>
 
   <section class="rubric">
@@ -77,33 +81,34 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <span class="step-label">1 — Équation de mouvement des électrons</span>
       <p class="lead"><strong>On écrit le principe fondamental de la dynamique</strong> pour un électron libre soumis au champ électrique de l'onde (la force magnétique étant négligeable) :</p>
       <div class="calc-line">\[ m_e\dfrac{\mathrm{d}\vec{v}}{\mathrm{d}t} = -e\,\vec{E} . \]</div>
-      <p class="lead"><strong>On passe en notation complexe</strong> pour une dépendance temporelle en \(e^{-i\omega t}\), de sorte que \(\dfrac{\mathrm{d}}{\mathrm{d}t} \to -i\omega\) :</p>
+      <p class="lead"><strong>On passe en notation complexe</strong> pour une dépendance temporelle en \(e^{+i\omega t}\), de sorte que \(\dfrac{\mathrm{d}}{\mathrm{d}t} \to +i\omega\) :</p>
       <div class="calc-line">\[
         \begin{aligned}
-          -i\omega\, m_e\,\vec{v} &amp;= -e\,\vec{E} \\[4pt]
-          \Longrightarrow\quad \vec{v} &amp;= \dfrac{e}{i\omega m_e}\,\vec{E} .
+          i\omega\, m_e\,\vec{v} &amp;= -e\,\vec{E} \\[4pt]
+          \Longrightarrow\quad \vec{v} &amp;= \dfrac{-\,e}{i\omega m_e}\,\vec{E} = \dfrac{i\,e}{\omega m_e}\,\vec{E} .
         \end{aligned}
       \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">2 — Densité de courant et conductivité complexe</span>
       <p class="lead"><strong>On en déduit la densité de courant</strong> \(\vec{j} = -e\,n_e\,\vec{v}\), en reportant l'expression de \(\vec{v}\) :</p>
-      <div class="calc-line">\[ \vec{j} = -e\,n_e\,\vec{v} = \dfrac{-n_e e^2}{i\omega m_e}\,\vec{E} . \]</div>
+      <div class="calc-line">\[ \vec{j} = -e\,n_e\,\vec{v} = \dfrac{n_e e^2}{i\omega m_e}\,\vec{E} . \]</div>
       <p class="lead"><strong>On identifie la conductivité complexe</strong> \(\vec{j} = \underline{\gamma}(\omega)\,\vec{E}\) :</p>
-      <div class="calc-line">\[ \underline{\gamma}(\omega) = \dfrac{n_e e^2}{i\omega m_e} = \dfrac{\varepsilon_0\omega_p^2}{i\omega} , \]</div>
+      <div class="calc-line">\[ \underline{\gamma}(\omega) = \dfrac{n_e e^2}{i\omega m_e} = -\,i\,\dfrac{n_e e^2}{m_e\omega} = \dfrac{-\,i\,\varepsilon_0\omega_p^2}{\omega} , \]</div>
       <p class="lead">où l'on a introduit la <strong>fréquence plasma</strong></p>
       <div class="calc-line">\[ \omega_p = \sqrt{\dfrac{n_e e^2}{\varepsilon_0 m_e}} . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">3 — Relation de dispersion</span>
-      <p class="lead"><strong>On cherche une solution OPPM</strong> \(\vec{E}\propto e^{i(kz-\omega t)}\) et on injecte la conductivité dans Maxwell-Ampère \(\vec{j}=\underline{\gamma}\,\vec{E}\) :</p>
+      <p class="lead"><strong>On cherche une solution OPPM</strong> \(\vec{E}\propto e^{i(\omega t-kz)}\) et on injecte la conductivité dans Maxwell-Ampère (avec \(\overrightarrow{\nabla}\to-i\vec{k}\), \(\partial_t\to+i\omega\)) \(\vec{j}=\underline{\gamma}\,\vec{E}\) :</p>
       <div class="calc-line">\[
         \begin{aligned}
-          ik\,\vec{B}_0 &amp;= \mu_0\underline{\gamma}\,\vec{E}_0 - i\mu_0\varepsilon_0\omega\,\vec{E}_0 \\[4pt]
-          &amp;= \mu_0\,\vec{E}_0\!\left(\dfrac{\varepsilon_0\omega_p^2}{i\omega} - i\varepsilon_0\omega\right) .
+          -\,ik\,\vec{B}_0 &amp;= \mu_0\underline{\gamma}\,\vec{E}_0 + i\mu_0\varepsilon_0\omega\,\vec{E}_0 \\[4pt]
+          &amp;= \mu_0\,\vec{E}_0\!\left(\dfrac{-\,i\,\varepsilon_0\omega_p^2}{\omega} + i\varepsilon_0\omega\right)
+                          = i\mu_0\varepsilon_0\,\vec{E}_0\!\left(\omega - \dfrac{\omega_p^2}{\omega}\right) .
         \end{aligned}
       \]</div>
-      <p class="lead"><strong>On exprime \(\vec{B}_0\) par Maxwell-Faraday</strong>, soit \(\vec{B}_0 = \dfrac{k}{\omega}\,\hat{z}\times\vec{E}_0\), puis on combine les deux relations pour éliminer \(\vec{B}_0\) :</p>
+      <p class="lead"><strong>On exprime \(\vec{B}_0\) par Maxwell-Faraday</strong>, soit \(\vec{B}_0 = \dfrac{k}{\omega}\,\hat{z}\wedge\vec{E}_0\) (relation inchangée, le facteur \(-i\) se simplifiant des deux côtés), puis on combine les deux relations pour éliminer \(\vec{B}_0\) :</p>
       <div class="calc-line">\[
         \begin{aligned}
           k^2 &amp;= \mu_0\varepsilon_0\omega^2 - \mu_0\varepsilon_0\omega_p^2 = \dfrac{\omega^2 - \omega_p^2}{c^2} \\[4pt]
@@ -116,7 +121,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p class="lead"><strong>On discute le signe de \(k^2\)</strong> selon la position de \(\omega\) par rapport à \(\omega_p\) :</p>
       <ul>
         <li>si \(\omega &gt; \omega_p\), alors \(k^2 &gt; 0\) et \(k\) est réel : <em>onde progressive</em>, le plasma est transparent ;</li>
-        <li>si \(\omega &lt; \omega_p\), alors \(k^2 &lt; 0\) et \(k\) est purement imaginaire, \(k = i\kappa\), d'où \(\vec{E}\propto e^{-\kappa z}\) : <em>onde évanescente</em>, atténuée, qui ne transporte pas d'énergie.</li>
+        <li>si \(\omega &lt; \omega_p\), alors \(k^2 &lt; 0\) et \(k\) est purement imaginaire ; en convention \(e^{+i\omega t}\) on retient la racine \(k = -i\kappa\) (\(\kappa&gt;0\)) pour que \(\vec{E}\propto e^{-ikz} = e^{-\kappa z}\) soit atténuée selon \(+z\) : <em>onde évanescente</em>, qui ne transporte pas d'énergie.</li>
       </ul>
     </div>
     <div class="demo-step">

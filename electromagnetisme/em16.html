@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM16 — Vecteur de Poynting dans un fil ohmique · QC Oraux MP*</title>
+<meta name="description" content="Vecteur de Poynting dans un fil ohmique : bilan de puissance électromagnétique, flux entrant du vecteur de Poynting égal à l'effet Joule RI².">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em15.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+        <a href="em13.html"><span class="qn">EM13</span>Symétries et invariances</a>
+        <a href="em14.html"><span class="qn">EM14</span>Lecture d'une carte de champ</a>
+        <a href="em15.html"><span class="qn">EM15</span>Théorème de Gauss appliqué</a>
+        <a href="em16.html" aria-current="page"><span class="qn">EM16</span>Vecteur de Poynting dans un fil</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 16 · Électromagnétisme</span>
+    <h1>Vecteur de Poynting dans un fil ohmique : bilan de puissance et effet Joule</h1>
+    <p class="q-sources"><span class="src">POLY EM3a01 (Résistance d'un fil)</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Pour un fil conducteur ohmique cylindrique parcouru par un courant, déterminer le champ électrique intérieur, le vecteur de Poynting à sa surface, puis montrer que le flux entrant du vecteur de Poynting à travers la surface latérale est égal à la puissance dissipée par effet Joule \(R I^2\).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.3 Champ électromagnétique — Énergie et vecteur de Poynting</div>
+      <p>Capacités exigibles : exploiter le bilan local d'énergie électromagnétique (théorème de Poynting) ; interpréter le vecteur de Poynting comme densité de courant d'énergie ; relier son flux à la puissance échangée. Application classique : fil ohmique (POLY EM3a01).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Fil ohmique</strong> : cylindre conducteur de conductivité \(\gamma\), rayon \(a\), longueur \(L\) selon \((Oz)\), parcouru par un courant \(I\) uniformément réparti, de densité \(\vec{j} = \dfrac{I}{\pi a^2}\,\vec{e_z}\).</li>
+      <li><strong>Loi d'Ohm locale</strong> : \(\vec{j} = \gamma\,\vec{E}\).</li>
+      <li><strong>Vecteur de Poynting</strong> : \(\vec{\Pi} = \dfrac{\vec{E}\wedge\vec{B}}{\mu_0}\) ; sa dimension est une puissance surfacique (W·m\(^{-2}\)).</li>
+      <li><strong>Champ magnétique intérieur</strong> (donné) : \(\vec{B} = \dfrac{\mu_0\, I\, r}{2\pi a^2}\,\vec{e_\theta}\) (orthoradial), de valeur \(\dfrac{\mu_0 I}{2\pi a}\) à la surface \(r=a\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Champ électrique intérieur</span>
+      <p class="lead"><strong>On applique la loi d'Ohm locale.</strong> Le courant étant uniforme et axial, le champ l'est aussi :</p>
+      <div class="calc-line">\[ \vec{E} = \dfrac{\vec{j}}{\gamma} = \dfrac{I}{\gamma\,\pi a^2}\,\vec{e_z} . \]</div>
+      <p>Le champ électrique est <strong>axial</strong> (selon \(\vec{e_z}\)), uniforme dans toute la section.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Vecteur de Poynting à la surface</span>
+      <p>À la surface du fil (\(r=a\)), \(\vec{E} = E\,\vec{e_z}\) (axial) et \(\vec{B} = B\,\vec{e_\theta}\) (orthoradial). Le vecteur de Poynting vaut :</p>
+      <div class="calc-line">\[ \vec{\Pi} = \dfrac{\vec{E}\wedge\vec{B}}{\mu_0} = \dfrac{E\,B}{\mu_0}\,(\vec{e_z}\wedge\vec{e_\theta}) = -\dfrac{E\,B}{\mu_0}\,\vec{e_r} . \]</div>
+      <p class="lead"><strong>On en déduit le sens</strong> : puisque \(\vec{e_z}\wedge\vec{e_\theta} = -\vec{e_r}\), le vecteur de Poynting est dirigé selon \(-\vec{e_r}\), c'est-à-dire <strong>radialement vers l'intérieur</strong> du fil. L'énergie électromagnétique entre par la surface latérale.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Flux entrant à travers la surface latérale</span>
+      <p>On calcule la puissance électromagnétique entrant par la surface latérale \(S_{\text{lat}} = 2\pi a\,L\). En \(r=a\), \(E = \dfrac{I}{\gamma\pi a^2}\) et \(B = \dfrac{\mu_0 I}{2\pi a}\) :</p>
+      <div class="calc-line">\[ \|\vec{\Pi}\| = \dfrac{E\,B}{\mu_0} = \dfrac{1}{\mu_0}\cdot\dfrac{I}{\gamma\pi a^2}\cdot\dfrac{\mu_0 I}{2\pi a} = \dfrac{I^2}{2\pi^2 \gamma\, a^3} . \]</div>
+      <p class="lead"><strong>On intègre sur la surface latérale</strong> (flux entrant, \(\vec{\Pi}\) selon \(-\vec{e_r}\) et la normale entrante selon \(-\vec{e_r}\)) :</p>
+      <div class="calc-line">\[ P_{\text{entrant}} = \|\vec{\Pi}\|\cdot 2\pi a\, L = \dfrac{I^2}{2\pi^2 \gamma\, a^3}\cdot 2\pi a\, L = \dfrac{L}{\gamma\,\pi a^2}\,I^2 . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Identification à l'effet Joule</span>
+      <p>La résistance du fil ohmique vaut \(R = \dfrac{L}{\gamma\,\pi a^2}\). On reconnaît donc :</p>
+      <div class="calc-line">\[ \boxed{\;P_{\text{entrant}} = \dfrac{L}{\gamma\,\pi a^2}\,I^2 = R\,I^2 = P_{\text{Joule}}\;} \]</div>
+      <p class="lead"><strong>On interprète le bilan.</strong> En régime stationnaire, l'énergie électromagnétique ne s'accumule pas : le flux entrant du vecteur de Poynting compense exactement la puissance dissipée par effet Joule dans le volume. La puissance électrique transite donc par le <em>champ extérieur</em> au conducteur et pénètre radialement dans le fil pour y être dissipée.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — champs et vecteur de Poynting radial</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-poy" aria-label="Fil cylindrique : champ électrique axial, champ magnétique orthoradial, vecteur de Poynting radial entrant ; le flux entrant égale RI²."></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-I">Courant \(I\) (unité arb.) <span class="val" id="v-I">1,00</span></label>
+          <input type="range" id="sl-I" min="0.3" max="2" step="0.02" value="1">
+          <span class="hint">Le flux entrant du vecteur de Poynting vaut \(R I^2\) : il croît comme le carré du courant.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le flux d'énergie</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\vec{E}\) (axial) ∝ <b id="v-E">1,00</b></span>
+            <span class="ro">\(\vec{B}\) (orthoradial, en r=a) ∝ <b id="v-B">1,00</b></span>
+            <span class="ro">Flux entrant = \(R I^2\) ∝ <b id="v-P">1,00</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Vue en coupe du fil cylindrique. \(\vec{E}\) (bleu) est axial selon le courant ; \(\vec{B}\) (vert) est orthoradial ; le vecteur de Poynting \(\vec{\Pi}=\dfrac{\vec{E}\wedge\vec{B}}{\mu_0}\) (orange) est <strong>radial entrant</strong>. Son flux à travers la surface latérale égale la puissance Joule \(R I^2\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>E axial</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>B orthoradial</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Poynting radial entrant</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>\(\vec{E}\) <strong>axial</strong> (loi d'Ohm locale \(\vec{j}=\gamma\vec{E}\)), \(\vec{B}\) <strong>orthoradial</strong> : leur produit vectoriel \(\wedge\) donne un Poynting <strong>radial entrant</strong>.</li>
+        <li>Le flux entrant du vecteur de Poynting à travers la surface latérale vaut exactement \(R I^2\) : c'est l'effet Joule.</li>
+        <li>Interprétation : l'énergie électrique « voyage » dans le champ <strong>autour</strong> du conducteur et y pénètre par les côtés, elle ne se propage pas dans le fil lui-même.</li>
+        <li>En régime stationnaire, pas d'accumulation d'énergie : flux entrant = puissance dissipée.</li>
+        <li>Bien vérifier le sens via \(\vec{e_z}\wedge\vec{e_\theta} = -\vec{e_r}\) (entrant), à ne pas confondre avec \(+\vec{e_r}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, §4.3 (champ électromagnétique, énergie et vecteur de Poynting). Application directe de l'exercice EM3a01 du POLY (résistance d'un fil) et du bilan local d'énergie électromagnétique.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em15.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM15 · Théorème de Gauss appliqué</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Sommaire · Électromagnétisme</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-poy');
+  const slI = document.getElementById('sl-I');
+  const vI = document.getElementById('v-I'), vE = document.getElementById('v-E'), vB = document.getElementById('v-B'), vP = document.getElementById('v-P');
+  const btnAnim = document.getElementById('btn-anim');
+  let animating = false, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 340); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const I = parseFloat(slI.value);
+    const cx = w * 0.5, cy = h * 0.5;
+    const rad = Math.min(w, h) * 0.20;
+
+    // fil (cercle = section transverse)
+    ctx.fillStyle = c.muted; ctx.globalAlpha = 0.15;
+    ctx.beginPath(); ctx.arc(cx, cy, rad, 0, 2 * Math.PI); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(cx, cy, rad, 0, 2 * Math.PI); ctx.stroke();
+
+    // E axial : sort de la page (vers nous) -> symbole point central bleu
+    ctx.fillStyle = c.bleu;
+    ctx.beginPath(); ctx.arc(cx, cy, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(cx, cy, 10, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = c.bleu; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText('E (axial, ⊙)', cx + 16, cy - rad - 8);
+
+    // B orthoradial : flèches tangentes au cercle
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 2;
+    const Nb = 8;
+    for (let i = 0; i < Nb; i++) {
+      const a = 2 * Math.PI * i / Nb;
+      const bx = cx + (rad + 16) * Math.cos(a), by = cy + (rad + 16) * Math.sin(a);
+      // direction tangentielle (+e_theta)
+      const tx = -Math.sin(a), ty = Math.cos(a), len = 13;
+      const ex = bx + tx * len, ey = by + ty * len;
+      ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(ex, ey);
+      const ang = Math.atan2(ey - by, ex - bx), hl = 5;
+      ctx.lineTo(ex - hl * Math.cos(ang - 0.5), ey - hl * Math.sin(ang - 0.5));
+      ctx.moveTo(ex, ey); ctx.lineTo(ex - hl * Math.cos(ang + 0.5), ey - hl * Math.sin(ang + 0.5));
+      ctx.stroke();
+    }
+    ctx.fillStyle = c.vert; ctx.textAlign = 'left'; ctx.fillText('B (orthoradial)', cx + rad + 24, cy + rad + 22);
+
+    // Poynting radial entrant (orange) : flèches de l'extérieur vers le centre
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2.6;
+    const Np = 12;
+    const inset = (animating ? (phase % 1) : 0.0) * 18;   // animation : pénétration
+    for (let i = 0; i < Np; i++) {
+      const a = 2 * Math.PI * i / Np + 0.13;
+      const r0 = rad + 44 - inset, r1 = rad + 10 - inset;
+      const sx = cx + r0 * Math.cos(a), sy = cy + r0 * Math.sin(a);
+      const ex = cx + r1 * Math.cos(a), ey = cy + r1 * Math.sin(a);
+      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(ex, ey);
+      const ang = Math.atan2(ey - sy, ex - sx), hl = 6;
+      ctx.lineTo(ex - hl * Math.cos(ang - 0.5), ey - hl * Math.sin(ang - 0.5));
+      ctx.moveTo(ex, ey); ctx.lineTo(ex - hl * Math.cos(ang + 0.5), ey - hl * Math.sin(ang + 0.5));
+      ctx.stroke();
+    }
+    ctx.fillStyle = c.orange; ctx.textAlign = 'center';
+    ctx.fillText('Π = (E ∧ B)/μ₀  (entrant)', cx, h - 14);
+
+    // readouts
+    const E = I, B = I, P = I * I;   // normalisés (R=1)
+    vI.textContent = fr(I, 2);
+    vE.textContent = fr(E, 2);
+    vB.textContent = fr(B, 2);
+    vP.textContent = fr(P, 2);
+  }
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) { phase += dt * 0.9; draw(); }
+  });
+  slI.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer le flux d\u0027énergie';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

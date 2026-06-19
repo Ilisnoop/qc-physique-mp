@@ -26,7 +26,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <div class="nav-controls">
     <nav class="qnav" aria-label="Navigation entre questions">
       <a class="qnav-btn" href="el3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
-      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+      <a class="qnav-btn" href="el5.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
     </nav>
     <div class="qmenu">
       <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
@@ -36,6 +36,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="el2.html"><span class="qn">EL2</span>RLC en régime forcé / résonances</a>
         <a href="el3.html"><span class="qn">EL3</span>Filtrage ordre 1 et 2 / créneau</a>
         <a href="el4.html" aria-current="page"><span class="qn">EL4</span>Filtre passe-bande</a>
+        <a href="el5.html"><span class="qn">EL5</span>Acquisition numérique / Nyquist-Shannon</a>
+        <a href="el6.html"><span class="qn">EL6</span>Échantillonneur-bloqueur et CAN</a>
+        <a href="el7.html"><span class="qn">EL7</span>Filtrage numérique</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -144,7 +147,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
       </div>
       <figcaption class="fig-legend">
-        Gain \(G(x) = \dfrac{1}{\sqrt{1+Q^2(x-\dfrac{1}{x})^2}}\) en fonction de \(x=\dfrac{\omega}{\omega_0}\). Le gain vaut \(1\) à \(x=1\) (\(\omega=\omega_0\)). La bande passante à \(-3\,\mathrm{dB}\), de largeur \(\Delta x = \dfrac{1}{Q}\), est délimitée par \(x_\pm = \dfrac{\sqrt{1+\dfrac{1}{4Q^2}}\pm 1}{2Q}\) (zone teintée). Basculez l'échelle en dB pour voir les pentes asymptotiques \(\pm 20\) dB/décade.
+        Gain \(G(x) = \dfrac{1}{\sqrt{1+Q^2(x-\dfrac{1}{x})^2}}\) en fonction de \(x=\dfrac{\omega}{\omega_0}\). Le gain vaut \(1\) à \(x=1\) (\(\omega=\omega_0\)). La bande passante à \(-3\,\mathrm{dB}\), de largeur \(\Delta x = \dfrac{1}{Q}\), est délimitée par \(x_\pm = \sqrt{1+\dfrac{1}{4Q^2}}\pm\dfrac{1}{2Q}\) (zone teintée). Basculez l'échelle en dB pour voir les pentes asymptotiques \(\pm 20\) dB/décade.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(G(x)\)</span>
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>seuil \(-3\,\mathrm{dB}\)</span>
@@ -174,7 +177,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <nav class="page-nav" aria-label="Question précédente et suivante">
     <a href="el3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EL3 · Filtrage ordre 1 et 2 / créneau</span></a>
-    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Électronique · 4 questions</span></a>
+    <a class="next" href="el5.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EL5 · Acquisition numérique / Nyquist-Shannon</span></a>
   </nav>
 </main>
 
@@ -237,7 +240,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       ctx.fillText('0,1', px(-1), h - 14); ctx.fillText('1', px(0), h - 14); ctx.fillText('10', px(1), h - 14);
       ctx.textAlign = 'right';
       for (let g = Gmin; g <= Gmax; g += 10) ctx.fillText(g + '', 40, py(g) + 4);
-      ctx.textAlign = 'left'; ctx.fillText('G_dB', 46, 26); ctx.fillText('x=ω/ω₀', w - 60, h - 14);
+      ctx.textAlign = 'left'; ctx.fillText('x=ω/ω₀', w - 60, h - 14);
       // bande passante
       const uxm = Math.log10(xm), uxp = Math.log10(xp);
       ctx.fillStyle = c.vert; ctx.globalAlpha = 0.10;
@@ -258,6 +261,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         const g = 20 * Math.log10(gain(xc, Q));
         ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(px(Math.log10(xc)), py(Math.max(Gmin, g)), 4.5, 0, 2 * Math.PI); ctx.fill();
       }
+      // libellé axe vertical dessiné en dernier (au-dessus de la bande passante)
+      ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'left';
+      QC.subText(ctx, 'G', 'dB', 46, 30);
     }
 
     vQ.textContent = fr(Q, 2);

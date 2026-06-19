@@ -35,6 +35,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ps1.html"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
         <a href="ps2.html" aria-current="page"><span class="qn">PS2</span>Système à deux niveaux</a>
         <a href="ps3.html"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+        <a href="ps4.html"><span class="qn">PS4</span>Distribution de Maxwell des vitesses</a>
+        <a href="ps5.html"><span class="qn">PS5</span>Niveaux dégénérés et fonction de partition</a>
+        <a href="ps6.html"><span class="qn">PS6</span>Fluctuations relatives d'énergie</a>
+        <a href="ps7.html"><span class="qn">PS7</span>Capacité thermique et degrés de liberté</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -111,7 +115,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p class="lead"><strong>On dérive</strong> l'énergie moyenne \(\langle E\rangle\) par rapport à la température :</p>
       <div class="calc-line">\[ C_V = \dfrac{\mathrm{d}\langle E\rangle}{\mathrm{d}T} = k_B\,(\beta\varepsilon)^2\,\dfrac{1}{\cosh^2(\beta\varepsilon)} . \]</div>
       <p class="lead"><strong>Forme équivalente —</strong> en faisant apparaître les exponentielles :</p>
-      <div class="calc-line">\[ C_V = k_B\left(\dfrac{\varepsilon}{k_BT}\right)^2 \dfrac{4\,e^{\dfrac{2\varepsilon}{k_BT}}}{\left(e^{\dfrac{2\varepsilon}{k_BT}}+1\right)^2} . \]</div>
+      <div class="calc-line">\[ C_V = k_B\left(\dfrac{\varepsilon}{k_BT}\right)^2 \dfrac{4\,e^{\frac{2\varepsilon}{k_BT}}}{\left(e^{\frac{2\varepsilon}{k_BT}}+1\right)^2} . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">5 — Comportement de \(C_V(T)\) : bosse de Schottky</span>
@@ -167,8 +171,8 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <div class="readout">
             <span class="ro">\(\dfrac{C_V}{k_B}\) = <b id="v-cv">0,439</b></span>
-            <span class="ro">\(\dfrac{\langle E\rangle}{\varepsilon}\) = <b id="v-e">−0,77</b></span>
-            <span class="ro">\(\dfrac{S}{k_B}\) = <b id="v-s">0,57</b></span>
+            <span class="ro">\(\dfrac{\langle E\rangle}{\varepsilon}\) = <b id="v-e">−0,84</b></span>
+            <span class="ro">\(\dfrac{S}{k_B}\) = <b id="v-s">0,28</b></span>
           </div>
           <div class="gauges" style="margin-top:.6rem">
             <div class="gauge t">

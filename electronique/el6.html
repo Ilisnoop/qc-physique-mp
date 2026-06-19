@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL6 — Échantillonneur-bloqueur et conversion analogique-numérique (CAN) · QC Oraux MP*</title>
+<meta name="description" content="Échantillonneur-bloqueur : phases sample/hold, structure interrupteur + condensateur, constantes de charge et de décharge, suiveurs. CAN : quantification, pas q = pleine échelle / 2ⁿ, erreur de quantification, résolution n bits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électronique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="el5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="el7.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="el1.html"><span class="qn">EL1</span>RLC série en régime libre</a>
+        <a href="el2.html"><span class="qn">EL2</span>RLC en régime forcé / résonances</a>
+        <a href="el3.html"><span class="qn">EL3</span>Filtrage ordre 1 et 2 / créneau</a>
+        <a href="el4.html"><span class="qn">EL4</span>Filtre passe-bande</a>
+        <a href="el5.html"><span class="qn">EL5</span>Acquisition numérique / Nyquist-Shannon</a>
+        <a href="el6.html" aria-current="page"><span class="qn">EL6</span>Échantillonneur-bloqueur et CAN</a>
+        <a href="el7.html"><span class="qn">EL7</span>Filtrage numérique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 6 · Électronique numérique</span>
+    <h1>Échantillonneur-bloqueur et conversion analogique-numérique (CAN)</h1>
+    <p class="q-sources"><span class="src">POLY E3 · Électronique numérique §2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Décrire le fonctionnement de l'échantillonneur-bloqueur (phases d'échantillonnage <em>sample</em> et de blocage <em>hold</em>), sa structure (interrupteur + condensateur, suiveurs) et ses limitations (constantes de charge et de décharge). Présenter la conversion analogique-numérique : quantification, pas \(q\), erreur de quantification et résolution sur \(n\) bits.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Traitement numérique du signal</div>
+      <p>Capacités exigibles : décrire le rôle de l'échantillonneur-bloqueur dans une chaîne d'acquisition ; relier les phases de fonctionnement à l'état d'un interrupteur ; identifier les limitations introduites par les constantes de temps de charge et de décharge ; définir la quantification, le pas \(q\), l'erreur de quantification et la résolution d'un convertisseur sur \(n\) bits. Le contenu suit le cours de la classe (Lycée Sainte-Geneviève, MP), §2.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Échantillonneur-bloqueur (E/B)</strong> : dispositif qui prélève la valeur du signal tous les \(T_e\) et la maintient constante pendant le temps nécessaire à la conversion.</li>
+      <li><strong>Phase d'échantillonnage (sample)</strong> : interrupteur fermé, la sortie suit l'entrée \(V_{eb} = V_e\). <strong>Phase de blocage (hold)</strong> : interrupteur ouvert, la sortie reste constante (\(V_{eb} = V_C\), tension mémorisée par le condensateur).</li>
+      <li><strong>CAN (convertisseur analogique-numérique)</strong> : convertit la tension de l'échantillon (analogique) en un code binaire (numérique). Il est caractérisé par son nombre de bits \(n\).</li>
+      <li><strong>Pleine échelle</strong> : étendue \(V_{\rm PE}\) de la plage de tension convertible (calibre).</li>
+      <li><strong>Pas de quantification</strong> \(q\) : plus petite variation de tension distinguable, associée au changement du bit de poids le plus faible.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Principe de l'échantillonneur-bloqueur</span>
+      <p class="lead"><strong>On associe un interrupteur à un condensateur</strong> : la capacité joue le rôle d'élément mémoire, l'interrupteur réactualise la valeur mémorisée ou l'isole de l'entrée. Dans le cas idéal :</p>
+      <ul>
+        <li><strong>interrupteur fermé</strong> — phase d'échantillonnage (<em>sample</em>) : la sortie suit directement l'entrée, \(V_{eb} = V_e\) ;</li>
+        <li><strong>interrupteur ouvert</strong> — phase de blocage (<em>hold</em>) : la sortie reste constante, égale à la dernière valeur transmise, \(V_{eb} = V_C\).</li>
+      </ul>
+      <p>Le signal est ainsi figé pendant une durée nettement supérieure au temps de conversion, ce qui rend la conversion aussi juste que possible.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Limitations : constantes de charge et de décharge</span>
+      <p class="lead"><strong>On tient compte des résistances réelles</strong>. Une résistance d'entrée \(R_{\rm on}\) (résistance de sortie du montage amont en série avec la résistance de l'interrupteur passant) limite la charge du condensateur : la capacité se charge avec la constante de temps</p>
+      <div class="calc-line">\[ \tau_{\rm charge} = R_{\rm on}\,C . \]</div>
+      <p class="lead"><strong>On considère ensuite la phase de blocage</strong> : une résistance de sortie \(R_{\rm ch}\) (résistance d'entrée du montage aval associée aux pertes de la capacité) provoque la décharge du condensateur avec la constante de temps</p>
+      <div class="calc-line">\[ \tau_{\rm décharge} = R_{\rm ch}\,C . \]</div>
+      <p>Les deux grandes limitations apparaissent : la <strong>vitesse</strong> de fonctionnement (donc la fréquence d'échantillonnage maximale) est liée à \(\tau_{\rm charge}\) ; la <strong>capacité à maintenir</strong> l'échantillon (donc la résolution atteignable) est liée à \(\tau_{\rm décharge}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Structure réelle : montages suiveurs</span>
+      <p class="lead"><strong>On s'affranchit de l'environnement amont et aval</strong> en plaçant en entrée et en sortie de l'E/B deux montages <strong>suiveurs</strong> (à amplificateur linéaire intégré). Ils confèrent une résistance d'entrée quasi infinie (premier suiveur, qui n'impose pas de courant à la source) et une résistance de sortie quasi nulle, isolant le condensateur de mémoire. On limite ainsi les effets des constantes de temps précédentes.</p>
+      <p>Les erreurs introduites par l'E/B doivent être comparées à la résolution de la chaîne (nombre de bits) : il est inutile d'employer un CAN plus précis que les erreurs introduites par l'E/B.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Quantification et pas \(q\)</span>
+      <p class="lead"><strong>On code l'amplitude sur un nombre fini de niveaux</strong> : un CAN sur \(n\) bits dispose de \(2^n\) niveaux. Le codage de l'amplitude sur un nombre fini de possibilités entraîne un « bruit de quantification » : la plus petite variation mesurable correspond au changement du bit de poids le plus faible, c'est le <strong>pas de quantification</strong></p>
+      <div class="calc-line">\[ \boxed{\,q = \dfrac{V_{\rm PE}}{2^{n}}\,} \]</div>
+      <p>où \(V_{\rm PE}\) est la pleine échelle (le calibre). Plus le calibre est faible, meilleure est la précision : d'où la consigne d'ajuster les signaux pour qu'ils occupent une grande partie de l'écran.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Erreur de quantification et résolution</span>
+      <p class="lead"><strong>On évalue l'écart entre la valeur réelle et la valeur codée</strong> : en arrondissant au niveau le plus proche, l'erreur de quantification reste bornée par un demi-pas,</p>
+      <div class="calc-line">\[ |\varepsilon| \leqslant \dfrac{q}{2} = \dfrac{V_{\rm PE}}{2^{\,n+1}} . \]</div>
+      <p class="lead"><strong>On en déduit la résolution relative</strong> de la chaîne, fixée par le nombre de bits :</p>
+      <div class="calc-line">\[ \dfrac{q}{V_{\rm PE}} = 2^{-n} . \]</div>
+      <p>Augmenter \(n\) de \(1\) bit divise le pas \(q\) (et l'erreur) par \(2\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — échantillonnage-blocage et quantification sur \(n\) bits</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-quant" aria-label="Signal analogique, signal échantillonné-bloqué en escalier et niveaux de quantification, nombre de bits réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-n">Nombre de bits \(n\) <span class="val" id="v-n">3</span></label>
+          <input type="range" id="sl-n" min="1" max="6" step="1" value="3">
+          <span class="hint">Le CAN dispose de \(2^n\) niveaux ; le pas vaut \(q = \dfrac{V_{\rm PE}}{2^n}\). Plus \(n\) augmente, plus l'escalier épouse le signal.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-eb" type="button">Afficher l'escalier E/B : oui</button>
+            <button class="btn primary" id="btn-anim" type="button">Animer la quantification</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Nombre de niveaux \(2^n\) = <b id="v-niv">8</b></span>
+            <span class="ro">Pas de quantification \(q = \dfrac{V_{\rm PE}}{2^n}\) = <b id="v-q">0,125 Vₚₑ</b></span>
+            <span class="ro">Erreur max \(\dfrac{q}{2}\) = <b id="v-eps">0,063 Vₚₑ</b></span>
+            <span class="ro">Résolution \(2^{-n}\) = <b id="v-res">12,5 %</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Signal analogique \(V_e(t)\) (bleu, pleine échelle \(V_{\rm PE}=1\)), signal échantillonné-bloqué en escalier (orange : maintien sur chaque \(T_e\)) et niveaux de quantification (lignes grises horizontales, espacées de \(q=\dfrac{V_{\rm PE}}{2^n}\)). Le signal numérique (rouge) est l'escalier arrondi au niveau le plus proche : l'écart au signal bloqué est l'erreur de quantification, bornée par \(\dfrac{q}{2}\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>signal analogique</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>échantillonné-bloqué</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>signal quantifié</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li><strong>Sample = interrupteur fermé</strong> (la sortie suit) ; <strong>hold = interrupteur ouvert</strong> (la sortie est gelée par le condensateur). Ne pas inverser.</li>
+        <li>Distinguer les deux constantes de temps : \(\tau_{\rm charge}\) limite la vitesse (donc \(f_e\)), \(\tau_{\rm décharge}\) limite le maintien (donc la résolution).</li>
+        <li>Les suiveurs apportent une résistance d'entrée quasi infinie et une résistance de sortie quasi nulle : c'est leur intérêt ici.</li>
+        <li>Le pas \(q = \dfrac{V_{\rm PE}}{2^n}\) : bien préciser que \(V_{\rm PE}\) est la pleine échelle (calibre), pas l'amplitude du signal.</li>
+        <li>Inutile d'avoir un CAN plus fin que les erreurs de l'E/B : raisonner sur la cohérence des précisions le long de la chaîne.</li>
+        <li>Ordre de grandeur : un CAN \(12\) bits sur \(V_{\rm PE}=10\ \mathrm{V}\) donne \(q = \dfrac{10}{4096}\approx 2{,}4\ \mathrm{mV}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'échantillonneur-bloqueur (phases sample/hold, structure interrupteur-condensateur, suiveurs, constantes de temps) et la quantification (pas \(q=\dfrac{V_{\rm PE}}{2^n}\), erreur de quantification, résolution \(n\) bits) figurent au programme MP de traitement numérique du signal et correspondent au chapitre 3 « Électronique numérique » du cours de la classe (Lycée Sainte-Geneviève, MP), §2.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="el5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EL5 · Acquisition numérique / Nyquist-Shannon</span></a>
+    <a class="next" href="el7.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EL7 · Filtrage numérique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 6 : Électronique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-quant');
+  const slN = document.getElementById('sl-n');
+  const vN = document.getElementById('v-n'), vNiv = document.getElementById('v-niv'), vQ = document.getElementById('v-q');
+  const vEps = document.getElementById('v-eps'), vRes = document.getElementById('v-res');
+  const btnEb = document.getElementById('btn-eb'), btn = document.getElementById('btn-anim');
+  let showEb = true, animating = false, dir = 1;
+  const Ne = 16;   // nombre d'échantillons sur la fenêtre
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  // signal analogique normalisé dans [0,1] (pleine échelle = 1)
+  function sig(t) { return 0.5 + 0.42 * Math.sin(2 * Math.PI * 1.0 * t) * Math.cos(2 * Math.PI * 0.35 * t); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const n = parseInt(slN.value, 10);
+    const L = Math.pow(2, n);     // nombre de niveaux
+    const q = 1 / L;              // pas (pleine échelle = 1)
+    const Tobs = 1.0;
+    const pad = { l: 30, r: 16, t: 16, b: 28 };
+    const px = t => pad.l + t / Tobs * (w - pad.l - pad.r);
+    const py = v => h - pad.b - v * (h - pad.t - pad.b);
+
+    // niveaux de quantification (gris)
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    for (let k = 0; k <= L; k++) {
+      const v = k * q;
+      ctx.beginPath(); ctx.moveTo(pad.l, py(v)); ctx.lineTo(w - pad.r, py(v)); ctx.stroke();
+    }
+    // axe t
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.4; ctx.beginPath();
+    ctx.moveTo(pad.l, py(0)); ctx.lineTo(w - pad.r, py(0)); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.textAlign = 'right'; ctx.fillText('t', w - pad.r, py(0) - 6);
+    ctx.textAlign = 'left'; QC.subText(ctx, 'V', 'PE', pad.l + 2, py(1) + 4);
+
+    // signal analogique (bleu)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+    for (let i = 0; i <= 600; i++) {
+      const t = Tobs * i / 600, v = sig(t);
+      i ? ctx.lineTo(px(t), py(v)) : ctx.moveTo(px(t), py(v));
+    }
+    ctx.stroke();
+
+    // escalier échantillonné-bloqué (orange) : valeur exacte tenue sur Te
+    if (showEb) {
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 1.8; ctx.beginPath();
+      for (let k = 0; k < Ne; k++) {
+        const t0 = k / Ne, t1 = (k + 1) / Ne, v = sig(t0);
+        ctx.moveTo(px(t0), py(v)); ctx.lineTo(px(t1), py(v));
+      }
+      ctx.stroke();
+    }
+
+    // signal quantifié (rouge) : escalier arrondi au niveau le plus proche
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.2; ctx.beginPath();
+    for (let k = 0; k < Ne; k++) {
+      const t0 = k / Ne, t1 = (k + 1) / Ne;
+      let vq = Math.round(sig(t0) / q) * q;
+      vq = Math.max(0, Math.min(1, vq));
+      ctx.moveTo(px(t0), py(vq)); ctx.lineTo(px(t1), py(vq));
+      ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(px(t0), py(vq), 2.8, 0, 2 * Math.PI); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(px(t0), py(vq)); ctx.lineTo(px(t1), py(vq)); ctx.stroke();
+    }
+
+    vN.textContent = n;
+    vNiv.textContent = L;
+    vQ.textContent = fr(q, 3) + '\u00a0V\u209a\u2091';
+    vEps.textContent = fr(q / 2, 3) + '\u00a0V\u209a\u2091';
+    vRes.textContent = fr(100 * q, q < 0.05 ? 2 : 1) + '\u00a0%';
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      let v = parseInt(slN.value, 10) + dir * dt * 1.2;
+      if (v >= 6) { v = 6; dir = -1; }
+      if (v <= 1) { v = 1; dir = 1; }
+      slN.value = Math.round(v); draw();
+    }
+  });
+
+  slN.addEventListener('input', draw);
+  btnEb.addEventListener('click', function () {
+    showEb = !showEb;
+    btnEb.textContent = 'Afficher l\u2019escalier E/B : ' + (showEb ? 'oui' : 'non');
+    draw();
+  });
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Arrêter l\u2019animation' : 'Animer la quantification';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

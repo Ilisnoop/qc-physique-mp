@@ -38,6 +38,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
         <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
         <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+        <a href="q7.html"><span class="qn">Q7</span>Barrière de potentiel &amp; effet tunnel</a>
+        <a href="q8.html"><span class="qn">Q8</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="q9.html"><span class="qn">Q9</span>Courant de probabilité &amp; continuité</a>
+        <a href="q10.html"><span class="qn">Q10</span>États non stationnaires</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -60,7 +64,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">B</span> Rattachement au programme</h2>
     <div class="box prog">
       <div class="box-title">▣ Programme MP · Thème 6 §6.2</div>
-      <p>Inégalité d'Heisenberg spatiale : la localisation s'obtient par superposition d'ondes planes (lien §6.3 énergie de confinement). La relation temps-énergie est présentée en parallèle comme extension culturelle connue des jurys (pas explicitement exigible en MP) ; l'inégalité spatiale est pleinement exigible.</p>
+      <p>Inégalité d'Heisenberg spatiale : la localisation s'obtient par superposition d'ondes planes (lien §6.3 énergie de confinement). La relation temps-énergie est également traitée dans le cours (encadré « Relation temps-énergie de Heisenberg », PM1 §1.4.2), où elle est énoncée en ordre de grandeur \(\tau\,\Delta\mathcal{E}\sim\hbar\) (\(\tau\) = temps caractéristique d'évolution). L'inégalité spatiale est pleinement exigible.</p>
     </div>
   </section>
 
@@ -84,14 +88,16 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <span class="step-label">Temps-énergie</span>
       <p class="lead">L'inégalité temps-énergie s'écrit :</p>
       <div class="calc-line">\[ \Delta t \cdot \Delta E \geq \dfrac{\hbar}{2} . \]</div>
-      <p class="lead">Un état de durée de vie \(\Delta t\) possède donc une largeur en énergie :</p>
-      <div class="calc-line">\[ \Delta E \geq \dfrac{\hbar}{2\,\Delta t} . \]</div>
+      <p class="lead">Le cours de la classe la retient sous la forme équivalente en ordre de grandeur, avec un temps caractéristique d'évolution \(\tau\) :</p>
+      <div class="calc-line">\[ \tau \cdot \Delta\mathcal{E} \sim \hbar . \]</div>
+      <p class="lead">Un état de durée de vie \(\Delta t\) (ou \(\tau\)) possède donc une largeur en énergie :</p>
+      <div class="calc-line">\[ \Delta E \geq \dfrac{\hbar}{2\,\Delta t} \qquad\Big(\Delta\mathcal{E} \sim \dfrac{\hbar}{\tau}\Big) . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">Application — énergie de confinement</span>
-      <p class="lead">Pour une particule confinée dans une boîte de taille \(L\), on a \(\Delta x\sim L\), donc \(\Delta p\gtrsim\dfrac{\hbar}{2L}\). On en déduit l'ordre de grandeur de l'énergie de confinement :</p>
-      <div class="calc-line">\[ E_{\text{conf}} \sim \dfrac{(\Delta p)^2}{2m} \sim \dfrac{\hbar^2}{8mL^2} . \]</div>
-      <p>Pour un électron atomique (\(L\sim 0{,}1\,\mathrm{nm}\)), on obtient \(E_{\text{conf}}\sim 1\,\mathrm{eV}\).</p>
+      <p class="lead">Pour une particule confinée dans une boîte de taille \(L\), on a \(\Delta x\lesssim L\), donc \(\Delta p\gtrsim\dfrac{\hbar}{2\,\Delta x}\gtrsim\dfrac{\hbar}{2L}\). On en déduit l'ordre de grandeur de l'énergie de confinement (raisonnement du cours, PM1 §3.3) :</p>
+      <div class="calc-line">\[ E_{\text{conf}} \sim \dfrac{(\Delta p)^2}{2m} \gtrsim \dfrac{1}{2m}\left(\dfrac{\hbar}{2L}\right)^2 \sim \dfrac{\hbar^2}{8mL^2} . \]</div>
+      <p>Pour un électron atomique (\(L\sim 0{,}1\,\mathrm{nm}\)), on obtient \(E_{\text{conf}}\sim 1\,\mathrm{eV}\), l'ordre de grandeur des énergies atomiques. On retrouve, à un facteur numérique près, l'énergie du niveau fondamental du puits infini \(\big(E_1=\dfrac{\hbar^2\pi^2}{2mL^2}\big)\).</p>
     </div>
     <div class="demo-step">
       <span class="step-label">Application — largeur naturelle des raies</span>
@@ -146,11 +152,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">G</span> Conformité au programme</h2>
-    <p>L'inégalité spatiale est pleinement au programme (§6.2, §6.3).</p>
-    <div class="box culture">
-      <div class="box-title">✦ Culture — relation temps-énergie</div>
-      <p>L'inégalité temps-énergie \(\Delta t\,\dfrac{\Delta E\geq\hbar}{2}\) est attendue culturellement par le jury mais ne figure pas comme capacité exigible explicite MP ; son énoncé et ses applications (largeur de raie, durée de vie) sont couramment attendus en oral.</p>
-    </div>
+    <p>L'inégalité spatiale \(\Delta x\,\Delta p_x\geq\dfrac{\hbar}{2}\) est pleinement au programme (§6.2, §6.3). La relation temps-énergie figure dans le cours de la classe (encadré PM1 §1.4.2), sous la forme en ordre de grandeur \(\tau\,\Delta\mathcal{E}\sim\hbar\) ; son énoncé et ses applications (largeur naturelle des raies, durée de vie d'un état excité) sont couramment attendus à l'oral. La forme stricte \(\Delta t\,\Delta E\geq\hbar/2\) en est l'écriture quantitative équivalente.</p>
   </section>
 
   <nav class="page-nav" aria-label="Question précédente et suivante">

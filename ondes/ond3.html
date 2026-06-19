@@ -40,6 +40,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
         <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
         <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -80,7 +84,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p class="lead"><strong>On rappelle les relations de passage</strong> à l'interface \(z=0\) entre le vide et le conducteur parfait :</p>
       <ul>
         <li>la composante tangentielle de \(\vec{E}\) est continue, et nulle car \(\vec{E}=\vec{0}\) dans le conducteur parfait : \(E_{t,\mathrm{vide}} = E_{t,\mathrm{cond}} = 0\) ;</li>
-        <li>la composante tangentielle de \(\vec{B}\) est discontinue, la discontinuité étant liée au courant surfacique : \(\Delta H_t = \vec{K}\times\hat{n}\).</li>
+        <li>la composante tangentielle de \(\vec{B}\) est discontinue, la discontinuité étant liée au courant surfacique : \(\Delta H_t = \vec{K}\wedge\hat{n}\).</li>
       </ul>
     </div>
     <div class="demo-step">
@@ -115,7 +119,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-k">Nombre d'onde \(k\) <span class="val" id="v-k">3,0 (u.a.)</span></label>
           <input type="range" id="sl-k" min="1" max="6" step="0.1" value="3">
-          <span class="hint" id="hint-k">Les nœuds de \(\vec{E}\) sont en \(z=0,\ -\dfrac{\lambda}{2,}\ -\lambda,\ \ldots\) ; \(\lambda = \dfrac{2\pi}{k}\).</span>
+          <span class="hint" id="hint-k">Les nœuds de \(\vec{E}\) sont en \(z=0,\ -\dfrac{\lambda}{2},\ -\lambda,\ \ldots\) ; \(\lambda = \dfrac{2\pi}{k}\).</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Animer (vibration en \(\sin\omega t\))</button>
           </div>

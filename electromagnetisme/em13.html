@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM13 — Symétries et invariances · QC Oraux MP*</title>
+<meta name="description" content="Utiliser les symétries, antisymétries et invariances d'une distribution de charges ou de courants pour déduire la direction et les variables des champs E et B.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électromagnétisme</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="em12.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="em14.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="em1.html"><span class="qn">EM1</span>Équations de Maxwell</a>
+        <a href="em2.html"><span class="qn">EM2</span>Conservation de la charge</a>
+        <a href="em3.html"><span class="qn">EM3</span>Magnétostatique : fil infini</a>
+        <a href="em4.html"><span class="qn">EM4</span>Condensateur plan</a>
+        <a href="em5.html"><span class="qn">EM5</span>Dipôle électrostatique</a>
+        <a href="em6.html"><span class="qn">EM6</span>Dipôle magnétostatique</a>
+        <a href="em7.html"><span class="qn">EM7</span>Induction : circuit fixe</a>
+        <a href="em8.html"><span class="qn">EM8</span>Induction : circuit mobile</a>
+        <a href="em9.html"><span class="qn">EM9</span>Actions de Laplace</a>
+        <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
+        <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
+        <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+        <a href="em13.html" aria-current="page"><span class="qn">EM13</span>Symétries et invariances</a>
+        <a href="em14.html"><span class="qn">EM14</span>Lecture d'une carte de champ</a>
+        <a href="em15.html"><span class="qn">EM15</span>Théorème de Gauss appliqué</a>
+        <a href="em16.html"><span class="qn">EM16</span>Vecteur de Poynting dans un fil</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 13 · Électromagnétisme</span>
+    <h1>Symétries et invariances : déterminer la direction et les variables des champs</h1>
+    <p class="q-sources"><span class="src">POLY §1.4 · §2.1.3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Énoncer le principe de Curie. Montrer comment l'étude des plans de symétrie et d'antisymétrie d'une distribution de charges (ou de courants), puis de ses invariances par translation et rotation, permet de prévoir <em>a priori</em> la direction des champs \(\vec{E}\) et \(\vec{B}\) et la liste des variables d'espace dont ils dépendent.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · §4.1 Électrostatique — Propriétés d'invariance et de symétrie</div>
+      <p>Capacités exigibles : exploiter les propriétés de symétrie et d'invariance d'une distribution pour déterminer la direction et les variables dont dépend le champ électrostatique (et, par analogie, magnétostatique) ; énoncer le principe de Curie. Cette analyse est le préalable indispensable à toute application du théorème de Gauss ou du théorème d'Ampère.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Principe de Curie</strong> : un phénomène physique possède au moins les invariances et les symétries de ses causes (ici, la distribution de charges ou de courants).</li>
+      <li><strong>Plan de symétrie \(\Pi\)</strong> : plan tel que la distribution est invariante par réflexion par rapport à \(\Pi\) (les charges se réfléchissent en charges identiques).</li>
+      <li><strong>Plan d'antisymétrie \(\Pi'\)</strong> : plan qui voit symétriquement des charges <em>opposées</em> (une charge \(+q\) a pour image une charge \(-q\)).</li>
+      <li><strong>Invariance</strong> : un système est invariant par une transformation géométrique (translation, rotation) si celle-ci, pour tout observateur fixe, redonne une situation identique à l'originale.</li>
+      <li><strong>Champ vrai (polaire)</strong> : \(\vec{E}\). <strong>Pseudo-vecteur (axial)</strong> : \(\vec{B}\), construit par produit vectoriel \(\wedge\) : son comportement vis-à-vis des plans est <em>inversé</em> par rapport à \(\vec{E}\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Champ électrique et plans de symétrie</span>
+      <p>Le champ électrostatique \(\vec{E}\) est un vecteur vrai. Le principe de Curie impose qu'il possède les symétries de la distribution de charges \(\rho\).</p>
+      <p class="lead"><strong>On en déduit les deux règles fondamentales</strong> pour \(\vec{E}\) :</p>
+      <ul>
+        <li>en un point \(M\) d'un <strong>plan de symétrie</strong> \(\Pi\) de la distribution, \(\vec{E}(M)\) est <strong>contenu dans</strong> \(\Pi\) ;</li>
+        <li>en un point \(M\) d'un <strong>plan d'antisymétrie</strong> \(\Pi'\) de la distribution, \(\vec{E}(M)\) est <strong>orthogonal à</strong> \(\Pi'\).</li>
+      </ul>
+      <p>En pratique, si \(M\) appartient à <em>deux</em> plans de symétrie, \(\vec{E}(M)\) appartient à leur intersection : sa direction est alors entièrement fixée (portée par la droite d'intersection).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Champ magnétique : règles inversées</span>
+      <p>Le champ magnétostatique \(\vec{B}\) est un pseudo-vecteur (axial). Les règles sont <strong>inversées</strong> par rapport à \(\vec{E}\), les courants jouant le rôle des sources :</p>
+      <ul>
+        <li>en un point d'un <strong>plan de symétrie</strong> \(\Pi\) de la distribution de courants, \(\vec{B}\) est <strong>orthogonal à</strong> \(\Pi\) ;</li>
+        <li>en un point d'un <strong>plan d'antisymétrie</strong> \(\Pi'\), \(\vec{B}\) est <strong>contenu dans</strong> \(\Pi'\).</li>
+      </ul>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Invariances : variables d'espace</span>
+      <p>Tandis que les symétries fixent la <em>direction</em>, les invariances fixent les <em>variables</em> dont dépend la norme du champ.</p>
+      <ul>
+        <li><strong>Invariance par translation</strong> selon un axe \((Oz)\) : le champ ne dépend pas de \(z\).</li>
+        <li><strong>Invariance par rotation</strong> autour d'un axe : le champ ne dépend pas de l'angle correspondant (\(\theta\) ou \(\varphi\)).</li>
+      </ul>
+      <p>On combine alors les deux analyses pour écrire la forme la plus réduite possible du champ.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Exemple : cylindre infini chargé en volume</span>
+      <p>Distribution : cylindre infini d'axe \((Oz)\), charge volumique \(\rho\) ne dépendant que de la distance \(r\) à l'axe. On repère \(M\) en coordonnées cylindriques \((r,\theta,z)\). A priori :</p>
+      <div class="calc-line">\[ \vec{E}(M) = E_r(r,\theta,z)\,\vec{e_r} + E_\theta(r,\theta,z)\,\vec{e_\theta} + E_z(r,\theta,z)\,\vec{e_z} . \]</div>
+      <p class="lead"><strong>On exploite les symétries.</strong> Le plan \(\Pi=(M,\vec{e_r},\vec{e_z})\) et le plan \(\Pi'=(M,\vec{e_r},\vec{e_\theta})\) sont tous deux plans de symétrie de la distribution. \(\vec{E}(M)\) appartient à leur intersection, portée par \(\vec{e_r}\) :</p>
+      <div class="calc-line">\[ \vec{E}(M) = E_r(r,\theta,z)\,\vec{e_r} . \]</div>
+      <p class="lead"><strong>On exploite les invariances.</strong> La distribution est invariante par toute rotation autour de \((Oz)\) et par toute translation parallèle à \((Oz)\), donc \(E_r\) ne dépend ni de \(\theta\) ni de \(z\). Conclusion :</p>
+      <div class="calc-line">\[ \boxed{\;\vec{E}(M) = E(r)\,\vec{e_r}\;} \]</div>
+      <p>La forme du champ est entièrement déterminée avant tout calcul : il ne reste plus qu'à appliquer le théorème de Gauss avec un cylindre coaxial.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — plan de symétrie et champ résultant</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-sym" aria-label="Deux charges symétriques par rapport à un plan ; le champ résultant au point d'observation est contenu dans le plan de symétrie."></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-pos">Position des charges \(x_0\) <span class="val" id="v-pos">1,00</span></label>
+          <input type="range" id="sl-pos" min="0.3" max="1.8" step="0.02" value="1">
+          <span class="hint">Deux charges placées symétriquement par rapport au plan vertical \(\Pi\) (en pointillés).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-type" type="button">Distribution : symétrique (+, +)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Plan \(\Pi\) = <b id="v-pi">symétrie</b></span>
+            <span class="ro">\(\vec{E}\) résultant : <b id="v-res">dans le plan</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Deux charges (bleu) placées symétriquement de part et d'autre du plan \(\Pi\) (gris pointillé). Les champs individuels (orange) s'additionnent en \(M\) : leur résultante (rouge) est <strong>contenue dans</strong> \(\Pi\) si \(\Pi\) est plan de symétrie (charges de même signe), et <strong>orthogonale à</strong> \(\Pi\) si \(\Pi\) est plan d'antisymétrie (charges opposées).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>champs individuels</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>champ résultant</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>charges sources</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Méthode en deux temps : <strong>symétries → direction</strong> du champ ; <strong>invariances → variables</strong> dont il dépend.</li>
+        <li>Pour \(\vec{E}\) (vecteur vrai) : <em>dans</em> le plan de symétrie, <em>orthogonal</em> au plan d'antisymétrie. Pour \(\vec{B}\) (pseudo-vecteur) : règles <strong>inversées</strong>.</li>
+        <li>Cette analyse est indispensable : sans connaître a priori la direction et les variables, ni le théorème de Gauss ni le théorème d'Ampère ne peuvent aboutir.</li>
+        <li>Justifier l'invariance par translation (cylindre/fil <em>infini</em>) et par rotation avant de réduire la liste des variables.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Programme MP, §4.1 (électrostatique) et §4.2 (magnétostatique) : exploitation des symétries et invariances, principe de Curie. Conforme au POLY §1.4 et §2.1.3.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="em12.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EM12 · Haut-parleur électrodynamique</span></a>
+    <a class="next" href="em14.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EM14 · Lecture d'une carte de champ</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 4 : Électromagnétisme (§4).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-sym');
+  const slPos = document.getElementById('sl-pos');
+  const vPos = document.getElementById('v-pos'), vPi = document.getElementById('v-pi'), vRes = document.getElementById('v-res');
+  const btnType = document.getElementById('btn-type');
+  let antisym = false;   // false = symétrie (charges +,+), true = antisymétrie (+,-)
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320); const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const cx = w * 0.5, cy = h * 0.52;
+    const scale = (w * 0.20);
+    const x0 = parseFloat(slPos.value);
+    // plan de symétrie vertical (x = 0)
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1.4; ctx.setLineDash([6, 5]);
+    ctx.beginPath(); ctx.moveTo(cx, 18); ctx.lineTo(cx, h - 22); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = c.muted; ctx.font = '13px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('Π', cx, 14);
+    // point d'observation M sur le plan, au-dessus
+    const Mx = cx, My = cy - h * 0.28;
+    // positions des charges
+    const q1x = cx - x0 * scale, q2x = cx + x0 * scale, qy = cy;
+    // charges
+    function charge(px, py, sign) {
+      ctx.fillStyle = sign > 0 ? c.bleu : c.rouge;
+      ctx.beginPath(); ctx.arc(px, py, 9, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 13px IBM Plex Mono, monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(sign > 0 ? '+' : '−', px, py); ctx.textBaseline = 'alphabetic';
+    }
+    charge(q1x, qy, +1);
+    charge(q2x, qy, antisym ? -1 : +1);
+    // champ créé par chaque charge en M (selon Coulomb, direction r de la charge vers M, signe selon charge)
+    function field(qx, qy, sign) {
+      let dx = Mx - qx, dy = My - qy; const d2 = dx * dx + dy * dy; const d = Math.sqrt(d2);
+      const mag = 1 / d2; // ~ amplitude
+      let ux = dx / d, uy = dy / d;
+      if (sign < 0) { ux = -ux; uy = -uy; }   // champ pointe vers une charge négative
+      return { ux: ux * mag, uy: uy * mag };
+    }
+    const f1 = field(q1x, qy, +1);
+    const f2 = field(q2x, qy, antisym ? -1 : +1);
+    const K = 1700; // facteur d'échelle visuel
+    function arrow(x0a, y0a, vx, vy, col, lw) {
+      const ex = x0a + vx, ey = y0a + vy;
+      ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.beginPath(); ctx.moveTo(x0a, y0a); ctx.lineTo(ex, ey); ctx.stroke();
+      const ang = Math.atan2(ey - y0a, ex - x0a), hl = 7;
+      ctx.beginPath(); ctx.moveTo(ex, ey);
+      ctx.lineTo(ex - hl * Math.cos(ang - 0.4), ey - hl * Math.sin(ang - 0.4));
+      ctx.moveTo(ex, ey);
+      ctx.lineTo(ex - hl * Math.cos(ang + 0.4), ey - hl * Math.sin(ang + 0.4));
+      ctx.stroke();
+    }
+    // champs individuels (orange)
+    arrow(Mx, My, f1.ux * K, f1.uy * K, c.orange, 1.8);
+    arrow(Mx, My, f2.ux * K, f2.uy * K, c.orange, 1.8);
+    // résultante (rouge)
+    const rx = (f1.ux + f2.ux) * K, ry = (f1.uy + f2.uy) * K;
+    arrow(Mx, My, rx, ry, c.rouge, 2.8);
+    // point M
+    ctx.fillStyle = c.text; ctx.beginPath(); ctx.arc(Mx, My, 3.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'right'; ctx.fillText('M', Mx - 6, My - 4);
+    ctx.fillStyle = c.rouge; ctx.textAlign = 'left'; ctx.fillText('E', Mx + rx + 4, My + ry);
+    // readouts
+    vPos.textContent = fr(x0, 2);
+    vPi.textContent = antisym ? 'antisymétrie' : 'symétrie';
+    vRes.textContent = antisym ? 'orthogonal au plan' : 'dans le plan';
+  }
+  slPos.addEventListener('input', draw);
+  btnType.addEventListener('click', function () {
+    antisym = !antisym;
+    btnType.textContent = antisym ? 'Distribution : antisymétrique (+, −)' : 'Distribution : symétrique (+, +)';
+    draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

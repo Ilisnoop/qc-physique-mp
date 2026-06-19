@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OND9 — Polarisation d'une OPPM · QC Oraux MP*</title>
+<meta name="description" content="État de polarisation d'une OPPM électromagnétique : polarisation rectiligne, circulaire (gauche/droite), elliptique ; polariseur, analyseur et loi de Malus. Convention e^{+iωt}.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Ondes électromagnétiques</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ond8.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ond10.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ond1.html"><span class="qn">OND1</span>Propagation dans le vide &amp; OPPM</a>
+        <a href="ond2.html"><span class="qn">OND2</span>Vecteur de Poynting &amp; bilan d'énergie</a>
+        <a href="ond3.html"><span class="qn">OND3</span>Réflexion sur conducteur parfait</a>
+        <a href="ond4.html"><span class="qn">OND4</span>OPPM dans un plasma</a>
+        <a href="ond5.html"><span class="qn">OND5</span>Milieu ohmique &amp; effet de peau</a>
+        <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
+        <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
+        <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html" aria-current="page"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 9 · Ondes électromagnétiques</span>
+    <h1>Polarisation d'une OPPM : états rectiligne, circulaire et elliptique ; polariseur, analyseur et loi de Malus</h1>
+    <p class="q-sources"><span class="src">POLY p.3 · §2.1</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir l'état de polarisation d'une OPPM à partir des composantes transverses du champ électrique \(\vec{E}\). Distinguer les polarisations rectiligne, circulaire (gauche / droite) et elliptique. Décrire le principe d'un polariseur et d'un analyseur, et établir la loi de Malus \(I = I_0\cos^2\theta\). On adopte la convention complexe \(e^{+i\omega t}\) (\(\partial_t \to +i\omega\), \(\vec{\nabla}\to -i\vec{k}\)).</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 4 §4.5 (Ondes dans le vide)</div>
+      <p>Capacités exigibles : décrire l'état de polarisation d'une onde électromagnétique plane progressive monochromatique à partir des composantes du champ électrique ; relier polarisation rectiligne, circulaire et elliptique au déphasage entre les composantes ; exploiter un polariseur et un analyseur ; établir et utiliser la loi de Malus pour l'éclairement transmis par un analyseur.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>OPPM transverse</strong> se propageant selon \(\vec{u}_z\) : le champ électrique réel est contenu dans le plan d'onde \((xOy)\), soit \(\vec{E}(z,t) = E_x\,\vec{u}_x + E_y\,\vec{u}_y\) avec \(E_z = 0\).</li>
+      <li><strong>Figure de polarisation</strong> : lieu décrit par l'extrémité du vecteur \(\vec{E}\) en un point fixe lorsque \(t\) décrit une période. C'est en général une ellipse.</li>
+      <li><strong>État de polarisation</strong> : il est entièrement fixé par le rapport des amplitudes \(\dfrac{E_{0y}}{E_{0x}}\) et par le déphasage \(\Delta\varphi = \varphi_y - \varphi_x\) entre les deux composantes.</li>
+      <li><strong>Lumière naturelle</strong> : la direction du champ électrique varie aléatoirement dans le plan transverse ; l'onde est <em>non polarisée</em> et possède une symétrie de révolution autour de \(\vec{u}_z\).</li>
+      <li><strong>Polariseur idéal</strong> : lame qui transmet intégralement la composante du champ parallèle à sa <em>direction de transmission privilégiée</em> \(\vec{u}_p\) et absorbe la composante orthogonale.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Forme générale et figure de polarisation</span>
+      <p class="lead"><strong>On écrit les deux composantes</strong> du champ réel d'une OPPM se propageant selon \(\vec{u}_z\), en choisissant l'origine des temps de sorte que :</p>
+      <div class="calc-line">\[ \vec{E}(z,t) = \begin{pmatrix} E_{0x}\cos(\omega t - kz) \\[4pt] E_{0y}\cos(\omega t - kz - \Delta\varphi) \end{pmatrix} , \qquad \Delta\varphi = \varphi_y - \varphi_x . \]</div>
+      <p class="lead"><strong>On élimine le temps</strong> entre \(E_x\) et \(E_y\) : l'extrémité de \(\vec{E}\) décrit, en général, une <strong>ellipse</strong> inscrite dans le rectangle défini par \(|E_x|\leq E_{0x}\) et \(|E_y|\leq E_{0y}\). C'est la polarisation <strong>elliptique</strong>, cas le plus général.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Polarisation rectiligne</span>
+      <p class="lead"><strong>On cherche la condition</strong> pour que \(\vec{E}\) garde une direction fixe au cours du temps. Cela impose que \(E_x\) et \(E_y\) soient proportionnels à tout instant, donc en phase ou en opposition de phase :</p>
+      <div class="calc-line">\[ \Delta\varphi = 0 : \quad \vec{E} = \bigl(E_{0x}\,\vec{u}_x + E_{0y}\,\vec{u}_y\bigr)\cos(\omega t - kz) , \]</div>
+      <div class="calc-line">\[ \Delta\varphi = \pi : \quad \vec{E} = \bigl(E_{0x}\,\vec{u}_x - E_{0y}\,\vec{u}_y\bigr)\cos(\omega t - kz) . \]</div>
+      <p><strong>Conclusion :</strong> une OPPM est polarisée rectilignement si et seulement si ses composantes non nulles sont en phase ou en opposition de phase. À une rotation près dans le plan, on peut l'écrire \(\vec{E} = E_0\cos(\omega t - kz)\,\vec{u}_x\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Polarisation circulaire (convention \(e^{+i\omega t}\))</span>
+      <p class="lead"><strong>On impose une norme constante</strong> \(E_x^2 + E_y^2 = \text{cte}\). La seule solution est \(E_{0x} = E_{0y} = E_0\) et \(\Delta\varphi = \pm\dfrac{\pi}{2}\). Deux cas se présentent :</p>
+      <div class="calc-line">\[ \text{circulaire gauche :}\quad \vec{E} = E_0\bigl(\cos(\omega t - kz)\,\vec{u}_x + \sin(\omega t - kz)\,\vec{u}_y\bigr) , \]</div>
+      <p class="lead"><strong>soit en notation complexe</strong> \(e^{+i\omega t}\) :</p>
+      <div class="calc-line">\[ \underline{\vec{E}} = E_0\,e^{\,i(\omega t - kz)}\,\bigl(\vec{u}_x - i\,\vec{u}_y\bigr) . \]</div>
+      <div class="calc-line">\[ \text{circulaire droite :}\quad \vec{E} = E_0\bigl(\cos(\omega t - kz)\,\vec{u}_x - \sin(\omega t - kz)\,\vec{u}_y\bigr) , \]</div>
+      <div class="calc-line">\[ \underline{\vec{E}} = E_0\,e^{\,i(\omega t - kz)}\,\bigl(\vec{u}_x + i\,\vec{u}_y\bigr) . \]</div>
+      <p>Avec la convention \(e^{+i\omega t}\), le facteur \(-i\) devant \(\vec{u}_y\) correspond à la polarisation <strong>gauche</strong> et le facteur \(+i\) à la polarisation <strong>droite</strong> : pour un observateur qui reçoit l'onde (regardant vers \(-\vec{u}_z\)), \(\vec{E}\) tourne dans le sens trigonométrique direct pour la gauche.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Polariseur, analyseur et loi de Malus</span>
+      <p class="lead"><strong>On envoie sur un analyseur</strong> une onde déjà polarisée rectilignement, dont le champ fait un angle \(\theta\) avec la direction de transmission privilégiée \(\vec{u}_p\). L'analyseur ne transmet que la projection \(E\cos\theta\). Comme l'éclairement est proportionnel au carré de l'amplitude :</p>
+      <div class="calc-line">\[ I = I_0\cos^2\theta \qquad \text{(loi de Malus).} \]</div>
+      <p>Pour \(\theta = \dfrac{\pi}{2}\) (analyseur croisé) l'onde est totalement éteinte : l'extinction est la preuve expérimentale d'une polarisation rectiligne. Sur de la lumière <strong>naturelle</strong>, toutes les valeurs de \(\theta\) sont équiprobables et la moyenne \(\langle\cos^2\theta\rangle = \dfrac{1}{2}\) : un polariseur idéal transmet \(50\%\) du flux.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — ellipse de polarisation &amp; loi de Malus</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-pol" aria-label="Ellipse de polarisation décrite par le champ électrique, déphasage et angle d'analyseur réglables, avec éclairement transmis par la loi de Malus"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-dphi">Déphasage \(\Delta\varphi = \varphi_y - \varphi_x\) <span class="val" id="v-dphi">90°</span></label>
+          <input type="range" id="sl-dphi" min="0" max="360" step="1" value="90">
+          <span class="hint">\(0\) ou \(180^\circ\) : rectiligne ; \(\pm 90^\circ\) avec \(E_{0x}=E_{0y}\) : circulaire ; sinon elliptique.</span>
+          <label for="sl-ry" style="margin-top:.6rem">Rapport \(\dfrac{E_{0y}}{E_{0x}}\) <span class="val" id="v-ry">1,00</span></label>
+          <input type="range" id="sl-ry" min="0.1" max="1.6" step="0.02" value="1">
+          <label for="sl-th" style="margin-top:.6rem">Angle de l'analyseur \(\theta\) <span class="val" id="v-th">30°</span></label>
+          <input type="range" id="sl-th" min="0" max="180" step="1" value="30">
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le champ</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">État : <b id="v-etat">circulaire</b></span>
+            <span class="ro">Loi de Malus \(\dfrac{I}{I_0} = \cos^2\theta\) = <b id="v-malus">0,75</b></span>
+            <span class="ro" id="ro-sens">Sens de rotation : <b id="v-sens">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        À gauche, la figure de polarisation : l'extrémité du champ \(\vec{E}(t)\) (point bleu) décrit l'ellipse au cours d'une période. La barre orange indique la direction de transmission \(\vec{u}_p\) de l'analyseur. À droite, l'éclairement transmis \(I = I_0\cos^2\theta\). Convention \(e^{+i\omega t}\) : le sens de rotation indiqué correspond à un observateur recevant l'onde.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>champ \(\vec{E}(t)\) et ellipse</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>axe de l'analyseur</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>composante transmise</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>L'état de polarisation dépend de DEUX paramètres : le rapport \(\dfrac{E_{0y}}{E_{0x}}\) et le déphasage \(\Delta\varphi\).</li>
+        <li>Rectiligne \(\Leftrightarrow\) \(\Delta\varphi = 0\) ou \(\pi\) ; circulaire \(\Leftrightarrow\) \(E_{0x}=E_{0y}\) ET \(\Delta\varphi = \pm\dfrac{\pi}{2}\) ; tout le reste est elliptique.</li>
+        <li>Préciser la convention : avec \(e^{+i\omega t}\), \(\underline{\vec{E}} = E_0 e^{i(\omega t - kz)}(\vec{u}_x - i\,\vec{u}_y)\) est la polarisation gauche.</li>
+        <li>Loi de Malus : \(I = I_0\cos^2\theta\) entre deux ondes polarisées rectilignement ; pour de la lumière naturelle un polariseur transmet \(\dfrac{1}{2}\) du flux.</li>
+        <li>L'extinction par un analyseur croisé caractérise une polarisation rectiligne.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'ensemble est au programme MP (§4.5, ondes dans le vide). La caractérisation des états de polarisation à partir des composantes, le polariseur/analyseur et la loi de Malus sont des capacités exigibles. La décomposition d'une onde polarisée sur la base des polarisations circulaires gauche et droite est mentionnée dans le cours comme complément.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ond8.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OND8 · Cavité résonante 1D</span></a>
+    <a class="next" href="ond10.html"><span class="pn-dir">Suivant →</span><span class="pn-title">OND10 · Paquet d'ondes &amp; vitesse de groupe</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 5 : Ondes électromagnétiques (§4.5).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-pol');
+  const slDphi = document.getElementById('sl-dphi'), slRy = document.getElementById('sl-ry'), slTh = document.getElementById('sl-th');
+  const vDphi = document.getElementById('v-dphi'), vRy = document.getElementById('v-ry'), vTh = document.getElementById('v-th');
+  const vEtat = document.getElementById('v-etat'), vMalus = document.getElementById('v-malus'), vSens = document.getElementById('v-sens');
+  const btn = document.getElementById('btn-anim');
+  let animating = true, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const dphi = parseFloat(slDphi.value) * Math.PI / 180;
+    const ry = parseFloat(slRy.value);
+    const th = parseFloat(slTh.value) * Math.PI / 180;
+
+    // ----- panneau gauche : figure de polarisation -----
+    const cx = h * 0.5 + 6, cyc = h * 0.5, R = h * 0.36;
+    const E0x = R, E0y = R * ry;
+    // axes
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+    ctx.moveTo(cx - R - 14, cyc); ctx.lineTo(cx + R + 14, cyc);
+    ctx.moveTo(cx, cyc - R - 14); ctx.lineTo(cx, cyc + R + 14); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace';
+    ctx.textAlign = 'left'; QC.subText(ctx, 'E', 'x', cx + R + 2, cyc - 4);
+    ctx.textAlign = 'center'; QC.subText(ctx, 'E', 'y', cx + 8, cyc - R - 16);
+    // ellipse paramétrée : Ex = E0x cos(u), Ey = E0y cos(u - dphi)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 1.4; ctx.globalAlpha = 0.5; ctx.beginPath();
+    for (let i = 0; i <= 200; i++) {
+      const u = 2 * Math.PI * i / 200;
+      const X = cx + E0x * Math.cos(u);
+      const Y = cyc - E0y * Math.cos(u - dphi);
+      i ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y);
+    }
+    ctx.stroke(); ctx.globalAlpha = 1;
+    // axe analyseur
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2; ctx.setLineDash([5, 4]); ctx.beginPath();
+    ctx.moveTo(cx - (R + 10) * Math.cos(th), cyc + (R + 10) * Math.sin(th));
+    ctx.lineTo(cx + (R + 10) * Math.cos(th), cyc - (R + 10) * Math.sin(th));
+    ctx.stroke(); ctx.setLineDash([]);
+    // vecteur champ courant
+    const Ex = E0x * Math.cos(phase);
+    const Ey = E0y * Math.cos(phase - dphi);
+    const px = cx + Ex, py = cyc - Ey;
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+    ctx.moveTo(cx, cyc); ctx.lineTo(px, py); ctx.stroke();
+    ctx.fillStyle = c.bleu; ctx.beginPath(); ctx.arc(px, py, 4.5, 0, 2 * Math.PI); ctx.fill();
+    // composante transmise (projection sur l'axe analyseur)
+    const ux = Math.cos(th), uy = -Math.sin(th);
+    const proj = (Ex * ux + (Ey) * (Math.sin(th)));
+    // projection en repère écran : composante de (Ex,Ey) sur (cos th, sin th)
+    const projE = Ex * Math.cos(th) + Ey * Math.sin(th);
+    const tx = cx + projE * Math.cos(th), ty = cyc - projE * Math.sin(th);
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 2.6; ctx.beginPath();
+    ctx.moveTo(cx, cyc); ctx.lineTo(tx, ty); ctx.stroke();
+
+    // ----- panneau droit : I/I0 = cos^2(theta) -----
+    const x0 = h + 24, x1 = w - 14, ytop = 24, ybot = h - 34;
+    if (x1 - x0 > 60) {
+      ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+      ctx.moveTo(x0, ybot); ctx.lineTo(x1, ybot); ctx.moveTo(x0, ytop); ctx.lineTo(x0, ybot); ctx.stroke();
+      const PX = a => x0 + (a / Math.PI) * (x1 - x0);
+      const PY = v => ybot - v * (ybot - ytop);
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 2.6; ctx.beginPath();
+      for (let i = 0; i <= 180; i++) {
+        const a = Math.PI * i / 180, v = Math.cos(a) * Math.cos(a);
+        i ? ctx.lineTo(PX(a), PY(v)) : ctx.moveTo(PX(a), PY(v));
+      }
+      ctx.stroke();
+      const malus = Math.cos(th) * Math.cos(th);
+      ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(PX(th), PY(malus), 4.5, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+      ctx.fillText('θ', (x0 + x1) / 2, ybot + 16);
+      ctx.fillText('0', x0, ybot + 16); ctx.fillText('180°', x1, ybot + 16);
+      ctx.textAlign = 'left'; QC.subText(ctx, 'I/I', '0', x0 + 2, ytop + 4, '');
+    }
+
+    // readouts
+    vDphi.textContent = Math.round(parseFloat(slDphi.value)) + '°';
+    vRy.textContent = fr(ry, 2);
+    vTh.textContent = Math.round(parseFloat(slTh.value)) + '°';
+    const malus = Math.cos(th) * Math.cos(th);
+    vMalus.textContent = fr(malus, 2);
+    // classification
+    const dd = parseFloat(slDphi.value);
+    const near = (a, b) => Math.abs(((a - b + 540) % 360) - 180) < 4;
+    let etat, sens = '—';
+    if (near(dd, 0) || near(dd, 180)) etat = 'rectiligne';
+    else if ((near(dd, 90) || near(dd, 270)) && Math.abs(ry - 1) < 0.05) {
+      etat = 'circulaire';
+      // signe de Ey'(t) à phase nulle indique le sens ; convention e^{+iωt}
+      sens = (Math.sin(-dphi) < 0) ? 'gauche (sens direct)' : 'droite (sens horaire)';
+    } else etat = 'elliptique';
+    vEtat.textContent = etat;
+    vSens.textContent = sens;
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) { phase += dt * 1.8; if (phase > 2 * Math.PI) phase -= 2 * Math.PI; draw(); }
+  });
+
+  slDphi.addEventListener('input', draw);
+  slRy.addEventListener('input', draw);
+  slTh.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Arrêter' : 'Animer le champ';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  btn.classList.add('active');
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

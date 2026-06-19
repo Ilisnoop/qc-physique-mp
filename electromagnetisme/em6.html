@@ -44,6 +44,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
         <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
         <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+        <a href="em13.html"><span class="qn">EM13</span>Symétries et invariances</a>
+        <a href="em14.html"><span class="qn">EM14</span>Lecture d'une carte de champ</a>
+        <a href="em15.html"><span class="qn">EM15</span>Théorème de Gauss appliqué</a>
+        <a href="em16.html"><span class="qn">EM16</span>Vecteur de Poynting dans un fil</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -90,7 +94,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p class="lead"><strong>Résultante des forces.</strong> Dans un champ extérieur uniforme \(\vec{B}_{\mathrm{ext}}\), la résultante est nulle :</p>
       <div class="calc-line">\[ \vec{F} = \vec{0} . \]</div>
       <p class="lead"><strong>Moment du couple.</strong> Il subsiste un couple qui tend à aligner \(\vec{m}\) sur le champ :</p>
-      <div class="calc-line">\[ \vec{\Gamma} = \vec{m}\times\vec{B}_{\mathrm{ext}} . \]</div>
+      <div class="calc-line">\[ \vec{\Gamma} = \vec{m}\wedge\vec{B}_{\mathrm{ext}} . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">3 — Énergie potentielle</span>
@@ -113,7 +117,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-th">Inclinaison \(\theta\) de \(\vec{m}\) <span class="val" id="v-th">60°</span></label>
           <input type="range" id="sl-th" min="0" max="180" step="1" value="60">
-          <span class="hint">Le couple \(\vec{\Gamma}=\vec{m}\times\vec{B}_{\mathrm{ext}}\) fait pivoter la spire vers l'alignement \(\vec{m}\parallel\vec{B}_{\mathrm{ext}}\).</span>
+          <span class="hint">Le couple \(\vec{\Gamma}=\vec{m}\wedge\vec{B}_{\mathrm{ext}}\) fait pivoter la spire vers l'alignement \(\vec{m}\parallel\vec{B}_{\mathrm{ext}}\).</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Laisser pivoter</button>
           </div>
@@ -126,7 +130,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
       </div>
       <figcaption class="fig-legend">
-        Spire de courant dans un champ extérieur uniforme \(\vec{B}_{\mathrm{ext}}\) (vert). Le moment \(\vec{m}=I\mathcal{A}\,\hat{n}\) (rouge) subit le couple \(\vec{\Gamma}=\vec{m}\times\vec{B}_{\mathrm{ext}}\), qui l'aligne sur \(\vec{B}_{\mathrm{ext}}\). Même structure que le dipôle électrique.
+        Spire de courant dans un champ extérieur uniforme \(\vec{B}_{\mathrm{ext}}\) (vert). Le moment \(\vec{m}=I\mathcal{A}\,\hat{n}\) (rouge) subit le couple \(\vec{\Gamma}=\vec{m}\wedge\vec{B}_{\mathrm{ext}}\), qui l'aligne sur \(\vec{B}_{\mathrm{ext}}\). Même structure que le dipôle électrique.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Spire (courant \(I\))</span>
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>Moment \(\vec{m}\)</span>
@@ -186,7 +190,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       ctx.beginPath(); ctx.moveTo(x, h-14); ctx.lineTo(x, 14);
       ctx.moveTo(x,14); ctx.lineTo(x-4,24); ctx.moveTo(x,14); ctx.lineTo(x+4,24); ctx.stroke(); }
     ctx.globalAlpha=1; ctx.fillStyle=c.vert; ctx.font='13px IBM Plex Mono, monospace'; ctx.textAlign='left';
-    ctx.fillText('B_ext', w*0.08+6, 34);
+    ctx.fillText('Bₑₓₜ', w*0.08+6, 34);
     // spire : ellipse vue en perspective inclinée de ang depuis verticale
     const a = -Math.PI/2 + ang; // direction de m
     // moment m

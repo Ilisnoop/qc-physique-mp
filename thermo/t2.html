@@ -38,6 +38,8 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="t4.html"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
         <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
         <a href="t6.html"><span class="qn">T6</span>Changement d'état du corps pur</a>
+        <a href="t7.html"><span class="qn">T7</span>Équilibre liquide-vapeur · titre</a>
+        <a href="t8.html"><span class="qn">T8</span>Air humide · point de rosée</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -140,7 +142,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           <label for="sl-t0">Source unique \(T_0\) (moteur monotherme) <span class="val" id="v-t0">300 K</span></label>
           <input type="range" id="sl-t0" min="200" max="800" step="10" value="300">
           <div class="readout" style="margin-top:.6rem">
-            <span class="ro">\(\Delta S = nR\ln(\dfrac{V_2}{V_1})\) = <b id="v-ds">3,29</b> J·K⁻¹ (n=1 mol)</span>
+            <span class="ro">\(\Delta S = nR\ln(\dfrac{V_2}{V_1})\) = <b id="v-ds">9,13</b> J·K⁻¹ (n=1 mol)</span>
             <span class="ro">Moteur monotherme : \(S_c = -\dfrac{Q}{T_0}\) = <b id="v-sc">&lt; 0</b> ⇒ <b id="v-verdict">interdit</b></span>
           </div>
         </div>
@@ -161,7 +163,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>L'expression \(\Delta S_{\text{GP}} = nC_{V,m}\ln(\dfrac{T_2}{T_1}) + nR\ln(\dfrac{V_2}{V_1})\) se démontre à partir du premier principe et de \(\mathrm{d}S = \delta Q_\dfrac{{\text{rév}}}{T}\), en soulignant qu'elle vaut pour <em>toute</em> transformation (\(S\) fonction d'état).</li>
+        <li>L'expression \(\Delta S_{\text{GP}} = nC_{V,m}\ln(\dfrac{T_2}{T_1}) + nR\ln(\dfrac{V_2}{V_1})\) se démontre à partir du premier principe et de \(\mathrm{d}S = \dfrac{\delta Q_{\text{rév}}}{T}\), en soulignant qu'elle vaut pour <em>toute</em> transformation (\(S\) fonction d'état).</li>
         <li>Les deux énoncés (Kelvin-Planck et Clausius) du second principe sont équivalents.</li>
         <li>Toujours préciser les sources et les flux d'entropie ; \(S_c \geq 0\) avec égalité seulement pour un processus réversible.</li>
         <li>Un moteur monotherme n'est pas seulement « peu efficace » : il est rigoureusement <em>impossible</em>.</li>
@@ -241,7 +243,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     // travail fourni horizontal
     ctx.strokeStyle = c.bleu; ctx.beginPath(); ctx.moveTo(cx + 42, 172); ctx.lineTo(x1 - 6, 172); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(x1 - 14, 167); ctx.lineTo(x1 - 6, 172); ctx.lineTo(x1 - 14, 177); ctx.stroke();
-    ctx.fillStyle = c.bleu; ctx.fillText('W_f = Q ?', cx + 46, 164);
+    ctx.fillStyle = c.bleu; QC.subText(ctx, 'W', 'f', cx + 46, 164, ' = Q ?');
     // croix d'interdiction
     ctx.strokeStyle = c.rouge; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.moveTo(cx - 12, 215); ctx.lineTo(cx + 12, 239); ctx.moveTo(cx + 12, 215); ctx.lineTo(cx - 12, 239); ctx.stroke();

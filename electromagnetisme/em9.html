@@ -44,6 +44,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="em10.html"><span class="qn">EM10</span>Circuits couplés / transformateur</a>
         <a href="em11.html"><span class="qn">EM11</span>Courants de Foucault</a>
         <a href="em12.html"><span class="qn">EM12</span>Haut-parleur électrodynamique</a>
+        <a href="em13.html"><span class="qn">EM13</span>Symétries et invariances</a>
+        <a href="em14.html"><span class="qn">EM14</span>Lecture d'une carte de champ</a>
+        <a href="em15.html"><span class="qn">EM15</span>Théorème de Gauss appliqué</a>
+        <a href="em16.html"><span class="qn">EM16</span>Vecteur de Poynting dans un fil</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -66,7 +70,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">B</span> Rattachement au programme</h2>
     <div class="box prog">
       <div class="box-title">▣ Programme MPSI/MP · Actions de Laplace</div>
-      <p>Force de Laplace \(\mathrm{d}\vec{F} = I\mathrm{d}\vec{\ell}\times\vec{B}\), puissance associée, applications à la conversion électromécanique. Niveau MPSI/MP.</p>
+      <p>Force de Laplace \(\mathrm{d}\vec{F} = I\mathrm{d}\vec{\ell}\wedge\vec{B}\), puissance associée, applications à la conversion électromécanique. Niveau MPSI/MP.</p>
     </div>
   </section>
 
@@ -80,23 +84,23 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="demo-step">
       <span class="step-label">1 — Force de Laplace élémentaire</span>
       <p>Sur un élément \(\mathrm{d}\vec{\ell}\) d'un conducteur parcouru par le courant \(I\) et placé dans un champ \(\vec B\), la force de Laplace élémentaire s'écrit :</p>
-      <div class="calc-line">\[ \mathrm{d}\vec{F} = I\,\mathrm{d}\vec{\ell}\times\vec{B} . \]</div>
+      <div class="calc-line">\[ \mathrm{d}\vec{F} = I\,\mathrm{d}\vec{\ell}\wedge\vec{B} . \]</div>
       <p class="lead"><strong>On intègre sur le conducteur</strong> pour obtenir la force totale :</p>
-      <div class="calc-line">\[ \vec{F} = I\int_{C} \mathrm{d}\vec{\ell}\times\vec{B} . \]</div>
+      <div class="calc-line">\[ \vec{F} = I\int_{C} \mathrm{d}\vec{\ell}\wedge\vec{B} . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">2 — Puissance des forces de Laplace</span>
       <p>Pour un élément se déplaçant à la vitesse \(\vec{v}\), la puissance élémentaire vaut :</p>
-      <div class="calc-line">\[ \mathrm{d}P = \mathrm{d}\vec{F}\cdot\vec{v} = I\,(\mathrm{d}\vec{\ell}\times\vec{B})\cdot\vec{v} . \]</div>
+      <div class="calc-line">\[ \mathrm{d}P = \mathrm{d}\vec{F}\cdot\vec{v} = I\,(\mathrm{d}\vec{\ell}\wedge\vec{B})\cdot\vec{v} . \]</div>
       <p class="lead"><strong>On utilise la propriété du produit mixte</strong> pour faire apparaître \(\vec B\) :</p>
-      <div class="calc-line">\[ (\mathrm{d}\vec{\ell}\times\vec{B})\cdot\vec{v} = (\vec{v}\times\mathrm{d}\vec{\ell})\cdot\vec{B} . \]</div>
-      <p>On retrouve ainsi le lien avec la f.e.m. de mouvement \(\mathrm{d}e = (\vec v\times\vec B)\cdot\mathrm{d}\vec\ell\).</p>
+      <div class="calc-line">\[ (\mathrm{d}\vec{\ell}\wedge\vec{B})\cdot\vec{v} = (\vec{v}\wedge\mathrm{d}\vec{\ell})\cdot\vec{B} . \]</div>
+      <p>On retrouve ainsi le lien avec la f.e.m. de mouvement \(\mathrm{d}e = (\vec v\wedge\vec B)\cdot\mathrm{d}\vec\ell\).</p>
     </div>
     <div class="demo-step">
       <span class="step-label">3 — Exemple : barre mobile sur rails</span>
       <p>On considère une barre de longueur \(\ell\), parcourue par un courant \(I\) selon \(\hat{y}\), dans un champ uniforme \(\vec{B} = B\hat{z}\).</p>
       <p class="lead"><strong>On applique la force de Laplace</strong> au segment rectiligne :</p>
-      <div class="calc-line">\[ \vec{F} = I\ell\,\hat{y}\times B\,\hat{z} = I\ell B\,\hat{x} . \]</div>
+      <div class="calc-line">\[ \vec{F} = I\ell\,\hat{y}\wedge B\,\hat{z} = I\ell B\,\hat{x} . \]</div>
       <p class="lead">La force est dirigée selon le déplacement possible \(\hat{x}\). <strong>On calcule sa puissance</strong> à la vitesse \(v\), et on retrouve le lien avec la f.e.m. \(e = B\ell v\) (cohérence avec EM8) :</p>
       <div class="calc-line">\[ P = F v = I\ell B v = I\,e . \]</div>
     </div>
@@ -108,7 +112,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   </section>
 
   <section class="rubric">
-    <h2><span class="rl">E</span> Figure interactive — force \(\vec{F} = I\vec{\ell}\times\vec{B}\)</h2>
+    <h2><span class="rl">E</span> Figure interactive — force \(\vec{F} = I\vec{\ell}\wedge\vec{B}\)</h2>
     <figure class="figure">
       <div class="fig-canvas-wrap">
         <canvas id="cv-laplace" aria-label="Force de Laplace sur une barre : orientation du courant et signe de B réglables, F = I l ^ B"></canvas>
@@ -131,7 +135,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
       </div>
       <figcaption class="fig-legend">
-        Force de Laplace sur une barre de courant : \(\vec{F} = I\vec{\ell}\times\vec{B}\), perpendiculaire à \(\vec{\ell}\) (selon \(\hat{y}\)) et à \(\vec{B}\) (selon \(\hat{z}\) sortant), donc dirigée selon \(\pm\hat{x}\). Le sens dépend du signe de \(I\) — règle de la main droite.
+        Force de Laplace sur une barre de courant : \(\vec{F} = I\vec{\ell}\wedge\vec{B}\), perpendiculaire à \(\vec{\ell}\) (selon \(\hat{y}\)) et à \(\vec{B}\) (selon \(\hat{z}\) sortant), donc dirigée selon \(\pm\hat{x}\). Le sens dépend du signe de \(I\) — règle de la main droite.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Barre (courant \(I\))</span>
           <span class="swatch"><i style="background:var(--curve-orange)"></i>Force \(\vec{F}\)</span>
@@ -146,7 +150,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="box-title">◆ Points clés</div>
       <ul>
         <li>La force de Laplace est la résultante macroscopique des forces de Lorentz sur les porteurs microscopiques.</li>
-        <li>Elle est perpendiculaire à \(\vec{B}\) ; attention au sens : \(\vec{F}=I\vec{\ell}\times\vec{B}\) suit la règle de la main droite, inversé si \(I\) change de signe.</li>
+        <li>Elle est perpendiculaire à \(\vec{B}\) ; attention au sens : \(\vec{F}=I\vec{\ell}\wedge\vec{B}\) suit la règle de la main droite, inversé si \(I\) change de signe.</li>
         <li>Le bilan de puissance \(P_{\mathrm{Laplace}} = e\cdot I\) relie directement Laplace (mécanique) et Faraday (électrique).</li>
       </ul>
     </div>

@@ -40,6 +40,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
         <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
         <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -71,7 +75,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <p>Densité volumique d'énergie électromagnétique :</p>
     <p>\[ u_{em} = \frac{1}{2}\varepsilon_0 E^2 + \frac{1}{2\mu_0}B^2 \]</p>
     <p>Vecteur de Poynting :</p>
-    <p>\[ \vec{\Pi} = \frac{1}{\mu_0}\vec{E}\times\vec{B} \quad (\mathrm{W\cdot m^{-2}}) \]</p>
+    <p>\[ \vec{\Pi} = \frac{1}{\mu_0}\vec{E}\wedge\vec{B} \quad (\mathrm{W\cdot m^{-2}}) \]</p>
   </section>
 
   <section class="rubric">
@@ -100,10 +104,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <span class="step-label">3 — Application à une OPPM</span>
       <p class="lead"><strong>On considère une OPPM polarisée rectilignement</strong> se propageant selon \(\hat{z}\) :</p>
       <div class="calc-line">\[ \vec{E} = E_0\cos(\omega t - kz)\,\hat{x} , \qquad \vec{B} = \dfrac{E_0}{c}\cos(\omega t-kz)\,\hat{y} . \]</div>
-      <p class="lead"><strong>On calcule le vecteur de Poynting instantané</strong> \(\vec{\Pi} = \dfrac{1}{\mu_0}\,\vec{E}\times\vec{B}\), puis sa moyenne temporelle (la valeur moyenne de \(\cos^2\) valant \(\tfrac12\)) :</p>
+      <p class="lead"><strong>On calcule le vecteur de Poynting instantané</strong> \(\vec{\Pi} = \dfrac{1}{\mu_0}\,\vec{E}\wedge\vec{B}\), puis sa moyenne temporelle (la valeur moyenne de \(\cos^2\) valant \(\tfrac12\)) :</p>
       <div class="calc-line">\[
         \begin{aligned}
-          \vec{\Pi} &amp;= \dfrac{1}{\mu_0}\,\vec{E}\times\vec{B} = \dfrac{E_0^2}{\mu_0 c}\cos^2(\omega t - kz)\,\hat{z} , \\[4pt]
+          \vec{\Pi} &amp;= \dfrac{1}{\mu_0}\,\vec{E}\wedge\vec{B} = \dfrac{E_0^2}{\mu_0 c}\cos^2(\omega t - kz)\,\hat{z} , \\[4pt]
           \langle\vec{\Pi}\rangle &amp;= \dfrac{E_0^2}{2\mu_0 c}\,\hat{z} = \dfrac{E_0^2}{2Z_0}\,\hat{z} ,
         \end{aligned}
       \]</div>

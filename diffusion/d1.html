@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>D1 — Équation de la diffusion thermique · QC Oraux MP*</title>
-<meta name="description" content="Établissement de l'équation de la diffusion thermique en géométrie cartésienne 1D, loi de Fourier, temps caractéristiques τ~L²/a, et analogie électrique avec la résistance thermique.">
+<meta name="description" content="Établissement de l'équation de la diffusion thermique en géométrie cartésienne 1D, loi de Fourier, temps caractéristiques τ~L²/D_th, et analogie électrique avec la résistance thermique.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,6 +35,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="d1.html" aria-current="page"><span class="qn">D1</span>Équation de la diffusion thermique</a>
         <a href="d2.html"><span class="qn">D2</span>Conduction sphérique &amp; analogie EM</a>
         <a href="d3.html"><span class="qn">D3</span>Résistance thermique d'un cylindre</a>
+        <a href="d4.html"><span class="qn">D4</span>Loi de Newton &amp; ailette</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -65,7 +66,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>On considère un solide homogène, isotrope, de masse volumique \(\rho\), capacité thermique massique \(c\) et conductivité thermique \(\lambda > 0\). On note \(T(x,t)\) la température en un point d'abscisse \(x\) et à l'instant \(t\), dans une géométrie unidimensionnelle (plaques parallèles).</p>
     <p><strong>Loi de Fourier</strong> : le vecteur densité de flux thermique (flux par unité de surface) est :</p>
-    <p>\[ \vec{j}_{\text{th}} = -\lambda\,\vec{\nabla} T. \]</p>
+    <p>\[ \vec{j}_{\text{th}} = -\lambda\,\overrightarrow{\mathrm{grad}}\, T. \]</p>
     <p>En 1D cartésien : \(j_x = -\lambda\,\dfrac{\partial T}{\partial x}\). Le signe négatif traduit le fait que la chaleur se propage dans le sens des températures décroissantes.</p>
   </section>
 
@@ -86,17 +87,17 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           &amp;= \lambda\,\dfrac{\partial^2 T}{\partial x^2} .
         \end{aligned}
       \]</div>
-      <p class="lead"><strong>Étape D — On introduit la diffusivité thermique</strong> \(a = \dfrac{\lambda}{\rho c}\) (en \(\mathrm{m^2\,s^{-1}}\)), ce qui donne l'<strong>équation de la diffusion thermique</strong> :</p>
-      <div class="calc-line">\[ \boxed{\dfrac{\partial T}{\partial t} = a\,\dfrac{\partial^2 T}{\partial x^2}} . \]</div>
-      <p>La forme générale en 3D est \(\dfrac{\partial T}{\partial t} = a\,\Delta T\) (Laplacien de \(T\) ; forme admise, non démontrée).</p>
+      <p class="lead"><strong>Étape D — On introduit la diffusivité thermique</strong> \(D_{\text{th}} = \dfrac{\lambda}{\rho c}\) (en \(\mathrm{m^2\,s^{-1}}\)), ce qui donne l'<strong>équation de la diffusion thermique</strong> :</p>
+      <div class="calc-line">\[ \boxed{\dfrac{\partial T}{\partial t} = D_{\text{th}}\,\dfrac{\partial^2 T}{\partial x^2}} . \]</div>
+      <p>La forme générale en 3D est \(\dfrac{\partial T}{\partial t} = D_{\text{th}}\,\Delta T\) (Laplacien de \(T\) ; forme admise, non démontrée).</p>
     </div>
 
     <div class="demo-step">
       <span class="step-label">2 · Vérification de l'homogénéité</span>
       <p class="lead">On vérifie que les deux membres de l'équation ont la même dimension. Pour le membre de gauche :</p>
       <div class="calc-line">\[ \left[\dfrac{\partial T}{\partial t}\right] = \mathrm{K\,s^{-1}} . \]</div>
-      <p class="lead">Pour le membre de droite, avec \([a] = \mathrm{m^2\,s^{-1}}\) :</p>
-      <div class="calc-line">\[ \left[a\,\dfrac{\partial^2 T}{\partial x^2}\right] = \mathrm{m^2\,s^{-1}} \cdot \mathrm{K\,m^{-2}} = \mathrm{K\,s^{-1}} . \]</div>
+      <p class="lead">Pour le membre de droite, avec \([D_{\text{th}}] = \mathrm{m^2\,s^{-1}}\) :</p>
+      <div class="calc-line">\[ \left[D_{\text{th}}\,\dfrac{\partial^2 T}{\partial x^2}\right] = \mathrm{m^2\,s^{-1}} \cdot \mathrm{K\,m^{-2}} = \mathrm{K\,s^{-1}} . \]</div>
       <p>Les deux membres sont bien homogènes \((\checkmark)\).</p>
     </div>
 
@@ -105,13 +106,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p class="lead">En évaluant chaque membre par analyse dimensionnelle (\(\partial_t \sim 1/\tau\), \(\partial_x^2 \sim 1/L^2\)), l'équation de diffusion relie une échelle de longueur \(L\) et une échelle de temps \(\tau\) :</p>
       <div class="calc-line">\[
         \begin{aligned}
-          \dfrac{T}{\tau} &amp;\sim a\,\dfrac{T}{L^2} \\[4pt]
-          \Longrightarrow\quad &amp;\boxed{\tau \sim \dfrac{L^2}{a}} .
+          \dfrac{T}{\tau} &amp;\sim D_{\text{th}}\,\dfrac{T}{L^2} \\[4pt]
+          \Longrightarrow\quad &amp;\boxed{\tau \sim \dfrac{L^2}{D_{\text{th}}}} .
         \end{aligned}
       \]</div>
-      <p>Interprétation : pour que la chaleur diffuse sur une longueur \(L\), il faut un temps de l'ordre de \(\dfrac{L^2}{a}\). Ordres de grandeur de \(a\) (en \(\mathrm{m^2\,s^{-1}}\)) : air \(a \approx 2\times 10^{-5}\), eau \(a \approx 1{,}4\times 10^{-7}\), verre \(a \approx 5\times 10^{-7}\), acier \(a \approx 1\times 10^{-5}\).</p>
+      <p>Interprétation : pour que la chaleur diffuse sur une longueur \(L\), il faut un temps de l'ordre de \(\dfrac{L^2}{D_{\text{th}}}\). Ordres de grandeur de \(D_{\text{th}}\) (en \(\mathrm{m^2\,s^{-1}}\)) : air \(D_{\text{th}} \approx 2\times 10^{-5}\), eau \(D_{\text{th}} \approx 1{,}4\times 10^{-7}\), verre \(D_{\text{th}} \approx 5\times 10^{-7}\), acier \(D_{\text{th}} \approx 1\times 10^{-5}\).</p>
       <p class="lead">Exemple numérique : pour \(L = 1\,\text{cm}\) dans l'eau,</p>
-      <div class="calc-line">\[ \tau \sim \dfrac{L^2}{a} = \dfrac{(10^{-2})^2}{1{,}4\times 10^{-7}} \approx 700\,\text{s} . \]</div>
+      <div class="calc-line">\[ \tau \sim \dfrac{L^2}{D_{\text{th}}} = \dfrac{(10^{-2})^2}{1{,}4\times 10^{-7}} \approx 700\,\text{s} . \]</div>
     </div>
 
     <div class="demo-step">
@@ -135,9 +136,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       </div>
       <div class="controls">
         <div class="control">
-          <label for="sl-a">Diffusivité \(a\) (\(\times 10^{-5}\,\mathrm{m^2\,s^{-1}}\)) <span class="val" id="v-a">1,0</span></label>
+          <label for="sl-a">Diffusivité \(D_{\text{th}}\) (\(\times 10^{-5}\,\mathrm{m^2\,s^{-1}}\)) <span class="val" id="v-a">1,0</span></label>
           <input type="range" id="sl-a" min="0.1" max="2" step="0.1" value="1">
-          <span class="hint" id="hint-d">Plus \(a\) est grand, plus la chaleur diffuse vite : le profil s'aplatit rapidement.</span>
+          <span class="hint" id="hint-d">Plus \(D_{\text{th}}\) est grand, plus la chaleur diffuse vite : le profil s'aplatit rapidement.</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Animer la diffusion</button>
             <button class="btn" id="btn-reset" type="button">Réinitialiser</button>
@@ -148,12 +149,12 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           <input type="range" id="sl-L" min="2" max="20" step="1" value="10">
           <div class="readout" style="margin-top:.6rem">
             <span class="ro">Temps écoulé : <b id="v-t">0,0</b> s</span>
-            <span class="ro">Temps caractéristique \(\dfrac{\tau \sim L^2}{a}\) : <b id="v-tau">—</b></span>
+            <span class="ro">Temps caractéristique \(\tau \sim \dfrac{L^2}{D_{\text{th}}}\) : <b id="v-tau">—</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Illustration numérique de la diffusion thermique : une perturbation initialement localisée s'étale au cours du temps, conformément à l'équation \(\partial_t T = a\,\partial^2_x T\). L'énergie (aire sous la courbe) est conservée. L'ordre de grandeur à retenir est le temps caractéristique \(\tau \sim \dfrac{L^2}{a}\) ; la forme exacte des solutions n'est pas exigible au programme MP.
+        Illustration numérique de la diffusion thermique : une perturbation initialement localisée s'étale au cours du temps, conformément à l'équation \(\partial_t T = D_{\text{th}}\,\partial^2_x T\). L'énergie (aire sous la courbe) est conservée. L'ordre de grandeur à retenir est le temps caractéristique \(\tau \sim \dfrac{L^2}{D_{\text{th}}}\) ; la forme exacte des solutions n'est pas exigible au programme MP.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-rouge)"></i>Profil \(T(x,t)\)</span>
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Profil initial</span>
@@ -168,9 +169,9 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="box-title">◆ Points clés</div>
       <ul>
         <li>C'est un item <strong>MP uniquement</strong> ; bien le préciser.</li>
-        <li>Le signe dans la loi de Fourier (\(\vec{j} = -\lambda\vec{\nabla} T\)) est crucial : la chaleur va du chaud vers le froid.</li>
-        <li>La diffusivité \(a = \dfrac{\lambda}{\rho c}\) est l'analogue de la diffusivité massique ou du coefficient de diffusion électrique.</li>
-        <li>La relation \(\dfrac{\tau \sim L^2}{a}\) est à retenir et à utiliser pour estimer des ordres de grandeur rapidement à l'oral.</li>
+        <li>Le signe dans la loi de Fourier (\(\vec{j} = -\lambda\,\overrightarrow{\mathrm{grad}}\, T\)) est crucial : la chaleur va du chaud vers le froid.</li>
+        <li>La diffusivité \(D_{\text{th}} = \dfrac{\lambda}{\rho c}\) est l'analogue de la diffusivité massique ou du coefficient de diffusion électrique.</li>
+        <li>La relation \(\tau \sim \dfrac{L^2}{D_{\text{th}}}\) est à retenir et à utiliser pour estimer des ordres de grandeur rapidement à l'oral.</li>
         <li>En régime stationnaire, le flux est constant dans la paroi (pas d'accumulation d'énergie) ; le profil \(T(x)\) est linéaire pour une géométrie cartésienne.</li>
         <li>L'analogie électrique s'étend à la convection : \(R_{\text{conv}} = \dfrac{1}{hS}\) où \(h\) est le coefficient d'échange.</li>
       </ul>
@@ -249,7 +250,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     vT.textContent = fr(simT, 1);
     hint.textContent = aSlider >= 1.5
       ? 'Diffusivité élevée (type acier/air) : le profil s\'aplatit très vite.'
-      : 'Plus a est grand, plus la chaleur diffuse vite : le profil s\'aplatit rapidement.';
+      : 'Plus la diffusivité est grande, plus la chaleur diffuse vite : le profil s\'aplatit rapidement.';
   }
 
   let lastT = 0;

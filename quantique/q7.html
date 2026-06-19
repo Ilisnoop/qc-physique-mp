@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q7 — Barrière de potentiel et effet tunnel · QC Oraux MP*</title>
+<meta name="description" content="Barrière de potentiel et effet tunnel : onde évanescente dans la barrière, coefficients R et T, conservation R+T=1, régime de barrière épaisse T ∝ e^(−2κℓ), applications (STM, radioactivité α).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Mécanique quantique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="q6.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="q8.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="q1.html"><span class="qn">Q1</span>Fonction d'onde &amp; Schrödinger</a>
+        <a href="q2.html"><span class="qn">Q2</span>Dualité onde-corpuscule</a>
+        <a href="q3.html"><span class="qn">Q3</span>Inégalités de Heisenberg</a>
+        <a href="q4.html"><span class="qn">Q4</span>Marche de potentiel</a>
+        <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
+        <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+        <a href="q7.html" aria-current="page"><span class="qn">Q7</span>Barrière de potentiel &amp; effet tunnel</a>
+        <a href="q8.html"><span class="qn">Q8</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="q9.html"><span class="qn">Q9</span>Courant de probabilité &amp; continuité</a>
+        <a href="q10.html"><span class="qn">Q10</span>États non stationnaires</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 7 · Mécanique quantique</span>
+    <h1>Barrière de potentiel et effet tunnel</h1>
+    <p class="q-sources"><span class="src">POLY §4.2</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Étudier les états stationnaires d'une particule d'énergie \(E&lt;V_0\) incidente sur une barrière de potentiel de hauteur \(V_0\) et de largeur \(\ell\). Mettre en évidence l'onde évanescente dans la barrière, établir les coefficients de réflexion \(R\) et de transmission \(T\) avec \(R+T=1\), et montrer que \(T\neq0\) : c'est l'<strong>effet tunnel</strong>. Discuter le régime de barrière épaisse \(T\propto e^{-2\kappa\ell}\) et citer ses applications.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 6 §6.3 (Barrière de potentiel)</div>
+      <p>Établir et exploiter, pour une particule d'énergie \(E&lt;V_0\), les états stationnaires d'une barrière de potentiel ; reconnaître l'onde évanescente dans la barrière ; déterminer les coefficients de réflexion et de transmission ; vérifier la conservation de la probabilité \(R+T=1\) ; mettre en évidence l'effet tunnel comme phénomène purement quantique et discuter ses applications (microscope à effet tunnel, radioactivité \(\alpha\)). Conditions de continuité de la fonction d'onde admises.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <p>Faisceau de particules de masse \(m\) et d'énergie \(E\), provenant de \(-\infty\), incident sur la barrière centrée en \(x=0\) :</p>
+    <p>\[ V(x) = \begin{cases} 0 &amp; x &lt; -\dfrac{\ell}{2} \\[4pt] V_0 &amp; -\dfrac{\ell}{2} \leq x \leq \dfrac{\ell}{2} \\[4pt] 0 &amp; x &gt; \dfrac{\ell}{2} \end{cases} \] avec \(V_0&gt;0\) et l'on se place dans le cas \(E&lt;V_0\).</p>
+    <ul>
+      <li><strong>Trois régions</strong> : I (\(x&lt;-\ell/2\)), II (intérieur de la barrière), III (\(x&gt;\ell/2\)).</li>
+      <li>Hors barrière (régions I et III) : vecteur d'onde réel \(k_{\text{I}}=\sqrt{\dfrac{2mE}{\hbar^2}}\).</li>
+      <li>Dans la barrière (région II) : l'équation de Schrödinger fait apparaître \(k\to i\kappa\), avec \(\kappa=\dfrac{\sqrt{2m(V_0-E)}}{\hbar}\) réel.</li>
+      <li><strong>Longueur de pénétration</strong> : \(\delta=\dfrac{1}{\kappa}=\dfrac{\hbar}{\sqrt{2m(V_0-E)}}\).</li>
+      <li>Convention complexe : \(e^{+i\omega t}\) (les ondes s'écrivent \(\propto e^{i(kx-\omega t)}\)).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Équations de Schrödinger stationnaires par région</span>
+      <p class="lead">On recherche les états stationnaires, solutions de l'équation de Schrödinger indépendante du temps dans chaque région :</p>
+      <div class="calc-line">\[ \dfrac{\mathrm{d}^2\psi_{\mathrm{I}}}{\mathrm{d}x^2}+k_{\text{I}}^2\,\psi_{\mathrm{I}}=0, \qquad \dfrac{\mathrm{d}^2\psi_{\mathrm{II}}}{\mathrm{d}x^2}-\kappa^2\,\psi_{\mathrm{II}}=0, \qquad \dfrac{\mathrm{d}^2\psi_{\mathrm{III}}}{\mathrm{d}x^2}+k_{\text{I}}^2\,\psi_{\mathrm{III}}=0 . \]</div>
+      <p class="lead">Les solutions générales sont :</p>
+      <div class="calc-line">\[ \psi_{\mathrm{I}}=A_1 e^{ik_{\text{I}}x}+A_1' e^{-ik_{\text{I}}x}, \qquad \psi_{\mathrm{II}}=A_2\,\mathrm{ch}(\kappa x)+B_2\,\mathrm{sh}(\kappa x), \qquad \psi_{\mathrm{III}}=A_3 e^{ik_{\text{I}}x} . \]</div>
+      <p>Dans la région I on a la superposition de l'onde <strong>incidente</strong> (\(A_1 e^{ik_{\text{I}}x}\)) et de l'onde <strong>réfléchie</strong> (\(A_1' e^{-ik_{\text{I}}x}\)). Dans la région II, écrite avec \(\mathrm{ch}\) et \(\mathrm{sh}\) (intervalle symétrique), la fonction d'onde est une superposition de <strong>deux ondes évanescentes</strong>. Dans la région III, aucune source au-delà de la barrière : on ne garde que l'onde <strong>transmise</strong> (\(A_3 e^{ik_{\text{I}}x}\), terme en \(e^{-ik_{\text{I}}x}\) nul).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Raccordements et système d'amplitudes</span>
+      <p class="lead">On impose la continuité de \(\psi\) et de \(\psi'\) en \(x=-\dfrac{\ell}{2}\) et en \(x=+\dfrac{\ell}{2}\). Cela fournit quatre équations pour cinq inconnues : on peut toujours exprimer toutes les amplitudes en fonction de celle de l'onde incidente \(A_1\), quelles que soient \(E\) et \(\ell\).</p>
+      <p>La particule n'étant pas confinée, il n'apparaît <strong>aucune quantification</strong> de l'énergie : tout \(E&gt;0\) est permis.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Courants de probabilité, coefficients \(R\) et \(T\)</span>
+      <p class="lead">On écrit les ondes incidente, réfléchie et transmise et les courants de probabilité associés (\(j=\dfrac{\hbar k_{\text{I}}}{m}|A|^2\)) :</p>
+      <div class="calc-line">\[ R=\dfrac{|A_1'|^2}{|A_1|^2}, \qquad T=\dfrac{|A_3|^2}{|A_1|^2} . \]</div>
+      <p class="lead">L'extraction des rapports à partir du système de raccordement donne la transmission exacte :</p>
+      <div class="calc-line">\[ T=\dfrac{1}{1+\dfrac{V_0^{2}}{4E(V_0-E)}\,\mathrm{sh}^2(\kappa\ell)}, \qquad R=\dfrac{\dfrac{V_0^{2}}{4E(V_0-E)}\,\mathrm{sh}^2(\kappa\ell)}{1+\dfrac{V_0^{2}}{4E(V_0-E)}\,\mathrm{sh}^2(\kappa\ell)} . \]</div>
+      <p class="lead">En additionnant les deux expressions, on retrouve la <strong>conservation de la probabilité</strong> :</p>
+      <div class="calc-line">\[ R+T=1 . \]</div>
+      <p>Une particule quantique est donc soit réfléchie, soit transmise, sans autre possibilité.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Effet tunnel</span>
+      <p>La transmission \(T\) <strong>n'est jamais nulle</strong> : même pour \(E&lt;V_0\), la particule a toujours une probabilité de franchir la barrière. Cet effet, inexplicable classiquement (où elle rebrousserait chemin), est purement quantique : c'est l'<strong>effet tunnel</strong>. Il est dû à l'existence d'ondes évanescentes dans la barrière, dont l'amplitude reste non négligeable à la sortie quand la barrière est suffisamment mince.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Régime de barrière épaisse (\(\kappa\ell\gg1\))</span>
+      <p class="lead">Lorsque la largeur de la barrière est grande devant la longueur de pénétration, \(\mathrm{sh}(\kappa\ell)\simeq\dfrac{1}{2}e^{\kappa\ell}\). En posant \(s=\dfrac{E}{V_0}\in[0,1]\), la transmission se réécrit :</p>
+      <div class="calc-line">\[ T\simeq\dfrac{1}{1+\dfrac{1}{16\,s(1-s)}\,e^{2\kappa\ell}} . \]</div>
+      <p class="lead">Comme \(16\,s(1-s)\) atteint au plus la valeur \(4\) (en \(s=\tfrac12\)), le dénominateur est dominé par l'exponentielle et l'on obtient la <strong>loi caractéristique de l'effet tunnel</strong> :</p>
+      <div class="calc-line">\[ T\simeq 16\,s(1-s)\,e^{-2\kappa\ell}=16\,\dfrac{E}{V_0}\!\left(1-\dfrac{E}{V_0}\right)e^{-2\kappa\ell} . \]</div>
+      <p>La transmission décroît donc <strong>exponentiellement</strong> avec la largeur, \(T\propto e^{-2\kappa\ell}\) : c'est l'extrême sensibilité à \(\ell\) (et à \(\kappa\), donc à \(V_0-E\)) qui fait toute la richesse des applications.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">6 — Applications</span>
+      <ul>
+        <li><strong>Microscope à effet tunnel (STM)</strong> : le courant tunnel entre pointe et surface varie exponentiellement avec la distance, d'où une résolution atomique.</li>
+        <li><strong>Radioactivité \(\alpha\)</strong> : la particule \(\alpha\) franchit par effet tunnel la barrière coulombienne du noyau.</li>
+        <li><strong>Jonction tunnel</strong> : passage d'électrons à travers une fine couche isolante entre deux conducteurs.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — barrière de potentiel et onde tunnel</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-tunnel" aria-label="Barrière de potentiel : onde oscillante incidente/réfléchie, onde évanescente exponentielle décroissante dans la barrière, onde transmise atténuée ; largeur et hauteur réglables"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-l">Largeur de barrière \(\kappa\ell\) <span class="val" id="v-l">3,0</span></label>
+          <input type="range" id="sl-l" min="0.3" max="7" step="0.05" value="3">
+          <span class="hint">Largeur \(\ell\) en unités de longueur de pénétration \(\delta=1/\kappa\). Plus la barrière est épaisse, plus \(T\) chute exponentiellement.</span>
+          <label for="sl-ev" style="margin-top:.7rem">Rapport \(\dfrac{E}{V_0}\) <span class="val" id="v-ev">0,50</span></label>
+          <input type="range" id="sl-ev" min="0.05" max="0.95" step="0.01" value="0.5">
+          <span class="hint">Énergie de la particule relativement à la hauteur \(V_0\) de la barrière (\(E&lt;V_0\)).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la phase</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="gauges">
+            <div class="gauge t"><span class="glabel">T</span><span class="gtrack"><span class="gfill" id="g-t"></span></span><span class="gval" id="v-t">0,00</span></div>
+            <div class="gauge r"><span class="glabel">R</span><span class="gtrack"><span class="gfill" id="g-r"></span></span><span class="gval" id="v-r">1,00</span></div>
+          </div>
+          <div class="readout" style="margin-top:.6rem">
+            <span class="ro">R+T = <b id="v-sum">1,00</b></span>
+            <span class="ro" id="ro-approx">Approx. épaisse \(16\,s(1-s)\,e^{-2\kappa\ell}\) = <b id="v-approx">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Profil de potentiel (barrière orange de hauteur \(V_0\), largeur \(\ell\)). À gauche : onde incidente + réfléchie (oscillante, fortement modulée). Dans la barrière : onde évanescente \(\propto e^{-\kappa x}\) (décroissance exponentielle). À droite : onde transmise oscillante, d'amplitude atténuée. \(T\) et \(R\) sont calculés en direct par la formule exacte de la rubrique D ; la valeur approchée illustre le régime de barrière épaisse.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Potentiel \(V(x)\)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\mathrm{Re}\,\psi\) (oscillante)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>Enveloppe évanescente \(e^{-\kappa x}\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Dans la barrière, \(k\to i\kappa\) avec \(\kappa=\dfrac{\sqrt{2m(V_0-E)}}{\hbar}\) : l'onde devient <strong>évanescente</strong>, pas progressive.</li>
+        <li>\(R+T=1\) traduit la conservation de la probabilité (admis : continuité de \(\psi\) et \(\psi'\)).</li>
+        <li>L'effet tunnel = \(T\neq0\) <strong>même pour \(E&lt;V_0\)</strong> ; c'est un effet purement quantique, sans analogue classique.</li>
+        <li>Régime épais : \(T\simeq 16\,\dfrac{E}{V_0}\!\left(1-\dfrac{E}{V_0}\right)e^{-2\kappa\ell}\), donc \(T\propto e^{-2\kappa\ell}\) (sensibilité exponentielle à \(\ell\)).</li>
+        <li>Applications à citer : STM, radioactivité \(\alpha\), jonction tunnel.</li>
+        <li>Lien avec la marche de potentiel (Q4) : c'est l'onde évanescente d'une marche d'épaisseur finie qui « fuit » au-delà.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Au programme MP (§6.3). La barrière de potentiel et l'effet tunnel prolongent l'étude de la marche de potentiel (Q4). Les conditions de continuité de la fonction d'onde sont admises ; l'expression exacte de \(T\) et son approximation en barrière épaisse sont issues du cours (POLY §4.2).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="q6.html"><span class="pn-dir">← Précédent</span><span class="pn-title">Q6 · Modèle de Bohr</span></a>
+    <a class="next" href="q8.html"><span class="pn-dir">Suivant →</span><span class="pn-title">Q8 · Paquet d'ondes et vitesse de groupe</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème pilote : Mécanique quantique (§6).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-tunnel');
+  const slL = document.getElementById('sl-l'), slEV = document.getElementById('sl-ev');
+  const vL = document.getElementById('v-l'), vEv = document.getElementById('v-ev');
+  const vT = document.getElementById('v-t'), vR = document.getElementById('v-r');
+  const gT = document.getElementById('g-t'), gR = document.getElementById('g-r');
+  const vSum = document.getElementById('v-sum'), vApprox = document.getElementById('v-approx');
+  const btnAnim = document.getElementById('btn-anim');
+
+  let animating = false, phase = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // Physique : on travaille en unités où κ=1, largeur a = κℓ (slider), s = E/V0.
+  // k1/κ = sqrt(s/(1-s)). T exact via formule du cours.
+  function physics(a, s) {
+    const kappa = 1;
+    const ratio = Math.sqrt(s / (1 - s));   // k1/κ
+    const k1 = kappa * ratio;
+    const sh = Math.sinh(a);
+    const pref = 1 / (4 * s * (1 - s));      // V0^2/(4E(V0−E)) = 1/(4 s (1−s))
+    const T = 1 / (1 + pref * sh * sh);
+    const R = 1 - T;
+    const Tapprox = 16 * s * (1 - s) * Math.exp(-2 * a);
+    return { kappa, k1, T, R, Tapprox, a, s };
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const sz = QC.setup(cv, 320);
+    const ctx = sz.ctx, w = sz.w, h = sz.h;
+    QC.clear(ctx, w, h);
+    const a = parseFloat(slL.value);     // κℓ
+    const s = parseFloat(slEV.value);    // E/V0
+    const P = physics(a, s);
+
+    const pad = { l: 14, r: 14, t: 18, b: 26 };
+    const midY = h * 0.52;
+    const ampY = h * 0.26;
+    // disposition horizontale : région I [xL, xB1], barrière [xB1,xB2], région III [xB2, xR]
+    const xL = pad.l, xR = w - pad.r;
+    const usable = xR - xL;
+    // largeur visuelle de la barrière proportionnelle à κℓ, bornée pour rester lisible
+    let barW = Math.min(0.5, 0.06 + a * 0.05) * usable;
+    const xB1 = xL + (usable - barW) * 0.5;
+    const xB2 = xB1 + barW;
+    // échelle physique : dans la barrière, x va de 0 (gauche) à a (=κℓ) à droite
+    const pxPerKappa = barW / a;          // px par unité de (κ x)
+    // côté propagatif : on garde la même échelle spatiale; k1 réel = ratio*κ
+    const k1 = P.k1;
+
+    // --- potentiel : barrière ---
+    const baseY = h - pad.b;
+    const topY = h - pad.b - h * 0.30;    // sommet V0
+    const eY = baseY - s * (baseY - topY); // niveau d'énergie E (sous V0)
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2.6;
+    ctx.beginPath();
+    ctx.moveTo(xL, baseY); ctx.lineTo(xB1, baseY);
+    ctx.lineTo(xB1, topY); ctx.lineTo(xB2, topY);
+    ctx.lineTo(xB2, baseY); ctx.lineTo(xR, baseY);
+    ctx.stroke();
+    ctx.fillStyle = c.orange; ctx.globalAlpha = 0.08;
+    ctx.fillRect(xB1, topY, barW, baseY - topY);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace';
+    ctx.textAlign = 'center'; ctx.fillText('V₀', (xB1 + xB2) / 2, topY - 7);
+    // niveau E
+    ctx.strokeStyle = c.muted; ctx.setLineDash([4, 4]); ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(xL, eY); ctx.lineTo(xR, eY); ctx.stroke(); ctx.setLineDash([]);
+    ctx.textAlign = 'left'; ctx.fillText('E', xR - 16, eY - 6);
+    // largeur ℓ
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.beginPath();
+    ctx.moveTo(xB1, baseY + 6); ctx.lineTo(xB2, baseY + 6); ctx.stroke();
+    ctx.textAlign = 'center'; ctx.fillText('ℓ', (xB1 + xB2) / 2, baseY + 18);
+
+    // ligne de référence ψ
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(xL, midY); ctx.lineTo(xR, midY); ctx.stroke();
+
+    // amplitudes : incidente normalisée 1 ; transmise sqrt(T) ; dans barrière exp décroissante.
+    const At = Math.sqrt(P.T);
+    // dans la barrière l'enveloppe va de ~1 (entrée) à At (sortie) : ~ e^{-κx} normalisé
+    // facteur entrée barrière (continuité) approx 1
+    // --- région I : incidente + réfléchie ---
+    const Rr = Math.sqrt(P.R);
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+    let started = false;
+    for (let px = xL; px <= xB1; px += 1) {
+      const xk = (px - xB1) / pxPerKappa;      // κx, négatif à gauche
+      const re = Math.cos(k1 * xk - phase) + Rr * Math.cos(-k1 * xk - phase);
+      const Y = midY - re * ampY * 0.5;
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+    // --- barrière : onde évanescente Re[ (e^{-κx}) e^{-iωt} ] enveloppe e^{-κx} ---
+    ctx.strokeStyle = c.bleu; ctx.beginPath(); started = false;
+    for (let px = xB1; px <= xB2; px += 1) {
+      const xk = (px - xB1) / pxPerKappa;       // de 0 à a
+      const env = Math.exp(-xk);
+      const re = env * Math.cos(-phase);
+      const Y = midY - re * ampY * 0.5;
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+    // enveloppe e^{-κx} (rouge pointillé), ± autour de midY
+    ctx.strokeStyle = c.rouge; ctx.globalAlpha = 0.6; ctx.lineWidth = 1.4; ctx.setLineDash([4, 4]);
+    [1, -1].forEach(sgn => {
+      ctx.beginPath(); started = false;
+      for (let px = xB1; px <= xB2; px += 1) {
+        const xk = (px - xB1) / pxPerKappa;
+        const Y = midY - sgn * Math.exp(-xk) * ampY * 0.5;
+        started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+      }
+      ctx.stroke();
+    });
+    ctx.setLineDash([]); ctx.globalAlpha = 1; ctx.lineWidth = 2.4;
+    // --- région III : onde transmise oscillante d'amplitude sqrt(T) ---
+    ctx.strokeStyle = c.bleu; ctx.beginPath(); started = false;
+    for (let px = xB2; px <= xR; px += 1) {
+      const xk = (px - xB2) / pxPerKappa;       // κ(x−ℓ/2)
+      const re = At * Math.cos(k1 * xk - phase);
+      const Y = midY - re * ampY * 0.5;
+      started ? ctx.lineTo(px, Y) : (ctx.moveTo(px, Y), started = true);
+    }
+    ctx.stroke();
+
+    // étiquettes de régions
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('incidente + réfléchie', (xL + xB1) / 2, pad.t + 4);
+    ctx.fillText('évanescente', (xB1 + xB2) / 2, pad.t + 4);
+    ctx.fillText('transmise', (xB2 + xR) / 2, pad.t + 4);
+
+    // lectures
+    vL.textContent = fr(a, 1);
+    vEv.textContent = fr(s, 2);
+    vT.textContent = fr(P.T, P.T < 0.01 ? 4 : 2);
+    vR.textContent = fr(P.R, 2);
+    gT.style.width = (P.T * 100) + '%'; gR.style.width = (P.R * 100) + '%';
+    vSum.textContent = fr(P.T + P.R, 2);
+    const ta = Math.min(1, P.Tapprox);
+    vApprox.textContent = fr(ta, ta < 0.01 ? 4 : 2);
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) { phase += dt * 4; draw(); }
+  });
+
+  slL.addEventListener('input', draw);
+  slEV.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer la phase' : 'Animer la phase';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

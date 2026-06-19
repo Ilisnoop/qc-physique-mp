@@ -116,5 +116,40 @@ const QC = (function () {
     };
   }
 
-  return { reduced, cssVar, colors, setup, clear, makePlot, loop };
+  /* Dessine un texte avec indice typographique propre (sans underscore littéral).
+     subText(ctx, 'E', 'ext', x, y) rend « E » puis « ext » en plus petit et abaissé.
+     Respecte la police/taille courante de ctx.font et l'alignement courant
+     ('left' | 'center' | 'right') ; un suffixe normal optionnel (tail) peut
+     être ajouté après l'indice à taille pleine (ex. base='l', sub='c', tail='').
+     Renvoie la largeur totale dessinée (px). */
+  function subText(ctx, base, sub, x, y, tail) {
+    tail = tail || '';
+    const prevAlign = ctx.textAlign, prevBaseline = ctx.textBaseline;
+    const align = prevAlign || 'left';
+    ctx.textBaseline = 'alphabetic';
+    const font = ctx.font;
+    const m = font.match(/(\d+(?:\.\d+)?)px/);
+    const size = m ? parseFloat(m[1]) : 12;
+    const subSize = Math.max(8, Math.round(size * 0.72));
+    const subFont = font.replace(/(\d+(?:\.\d+)?)px/, subSize + 'px');
+    // mesures
+    ctx.font = font; const baseW = ctx.measureText(base).width;
+    const tailW = tail ? ctx.measureText(tail).width : 0;
+    ctx.font = subFont; const subW = ctx.measureText(sub).width;
+    ctx.font = font;
+    const totalW = baseW + 0.5 + subW + tailW;
+    let startX = x;
+    if (align === 'center') startX = x - totalW / 2;
+    else if (align === 'right') startX = x - totalW;
+    ctx.textAlign = 'left';
+    ctx.fillText(base, startX, y);
+    ctx.font = subFont;
+    ctx.fillText(sub, startX + baseW + 0.5, y + Math.round(size * 0.18));
+    ctx.font = font;
+    if (tail) ctx.fillText(tail, startX + baseW + 0.5 + subW, y);
+    ctx.textAlign = prevAlign; ctx.textBaseline = prevBaseline;
+    return totalW;
+  }
+
+  return { reduced, cssVar, colors, setup, clear, makePlot, loop, subText };
 })();

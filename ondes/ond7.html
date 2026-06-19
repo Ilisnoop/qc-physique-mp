@@ -40,6 +40,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
         <a href="ond7.html" aria-current="page"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
         <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -88,7 +92,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <span class="step-label">2 — Champ dans la zone de rayonnement (expressions fournies)</span>
       <p class="lead"><strong>On admet les expressions des champs rayonnés</strong> (champs du dipôle oscillant, non démontrées) :</p>
       <div class="calc-line">\[ \vec{E}_{\mathrm{rad}} = -\dfrac{\mu_0}{4\pi}\,\dfrac{\ddot{p}\!\left(t-\frac{r}{c}\right)}{r}\,\sin\theta\,\hat{\theta} . \]</div>
-      <div class="calc-line">\[ \vec{B}_{\mathrm{rad}} = \dfrac{1}{c}\,\hat{r}\times\vec{E}_{\mathrm{rad}} . \]</div>
+      <div class="calc-line">\[ \vec{B}_{\mathrm{rad}} = \dfrac{1}{c}\,\hat{r}\wedge\vec{E}_{\mathrm{rad}} . \]</div>
       <p>Ici \(\ddot{p}\) est la dérivée seconde du moment dipolaire, évaluée au <em>temps retardé</em> \(t - \dfrac{r}{c}\).</p>
     </div>
     <div class="demo-step">
@@ -155,7 +159,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <li>Les expressions des champs rayonnés sont <em>admises</em> : ne pas les redémontrer, mais les commenter et exploiter.</li>
         <li>Retard \(\dfrac{r}{c}\) : l'information se propage à \(c\) — champ évalué au temps retardé.</li>
         <li>Exemples : antenne dipôle (\(\dfrac{\lambda}{2}\)), rayonnement de diffusion Rayleigh (ciel bleu), émission spontanée d'un atome.</li>
-        <li>La diffusion Rayleigh : \(P_\dfrac{{\text{diffusée}} \propto \omega^4 \propto 1}{\lambda^4}\) — le bleu (courte \(\lambda\)) diffuse plus que le rouge.</li>
+        <li>La diffusion Rayleigh : \(P_{\text{diffusée}} \propto \omega^4 \propto \dfrac{1}{\lambda^4}\) — le bleu (courte \(\lambda\)) diffuse plus que le rouge.</li>
       </ul>
     </div>
   </section>

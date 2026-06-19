@@ -33,7 +33,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <div class="nav-controls">
     <nav class="qnav" aria-label="Navigation entre questions">
       <a class="qnav-btn" href="d2.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
-      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+      <a class="qnav-btn" href="d4.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
     </nav>
     <div class="qmenu">
       <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
@@ -42,6 +42,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="d1.html"><span class="qn">D1</span>Équation de la diffusion thermique</a>
         <a href="d2.html"><span class="qn">D2</span>Conduction sphérique &amp; analogie EM</a>
         <a href="d3.html" aria-current="page"><span class="qn">D3</span>Résistance thermique d'un cylindre</a>
+        <a href="d4.html"><span class="qn">D4</span>Loi de Newton &amp; ailette</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -88,7 +89,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="calc-line">\[
         \begin{aligned}
           \rho c\,\dfrac{\partial T}{\partial t} &amp;= -\dfrac{1}{2\pi r\ell}\dfrac{\partial \Phi}{\partial r} \\[4pt]
-          &amp;= \dfrac{\lambda}{r}\dfrac{\partial}{\partial r}\left(r\,\dfrac{\partial T}{\partial r}\right) = a\,\Delta_{\text{cyl}} T .
+          &amp;= \dfrac{\lambda}{r}\dfrac{\partial}{\partial r}\left(r\,\dfrac{\partial T}{\partial r}\right) ,
+        \end{aligned}
+      \]</div>
+      <p class="lead">soit, en introduisant la diffusivité thermique \(D_{\text{th}} = \dfrac{\lambda}{\rho c}\) :</p>
+      <div class="calc-line">\[
+        \begin{aligned}
+          \dfrac{\partial T}{\partial t} &amp;= D_{\text{th}}\,\Delta_{\text{cyl}} T .
         \end{aligned}
       \]</div>
     </div>
@@ -164,7 +171,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           <input type="range" id="sl-r2" min="2.5" max="6" step="0.1" value="4">
           <div class="readout" style="margin-top:.6rem">
             <span class="ro">\(R_{\text{th,cyl}} = \dfrac{\ln(\dfrac{R_2}{R_1})}{2\pi\ell\lambda}\) : <b id="v-rth">—</b> K/W</span>
-            <span class="ro">Flux \(\Phi = \dfrac{\Delta T}{R}_{\text{th}}\) : <b id="v-phi">—</b> W</span>
+            <span class="ro">Flux \(\Phi = \dfrac{\Delta T}{R_{\text{th}}}\) : <b id="v-phi">—</b> W</span>
           </div>
         </div>
       </div>
@@ -200,7 +207,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <nav class="page-nav" aria-label="Question précédente et suivante">
     <a href="d2.html"><span class="pn-dir">← Précédent</span><span class="pn-title">D2 · Conduction sphérique &amp; analogie EM</span></a>
-    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Diffusion thermique</span></a>
+    <a class="next" href="d4.html"><span class="pn-dir">Suivant →</span><span class="pn-title">D4 · Loi de Newton &amp; ailette</span></a>
   </nav>
 </main>
 

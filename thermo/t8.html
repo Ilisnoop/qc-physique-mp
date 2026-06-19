@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T8 — Air humide · point de rosée · QC Oraux MP*</title>
+<meta name="description" content="Air humide : pression partielle de vapeur d'eau, degré hygrométrique (humidité relative) e(T)=p(H2O)/p*(T), point de rosée et condensation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Thermodynamique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="t7.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Sommaire</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="t1.html"><span class="qn">T1</span>Machines dithermes &amp; Carnot</a>
+        <a href="t2.html"><span class="qn">T2</span>Second principe &amp; entropie du GP</a>
+        <a href="t3.html"><span class="qn">T3</span>Premier principe industriel · Joule-Kelvin</a>
+        <a href="t4.html"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
+        <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
+        <a href="t6.html"><span class="qn">T6</span>Changement d'état du corps pur</a>
+        <a href="t7.html"><span class="qn">T7</span>Équilibre liquide-vapeur · titre</a>
+        <a href="t8.html" aria-current="page"><span class="qn">T8</span>Air humide · point de rosée</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 8 · Thermodynamique</span>
+    <h1>Air humide : pression partielle, degré hygrométrique et point de rosée</h1>
+    <p class="q-sources"><span class="src">POLY §2.1.2</span><span class="src">T2a02</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Modéliser l'air humide comme un mélange de gaz parfaits (air sec + vapeur d'eau). Définir la pression partielle de vapeur d'eau et le degré hygrométrique (humidité relative) \(e(T) = \dfrac{p_{\mathrm{H_2O}}(T)}{p^*(T)}\). Introduire le point de rosée et interpréter la condensation par refroidissement.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Changements d'état du corps pur — mélange de gaz, air humide</div>
+      <p><em>Notions et contenus :</em> mélange de gaz parfaits ; pression partielle plafonnée par la pression de vapeur saturante (\(p_i \leq p_i^*\)) ; degré hygrométrique de l'air.</p>
+      <p><em>Capacités exigibles :</em></p>
+      <ul>
+        <li>Utiliser la loi de Dalton et la notion de pression partielle dans un mélange de gaz parfaits.</li>
+        <li>Définir et exploiter le degré hygrométrique d'un air humide.</li>
+        <li>Déterminer un point de rosée et prévoir une condensation par refroidissement isobare.</li>
+      </ul>
+      <p>Niveau <strong>MP</strong>. Application directe de l'équilibre liquide-vapeur (question T7) à l'atmosphère.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Air humide</strong> : mélange de deux gaz parfaits — l'air sec et la vapeur d'eau.</li>
+      <li><strong>Pression partielle</strong> \(p_{\mathrm{H_2O}}\) : pression qu'aurait la vapeur d'eau si elle occupait seule tout le volume, à la même température (loi de Dalton : \(p = \sum_i p_i\)).</li>
+      <li>\(p^*(T)\) : pression de vapeur saturante de l'eau à la température \(T\). La pression partielle est plafonnée : \(p_{\mathrm{H_2O}} \leq p^*(T)\).</li>
+      <li><strong>Degré hygrométrique</strong> (humidité relative) \(e(T)\) : rapport de la pression partielle de vapeur d'eau à la pression de vapeur saturante à la même température.</li>
+      <li><strong>Point de rosée</strong> \(T_r\) : température à laquelle, par refroidissement à pression et composition constantes, la vapeur d'eau commence à se condenser (\(e\) atteint 100 %).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Pression partielle et degré hygrométrique</span>
+      <p class="lead"><strong>On définit le degré hygrométrique</strong> comme le rapport de la pression partielle de vapeur d'eau à la pression de vapeur saturante de l'eau à la température \(T\) :</p>
+      <div class="calc-line">\[ e(T) = \dfrac{p_{\mathrm{H_2O}}(T)}{p^*(T)} . \]</div>
+      <p>On l'exprime usuellement en pourcentage. Comme \(p_{\mathrm{H_2O}} \leq p^*(T)\), on a toujours \(0 \leq e \leq 1\) : l'air est <em>saturé</em> lorsque \(e = 1\) (100 %), <em>insaturé</em> tant que \(e < 1\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Évaporation : un processus hors équilibre</span>
+      <p>À la surface libre d'un liquide en milieu illimité (récipient ouvert), les molécules de vapeur sont dispersées : la pression partielle \(p_{\mathrm{H_2O}}\) reste inférieure à \(p^*(T)\).</p>
+      <p class="lead"><strong>L'équilibre liquide-vapeur n'est jamais atteint</strong> : \(p^*(T)\) ne peut être atteinte, donc l'évaporation se poursuit jusqu'à disparition complète du liquide. C'est une évolution <em>hors équilibre</em>, à distinguer de l'ébullition (équilibre, à \(p = p^*\)).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Point de rosée : condensation par refroidissement</span>
+      <p>On considère un air humide insaturé (\(e < 1\)), de pression partielle de vapeur \(p_{\mathrm{H_2O}}\) fixée, que l'on refroidit à pression totale et composition constantes (donc à \(p_{\mathrm{H_2O}}\) constante).</p>
+      <p class="lead"><strong>Étape A — On suit l'évolution du degré hygrométrique.</strong> Quand \(T\) diminue, \(p^*(T)\) diminue (car \(p^*\) croît avec \(T\)), donc \(e(T) = \dfrac{p_{\mathrm{H_2O}}}{p^*(T)}\) <em>augmente</em> :</p>
+      <div class="calc-line">\[ T \searrow \;\Longrightarrow\; p^*(T) \searrow \;\Longrightarrow\; e(T) = \dfrac{p_{\mathrm{H_2O}}}{p^*(T)} \nearrow . \]</div>
+      <p class="lead"><strong>Étape B — On définit le point de rosée</strong> \(T_r\) comme la température où la saturation est atteinte (\(e = 1\)), c'est-à-dire où \(p^*(T_r)\) égale la pression partielle de vapeur :</p>
+      <div class="calc-line">\[ e(T_r) = 1 \qquad \Longleftrightarrow \qquad p^*(T_r) = p_{\mathrm{H_2O}} . \]</div>
+      <p class="lead"><strong>Étape C — Conclusion.</strong> En dessous de \(T_r\), l'excès \(p_{\mathrm{H_2O}} - p^*(T)\) se condense : apparition de gouttelettes (rosée, buée, brouillard, nuages). Le point de rosée est ainsi la signature directe de l'humidité de l'air.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — courbe de saturation \(p^*(T)\) et point de rosée</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-rosee" aria-label="Diagramme pression de vapeur d'eau en fonction de la température : courbe de saturation p*(T), état de l'air à pression partielle constante, point de rosée à l'intersection avec la courbe de saturation"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-temp">Température de l'air \(T\) (°C) <span class="val" id="v-temp">23</span></label>
+          <input type="range" id="sl-temp" min="5" max="35" step="0.5" value="23">
+          <label for="sl-e" style="margin-top:.6rem">Degré hygrométrique initial \(e\) <span class="val" id="v-e">60 %</span></label>
+          <input type="range" id="sl-e" min="10" max="100" step="1" value="60">
+          <span class="hint">On fixe la quantité de vapeur (donc \(p_{\mathrm{H_2O}}\)), puis on refroidit l'air.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Refroidir jusqu'à la rosée</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Pression partielle \(p_{\mathrm{H_2O}}\) = <b id="v-pp">—</b></span>
+            <span class="ro">Saturante \(p^*(T)\) = <b id="v-psat">—</b></span>
+            <span class="ro">Degré hygrométrique courant = <b id="v-ecur">—</b></span>
+            <span class="ro">Point de rosée \(T_r\) = <b id="v-tr">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Pression de vapeur d'eau en fonction de la température. La courbe de saturation \(p^*(T)\) (rouge) croît avec \(T\) ; sous elle, l'air est insaturé (vapeur sèche), au-dessus la condensation se produit. L'état de l'air (point orange) est à pression partielle \(p_{\mathrm{H_2O}} = e\,p^*(T)\) <em>constante</em> lors d'un refroidissement isobare : il se déplace horizontalement vers la gauche jusqu'à toucher la courbe de saturation au <em>point de rosée</em> \(T_r\) (où \(e = 1\)).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>courbe de saturation \(p^*(T)\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>état de l'air</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>point de rosée \(T_r\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Degré hygrométrique \(e = \dfrac{p_{\mathrm{H_2O}}}{p^*(T)}\) : c'est un rapport de pressions, <em>à la même température</em>.</li>
+        <li>Pression partielle plafonnée : \(p_{\mathrm{H_2O}} \leq p^*(T)\) ; l'égalité \(\Leftrightarrow\) air saturé (\(e = 1\)).</li>
+        <li>Au point de rosée, \(p^*(T_r) = p_{\mathrm{H_2O}}\) : refroidir un air humide finit toujours par le saturer car \(p^*\) décroît avec \(T\).</li>
+        <li>Évaporation (hors équilibre, milieu ouvert) \(\neq\) ébullition (équilibre, \(p = p^*\)).</li>
+        <li>Applications : rosée du matin, buée sur une vitre froide, brouillard, formation des nuages, condensation sur un verre glacé.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Intégralement au programme <strong>MP</strong>. Le mélange de gaz parfaits, la pression partielle plafonnée par \(p^*(T)\) et le degré hygrométrique sont exigibles ; l'application T2a02 (phénomènes atmosphériques) illustre le calcul du degré hygrométrique et du point de rosée.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et sommaire">
+    <a href="t7.html"><span class="pn-dir">← Précédent</span><span class="pn-title">T7 · Équilibre liquide-vapeur · titre</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Thermodynamique</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème : Thermodynamique.<br>Conforme au programme officiel de physique MPSI/MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-rosee');
+  const slT = document.getElementById('sl-temp'), vTemp = document.getElementById('v-temp');
+  const slE = document.getElementById('sl-e'), vE = document.getElementById('v-e');
+  const vPp = document.getElementById('v-pp'), vPsat = document.getElementById('v-psat');
+  const vEcur = document.getElementById('v-ecur'), vTr = document.getElementById('v-tr');
+  const btn = document.getElementById('btn-anim');
+  let animating = false, Tcur = 23;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // Donnée du cours T2a02 (10–30 °C) : p*(theta) = 0,1 * (theta/theta0)^... -> on prend
+  // une forme exponentielle qualitative (Clausius-Clapeyron) calée pour croître avec T.
+  // p* en hPa (qualitatif) : approximation de type Magnus, valeurs ~ réalistes 5-35 °C.
+  function psat(Tc) { return 6.11 * Math.exp(17.27 * Tc / (Tc + 237.3)); }  // hPa
+  // inverse : température de rosée telle que psat(Tr) = pp
+  function dewPoint(pp) {
+    const a = 17.27, b = 237.3;
+    const ln = Math.log(pp / 6.11);
+    return b * ln / (a - ln);
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 380);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const Tair = parseFloat(slT.value);
+    const e0 = parseFloat(slE.value) / 100;
+    const pp = e0 * psat(Tair);                 // pression partielle (constante au refroidissement)
+
+    const TMIN = 0, TMAX = 38;
+    const PMIN = 0, PMAX = psat(TMAX) * 1.05;
+    const P = QC.makePlot(ctx, w, h, { xmin: TMIN, xmax: TMAX, ymin: PMIN, ymax: PMAX, pad: { l: 56, r: 16, t: 16, b: 34 } });
+    P.grid(c, { xticks: 6, yticks: 5 });
+    P.axes(c, { xlabel: 'T (°C)', ylabel: 'p (hPa)' });
+
+    // courbe de saturation p*(T)
+    P.curve(t => psat(t), c.rouge, { lw: 2.6 });
+    // étiquette
+    ctx.fillStyle = c.rouge; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    QC.subText(ctx, 'p', '*', P.px(TMAX) - 4, P.py(psat(TMAX)) - 6, '(T)');
+
+    // ligne horizontale p = pp (pression partielle constante)
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 1.3; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(P.px(TMIN), P.py(pp)); ctx.lineTo(P.px(Tair), P.py(pp)); ctx.stroke(); ctx.setLineDash([]);
+
+    // point de rosée Tr
+    const Tr = dewPoint(pp);
+    if (Tr > TMIN && Tr < TMAX) {
+      ctx.strokeStyle = c.vert; ctx.lineWidth = 1.3; ctx.setLineDash([3, 4]);
+      ctx.beginPath(); ctx.moveTo(P.px(Tr), P.py(PMIN)); ctx.lineTo(P.px(Tr), P.py(pp)); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = c.vert; ctx.beginPath(); ctx.arc(P.px(Tr), P.py(pp), 5, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = c.vert; ctx.textAlign = 'center'; ctx.font = '11px IBM Plex Mono, monospace';
+      QC.subText(ctx, 'T', 'r', P.px(Tr), P.py(PMIN) - 4);
+    }
+
+    // état courant de l'air (point orange à Tcur, sur la ligne pp)
+    if (Tcur > Tair) Tcur = Tair;
+    if (Tcur < Tr) Tcur = Tr;
+    ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(P.px(Tcur), P.py(pp), 6, 0, 2 * Math.PI); ctx.fill();
+
+    // lectures
+    const psatCur = psat(Tcur);
+    const eCur = Math.min(1, pp / psatCur);
+    vTemp.textContent = fr(Tair, 1);
+    vE.textContent = Math.round(e0 * 100) + ' %';
+    vPp.textContent = fr(pp, 1) + ' hPa';
+    vPsat.textContent = fr(psatCur, 1) + ' hPa';
+    vEcur.textContent = Math.round(eCur * 100) + ' %';
+    vTr.textContent = (Tr > TMIN && Tr < TMAX) ? fr(Tr, 1) + ' °C' : '—';
+  }
+
+  QC.loop(function () {
+    if (animating) {
+      const Tr = dewPoint(parseFloat(slE.value) / 100 * psat(parseFloat(slT.value)));
+      Tcur -= 0.06;
+      if (Tcur <= Tr) { Tcur = Tr; animating = false; btn.textContent = 'Refroidir jusqu\'à la rosée'; btn.classList.remove('active'); }
+      draw();
+    }
+  });
+
+  slT.addEventListener('input', function () { Tcur = parseFloat(slT.value); draw(); });
+  slE.addEventListener('input', function () { Tcur = parseFloat(slT.value); draw(); });
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    if (animating) { Tcur = parseFloat(slT.value); }
+    btn.textContent = animating ? 'Figer' : 'Refroidir jusqu\'à la rosée';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

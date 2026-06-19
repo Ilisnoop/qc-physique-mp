@@ -26,7 +26,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <div class="nav-controls">
     <nav class="qnav" aria-label="Navigation entre questions">
       <a class="qnav-btn" href="t5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
-      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+      <a class="qnav-btn" href="t7.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
     </nav>
     <div class="qmenu">
       <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
@@ -38,6 +38,8 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="t4.html"><span class="qn">T4</span>Lois de Joule · Joule Gay-Lussac</a>
         <a href="t5.html"><span class="qn">T5</span>Gaz parfaits &amp; gaz réels</a>
         <a href="t6.html" aria-current="page"><span class="qn">T6</span>Changement d'état du corps pur</a>
+        <a href="t7.html"><span class="qn">T7</span>Équilibre liquide-vapeur · titre</a>
+        <a href="t8.html"><span class="qn">T8</span>Air humide · point de rosée</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -85,7 +87,20 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     </div>
 
     <div class="demo-step">
-      <span class="step-label">2 · Condition d'équilibre : égalité des potentiels chimiques</span>
+      <span class="step-label">2 · Variance et règle des phases de Gibbs</span>
+      <p>La <strong>variance</strong> \(v\) d'un système est le nombre de paramètres intensifs indépendants que peut fixer librement l'opérateur tout en déterminant totalement l'état du système. On la calcule par la <strong>règle des phases de Gibbs</strong> :</p>
+      <div class="calc-line">\[ \boxed{\,v = n + 2 - \varphi - r\,} \qquad \begin{aligned} n &amp;: \text{nombre de constituants chimiques} \\ \varphi &amp;: \text{nombre de phases} \\ r &amp;: \text{nombre de relations supplémentaires} \end{aligned} \]</div>
+      <p><strong>Application au corps pur</strong> (\(n = 1\), \(r = 0\)) :</p>
+      <ul>
+        <li>une seule phase (\(\varphi = 1\)) : \(v = 2\) — domaine <em>divariant</em>, \(T\) et \(P\) fixables indépendamment ;</li>
+        <li>deux phases en équilibre (\(\varphi = 2\)) : \(v = 1\) — courbe de coexistence <em>monovariante</em>, fixer \(T\) détermine \(P\) et réciproquement ;</li>
+        <li>trois phases (\(\varphi = 3\)) : \(v = 0\) — le point triple est <em>invariant</em>, un seul couple \((T_t, P_t)\) possible.</li>
+      </ul>
+      <p>L'invariance du point triple justifie son choix comme point fixe de référence de l'échelle de température.</p>
+    </div>
+
+    <div class="demo-step">
+      <span class="step-label">3 · Condition d'équilibre : égalité des potentiels chimiques</span>
       <p>À \(T\) et \(P\) fixées, l'équilibre entre deux phases \(\alpha\) et \(\beta\) est régi par la minimisation de l'enthalpie libre totale \(G = n_\alpha \mu_\alpha + n_\beta \mu_\beta\).</p>
       <p class="lead"><strong>Étape A — On différentie \(G\)</strong> à \(T\), \(P\) et \(n = n_\alpha + n_\beta\) constants. La conservation de la matière impose \(\mathrm{d}n_\beta = -\,\mathrm{d}n_\alpha\) :</p>
       <div class="calc-line">\[
@@ -100,7 +115,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     </div>
 
     <div class="demo-step">
-      <span class="step-label">3 · Relation de Clausius-Clapeyron</span>
+      <span class="step-label">4 · Relation de Clausius-Clapeyron</span>
       <p class="lead"><strong>Étape A — On écrit l'égalité des variations de \(\mu\).</strong> En se déplaçant le long de la courbe de coexistence, les potentiels chimiques restent égaux, donc leurs différentielles aussi. Avec \(\mathrm{d}\mu = -s_m\,\mathrm{d}T + v_m\,\mathrm{d}P\) :</p>
       <div class="calc-line">\[ -s_{m,\ell}\,\mathrm{d}T + v_{m,\ell}\,\mathrm{d}P = -s_{m,g}\,\mathrm{d}T + v_{m,g}\,\mathrm{d}P . \]</div>
       <p class="lead"><strong>Étape B — On isole</strong> le rapport \(\dfrac{\mathrm{d}P}{\mathrm{d}T}\), puis on utilise \(\Delta s_m = \dfrac{\Delta_{\text{vap}} H_m}{T}\). On obtient la <strong>relation de Clausius-Clapeyron</strong> :</p>
@@ -164,21 +179,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   </section>
 
   <section class="rubric">
-    <h2><span class="rl">⚠</span> Règle des phases de Gibbs</h2>
-    <div class="box culture">
-      <div class="box-title">⚠ Hors-programme · culture</div>
-      <p>Pour un système à \(C\) constituants et \(\Phi\) phases en équilibre, la variance est \(v = C - \Phi + 2\). Pour un corps pur (\(C = 1\)) : un domaine monophasé (\(\Phi = 1\)) est divariant (\(v = 2\)) ; une courbe de coexistence (\(\Phi = 2\)) est monovariante (\(v = 1\)) ; le point triple (\(\Phi = 3\)) est invariant (\(v = 0\)). <em>Cette règle n'est pas explicitement au programme MP, mais sa connaissance est attendue pour commenter les diagrammes.</em></p>
-    </div>
-  </section>
-
-  <section class="rubric">
     <h2><span class="rl">G</span> Conformité au programme</h2>
-    <p>Le diagramme de phases et le fluide supercritique sont au programme MPSI (3.1) et MP. L'égalité des potentiels chimiques est au programme MP (8.2). La relation de Clausius-Clapeyron est au programme MP. La règle des phases de Gibbs (encadré orange) n'est pas explicitement au programme MP.</p>
+    <p>Le diagramme de phases et le fluide supercritique sont au programme MPSI (3.1) et MP. L'égalité des potentiels chimiques est au programme MP (8.2). La relation de Clausius-Clapeyron est au programme MP. La variance et la règle des phases de Gibbs \(v = n + 2 - \varphi - r\) sont rappelées dans le cours (§ 1.2), le détail étant traité en thermochimie ; leur connaissance est attendue pour commenter les diagrammes de phases.</p>
   </section>
 
   <nav class="page-nav" aria-label="Question précédente et suivante">
     <a href="t5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">T5 · Gaz parfaits &amp; gaz réels</span></a>
-    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Thermodynamique</span></a>
+    <a class="next" href="t7.html"><span class="pn-dir">Suivant →</span><span class="pn-title">T7 · Équilibre liquide-vapeur · titre</span></a>
   </nav>
 </main>
 

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS4 — Distribution de Maxwell des vitesses · QC Oraux MP*</title>
+<meta name="description" content="Distribution de Maxwell des vitesses : densité de probabilité f(v), vitesse la plus probable, vitesse moyenne, vitesse quadratique moyenne v_q=√(3kBT/m). Comparaison à la vitesse de libération.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Physique statistique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ps3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ps5.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ps1.html"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
+        <a href="ps2.html"><span class="qn">PS2</span>Système à deux niveaux</a>
+        <a href="ps3.html"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+        <a href="ps4.html" aria-current="page"><span class="qn">PS4</span>Distribution de Maxwell des vitesses</a>
+        <a href="ps5.html"><span class="qn">PS5</span>Niveaux dégénérés et fonction de partition</a>
+        <a href="ps6.html"><span class="qn">PS6</span>Fluctuations relatives d'énergie</a>
+        <a href="ps7.html"><span class="qn">PS7</span>Capacité thermique et degrés de liberté</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Physique statistique</span>
+    <h1>Distribution de Maxwell des vitesses : densité de probabilité, vitesses caractéristiques, comparaison à la vitesse de libération</h1>
+    <p class="q-sources"><span class="src">TDPM2 · PM2210</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Établir la densité de probabilité \(f(v)\) de la norme de la vitesse pour un gaz à l'équilibre thermique (distribution de Maxwell). En déduire la vitesse la plus probable \(v^{*}\), la vitesse moyenne \(\langle v\rangle\) et la vitesse quadratique moyenne \(v_q=\sqrt{\langle v^2\rangle}=\sqrt{\dfrac{3k_BT}{m}}\). Comparer ces vitesses à la vitesse de libération \(v_{\rm lib}\) d'une particule au voisinage d'un astre massif.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 7 (Physique statistique) — exercice PM2210</div>
+      <ul>
+        <li>Poids de Boltzmann d'une particule indépendante à l'équilibre avec un thermostat ; identifier un facteur de Boltzmann.</li>
+        <li>Exprimer la probabilité d'occupation d'un état d'énergie en utilisant la condition de normalisation.</li>
+        <li>Exploiter le facteur de Boltzmann appliqué à l'énergie cinétique pour décrire la distribution des vitesses d'un gaz à l'équilibre (application : distribution maxwellienne).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li>Gaz de particules de masse \(m\) à l'équilibre thermique à la température \(T\), en l'absence d'énergie potentielle (énergie d'une particule réduite à son énergie cinétique \(\dfrac{1}{2}mv^2\)).</li>
+      <li><strong>Distribution maxwellienne en vecteur vitesse</strong> : la probabilité d'observer une particule de vitesse comprise entre \(\vec{v}\) et \(\vec{v}+\mathrm{d}\vec{v}\) suit le facteur de Boltzmann sur l'énergie cinétique, \(g(\vec{v})\propto \exp\!\left(-\dfrac{mv^2}{2k_BT}\right)\).</li>
+      <li><strong>Densité de probabilité de la norme</strong> \(f(v)\) : telle que \(f(v)\,\mathrm{d}v\) est la probabilité que la norme de la vitesse soit comprise entre \(v\) et \(v+\mathrm{d}v\).</li>
+      <li><strong>Vitesse la plus probable</strong> \(v^{*}\) : abscisse du maximum de \(f(v)\). <strong>Vitesse quadratique moyenne</strong> \(v_q=\sqrt{\langle v^2\rangle}\). <strong>Vitesse moyenne</strong> \(\langle v\rangle\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Distribution en vecteur vitesse (facteur de Boltzmann)</span>
+      <p class="lead"><strong>On applique le poids de Boltzmann</strong> à l'énergie cinétique \(\dfrac{1}{2}mv^2\). La densité de probabilité en vecteur vitesse, isotrope, s'écrit avec une constante de normalisation \(A\) :</p>
+      <div class="calc-line">\[ g(\vec{v}) = A\,\exp\!\left(-\frac{mv^2}{2k_BT}\right) , \qquad v^2 = v_x^2+v_y^2+v_z^2 . \]</div>
+      <p class="lead"><strong>On normalise</strong> sur tout l'espace des vitesses ; chaque intégrale gaussienne vaut \(\displaystyle\int_{-\infty}^{+\infty}e^{-\frac{m v_x^2}{2k_BT}}\,\mathrm{d}v_x=\sqrt{\dfrac{2\pi k_BT}{m}}\), d'où</p>
+      <div class="calc-line">\[ A = \left(\frac{m}{2\pi k_BT}\right)^{3/2} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Passage à la densité de la norme \(f(v)\)</span>
+      <p class="lead"><strong>On passe en coordonnées sphériques</strong> dans l'espace des vitesses : l'élément de volume \(\mathrm{d}^3v = v^2\sin\theta\,\mathrm{d}v\,\mathrm{d}\theta\,\mathrm{d}\varphi\) ; l'intégration angulaire de la partie isotrope donne le facteur \(4\pi v^2\) :</p>
+      <div class="calc-line">\[ f(v)\,\mathrm{d}v = g(\vec{v})\,4\pi v^2\,\mathrm{d}v , \]</div>
+      <p class="lead"><strong>On obtient la distribution de Maxwell</strong> de la norme de la vitesse :</p>
+      <div class="calc-line">\[ \boxed{\,f(v) = 4\pi\left(\frac{m}{2\pi k_BT}\right)^{3/2} v^2\,\exp\!\left(-\frac{mv^2}{2k_BT}\right)\,} , \qquad v\geqslant 0 . \]</div>
+      <p>Le facteur \(v^2\) (croissant) et l'exponentielle (décroissante) imposent une courbe en cloche dissymétrique, nulle en \(v=0\), à décroissance rapide aux grandes vitesses.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Vitesse la plus probable \(v^{*}\)</span>
+      <p class="lead"><strong>On annule la dérivée</strong> de \(f(v)\) (maximum) : \(\dfrac{\mathrm{d}f}{\mathrm{d}v}=0\) revient à dériver \(v^2 e^{-\frac{mv^2}{2k_BT}}\), soit</p>
+      <div class="calc-line">\[ 2v - v^2\cdot\frac{mv}{k_BT} = 0 \quad\Longrightarrow\quad v^{*} = \sqrt{\frac{2k_BT}{m}} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Vitesse quadratique moyenne \(v_q\)</span>
+      <p class="lead"><strong>On calcule \(\langle v^2\rangle\)</strong> ; on peut l'obtenir directement par le théorème d'équipartition (3 degrés de translation quadratiques) : \(\dfrac{1}{2}m\langle v^2\rangle = 3\times\dfrac{1}{2}k_BT\), d'où</p>
+      <div class="calc-line">\[ \langle v^2\rangle = \frac{3k_BT}{m} , \qquad v_q = \sqrt{\langle v^2\rangle} = \sqrt{\frac{3k_BT}{m}} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Vitesse moyenne \(\langle v\rangle\)</span>
+      <p class="lead"><strong>On calcule \(\langle v\rangle=\displaystyle\int_0^{\infty} v\,f(v)\,\mathrm{d}v\)</strong>. L'intégrale \(\displaystyle\int_0^{\infty} v^3 e^{-\alpha v^2}\,\mathrm{d}v = \dfrac{1}{2\alpha^2}\) avec \(\alpha=\dfrac{m}{2k_BT}\) conduit à :</p>
+      <div class="calc-line">\[ \langle v\rangle = \sqrt{\frac{8k_BT}{\pi m}} . \]</div>
+      <p class="lead"><strong>On compare les trois vitesses caractéristiques</strong> (mêmes \(T\) et \(m\)) :</p>
+      <div class="calc-line">\[ v^{*} : \langle v\rangle : v_q \;=\; \sqrt{2} : \sqrt{\tfrac{8}{\pi}} : \sqrt{3} \;\approx\; 1{,}41 : 1{,}60 : 1{,}73 , \]</div>
+      <p>soit l'ordre \(v^{*} &lt; \langle v\rangle &lt; v_q\) : la dissymétrie de la cloche pousse la moyenne et la moyenne quadratique au-delà du maximum.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">6 — Vitesse de libération et comparaison</span>
+      <p class="lead"><strong>On définit la vitesse de libération</strong> \(v_{\rm lib}\) à la distance \(r_0\) d'un astre de masse \(M\) : vitesse minimale telle que l'énergie mécanique soit nulle, \(\dfrac{1}{2}mv_{\rm lib}^2 - \dfrac{GMm}{r_0}=0\) :</p>
+      <div class="calc-line">\[ v_{\rm lib} = \sqrt{\frac{2GM}{r_0}} . \]</div>
+      <p><strong>Indépendance vis-à-vis de la masse :</strong> \(v_{\rm lib}\) ne dépend pas de \(m\), donc elle est <em>identique</em> pour les électrons et les protons. En revanche les vitesses thermiques varient comme \(\dfrac{1}{\sqrt{m}}\) : à même température, \(v_q^{\rm (\acute e lectron)} = \sqrt{\dfrac{m_p}{m_e}}\;v_q^{\rm (proton)}\approx 43\,v_q^{\rm (proton)}\). Les électrons, beaucoup plus rapides, atteignent donc bien plus facilement \(v_{\rm lib}\) et s'échappent préférentiellement de l'astre.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — densité de Maxwell \(f(v)\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-maxw" aria-label="Densité de probabilité de Maxwell f(v) avec marquage de la vitesse la plus probable, de la vitesse moyenne et de la vitesse quadratique moyenne, température réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-T">Température \(T\) <span class="val" id="v-T">300 K</span></label>
+          <input type="range" id="sl-T" min="50" max="1500" step="10" value="300">
+          <span class="hint">Gaz de diazote (\(m = 4{,}65\times10^{-26}\ \mathrm{kg}\)). La courbe s'étale et s'aplatit quand \(T\) croît.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer la température</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(v^{*}\) = <b id="v-vstar">—</b></span>
+            <span class="ro">\(\langle v\rangle\) = <b id="v-vmoy">—</b></span>
+            <span class="ro">\(v_q\) = <b id="v-vq">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Densité de probabilité de Maxwell \(f(v) = 4\pi\left(\dfrac{m}{2\pi k_BT}\right)^{3/2} v^2 e^{-\frac{mv^2}{2k_BT}}\). Les trois repères verticaux marquent la vitesse la plus probable \(v^{*}=\sqrt{\dfrac{2k_BT}{m}}\) (maximum), la vitesse moyenne \(\langle v\rangle=\sqrt{\dfrac{8k_BT}{\pi m}}\) et la vitesse quadratique moyenne \(v_q=\sqrt{\dfrac{3k_BT}{m}}\), dans l'ordre \(v^{*} &lt; \langle v\rangle &lt; v_q\).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(f(v)\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>\(v^{*}\) (plus probable)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>\(\langle v\rangle\) (moyenne)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>\(v_q\) (quadratique moy.)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Bien distinguer la distribution <em>en vecteur</em> \(g(\vec{v})\) (gaussienne, maximale en \(\vec{v}=\vec 0\)) et la distribution <em>de la norme</em> \(f(v)\) (cloche dissymétrique, nulle en \(v=0\)) : le facteur \(4\pi v^2\) provient du passage en sphériques.</li>
+        <li>Mémoriser l'ordre \(v^{*} &lt; \langle v\rangle &lt; v_q\) et le rapport \(\sqrt{2}:\sqrt{8/\pi}:\sqrt{3}\).</li>
+        <li>\(v_q\) se retrouve sans intégrale par l'équipartition : \(\dfrac{1}{2}m\langle v^2\rangle = \dfrac{3}{2}k_BT\).</li>
+        <li>Les trois vitesses varient en \(\sqrt{\dfrac{k_BT}{m}}\) : elles croissent comme \(\sqrt{T}\) et décroissent comme \(\dfrac{1}{\sqrt{m}}\).</li>
+        <li>\(v_{\rm lib}=\sqrt{\dfrac{2GM}{r_0}}\) ne dépend pas de \(m\) : commune aux électrons et protons. Les électrons (plus légers) sont thermiquement plus rapides et s'échappent plus facilement.</li>
+        <li>Ordre de grandeur : pour \(\mathrm{N_2}\) à \(300\ \mathrm{K}\), \(v_q\approx 5{,}2\times10^{2}\ \mathrm{m\,s^{-1}}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'application du facteur de Boltzmann à l'énergie cinétique et l'identification des vitesses caractéristiques sont au programme (exercice PM2210). La forme \(f(v)\) de la distribution de Maxwell et les intégrales gaussiennes utilisées sont fournies ou admises ; le résultat \(\langle v^2\rangle=\dfrac{3k_BT}{m}\) découle directement du théorème d'équipartition (§7.3, vu en PS3).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ps3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">PS3 · Équipartition / capacité thermique des gaz</span></a>
+    <a class="next" href="ps5.html"><span class="pn-dir">Suivant →</span><span class="pn-title">PS5 · Niveaux dégénérés et fonction de partition</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 9 : Physique statistique (§7).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-maxw');
+  const slT = document.getElementById('sl-T');
+  const vT = document.getElementById('v-T');
+  const vStar = document.getElementById('v-vstar'), vMoy = document.getElementById('v-vmoy'), vQ = document.getElementById('v-vq');
+  const btnAnim = document.getElementById('btn-anim');
+  const kB = 1.380649e-23, m = 4.65e-26; // diazote
+  let animating = false, ph = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function fMax(v, T) {
+    const a = m / (2 * kB * T);
+    return 4 * Math.PI * Math.pow(a / Math.PI, 1.5) * v * v * Math.exp(-a * v * v);
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const T = parseFloat(slT.value);
+    const vstar = Math.sqrt(2 * kB * T / m);
+    const vmoy = Math.sqrt(8 * kB * T / (Math.PI * m));
+    const vq = Math.sqrt(3 * kB * T / m);
+
+    // bornes : axe v jusqu'à une vitesse couvrant le cas le plus chaud (Tmax=1500 K)
+    const vmax = 2700;
+    // amplitude max de f : au pic v*, échelle calée sur la T courante
+    const fpk = fMax(vstar, T);
+    const ymax = fpk * 1.18;
+
+    const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: vmax, ymin: 0, ymax: ymax, pad: { l: 20, r: 14, t: 18, b: 32 } });
+    plot.grid(c, { xticks: 6, yticks: 5 });
+    plot.axes(c, { xlabel: 'v (m/s)', ylabel: 'f(v)' });
+
+    // aire sous la courbe
+    plot.fill(v => fMax(v, T), c.bleu, { alpha: 0.12, N: 300 });
+    // courbe f(v)
+    plot.curve(v => fMax(v, T), c.bleu, { lw: 2.6, N: 400 });
+
+    // repères verticaux v*, <v>, vq
+    function vline(vx, color, label, labY) {
+      const x = plot.px(vx), y0 = plot.py(0), y1 = plot.py(fMax(vx, T));
+      ctx.strokeStyle = color; ctx.lineWidth = 1.8; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, plot.py(0) - (y0 - plot.py(ymax)) * 0.93); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = color; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
+      ctx.fillText(label, x, plot.py(ymax) + labY);
+    }
+    vline(vstar, c.vert, 'v*', 12);
+    vline(vmoy, c.orange, '⟨v⟩', 26);
+    vline(vq, c.rouge, 'vq', 40);
+
+    vT.textContent = fr(T, 0) + ' K';
+    vStar.textContent = fr(vstar, 0) + ' m/s';
+    vMoy.textContent = fr(vmoy, 0) + ' m/s';
+    vQ.textContent = fr(vq, 0) + ' m/s';
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      ph += dt * 0.5;
+      const T = 50 + 1450 * (0.5 - 0.5 * Math.cos(ph));
+      slT.value = Math.round(T / 10) * 10;
+      draw();
+    }
+  });
+  slT.addEventListener('input', draw);
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer la température';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

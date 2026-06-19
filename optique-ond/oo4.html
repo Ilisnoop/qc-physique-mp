@@ -38,6 +38,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="oo4.html" aria-current="page"><span class="qn">OO4</span>Contraste (visibilité)</a>
         <a href="oo5.html"><span class="qn">OO5</span>Réseaux / N ondes / Rayleigh</a>
         <a href="oo6.html"><span class="qn">OO6</span>Longueur de cohérence temporelle</a>
+        <a href="oo7.html"><span class="qn">OO7</span>Cohérence spatiale</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -72,7 +73,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   <section class="rubric">
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <ul>
-      <li><b>Contraste</b> (ou visibilité) : \(\mathcal{V} = \dfrac{I_{\max} - I_{\min}}{I_{\max} + I_{\min}} \in [0,1]\).</li>
+      <li><b>Contraste</b> (ou visibilité) : \(C = \dfrac{I_{\max} - I_{\min}}{I_{\max} + I_{\min}} \in [0,1]\).</li>
       <li>\(I_1\), \(I_2\) : intensités des deux ondes interférantes.</li>
       <li>Source de spectre rectangulaire de largeur \(\Delta\nu\) centrée sur \(\nu_0\) : représentation simple pour une source non monochromatique.</li>
     </ul>
@@ -91,10 +92,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
           I_{\min} &amp;= I_1 + I_2 - 2\sqrt{I_1 I_2} .
         \end{aligned}
       \]</div>
-      <p class="lead">On en déduit le contraste \(\mathcal{V} = \dfrac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}\) :</p>
-      <div class="calc-line">\[ \mathcal{V} = \dfrac{2\sqrt{I_1 I_2}}{I_1 + I_2} . \]</div>
-      <p class="lead">Par l'inégalité arithmético-géométrique, \(\mathcal{V}\leq 1\), avec égalité si et seulement si \(I_1=I_2\). Pour un rapport \(\dfrac{I_1}{I_2} = 4\) :</p>
-      <div class="calc-line">\[ \mathcal{V} = \dfrac{2\sqrt{4}}{1+4} = \dfrac{4}{5} = 0{,}8 . \]</div>
+      <p class="lead">On en déduit le contraste \(C = \dfrac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}\) :</p>
+      <div class="calc-line">\[ C = \dfrac{2\sqrt{I_1 I_2}}{I_1 + I_2} . \]</div>
+      <p class="lead">Par l'inégalité arithmético-géométrique, \(C\leq 1\), avec égalité si et seulement si \(I_1=I_2\). Pour un rapport \(\dfrac{I_1}{I_2} = 4\) :</p>
+      <div class="calc-line">\[ C = \dfrac{2\sqrt{4}}{1+4} = \dfrac{4}{5} = 0{,}8 . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">Contraste avec source de spectre rectangulaire</span>
@@ -103,7 +104,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p class="lead">En intégrant le cosinus sur la bande spectrale, on fait apparaître un sinus cardinal :</p>
       <div class="calc-line">\[ I(\delta) = I_0\!\left[1 + \mathrm{sinc}\!\left(\dfrac{\pi\Delta\nu\,\delta}{c}\right)\cos\!\left(\dfrac{2\pi\nu_0\delta}{c}\right)\right] , \]</div>
       <p class="lead">où \(\mathrm{sinc}(u) = \dfrac{\sin(u)}{u}\). Le contraste est l'enveloppe du terme oscillant :</p>
-      <div class="calc-line">\[ \mathcal{V}(\delta) = \left|\,\mathrm{sinc}\!\left(\dfrac{\pi\Delta\nu\,\delta}{c}\right)\right| . \]</div>
+      <div class="calc-line">\[ C(\delta) = \left|\,\mathrm{sinc}\!\left(\dfrac{\pi\Delta\nu\,\delta}{c}\right)\right| . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">Première annulation du contraste (brouillage)</span>
@@ -120,7 +121,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   </section>
 
   <section class="rubric">
-    <h2><span class="rl">E</span> Figure interactive — éclairement et contraste \(\mathcal{V}(\delta)\)</h2>
+    <h2><span class="rl">E</span> Figure interactive — éclairement et contraste \(C(\delta)\)</h2>
     <figure class="figure">
       <div class="fig-canvas-wrap">
         <canvas id="cv-cont" aria-label="Éclairement I(delta) modulé par l'enveloppe sinc et contraste, avec rapport d'intensités et largeur spectrale réglables"></canvas>
@@ -138,19 +139,19 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
         <div class="control">
           <div class="gauges">
-            <div class="gauge t"><span class="glabel">𝒱₀</span><span class="gtrack"><span class="gfill" id="g-v"></span></span><span class="gval" id="v-v">1,00</span></div>
+            <div class="gauge t"><span class="glabel">C₀</span><span class="gtrack"><span class="gfill" id="g-v"></span></span><span class="gval" id="v-v">1,00</span></div>
           </div>
           <div class="readout" style="margin-top:.6rem">
-            <span class="ro">𝒱 max \(= \dfrac{2\sqrt{I_1I_2}}{I_1+I_2}\) = <b id="v-vmax">1,00</b></span>
+            <span class="ro">C max \(= \dfrac{2\sqrt{I_1I_2}}{I_1+I_2}\) = <b id="v-vmax">1,00</b></span>
             <span class="ro">\(l_c\) ≈ <b id="v-lc">33 \(\lambda\)</b></span>
           </div>
         </div>
       </div>
       <figcaption class="fig-legend">
-        Éclairement \(I(\delta)\) (bleu) : oscillations rapides à \(\nu_0\) modulées par l'enveloppe \(\pm\mathcal{V}(\delta)\) (orange, \(=|\mathrm{sinc}(\dfrac{\pi\Delta\nu\delta}{c})|\) plafonnée par \(\mathcal{V}_0\)). Le contraste s'annule au premier brouillage \(\delta=l_c=\dfrac{c}{\Delta\nu}\) (trait vert).
+        Éclairement \(I(\delta)\) (bleu) : oscillations rapides à \(\nu_0\) modulées par l'enveloppe \(\pm C(\delta)\) (orange, \(=|\mathrm{sinc}(\dfrac{\pi\Delta\nu\delta}{c})|\) plafonnée par \(C_0\)). Le contraste s'annule au premier brouillage \(\delta=l_c=\dfrac{c}{\Delta\nu}\) (trait vert).
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>Éclairement \(I(\delta)\)</span>
-          <span class="swatch"><i style="background:var(--curve-orange)"></i>Enveloppe \(\pm\mathcal{V}(\delta)\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>Enveloppe \(\pm C(\delta)\)</span>
           <span class="swatch"><i style="background:var(--curve-vert)"></i>Brouillage \(\delta=l_c\)</span>
         </div>
       </figcaption>
@@ -162,7 +163,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>La formule \(\mathcal{V} = \dfrac{2\sqrt{I_1 I_2}}{I_1+I_2}\) est à savoir établir rapidement.</li>
+        <li>La formule \(C = \dfrac{2\sqrt{I_1 I_2}}{I_1+I_2}\) est à savoir établir rapidement.</li>
         <li>Retenir que le contraste est maximal pour \(I_1=I_2\) (régler le Michelson en conséquence).</li>
         <li>La longueur de cohérence est \(l_c = \dfrac{c}{\Delta\nu} = \dfrac{\lambda^2}{\Delta\lambda}\) (les deux formes sont utiles).</li>
         <li>Ordres de grandeur : \(l_c(\text{laser He-Ne})\approx 300\ \mathrm{km}\) ; \(l_c(\text{lampe Na})\approx 30\ \mathrm{cm}\).</li>
@@ -228,7 +229,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     ctx.strokeStyle = c.vert; ctx.lineWidth = 1.6; ctx.setLineDash([3, 4]);
     ctx.beginPath(); ctx.moveTo(lcpx, pad.t); ctx.lineTo(lcpx, h - pad.b); ctx.stroke(); ctx.setLineDash([]);
     ctx.fillStyle = c.vert; ctx.font = '11px IBM Plex Mono, monospace'; ctx.textAlign = 'center';
-    ctx.fillText('l_c', lcpx, pad.t + 10);
+    QC.subText(ctx, 'l', 'c', lcpx, pad.t + 10);
 
     // enveloppe ±V(δ)
     const env = d => V0 * Math.abs(sinc(Math.PI * dnu * d));

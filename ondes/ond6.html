@@ -40,6 +40,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ond6.html" aria-current="page"><span class="qn">OND6</span>GPS et ionosphère</a>
         <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
         <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -91,7 +95,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="calc-line">\[ v_g \approx c\!\left(1 - \dfrac{f_p^2}{2f^2}\right) \approx c\,(1 - 2{,}2\times10^{-5}) . \]</div>
       <p class="lead"><strong>On en déduit l'erreur de distance</strong> engendrée par ce retard de groupe sur un trajet \(d\) :</p>
       <div class="calc-line">\[ \Delta d \approx \dfrac{c - v_g}{c}\cdot d \approx \dfrac{f_p^2}{2f^2}\,d . \]</div>
-      <p>Pour \(d = 20000\ \mathrm{km}\) (altitude GPS), on trouve \(\Delta d \approx 44\ \mathrm{cm}\) : non négligeable devant la précision visée (\(1\ \mathrm{m}\)). Les récepteurs GPS bi-fréquences (L1 à \(1{,}575\ \mathrm{GHz}\), L2 à \(1{,}228\ \mathrm{GHz}\)) corrigent cette dispersion.</p>
+      <p>Pour \(d = 20000\ \mathrm{km}\) (altitude GPS), on trouve \(\Delta d \approx 444\ \mathrm{m}\) : très supérieur à la précision visée (\(1\ \mathrm{m}\)), d'où la nécessité d'une correction. Les récepteurs GPS bi-fréquences (L1 à \(1{,}575\ \mathrm{GHz}\), L2 à \(1{,}228\ \mathrm{GHz}\)) corrigent cette dispersion.</p>
     </div>
   </section>
 
@@ -135,7 +139,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="box-title">◆ Points clés</div>
       <ul>
         <li>Les ondes GPS (L1 : \(1{,}575\ \mathrm{GHz}\), L2 : \(1{,}228\ \mathrm{GHz}\)) sont bien au-dessus de \(f_p \approx 10\ \mathrm{MHz}\) : elles traversent l'ionosphère avec une légère atténuation dispersive.</li>
-        <li>La correction ionosphérique représente jusqu'à \(50\ \mathrm{m}\) d'erreur si non corrigée.</li>
+        <li>Le modèle à \(f_p\) constant donne un majorant (\(\sim 10^2\ \mathrm{m}\)) ; en réalité l'onde ne traverse la couche dense que sur une fraction du trajet, et l'erreur effective est de l'ordre de quelques mètres à quelques dizaines de mètres si non corrigée.</li>
         <li>Activité solaire et orages magnétiques perturbent \(n_e\) et donc la précision GPS.</li>
         <li>Application mémorable : la radio amateur HF utilise la réflexion ionosphérique pour communiquer à l'autre bout du globe.</li>
       </ul>
@@ -197,7 +201,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     ctx.strokeStyle = c.orange; ctx.lineWidth = 1.6; ctx.setLineDash([7, 4]);
     ctx.beginPath(); ctx.moveTo(0, ionoY1); ctx.lineTo(w, ionoY1); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(0, ionoY2); ctx.lineTo(w, ionoY2); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle = c.orange; ctx.fillText('ionosphère  (f_p \u2248 10 MHz)', 10, ionoY1 - 8);
+    ctx.fillStyle = c.orange; ctx.fillText('ionosphère  (fₚ \u2248 10 MHz)', 10, ionoY1 - 8);
     // satellite GPS
     ctx.fillStyle = c.rouge; ctx.beginPath(); ctx.arc(w * 0.78, 28, 5, 0, 2 * Math.PI); ctx.fill();
     ctx.fillStyle = c.muted; ctx.textAlign = 'right'; ctx.fillText('GPS (1,5 GHz)', w - 10, 22);
@@ -216,7 +220,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       else { const u = (seg - 0.5) / 0.5; ax = xtop + (xend - xtop) * u; ay = ionoY1 + (groundY - ionoY1) * u; dx = xend - xtop; dy = groundY - ionoY1; }
       const L = Math.hypot(dx, dy); dx /= L; dy /= L;
       ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax - 8 * dx + 4 * dy, ay - 8 * dy - 4 * dx); ctx.lineTo(ax - 8 * dx - 4 * dy, ay - 8 * dy + 4 * dx); ctx.closePath(); ctx.fill();
-      ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center'; ctx.fillText('HF réfléchie (f < f_p)', xtop, ionoY1 - 22);
+      ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'center'; ctx.fillText('HF réfléchie (f < fₚ)', xtop, ionoY1 - 22);
     } else {
       // GPS descend du satellite, traverse, jusqu'au sol
       const xs = w * 0.78, ys = 28, xg = w * 0.42;

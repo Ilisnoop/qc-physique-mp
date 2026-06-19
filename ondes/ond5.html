@@ -40,6 +40,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ond6.html"><span class="qn">OND6</span>GPS et ionosphère</a>
         <a href="ond7.html"><span class="qn">OND7</span>Rayonnement du dipôle oscillant</a>
         <a href="ond8.html"><span class="qn">OND8</span>Cavité résonante 1D</a>
+        <a href="ond9.html"><span class="qn">OND9</span>Polarisation d'une OPPM</a>
+        <a href="ond10.html"><span class="qn">OND10</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="ond11.html"><span class="qn">OND11</span>Bilan d'énergie dans un plasma</a>
+        <a href="ond12.html"><span class="qn">OND12</span>Diffusion Rayleigh &amp; ciel bleu</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -85,18 +89,22 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <p>Il s'agit d'une <em>équation de diffusion</em> (et non de propagation), de coefficient de diffusion \(D = \dfrac{1}{\mu_0\gamma}\).</p>
     </div>
     <div class="demo-step">
-      <span class="step-label">2 — Solution OPPM</span>
-      <p class="lead"><strong>On cherche une solution de forme imposée</strong> \(\vec{E} = \vec{E}_0\,e^{i(kz-\omega t)}\) ; la substitution dans l'équation de diffusion \((\Delta \to -k^2,\ \partial_t \to -i\omega)\) donne</p>
-      <div class="calc-line">\[ -k^2 = -i\mu_0\gamma\omega \quad\Longrightarrow\quad k^2 = i\mu_0\gamma\omega . \]</div>
-      <p class="lead"><strong>On prend la racine carrée</strong> de module \(\sqrt{\mu_0\gamma\omega}\) et d'argument \(+\dfrac{\pi}{4}\) (soit \(\sqrt{i} = \tfrac{1+i}{\sqrt2}\)), ce qui fait apparaître la longueur \(\delta\) :</p>
-      <div class="calc-line">\[
-        \begin{aligned}
-          k &amp;= \dfrac{1+i}{\delta} , \quad \text{avec}\quad \delta = \sqrt{\dfrac{2}{\mu_0\gamma\omega}} , \\[4pt]
-          \vec{E} &amp;= \vec{E}_0\,e^{-z/\delta}\,e^{i(z/\delta - \omega t)} .
-        \end{aligned}
-      \]</div>
-      <p>Le champ est atténué sur la longueur caractéristique \(\delta\), appelée <strong>épaisseur de peau</strong>.</p>
+      <span class="step-label">2 — Relation de dispersion et épaisseur de peau</span>
+      <p class="lead"><strong>On cherche une solution de forme imposée</strong> \(\vec{E} = \vec{E}_0\,e^{i(\omega t-kz)}\) (convention \(e^{+i\omega t}\) du cours) ; la substitution dans l'équation de diffusion \((\Delta \to -k^2,\ \partial_t \to +i\omega)\) donne la <strong>relation de dispersion</strong> du milieu ohmique :</p>
+      <div class="calc-line">\[ -k^2 = i\mu_0\gamma\omega \quad\Longrightarrow\quad k^2 = -\,i\mu_0\gamma\omega . \]</div>
+      <p class="lead">Le vecteur d'onde étant complexe, le champ est atténué sur une <strong>longueur caractéristique d'atténuation</strong> \(\delta\), appelée <strong>épaisseur de peau</strong> :</p>
+      <div class="calc-line">\[ \boxed{\;\delta = \sqrt{\dfrac{2}{\mu_0\gamma\omega}}\;} , \qquad \vec{E} = \vec{E}_0\,e^{-z/\delta}\,e^{i(\omega t - z/\delta)} . \]</div>
     </div>
+
+    <div class="box culture">
+      <div class="box-title">✦ Détail du calcul — point culture (poly p. 37-38)</div>
+      <p>Le détail de l'extraction de \(\delta\) à partir de la relation de dispersion est placé en « Point culture » dans le polycopié de la classe. On prend la <strong>racine carrée</strong> de \(k^2 = -\,i\mu_0\gamma\omega\) : de module \(\sqrt{\mu_0\gamma\omega}\) et d'argument \(-\dfrac{\pi}{4}\) (soit \(\sqrt{-i} = \tfrac{1-i}{\sqrt2}\)), ce qui fait apparaître \(\delta\) :</p>
+      <div class="calc-line">\[
+        k = \dfrac{1-i}{\delta} , \quad \text{avec}\quad \delta = \sqrt{\dfrac{2}{\mu_0\gamma\omega}} .
+      \]</div>
+      <p>La partie réelle de \(k\) décrit la propagation (terme \(e^{-iz/\delta}\)), la partie imaginaire l'atténuation (enveloppe \(e^{-z/\delta}\)). Le résultat \(\delta = \sqrt{2/(\mu_0\gamma\omega)}\), lui, reste exigible (programme MP §4.5).</p>
+    </div>
+
     <div class="demo-step">
       <span class="step-label">3 — Ordres de grandeur</span>
       <p class="lead"><strong>On rappelle l'expression de l'épaisseur de peau</strong> :</p>
@@ -106,7 +114,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
   </section>
 
   <section class="rubric">
-    <h2><span class="rl">E</span> Figure interactive — atténuation \(e^{-\dfrac{z}{\delta}}\) dans le conducteur</h2>
+    <h2><span class="rl">E</span> Figure interactive — atténuation \(e^{-\frac{z}{\delta}}\) dans le conducteur</h2>
     <figure class="figure">
       <div class="fig-canvas-wrap">
         <canvas id="cv-peau" aria-label="Onde atténuée e^(-z/delta) dans un conducteur ohmique, epaisseur de peau delta"></canvas>
@@ -115,7 +123,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <div class="control">
           <label for="sl-d">Épaisseur de peau \(\delta\) <span class="val" id="v-d">1,0 (u.a.)</span></label>
           <input type="range" id="sl-d" min="0.4" max="3" step="0.05" value="1">
-          <span class="hint" id="hint-d">\(\delta = \dfrac{\sqrt{\dfrac{2}{\mu_0\gamma\omega}} \propto 1}{\sqrt{\gamma\omega}}\) : plus \(\gamma\) ou \(\omega\) augmente, plus \(\delta\) diminue.</span>
+          <span class="hint" id="hint-d">\(\delta = \sqrt{\dfrac{2}{\mu_0\gamma\omega}} \propto \dfrac{1}{\sqrt{\gamma\omega}}\) : plus \(\gamma\) ou \(\omega\) augmente, plus \(\delta\) diminue.</span>
           <div class="btn-row" style="margin-top:.5rem">
             <button class="btn primary" id="btn-anim" type="button">Animer l'onde amortie</button>
           </div>
@@ -129,10 +137,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
       </div>
       <figcaption class="fig-legend">
-        Onde \(E(z) = E_0\,e^{-\dfrac{z}{\delta}}\cos(\dfrac{z}{\delta} - \omega t)\) pénétrant dans le conducteur (zone teintée). L'enveloppe \(e^{-\dfrac{z}{\delta}}\) (rouge pointillé) tombe à \(\dfrac{1}{e}\) en \(z=\delta\) (repère vert). « Animer » fait osciller la phase ; l'enveloppe d'atténuation reste fixe.
+        Onde \(E(z) = E_0\,e^{-\frac{z}{\delta}}\cos(\dfrac{z}{\delta} - \omega t)\) pénétrant dans le conducteur (zone teintée). L'enveloppe \(e^{-\frac{z}{\delta}}\) (rouge pointillé) tombe à \(\dfrac{1}{e}\) en \(z=\delta\) (repère vert). « Animer » fait osciller la phase ; l'enveloppe d'atténuation reste fixe.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(E(z,t)\) amortie</span>
-          <span class="swatch"><i style="background:var(--curve-rouge)"></i>enveloppe \(e^{-\dfrac{z}{\delta}}\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>enveloppe \(e^{-\frac{z}{\delta}}\)</span>
           <span class="swatch"><i style="background:var(--curve-vert)"></i>\(z=\delta\) (\(\dfrac{1}{e}\))</span>
         </div>
       </figcaption>
@@ -144,7 +152,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="box oral">
       <div class="box-title">◆ Points clés</div>
       <ul>
-        <li>L'épaisseur de peau \(\dfrac{\delta \propto 1}{\sqrt{\omega}}\) : plus la fréquence est élevée, plus le courant est confiné en surface.</li>
+        <li>L'épaisseur de peau \(\delta \propto \dfrac{1}{\sqrt{\omega}}\) : plus la fréquence est élevée, plus le courant est confiné en surface.</li>
         <li>En pratique : à 50 Hz, \(\delta \approx 9\ \mathrm{mm}\) (cuivre) ; à 100 MHz, \(\delta \approx 7\ \mathrm{\mu m}\) — les câbles HF sont creux ou blindés.</li>
         <li>L'équation de diffusion (et non de d'Alembert) indique que l'onde est <em>fortement dispersive</em> et <em>atténuée</em>.</li>
         <li>La résistance d'un conducteur massif augmente avec la fréquence (effet de peau) : \(R(\omega)\propto\sqrt{\omega}\).</li>
@@ -154,7 +162,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
 
   <section class="rubric">
     <h2><span class="rl">G</span> Conformité au programme</h2>
-    <p>Programme MP, section 4.5.</p>
+    <p>La propagation dans un milieu ohmique en régime lentement variable et l'effet de peau sont au <strong>programme MP §4.5</strong> : la capacité exigible est « établir et interpréter l'expression de la longueur caractéristique d'atténuation \(\delta\) ». Le résultat \(\delta = \sqrt{2/(\mu_0\gamma\omega)}\), l'équation de diffusion et les ordres de grandeur sont donc maintenus dans le raisonnement principal. Le <strong>polycopié de la classe place toutefois le détail démonstratif</strong> (extraction de la racine complexe \(\sqrt{-i}\)) en « Point culture » (p. 37-38) : ce passage le plus poussé est donc isolé en encadré orange, conformément au cours, sans rendre le résultat inaccessible.</p>
   </section>
 
   <nav class="page-nav" aria-label="Question précédente et suivante">

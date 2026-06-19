@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS6 — Fluctuations relatives d'énergie · QC Oraux MP*</title>
+<meta name="description" content="Fluctuations relatives d'énergie d'un système de N particules indépendantes : ΔE/⟨E⟩ ∝ 1/√N, disparition à la limite thermodynamique et caractère quasi-certain des grandeurs thermodynamiques.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Physique statistique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="ps5.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="ps7.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="ps1.html"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
+        <a href="ps2.html"><span class="qn">PS2</span>Système à deux niveaux</a>
+        <a href="ps3.html"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+        <a href="ps4.html"><span class="qn">PS4</span>Distribution de Maxwell des vitesses</a>
+        <a href="ps5.html"><span class="qn">PS5</span>Niveaux dégénérés et fonction de partition</a>
+        <a href="ps6.html" aria-current="page"><span class="qn">PS6</span>Fluctuations relatives d'énergie</a>
+        <a href="ps7.html"><span class="qn">PS7</span>Capacité thermique et degrés de liberté</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 6 · Physique statistique</span>
+    <h1>Fluctuations relatives d'énergie d'un système de \(N\) particules : décroissance en \(\dfrac{1}{\sqrt{N}}\) et limite thermodynamique</h1>
+    <p class="q-sources"><span class="src">TDPM2 (Cas d'un système à N particules indépendantes)</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Expliquer pourquoi les fluctuations relatives d'énergie d'un système régressent quand sa taille augmente. Établir \(\dfrac{\Delta E}{\langle E\rangle}\propto\dfrac{1}{\sqrt{N}}\) pour \(N\) particules indépendantes et associer cette régression au caractère quasi-certain des grandeurs thermodynamiques à la limite thermodynamique.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 7 (Physique statistique) — Cas d'un système à \(N\) particules indépendantes</div>
+      <ul>
+        <li>Énergie moyenne et écart quadratique moyen : exprimer sous forme d'une somme sur ses états l'énergie moyenne et l'écart quadratique énergétique d'un système.</li>
+        <li>Expliquer pourquoi les fluctuations relatives d'énergie régressent quand la taille du système augmente et associer cette régression au caractère quasi-certain des grandeurs thermodynamiques.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li>Système de \(N\) particules <strong>indépendantes</strong>, à l'équilibre à la température \(T\). L'énergie du système est la somme des énergies individuelles \(\mathcal{E}_{\rm syst}=\displaystyle\sum_{k=1}^{N}\mathcal{E}_{{\rm part},k}\).</li>
+      <li><strong>Variance (écart quadratique)</strong> de l'énergie : \(\mathrm{Var}(\mathcal{E})=\langle\mathcal{E}^2\rangle-\langle\mathcal{E}\rangle^2\). <strong>Écart-type</strong> \(\sigma(\mathcal{E})=\sqrt{\mathrm{Var}(\mathcal{E})}\), noté aussi \(\Delta\mathcal{E}\).</li>
+      <li><strong>Fluctuation relative</strong> : \(\dfrac{\sigma(\mathcal{E})}{\langle\mathcal{E}\rangle}\), grandeur sans dimension mesurant l'amplitude typique des écarts à la moyenne.</li>
+      <li><strong>Limite thermodynamique</strong> : \(N\to\infty\) (de l'ordre de \(N_A\approx 6{,}0\times10^{23}\) pour un système macroscopique).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Fluctuation pour une particule</span>
+      <p class="lead"><strong>On caractérise les fluctuations d'une particule</strong> par la variance de son énergie :</p>
+      <div class="calc-line">\[ \mathrm{Var}(\mathcal{E}_{\rm part}) = \langle\mathcal{E}_{\rm part}^2\rangle - \langle\mathcal{E}_{\rm part}\rangle^2 . \]</div>
+      <p>L'écart-type \(\sigma(\mathcal{E}_{\rm part})\) est <em>a priori du même ordre de grandeur</em> que l'énergie moyenne \(\langle\mathcal{E}_{\rm part}\rangle\) : pour une seule particule, la fluctuation relative est d'ordre 1.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Moyenne de l'énergie du système</span>
+      <p class="lead"><strong>On somme les moyennes</strong> : la moyenne d'une somme est la somme des moyennes, et toutes les particules ont la même énergie moyenne :</p>
+      <div class="calc-line">\[ \langle\mathcal{E}_{\rm syst}\rangle = \sum_{k=1}^{N}\langle\mathcal{E}_{{\rm part},k}\rangle = N\,\langle\mathcal{E}_{\rm part}\rangle . \]</div>
+      <p>L'énergie moyenne du système est donc <strong>proportionnelle à \(N\)</strong> (grandeur extensive).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Variance de l'énergie du système</span>
+      <p class="lead"><strong>On utilise l'indépendance</strong> : la variance d'une somme de variables aléatoires indépendantes est la somme des variances. Les \(N\) particules ayant la même variance :</p>
+      <div class="calc-line">\[ \mathrm{Var}(\mathcal{E}_{\rm syst}) = \sum_{k=1}^{N}\mathrm{Var}(\mathcal{E}_{{\rm part},k}) = N\,\mathrm{Var}(\mathcal{E}_{\rm part}) . \]</div>
+      <p class="lead"><strong>On en déduit l'écart-type</strong> du système, qui croît seulement comme \(\sqrt{N}\) :</p>
+      <div class="calc-line">\[ \sigma(\mathcal{E}_{\rm syst}) = \sqrt{N}\,\sigma(\mathcal{E}_{\rm part}) . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Fluctuation relative et limite thermodynamique</span>
+      <p class="lead"><strong>On forme le rapport</strong> écart-type sur moyenne : le \(N\) de la moyenne et le \(\sqrt{N}\) de l'écart-type ne se compensent pas, laissant un facteur \(\dfrac{1}{\sqrt{N}}\) :</p>
+      <div class="calc-line">\[ \frac{\sigma(\mathcal{E}_{\rm syst})}{\langle\mathcal{E}_{\rm syst}\rangle} = \frac{\sqrt{N}\,\sigma(\mathcal{E}_{\rm part})}{N\,\langle\mathcal{E}_{\rm part}\rangle} = \frac{1}{\sqrt{N}}\,\frac{\sigma(\mathcal{E}_{\rm part})}{\langle\mathcal{E}_{\rm part}\rangle} . \]</div>
+      <div class="calc-line">\[ \boxed{\;\frac{\Delta E}{\langle E\rangle} \;\propto\; \frac{1}{\sqrt{N}}\;} \]</div>
+      <p class="lead"><strong>On passe à la limite thermodynamique</strong> \(N\to\infty\) : la fluctuation relative tend vers \(0\). Numériquement, pour \(N\sim N_A\approx 6\times10^{23}\) :</p>
+      <div class="calc-line">\[ \frac{1}{\sqrt{N_A}} \approx \frac{1}{8\times10^{11}} \approx 1{,}3\times10^{-12} . \]</div>
+      <p>Les écarts relatifs à la moyenne sont totalement négligeables : l'énergie du système est <strong>quasi-certaine</strong>. C'est ce qui justifie d'identifier l'énergie moyenne \(\langle\mathcal{E}_{\rm syst}\rangle\) à l'énergie interne \(U\) du premier principe : \(U=\langle\mathcal{E}_{\rm syst}\rangle\simeq\mathcal{E}_{\rm syst}\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — \(\dfrac{\Delta E}{\langle E\rangle}\) en fonction de \(N\)</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-fluct" aria-label="Fluctuation relative d'énergie en fonction du nombre N de particules, décroissance en 1 sur racine de N, échelle réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-N">Nombre de particules \(N\) <span class="val" id="v-N">100</span></label>
+          <input type="range" id="sl-N" min="1" max="1000000" step="1" value="100">
+          <span class="hint">Le point suit la courbe \(\dfrac{1}{\sqrt{N}}\). Même un million de particules reste très loin des \(N_A\approx 6\times10^{23}\) d'un système macroscopique.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn" id="btn-log" type="button">Échelle X : log</button>
+            <button class="btn primary" id="btn-anim" type="button">Animer N</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(N\) = <b id="v-Nb">100</b></span>
+            <span class="ro">\(\dfrac{\Delta E}{\langle E\rangle} = \dfrac{1}{\sqrt{N}}\) = <b id="v-fl">—</b></span>
+            <span class="ro">\(\sqrt{N}\) = <b id="v-sq">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Fluctuation relative d'énergie \(\dfrac{\Delta E}{\langle E\rangle}=\dfrac{1}{\sqrt{N}}\) (en supposant la fluctuation relative individuelle égale à 1) en fonction de \(N\). La décroissance en \(\dfrac{1}{\sqrt{N}}\) fait tendre la fluctuation vers \(0\) à la limite thermodynamique : les grandeurs deviennent quasi-certaines.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(1/\sqrt{N}\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>point courant</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Argument clé : moyenne \(\propto N\), écart-type \(\propto\sqrt{N}\) (par additivité des variances pour des variables <em>indépendantes</em>), donc fluctuation relative \(\propto\dfrac{1}{\sqrt{N}}\).</li>
+        <li>Insister sur l'hypothèse d'<strong>indépendance</strong> : c'est elle qui autorise \(\mathrm{Var}\!\left(\sum\right)=\sum\mathrm{Var}\).</li>
+        <li>À la limite thermodynamique (\(N\sim N_A\)), \(\dfrac{1}{\sqrt{N}}\sim10^{-12}\) : fluctuations relatives négligeables, énergie quasi-certaine.</li>
+        <li>Conséquence physique : on peut identifier l'énergie moyenne du système à l'énergie interne \(U\) du premier principe.</li>
+        <li>Ce résultat est général : il vaut pour toute grandeur extensive somme de contributions indépendantes (loi des grands nombres).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'expression de l'écart quadratique énergétique d'un système et l'explication de la régression des fluctuations relatives en \(\dfrac{1}{\sqrt{N}}\) sont explicitement au programme MP (capacités exigibles sur le cas d'un système à \(N\) particules indépendantes). L'identification \(U=\langle\mathcal{E}_{\rm syst}\rangle\) figure dans le cours.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="ps5.html"><span class="pn-dir">← Précédent</span><span class="pn-title">PS5 · Niveaux dégénérés et fonction de partition</span></a>
+    <a class="next" href="ps7.html"><span class="pn-dir">Suivant →</span><span class="pn-title">PS7 · Capacité thermique et degrés de liberté</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 9 : Physique statistique (§7).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-fluct');
+  const slN = document.getElementById('sl-N');
+  const vN = document.getElementById('v-N'), vNb = document.getElementById('v-Nb'), vFl = document.getElementById('v-fl'), vSq = document.getElementById('v-sq');
+  const btnLog = document.getElementById('btn-log'), btnAnim = document.getElementById('btn-anim');
+  let logX = false, animating = false, ph = 0;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function frExp(x) {
+    if (x >= 0.001) return fr(x, 4);
+    const e = Math.floor(Math.log10(x));
+    const mant = x / Math.pow(10, e);
+    return fr(mant, 2) + '·10' + String(e).replace(/-/g, '⁻').replace(/0/g, '⁰').replace(/1/g, '¹').replace(/2/g, '²').replace(/3/g, '³').replace(/4/g, '⁴').replace(/5/g, '⁵').replace(/6/g, '⁶').replace(/7/g, '⁷').replace(/8/g, '⁸').replace(/9/g, '⁹');
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const N = parseFloat(slN.value);
+
+    if (logX) {
+      // abscisse log10(N) de 0 à 6
+      const Lmax = 6;
+      const plot = QC.makePlot(ctx, w, h, { xmin: 0, xmax: Lmax, ymin: 0, ymax: 1.05, pad: { l: 24, r: 14, t: 18, b: 32 } });
+      plot.grid(c, { xticks: 6, yticks: 5 });
+      plot.axes(c, { xlabel: 'log₁₀ N', ylabel: 'ΔE/⟨E⟩' });
+      plot.curve(u => 1 / Math.sqrt(Math.pow(10, u)), c.bleu, { lw: 2.6, N: 400 });
+      const uN = Math.log10(N), fl = 1 / Math.sqrt(N);
+      const cx = plot.px(uN), cy = plot.py(Math.min(1.05, fl));
+      ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(cx, cy, 4.4, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(cx, plot.py(0)); ctx.lineTo(cx, cy); ctx.stroke(); ctx.setLineDash([]);
+    } else {
+      const Nmax = 1000;
+      const plot = QC.makePlot(ctx, w, h, { xmin: 1, xmax: Nmax, ymin: 0, ymax: 1.05, pad: { l: 24, r: 14, t: 18, b: 32 } });
+      plot.grid(c, { xticks: 5, yticks: 5 });
+      plot.axes(c, { xlabel: 'N', ylabel: 'ΔE/⟨E⟩' });
+      plot.curve(n => 1 / Math.sqrt(n), c.bleu, { lw: 2.6, N: 400 });
+      const nClamp = Math.min(N, Nmax), fl = 1 / Math.sqrt(N);
+      const cx = plot.px(nClamp), cy = plot.py(Math.min(1.05, 1 / Math.sqrt(nClamp)));
+      ctx.fillStyle = c.orange; ctx.beginPath(); ctx.arc(cx, cy, 4.4, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = c.orange; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(cx, plot.py(0)); ctx.lineTo(cx, cy); ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    const fl = 1 / Math.sqrt(N);
+    vN.textContent = fr(N, 0);
+    vNb.textContent = fr(N, 0);
+    vFl.textContent = frExp(fl);
+    vSq.textContent = fr(Math.sqrt(N), N < 100 ? 2 : 0);
+  }
+
+  let lastT = 0;
+  QC.loop(function (t) {
+    const dt = t - lastT; lastT = t;
+    if (animating) {
+      ph += dt * 0.4;
+      const u = 0 + 6 * (0.5 - 0.5 * Math.cos(ph)); // log10 N de 0 à 6
+      slN.value = Math.round(Math.pow(10, u));
+      draw();
+    }
+  });
+  slN.addEventListener('input', draw);
+  btnLog.addEventListener('click', function () {
+    logX = !logX;
+    btnLog.textContent = 'Échelle X : ' + (logX ? 'log' : 'linéaire');
+    btnLog.classList.toggle('active', logX);
+    draw();
+  });
+  btnAnim.addEventListener('click', function () {
+    animating = !animating;
+    btnAnim.textContent = animating ? 'Figer' : 'Animer N';
+    btnAnim.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

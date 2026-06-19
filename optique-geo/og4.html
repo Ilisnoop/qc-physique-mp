@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OG4 — Miroirs sphériques (conditions de Gauss) · QC Oraux MP*</title>
+<meta name="description" content="Miroirs sphériques dans l'approximation de Gauss : relation de conjugaison (origine au sommet ou au centre), foyer F=C/2, distance focale, grandissement, constructions géométriques, miroirs concave et convexe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique géométrique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="og3.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="og1.html"><span class="qn">OG1</span>Lois de Descartes / conditions de Gauss</a>
+        <a href="og2.html"><span class="qn">OG2</span>Stigmatisme et aplanétisme</a>
+        <a href="og3.html"><span class="qn">OG3</span>Lentilles minces</a>
+        <a href="og4.html" aria-current="page"><span class="qn">OG4</span>Miroirs sphériques (Gauss)</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 4 · Optique géométrique</span>
+    <h1>Miroirs sphériques dans l'approximation de Gauss : foyer, relation de conjugaison, grandissement et constructions</h1>
+    <p class="q-sources"><span class="src">Programme MPSI 1.1</span><span class="src">POLY O1/O2/O3</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Définir un miroir sphérique (concave ou convexe), son centre, son sommet et son foyer principal. Établir la position du foyer \(F\) au milieu de \([SC]\). Établir et utiliser la relation de conjugaison (origine au sommet ou au centre) et le grandissement transversal. Construire géométriquement l'image d'un objet à l'aide des rayons particuliers.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MPSI · 1.1 Formation des images</div>
+      <p>Capacités exigibles : établir la condition de stigmatisme approché d'un miroir sphérique dans les conditions de Gauss ; définir le centre, le sommet et le foyer principal d'un miroir sphérique ; positionner le foyer principal au milieu du segment joignant le sommet et le centre ; construire l'image d'un objet à l'aide des rayons particuliers ; exploiter une relation de conjugaison et le grandissement transversal. Le miroir plan est traité comme cas limite (\(R\to\infty\)).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Miroir sphérique</strong> : portion de sphère réfléchissante de centre \(C\) et de rayon \(R\). Le <strong>sommet</strong> \(S\) est l'intersection du miroir avec l'axe optique ; le <strong>centre</strong> \(C\) est le centre de la sphère.</li>
+      <li><strong>Convention algébrique</strong> : l'axe optique est orienté dans le sens de propagation de la lumière incidente. On note \(\overline{SC} = R\) (positif ou négatif selon le type de miroir).</li>
+      <li><strong>Miroir concave</strong> (convergent) : la concavité fait face à la lumière, le centre \(C\) est du côté de la lumière incidente.</li>
+      <li><strong>Miroir convexe</strong> (divergent) : la convexité fait face à la lumière, le centre \(C\) est derrière le miroir.</li>
+      <li><strong>Conditions de Gauss</strong> : rayons paraxiaux (faiblement inclinés et proches de l'axe) ; le miroir est alors stigmatique et aplanétique de façon approchée.</li>
+      <li><strong>Foyer principal</strong> \(F\) : image d'un point objet à l'infini sur l'axe (et objet dont l'image est à l'infini, par retour inverse). Pour un miroir, foyer objet et foyer image sont <em>confondus</em>.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Le centre et le sommet : rayons non déviés</span>
+      <p>Tout rayon passant par le centre \(C\) frappe le miroir sous incidence normale : il se réfléchit sur lui-même. Tout rayon frappant le sommet \(S\) se réfléchit symétriquement par rapport à l'axe. Ces deux rayons sont les supports privilégiés des constructions.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Position du foyer principal \(F = \) milieu de \([SC]\)</span>
+      <p class="lead"><strong>On considère un rayon incident parallèle à l'axe</strong>, frappant le miroir en un point \(I\) proche de l'axe (Gauss). La normale au miroir en \(I\) passe par \(C\). La loi de la réflexion impose que le rayon réfléchi coupe l'axe en \(F\), avec des angles égaux \(\widehat{(\text{incident},\,CI)} = \widehat{(CI,\,\text{réfléchi})} = \alpha\).</p>
+      <p class="lead"><strong>Dans le triangle \(CIF\)</strong>, les angles en \(C\) et en \(I\) sont égaux (\(\alpha\)), donc le triangle est isocèle : \(FI = FC\). Pour un rayon paraxial, \(I\) est très proche de \(S\), donc \(FI \approx FS\), d'où \(FS \approx FC\) : le point \(F\) est au milieu de \([SC]\).</p>
+      <div class="calc-line">\[ \overline{SF} = \dfrac{\overline{SC}}{2} = \dfrac{R}{2} . \]</div>
+      <p class="lead"><strong>On définit la distance focale</strong> \(f = \overline{SF}\) :</p>
+      <div class="calc-line">\[ f = \overline{SF} = \dfrac{R}{2} = \dfrac{\overline{SC}}{2} . \]</div>
+      <p>Le foyer est au milieu de \([SC]\) ; pour un miroir concave (\(R<0\) avec l'axe orienté vers la lumière), \(F\) est réel et situé devant le miroir.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Relation de conjugaison avec origine au sommet \(S\)</span>
+      <p class="lead">On repère l'objet \(A\) et l'image \(A'\) par \(\overline{SA}\) et \(\overline{SA'}\). En écrivant le stigmatisme approché (Gauss) et en utilisant la position du foyer, on établit la relation de conjugaison à origine au sommet :</p>
+      <div class="calc-line">\[ \dfrac{1}{\overline{SA'}} + \dfrac{1}{\overline{SA}} = \dfrac{2}{\overline{SC}} = \dfrac{1}{\overline{SF}} = \dfrac{2}{R} . \]</div>
+      <p>Le miroir plan s'obtient comme cas limite \(R\to\infty\) : la relation donne \(\overline{SA'} = -\overline{SA}\) (image symétrique du sommet).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Relation de conjugaison avec origine au centre \(C\)</span>
+      <p class="lead">On repère cette fois l'objet et l'image par rapport au centre \(C\), avec \(\overline{CA}\) et \(\overline{CA'}\). La relation de conjugaison à origine au centre s'écrit :</p>
+      <div class="calc-line">\[ \dfrac{1}{\overline{CA'}} + \dfrac{1}{\overline{CA}} = \dfrac{2}{\overline{CS}} . \]</div>
+      <p>Cette forme est commode lorsque les points sont repérés naturellement par rapport au centre de courbure.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Grandissement transversal</span>
+      <p class="lead">Le grandissement transversal se déduit de la construction (rayon passant par \(S\), réfléchi symétriquement) :</p>
+      <div class="calc-line">\[ \gamma = \dfrac{\overline{A'B'}}{\overline{AB}} = -\dfrac{\overline{SA'}}{\overline{SA}} = -\dfrac{\overline{CA'}}{\overline{CA}} . \]</div>
+      <p>Le signe \(-\) (origine au sommet) traduit la réflexion : un objet réel hors foyer donne une image renversée si elle est réelle.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">6 — Les rayons particuliers (construction)</span>
+      <p>Pour construire l'image \(B'\) du point \(B\) (extrémité d'un objet \(AB\) perpendiculaire à l'axe), on dispose de plusieurs rayons remarquables :</p>
+      <ol>
+        <li>Rayon parallèle à l'axe : se réfléchit en passant par le foyer \(F\).</li>
+        <li>Rayon passant par le foyer \(F\) : se réfléchit parallèlement à l'axe.</li>
+        <li>Rayon passant par le centre \(C\) : se réfléchit sur lui-même (incidence normale).</li>
+        <li>Rayon frappant le sommet \(S\) : se réfléchit symétriquement par rapport à l'axe.</li>
+      </ol>
+      <p>L'intersection de deux quelconques de ces rayons réfléchis donne \(B'\).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — construction de l'image par un miroir concave</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-mir" aria-label="Construction de l'image d'un objet par un miroir sphérique concave : rayons particuliers, position de l'objet réglable, vérification de la relation de conjugaison"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-p">Position de l'objet \(\overline{SA}\) (en unités de \(|f|\)) <span class="val" id="v-p">−3,00</span></label>
+          <input type="range" id="sl-p" min="-5" max="-0.4" step="0.05" value="-3">
+          <span class="hint" id="hint-mir">Objet réel au-delà de C : image réelle, renversée, réduite.</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Déplacer l'objet</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">\(\overline{SA'}\) (image) = <b id="v-pp">—</b></span>
+            <span class="ro">Grandissement \(\gamma = -\dfrac{\overline{SA'}}{\overline{SA}}\) = <b id="v-g">—</b></span>
+            <span class="ro">\(\dfrac{1}{\overline{SA'}} + \dfrac{1}{\overline{SA}}\) = <b id="v-check">—</b></span>
+            <span class="ro">\(\dfrac{1}{\overline{SF}}\) = <b id="v-vf">−2,00</b></span>
+            <span class="ro" id="ro-nat">Nature de l'image : <b id="v-nat">réelle, renversée</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Miroir concave de sommet \(S\), centre \(C\) et foyer \(F\) (milieu de \([SC]\)). Trois rayons issus de \(B\) : parallèle à l'axe ressortant par \(F\) (vert), passant par \(F\) ressortant parallèle (bleu), passant par \(C\) réfléchi sur lui-même (rouge). Leur intersection donne \(B'\). La relation de conjugaison \(\frac{1}{\overline{SA'}} + \frac{1}{\overline{SA}} = \frac{1}{\overline{SF}}\) est vérifiée en direct (la lecture doit égaler \(\dfrac{1}{\overline{SF}}\)).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>rayon parallèle → \(F\)</span>
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>rayon par \(F\) → parallèle</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>rayon par \(C\) → sur lui-même</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Pour un miroir, <em>foyer objet et foyer image sont confondus</em> : il n'y a qu'un seul foyer principal \(F\), au milieu de \([SC]\).</li>
+        <li>La relation à origine au sommet est en \(\dfrac{1}{\overline{SA'}} + \dfrac{1}{\overline{SA}}\) (somme, et non différence comme pour la lentille) : la réflexion renvoie la lumière vers l'arrière.</li>
+        <li>Distance focale \(f = \dfrac{\overline{SC}}{2} = \dfrac{R}{2}\) : toujours la moitié du rayon de courbure.</li>
+        <li>Le miroir plan est le cas limite \(R\to\infty\) : \(\overline{SA'} = -\overline{SA}\), image virtuelle symétrique, \(\gamma = +1\).</li>
+        <li>Préciser la convention d'orientation de l'axe avant tout calcul algébrique ; vérifier l'homogénéité (inverses de longueurs en \(\mathrm{m^{-1}}\)).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MPSI (1.1 Formation des images). La position du foyer au milieu de \([SC]\), les relations de conjugaison (origine au sommet et au centre), le grandissement et les constructions géométriques sont exigibles dans le cadre des conditions de Gauss.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="og3.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OG3 · Lentilles minces</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Optique géométrique · 4 questions</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 7 : Optique géométrique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-mir');
+  const slP = document.getElementById('sl-p');
+  const vP = document.getElementById('v-p'), vPp = document.getElementById('v-pp');
+  const vG = document.getElementById('v-g'), vCheck = document.getElementById('v-check'), vVf = document.getElementById('v-vf');
+  const vNat = document.getElementById('v-nat'), hint = document.getElementById('hint-mir');
+  const btn = document.getElementById('btn-anim');
+
+  // Miroir concave : axe orienté vers la lumière (de gauche à droite, lumière incidente venant de gauche).
+  // On choisit f = SF < 0 (foyer devant le miroir), unité physique. SC = 2f.
+  const fp = -1;                 // SF (négatif : devant le miroir, côté lumière)
+  let animating = false, dir = 1;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 360);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+
+    // SA = (slider en unités de |f|) * |f| ; objet réel devant le miroir => SA < 0
+    const SA = parseFloat(slP.value) * Math.abs(fp);
+    // conjugaison : 1/SA' + 1/SA = 1/SF  => SA' = 1/(1/SF - 1/SA)
+    const SAp = 1 / (1 / fp - 1 / SA);
+    const gamma = -SAp / SA;
+
+    // Géométrie écran : le miroir (sommet S) est à droite ; lumière incidente vient de gauche.
+    // Axe horizontal. S à droite, espace objet (négatif) vers la gauche.
+    const Sx = w * 0.80, oy = h * 0.52;
+    const sc = (w * 0.62) / (6 * Math.abs(fp));   // px par unité physique (le long de l'axe, vers la gauche => SA<0 à gauche)
+    // position écran d'un point d'abscisse algébrique u (mesurée depuis S, positive vers la droite = derrière le miroir)
+    const X = u => Sx + u * sc;
+    const objH = h * 0.18;
+
+    // axe optique
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(0, oy); ctx.lineTo(w, oy); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'left'; ctx.fillText('axe', 8, oy - 6);
+
+    // calotte du miroir concave (centre C à gauche, à l'abscisse 2f) : arc de cercle
+    const Cx = X(2 * fp);                 // 2f < 0 => C à gauche de S
+    const Rpx = Sx - Cx;                  // rayon en px (>0)
+    const Hl = h * 0.40;
+    const halfAng = Math.asin(Math.min(0.98, Hl / Rpx));
+    ctx.strokeStyle = c.text; ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    ctx.arc(Cx, oy, Rpx, -halfAng, halfAng);  // arc ouvert vers la gauche (concave face à la lumière de gauche)
+    ctx.stroke();
+    // hachures dos du miroir
+    ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.globalAlpha = 0.6;
+    for (let yy = -Hl; yy <= Hl; yy += 12) {
+      const xm = Cx + Math.sqrt(Math.max(0, Rpx * Rpx - yy * yy));
+      ctx.beginPath(); ctx.moveTo(xm, oy + yy); ctx.lineTo(xm + 7, oy + yy + 7); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    // points S, C, F
+    function pt(u, lab, dy) { ctx.fillStyle = c.muted; ctx.beginPath(); ctx.arc(X(u), oy, 3, 0, 2 * Math.PI); ctx.fill(); ctx.textAlign = 'center'; ctx.fillText(lab, X(u), oy + (dy || 16)); }
+    pt(0, 'S', -8); pt(2 * fp, 'C'); pt(fp, 'F');
+
+    // objet AB : A sur axe en SA, B au-dessus
+    const Ax = X(SA), Bx = X(SA), By = oy - objH;
+    ctx.strokeStyle = c.orange; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(Ax, oy); ctx.lineTo(Bx, By); ctx.stroke();
+    arrow(ctx, Ax, oy, Bx, By, c.orange);
+    ctx.fillStyle = c.orange; ctx.textAlign = 'center'; ctx.fillText('A', Ax, oy + 16); ctx.fillText('B', Bx, By - 8);
+
+    // === Rayons particuliers (issus de B, vers le miroir à droite) ===
+    // Le miroir est modélisé par le plan tangent au sommet (Gauss) en x = Sx pour les réflexions paraxiales.
+    // Rayon 1 : parallèle à l'axe -> réfléchi par F
+    ray(ctx, Bx, By, Sx, By, c.vert);                 // B -> point du miroir à même hauteur (sommet plan x=Sx)
+    reflectThrough(ctx, Sx, By, X(fp), oy, c.vert);   // réfléchi : passe par F
+    // Rayon 2 : passant par F -> réfléchi parallèle à l'axe
+    // direction B -> F ; hauteur d'impact sur le plan du miroir x=Sx
+    const slopeBF = (oy - By) / (X(fp) - Bx);
+    const yI2 = By + slopeBF * (Sx - Bx);
+    ray(ctx, Bx, By, Sx, yI2, c.bleu);
+    reflectParallel(ctx, Sx, yI2, c.bleu);            // réfléchi horizontal (parallèle), vers la gauche
+    // Rayon 3 : passant par C -> réfléchi sur lui-même
+    const slopeBC = (oy - By) / (X(2 * fp) - Bx);
+    const yI3 = By + slopeBC * (Sx - Bx);
+    ray(ctx, Bx, By, Sx, yI3, c.rouge);
+    reflectThrough(ctx, Sx, yI3, X(2 * fp), oy, c.rouge);  // revient vers C (sur lui-même)
+
+    // image A'B'
+    const imgH = objH * gamma;       // gamma<0 => renversée (en bas) ; signe direct
+    const Apx = X(SAp), Bpx = X(SAp), Bpy = oy - imgH;
+    const imageReelle = SAp < 0;     // image réelle : devant le miroir (côté lumière, SA'<0)
+    if (Math.abs(SAp) < 6 * Math.abs(fp) && SAp < 0) {
+      ctx.strokeStyle = c.rouge; ctx.lineWidth = 2.6; ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(Apx, oy); ctx.lineTo(Bpx, Bpy); ctx.stroke();
+      arrow(ctx, Apx, oy, Bpx, Bpy, c.rouge);
+      ctx.fillStyle = c.rouge; ctx.textAlign = 'center';
+      ctx.fillText("A'", Apx, oy + (imgH < 0 ? 16 : -8)); ctx.fillText("B'", Bpx, Bpy + (imgH < 0 ? 14 : -6));
+    } else if (SAp > 0 && SAp < 6 * Math.abs(fp)) {
+      // image virtuelle derrière le miroir : pointillés
+      ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.setLineDash([5, 4]); ctx.beginPath(); ctx.moveTo(Apx, oy); ctx.lineTo(Bpx, Bpy); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = c.bleu; ctx.textAlign = 'center'; ctx.fillText("A'", Apx, oy + 16); ctx.fillText("B'", Bpx, Bpy - 6);
+    }
+
+    // lectures
+    vP.textContent = fr(parseFloat(slP.value), 2);
+    vPp.textContent = fr(SAp, 2);
+    vG.textContent = fr(gamma, 2);
+    vCheck.textContent = fr(1 / SAp + 1 / SA, 2);
+    vVf.textContent = fr(1 / fp, 2);
+    if (imageReelle) {
+      vNat.textContent = (Math.abs(gamma) < 1 ? 'réelle, renversée, réduite' : (Math.abs(gamma) > 1 ? 'réelle, renversée, agrandie' : 'réelle, renversée'));
+      hint.textContent = 'Objet au-delà de F : image réelle, renversée.';
+    } else {
+      vNat.textContent = 'virtuelle, droite, agrandie';
+      hint.textContent = 'Objet entre F et S : image virtuelle, droite, agrandie (miroir grossissant).';
+    }
+  }
+
+  function arrow(ctx, x0, y0, x1, y1, col) {
+    const a = Math.atan2(y1 - y0, x1 - x0), L = 8;
+    ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(x1, y1);
+    ctx.lineTo(x1 - L * Math.cos(a - 0.4), y1 - L * Math.sin(a - 0.4));
+    ctx.lineTo(x1 - L * Math.cos(a + 0.4), y1 - L * Math.sin(a + 0.4));
+    ctx.closePath(); ctx.fill();
+  }
+  function ray(ctx, x0, y0, x1, y1, col) { ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.globalAlpha = 0.9; ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); ctx.globalAlpha = 1; }
+  // réfléchi depuis (xi,yi) passant par le point cible (xt,yt), prolongé vers la gauche
+  function reflectThrough(ctx, xi, yi, xt, yt, col) {
+    const dx = xt - xi, dy = yt - yi;
+    const k = (0 - xi) / (dx || -1e-6);    // jusqu'au bord gauche (x=0)
+    const K = Math.max(k, 1.4);
+    ray(ctx, xi, yi, xi + dx * K, yi + dy * K, col);
+  }
+  // réfléchi parallèle à l'axe (horizontal) vers la gauche
+  function reflectParallel(ctx, xi, yi, col) { ray(ctx, xi, yi, 0, yi, col); }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      let v = parseFloat(slP.value) + dir * dt * 1.0;
+      if (v >= -0.4) { v = -0.4; dir = -1; }
+      if (v <= -5) { v = -5; dir = 1; }
+      slP.value = v; draw();
+    }
+  });
+
+  slP.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer l\u2019objet' : 'Déplacer l\u2019objet';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

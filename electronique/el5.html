@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL5 — Acquisition numérique : échantillonnage et critère de Nyquist-Shannon · QC Oraux MP*</title>
+<meta name="description" content="Chaîne d'acquisition numérique, principe de l'échantillonnage tₙ=nTₑ, spectre d'un signal échantillonné, repliement (aliasing : raie à fₑ−f), critère de Nyquist-Shannon fₑ>2fₘₐₓ et filtre anti-repliement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Électronique</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="el4.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="el6.html" title="Question suivante"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="el1.html"><span class="qn">EL1</span>RLC série en régime libre</a>
+        <a href="el2.html"><span class="qn">EL2</span>RLC en régime forcé / résonances</a>
+        <a href="el3.html"><span class="qn">EL3</span>Filtrage ordre 1 et 2 / créneau</a>
+        <a href="el4.html"><span class="qn">EL4</span>Filtre passe-bande</a>
+        <a href="el5.html" aria-current="page"><span class="qn">EL5</span>Acquisition numérique / Nyquist-Shannon</a>
+        <a href="el6.html"><span class="qn">EL6</span>Échantillonneur-bloqueur et CAN</a>
+        <a href="el7.html"><span class="qn">EL7</span>Filtrage numérique</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 5 · Électronique numérique</span>
+    <h1>Acquisition numérique : échantillonnage, spectre et critère de Nyquist-Shannon</h1>
+    <p class="q-sources"><span class="src">POLY E3 · Électronique numérique §1</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Décrire la structure d'une chaîne d'acquisition numérique et le principe de l'échantillonnage \(t_n = nT_e\). Expliquer l'allure du spectre d'un signal échantillonné, le phénomène de repliement (<em>aliasing</em> : apparition d'une raie à \(f_e-f\)), énoncer le critère de Nyquist-Shannon \(f_e > 2f_{\max}\) et justifier le rôle du filtre anti-repliement.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Traitement numérique du signal</div>
+      <p>Capacités exigibles : décrire la chaîne d'acquisition numérique (filtre anti-repliement, échantillonneur-bloqueur, convertisseur analogique-numérique, stockage) ; définir la fréquence et la période d'échantillonnage ; interpréter le spectre d'un signal échantillonné obtenu par transformée de Fourier rapide (FFT) ; mettre en évidence le repliement de spectre et énoncer le critère de Nyquist-Shannon ; justifier l'emploi d'un filtre anti-repliement. Le contenu suit le cours de la classe (Lycée Sainte-Geneviève, MP).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Signal analogique / numérique</strong> : un signal analogique est une fonction continue du temps ; un signal numérique est un tableau fini de couples (date, grandeur) modélisant le signal.</li>
+      <li><strong>Chaîne d'acquisition</strong> : capteur → amplificateur → <strong>filtre anti-repliement</strong> → <strong>échantillonneur-bloqueur</strong> → <strong>CAN</strong> → <strong>stockage</strong>. La restitution emprunte le chemin inverse : <strong>CNA</strong> → <strong>filtre de sortie</strong> (mêmes caractéristiques que le filtre d'entrée) → amplificateur de puissance.</li>
+      <li><strong>Période d'échantillonnage</strong> \(T_e\), <strong>fréquence d'échantillonnage</strong> \(f_e = \dfrac{1}{T_e}\) : on prélève la valeur du signal aux instants \(t_n = nT_e\), avec \(n\) entier compris entre \(0\) et \(N-1\) (\(N\) = nombre de points d'acquisition).</li>
+      <li><strong>Résolution de la chaîne</strong> : pour un codage sur \(n\) bits, la précision relative maximale accessible vaut \(2^{-n}\) ; tous les éléments de la chaîne doivent atteindre au moins cette précision.</li>
+      <li><strong>Repliement (aliasing)</strong> : phénomène par lequel une composante à la fréquence \(f\) crée, dans le spectre calculé, une raie supplémentaire de même amplitude à la fréquence \(f_e - f\).</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Principe de l'échantillonnage</span>
+      <p class="lead"><strong>On prélève le signal à intervalles réguliers</strong> : l'échantillonnage d'un signal analogique \(s(t)\) consiste à en relever les valeurs aux instants régulièrement espacés</p>
+      <div class="calc-line">\[ t_n = nT_e, \qquad n = 0,1,\dots,N-1, \qquad T_e = \dfrac{1}{f_e} . \]</div>
+      <p>Le signal échantillonné n'est une représentation fidèle du signal analogique que si la période \(T_e\) est suffisamment petite, c'est-à-dire si la fréquence \(f_e\) est suffisamment grande.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Spectre d'un signal échantillonné et FFT</span>
+      <p class="lead"><strong>On passe dans le domaine fréquentiel</strong> : l'outil mathématique adapté à la détermination du spectre est la transformée de Fourier. Comme on ne connaît qu'un nombre fini de points, on utilise une méthode numérique approchée : la <strong>transformée de Fourier rapide</strong> (FFT, algorithme de Cooley et Tukey, 1960), implémentée dans les oscilloscopes numériques et les logiciels d'acquisition.</p>
+      <p class="lead"><strong>On observe alors un effet caractéristique</strong> : à côté de chaque raie réelle à la fréquence \(f\), le spectre calculé contient une raie supplémentaire, de même amplitude, à la fréquence \(f_e - f\) :</p>
+      <div class="calc-line">\[ f \quad\longrightarrow\quad f \;\text{ et }\; f_e - f . \]</div>
+      <p>Ce résultat est général : on l'appelle <strong>repliement du spectre</strong> (<em>aliasing</em>).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Conséquence du repliement : le critère de Nyquist-Shannon</span>
+      <p class="lead"><strong>On illustre sur deux composantes</strong> \(f_1 = 2\ \mathrm{kHz}\) et \(f_2 = 3\ \mathrm{kHz}\). Échantillonnées à \(f_e = 10\ \mathrm{kHz}\), leurs alias apparaissent à \(f_e-f_1 = 8\ \mathrm{kHz}\) et \(f_e-f_2 = 7\ \mathrm{kHz}\) : les fréquences réelles (\(2\) et \(3\ \mathrm{kHz}\)) restent les plus basses, et un simple filtre passe-bas permet de ne conserver que ces fréquences réelles.</p>
+      <p class="lead"><strong>On diminue la fréquence d'échantillonnage</strong> à \(f_e' = 4\ \mathrm{kHz}\) : les alias apparaissent à \(f_e'-f_1 = 2\ \mathrm{kHz}\) et \(f_e'-f_2 = 1\ \mathrm{kHz}\). L'alias de \(f_1\) se superpose à la fréquence réelle \(2\ \mathrm{kHz}\) et l'alias de \(f_2\) descend en dessous : <strong>les composantes réelles ne sont plus séparables</strong> de leurs alias.</p>
+      <p class="lead"><strong>On en déduit la condition</strong> : pour que les composantes réelles restent les plus basses et puissent être isolées, il faut que tout alias \(f_e-f\) soit supérieur à toute fréquence réelle \(f\), soit \(f_e - f_{\max} > f_{\max}\) :</p>
+      <div class="calc-line">\[ \boxed{\,f_e > 2\,f_{\max}\,} \]</div>
+      <p>C'est le <strong>critère (ou condition) de Nyquist-Shannon</strong> : pour que l'échantillonnage ne modifie pas le spectre d'un signal, la fréquence d'échantillonnage doit être supérieure au double de la plus grande fréquence \(f_{\max}\) contenue dans ce spectre.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Filtre anti-repliement</span>
+      <p class="lead"><strong>On traite le cas des signaux réels</strong> : ceux-ci contiennent souvent un très grand nombre de raies (voire une infinité, comme les signaux triangulaires ou rectangulaires), et le critère est alors impossible à satisfaire directement. On procède en trois temps :</p>
+      <ul>
+        <li>choisir une fréquence \(f_{\max}\) telle que les fréquences supérieures soient négligeables dans la décomposition de Fourier du signal ;</li>
+        <li>interposer entre le signal d'entrée et le dispositif d'acquisition un <strong>filtre passe-bas</strong> de fréquence de coupure \(f_c > f_{\max}\) ;</li>
+        <li>choisir une fréquence d'échantillonnage \(f_e > 2f_c\) de manière à satisfaire le critère de Nyquist-Shannon.</li>
+      </ul>
+      <p>Ce filtre, qui limite le contenu spectral en amont de l'échantillonnage, porte le nom de <strong>filtre anti-repliement</strong> (<em>anti-aliasing</em>).</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — repliement d'une sinusoïde sous-échantillonnée</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-alias" aria-label="Sinusoïde de fréquence f sous-échantillonnée : points prélevés et sinusoïde apparente (alias) reconstruite, fréquence d'échantillonnage réglable"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-fe">Fréquence d'échantillonnage \(f_e\) <span class="val" id="v-fe">18,0 Hz</span></label>
+          <input type="range" id="sl-fe" min="3" max="40" step="0.5" value="18">
+          <span class="hint">Le signal réel a une fréquence fixe \(f = 8{,}0\ \mathrm{Hz}\). La condition de Nyquist-Shannon impose \(f_e > 2f = 16\ \mathrm{Hz}\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Animer le balayage de \(f_e\)</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Fréquence réelle \(f\) = <b>8,0 Hz</b></span>
+            <span class="ro">Seuil de Nyquist \(2f\) = <b>16,0 Hz</b></span>
+            <span class="ro">Fréquence apparente \(f_{\rm app}\) = <b id="v-fapp">—</b></span>
+            <span class="ro">État = <b id="v-etat">—</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Signal réel \(s(t)=\sin(2\pi f t)\) (bleu) avec \(f=8{,}0\ \mathrm{Hz}\), échantillons prélevés aux instants \(t_n=nT_e\) (points oranges) et sinusoïde apparente reconstruite à partir de ces seuls échantillons (rouge pointillé). Quand \(f_e>2f\) (Nyquist respecté) l'apparente coïncide avec le signal réel : \(f_{\rm app}=f\). Quand \(f_e<2f\), le repliement fait apparaître une fréquence plus basse \(f_{\rm app}=\min(f_e-f,\,f)\bmod f_e\) : la sinusoïde rouge est un <em>alias</em> trompeur.
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>signal réel \(f\)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>échantillons \(t_n=nT_e\)</span>
+          <span class="swatch"><i style="background:var(--curve-rouge)"></i>sinusoïde apparente (alias)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Le critère s'écrit avec une inégalité <strong>stricte</strong> : \(f_e > 2f_{\max}\) (et non \(\geq\)).</li>
+        <li>Le repliement crée une raie de <strong>même amplitude</strong> à \(f_e - f\) : c'est ce qui empêche de distinguer le vrai du faux sans précaution.</li>
+        <li>Le filtre anti-repliement agit <strong>avant</strong> l'échantillonnage (en analogique) ; on ne peut pas « défaire » le repliement après coup.</li>
+        <li>Citer la FFT (Cooley-Tukey, 1960) et le fait qu'elle impose souvent un nombre de points en puissance de 2.</li>
+        <li>Ordre de grandeur audio : signal limité à \(f_{\max}\approx 20\ \mathrm{kHz}\), d'où le standard CD \(f_e = 44{,}1\ \mathrm{kHz} > 2f_{\max}\).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>L'ensemble (chaîne d'acquisition, échantillonnage \(t_n=nT_e\), spectre par FFT, repliement, critère de Nyquist-Shannon, filtre anti-repliement) figure au programme MP de traitement numérique du signal et correspond exactement au chapitre 3 « Électronique numérique » du cours de la classe (Lycée Sainte-Geneviève, MP), §1.</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="el4.html"><span class="pn-dir">← Précédent</span><span class="pn-title">EL4 · Filtre passe-bande</span></a>
+    <a class="next" href="el6.html"><span class="pn-dir">Suivant →</span><span class="pn-title">EL6 · Échantillonneur-bloqueur et CAN</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 6 : Électronique.<br>Conforme au programme officiel de physique MP/MPSI.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-alias');
+  const slFe = document.getElementById('sl-fe');
+  const vFe = document.getElementById('v-fe'), vFapp = document.getElementById('v-fapp'), vEtat = document.getElementById('v-etat');
+  const btn = document.getElementById('btn-anim');
+  const F = 8.0;            // fréquence réelle fixe (Hz)
+  let animating = false, dir = 1;
+
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  // fréquence apparente après repliement dans la bande [0, fe/2]
+  function fApparente(fe) {
+    let a = F % fe;
+    if (a > fe / 2) a = fe - a;
+    return a;
+  }
+
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 300);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+    const fe = parseFloat(slFe.value);
+    const Tobs = 1.0;        // fenêtre d'observation 1 s
+    const pad = { l: 30, r: 16, t: 18, b: 28 };
+    const px = t => pad.l + t / Tobs * (w - pad.l - pad.r);
+    const py = v => pad.t + (1 - v) / 2 * (h - pad.t - pad.b);
+
+    // grille + axe
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath();
+    for (let k = 0; k <= 10; k++) { ctx.moveTo(px(k / 10), pad.t); ctx.lineTo(px(k / 10), h - pad.b); }
+    ctx.stroke();
+    ctx.strokeStyle = c.axis; ctx.lineWidth = 1.4; ctx.beginPath();
+    ctx.moveTo(pad.l, py(0)); ctx.lineTo(w - pad.r, py(0)); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.textAlign = 'right'; ctx.fillText('t (s)', w - pad.r, py(0) - 6);
+
+    // signal réel (bleu)
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.4; ctx.beginPath();
+    for (let i = 0; i <= 600; i++) {
+      const t = Tobs * i / 600, v = Math.sin(2 * Math.PI * F * t);
+      const X = px(t), Y = py(v);
+      i ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y);
+    }
+    ctx.stroke();
+
+    // sinusoïde apparente reconstruite (rouge pointillé) : même phase aux instants d'échantillonnage
+    const fapp = fApparente(fe);
+    // signe de la pente apparente : repliement peut inverser la phase
+    let aRaw = F % fe; const inverted = aRaw > fe / 2;
+    ctx.strokeStyle = c.rouge; ctx.lineWidth = 2; ctx.setLineDash([5, 4]); ctx.beginPath();
+    for (let i = 0; i <= 600; i++) {
+      const t = Tobs * i / 600;
+      const v = Math.sin(2 * Math.PI * fapp * t * (inverted ? -1 : 1));
+      const X = px(t), Y = py(v);
+      i ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // échantillons (points oranges) aux t_n = n/fe
+    ctx.fillStyle = c.orange;
+    const nMax = Math.floor(Tobs * fe);
+    for (let n = 0; n <= nMax; n++) {
+      const t = n / fe, v = Math.sin(2 * Math.PI * F * t);
+      ctx.beginPath(); ctx.arc(px(t), py(v), 3.6, 0, 2 * Math.PI); ctx.fill();
+    }
+
+    vFe.textContent = fr(fe, 1) + ' Hz';
+    vFapp.textContent = fr(fapp, 1) + ' Hz';
+    const ok = fe > 2 * F;
+    vEtat.textContent = ok ? 'Nyquist respecté' : 'repliement !';
+    vEtat.style.color = ok ? c.vert : c.rouge;
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      let v = parseFloat(slFe.value) + dir * dt * 8;
+      if (v > 40) { v = 40; dir = -1; }
+      if (v < 3) { v = 3; dir = 1; }
+      slFe.value = v; draw();
+    }
+  });
+
+  slFe.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Arrêter le balayage' : 'Animer le balayage de fₑ';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

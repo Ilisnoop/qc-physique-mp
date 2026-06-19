@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OO7 — Cohérence spatiale · QC Oraux MP*</title>
+<meta name="description" content="Cohérence spatiale : brouillage des franges par la largeur d'une source étendue, contraste en sinus cardinal, longueur de cohérence spatiale, critère de visibilité et lien avec la localisation des franges.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%2314468C'/%3E%3Cg fill='none' stroke='%2314468C' stroke-width='1.6'%3E%3Cellipse cx='16' cy='16' rx='12' ry='5'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(60 16 16)'/%3E%3Cellipse cx='16' cy='16' rx='12' ry='5' transform='rotate(120 16 16)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <span class="logo" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12.5" ry="5"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="5" transform="rotate(120 16 16)"/></g></svg></span>
+    <span class="brand-text"><span class="brand-title">QC Oraux MP*</span><span class="brand-sub">Optique ondulatoire</span></span>
+  </a>
+  <div class="header-spacer"></div>
+  <div class="nav-controls">
+    <nav class="qnav" aria-label="Navigation entre questions">
+      <a class="qnav-btn" href="oo6.html" title="Question précédente">‹ <span class="label-txt">Préc.</span></a>
+      <a class="qnav-btn" href="index.html" title="Sommaire du thème"><span class="label-txt">Suiv.</span> ›</a>
+    </nav>
+    <div class="qmenu">
+      <button class="qmenu-toggle" aria-haspopup="true" aria-expanded="false"><span class="label-txt">Questions</span> ▾</button>
+      <div class="qmenu-list" role="menu">
+        <a href="index.html"><span class="qn">↩</span>Sommaire du thème</a>
+        <a href="oo1.html"><span class="qn">OO1</span>Modèle scalaire de la lumière</a>
+        <a href="oo2.html"><span class="qn">OO2</span>Trous d'Young</a>
+        <a href="oo3.html"><span class="qn">OO3</span>Michelson : lame &amp; coin d'air</a>
+        <a href="oo4.html"><span class="qn">OO4</span>Contraste (visibilité)</a>
+        <a href="oo5.html"><span class="qn">OO5</span>Réseaux / N ondes / Rayleigh</a>
+        <a href="oo6.html"><span class="qn">OO6</span>Longueur de cohérence temporelle</a>
+        <a href="oo7.html" aria-current="page"><span class="qn">OO7</span>Cohérence spatiale</a>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <header class="q-head">
+    <span class="q-kicker">Question 7 · Optique ondulatoire</span>
+    <h1>Cohérence spatiale : brouillage des franges par une source étendue, contraste et critère de visibilité</h1>
+    <p class="q-sources"><span class="src">POLY §3 (Division du front d'onde)</span></p>
+  </header>
+
+  <section class="rubric">
+    <h2><span class="rl">A</span> Intitulé</h2>
+    <p>Expliquer pourquoi l'élargissement spatial d'une source dégrade le contraste des franges dans un dispositif à division du front d'onde (trous d'Young). Établir le contraste en sinus cardinal pour une source-fente de largeur \(b\). Énoncer le critère de visibilité et la longueur de cohérence spatiale. Faire le lien avec la localisation des franges.</p>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">B</span> Rattachement au programme</h2>
+    <div class="box prog">
+      <div class="box-title">▣ Programme MP · Thème 3 §3.2–3.3 — Interférences, division du front d'onde</div>
+      <p>Capacités exigibles : citer la condition de cohérence spatiale d'une source étendue dans un dispositif à division du front d'onde ; interpréter la perte de contraste lorsqu'on élargit la source ; relier qualitativement la largeur de source à la visibilité des franges. Le calcul du contraste en sinus cardinal est mené à partir de l'addition incohérente des intensités produites par chaque source ponctuelle élémentaire.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">C</span> Cadre et définitions</h2>
+    <ul>
+      <li><strong>Dispositif</strong> : trous (ou fentes) d'Young de séparation \(a\), éclairés par une source située à la distance \(D\) en amont. On note \(\lambda\) la longueur d'onde.</li>
+      <li><strong>Source étendue</strong> : ensemble de sources ponctuelles <em>incohérentes entre elles</em> ; chacune produit son propre système de franges, ces systèmes s'<strong>additionnent en intensité</strong>.</li>
+      <li><strong>Source-fente</strong> : segment lumineux de largeur \(b\), perpendiculaire à l'axe des trous, vu depuis les trous sous l'angle \(\alpha = \dfrac{b}{D}\).</li>
+      <li><strong>Contraste (visibilité)</strong> : \(C = \dfrac{I_{\max} - I_{\min}}{I_{\max} + I_{\min}}\).</li>
+      <li><strong>Cohérence spatiale</strong> : aptitude de deux points distincts d'un même front d'onde à donner des franges contrastées ; elle se dégrade quand la source s'élargit.</li>
+    </ul>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">D</span> Développement du cours</h2>
+    <div class="demo-step">
+      <span class="step-label">1 — Déplacement de la source ponctuelle</span>
+      <p class="lead">On décale d'abord la source ponctuelle d'une quantité \(x'\) parallèlement à l'axe des trous. La différence de marche acquise <em>en amont</em> des trous se rajoute à celle aval. On montre que la frange centrale (ordre \(p=0\)) se déplace, le système de franges étant translaté en bloc :</p>
+      <div class="calc-line">\[ \delta = \delta_{\text{amont}} + \delta_{\text{aval}} = \dfrac{a\,x'}{D} + \dfrac{a\,x}{D'} , \]</div>
+      <p>où \(x\) est l'abscisse sur l'écran et \(D'\) la distance trous-écran. À chaque position \(x'\) de la source correspond un système de franges décalé.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">2 — Addition incohérente sur la largeur de source</span>
+      <p class="lead">La source-fente de largeur \(b\) est une superposition continue de sources élémentaires incohérentes \(\mathrm{d}x'\). Chacune apporte une intensité élémentaire ; on <strong>somme les intensités</strong> :</p>
+      <div class="calc-line">\[ I(x) = \int_{-b/2}^{+b/2} \dfrac{2 I_0}{b}\left(1 + \cos\!\left(\dfrac{2\pi a}{\lambda}\Big(\dfrac{x'}{D} + \dfrac{x}{D'}\Big)\right)\right)\mathrm{d}x' . \]</div>
+      <p class="lead"><strong>On intègre sur \(x'\)</strong> ; le terme constant donne \(2I_0\), et l'intégrale du cosinus fait apparaître un sinus cardinal :</p>
+      <div class="calc-line">\[ I(x) = 2 I_0\left(1 + \dfrac{\sin u}{u}\,\cos\!\left(\dfrac{2\pi a x}{\lambda D'}\right)\right) , \qquad u = \dfrac{\pi a b}{\lambda D} . \]</div>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">3 — Contraste en sinus cardinal</span>
+      <p class="lead">On reconnaît un terme de franges en \(\cos\!\left(\dfrac{2\pi a x}{\lambda D'}\right)\), modulé par un facteur dépendant de \(b\) : c'est le <strong>contraste</strong></p>
+      <div class="calc-line">\[ C(b) = \left|\dfrac{\sin u}{u}\right| = \left|\,\mathrm{sinc}\!\left(\dfrac{\pi a b}{\lambda D}\right)\right| . \]</div>
+      <p>Quand \(b\to 0\) (source ponctuelle), \(C\to 1\) : franges parfaitement contrastées. Quand \(b\) augmente, \(C\) décroît : les franges <em>se brouillent</em>. Le contraste s'annule pour la première fois lorsque \(u = \pi\), soit \(b = \dfrac{\lambda D}{a}\).</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">4 — Critère de visibilité et longueur de cohérence spatiale</span>
+      <p class="lead">On estime que les franges restent visibles tant que le déphasage entre les bords de la source reste modéré. En écrivant la variation d'ordre entre les deux extrémités \(\pm \dfrac{b}{2}\) et en imposant un brouillage non atteint, le critère s'écrit :</p>
+      <div class="calc-line">\[ |\Delta p| = \dfrac{a\,b}{\lambda D} \leqslant \dfrac{1}{2} \quad\Longleftrightarrow\quad b \leqslant \dfrac{\lambda D}{2a} . \]</div>
+      <p class="lead"><strong>On en déduit la longueur de cohérence spatiale</strong> \(\ell_s\), largeur maximale de source donnant une figure peu brouillée :</p>
+      <div class="calc-line">\[ \ell_s = \dfrac{\lambda D}{2a} . \]</div>
+      <p class="lead">En introduisant l'angle \(\alpha = \dfrac{b}{D}\) sous lequel la source est vue depuis les trous, le critère devient :</p>
+      <div class="calc-line">\[ \alpha \leqslant \dfrac{\lambda}{2a} . \]</div>
+      <p>Plus la source est vue sous un angle faible, plus sa cohérence spatiale est grande, et plus il est aisé d'obtenir des franges visibles. Cette perte de visibilité par élargissement est commune à <em>tous</em> les dispositifs à division du front d'onde.</p>
+    </div>
+    <div class="demo-step">
+      <span class="step-label">5 — Lien avec la localisation des franges</span>
+      <p>Avec une source ponctuelle, les franges existent dans tout l'espace : elles sont <em>non localisées</em>. Quand la source est étendue, le brouillage par cohérence spatiale n'épargne qu'une région particulière de l'espace où les divers systèmes de franges restent superposés : les franges sont alors <strong>localisées</strong>. C'est pourquoi, en lame d'air au Michelson éclairée par une source large, les franges (anneaux) sont localisées à l'infini ; en coin d'air, elles sont localisées sur les miroirs. La cohérence spatiale et la localisation sont ainsi deux facettes du même phénomène d'addition de systèmes décalés.</p>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">E</span> Figure interactive — brouillage des franges par la largeur de source</h2>
+    <figure class="figure">
+      <div class="fig-canvas-wrap">
+        <canvas id="cv-coh" aria-label="Trous d'Young éclairés par une source étendue : profil d'éclairement sur l'écran et contraste en fonction de la largeur de source"></canvas>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <label for="sl-b">Largeur de source \(b\) (en unités de \(\frac{\lambda D}{a}\)) <span class="val" id="v-b">0,30</span></label>
+          <input type="range" id="sl-b" min="0" max="2" step="0.01" value="0.3">
+          <span class="hint" id="hint-b">\(b=0\) : source ponctuelle, contraste maximal. Premier brouillage total à \(b=\dfrac{\lambda D}{a}\).</span>
+          <div class="btn-row" style="margin-top:.5rem">
+            <button class="btn primary" id="btn-anim" type="button">Élargir la source</button>
+          </div>
+        </div>
+        <div class="control">
+          <div class="readout">
+            <span class="ro">Contraste \(C = \left|\frac{\sin u}{u}\right|\) = <b id="v-c">0,86</b></span>
+            <span class="ro">\(u = \dfrac{\pi a b}{\lambda D}\) = <b id="v-u">0,94</b></span>
+            <span class="ro">Cohérence spatiale \(\ell_s = \dfrac{\lambda D}{2a}\) (soit \(b=0{,}50\)) </span>
+            <span class="ro" id="ro-vis">Visibilité : <b id="v-vis">bonne</b></span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="fig-legend">
+        Profil d'éclairement \(I(x)\) sur l'écran (bleu) pour des trous d'Young éclairés par une source-fente de largeur \(b\). Le contraste \(C=\left|\mathrm{sinc}(u)\right|\) (enveloppe verte des extrema) chute quand \(b\) augmente, jusqu'au brouillage total à \(b=\frac{\lambda D}{a}\) (puis inversion de contraste). La ligne orange marque la limite de cohérence spatiale \(b=\ell_s=\frac{\lambda D}{2a}\) (critère \(C\geqslant\) seuil).
+        <div class="legend-swatches">
+          <span class="swatch"><i style="background:var(--curve-bleu)"></i>éclairement \(I(x)\)</span>
+          <span class="swatch"><i style="background:var(--curve-vert)"></i>enveloppe (contraste)</span>
+          <span class="swatch"><i style="background:var(--curve-orange)"></i>limite \(\ell_s\)</span>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">F</span> À ne pas oublier à l'oral</h2>
+    <div class="box oral">
+      <div class="box-title">◆ Points clés</div>
+      <ul>
+        <li>Les sources ponctuelles élémentaires d'une source étendue sont <em>incohérentes</em> : on additionne les <strong>intensités</strong>, jamais les amplitudes.</li>
+        <li>Le contraste suit un <strong>sinus cardinal</strong> \(\left|\frac{\sin u}{u}\right|\) avec \(u = \frac{\pi a b}{\lambda D}\) : retenir le premier zéro à \(b = \frac{\lambda D}{a}\).</li>
+        <li>Cohérence spatiale \(\ell_s = \frac{\lambda D}{2a}\), ou en angulaire \(\alpha \leqslant \frac{\lambda}{2a}\) : plus la source est vue sous un petit angle, plus on est cohérent spatialement.</li>
+        <li>La cohérence <em>spatiale</em> (liée à la largeur de source) est distincte de la cohérence <em>temporelle</em> (liée à la largeur spectrale, voir OO6).</li>
+        <li>Application : l'expérience de Grimaldi (deux trous éclairés par le Soleil, vu sous \(\approx 30'\)) échoue car la source est trop large — cohérence spatiale insuffisante.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rubric">
+    <h2><span class="rl">G</span> Conformité au programme</h2>
+    <p>Tout est au programme MP (interférences à division du front d'onde, §3). Le calcul du contraste en sinus cardinal pour une source-fente, le critère de visibilité \(|\Delta p|\leqslant\frac{1}{2}\) et la longueur de cohérence spatiale \(\ell_s = \frac{\lambda D}{2a}\) sont conformes au cours. Le lien avec la localisation est traité qualitativement (aucune théorie de la localisation n'est exigible).</p>
+  </section>
+
+  <nav class="page-nav" aria-label="Question précédente et suivante">
+    <a href="oo6.html"><span class="pn-dir">← Précédent</span><span class="pn-title">OO6 · Longueur de cohérence temporelle</span></a>
+    <a class="next" href="index.html"><span class="pn-dir">Sommaire →</span><span class="pn-title">Optique ondulatoire</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><strong>QC Oraux Physique MP*</strong><br>Recueil interactif de questions de cours d'oral — CPGE.</div>
+    <div>Thème 8 : Optique ondulatoire (§3).<br>Conforme au programme officiel de physique MP.</div>
+  </div>
+</footer>
+
+<script src="../assets/anim.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('cv-coh');
+  const slB = document.getElementById('sl-b');
+  const vB = document.getElementById('v-b'), vC = document.getElementById('v-c'), vU = document.getElementById('v-u'), vVis = document.getElementById('v-vis');
+  const btn = document.getElementById('btn-anim');
+  let animating = false, dir = 1;
+  function fr(x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+  // b est exprimé en unités de (lambda*D/a). Donc u = pi * a * b / (lambda*D) = pi * bUnit.
+  // Premier zéro du contraste : bUnit = 1 (b = lambda*D/a). Cohérence spatiale : bUnit = 0,5.
+  function draw() {
+    const c = QC.colors();
+    const s = QC.setup(cv, 320);
+    const ctx = s.ctx, w = s.w, h = s.h;
+    QC.clear(ctx, w, h);
+
+    const bUnit = parseFloat(slB.value);
+    const u = Math.PI * bUnit;
+    const sinc = (Math.abs(u) < 1e-6) ? 1 : Math.sin(u) / u;   // peut être négatif (inversion)
+    const C = Math.abs(sinc);
+
+    const pad = { l: 16, r: 16, t: 18, b: 28 };
+    const x0 = pad.l, x1 = w - pad.r;
+    const yTop = pad.t, yBot = h - pad.b;
+    const midY = (yTop + yBot) / 2;
+    const amp = (yBot - yTop) / 2 - 4;
+
+    // axe écran (x)
+    ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, yBot); ctx.lineTo(x1, yBot); ctx.stroke();
+    ctx.fillStyle = c.muted; ctx.font = '12px IBM Plex Mono, monospace'; ctx.textAlign = 'right';
+    ctx.fillText('x (écran)', x1, yBot + 18);
+
+    // profil I(x) = 2I0 (1 + sinc * cos(k x)), normalisé : I varie de (1 - C) à (1 + C) (relatif au fond)
+    // On représente I(x) entre 0 (bas) et 2 (haut). base bas = yBot, top = yTop pour I=2.
+    const Imax = 2;
+    const Y = I => yBot - (I / Imax) * (yBot - yTop);
+    const kpx = 7 * 2 * Math.PI / (x1 - x0);   // ~7 franges visibles
+    const cxc = (x0 + x1) / 2;
+
+    // enveloppes (contraste) : I = 1 ± sinc  -> en valeur signée, le profil = 1 + sinc*cos
+    // enveloppe haute : 1 + C, basse : 1 - C
+    ctx.strokeStyle = c.vert; ctx.lineWidth = 1.6; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(x0, Y(1 + C)); ctx.lineTo(x1, Y(1 + C)); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x0, Y(1 - C)); ctx.lineTo(x1, Y(1 - C)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // profil
+    ctx.strokeStyle = c.bleu; ctx.lineWidth = 2.2; ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 1) {
+      const I = 1 + sinc * Math.cos(kpx * (px - cxc));
+      const yy = Y(I);
+      started ? ctx.lineTo(px, yy) : (ctx.moveTo(px, yy), started = true);
+    }
+    ctx.stroke();
+
+    // niveau moyen
+    ctx.strokeStyle = c.muted; ctx.globalAlpha = 0.5; ctx.lineWidth = 1; ctx.setLineDash([2, 4]);
+    ctx.beginPath(); ctx.moveTo(x0, Y(1)); ctx.lineTo(x1, Y(1)); ctx.stroke();
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+    // étiquette contraste sur l'enveloppe
+    ctx.fillStyle = c.vert; ctx.textAlign = 'left'; ctx.font = '11px IBM Plex Mono, monospace';
+    ctx.fillText('C = ' + fr(C, 2), x0 + 4, Y(1 + C) - 4);
+
+    // lectures
+    vB.textContent = fr(bUnit, 2);
+    vC.textContent = fr(C, 2);
+    vU.textContent = fr(u, 2);
+    if (bUnit <= 0.5 + 1e-9) vVis.textContent = 'bonne';
+    else if (bUnit < 1) vVis.textContent = 'dégradée';
+    else if (Math.abs(bUnit - 1) < 0.03) vVis.textContent = 'brouillage total';
+    else vVis.textContent = 'brouillée / inversée';
+  }
+
+  let last = 0;
+  QC.loop(function (t) {
+    const dt = t - last; last = t;
+    if (animating) {
+      let v = parseFloat(slB.value) + dir * dt * 0.35;
+      if (v >= 2) { v = 2; dir = -1; }
+      if (v <= 0) { v = 0; dir = 1; }
+      slB.value = v; draw();
+    }
+  });
+
+  slB.addEventListener('input', draw);
+  btn.addEventListener('click', function () {
+    animating = !animating;
+    btn.textContent = animating ? 'Figer' : 'Élargir la source';
+    btn.classList.toggle('active', animating);
+    if (!animating) draw();
+  });
+  draw();
+  window.addEventListener('themechange', draw);
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>

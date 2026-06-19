@@ -38,6 +38,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="q4.html" aria-current="page"><span class="qn">Q4</span>Marche de potentiel</a>
         <a href="q5.html"><span class="qn">Q5</span>Puits infini 1D</a>
         <a href="q6.html"><span class="qn">Q6</span>Modèle de Bohr</a>
+        <a href="q7.html"><span class="qn">Q7</span>Barrière de potentiel &amp; effet tunnel</a>
+        <a href="q8.html"><span class="qn">Q8</span>Paquet d'ondes &amp; vitesse de groupe</a>
+        <a href="q9.html"><span class="qn">Q9</span>Courant de probabilité &amp; continuité</a>
+        <a href="q10.html"><span class="qn">Q10</span>États non stationnaires</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -68,7 +72,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <h2><span class="rl">C</span> Cadre et définitions</h2>
     <p>Particule de masse \(m\), énergie \(E&gt;0\), se propageant de gauche à droite vers la marche :</p>
     <p>\[ V(x) = \begin{cases} 0 &amp; x &lt; 0 \\ V_0 &amp; x \geq 0 \end{cases} \] avec \(V_0&gt;0\).</p>
-    <p>On pose \(k_1=\sqrt{\dfrac{2mE}{\hbar^2}}\), \(k_2=\sqrt{\dfrac{2m(E-V_0)}{\hbar^2}}\) (\(E>V_0\)), \(\kappa=\sqrt{\dfrac{2m(V_0-E)}{\hbar^2}}\) (\(E<V_0\)). Courant de probabilité d'une onde plane \(\psi=Ae^{ikx}\) : \(j=\dfrac{\hbar k|A|^2}{m}\).</p>
+    <p>On pose \(k_{\text{I}}=\sqrt{\dfrac{2mE}{\hbar^2}}\), \(k_{\text{II}}=\sqrt{\dfrac{2m(E-V_0)}{\hbar^2}}\) (\(E>V_0\)), \(\kappa=\sqrt{\dfrac{2m(V_0-E)}{\hbar^2}}\) (\(E<V_0\)). Courant de probabilité d'une onde plane \(\psi=Ae^{ikx}\) : \(j=\dfrac{\hbar k|A|^2}{m}\).</p>
   </section>
 
   <section class="rubric">
@@ -76,30 +80,30 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="demo-step">
       <span class="step-label">Ansatz</span>
       <p class="lead">On décompose la fonction d'onde de part et d'autre de la marche située en \(x=0\). Dans la région \(x&lt;0\), on a une onde incidente et une onde réfléchie :</p>
-      <div class="calc-line">\[ \psi_1(x) = e^{ik_1x} + B\,e^{-ik_1x} . \]</div>
+      <div class="calc-line">\[ \psi_1(x) = e^{ik_{\text{I}}x} + B\,e^{-ik_{\text{I}}x} . \]</div>
       <p>Dans la région \(x\geq0\), la forme de la solution dépend de la comparaison entre \(E\) et \(V_0\).</p>
     </div>
     <div class="demo-step">
       <span class="step-label">Cas \(E&gt;V_0\) (transmission)</span>
-      <p class="lead">La solution transmise est une onde progressive \(\psi_2(x)=C\,e^{ik_2x}\). On écrit les conditions de raccordement en \(x=0\) (continuité de \(\psi\) et de \(\psi'\)) :</p>
+      <p class="lead">La solution transmise est une onde progressive \(\psi_2(x)=C\,e^{ik_{\text{II}}x}\). On écrit les conditions de raccordement en \(x=0\) (continuité de \(\psi\) et de \(\psi'\)) :</p>
       <div class="calc-line">\[
         \begin{aligned}
           1+B &amp;= C , \\[4pt]
-          ik_1(1-B) &amp;= ik_2\,C .
+          ik_{\text{I}}(1-B) &amp;= ik_{\text{II}}\,C .
         \end{aligned}
       \]</div>
       <p class="lead">On résout ce système pour les amplitudes réfléchie et transmise :</p>
-      <div class="calc-line">\[ B = \dfrac{k_1 - k_2}{k_1 + k_2} , \qquad C = \dfrac{2k_1}{k_1+k_2} . \]</div>
+      <div class="calc-line">\[ B = \dfrac{k_{\text{I}} - k_{\text{II}}}{k_{\text{I}} + k_{\text{II}}} , \qquad C = \dfrac{2k_{\text{I}}}{k_{\text{I}}+k_{\text{II}}} . \]</div>
       <p class="lead">Les courants de probabilité incident, réfléchi et transmis s'écrivent :</p>
-      <div class="calc-line">\[ j_{\text{inc}}=\dfrac{\hbar k_1}{m} , \qquad j_r=\dfrac{\hbar k_1\,|B|^2}{m} , \qquad j_t=\dfrac{\hbar k_2\,|C|^2}{m} . \]</div>
-      <p class="lead">On en déduit les coefficients de réflexion \(R=j_r/j_{\text{inc}}\) et de transmission \(T=j_t/j_{\text{inc}}\) :</p>
-      <div class="calc-line">\[ R = |B|^2 = \left(\dfrac{k_1-k_2}{k_1+k_2}\right)^2 , \qquad T = \dfrac{k_2}{k_1}\,|C|^2 = \dfrac{4k_1 k_2}{(k_1+k_2)^2} . \]</div>
-      <p class="lead">Le facteur \(\dfrac{k_2}{k_1}\) traduit que la transmission se mesure en flux, et non en amplitude. On vérifie enfin la conservation :</p>
-      <div class="calc-line">\[ R+T=\dfrac{(k_1-k_2)^2+4k_1k_2}{(k_1+k_2)^2}=1 . \]</div>
+      <div class="calc-line">\[ j_{\text{inc}}=\dfrac{\hbar k_{\text{I}}}{m} , \qquad j_r=\dfrac{\hbar k_{\text{I}}\,|B|^2}{m} , \qquad j_t=\dfrac{\hbar k_{\text{II}}\,|C|^2}{m} . \]</div>
+      <p class="lead">On en déduit les coefficients de réflexion \(R=\dfrac{j_r}{j_{\text{inc}}}\) et de transmission \(T=\dfrac{j_t}{j_{\text{inc}}}\) :</p>
+      <div class="calc-line">\[ R = |B|^2 = \left(\dfrac{k_{\text{I}}-k_{\text{II}}}{k_{\text{I}}+k_{\text{II}}}\right)^2 , \qquad T = \dfrac{k_{\text{II}}}{k_{\text{I}}}\,|C|^2 = \dfrac{4k_{\text{I}} k_{\text{II}}}{(k_{\text{I}}+k_{\text{II}})^2} . \]</div>
+      <p class="lead">Le facteur \(\dfrac{k_{\text{II}}}{k_{\text{I}}}\) traduit que la transmission se mesure en flux, et non en amplitude. On vérifie enfin la conservation :</p>
+      <div class="calc-line">\[ R+T=\dfrac{(k_{\text{I}}-k_{\text{II}})^2+4k_{\text{I}}k_{\text{II}}}{(k_{\text{I}}+k_{\text{II}})^2}=1 . \]</div>
     </div>
     <div class="demo-step">
       <span class="step-label">Différence classique</span>
-      <p>Classiquement, pour \(E&gt;V_0\) la particule est toujours transmise (\(T=1\), \(R=0\)). En mécanique quantique, \(R\neq0\) dès que \(k_1\neq k_2\) : c'est l'analogue de la réflexion partielle à l'interface entre deux milieux d'indices différents.</p>
+      <p>Classiquement, pour \(E&gt;V_0\) la particule est toujours transmise (\(T=1\), \(R=0\)). En mécanique quantique, \(R\neq0\) dès que \(k_{\text{I}}\neq k_{\text{II}}\) : c'est l'analogue de la réflexion partielle à l'interface entre deux milieux d'indices différents.</p>
     </div>
     <div class="demo-step">
       <span class="step-label">Cas \(E&lt;V_0\) (évanescence)</span>
@@ -107,12 +111,13 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <div class="calc-line">\[
         \begin{aligned}
           1+B &amp;= C , \\[4pt]
-          ik_1(1-B) &amp;= -\kappa\,C .
+          ik_{\text{I}}(1-B) &amp;= -\kappa\,C .
         \end{aligned}
       \]</div>
       <p class="lead">On en déduit l'amplitude réfléchie, de module unité :</p>
-      <div class="calc-line">\[ B=\dfrac{k_1-i\kappa}{k_1+i\kappa} , \qquad |B|^2=1 \;\Longrightarrow\; R=1 . \]</div>
+      <div class="calc-line">\[ B=\dfrac{k_{\text{I}}-i\kappa}{k_{\text{I}}+i\kappa} , \qquad |B|^2=1 \;\Longrightarrow\; R=1 . \]</div>
       <p>La réflexion est donc totale. La fonction d'onde pénètre cependant exponentiellement dans la zone interdite sur une longueur \(\delta=\dfrac{1}{\kappa}\), avec un courant transmis nul. Classiquement, la particule est aussi totalement réfléchie mais ne pénètre pas : la différence quantique est cette pénétration évanescente sans transport d'énergie.</p>
+      <p>Si la zone interdite a une <strong>extension finie</strong> (barrière d'épaisseur \(\ell\)), l'onde évanescente conserve une amplitude non négligeable à la sortie : la particule peut alors traverser. C'est l'<strong>effet tunnel</strong>, étudié à la <a href="q7.html">question Q7 (barrière de potentiel)</a>.</p>
     </div>
   </section>
 
@@ -143,7 +148,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
       </div>
       <figcaption class="fig-legend">
-        Profil de potentiel (marche orange). À gauche : onde incidente + réfléchie (forte modulation si \(E&lt;V_0\)). À droite : onde transmise oscillante de vecteur d'onde \(k_2&lt;k_1\) si \(E&gt;V_0\), ou onde évanescente \(e^{-\kappa x}\) si \(E&lt;V_0\). \(R\) et \(T\) sont calculés en direct par les formules de la rubrique D.
+        Profil de potentiel (marche orange). À gauche : onde incidente + réfléchie (forte modulation si \(E&lt;V_0\)). À droite : onde transmise oscillante de vecteur d'onde \(k_{\text{II}}&lt;k_{\text{I}}\) si \(E&gt;V_0\), ou onde évanescente \(e^{-\kappa x}\) si \(E&lt;V_0\). \(R\) et \(T\) sont calculés en direct par les formules de la rubrique D.
         <div class="legend-swatches">
           <span class="swatch"><i style="background:var(--curve-orange)"></i>Potentiel \(V(x)\)</span>
           <span class="swatch"><i style="background:var(--curve-bleu)"></i>\(\mathrm{Re}\,\psi\) (incidente / transmise)</span>

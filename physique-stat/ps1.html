@@ -35,6 +35,10 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         <a href="ps1.html" aria-current="page"><span class="qn">PS1</span>Facteur de Boltzmann / atmosphère isotherme</a>
         <a href="ps2.html"><span class="qn">PS2</span>Système à deux niveaux</a>
         <a href="ps3.html"><span class="qn">PS3</span>Équipartition / capacité thermique des gaz</a>
+        <a href="ps4.html"><span class="qn">PS4</span>Distribution de Maxwell des vitesses</a>
+        <a href="ps5.html"><span class="qn">PS5</span>Niveaux dégénérés et fonction de partition</a>
+        <a href="ps6.html"><span class="qn">PS6</span>Fluctuations relatives d'énergie</a>
+        <a href="ps7.html"><span class="qn">PS7</span>Capacité thermique et degrés de liberté</a>
       </div>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-label="Basculer le thème"></button>
@@ -105,12 +109,12 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
     <div class="demo-step">
       <span class="step-label">2 — Généralisation : poids de Boltzmann</span>
       <p>On généralise inductivement le résultat précédent. Pour une particule indépendante à l'équilibre avec un thermostat à température \(T\), la <em>probabilité</em> de la trouver dans un état d'énergie \(\varepsilon_i\) est proportionnelle au facteur de Boltzmann :</p>
-      <div class="calc-line">\[ P_i \propto e^{-\dfrac{\varepsilon_i}{k_BT}} . \]</div>
+      <div class="calc-line">\[ P_i \propto e^{-\frac{\varepsilon_i}{k_BT}} . \]</div>
       <p class="lead"><strong>Normalisation —</strong> la condition \(\sum_i P_i = 1\) impose le facteur de proportionnalité et définit la <em>fonction de partition</em> \(Z\) :</p>
       <div class="calc-line">\[
         \begin{aligned}
-          P_i &amp;= \dfrac{1}{Z}\,e^{-\dfrac{\varepsilon_i}{k_BT}} ,
-          &amp;\qquad Z &amp;= \sum_i e^{-\dfrac{\varepsilon_i}{k_BT}} .
+          P_i &amp;= \dfrac{1}{Z}\,e^{-\frac{\varepsilon_i}{k_BT}} ,
+          &amp;\qquad Z &amp;= \sum_i e^{-\frac{\varepsilon_i}{k_BT}} .
         \end{aligned}
       \]</div>
     </div>
@@ -118,7 +122,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
       <span class="step-label">3 — Ordres de grandeur de \(k_BT\)</span>
       <ul>
         <li>À \(T = 300\ \mathrm{K}\) (température ambiante) : \(k_BT \approx 4{,}1\times10^{-21}\ \mathrm{J} \approx 25\ \mathrm{meV}\).</li>
-        <li>Hauteur d'échelle barométrique : \(H = \dfrac{k_BT}{mg} \approx 8{,}5\ \mathrm{km}\) pour l'air (\(m \approx 29\ \mathrm{u}\), \(g = 9{,}8\ \mathrm{m\,s^{-2}}\)).</li>
+        <li>Hauteur d'échelle barométrique : \(H = \dfrac{k_BT}{mg} \approx 8{,}8\ \mathrm{km}\) pour l'air \((T = 300\ \mathrm{K})\) (\(m \approx 29\ \mathrm{u}\), \(g = 9{,}8\ \mathrm{m\,s^{-2}}\)).</li>
         <li>Transitions électroniques (\(\Delta E \sim 1\ \mathrm{eV} \gg k_BT\)) : à température ambiante, les états excités électroniques sont très peu peuplés.</li>
         <li>Énergie de vibration d'une molécule diatomique (\(\hbar\omega_{\rm vib} \sim 0{,}1\ \mathrm{eV} \gg k_BT\)) : peu excitée à \(300\ \mathrm{K}\).</li>
         <li>Énergie de rotation (\(\dfrac{\hbar^2}{2I} \sim 10^{-3}\ \mathrm{eV} &lt; k_BT\)) : degrés rotationnels activés à température ambiante.</li>
@@ -143,7 +147,7 @@ window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]
         </div>
         <div class="control">
           <div class="readout">
-            <span class="ro">Hauteur d'échelle \(H\) = <b id="v-H">8,5 km</b></span>
+            <span class="ro">Hauteur d'échelle \(H\) = <b id="v-H">8,8 km</b></span>
             <span class="ro">\(k_BT\) = <b id="v-kt">25,9 meV</b></span>
           </div>
           <span class="hint">À \(z=H\), la densité est tombée à \(\dfrac{n_0}{e}\) (trait vert). Augmenter \(T\) dilate l'atmosphère (\(H\) croît).</span>
